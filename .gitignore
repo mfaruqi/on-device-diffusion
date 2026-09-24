@@ -1,0 +1,33 @@
+# Secrets
+.env
+*.token
+.huggingface/
+hf_token*
+
+# Model weights and caches (live on cluster storage, see notes)
+*.safetensors
+*.ckpt
+*.bin
+*.gguf
+huggingface/
+
+# Environments
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Large or generated outputs
+logs/
+results/runs/*/images/
+results/runs/*/profile/trace.json
+*.pt.trace.json
+flux_test/*.json
+flux_test/*.png
+
+# Editor
+*.swp
+*.swo
+.vscode/
+.DS_Store
