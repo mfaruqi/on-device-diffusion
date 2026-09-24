@@ -34,15 +34,26 @@ Useful commands:
 | Other account | `ai-forge`: A10s only (not used for the A100 baseline) |
 | Python env | `~/.conda/envs/2025.06-py313/flux_env`: Python 3.10, torch 2.5.1+cu121, diffusers 0.40.0 (has `Flux2KleinPipeline`), transformers 5.16.1 |
 | Model cache | `HF_HOME=/scratch/gilbreth/mfaruqi/huggingface` (~16 GB for klein 4B). **Scratch can be purged**, so re-run `--prepare-only` if the files are gone |
-| Big outputs | images and `profile/trace.json` stay in `results/runs/<id>/` on scratch and are git-ignored |
+| Repository | `/home/mfaruqi/on-device-diffusion` (moved from scratch on 2026-09-24; home has daily snapshots, 25 GB quota) |
+| Big outputs | images and `profile/trace.json` stay in `results/runs/<id>/` and are git-ignored. Watch the home quota (`myquota`) |
+| Reference images (planned) | `/depot/you139/mfaruqi/on-device-diffusion/references/` (100 GB lab-shared depot) |
 
 Keep the environment unchanged between baseline and later comparisons. Each run records
 `pip freeze` in `environment-freeze.txt`.
 
+## Storage rules
+
+- **Scratch** (`/scratch/gilbreth/mfaruqi`): files not read or modified for 60 days are deleted, with an
+  email warning a week before. There is no backup. Keep only re-creatable data here: the model cache and
+  temporary job outputs.
+- **Home** (`~`): 25 GB, daily snapshots. Holds the repo and the conda env.
+- **Depot** (`/depot/you139`): 100 GB, shared with the lab. Holds long-lived artifacts such as reference images.
+- **GitHub**: push after each session. Until then, local commits exist only on the cluster.
+
 ## Baseline procedure (FLUX.2 klein, A100)
 
 ```bash
-cd /scratch/gilbreth/mfaruqi/on-device-diffusion
+cd ~/on-device-diffusion
 PY=~/.conda/envs/2025.06-py313/flux_env/bin/python
 export HF_HOME=/scratch/gilbreth/mfaruqi/huggingface
 
