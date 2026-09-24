@@ -64,7 +64,7 @@ Repo commit at run time: `f91e2c8` (kit files were still uncommitted; see `envir
 
 Run directory: `results/runs/a100-flux-klein-001-20260923-221717-profile`. The 10 baseline runs
 in this job had a median of 1236.8 ms (within 0.3% of job 11807390) and bit-identical outputs.
-The trace (`profile/trace.json`, 34 MB, git-ignored) is on scratch; open it in https://ui.perfetto.dev.
+The trace (`profile/trace.json`, 34 MB, git-ignored) is in the run directory; open it in https://ui.perfetto.dev.
 
 Self-CUDA time over the whole profiled generation (1.184 s of kernel time; profiler overhead
 inflates it, so compare shares only):

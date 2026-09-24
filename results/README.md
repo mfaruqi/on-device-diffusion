@@ -2,7 +2,7 @@
 
 One row per run directory under `results/runs/`. Numbers are medians of measured runs;
 see `notes/baseline-metrics.md` for definitions. Images and profiler traces in each run
-directory are git-ignored and stay on scratch.
+directory are git-ignored (kept locally, not in git).
 
 | Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
 |---|---|---|---|---|---|---|---|
