@@ -30,6 +30,14 @@ the resolution with a link. See [SCHEMA.md](SCHEMA.md#writing-rules), rule 4.
 - Hypothesis: clock throttling under the A100-PCIE's 250 W limit. Untested; it needs clock and power logging.
 - Status: Unresolved
 
+### Should ExecuTorch (CoreML delegate) be an engine baseline on M1/iPhone?
+- Evidence: its CoreML delegate matches native CoreML on iPhone 15 Pro for vision models
+  ([paper](papers/executorch-mlsys2026.md#their-evaluation)). The proposal's Apple-device baselines are the
+  DreamLite Core ML/MLX reference and planner-selected variants within that stack ([overview](project/overview.md#evaluation-rules)).
+- Not established: whether it can export the diffusion workloads; its Metal backend is experimental.
+- A scope question for the advisor.
+- Status: Unresolved
+
 ## Archive
 
 (none yet)

@@ -11,9 +11,9 @@ updated: 2026-09-28
 # stable-diffusion.cpp has a much smaller cold-start cost than PyTorch
 
 **Claim.** Loading cached weights onto the GPU takes **5.2 s**
-([`load.load_total_s`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-114328/summary.json))
+([`load.load_total_s`](../../results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114328/summary.json))
 with sd.cpp and **13.7 s**
-([`load.load_total_s`](../../results/runs/a100-flux-klein-001-20260923-221530/summary.json))
+([`load.load_total_s`](../../results/runs/a100-flux-klein-001__baseline__20260923-221530/summary.json))
 with PyTorch. The first generation costs 1.07× a warm run in sd.cpp and 2.55× in PyTorch.
 
 **Evidence.** [Comparison](../../experiments/compare-a100-pytorch-vs-sdcpp-flux-klein.md#end-to-end-and-stages-median-of-10-measured-runs-ms).

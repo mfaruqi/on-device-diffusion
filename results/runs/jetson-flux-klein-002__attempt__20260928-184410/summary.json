@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "record_kind": "feasibility-only; partial evidence import",
+  "completed_images": 0,
+  "measured_runs": 0,
+  "measured": null,
+  "unavailable_metrics": {
+    "latency": "No completed generation or validated stage timings.",
+    "peak_memory": "Full tegrastats log not imported; memory diagnostic is not a peak.",
+    "quality": "No generated image."
+  }
+}

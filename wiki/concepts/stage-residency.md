@@ -18,5 +18,8 @@ For FLUX.2 klein, measured facts that make residency matter:
 - the text encoder is half the weights and is used only at the start ([finding](../findings/text-encoder-half-of-weights-little-of-time.md));
 - the VAE decode sets the peak ([finding](../findings/vae-decode-sets-peak-memory.md)).
 
+A deployment-framework precedent: ExecuTorch plans tensor lifetimes ahead of time into fixed arenas, and
+frees large delegate segments after initialization to lower peak memory ([paper](../papers/executorch-mlsys2026.md#mechanisms-relevant-here)).
+
 On shared-memory devices, moving weights between CPU and GPU allocations doesn't by itself reduce the
 footprint ([overview](../project/overview.md#targets)).

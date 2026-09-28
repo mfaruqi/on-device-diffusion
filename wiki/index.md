@@ -49,7 +49,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[FLUX.2 [klein] 4B](systems/flux2-klein-4b.md)**: FLUX.2 [klein] 4B — 4-step distilled text-to-image model; the main image workload.
 - **[Gilbreth (Purdue RCAC)](systems/gilbreth.md)**: Purdue RCAC Gilbreth community GPU cluster — account you139 (one A100-40GB share), Slurm, storage layout.
 - **[iPhone (16 Pro or newer)](systems/iphone.md)** `planned`: iPhone 16 Pro / Pro Max (8 GB) or newer — Core ML / MLX phone target for DreamLite-mobile.
-- **[Jetson Orin Nano](systems/jetson-orin-nano.md)** `planned`: NVIDIA Jetson Orin Nano (8 GB shared CPU/GPU memory) — CUDA edge target.
+- **[Jetson Orin Nano](systems/jetson-orin-nano.md)**: NVIDIA Jetson Orin Nano (8 GB shared CPU/GPU memory) — CUDA edge target.
 - **[M1 MacBook Pro](systems/m1-macbook-pro.md)** `planned`: Apple M1 MacBook Pro — Metal edge target.
 - **[PyTorch / diffusers](systems/pytorch-diffusers.md)**: PyTorch + Hugging Face diffusers (Flux2KleinPipeline) — the reference engine for FLUX.2 klein on CUDA.
 - **[stable-diffusion.cpp](systems/stable-diffusion-cpp.md)**: stable-diffusion.cpp (ggml) — C/C++ diffusion engine with CUDA/Metal/Vulkan backends; a proposal baseline.
@@ -67,10 +67,12 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 ## Papers
 
+- **[ExecuTorch: A Unified PyTorch Solution to Run AI Models On-Device (MLSys 2026)](papers/executorch-mlsys2026.md)** `ingested`: ExecuTorch (Meta, MLSys 2026) — PyTorch-native ahead-of-time export plus a lean C++ runtime with pluggable hardware backends; LLM and vision results on phones, no diffusion. Design precedent for memory planning and capability-based backend delegation.
 - **[Reading list](papers/reading-list.md)** `unread`: References from the proposal and related work to read. A paper gets its own page only when it is ingested.
 
 ## Methods
 
 - **[Baseline metrics: what we measure and how](methods/baseline-metrics.md)**: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 - **[Running experiments on Gilbreth](methods/gilbreth-howto.md)**: How to run experiments on Gilbreth — Slurm basics, accounts, storage rules, the baseline procedure.
+- **[Working on the Jetson Orin Nano](methods/jetson-howto.md)**: Jetson Orin Nano access from the Mac, CUDA shell setup, and the next verification steps.
 - **[Running stable-diffusion.cpp on Gilbreth](methods/sdcpp-howto.md)**: How to build stable-diffusion.cpp and its benchmark harness, point it at the pinned weights, and run the protocol on Gilbreth.

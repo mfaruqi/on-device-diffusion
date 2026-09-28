@@ -11,9 +11,9 @@ updated: 2026-09-28
 # ggml flash attention is ~4× slower than PyTorch SDPA-flash at 4608 tokens
 
 **Claim.** With the same model, shape and GPU, attention in one denoise step takes **37.3 ms**
-([`stages.denoise_step_1.by_group.attention.ms`](../../results/runs/a100-flux-klein-001-20260923-221717-profile/profile/denoise_kernels.json))
+([`stages.denoise_step_1.by_group.attention.ms`](../../results/runs/a100-flux-klein-001__profile__20260923-221717/profile/denoise_kernels.json))
 with PyTorch SDPA-flash and **148.6 ms**
-([`stages.denoise_step_1.by_group.attention.ms`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-124703-profile/profile/denoise_kernels.json))
+([`stages.denoise_step_1.by_group.attention.ms`](../../results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/denoise_kernels.json))
 with sd.cpp's `flash_attn_ext_f16`. That is about 180 vs 44 TFLOP/s, and it accounts for most of the per-step gap between the engines.
 
 **Evidence.** Profiled runs on A100-PCIE-40GB, 25 attention calls per step
@@ -23,5 +23,7 @@ with sd.cpp's `flash_attn_ext_f16`. That is about 180 vs 44 TFLOP/s, and it acco
 shape or GPU confirms it.
 
 **Open.** The cause isn't established ([open question](../open-questions.md#why-is-ggmls-flash-attention-kernel-4-slower-than-pytorch-sdpa-flash-at-4608-tokens)).
+
+Related external evidence: attention implementations differ 1.1–2.6× between ExecuTorch and llama.cpp for LLMs on phones, while linear layers match ([paper](../papers/executorch-mlsys2026.md#their-evaluation)).
 
 Related: [flash attention](../concepts/flash-attention.md), [stable-diffusion.cpp](../systems/stable-diffusion-cpp.md), [RQ1](../rq/rq1.md).

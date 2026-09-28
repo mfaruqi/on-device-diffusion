@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "record_kind": "feasibility-only, reconstructed from terminal excerpts",
+  "completed_images": 0,
+  "measured_runs": 0,
+  "measured": null,
+  "unavailable_metrics": {
+    "latency": "No completed generation or validated per-stage timings; 0.15s diagnostic is not end-to-end latency.",
+    "peak_memory": "Full sampling log not imported; post-failure readings are not peaks.",
+    "quality": "Generation failed."
+  }
+}

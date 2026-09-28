@@ -7,8 +7,44 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] schema | Uniform run names; W&B re-exported with outcome labels
+Run directories renamed to `<experiment-id>__<kind>__<stamp>` ([naming](methods/baseline-metrics.md#run-naming),
+[rename table](../results/README.md#run-directory-names)). All 10 runs re-exported; W&B names show
+`· OK`/`· FAILED` and failed runs use W&B's Failed state.
+
+## [2026-09-28] ingest | Jetson successful run: full CLI logs analyzed
+[Record](../experiments/jetson-flux-klein-003.md): load/stage diagnostics and whole-window sampled RAM extracted;
+command audited, eager CUDA loading followed by releases/reloads documented. Repeated timing/profile pending.
+
+## [2026-09-28] experiment | jetson-flux-klein-003: disk-backed generation completed
+[Record](../experiments/jetson-flux-klein-003.md): one image reported saved, exit 0.
+Partial logs preserved; imported image passed visual smoke check (hash recorded). Full logs and benchmark pending.
+
+## [2026-09-28] experiment | jetson-flux-klein-002: segmented feasibility failed
+[Record](../experiments/jetson-flux-klein-002.md): Qwen3 segment capacity failure with CUDA-resident weights.
+Partial terminal evidence preserved; disk-backed parameter variant prepared, not run.
+
+## [2026-09-28] experiment | jetson-flux-klein-001: quantized feasibility failed
+[Record](../experiments/jetson-flux-klein-001.md): insufficient memory during denoising preparation.
+Preserved terminal excerpts and reconstructed config/status; full Jetson logs pending import.
+
 Format: `## [YYYY-MM-DD] kind | title`, with at most five lines under each entry. Details live in the
 linked record or page. List the last five with `grep "^## \[" wiki/log.md | head -5`.
+
+## [2026-09-28] ingest | Jetson setup and SSH access
+[Setup evidence](../raw/jetson-setup-2026-09-28.md): boot, Mac SSH login, and CUDA compiler verified.
+Added [access/how-to](methods/jetson-howto.md); updated device and current state. GPU execution and benchmark pending.
+
+## [2026-09-28] experiment | Remaining 6 runs exported to W&B
+All 7 run directories are in the W&B project; medians verified against `summary.json`. Registry links
+point to each experiment's W&B group.
+
+## [2026-09-28] decision | First run exported to W&B (viewer pilot)
+[a100-flux-klein-001 baseline](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/a100-flux-klein-001) via `scripts/export_wandb.py`; values match `summary.json`. Run
+directories stay the record ([D-007](project/decisions.md#d-007-results-stay-in-run-directories-viewer-undecided)).
+
+## [2026-09-28] ingest | ExecuTorch (MLSys 2026)
+Paper page [executorch-mlsys2026](papers/executorch-mlsys2026.md); related-evidence links on three findings; one open question.
 
 ## [2026-09-28] schema | Wiki created from notes/
 Split `notes/` into `experiments/` (records) and `wiki/` (curated). See [SCHEMA.md](SCHEMA.md). Seeded

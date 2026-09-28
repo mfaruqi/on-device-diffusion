@@ -11,9 +11,9 @@ updated: 2026-09-28
 # A100-SXM4 runs faster than A100-PCIE for the same configuration
 
 **Claim.** The sd.cpp reference took **2294.8 ms**
-([`measured.wall_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-114138/summary.json))
+([`measured.wall_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114138/summary.json))
 on an SXM4 node (400 W) and **2423.3 ms**
-([`measured.wall_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-114328/summary.json))
+([`measured.wall_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114328/summary.json))
 on a PCIE node (250 W). Both runs have spreads under 0.4%.
 
 **Evidence.** Same config, engine build and weights; only the node type differs

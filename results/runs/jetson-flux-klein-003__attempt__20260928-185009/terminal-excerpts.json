@@ -1,0 +1,22 @@
+{
+  "provenance": "Operator-supplied final terminal excerpt; truncated initial INFO tag normalized. Full logs and image not imported.",
+  "generation_excerpt": [
+    "[INFO   ] model_loader.cpp:1366 - loading tensors completed, taking 1.40s (read: 1.16s, memcpy: 0.00s, convert: 0.12s, copy_to_backend: 0.02s)",
+    "[VERBOSE] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+    "[VERBOSE] ggml - ggml_backend_cuda_get_available_uma_memory: final available_memory_kb: 4320560",
+    "[VERBOSE] ggml - ggml_backend_cuda_get_available_uma_memory: final available_memory_kb: 3447392",
+    "[VERBOSE] ggml_runner.cpp:1019 - vae compute buffer size: 1664.50 MB(VRAM) on CUDA0 (peak across 1 segment)",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) from CUDA0",
+    "[VERBOSE] vae.hpp:351  - computing vae decode graph completed, taking 4.95s",
+    "[INFO   ] image.cpp:615  - latent 1 decoded, taking 4.95s",
+    "[INFO   ] image.cpp:619  - decode_first_stage completed, taking 4.95s",
+    "[INFO   ] image.cpp:1045 - generate_image completed in 39.42s",
+    "[INFO   ] main.cpp:497  - save result image 0 to '/home/mfaruqi/results/runs/jetson-flux-klein-003-20260928-185009/output.png' (success)",
+    "[INFO   ] main.cpp:573  - 1/1 images saved"
+  ],
+  "reported_status": {
+    "status": "complete",
+    "exit_code": 0
+  },
+  "original_directory": "/home/mfaruqi/results/runs/jetson-flux-klein-003-20260928-185009"
+}

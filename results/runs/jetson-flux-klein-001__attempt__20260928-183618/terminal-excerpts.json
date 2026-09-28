@@ -1,0 +1,44 @@
+{
+  "provenance": "Terminal excerpts supplied by the operator on 2026-09-28; not a direct copy of full Jetson log files.",
+  "original_directory": "/home/mfaruqi/results/jetson-flux-klein-q4-512-20260928-183618",
+  "generation_excerpt": [
+    "[VERBOSE] ggml - ggml_backend_cuda_get_available_uma_memory: final available_memory_kb: 376392",
+    "[WARN   ] model_manager.cpp:1661 - model manager memory on CUDA0: reported free 367.57 MB / total 7619.93 MB, tracked weights 4882.75 MB / other runtime 0.00 MB / current runtime 0.00 MB",
+    "[WARN   ] model_manager.cpp:1826 - model manager cannot make enough memory available on CUDA0: need 841.00 MB device / 329.00 MB budget, available 367.57 MB device / unlimited budget",
+    "[ERROR  ] ggml_runner.cpp:898  - flux segment 1/1 (graph) failed during weight preparation",
+    "[ERROR  ] diffusion_engine.cpp:2580 - diffusion model compute failed",
+    "[ERROR  ] diffusion_engine.cpp:2719 - Diffusion model sampling failed",
+    "[ERROR  ] image.cpp:899  - sampling for image 1/1 failed after 0.15s",
+    "[ERROR  ] main.cpp:928  - generate failed",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) from CUDA0"
+  ],
+  "exit_code": 1,
+  "post_failure_tegrastats_excerpt": [
+    "09-28-2026 18:39:00 RAM 2499/7620MB (lfb 56x4MB) SWAP 425/3810MB (cached 0MB) CPU [1%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@43.125C soc2@42.218C soc0@43.5C gpu@43.625C tj@43.625C soc1@42.031C VDD_IN 3038mW/3571mW VDD_CPU_GPU_CV 485mW/663mW VDD_SOC 1011mW/1063mW",
+    "09-28-2026 18:39:09 RAM 2500/7620MB (lfb 56x4MB) SWAP 425/3810MB (cached 0MB) CPU [1%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@43.187C soc2@42.343C soc0@43.468C gpu@43.281C tj@43.468C soc1@42.125C VDD_IN 3038mW/3542mW VDD_CPU_GPU_CV 444mW/651mW VDD_SOC 1011mW/1060mW"
+  ],
+  "post_failure_free_h": {
+    "total": "7.4Gi",
+    "used": "2.4Gi",
+    "free": "4.7Gi",
+    "shared": "30Mi",
+    "buff_cache": "396Mi",
+    "available": "4.8Gi",
+    "swap_total": "3.7Gi",
+    "swap_used": "424Mi",
+    "swap_free": "3.3Gi"
+  },
+  "setup_observations": {
+    "cuda_vector_add": "Test PASSED; Done; 50000 elements",
+    "sd_cli_version": "master-919-19bbbca, commit 19bbbca",
+    "sd_cli_device": "CUDA0 Orin, compute capability 8.7, VMM yes, VRAM 7619 MiB",
+    "cmake": "3.22.1",
+    "power_mode": "25W, ID 1",
+    "checksum_verification": "Operator confirmed all three files OK; raw checksum command output not imported."
+  },
+  "missing_originals": [
+    "generation.log",
+    "tegrastats.log",
+    "exit-code.json"
+  ]
+}

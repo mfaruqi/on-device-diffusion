@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "exit_code": 1,
+  "error": "qwen3 segment 2/29 (llm.text.layers.0) failed during allocated capacity check; insufficient available CUDA0 memory.",
+  "phase": "text encoding",
+  "evidence": "terminal-excerpts.json",
+  "evidence_completeness": "partial",
+  "reconstructed": true
+}

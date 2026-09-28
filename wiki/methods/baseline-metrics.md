@@ -83,9 +83,38 @@ Rules:
 - Allocator numbers **are not** device-wide usage. For comparisons against C++ engines
   (stable-diffusion.cpp, edge-dit.cpp), use `device_used_peak_gib` or an external
   monitor measured the same way for both.
-- On Jetson (shared CPU/GPU memory), GPU and host memory come from the same physical
-  pool. Report their sum as system usage, and don't double-count mapped memory.
+- On Jetson (shared CPU/GPU memory), use a whole-system physical-memory source.
+  Do not add host RSS and GPU allocations: they can overlap in the same physical pool.
 - `nvidia-smi.txt` is a single snapshot taken after the measured runs. It is not a peak.
+
+## Jetson CLI feasibility diagnostics
+
+`scripts/analyze_jetson_feasibility.py` extracts diagnostics from a single successful
+512×512 CLI invocation and its imported `tegrastats` capture. This is not the repeated
+benchmark runner and does not populate its measured-run timing or NVML columns.
+
+- `feasibility-analysis.json → engine_log_diagnostics`: durations printed by the engine
+  for initial tensor loading, `get_learned_condition`, `sampling`, `decode_first_stage`,
+  and `generate_image`, in seconds. Stage durations include any on-demand weight loading
+  inside their engine-defined boundaries; initial tensor loading is not total process
+  startup. The difference between generation and summed stage durations is a residual
+  of rounded diagnostics, not a separately measured stage.
+- `monitor_window.ram_peak_gib`: maximum tegrastats `RAM X/Y` numerator across the entire
+  capture window, including initial loading and any idle time. This is reported
+  system-wide RAM usage, not process allocation, free memory, or per-stage memory.
+  Samples requested every 1000 ms can miss short peaks. Generation logs have no wall-clock
+  timestamps, so this analysis does not assign the memory peak to a stage.
+- `swap_min_gib`, `swap_max_gib`: min/max reported swap occupancy in that window.
+  Constant occupancy does not establish zero swap reads/writes. Do not add swap to RAM.
+- Tegrastats prints `MB`; this import treats those values as MiB, consistent with the
+  device's reported memory totals, and divides by 1024 for approximate GiB. Raw printed
+  integers, local timestamps, and source line numbers remain in `tegrastats-samples.csv`.
+- `gpu_temperature_max_c`: maximum sampled `gpu@...C`; this alone does not establish
+  whether throttling occurred. Inputs are hashed in the analysis JSON for provenance.
+
+NVIDIA documents the fields in [tegrastats](https://docs.nvidia.com/jetson/archives/r36.4.3/DeveloperGuide/AT/JetsonLinuxDevelopmentTools/TegrastatsUtility.html).
+These diagnostics must not be compared as though they were repeated-run medians or
+20 ms NVML peaks. Existing benchmark metrics retain their definitions.
 
 ## Repeatability checks
 
@@ -154,3 +183,10 @@ Profiling: `--nsys` runs the harness build with NVTX ranges (`text_encode`, `den
 `vae_decode`) under Nsight Systems. `analyze_profile.py` assigns each kernel to the NVTX range that
 contains its GPU start time and groups ggml kernels by name (see `categorize_ggml`). There is no
 launching-op table for ggml.
+
+## Run naming
+
+Run directories are named `<experiment-id>__<kind>__<YYYYMMDD-HHMMSS>`. Kind `baseline` is a clean
+timing run under the full protocol; `repeat` re-runs a baseline to check reproducibility; `profile`
+has a profiler attached, so its latency is never quoted; `attempt` is a single feasibility try outside
+the protocol, with no medians. Old names and their mapping are in [results/README.md](../../results/README.md#run-directory-names).

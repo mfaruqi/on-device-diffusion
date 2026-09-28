@@ -11,9 +11,9 @@ updated: 2026-09-28
 # The text encoder is half the weights for a few percent of the time
 
 **Claim.** The text encoder's weights are **7.49 GiB**
-([`components.text_encoder.weights_gib`](../../results/runs/a100-flux-klein-001-20260923-221530/load.json))
+([`components.text_encoder.weights_gib`](../../results/runs/a100-flux-klein-001__baseline__20260923-221530/load.json))
 of 14.87 GiB. Encoding takes **47.0 ms**
-([`measured.text_encode_ms.median`](../../results/runs/a100-flux-klein-001-20260923-221530/summary.json))
+([`measured.text_encode_ms.median`](../../results/runs/a100-flux-klein-001__baseline__20260923-221530/summary.json))
 of a 1240.6 ms generation.
 
 **Evidence.** [PyTorch reference record](../../experiments/a100-flux-klein-001.md#memory). The weights stay resident

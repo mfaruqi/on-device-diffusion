@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "exit_code": 1,
+  "error": "Insufficient available CUDA0 memory; flux segment 1/1 failed during weight preparation; generation failed.",
+  "phase": "denoising weight preparation",
+  "evidence": "terminal-excerpts.json",
+  "evidence_completeness": "partial; full original logs remain on Jetson",
+  "reconstructed": true
+}

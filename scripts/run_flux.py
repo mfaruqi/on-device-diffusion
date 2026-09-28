@@ -444,6 +444,8 @@ def main():
     ap.add_argument("--config", required=True, type=Path)
     ap.add_argument("--prepare-only", action="store_true", help="resolve revision + download; no GPU")
     ap.add_argument("--profile", action="store_true", help="add one torch.profiler generation after the baseline")
+    ap.add_argument("--kind", choices=["baseline", "profile", "repeat", "attempt"], default=None,
+                    help="run kind in the directory name (default: profile with the profiler flag, else baseline)")
     ap.add_argument("--out-root", type=Path, default=REPO_ROOT / "results" / "runs")
     args = ap.parse_args()
 
@@ -453,7 +455,9 @@ def main():
         return
 
     stamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
-    run_dir = args.out_root / f"{cfg['id']}-{stamp}{'-profile' if args.profile else ''}"
+    # Run directory naming (wiki/methods/baseline-metrics.md#run-naming): <experiment-id>__<kind>__<stamp>
+    kind = args.kind or ("profile" if args.profile else "baseline")
+    run_dir = args.out_root / f"{cfg['id']}__{kind}__{stamp}"
     run_dir.mkdir(parents=True)
     write_json(run_dir / "config.json", cfg)
     print(f"Run directory: {run_dir}", flush=True)

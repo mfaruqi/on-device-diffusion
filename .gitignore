@@ -42,3 +42,14 @@ results/runs/*/profile/*.sqlite
 # Obsidian: personal settings stay local; the shared vault settings are committed
 .obsidian/*
 !.obsidian/app.json
+
+# Codex agent files (kept local, like the Claude Code ones above)
+AGENTS.md
+.agents/
+.codex/
+
+# CLI feasibility images remain local
+results/runs/*/*.png
+
+# Raw CLI and monitoring logs remain local
+results/runs/*/*.log

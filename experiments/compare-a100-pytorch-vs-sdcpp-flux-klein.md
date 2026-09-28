@@ -4,7 +4,7 @@ id: compare-a100-pytorch-vs-sdcpp-flux-klein
 status: complete
 device: a100-pcie-40gb
 engine: [pytorch-diffusers, stable-diffusion-cpp]
-runs: [a100-flux-klein-001-20260923-221530, a100-flux-klein-001-20260925-123908, a100-sdcpp-flux-klein-001-20260925-114328, a100-flux-klein-001-20260923-221717-profile, a100-sdcpp-flux-klein-001-20260925-124703-profile]
+runs: [a100-flux-klein-001__baseline__20260923-221530, a100-flux-klein-001__repeat__20260925-123908, a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-flux-klein-001__profile__20260923-221717, a100-sdcpp-flux-klein-001__profile__20260925-124703]
 updated: 2026-09-25
 ---
 
@@ -21,11 +21,11 @@ transfer across engines and devices) and sets the engine baseline required by pr
 
 | Role | Run directory | Engine | Node | Job |
 |---|---|---|---|---|
-| Timing, PyTorch | `a100-flux-klein-001-20260923-221530` | diffusers 0.40.0, torch 2.5.1+cu121 | g008 | 11807390 |
-| Timing, PyTorch (repeat) | `a100-flux-klein-001-20260925-123908` | same | g006 | 11817919 |
-| Timing, sd.cpp | `a100-sdcpp-flux-klein-001-20260925-114328` | sd.cpp `master-919-19bbbca`, CUDA 12.6 | g004 | 11817906 |
-| Profile, PyTorch | `a100-flux-klein-001-20260923-221717-profile` | torch.profiler | g008 | 11807396 |
-| Profile, sd.cpp | `a100-sdcpp-flux-klein-001-20260925-124703-profile` | Nsight Systems | g005 | 11818087 |
+| Timing, PyTorch | `a100-flux-klein-001__baseline__20260923-221530` | diffusers 0.40.0, torch 2.5.1+cu121 | g008 | 11807390 |
+| Timing, PyTorch (repeat) | `a100-flux-klein-001__repeat__20260925-123908` | same | g006 | 11817919 |
+| Timing, sd.cpp | `a100-sdcpp-flux-klein-001__baseline__20260925-114328` | sd.cpp `master-919-19bbbca`, CUDA 12.6 | g004 | 11817906 |
+| Profile, PyTorch | `a100-flux-klein-001__profile__20260923-221717` | torch.profiler | g008 | 11807396 |
+| Profile, sd.cpp | `a100-sdcpp-flux-klein-001__profile__20260925-124703` | Nsight Systems | g005 | 11818087 |
 
 Experiment notes: [a100-flux-klein-001.md](a100-flux-klein-001.md), [a100-sdcpp-flux-klein-001.md](a100-sdcpp-flux-klein-001.md).
 

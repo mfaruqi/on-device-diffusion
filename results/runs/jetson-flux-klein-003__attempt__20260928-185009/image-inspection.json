@@ -1,0 +1,14 @@
+{
+  "file": "output.png",
+  "sha256": "91261370546c8603cae36bead772521cc7115434392c5100ef94763202103d88",
+  "width": 512,
+  "height": 512,
+  "review_type": "Single-image visual smoke check by assistant, 2026-09-28",
+  "observations": [
+    "Coherent cat holding a sign.",
+    "Sign text reads hello world and is legible.",
+    "No obvious blank output, gross corruption, or visible tile seams."
+  ],
+  "prompt_match": "Visually matches the requested subject, action and sign text.",
+  "limitations": "One prompt/seed; no reference comparison, formal quality metric, blinded review or repeatability test."
+}

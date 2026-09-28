@@ -11,9 +11,9 @@ updated: 2026-09-28
 # BF16 GEMM time transfers across PyTorch and stable-diffusion.cpp
 
 **Claim.** The transformer's matrix multiplies take **123.5 ms**
-([`stages.denoise_step_1.by_group.gemm.ms`](../../results/runs/a100-flux-klein-001-20260923-221717-profile/profile/denoise_kernels.json))
+([`stages.denoise_step_1.by_group.gemm.ms`](../../results/runs/a100-flux-klein-001__profile__20260923-221717/profile/denoise_kernels.json))
 per step in PyTorch and **116.2 ms**
-([`stages.denoise_step_1.by_group.gemm.ms`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-124703-profile/profile/denoise_kernels.json))
+([`stages.denoise_step_1.by_group.gemm.ms`](../../results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/denoise_kernels.json))
 in sd.cpp. Both dispatch to cuBLAS BF16 tensor-core kernels (`ampere_*16816gemm_bf16`).
 
 **Evidence.** The weights are value-identical ([equivalence report](../../configs/sdcpp-weights.check.json)), with
@@ -22,5 +22,7 @@ PyTorch's large GEMMs reach 68–82% of the A100's BF16 peak ([record](../../exp
 
 **Interpretation.** For these shapes, GEMM efficiency is a property of the library, not the engine.
 The engines differ in what surrounds the GEMMs.
+
+Related external evidence: ExecuTorch vs llama.cpp on phone CPUs shows the same pattern for LLMs, with linear layers at parity ([paper](../papers/executorch-mlsys2026.md#their-evaluation)).
 
 Related: [ggml FP32 activations](ggml-fp32-activations-add-conversion-and-idle-time.md), [RQ1](../rq/rq1.md).

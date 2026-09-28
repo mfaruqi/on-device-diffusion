@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Git pre-commit hook: the wiki must pass its deterministic lint before anything is committed.
+# Enabled per clone with:  git config core.hooksPath scripts/githooks
+# Blocks the commit when, e.g., a new run directory isn't in wiki/experiments.md, a quoted number
+# no longer matches its JSON, or a link is broken. Regenerates wiki/index.md and stages it.
+# Bypass in an emergency with: git commit --no-verify
+set -u
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+out="$(python3 scripts/wiki_lint.py --write-index 2>&1)"
+status=$?
+git add wiki/index.md 2>/dev/null
+
+if [[ $status -ne 0 ]]; then
+  echo "pre-commit: wiki lint failed. Fix these, or run /wiki-ingest for new experiments:" >&2
+  grep '^ERROR' <<<"$out" | head -20 >&2
+  echo "(bypass with git commit --no-verify)" >&2
+  exit 1
+fi
+exit 0

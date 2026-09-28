@@ -4,7 +4,7 @@ id: a100-sdcpp-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: stable-diffusion-cpp
-runs: [a100-sdcpp-flux-klein-001-20260925-114328, a100-sdcpp-flux-klein-001-20260925-124703-profile, a100-sdcpp-flux-klein-001-20260925-114138, a100-sdcpp-flux-klein-001-20260925-124021-profile]
+runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021]
 updated: 2026-09-25
 ---
 
@@ -44,7 +44,7 @@ and a functional check. It is **not** a quality benchmark.
 
 ## Results
 
-Run directory: `results/runs/a100-sdcpp-flux-klein-001-20260925-114328`   Slurm job: `11817906`   Node: `gilbreth-g004`
+Run directory: `results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114328`   Slurm job: `11817906`   Node: `gilbreth-g004`
 GPU: NVIDIA A100-PCIE-40GB, driver 590.48.01, 250 W limit.
 Repo commit at run time: `771641e`. The sd.cpp kit files were not yet committed; they are listed in
 `environment.json → git_dirty_files`.
@@ -94,13 +94,13 @@ Allocator metrics (`peak_alloc_gib`, `peak_reserved_gib`) don't exist for ggml; 
 - Warm-up: the first warm-up (2425 ms) is already at the measured level. Measured spread (max−min)/median: **0.33%**.
 - Functional check: `images/measured-0.png` shows a cat holding a sign that reads "hello world".
 - Same configuration on an A100-**SXM4**-40GB node (job 11817893, `gilbreth-n001`, 400 W;
-  `results/runs/a100-sdcpp-flux-klein-001-20260925-114138`): 2294.8 ms (range 2293.1–2297.4), per step
+  `results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114138`): 2294.8 ms (range 2293.1–2297.4), per step
   402–418 ms, VAE 585.4 ms, the same 22.88 GiB peak. That run is on different hardware and is
   not this experiment's result. It is why the Slurm scripts now pin `--constraint=G`.
 
 ### Profiler run (diagnostic, Nsight Systems, job 11818087)
 
-Run directory: `results/runs/a100-sdcpp-flux-klein-001-20260925-124703-profile` (node `gilbreth-g005`,
+Run directory: `results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703` (node `gilbreth-g005`,
 A100-PCIE-40GB). The same configuration and protocol run under `nsys profile --trace=cuda,nvtx`, using the
 harness build with NVTX stage ranges. Its 10 measured runs had a median of 2510.3 ms (+3.6% profiler
 overhead), and the audit was clean. The report (`profile/trace.nsys-rep`, 4.5 MB) is git-ignored.

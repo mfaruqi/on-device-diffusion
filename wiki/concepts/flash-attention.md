@@ -20,4 +20,6 @@ Implementations seen in this project:
 FLOPs per call are counted as 4·B·H·S_q·S_k·D ([metrics](../methods/baseline-metrics.md#profiling-diagnostic-only)).
 Kernel choice is one of the registry's kernel family options ([overview](../project/overview.md#optimization-families-registry)).
 
+Attention-kernel choice also dominates cross-framework gaps for LLMs on phones ([ExecuTorch paper](../papers/executorch-mlsys2026.md#their-evaluation)).
+
 See: [finding](../findings/ggml-flash-attention-4x-slower-than-sdpa-flash-at-4608-tokens.md).

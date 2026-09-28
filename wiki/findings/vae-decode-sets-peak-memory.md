@@ -11,9 +11,9 @@ updated: 2026-09-28
 # The VAE decode sets FLUX.2 klein's peak memory
 
 **Claim.** The device-wide peak during a generation is **20.61 GiB**
-([`measured.device_used_peak_gib.median`](../../results/runs/a100-flux-klein-001-20260923-221530/summary.json))
+([`measured.device_used_peak_gib.median`](../../results/runs/a100-flux-klein-001__baseline__20260923-221530/summary.json))
 with PyTorch and **22.88 GiB**
-([`measured.device_used_peak_gib.median`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-114328/summary.json))
+([`measured.device_used_peak_gib.median`](../../results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114328/summary.json))
 with sd.cpp, and in both it's reached during VAE decode. Denoise steps peak about 1.8 GiB (PyTorch
 allocator) and 5.5 GiB (sd.cpp, device-wide) lower.
 

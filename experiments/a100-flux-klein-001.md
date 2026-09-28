@@ -4,7 +4,7 @@ id: a100-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: pytorch-diffusers
-runs: [a100-flux-klein-001-20260923-221530, a100-flux-klein-001-20260923-221717-profile, a100-flux-klein-001-20260925-123908]
+runs: [a100-flux-klein-001__baseline__20260923-221530, a100-flux-klein-001__profile__20260923-221717, a100-flux-klein-001__repeat__20260925-123908]
 updated: 2026-09-25
 ---
 
@@ -33,7 +33,7 @@ a performance baseline and functional smoke check. It is **not** a quality bench
 
 ## Results
 
-Run directory: `results/runs/a100-flux-klein-001-20260923-221530`   Slurm job: `11807390`   Node: `gilbreth-g008`
+Run directory: `results/runs/a100-flux-klein-001__baseline__20260923-221530`   Slurm job: `11807390`   Node: `gilbreth-g008`
 GPU: NVIDIA A100-PCIE-40GB, driver 590.48.01 · torch 2.5.1+cu121 · diffusers 0.40.0 · transformers 5.16.1
 Repo commit at run time: `f91e2c8` (kit files were still uncommitted; see `environment.json`)
 
@@ -68,7 +68,7 @@ Repo commit at run time: `f91e2c8` (kit files were still uncommitted; see `envir
 - Outputs bit-identical across all measured runs: **yes** (`deterministic_output: true`)
 - Warm-up stabilised by run 1 (the first warm-up); measured spread (max−min)/median: **0.9%**
 - Repeat on a second node after the runner's shared code moved to `scripts/benchlib.py` (job 11817919,
-  `gilbreth-g006`, A100-PCIE-40GB; `results/runs/a100-flux-klein-001-20260925-123908`): 1229.6 ms
+  `gilbreth-g006`, A100-PCIE-40GB; `results/runs/a100-flux-klein-001__repeat__20260925-123908`): 1229.6 ms
   (−0.9%). Text encode, denoise and VAE are within 0.9% (47.5 / 979.5 / 165.9 ms). Memory is identical
   (17.32 / 19.60 / 20.61 GiB), and the output is the same image (sha256 `9469177c…`). Postprocess,
   the host-bound GPU→CPU copy plus PIL conversion, was 27.8 vs 39.3 ms and accounts for most of the
@@ -78,7 +78,7 @@ Repo commit at run time: `f91e2c8` (kit files were still uncommitted; see `envir
 
 ### Profiler run (diagnostic, job 11807396)
 
-Run directory: `results/runs/a100-flux-klein-001-20260923-221717-profile`. The 10 baseline runs
+Run directory: `results/runs/a100-flux-klein-001__profile__20260923-221717`. The 10 baseline runs
 in this job had a median of 1236.8 ms (within 0.3% of job 11807390) and bit-identical outputs.
 The trace (`profile/trace.json`, 34 MB, git-ignored) is in the run directory; open it in https://ui.perfetto.dev.
 

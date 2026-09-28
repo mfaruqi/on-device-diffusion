@@ -1,0 +1,47 @@
+{
+  "source": "generation.log",
+  "source_sha256": "0597eff9202d18bc3ab75e3ea7ae0f572bf9ca4e5f3cb5e5d60d5fe30a39e8d5",
+  "checked_command_fields": {
+    "--backend": "CUDA0",
+    "--params-backend": "disk",
+    "--auto-fit": "off",
+    "--width": "512",
+    "--height": "512",
+    "--steps": "4",
+    "--cfg-scale": "1.0",
+    "--sampling-method": "euler",
+    "--scheduler": "flux2",
+    "--seed": "0",
+    "--batch-count": "1",
+    "--threads": "4",
+    "--conditioning-cache-size": "0"
+  },
+  "checked_flags": {
+    "eager_load": true,
+    "diffusion_fa": true,
+    "disable_segmented_compute": false,
+    "vae_tiling": false
+  },
+  "power_mode_original": "NV Power Mode: 25W\n1",
+  "selected_evidence": [
+    "  disable_segmented_compute: false,",
+    "  eager_load: true,",
+    "  params_backend: \"disk\",",
+    "  auto_fit: false,",
+    "[INFO   ] diffusion_engine.cpp:1512 - Conditioner weight type stat:          f32: 145  |    q4_K: 216  |    q6_K: 37   ",
+    "[INFO   ] diffusion_engine.cpp:1513 - Diffusion model weight type stat:     q4_0: 80   |    bf16: 69   ",
+    "[INFO   ] diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  ",
+    "[INFO   ] model_loader.cpp:1366 - loading tensors completed, taking 64.11s (read: 61.00s, memcpy: 0.00s, convert: 0.25s, copy_to_backend: 1.25s)",
+    "[VERBOSE] model_manager.cpp:490  - model manager prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on CUDA0",
+    "[VERBOSE] ggml_runner.cpp:878  - qwen3 using 29 segments",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers (1016.50 MB, 196 tensors, 1 blocks, VRAM) from CUDA0",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers (996.64 MB, 126 tensors, 1 blocks, VRAM) from CUDA0",
+    "[VERBOSE] ggml_runner.cpp:1019 - qwen3 compute buffer size: 51.00 MB(VRAM) on CUDA0 (peak across 29 segments)",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers (1841.08 MB, 298 tensors, 16 blocks, VRAM) from CUDA0",
+    "[VERBOSE] ggml_runner.cpp:1019 - flux compute buffer size: 329.00 MB(VRAM) on CUDA0 (peak across 1 segment)",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers (2506.84 MB, 397 tensors, 3 blocks, VRAM) from CUDA0",
+    "[VERBOSE] ggml_runner.cpp:1019 - vae compute buffer size: 1664.50 MB(VRAM) on CUDA0 (peak across 1 segment)",
+    "[VERBOSE] model_manager.cpp:1175 - model manager released params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) from CUDA0"
+  ],
+  "interpretation": "Disk parameter policy was requested, but eager loading initially prepared all parameter buffers on CUDA. Later logs show releases and on-demand reloads. Do not describe this as never loading all weights or as measured physical disk I/O."
+}

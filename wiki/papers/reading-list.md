@@ -24,6 +24,7 @@ Week 1 includes "review DreamLite" ([milestones](../project/milestones.md)).
 | Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | pass/dispatch/runtime separation; JIT cache | unread |
 | Engines | stable-diffusion.cpp; edge-dit.cpp | engine baselines, auto-fitting | stable-diffusion.cpp in use ([engine](../systems/stable-diffusion-cpp.md)) |
 | Engines | FastVideo; Wan reference implementation | video baselines | unread |
+| Engines | ExecuTorch (Nachin et al., MLSys 2026) | PyTorch-native AOT export and runtime; memory planning and backend-delegation precedent | [ingested](executorch-mlsys2026.md) |
 | Evaluation | GenEval (Ghosh et al., 2023), arXiv 2310.11513 | image alignment metric | unread |
 | Evaluation | VBench (Huang et al., 2023), arXiv 2311.17982 | video quality dimensions | unread |
 | Memory | Diffusers "Reduce memory usage" docs; CUDA for Tegra memory notes | offload and tiling options; Jetson shared memory | unread |

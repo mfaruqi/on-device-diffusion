@@ -11,9 +11,9 @@ updated: 2026-09-28
 # sd.cpp's VAE decode is dominated by im2col
 
 **Claim.** `im2col_kernel` takes **403.7 ms**
-([`stages.vae_decode.by_leaf_op.im2col_kernel.ms`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-124703-profile/profile/other_stages.json))
+([`stages.vae_decode.by_leaf_op.im2col_kernel.ms`](../../results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/other_stages.json))
 of the decode's 606.8 ms of GPU time. End to end, the decode takes **603.5 ms**
-([`measured.vae_decode_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001-20260925-114328/summary.json))
+([`measured.vae_decode_ms.median`](../../results/runs/a100-sdcpp-flux-klein-001__baseline__20260925-114328/summary.json))
 versus 165.3 ms in PyTorch. sd.cpp's figure includes the conversion to uint8, which PyTorch
 reports separately as postprocess, so the like-for-like gap is slightly under 3.65×.
 

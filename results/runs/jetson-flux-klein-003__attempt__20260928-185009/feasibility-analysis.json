@@ -1,0 +1,47 @@
+{
+  "scope": "single CLI feasibility attempt; no measured-run medians",
+  "input_sha256": {
+    "generation.log": "0597eff9202d18bc3ab75e3ea7ae0f572bf9ca4e5f3cb5e5d60d5fe30a39e8d5",
+    "tegrastats.log": "cde86f8240e79496a99d0b943274b8ebf6746112cc639995e0142574509bd7f0",
+    "command.json": "4320a646122455b19e80b873bcbc1852f514da7277fe17dcbb8f815c9af9fb3f",
+    "status-original.json": "695697275688ccadbdadb3e1592cbc749677adc687a454741f950ed64ac2a97b",
+    "power-mode.txt": "64ddbc77e3f209ac7218bbadfb8107b9edacf64e07424f7cb6cd8a58fc562fd6",
+    "memory-before.txt": "a4e89535ccc08c45d63dd43e4bcd91e6bf48177b91fea1e97d6970fa8db52e29",
+    "memory-after.txt": "9f57788fd80de1548b6108aa83f72b2888383b431fdf9197d3e9189f2150c00f"
+  },
+  "engine_log_diagnostics": {
+    "text_encode_seconds": 13.61,
+    "sampling_seconds": 20.63,
+    "decode_first_stage_seconds": 4.95,
+    "generate_image_seconds": 39.42,
+    "initial_tensor_loading_seconds": 64.11,
+    "unattributed_seconds_from_rounded_logs": 0.23
+  },
+  "segments_reported": {
+    "qwen3": 29,
+    "flux": 1,
+    "vae": 1
+  },
+  "monitor_window": {
+    "samples": 114,
+    "first_sample": "2026-09-28T18:50:10",
+    "last_sample": "2026-09-28T18:52:05",
+    "requested_interval_ms": 1000,
+    "ram_peak_gib": 6.9951171875,
+    "ram_total_gib": 7.44140625,
+    "ram_peak_source_line": 44,
+    "ram_peak_timestamp": "2026-09-28T18:50:54",
+    "swap_min_gib": 0.416015625,
+    "swap_max_gib": 0.416015625,
+    "gpu_temperature_max_c": 49.093
+  },
+  "unit_convention": "Tegrastats printed MB treated as MiB (matching reported RAM and swap totals); divide by 1024 for approximate GiB; raw integers retained in CSV.",
+  "limitations": [
+    "One-second samples can miss short memory peaks; entire capture window, including setup/idle.",
+    "RAM is system-wide reported usage, not process allocation or MemAvailable.",
+    "No stage-to-memory alignment: generation log has no wall-clock timestamps.",
+    "Constant swap occupancy does not establish zero swap I/O.",
+    "Initial tensor load excludes some startup work; engine stage times include on-demand loading.",
+    "No measured process wall time, warm-inference result, physical disk I/O or throttling diagnosis."
+  ]
+}
