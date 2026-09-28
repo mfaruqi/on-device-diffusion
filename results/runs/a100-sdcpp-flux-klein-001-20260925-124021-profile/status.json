@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "finished_utc": "2026-09-25T16:40:28Z",
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion/scripts/run_sdcpp.py\", line 395, in main\n    benchmark(cfg, run_dir, args.nsys)\n  File \"/home/mfaruqi/on-device-diffusion/scripts/run_sdcpp.py\", line 300, in benchmark\n    results = [json.loads(ln) for ln in (eng_dir / \"results.jsonl\").read_text().splitlines() if ln.strip()]\n  File \"/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/pathlib.py\", line 1134, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\nFileNotFoundError: [Errno 2] No such file or directory: '/home/mfaruqi/on-device-diffusion/results/runs/a100-sdcpp-flux-klein-001-20260925-124021-profile/engine/results.jsonl'\n"
+}

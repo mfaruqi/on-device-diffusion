@@ -1,0 +1,1222 @@
+{
+  "trace": "results/runs/a100-flux-klein-001-20260923-221717-profile/profile/trace.json",
+  "stage_regex": "denoise_step_\\d+",
+  "stages": {
+    "denoise_step_0": {
+      "span_ms": 244.770666015625,
+      "busy_ms": 238.3381630859375,
+      "idle_ms": 6.432502929687502,
+      "kernel_sum_ms": 238.33816999999974,
+      "n_kernels": 1431,
+      "median_kernel_us": 64.449,
+      "frac_kernels_under_10us": 0.27113906359189377,
+      "time_in_kernels_under_10us_ms": 1.4848440000000018,
+      "by_group": {
+        "gemm": {
+          "ms": 120.01976699999999,
+          "kernels": 108
+        },
+        "attention": {
+          "ms": 36.275046,
+          "kernels": 25
+        },
+        "elementwise: mul": {
+          "ms": 27.75693499999998,
+          "kernels": 351
+        },
+        "copy/cast": {
+          "ms": 19.329213,
+          "kernels": 286
+        },
+        "elementwise: other": {
+          "ms": 11.643240000000004,
+          "kernels": 274
+        },
+        "elementwise: add": {
+          "ms": 10.737524000000011,
+          "kernels": 232
+        },
+        "cat": {
+          "ms": 7.965372,
+          "kernels": 44
+        },
+        "reduction": {
+          "ms": 2.7973949999999994,
+          "kernels": 61
+        },
+        "norm": {
+          "ms": 1.7970370000000004,
+          "kernels": 41
+        },
+        "memcpy/memset": {
+          "ms": 0.011425000000000001,
+          "kernels": 8
+        },
+        "other": {
+          "ms": 0.005216,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "aten::linear": {
+          "ms": 120.03912799999998,
+          "kernels": 118
+        },
+        "aten::scaled_dot_product_attention": {
+          "ms": 36.275046,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 20.19792799999999,
+          "kernels": 223
+        },
+        "aten::rms_norm": {
+          "ms": 13.979767000000006,
+          "kernels": 360
+        },
+        "aten::to": {
+          "ms": 13.290752999999995,
+          "kernels": 170
+        },
+        "aten::add": {
+          "ms": 10.56680000000001,
+          "kernels": 172
+        },
+        "aten::cat": {
+          "ms": 7.965372,
+          "kernels": 44
+        },
+        "aten::stack": {
+          "ms": 5.985243,
+          "kernels": 100
+        },
+        "aten::silu": {
+          "ms": 5.906478999999999,
+          "kernels": 35
+        },
+        "aten::neg": {
+          "ms": 2.0881149999999993,
+          "kernels": 50
+        },
+        "aten::layer_norm": {
+          "ms": 1.7970370000000004,
+          "kernels": 41
+        },
+        "aten::repeat_interleave": {
+          "ms": 0.053217,
+          "kernels": 16
+        },
+        "aten::outer": {
+          "ms": 0.050177000000000006,
+          "kernels": 8
+        },
+        "aten::pow": {
+          "ms": 0.033472,
+          "kernels": 16
+        },
+        "aten::cos": {
+          "ms": 0.028450000000000003,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.027934999999999998,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.02573,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.013665,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.012223999999999999,
+          "kernels": 9
+        },
+        "aten::exp": {
+          "ms": 0.001632,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "aten::mm": {
+          "ms": 120.03912799999998,
+          "kernels": 118
+        },
+        "aten::_flash_attention_forward": {
+          "ms": 36.275046,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 27.75693499999998,
+          "kernels": 351
+        },
+        "aten::cat": {
+          "ms": 13.950614999999996,
+          "kernels": 144
+        },
+        "aten::copy_": {
+          "ms": 13.343969999999995,
+          "kernels": 186
+        },
+        "aten::add": {
+          "ms": 10.56680000000001,
+          "kernels": 172
+        },
+        "aten::silu": {
+          "ms": 5.906478999999999,
+          "kernels": 35
+        },
+        "aten::pow": {
+          "ms": 3.37216,
+          "kernels": 68
+        },
+        "aten::mean": {
+          "ms": 2.7946749999999994,
+          "kernels": 60
+        },
+        "aten::neg": {
+          "ms": 2.0881149999999993,
+          "kernels": 50
+        },
+        "aten::native_layer_norm": {
+          "ms": 1.7970370000000004,
+          "kernels": 41
+        },
+        "aten::add_": {
+          "ms": 0.17072400000000001,
+          "kernels": 60
+        },
+        "aten::rsqrt": {
+          "ms": 0.15603399999999995,
+          "kernels": 60
+        },
+        "aten::cos": {
+          "ms": 0.028450000000000003,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.027934999999999998,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.02573,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.013665,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.012223999999999999,
+          "kernels": 9
+        },
+        "aten::fill_": {
+          "ms": 0.010816,
+          "kernels": 8
+        },
+        "aten::exp": {
+          "ms": 0.001632,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {
+        "M4608 N27648 K3072": {
+          "ms": 67.57667900000001,
+          "calls": 20,
+          "tflops": 231.66506590121122
+        },
+        "M4608 N3072 K12288": {
+          "ms": 28.647946,
+          "calls": 20,
+          "tflops": 242.87420185447152
+        },
+        "M4096 N18432 K3072": {
+          "ms": 9.102028,
+          "calls": 5,
+          "tflops": 254.80940509521616
+        },
+        "M4096 N3072 K3072": {
+          "ms": 6.604887,
+          "calls": 20,
+          "tflops": 234.0976047826405
+        },
+        "M4096 N3072 K9216": {
+          "ms": 4.768104,
+          "calls": 5,
+          "tflops": 243.20802774436126
+        },
+        "M512 N18432 K3072": {
+          "ms": 1.2658970000000003,
+          "calls": 5,
+          "tflops": 229.01570386848215
+        },
+        "M512 N3072 K3072": {
+          "ms": 0.9176089999999999,
+          "calls": 20,
+          "tflops": 210.6273241870993
+        },
+        "M512 N3072 K9216": {
+          "ms": 0.652773,
+          "calls": 5,
+          "tflops": 222.06057272589396
+        },
+        "M1 N18432 K3072": {
+          "ms": 0.189121,
+          "calls": 2,
+          "tflops": 1.197605850222873
+        },
+        "M512 N3072 K7680": {
+          "ms": 0.107969,
+          "calls": 1,
+          "tflops": 223.760440867286
+        },
+        "M1 N9216 K3072": {
+          "ms": 0.047937,
+          "calls": 1,
+          "tflops": 1.1811983227986733
+        },
+        "M1 N6144 K3072": {
+          "ms": 0.043103999999999996,
+          "calls": 1,
+          "tflops": 0.8757594654788419
+        },
+        "M4096 N3072 K128": {
+          "ms": 0.037920999999999996,
+          "calls": 1,
+          "tflops": 84.94568898499513
+        },
+        "M4096 N128 K3072": {
+          "ms": 0.032895,
+          "calls": 1,
+          "tflops": 97.92447095303237
+        },
+        "M1 N3072 K3072": {
+          "ms": 0.024897,
+          "calls": 1,
+          "tflops": 0.7580980841065189
+        }
+      },
+      "attention_shapes": {
+        "B1 H24 Sq4608 Sk4608 D128": {
+          "ms": 36.275046,
+          "calls": 25,
+          "tflops": 179.820077438358
+        }
+      }
+    },
+    "denoise_step_1": {
+      "span_ms": 246.41448828125,
+      "busy_ms": 244.118666015625,
+      "idle_ms": 2.2958222656249916,
+      "kernel_sum_ms": 244.11866299999977,
+      "n_kernels": 1431,
+      "median_kernel_us": 65.249,
+      "frac_kernels_under_10us": 0.24248777078965758,
+      "time_in_kernels_under_10us_ms": 1.2689700000000013,
+      "by_group": {
+        "gemm": {
+          "ms": 123.49665000000003,
+          "kernels": 108
+        },
+        "attention": {
+          "ms": 37.31086199999999,
+          "kernels": 25
+        },
+        "elementwise: mul": {
+          "ms": 28.234764999999992,
+          "kernels": 351
+        },
+        "copy/cast": {
+          "ms": 19.562908,
+          "kernels": 286
+        },
+        "elementwise: other": {
+          "ms": 11.82507799999999,
+          "kernels": 274
+        },
+        "elementwise: add": {
+          "ms": 10.823074000000002,
+          "kernels": 232
+        },
+        "cat": {
+          "ms": 8.111587,
+          "kernels": 44
+        },
+        "reduction": {
+          "ms": 2.878584000000001,
+          "kernels": 61
+        },
+        "norm": {
+          "ms": 1.8544519999999998,
+          "kernels": 41
+        },
+        "memcpy/memset": {
+          "ms": 0.014717999999999998,
+          "kernels": 8
+        },
+        "other": {
+          "ms": 0.005985000000000001,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "aten::linear": {
+          "ms": 123.52064900000003,
+          "kernels": 118
+        },
+        "aten::scaled_dot_product_attention": {
+          "ms": 37.31086199999999,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 20.49786499999999,
+          "kernels": 223
+        },
+        "aten::rms_norm": {
+          "ms": 14.252123999999997,
+          "kernels": 360
+        },
+        "aten::to": {
+          "ms": 13.501001,
+          "kernels": 170
+        },
+        "aten::add": {
+          "ms": 10.645728000000002,
+          "kernels": 172
+        },
+        "aten::cat": {
+          "ms": 8.111587,
+          "kernels": 44
+        },
+        "aten::silu": {
+          "ms": 6.018223000000001,
+          "kernels": 35
+        },
+        "aten::stack": {
+          "ms": 5.996467000000001,
+          "kernels": 100
+        },
+        "aten::neg": {
+          "ms": 2.1076600000000005,
+          "kernels": 50
+        },
+        "aten::layer_norm": {
+          "ms": 1.8544519999999998,
+          "kernels": 41
+        },
+        "aten::repeat_interleave": {
+          "ms": 0.06544,
+          "kernels": 16
+        },
+        "aten::outer": {
+          "ms": 0.06124899999999999,
+          "kernels": 8
+        },
+        "aten::pow": {
+          "ms": 0.040797999999999994,
+          "kernels": 16
+        },
+        "aten::cos": {
+          "ms": 0.034591,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033951999999999996,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031552000000000004,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016798999999999998,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.01568,
+          "kernels": 9
+        },
+        "aten::exp": {
+          "ms": 0.001984,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "aten::mm": {
+          "ms": 123.52064900000003,
+          "kernels": 118
+        },
+        "aten::_flash_attention_forward": {
+          "ms": 37.31086199999999,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 28.234764999999992,
+          "kernels": 351
+        },
+        "aten::cat": {
+          "ms": 14.108054000000001,
+          "kernels": 144
+        },
+        "aten::copy_": {
+          "ms": 13.566441000000001,
+          "kernels": 186
+        },
+        "aten::add": {
+          "ms": 10.645728000000002,
+          "kernels": 172
+        },
+        "aten::silu": {
+          "ms": 6.018223000000001,
+          "kernels": 35
+        },
+        "aten::pow": {
+          "ms": 3.389309000000001,
+          "kernels": 68
+        },
+        "aten::mean": {
+          "ms": 2.8752880000000007,
+          "kernels": 60
+        },
+        "aten::neg": {
+          "ms": 2.1076600000000005,
+          "kernels": 50
+        },
+        "aten::native_layer_norm": {
+          "ms": 1.8544519999999998,
+          "kernels": 41
+        },
+        "aten::add_": {
+          "ms": 0.177346,
+          "kernels": 60
+        },
+        "aten::rsqrt": {
+          "ms": 0.16211199999999995,
+          "kernels": 60
+        },
+        "aten::cos": {
+          "ms": 0.034591,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033951999999999996,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031552000000000004,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016798999999999998,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.01568,
+          "kernels": 9
+        },
+        "aten::fill_": {
+          "ms": 0.013216,
+          "kernels": 8
+        },
+        "aten::exp": {
+          "ms": 0.001984,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {
+        "M4608 N27648 K3072": {
+          "ms": 67.714728,
+          "calls": 20,
+          "tflops": 231.19277380719896
+        },
+        "M4608 N3072 K12288": {
+          "ms": 28.686536,
+          "calls": 20,
+          "tflops": 242.54748009728328
+        },
+        "M4096 N18432 K3072": {
+          "ms": 10.294899000000001,
+          "calls": 5,
+          "tflops": 225.28461326721126
+        },
+        "M4096 N3072 K3072": {
+          "ms": 7.637021999999998,
+          "calls": 20,
+          "tflops": 202.45957476094745
+        },
+        "M4096 N3072 K9216": {
+          "ms": 5.380491999999999,
+          "calls": 5,
+          "tflops": 215.5269759568456
+        },
+        "M512 N18432 K3072": {
+          "ms": 1.4345400000000001,
+          "calls": 5,
+          "tflops": 202.09286076372913
+        },
+        "M512 N3072 K3072": {
+          "ms": 1.080936,
+          "calls": 20,
+          "tflops": 178.80200892559785
+        },
+        "M512 N3072 K9216": {
+          "ms": 0.752582,
+          "calls": 5,
+          "tflops": 192.610434796474
+        },
+        "M1 N18432 K3072": {
+          "ms": 0.18848199999999998,
+          "calls": 2,
+          "tflops": 1.2016660264640657
+        },
+        "M512 N3072 K7680": {
+          "ms": 0.130273,
+          "calls": 1,
+          "tflops": 185.45048505830061
+        },
+        "M1 N9216 K3072": {
+          "ms": 0.049664,
+          "calls": 1,
+          "tflops": 1.1401237113402063
+        },
+        "M4096 N3072 K128": {
+          "ms": 0.046688,
+          "calls": 1,
+          "tflops": 68.99471967100754
+        },
+        "M1 N6144 K3072": {
+          "ms": 0.043584000000000005,
+          "calls": 1,
+          "tflops": 0.8661145374449338
+        },
+        "M4096 N128 K3072": {
+          "ms": 0.032864,
+          "calls": 1,
+          "tflops": 98.016841285297
+        },
+        "M1 N3072 K3072": {
+          "ms": 0.02336,
+          "calls": 1,
+          "tflops": 0.8079780821917809
+        }
+      },
+      "attention_shapes": {
+        "B1 H24 Sq4608 Sk4608 D128": {
+          "ms": 37.31086199999999,
+          "calls": 25,
+          "tflops": 174.82795173158962
+        }
+      }
+    },
+    "denoise_step_2": {
+      "span_ms": 248.435625,
+      "busy_ms": 246.1662958984375,
+      "idle_ms": 2.2693291015624766,
+      "kernel_sum_ms": 246.16629899999998,
+      "n_kernels": 1431,
+      "median_kernel_us": 65.377,
+      "frac_kernels_under_10us": 0.24109014675052412,
+      "time_in_kernels_under_10us_ms": 1.2507090000000014,
+      "by_group": {
+        "gemm": {
+          "ms": 124.71231600000002,
+          "kernels": 108
+        },
+        "attention": {
+          "ms": 37.69413,
+          "kernels": 25
+        },
+        "elementwise: mul": {
+          "ms": 28.39527300000001,
+          "kernels": 351
+        },
+        "copy/cast": {
+          "ms": 19.672857999999987,
+          "kernels": 286
+        },
+        "elementwise: other": {
+          "ms": 11.911938000000003,
+          "kernels": 274
+        },
+        "elementwise: add": {
+          "ms": 10.835967,
+          "kernels": 232
+        },
+        "cat": {
+          "ms": 8.160032000000001,
+          "kernels": 44
+        },
+        "reduction": {
+          "ms": 2.903635999999999,
+          "kernels": 61
+        },
+        "norm": {
+          "ms": 1.8597949999999999,
+          "kernels": 41
+        },
+        "memcpy/memset": {
+          "ms": 0.014401999999999998,
+          "kernels": 8
+        },
+        "other": {
+          "ms": 0.005952,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "aten::linear": {
+          "ms": 124.73596600000002,
+          "kernels": 118
+        },
+        "aten::scaled_dot_product_attention": {
+          "ms": 37.69413,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 20.595909000000006,
+          "kernels": 223
+        },
+        "aten::rms_norm": {
+          "ms": 14.372797999999996,
+          "kernels": 360
+        },
+        "aten::to": {
+          "ms": 13.60005100000001,
+          "kernels": 170
+        },
+        "aten::add": {
+          "ms": 10.65692,
+          "kernels": 172
+        },
+        "aten::cat": {
+          "ms": 8.160032000000001,
+          "kernels": 44
+        },
+        "aten::silu": {
+          "ms": 6.0684689999999994,
+          "kernels": 35
+        },
+        "aten::stack": {
+          "ms": 6.007558999999998,
+          "kernels": 100
+        },
+        "aten::neg": {
+          "ms": 2.1143529999999995,
+          "kernels": 50
+        },
+        "aten::layer_norm": {
+          "ms": 1.8597949999999999,
+          "kernels": 41
+        },
+        "aten::repeat_interleave": {
+          "ms": 0.06524799999999999,
+          "kernels": 16
+        },
+        "aten::outer": {
+          "ms": 0.06131299999999999,
+          "kernels": 8
+        },
+        "aten::pow": {
+          "ms": 0.040703,
+          "kernels": 16
+        },
+        "aten::cos": {
+          "ms": 0.034496,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033821000000000004,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031456,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016800000000000002,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.014495,
+          "kernels": 9
+        },
+        "aten::exp": {
+          "ms": 0.0019850000000000002,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "aten::mm": {
+          "ms": 124.73596600000002,
+          "kernels": 118
+        },
+        "aten::_flash_attention_forward": {
+          "ms": 37.69413,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 28.39527300000001,
+          "kernels": 351
+        },
+        "aten::cat": {
+          "ms": 14.167591000000007,
+          "kernels": 144
+        },
+        "aten::copy_": {
+          "ms": 13.66529900000001,
+          "kernels": 186
+        },
+        "aten::add": {
+          "ms": 10.65692,
+          "kernels": 172
+        },
+        "aten::silu": {
+          "ms": 6.0684689999999994,
+          "kernels": 35
+        },
+        "aten::pow": {
+          "ms": 3.418684,
+          "kernels": 68
+        },
+        "aten::mean": {
+          "ms": 2.9003399999999995,
+          "kernels": 60
+        },
+        "aten::neg": {
+          "ms": 2.1143529999999995,
+          "kernels": 50
+        },
+        "aten::native_layer_norm": {
+          "ms": 1.8597949999999999,
+          "kernels": 41
+        },
+        "aten::add_": {
+          "ms": 0.179047,
+          "kernels": 60
+        },
+        "aten::rsqrt": {
+          "ms": 0.164259,
+          "kernels": 60
+        },
+        "aten::cos": {
+          "ms": 0.034496,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033821000000000004,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031456,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016800000000000002,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.014495,
+          "kernels": 9
+        },
+        "aten::fill_": {
+          "ms": 0.01312,
+          "kernels": 8
+        },
+        "aten::exp": {
+          "ms": 0.0019850000000000002,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {
+        "M4608 N27648 K3072": {
+          "ms": 68.59726199999999,
+          "calls": 20,
+          "tflops": 228.21837690722992
+        },
+        "M4608 N3072 K12288": {
+          "ms": 29.050062999999994,
+          "calls": 20,
+          "tflops": 239.5122867554539
+        },
+        "M4096 N18432 K3072": {
+          "ms": 10.274259999999998,
+          "calls": 5,
+          "tflops": 225.737166456757
+        },
+        "M4096 N3072 K3072": {
+          "ms": 7.636028,
+          "calls": 20,
+          "tflops": 202.48592940727826
+        },
+        "M4096 N3072 K9216": {
+          "ms": 5.371819,
+          "calls": 5,
+          "tflops": 215.87495221264896
+        },
+        "M512 N18432 K3072": {
+          "ms": 1.434893,
+          "calls": 5,
+          "tflops": 202.043143621162
+        },
+        "M512 N3072 K3072": {
+          "ms": 1.0819609999999997,
+          "calls": 20,
+          "tflops": 178.63262014065205
+        },
+        "M512 N3072 K9216": {
+          "ms": 0.7521359999999999,
+          "calls": 5,
+          "tflops": 192.7246485210122
+        },
+        "M1 N18432 K3072": {
+          "ms": 0.188834,
+          "calls": 2,
+          "tflops": 1.1994260355656292
+        },
+        "M512 N3072 K7680": {
+          "ms": 0.13024100000000002,
+          "calls": 1,
+          "tflops": 185.49604993819148
+        },
+        "M1 N9216 K3072": {
+          "ms": 0.048961,
+          "calls": 1,
+          "tflops": 1.156494025857315
+        },
+        "M4096 N3072 K128": {
+          "ms": 0.046432,
+          "calls": 1,
+          "tflops": 69.3751178497588
+        },
+        "M1 N6144 K3072": {
+          "ms": 0.043457,
+          "calls": 1,
+          "tflops": 0.8686456957452193
+        },
+        "M4096 N128 K3072": {
+          "ms": 0.032833,
+          "calls": 1,
+          "tflops": 98.10938604452836
+        },
+        "M1 N3072 K3072": {
+          "ms": 0.023136,
+          "calls": 1,
+          "tflops": 0.8158008298755187
+        }
+      },
+      "attention_shapes": {
+        "B1 H24 Sq4608 Sk4608 D128": {
+          "ms": 37.69413,
+          "calls": 25,
+          "tflops": 173.05032854717697
+        }
+      }
+    },
+    "denoise_step_3": {
+      "span_ms": 250.826236328125,
+      "busy_ms": 248.762279296875,
+      "idle_ms": 2.0639570312499984,
+      "kernel_sum_ms": 248.7622700000001,
+      "n_kernels": 1431,
+      "median_kernel_us": 65.281,
+      "frac_kernels_under_10us": 0.2487770789657582,
+      "time_in_kernels_under_10us_ms": 1.3606530000000006,
+      "by_group": {
+        "gemm": {
+          "ms": 126.34016300000002,
+          "kernels": 108
+        },
+        "attention": {
+          "ms": 38.195956,
+          "kernels": 25
+        },
+        "elementwise: mul": {
+          "ms": 28.56260900000001,
+          "kernels": 351
+        },
+        "copy/cast": {
+          "ms": 19.75859999999999,
+          "kernels": 286
+        },
+        "elementwise: other": {
+          "ms": 12.010984000000006,
+          "kernels": 274
+        },
+        "elementwise: add": {
+          "ms": 10.857307000000004,
+          "kernels": 232
+        },
+        "cat": {
+          "ms": 8.20951,
+          "kernels": 44
+        },
+        "reduction": {
+          "ms": 2.9359949999999997,
+          "kernels": 61
+        },
+        "norm": {
+          "ms": 1.870731,
+          "kernels": 41
+        },
+        "memcpy/memset": {
+          "ms": 0.014334999999999999,
+          "kernels": 8
+        },
+        "other": {
+          "ms": 0.00608,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "aten::linear": {
+          "ms": 126.36387400000002,
+          "kernels": 118
+        },
+        "aten::scaled_dot_product_attention": {
+          "ms": 38.195956,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 20.699147999999997,
+          "kernels": 223
+        },
+        "aten::rms_norm": {
+          "ms": 14.501249000000007,
+          "kernels": 360
+        },
+        "aten::to": {
+          "ms": 13.678161999999997,
+          "kernels": 170
+        },
+        "aten::add": {
+          "ms": 10.677594,
+          "kernels": 172
+        },
+        "aten::cat": {
+          "ms": 8.20951,
+          "kernels": 44
+        },
+        "aten::silu": {
+          "ms": 6.126193,
+          "kernels": 35
+        },
+        "aten::stack": {
+          "ms": 6.014963999999997,
+          "kernels": 100
+        },
+        "aten::neg": {
+          "ms": 2.1233789999999995,
+          "kernels": 50
+        },
+        "aten::layer_norm": {
+          "ms": 1.870731,
+          "kernels": 41
+        },
+        "aten::repeat_interleave": {
+          "ms": 0.065474,
+          "kernels": 16
+        },
+        "aten::outer": {
+          "ms": 0.061506000000000005,
+          "kernels": 8
+        },
+        "aten::pow": {
+          "ms": 0.040798,
+          "kernels": 16
+        },
+        "aten::cos": {
+          "ms": 0.034337000000000006,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033824999999999994,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031425,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016864,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.015264999999999999,
+          "kernels": 9
+        },
+        "aten::exp": {
+          "ms": 0.002016,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "aten::mm": {
+          "ms": 126.36387400000002,
+          "kernels": 118
+        },
+        "aten::_flash_attention_forward": {
+          "ms": 38.195956,
+          "kernels": 25
+        },
+        "aten::mul": {
+          "ms": 28.56260900000001,
+          "kernels": 351
+        },
+        "aten::cat": {
+          "ms": 14.224473999999997,
+          "kernels": 144
+        },
+        "aten::copy_": {
+          "ms": 13.743635999999997,
+          "kernels": 186
+        },
+        "aten::add": {
+          "ms": 10.677594,
+          "kernels": 172
+        },
+        "aten::silu": {
+          "ms": 6.126193,
+          "kernels": 35
+        },
+        "aten::pow": {
+          "ms": 3.4503679999999997,
+          "kernels": 68
+        },
+        "aten::mean": {
+          "ms": 2.932699,
+          "kernels": 60
+        },
+        "aten::neg": {
+          "ms": 2.1233789999999995,
+          "kernels": 50
+        },
+        "aten::native_layer_norm": {
+          "ms": 1.870731,
+          "kernels": 41
+        },
+        "aten::add_": {
+          "ms": 0.17971299999999998,
+          "kernels": 60
+        },
+        "aten::rsqrt": {
+          "ms": 0.16416100000000006,
+          "kernels": 60
+        },
+        "aten::cos": {
+          "ms": 0.034337000000000006,
+          "kernels": 9
+        },
+        "aten::sin": {
+          "ms": 0.033824999999999994,
+          "kernels": 9
+        },
+        "aten::div": {
+          "ms": 0.031425,
+          "kernels": 17
+        },
+        "aten::reciprocal": {
+          "ms": 0.016864,
+          "kernels": 8
+        },
+        "aten::arange": {
+          "ms": 0.015264999999999999,
+          "kernels": 9
+        },
+        "aten::fill_": {
+          "ms": 0.013151000000000001,
+          "kernels": 8
+        },
+        "aten::exp": {
+          "ms": 0.002016,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {
+        "M4608 N27648 K3072": {
+          "ms": 69.82930400000001,
+          "calls": 20,
+          "tflops": 224.19177762275848
+        },
+        "M4608 N3072 K12288": {
+          "ms": 29.616909999999997,
+          "calls": 20,
+          "tflops": 234.9281886435824
+        },
+        "M4096 N18432 K3072": {
+          "ms": 10.218899,
+          "calls": 5,
+          "tflops": 226.96010008906046
+        },
+        "M4096 N3072 K3072": {
+          "ms": 7.577598,
+          "calls": 20,
+          "tflops": 204.04727547700472
+        },
+        "M4096 N3072 K9216": {
+          "ms": 5.340172,
+          "calls": 5,
+          "tflops": 217.15427329306996
+        },
+        "M512 N18432 K3072": {
+          "ms": 1.422603,
+          "calls": 5,
+          "tflops": 203.7886131830173
+        },
+        "M512 N3072 K3072": {
+          "ms": 1.074506,
+          "calls": 20,
+          "tflops": 179.87198612199467
+        },
+        "M512 N3072 K9216": {
+          "ms": 0.7453489999999999,
+          "calls": 5,
+          "tflops": 194.47956090368407
+        },
+        "M1 N18432 K3072": {
+          "ms": 0.18781,
+          "calls": 2,
+          "tflops": 1.2059656887279697
+        },
+        "M512 N3072 K7680": {
+          "ms": 0.130049,
+          "calls": 1,
+          "tflops": 185.76991011080437
+        },
+        "M1 N9216 K3072": {
+          "ms": 0.049631999999999996,
+          "calls": 1,
+          "tflops": 1.1408588007736946
+        },
+        "M4096 N3072 K128": {
+          "ms": 0.046657,
+          "calls": 1,
+          "tflops": 69.04056137342737
+        },
+        "M1 N6144 K3072": {
+          "ms": 0.044481,
+          "calls": 1,
+          "tflops": 0.848648546570446
+        },
+        "M4096 N128 K3072": {
+          "ms": 0.033280000000000004,
+          "calls": 1,
+          "tflops": 96.79163076923075
+        },
+        "M1 N3072 K3072": {
+          "ms": 0.022913,
+          "calls": 1,
+          "tflops": 0.8237405839479772
+        }
+      },
+      "attention_shapes": {
+        "B1 H24 Sq4608 Sk4608 D128": {
+          "ms": 38.195956,
+          "calls": 25,
+          "tflops": 170.77675921503314
+        }
+      }
+    }
+  }
+}

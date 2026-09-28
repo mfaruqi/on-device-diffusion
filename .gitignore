@@ -31,3 +31,14 @@ flux_test/*.png
 *.swo
 .vscode/
 .DS_Store
+
+# Claude Code project files (kept local)
+CLAUDE.md
+.claude/
+results/runs/*/engine/raw/
+results/runs/*/profile/*.nsys-rep
+results/runs/*/profile/*.sqlite
+
+# Obsidian: personal settings stay local; the shared vault settings are committed
+.obsidian/*
+!.obsidian/app.json

@@ -1,0 +1,16 @@
+{
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "raw/assets",
+  "userIgnoreFilters": [
+    "results/runs/",
+    "scripts/",
+    "engines/",
+    "configs/",
+    "logs/",
+    "flux_test/",
+    ".claude/",
+    "proposal/"
+  ]
+}

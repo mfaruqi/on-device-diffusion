@@ -1,3 +1,10 @@
+---
+type: method
+summary: How to run experiments on Gilbreth — Slurm basics, accounts, storage rules, the baseline procedure.
+status: active
+updated: 2026-09-28
+---
+
 # Running experiments on Gilbreth
 
 ## What Slurm is

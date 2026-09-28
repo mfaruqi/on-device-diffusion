@@ -8,13 +8,12 @@ Usage:
   # 2. On a GPU node (via scripts/gilbreth.slurm): run the baseline.
   python scripts/run_flux.py --config configs/a100-flux-klein-bf16.resolved.json [--profile]
 
-Metric definitions are documented in notes/baseline-metrics.md.
+Metric definitions are documented in wiki/methods/baseline-metrics.md.
 """
 
 import argparse
 import copy
 import csv
-import ctypes
 import datetime as dt
 import hashlib
 import json
@@ -22,31 +21,15 @@ import os
 import platform
 import re
 import socket
-import statistics
 import subprocess
 import sys
-import threading
 import time
 import traceback
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-GIB = 1024**3
-
-
-def now_utc():
-    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def write_json(path, obj):
-    path.write_text(json.dumps(obj, indent=2, default=str) + "\n")
-
-
-def sh(cmd):
-    try:
-        return subprocess.run(cmd, capture_output=True, text=True, timeout=60).stdout.strip()
-    except Exception as e:  # noqa: BLE001
-        return f"<failed: {e}>"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from benchlib import GIB, REPO_ROOT, DeviceMemorySampler, now_utc, sh, summarize, write_json  # noqa: E402
+from benchlib import peak_rss_gib as _peak_rss_gib  # noqa: E402
 
 
 # --------------------------------------------------------------------------- prepare
@@ -70,68 +53,6 @@ def prepare(cfg, config_path):
     out = config_path.with_name(config_path.stem + ".resolved.json")
     write_json(out, resolved)
     print(f"Wrote {out}")
-
-
-# --------------------------------------------------------------------------- device memory (NVML via ctypes)
-
-
-class _NvmlMemory(ctypes.Structure):
-    _fields_ = [("total", ctypes.c_ulonglong), ("free", ctypes.c_ulonglong), ("used", ctypes.c_ulonglong)]
-
-
-class DeviceMemorySampler:
-    """Samples device-wide used memory (NVML) in a background thread.
-
-    Device-wide: includes the CUDA context and any other process on the GPU. Sampling can
-    miss spikes shorter than the interval.
-    """
-
-    def __init__(self, interval_ms, torch_device_index=0):
-        self.interval = interval_ms / 1000.0
-        self.samples = []  # (perf_counter, used_bytes)
-        self.note = ""
-        self._stop = threading.Event()
-        self._thread = None
-        try:
-            import torch
-
-            self.nvml = ctypes.CDLL("libnvidia-ml.so.1")
-            assert self.nvml.nvmlInit_v2() == 0
-            self.handle = ctypes.c_void_p()
-            uuid = "GPU-" + str(torch.cuda.get_device_properties(torch_device_index).uuid)
-            if self.nvml.nvmlDeviceGetHandleByUUID(uuid.encode(), ctypes.byref(self.handle)) == 0:
-                self.note = f"nvml handle by uuid {uuid}"
-            else:
-                assert self.nvml.nvmlDeviceGetHandleByIndex_v2(0, ctypes.byref(self.handle)) == 0
-                self.note = "nvml handle by index 0 (uuid lookup failed)"
-            self.available = True
-        except Exception as e:  # noqa: BLE001
-            self.available = False
-            self.note = f"NVML unavailable: {e!r}"
-
-    def read(self):
-        mem = _NvmlMemory()
-        self.nvml.nvmlDeviceGetMemoryInfo(self.handle, ctypes.byref(mem))
-        return mem.used
-
-    def _loop(self):
-        while not self._stop.is_set():
-            self.samples.append((time.perf_counter(), self.read()))
-            time.sleep(self.interval)
-
-    def start(self):
-        if self.available:
-            self._thread = threading.Thread(target=self._loop, daemon=True)
-            self._thread.start()
-
-    def stop(self):
-        if self._thread:
-            self._stop.set()
-            self._thread.join()
-
-    def peak_between(self, t0, t1):
-        vals = [u for t, u in self.samples if t0 <= t <= t1]
-        return max(vals) / GIB if vals else None
 
 
 # --------------------------------------------------------------------------- stage instrumentation
@@ -306,20 +227,6 @@ def collect_environment(run_dir, sampler):
 # --------------------------------------------------------------------------- benchmark
 
 
-def summarize(values):
-    values = [v for v in values if v is not None]
-    if not values:
-        return None
-    return {
-        "median": statistics.median(values),
-        "min": min(values),
-        "max": max(values),
-        "mean": statistics.fmean(values),
-        "stdev": statistics.stdev(values) if len(values) > 1 else 0.0,
-        "n": len(values),
-    }
-
-
 def benchmark(cfg, run_dir, do_profile):
     import torch
     import diffusers
@@ -334,7 +241,8 @@ def benchmark(cfg, run_dir, do_profile):
     rev = cfg["model"]["revision"]
     assert re.fullmatch(r"[0-9a-f]{40}", rev), "Config revision is not a commit hash. Run --prepare-only first."
 
-    sampler = DeviceMemorySampler(cfg["protocol"]["device_memory_sample_ms"])
+    uuid = "GPU-" + str(torch.cuda.get_device_properties(0).uuid)
+    sampler = DeviceMemorySampler(cfg["protocol"]["device_memory_sample_ms"], uuid)
     sampler.start()
     collect_environment(run_dir, sampler)
 
@@ -510,12 +418,6 @@ def benchmark(cfg, run_dir, do_profile):
     status.update({"status": "complete", "finished_utc": now_utc()})
     write_json(run_dir / "status.json", status)
     print(json.dumps(summary["measured"]["wall_ms"], indent=2))
-
-
-def _peak_rss_gib():
-    import resource
-
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024 / GIB  # Linux reports KiB
 
 
 def run_profile(generate, run_dir):

@@ -1,0 +1,719 @@
+{
+  "trace": "results/runs/a100-sdcpp-flux-klein-001-20260925-124703-profile/profile/trace.nsys-rep",
+  "stage_regex": "denoise_step_\\d+",
+  "stages": {
+    "denoise_step_0": {
+      "span_ms": 455.21271400000154,
+      "busy_ms": 427.8238249999285,
+      "idle_ms": 27.38888900007305,
+      "kernel_sum_ms": 427.8238249999999,
+      "n_kernels": 1133,
+      "median_kernel_us": 119.842,
+      "frac_kernels_under_10us": 0.04501323918799647,
+      "time_in_kernels_under_10us_ms": 0.31043200000000004,
+      "by_group": {
+        "attention": {
+          "ms": 147.573772,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 115.37473600000001,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.29612699999999,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.511106,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.091449000000008,
+          "kernels": 101
+        },
+        "memcpy/memset": {
+          "ms": 18.068527999999997,
+          "kernels": 52
+        },
+        "elementwise: add": {
+          "ms": 17.048005000000003,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.524350000000002,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.333864000000002,
+          "kernels": 136
+        },
+        "other": {
+          "ms": 0.001888,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "attention": {
+          "ms": 147.573772,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 115.37473600000001,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.29612699999999,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.511106,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.091449000000008,
+          "kernels": 101
+        },
+        "memcpy/memset": {
+          "ms": 18.068527999999997,
+          "kernels": 52
+        },
+        "elementwise: add": {
+          "ms": 17.048005000000003,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.524350000000002,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.333864000000002,
+          "kernels": 136
+        },
+        "other": {
+          "ms": 0.001888,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "flash_attn_ext_f16": {
+          "ms": 147.573772,
+          "kernels": 25
+        },
+        "ampere_s16816gemm_bf16_128x256_ldg8_stages_64x3_tn": {
+          "ms": 80.671989,
+          "kernels": 41
+        },
+        "k_bin_bcast": {
+          "ms": 49.374271999999976,
+          "kernels": 483
+        },
+        "cpy_scalar": {
+          "ms": 35.03558600000001,
+          "kernels": 177
+        },
+        "ampere_s16816gemm_bf16_256x128_ldg8_stages_64x3_tn": {
+          "ms": 34.009587,
+          "kernels": 35
+        },
+        "gpu_memcpy": {
+          "ms": 18.056784999999998,
+          "kernels": 46
+        },
+        "rms_norm_f32": {
+          "ms": 15.308271,
+          "kernels": 60
+        },
+        "concat_cont": {
+          "ms": 14.914646000000001,
+          "kernels": 31
+        },
+        "convert_unary": {
+          "ms": 12.201810999999996,
+          "kernels": 83
+        },
+        "cpy_scalar_contiguous": {
+          "ms": 9.058729999999997,
+          "kernels": 50
+        },
+        "unary_op_kernel": {
+          "ms": 6.515983,
+          "kernels": 35
+        },
+        "norm_f32": {
+          "ms": 3.7831780000000004,
+          "kernels": 41
+        },
+        "concat_non_cont": {
+          "ms": 0.609704,
+          "kernels": 5
+        },
+        "mul_mat_vec_f": {
+          "ms": 0.362469,
+          "kernels": 6
+        },
+        "ampere_s16816gemm_bf16_128x128_ldg8_stages_64x3_tn": {
+          "ms": 0.24141,
+          "kernels": 5
+        },
+        "ampere_s1688gemm_bf16_256x128_ldg8_stages_32x1_tn": {
+          "ms": 0.057569,
+          "kernels": 1
+        },
+        "ampere_s16816gemm_bf16_128x64_ldg8_stages_64x4_tn": {
+          "ms": 0.031712,
+          "kernels": 1
+        },
+        "gpu_memset": {
+          "ms": 0.011743,
+          "kernels": 6
+        },
+        "scale_f32": {
+          "ms": 0.00272,
+          "kernels": 1
+        },
+        "timestep_embedding_f32": {
+          "ms": 0.001888,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {},
+      "attention_shapes": {}
+    },
+    "denoise_step_1": {
+      "span_ms": 444.0984519999996,
+      "busy_ms": 422.1362250000462,
+      "idle_ms": 21.96222699995343,
+      "kernel_sum_ms": 422.13622499999997,
+      "n_kernels": 1133,
+      "median_kernel_us": 120.161,
+      "frac_kernels_under_10us": 0.03089143865842895,
+      "time_in_kernels_under_10us_ms": 0.15094199999999997,
+      "by_group": {
+        "attention": {
+          "ms": 148.56444599999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.19376700000004,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.857896000000025,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.491614,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.251009999999994,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.009514000000006,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.644468,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.374727000000002,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.746799,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.001984,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "attention": {
+          "ms": 148.56444599999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.19376700000004,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.857896000000025,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.491614,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.251009999999994,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.009514000000006,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.644468,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.374727000000002,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.746799,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.001984,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "flash_attn_ext_f16": {
+          "ms": 148.56444599999998,
+          "kernels": 25
+        },
+        "ampere_s16816gemm_bf16_128x256_ldg8_stages_64x3_tn": {
+          "ms": 81.269154,
+          "kernels": 41
+        },
+        "k_bin_bcast": {
+          "ms": 49.34461000000001,
+          "kernels": 483
+        },
+        "cpy_scalar": {
+          "ms": 35.41901299999999,
+          "kernels": 177
+        },
+        "ampere_s16816gemm_bf16_256x128_ldg8_stages_64x3_tn": {
+          "ms": 34.236188999999996,
+          "kernels": 35
+        },
+        "rms_norm_f32": {
+          "ms": 15.438833999999998,
+          "kernels": 60
+        },
+        "concat_cont": {
+          "ms": 15.029613000000001,
+          "kernels": 31
+        },
+        "convert_unary": {
+          "ms": 12.286328000000001,
+          "kernels": 83
+        },
+        "gpu_memcpy": {
+          "ms": 9.737104999999998,
+          "kernels": 46
+        },
+        "cpy_scalar_contiguous": {
+          "ms": 9.152555000000001,
+          "kernels": 50
+        },
+        "unary_op_kernel": {
+          "ms": 6.528429000000002,
+          "kernels": 35
+        },
+        "norm_f32": {
+          "ms": 3.8121759999999996,
+          "kernels": 41
+        },
+        "concat_non_cont": {
+          "ms": 0.614855,
+          "kernels": 5
+        },
+        "mul_mat_vec_f": {
+          "ms": 0.35475599999999996,
+          "kernels": 6
+        },
+        "ampere_s16816gemm_bf16_128x128_ldg8_stages_64x3_tn": {
+          "ms": 0.244547,
+          "kernels": 5
+        },
+        "ampere_s1688gemm_bf16_256x128_ldg8_stages_32x1_tn": {
+          "ms": 0.057057000000000004,
+          "kernels": 1
+        },
+        "ampere_s16816gemm_bf16_128x64_ldg8_stages_64x4_tn": {
+          "ms": 0.032064,
+          "kernels": 1
+        },
+        "gpu_memset": {
+          "ms": 0.009694,
+          "kernels": 6
+        },
+        "scale_f32": {
+          "ms": 0.002816,
+          "kernels": 1
+        },
+        "timestep_embedding_f32": {
+          "ms": 0.001984,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {},
+      "attention_shapes": {}
+    },
+    "denoise_step_2": {
+      "span_ms": 445.13485500000417,
+      "busy_ms": 422.87939999997616,
+      "idle_ms": 22.255455000028007,
+      "kernel_sum_ms": 422.8794000000001,
+      "n_kernels": 1133,
+      "median_kernel_us": 122.082,
+      "frac_kernels_under_10us": 0.02824360105913504,
+      "time_in_kernels_under_10us_ms": 0.12221000000000001,
+      "by_group": {
+        "attention": {
+          "ms": 148.76617399999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.39574499999996,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 57.001125000000044,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.522569000000022,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.280865,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.02039,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.697879999999996,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.393865000000002,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.798770999999999,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.002016,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "attention": {
+          "ms": 148.76617399999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.39574499999996,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 57.001125000000044,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.522569000000022,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.280865,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.02039,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.697879999999996,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.393865000000002,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.798770999999999,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.002016,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "flash_attn_ext_f16": {
+          "ms": 148.76617399999998,
+          "kernels": 25
+        },
+        "ampere_s16816gemm_bf16_128x256_ldg8_stages_64x3_tn": {
+          "ms": 81.40461099999999,
+          "kernels": 41
+        },
+        "k_bin_bcast": {
+          "ms": 49.40102999999998,
+          "kernels": 483
+        },
+        "cpy_scalar": {
+          "ms": 35.488261000000016,
+          "kernels": 177
+        },
+        "ampere_s16816gemm_bf16_256x128_ldg8_stages_64x3_tn": {
+          "ms": 34.298007999999996,
+          "kernels": 35
+        },
+        "rms_norm_f32": {
+          "ms": 15.457976000000004,
+          "kernels": 60
+        },
+        "concat_cont": {
+          "ms": 15.075023999999997,
+          "kernels": 31
+        },
+        "convert_unary": {
+          "ms": 12.328721,
+          "kernels": 83
+        },
+        "gpu_memcpy": {
+          "ms": 9.788980999999998,
+          "kernels": 46
+        },
+        "cpy_scalar_contiguous": {
+          "ms": 9.184142999999997,
+          "kernels": 50
+        },
+        "unary_op_kernel": {
+          "ms": 6.532977999999999,
+          "kernels": 35
+        },
+        "norm_f32": {
+          "ms": 3.8228889999999995,
+          "kernels": 41
+        },
+        "concat_non_cont": {
+          "ms": 0.622856,
+          "kernels": 5
+        },
+        "mul_mat_vec_f": {
+          "ms": 0.35613100000000003,
+          "kernels": 6
+        },
+        "ampere_s16816gemm_bf16_128x128_ldg8_stages_64x3_tn": {
+          "ms": 0.247075,
+          "kernels": 5
+        },
+        "ampere_s1688gemm_bf16_256x128_ldg8_stages_32x1_tn": {
+          "ms": 0.057984,
+          "kernels": 1
+        },
+        "ampere_s16816gemm_bf16_128x64_ldg8_stages_64x4_tn": {
+          "ms": 0.031936,
+          "kernels": 1
+        },
+        "gpu_memset": {
+          "ms": 0.00979,
+          "kernels": 6
+        },
+        "scale_f32": {
+          "ms": 0.002816,
+          "kernels": 1
+        },
+        "timestep_embedding_f32": {
+          "ms": 0.002016,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {},
+      "attention_shapes": {}
+    },
+    "denoise_step_3": {
+      "span_ms": 443.06713799999653,
+      "busy_ms": 421.1606769999936,
+      "idle_ms": 21.906461000002935,
+      "kernel_sum_ms": 421.16067700000013,
+      "n_kernels": 1133,
+      "median_kernel_us": 122.018,
+      "frac_kernels_under_10us": 0.0264783759929391,
+      "time_in_kernels_under_10us_ms": 0.10108999999999999,
+      "by_group": {
+        "attention": {
+          "ms": 148.15640499999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.00203999999997,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.657374,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.479429000000003,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.17865899999999,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.008928,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.578519,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.342817999999998,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.754522000000003,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.001983,
+          "kernels": 1
+        }
+      },
+      "by_top_op": {
+        "attention": {
+          "ms": 148.15640499999998,
+          "kernels": 25
+        },
+        "gemm": {
+          "ms": 116.00203999999997,
+          "kernels": 89
+        },
+        "copy/cast": {
+          "ms": 56.657374,
+          "kernels": 310
+        },
+        "elementwise: mul": {
+          "ms": 24.479429000000003,
+          "kernels": 211
+        },
+        "norm": {
+          "ms": 19.17865899999999,
+          "kernels": 101
+        },
+        "elementwise: add": {
+          "ms": 17.008928,
+          "kernels": 172
+        },
+        "cat": {
+          "ms": 15.578519,
+          "kernels": 36
+        },
+        "elementwise: other": {
+          "ms": 14.342817999999998,
+          "kernels": 136
+        },
+        "memcpy/memset": {
+          "ms": 9.754522000000003,
+          "kernels": 52
+        },
+        "other": {
+          "ms": 0.001983,
+          "kernels": 1
+        }
+      },
+      "by_leaf_op": {
+        "flash_attn_ext_f16": {
+          "ms": 148.15640499999998,
+          "kernels": 25
+        },
+        "ampere_s16816gemm_bf16_128x256_ldg8_stages_64x3_tn": {
+          "ms": 81.12035,
+          "kernels": 41
+        },
+        "k_bin_bcast": {
+          "ms": 49.31096900000001,
+          "kernels": 483
+        },
+        "cpy_scalar": {
+          "ms": 35.265318,
+          "kernels": 177
+        },
+        "ampere_s16816gemm_bf16_256x128_ldg8_stages_64x3_tn": {
+          "ms": 34.190228,
+          "kernels": 35
+        },
+        "rms_norm_f32": {
+          "ms": 15.372982000000002,
+          "kernels": 60
+        },
+        "concat_cont": {
+          "ms": 14.955729000000002,
+          "kernels": 31
+        },
+        "convert_unary": {
+          "ms": 12.263981,
+          "kernels": 83
+        },
+        "gpu_memcpy": {
+          "ms": 9.744762000000001,
+          "kernels": 46
+        },
+        "cpy_scalar_contiguous": {
+          "ms": 9.128075,
+          "kernels": 50
+        },
+        "unary_op_kernel": {
+          "ms": 6.5173890000000005,
+          "kernels": 35
+        },
+        "norm_f32": {
+          "ms": 3.8056770000000006,
+          "kernels": 41
+        },
+        "concat_non_cont": {
+          "ms": 0.62279,
+          "kernels": 5
+        },
+        "mul_mat_vec_f": {
+          "ms": 0.356002,
+          "kernels": 6
+        },
+        "ampere_s16816gemm_bf16_128x128_ldg8_stages_64x3_tn": {
+          "ms": 0.246179,
+          "kernels": 5
+        },
+        "ampere_s1688gemm_bf16_256x128_ldg8_stages_32x1_tn": {
+          "ms": 0.057633000000000004,
+          "kernels": 1
+        },
+        "ampere_s16816gemm_bf16_128x64_ldg8_stages_64x4_tn": {
+          "ms": 0.031648,
+          "kernels": 1
+        },
+        "gpu_memset": {
+          "ms": 0.00976,
+          "kernels": 6
+        },
+        "scale_f32": {
+          "ms": 0.002817,
+          "kernels": 1
+        },
+        "timestep_embedding_f32": {
+          "ms": 0.001983,
+          "kernels": 1
+        }
+      },
+      "gemm_shapes": {},
+      "attention_shapes": {}
+    }
+  },
+  "generation": -1
+}

@@ -1,0 +1,38 @@
+{
+  "method": "multiset of per-row sha256 over raw tensor bytes (see script docstring)",
+  "cast_to": null,
+  "a": {
+    "files": [
+      {
+        "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/transformer/diffusion_pytorch_model.safetensors",
+        "sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+        "size": 7751109744
+      }
+    ],
+    "tensors": 169,
+    "rows": 1017020,
+    "params": 3875544576,
+    "dtypes": {
+      "BF16": 169
+    }
+  },
+  "b": {
+    "files": [
+      {
+        "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors",
+        "sha256": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343",
+        "size": 7751105712
+      }
+    ],
+    "tensors": 149,
+    "rows": 1017020,
+    "params": 3875544576,
+    "dtypes": {
+      "BF16": 149
+    }
+  },
+  "params_equal": true,
+  "rows_only_in_a": 0,
+  "rows_only_in_b": 0,
+  "equivalent": true
+}

@@ -1,0 +1,810 @@
+394870.697142 [ctx_params]
+model_path: 
+clip_l_path: 
+clip_g_path: 
+clip_vision_path: 
+t5xxl_path: 
+llm_path: /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder
+llm_vision_path: 
+tokenizer: 
+diffusion_model_path: /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors
+high_noise_diffusion_model_path: 
+uncond_diffusion_model_path: 
+embeddings_connectors_path: 
+vae_path: /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors
+audio_vae_path: 
+audio_encoder_path: 
+taesd_path: 
+control_net_path: 
+photo_maker_path: 
+pulid_weights_path: 
+tensor_type_rules: 
+n_threads: 4
+conditioning_cache_size: 0
+wtype: NONE
+rng_type: cuda
+sampler_rng_type: NONE
+prediction: NONE
+max_vram: 
+disable_prefetch: false
+disable_segmented_compute: true
+eager_load: true
+backend: cuda0
+params_backend: cuda0
+split_mode: 
+model_args: 
+auto_fit: false
+flash_attn: false
+diffusion_flash_attn: true
+sage_attn: false
+linear_scale: 0
+attn_scale: 0
+vae_format: auto
+
+394870.697257 [1] model_loader.cpp:189  - using 4 threads for model loading
+394870.697272 [2] diffusion_engine.cpp:731  - loading diffusion model from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors'
+394870.734846 [2] model_loader.cpp:221  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors using safetensors format
+394870.734852 [1] model_loader.cpp:289  - init from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors', prefix = 'model.diffusion_model.'
+394870.738539 [2] diffusion_engine.cpp:788  - loading llm from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder'
+394870.739669 [2] model_loader.cpp:209  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder using root safetensors index
+394870.740244 [2] model_loader.cpp:218  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model.safetensors.index.json using safetensors index format
+394870.740248 [1] model_loader.cpp:315  - init from safetensors index '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model.safetensors.index.json', prefix = 'text_encoders.llm.'
+394870.742552 [2] model_loader.cpp:330  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00001-of-00002.safetensors using safetensors format
+394870.742556 [1] model_loader.cpp:289  - init from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00001-of-00002.safetensors', prefix = 'text_encoders.llm.'
+394870.745363 [2] model_loader.cpp:330  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00002-of-00002.safetensors using safetensors format
+394870.745369 [1] model_loader.cpp:289  - init from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00002-of-00002.safetensors', prefix = 'text_encoders.llm.'
+394870.775343 [2] diffusion_engine.cpp:802  - loading vae from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors'
+394870.799123 [2] model_loader.cpp:221  - load /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors using safetensors format
+394870.799135 [1] model_loader.cpp:289  - init from '/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors', prefix = 'vae.'
+394870.813435 [2] diffusion_engine.cpp:994  - Version: Flux.2 klein 
+394870.931997 [2] ggml - ggml_cuda_init: found 1 CUDA devices (Total VRAM: 40441 MiB):
+394870.933070 [2] ggml -   Device 0: NVIDIA A100-PCIE-40GB, compute capability 8.0, VMM: yes, VRAM: 40441 MiB
+394870.936129 [1] ggml_extend_backend.cpp:404  - Initializing backend: CUDA0
+394870.938650 [1] model_loader.cpp:189  - using 4 threads for model loading
+394870.938872 [2] diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  
+394870.938874 [2] diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  
+394870.938876 [2] diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  
+394870.938878 [2] diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  
+394870.938880 [1] diffusion_engine.cpp:1516 - ggml tensor size = 432 bytes
+394870.939389 [1] llm.hpp:370  - llm: num_layers = 36, vocab_size = 151936, hidden_size = 2560, intermediate_size = 9728
+394870.959510 [1] qwen2_tokenizer.cpp:14   - merges size 151387
+394871.071779 [1] qwen2_tokenizer.cpp:39   - vocab size: 151674
+394871.161465 [1] flux.hpp:185  - flux: depth = 5, depth_single_blocks = 20, guidance_embed = false, context_in_dim = 7680, hidden_size = 3072, num_heads = 24
+394871.162378 [2] model_builders.cpp:619  - using VAE for encoding / decoding
+394871.162530 [2] auto_encoder_kl.hpp:529  - vae decoder: ch = 128
+394871.162923 [2] diffusion_engine.cpp:1201 - Using flash attention in the diffusion model
+394871.162925 [1] diffusion_engine.cpp:1210 - validating model metadata
+394871.316701 [1] model_loader.cpp:1097 - loading 149/149 tensors from /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/flux-2-klein-4b.safetensors
+394874.983232 [1] model_loader.cpp:1097 - loading 229/229 tensors from /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00001-of-00002.safetensors
+394876.984183 [1] model_loader.cpp:1097 - loading 169/169 tensors from /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/text_encoder/model-00002-of-00002.safetensors
+394878.384946 [1] model_loader.cpp:1097 - loading 248/251 tensors from /scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors
+394878.585270 [2] model_loader.cpp:1366 - loading tensors completed, taking 7.27s (read: 5.94s, memcpy: 0.00s, convert: 0.08s, copy_to_backend: 0.65s)
+394878.586415 [1] model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0
+394878.586420 [1] diffusion_engine.cpp:1273 - model metadata validated; weights pre-loaded to params backend
+394878.594452 [2] diffusion_engine.cpp:1321 - total params memory size = 15225.08MB (VRAM 15225.08MB, RAM 0.00MB): text_encoders 7672.62MB(VRAM), diffusion_model 7392.03MB(VRAM), vae 160.43MB(VRAM), controlnet 0.00MB(N/A), extensions 0.00MB(N/A)
+394878.594543 [2] diffusion_engine.cpp:1461 - running in Flux FLOW mode
+394878.595944 [img_gen_params]
+prompt: A cat holding a sign that says hello world
+negative_prompt: 
+clip_skip: -1
+width: 1024
+height: 1024
+sample_params: (txt_cfg: 1.00, img_cfg: 1.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 4, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )
+strength: 0.75
+seed: 0
+batch_count: 1
+qwen_image_layers: 3
+ref_images_count: 0
+ref_image_args: 
+control_strength: 0.90
+photo maker: {style_strength = 20.00, id_images_count = 0, id_embed_path = }
+VAE tiling: false (temporal=false, extra_tiling_args=)
+circular_x: false
+circular_y: false
+hires: {enabled=false, upscaler=Latent, model_path=, scale=2.00, target=0x0, steps=0, denoising_strength=0.70}
+cache: disabled (threshold=inf, start=0.15, end=0.95)
+
+394878.596349 [2] image.cpp:809  - generate_image 1024x1024
+394878.598262 [1] model_loader.cpp:189  - using 4 threads for model loading
+394878.598509 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394878.598515 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394878.598519 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394878.598522 [2] request.cpp:420  - sampling using Euler method
+394878.608865 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394878.608968 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394878.609309 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394878.609430 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394878.612161 [2] ggml_graph_cut.cpp:1032 - qwen3 build cached graph cut plan done (taking 2 ms)
+394878.627804 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394878.988268 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394878.990920 [1] conditioner.hpp:3139 - computing condition graph completed, taking 382 ms
+394878.990935 [2] image.cpp:524  - get_learned_condition completed, taking 0.38s
+394878.991526 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394879.024882 [2] ggml_graph_cut.cpp:1032 - flux build cached graph cut plan done (taking 2 ms)
+394879.038821 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394879.525942 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394879.549056 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394879.986608 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394880.427508 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394880.845916 [2] image.cpp:894  - sampling completed, taking 1.85s
+394880.845929 [2] image.cpp:906  - generating 1 latent images completed, taking 1.85s
+394880.845931 [2] image.cpp:549  - decoding 1 latents
+394880.848814 [2] ggml_graph_cut.cpp:1032 - vae build cached graph cut plan done (taking 0 ms)
+394880.859527 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394881.604401 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394881.610747 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.76s
+394881.610757 [2] image.cpp:615  - latent 1 decoded, taking 0.76s
+394881.610759 [2] image.cpp:619  - decode_first_stage completed, taking 0.76s
+394881.615526 [2] image.cpp:1045 - generate_image completed in 3.02s
+394881.625102 [2] image.cpp:809  - generate_image 1024x1024
+394881.627563 [1] model_loader.cpp:189  - using 4 threads for model loading
+394881.627984 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394881.627989 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394881.627993 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394881.627996 [2] request.cpp:420  - sampling using Euler method
+394881.637088 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394881.637189 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394881.637534 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394881.637659 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394881.647151 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394881.689125 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394881.691597 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394881.691614 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394881.692162 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394881.745114 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394882.163126 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394882.184919 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394882.628416 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394883.066102 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394883.489782 [2] image.cpp:894  - sampling completed, taking 1.80s
+394883.489792 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394883.489794 [2] image.cpp:549  - decoding 1 latents
+394883.503514 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394884.108267 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394884.115139 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394884.115149 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394884.115151 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394884.119452 [2] image.cpp:1045 - generate_image completed in 2.49s
+394884.131772 [2] image.cpp:809  - generate_image 1024x1024
+394884.133721 [1] model_loader.cpp:189  - using 4 threads for model loading
+394884.134136 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394884.134142 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394884.134145 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394884.134148 [2] request.cpp:420  - sampling using Euler method
+394884.143413 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394884.143510 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394884.143850 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394884.143977 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394884.153634 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394884.195233 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394884.197632 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394884.197649 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394884.198190 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394884.250587 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394884.667960 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394884.689839 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394885.129625 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394885.570165 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394885.992533 [2] image.cpp:894  - sampling completed, taking 1.79s
+394885.992543 [2] image.cpp:906  - generating 1 latent images completed, taking 1.79s
+394885.992546 [2] image.cpp:549  - decoding 1 latents
+394886.007320 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394886.610840 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394886.617658 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394886.617667 [2] image.cpp:615  - latent 1 decoded, taking 0.62s
+394886.617678 [2] image.cpp:619  - decode_first_stage completed, taking 0.62s
+394886.622027 [2] image.cpp:1045 - generate_image completed in 2.49s
+394886.626598 [2] image.cpp:809  - generate_image 1024x1024
+394886.628597 [1] model_loader.cpp:189  - using 4 threads for model loading
+394886.629095 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394886.629101 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394886.629105 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394886.629108 [2] request.cpp:420  - sampling using Euler method
+394886.638285 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394886.638383 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394886.638716 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394886.638837 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394886.647762 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394886.689685 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394886.691874 [1] conditioner.hpp:3139 - computing condition graph completed, taking 54 ms
+394886.691889 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394886.692432 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394886.745719 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394887.165406 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394887.186632 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394887.629377 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394888.067889 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394888.492896 [2] image.cpp:894  - sampling completed, taking 1.80s
+394888.492906 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394888.492908 [2] image.cpp:549  - decoding 1 latents
+394888.505597 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394889.110392 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394889.117449 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394889.117459 [2] image.cpp:615  - latent 1 decoded, taking 0.62s
+394889.117461 [2] image.cpp:619  - decode_first_stage completed, taking 0.62s
+394889.121828 [2] image.cpp:1045 - generate_image completed in 2.49s
+394889.127061 [2] image.cpp:809  - generate_image 1024x1024
+394889.128847 [1] model_loader.cpp:189  - using 4 threads for model loading
+394889.129081 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394889.129085 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394889.129089 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394889.129092 [2] request.cpp:420  - sampling using Euler method
+394889.138290 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394889.138346 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394889.138500 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394889.138566 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394889.148542 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394889.190370 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394889.192930 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394889.192946 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394889.193507 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394889.246556 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394889.664884 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394889.687133 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394890.130957 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394890.572135 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394890.997705 [2] image.cpp:894  - sampling completed, taking 1.80s
+394890.997717 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394890.997719 [2] image.cpp:549  - decoding 1 latents
+394891.010372 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394891.622160 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394891.629134 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394891.629143 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394891.629145 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394891.633616 [2] image.cpp:1045 - generate_image completed in 2.51s
+394891.639954 [2] image.cpp:809  - generate_image 1024x1024
+394891.641953 [1] model_loader.cpp:189  - using 4 threads for model loading
+394891.642467 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394891.642473 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394891.642477 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394891.642479 [2] request.cpp:420  - sampling using Euler method
+394891.651772 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394891.651868 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394891.652230 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394891.652376 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394891.661305 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394891.703060 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394891.705253 [1] conditioner.hpp:3139 - computing condition graph completed, taking 54 ms
+394891.705268 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394891.705804 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394891.759273 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394892.178533 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394892.199890 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394892.640380 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394893.080916 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394893.507061 [2] image.cpp:894  - sampling completed, taking 1.80s
+394893.507072 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394893.507075 [2] image.cpp:549  - decoding 1 latents
+394893.531274 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394894.136310 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394894.143368 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394894.143379 [2] image.cpp:615  - latent 1 decoded, taking 0.64s
+394894.143381 [2] image.cpp:619  - decode_first_stage completed, taking 0.64s
+394894.147644 [2] image.cpp:1045 - generate_image completed in 2.51s
+394894.152537 [2] image.cpp:809  - generate_image 1024x1024
+394894.154411 [1] model_loader.cpp:189  - using 4 threads for model loading
+394894.154873 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394894.154877 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394894.154880 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394894.154883 [2] request.cpp:420  - sampling using Euler method
+394894.164049 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394894.164107 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394894.164261 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394894.164328 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394894.173388 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394894.215330 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394894.218299 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394894.218316 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394894.218856 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394894.272441 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394894.693173 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394894.714491 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394895.155816 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394895.596127 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394896.020841 [2] image.cpp:894  - sampling completed, taking 1.80s
+394896.020851 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394896.020853 [2] image.cpp:549  - decoding 1 latents
+394896.033525 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394896.641024 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394896.648065 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394896.648076 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394896.648078 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394896.652499 [2] image.cpp:1045 - generate_image completed in 2.50s
+394896.657514 [2] image.cpp:809  - generate_image 1024x1024
+394896.659516 [1] model_loader.cpp:189  - using 4 threads for model loading
+394896.659950 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394896.659954 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394896.659958 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394896.659961 [2] request.cpp:420  - sampling using Euler method
+394896.669150 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394896.669207 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394896.669357 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394896.669422 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394896.678066 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394896.725061 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394896.727280 [1] conditioner.hpp:3139 - computing condition graph completed, taking 59 ms
+394896.727296 [2] image.cpp:524  - get_learned_condition completed, taking 0.06s
+394896.727837 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394896.781346 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394897.203197 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394897.229596 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394897.672638 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394898.116799 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394898.549124 [2] image.cpp:894  - sampling completed, taking 1.82s
+394898.549136 [2] image.cpp:906  - generating 1 latent images completed, taking 1.82s
+394898.549138 [2] image.cpp:549  - decoding 1 latents
+394898.561791 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394899.168926 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394899.175836 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394899.175846 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394899.175848 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394899.180158 [2] image.cpp:1045 - generate_image completed in 2.52s
+394899.184927 [2] image.cpp:809  - generate_image 1024x1024
+394899.186939 [1] model_loader.cpp:189  - using 4 threads for model loading
+394899.187363 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394899.187369 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394899.187373 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394899.187375 [2] request.cpp:420  - sampling using Euler method
+394899.196456 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394899.196580 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394899.196909 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394899.197036 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394899.206929 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394899.248897 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394899.251273 [1] conditioner.hpp:3139 - computing condition graph completed, taking 56 ms
+394899.251291 [2] image.cpp:524  - get_learned_condition completed, taking 0.06s
+394899.251829 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394899.304940 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394899.724905 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394899.746660 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394900.198788 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394900.639264 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394901.064411 [2] image.cpp:894  - sampling completed, taking 1.81s
+394901.064422 [2] image.cpp:906  - generating 1 latent images completed, taking 1.81s
+394901.064425 [2] image.cpp:549  - decoding 1 latents
+394901.077088 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394901.684651 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394901.691502 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394901.691511 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394901.691514 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394901.695790 [2] image.cpp:1045 - generate_image completed in 2.51s
+394901.701152 [2] image.cpp:809  - generate_image 1024x1024
+394901.703020 [1] model_loader.cpp:189  - using 4 threads for model loading
+394901.703250 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394901.703255 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394901.703258 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394901.703261 [2] request.cpp:420  - sampling using Euler method
+394901.712462 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394901.712515 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394901.712669 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394901.712737 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394901.729983 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394901.772022 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394901.774281 [1] conditioner.hpp:3139 - computing condition graph completed, taking 63 ms
+394901.774297 [2] image.cpp:524  - get_learned_condition completed, taking 0.06s
+394901.774825 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394901.826918 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394902.246945 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394902.268388 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394902.712038 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394903.153422 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394903.579262 [2] image.cpp:894  - sampling completed, taking 1.80s
+394903.579271 [2] image.cpp:906  - generating 1 latent images completed, taking 1.80s
+394903.579273 [2] image.cpp:549  - decoding 1 latents
+394903.591961 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394904.199196 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394904.206182 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.62s
+394904.206191 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394904.206193 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394904.210505 [2] image.cpp:1045 - generate_image completed in 2.51s
+394904.215474 [2] image.cpp:809  - generate_image 1024x1024
+394904.217724 [1] model_loader.cpp:189  - using 4 threads for model loading
+394904.217958 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394904.217964 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394904.217967 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394904.217970 [2] request.cpp:420  - sampling using Euler method
+394904.227134 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394904.227237 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394904.227569 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394904.227689 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394904.237268 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394904.279347 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394904.281816 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394904.281832 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394904.282387 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394904.340529 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394904.762207 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394904.784387 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394905.237687 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394905.680608 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394906.106898 [2] image.cpp:894  - sampling completed, taking 1.82s
+394906.106908 [2] image.cpp:906  - generating 1 latent images completed, taking 1.82s
+394906.106910 [2] image.cpp:549  - decoding 1 latents
+394906.124835 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394906.734761 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394906.741612 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394906.741624 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394906.741626 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394906.745883 [2] image.cpp:1045 - generate_image completed in 2.53s
+394906.751454 [2] image.cpp:809  - generate_image 1024x1024
+394906.753425 [1] model_loader.cpp:189  - using 4 threads for model loading
+394906.753866 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394906.753870 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394906.753874 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394906.753901 [2] request.cpp:420  - sampling using Euler method
+394906.762813 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394906.762871 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394906.763042 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394906.763108 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394906.772754 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394906.814661 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394906.816871 [1] conditioner.hpp:3139 - computing condition graph completed, taking 54 ms
+394906.816887 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394906.817454 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394906.871794 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394907.293529 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394907.315091 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394907.756739 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394908.199734 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394908.627783 [2] image.cpp:894  - sampling completed, taking 1.81s
+394908.627802 [2] image.cpp:906  - generating 1 latent images completed, taking 1.81s
+394908.627804 [2] image.cpp:549  - decoding 1 latents
+394908.640477 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394909.250023 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394909.257148 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394909.257158 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394909.257161 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394909.261638 [2] image.cpp:1045 - generate_image completed in 2.51s
+394909.266539 [2] image.cpp:809  - generate_image 1024x1024
+394909.268523 [1] model_loader.cpp:189  - using 4 threads for model loading
+394909.268791 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394909.268795 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394909.268799 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394909.268802 [2] request.cpp:420  - sampling using Euler method
+394909.278204 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394909.278260 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394909.278413 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394909.278479 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394909.287126 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394909.329022 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394909.331404 [1] conditioner.hpp:3139 - computing condition graph completed, taking 54 ms
+394909.331419 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394909.331971 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394909.385119 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394909.807529 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394909.830673 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394910.271041 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394910.714209 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394911.141708 [2] image.cpp:894  - sampling completed, taking 1.81s
+394911.141719 [2] image.cpp:906  - generating 1 latent images completed, taking 1.81s
+394911.141722 [2] image.cpp:549  - decoding 1 latents
+394911.154394 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394911.763831 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394911.770765 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394911.770775 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394911.770778 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394911.775043 [2] image.cpp:1045 - generate_image completed in 2.51s
+394911.789042 [2] image.cpp:809  - generate_image 1024x1024
+394911.790940 [1] model_loader.cpp:189  - using 4 threads for model loading
+394911.791181 [2] diffusion_engine.cpp:2998 - Using 'flux2' preset for reference images
+394911.791186 [2] denoiser.hpp:1186 - get_sigmas with Flux2 scheduler
+394911.791189 [1] denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291
+394911.791192 [2] request.cpp:420  - sampling using Euler method
+394911.800312 [1] conditioner.hpp:2146 - parse '<|im_start|>user
+A cat holding a sign that says hello world<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+' to [['<|im_start|>user
+', 1], ['A cat holding a sign that says hello world', 1], ['<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+', 1], ]
+394911.800366 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_start|>user
+" to 3 tokens ["<|im_start|>", "user", "Ċ", ]
+394911.800518 [1] bpe_tokenizer.cpp:245  - split prompt "A cat holding a sign that says hello world" to 9 tokens ["A", "Ġcat", "Ġholding", "Ġa", "Ġsign", "Ġthat", "Ġsays", "Ġhello", "Ġworld", ]
+394911.800585 [1] bpe_tokenizer.cpp:245  - split prompt "<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+" to 9 tokens ["<|im_end|>", "Ċ", "<|im_start|>", "assistant", "Ċ", "<think>", "ĊĊ", "</think>", "ĊĊ", ]
+394911.810249 [0] ggml_runner.cpp:984  - qwen3 executing segment 1/1: graph
+394911.852610 [1] ggml_runner.cpp:1019 - qwen3 compute buffer size: 65.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394911.854875 [1] conditioner.hpp:3139 - computing condition graph completed, taking 55 ms
+394911.854892 [2] image.cpp:524  - get_learned_condition completed, taking 0.05s
+394911.855446 [2] image.cpp:861  - generating image: 1/1 - seed 0
+394911.908220 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394912.329240 [1] ggml_runner.cpp:1019 - flux compute buffer size: 1065.50 MB(VRAM) on CUDA0 (peak across 1 segment)
+394912.350821 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394912.795337 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394913.240092 [0] ggml_runner.cpp:984  - flux executing segment 1/1: graph
+394913.667214 [2] image.cpp:894  - sampling completed, taking 1.81s
+394913.667223 [2] image.cpp:906  - generating 1 latent images completed, taking 1.81s
+394913.667226 [2] image.cpp:549  - decoding 1 latents
+394913.679904 [0] ggml_runner.cpp:984  - vae executing segment 1/1: graph
+394914.290869 [1] ggml_runner.cpp:1019 - vae compute buffer size: 6658.00 MB(VRAM) on CUDA0 (peak across 1 segment)
+394914.297726 [1] vae.hpp:351  - computing vae decode graph completed, taking 0.63s
+394914.297739 [2] image.cpp:615  - latent 1 decoded, taking 0.63s
+394914.297741 [2] image.cpp:619  - decode_first_stage completed, taking 0.63s
+394914.302063 [2] image.cpp:1045 - generate_image completed in 2.51s
+394914.316033 [1] model_manager.cpp:1175 - model manager released params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) from CUDA0

@@ -13,6 +13,9 @@
 #SBATCH --account=you139
 #SBATCH --partition=a100-40gb
 #SBATCH --qos=normal
+# The a100-40gb partition mixes A100-PCIE-40GB nodes (feature G, gilbreth-g*) and A100-SXM4-40GB
+# nodes (feature N, gilbreth-n*, higher power limit). Pin to G so results stay comparable.
+#SBATCH --constraint=G
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --gpus-per-node=1

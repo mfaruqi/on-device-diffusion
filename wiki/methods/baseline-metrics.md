@@ -1,6 +1,16 @@
+---
+type: method
+summary: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
+status: active
+updated: 2026-09-28
+---
+
 # Baseline metrics: what we measure and how
 
-This file defines every number that `scripts/run_flux.py` reports. It applies to
+This file defines every number that `scripts/run_flux.py` (PyTorch/diffusers) and
+`scripts/run_sdcpp.py` (stable-diffusion.cpp) report. Both write the same files and column
+names; where an engine measures a column differently or can't produce it, the
+[stable-diffusion.cpp runs](#stable-diffusioncpp-runs) section says so. It applies to
 all FLUX baseline runs. Experiment notes (e.g. `a100-flux-klein-001.md`) refer to
 it rather than repeating the definitions. If the runner changes how a metric is
 measured, update this file in the same commit.
@@ -95,3 +105,52 @@ and `postprocess`. Open it in Perfetto (https://ui.perfetto.dev) and read **GPU*
 lanes for stage durations. The CPU label durations are launch times. The operator
 table's nested times overlap, so don't sum them to get end-to-end latency.
 Profiler overhead makes that run slower. Never report it as a baseline number.
+
+Per-stage kernel breakdowns come from `scripts/analyze_profile.py --run-dir <profile run>`
+(add `--stages` to pick stage labels by regex). A kernel belongs to a stage if it starts inside
+that stage's GPU-side annotation span (`gpu_user_annotation`). It is attributed to the aten op
+that launched it, found through the CUDA launch's correlation id. "Busy" is the union of kernel
+intervals, and "idle" is the span minus busy. GEMM/attention TFLOP/s use the recorded input
+shapes (2·M·N·K for GEMMs, 4·B·H·Sq·Sk·D for attention forward).
+
+## Hardware label
+
+Gilbreth's `a100-40gb` partition has two node types: `gilbreth-g*` nodes with **A100-PCIE-40GB**
+(250 W power limit, Slurm feature `G`) and `gilbreth-n*` nodes with **A100-SXM4-40GB** (400 W,
+feature `N`). The same workload runs measurably faster on SXM4. Runs of different node types are
+never compared as the same device. The Slurm scripts request `--constraint=G`, and every run
+records the GPU name and power limit in `environment.json` / `summary.json`.
+
+## stable-diffusion.cpp runs
+
+`run_sdcpp.py` runs the C++ harness `engines/sdcpp/bench.cpp`, which loads the model once and calls
+sd.cpp's `generate_image` for the same 1 first + 3 warm-up + 10 measured protocol. How to build and
+run it: [sdcpp-howto.md](sdcpp-howto.md).
+
+| Column | sd.cpp definition | Difference from the PyTorch runner |
+|---|---|---|
+| `wall_ms` | host time around `generate_image` | same scope: text encode through uint8 RGB image in host memory; excludes load and saving |
+| `text_encode_ms` | generate start → sd.cpp's `get_learned_condition completed` log line | includes tokenization and the Qwen3 forward, as in PyTorch |
+| `denoise_step_i_ms` | between consecutive progress callbacks (step 0 fires just before the first transformer call) | includes the Euler update (tiny); in PyTorch that goes to `other_ms` |
+| `vae_decode_ms` | `sampling completed` → `decode_first_stage completed` | includes latent unpacking and conversion to uint8 on the host |
+| `other_ms` | `wall_ms` minus the named stages | noise/latent setup, graph setup between stages |
+| `postprocess_ms`, `gpu_span_ms` | empty | sd.cpp has no separate postprocess stage and no CUDA events |
+| `peak_alloc_gib`, `peak_reserved_gib` | empty | no PyTorch allocator. Use `device_used_peak_gib` |
+| `device_used_peak_gib` | NVML device-wide used memory, 20 ms sampling (same sampler) | comparable across engines. The wrapper never creates a CUDA context, so the number is sd.cpp's alone |
+| per-stage `device_used_peak_gib` (in `stages.csv`) | NVML peak inside each stage's time window | replaces the per-stage allocator peaks |
+| `load_total_s` | `new_sd_ctx` with eager loading | reads the files and places all weights on the GPU |
+
+Timing primitive: host `steady_clock` timestamps taken when sd.cpp's log/progress callbacks fire.
+ggml computes each graph synchronously, so a callback fires after that stage's GPU work has
+finished. The stage times are therefore end-to-end stage latencies, like the PyTorch CUDA-event
+times, but they are measured on the host and include any host work inside the stage.
+
+Engine audit: `summary.json → engine_audit` records what sd.cpp's log reports (weight types per
+model, flash-attention use, parameter placement, graph segments, sampler/scheduler). The run fails if
+any of these happened: auto-fit placement, graph cuts, conditioning-cache hits, weights released
+during generation, or requested flash attention not in use.
+
+Profiling: `--nsys` runs the harness build with NVTX ranges (`text_encode`, `denoise_step_i`,
+`vae_decode`) under Nsight Systems. `analyze_profile.py` assigns each kernel to the NVTX range that
+contains its GPU start time and groups ggml kernels by name (see `categorize_ggml`). There is no
+launching-op table for ggml.

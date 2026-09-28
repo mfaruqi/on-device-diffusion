@@ -1,0 +1,7 @@
+{
+  "load_total_s": 7.9261030000052415,
+  "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+  "device_used_after_load_gib": 15.90106201171875,
+  "device_used_peak_during_load_gib": 15.81121826171875,
+  "model_version": "Flux.2 klein"
+}

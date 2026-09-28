@@ -1,0 +1,163 @@
+{
+  "id": "a100-sdcpp-flux-klein-001",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB, 590.48.01, GPU-b87ef7aa-80cc-84eb-ef9b-c502b5c07a9d, 400.00 W",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 2934.1049999929965,
+    "gpu_span_ms": null,
+    "text_encode_ms": 532.39200002281,
+    "denoise_ms": 1652.1210000501014,
+    "denoise_step_0_ms": 433.0710000358522,
+    "denoise_step_1_ms": 408.3109999774024,
+    "denoise_step_2_ms": 406.1030000448227,
+    "denoise_step_3_ms": 404.63599999202415,
+    "vae_decode_ms": 727.8569999616593,
+    "postprocess_ms": null,
+    "other_ms": 21.73499995842576,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": 22.87957763671875,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 2294.764499994926,
+      "min": 2293.1350000435486,
+      "max": 2297.4490000051446,
+      "mean": 2295.0081000104547,
+      "stdev": 1.4710854927859474,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 60.73150000884198,
+      "min": 59.810000006109476,
+      "max": 62.85300001036376,
+      "mean": 60.99420000100508,
+      "stdev": 1.0714232295190584,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 1625.5905000143684,
+      "min": 1622.7829999988899,
+      "max": 1626.9270000047982,
+      "mean": 1625.4244999960065,
+      "stdev": 1.1468314034087195,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 417.6489999808837,
+      "min": 416.3980000303127,
+      "max": 418.788000009954,
+      "mean": 417.5187999906484,
+      "stdev": 1.0075772612668414,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 402.6270000322256,
+      "min": 401.40199998859316,
+      "max": 405.08200001204386,
+      "mean": 402.725700015435,
+      "stdev": 1.145650240992175,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 402.4515000055544,
+      "min": 401.66700002737343,
+      "max": 403.7549999775365,
+      "mean": 402.57150000543334,
+      "stdev": 0.7425968242649894,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 402.734999981476,
+      "min": 401.1299999547191,
+      "max": 403.7479999824427,
+      "mean": 402.60849998448975,
+      "stdev": 0.9645358484402232,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 585.4124999896158,
+      "min": 585.1039999979548,
+      "max": 587.1280000428669,
+      "mean": 585.6581000029109,
+      "stdev": 0.6293558481600716,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 22.847000014735386,
+      "min": 22.45400001993403,
+      "max": 23.51899998029694,
+      "mean": 22.93130001053214,
+      "stdev": 0.38797795146854686,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": {
+      "median": 22.87957763671875,
+      "min": 22.87957763671875,
+      "max": 22.87957763671875,
+      "mean": 22.87957763671875,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "host_rss_gib": null
+  },
+  "load": {
+    "load_total_s": 7.9261030000052415,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": 15.90106201171875,
+    "device_used_peak_during_load_gib": 15.81121826171875,
+    "model_version": "Flux.2 klein"
+  },
+  "deterministic_output": true,
+  "host_peak_rss_gib": 1.2087135314941406,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 1.00, img_cfg: 1.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 4, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "problems": []
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}
