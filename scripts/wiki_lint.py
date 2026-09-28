@@ -272,11 +272,13 @@ def write_index(pages):
             continue
         lines += [f"## {title}", ""]
         for p in chosen:
-            fm, _ = frontmatter(p.read_text(errors="replace"))
+            fm, body = frontmatter(p.read_text(errors="replace"))
             summary = (fm or {}).get("summary", "(no summary)")
             status = (fm or {}).get("status", "")
             tag = f" `{status}`" if status and status not in ("active",) else ""
-            lines.append(f"- [{p.relative_to(WIKI).as_posix()}]({p.relative_to(WIKI).as_posix()}){tag}: {summary}")
+            h1 = re.search(r"^# (.+)$", body, re.M)
+            title = h1.group(1).strip() if h1 else p.stem
+            lines.append(f"- **[{title}]({p.relative_to(WIKI).as_posix()})**{tag}: {summary}")
             listed.add(p)
         lines.append("")
     (WIKI / "index.md").write_text("\n".join(lines))
