@@ -32,9 +32,9 @@ flux_test/*.png
 .vscode/
 .DS_Store
 
-# Claude Code project files (kept local)
-CLAUDE.md
-.claude/
+# Agent files (CLAUDE.md, AGENTS.md, .claude/, .agents/, .codex/) are tracked; only personal
+# Claude Code permission settings stay local.
+.claude/settings.local.json
 results/runs/*/engine/raw/
 results/runs/*/profile/*.nsys-rep
 results/runs/*/profile/*.sqlite
@@ -43,13 +43,16 @@ results/runs/*/profile/*.sqlite
 .obsidian/*
 !.obsidian/app.json
 
-# Codex agent files (kept local, like the Claude Code ones above)
-AGENTS.md
-.agents/
-.codex/
 
 # CLI feasibility images remain local
 results/runs/*/*.png
 
 # Raw CLI and monitoring logs remain local
 results/runs/*/*.log
+
+# Imported profiling originals remain local
+results/runs/**/*.nsys-rep
+results/runs/**/*.qdstrm
+results/runs/**/*.sqlite
+results/runs/**/*.log
+results/runs/**/*.png

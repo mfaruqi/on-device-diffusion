@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/session_start.sh --json 2>/dev/null || true",
+            "timeout": 30,
+            "statusMessage": "Loading wiki/hot.md"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/session_end.sh || true",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
