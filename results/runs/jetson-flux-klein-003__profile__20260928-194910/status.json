@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "error": "Unexpected step callbacks or conditioning reuse",
+  "generation_succeeded": true,
+  "progress_calls": 42,
+  "cond_cache_hits": 0,
+  "source": "User-supplied results.jsonl and status.json excerpts",
+  "limitation": "Tensor-loading progress contaminated denoise boundaries; trace stage labels invalid. Originals remain on Jetson."
+}

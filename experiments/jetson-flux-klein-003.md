@@ -4,7 +4,7 @@ id: jetson-flux-klein-003
 status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
+runs: [jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
 updated: 2026-09-28
 ---
 
@@ -104,6 +104,14 @@ accounts for 11.97 s of CPU API duration and `cudaMalloc` for 4.01 s.
 These are whole-capture aggregates with different denominators and overlapping intervals;
 they cannot be added into generation latency or attributed to stages from these tables.
 The selected rows are transcribed evidence; the complete stats file and trace remain on Jetson.
+
+## Harness profile validation failure
+
+The [194910 capture](../results/runs/jetson-flux-klein-003__profile__20260928-194910/)
+saved one image but failed callback validation: tensor-loading updates were counted as
+sampling progress. Its stage labels and denoise timings are invalid; generation did not
+fail. The corrected harness filters progress totals and checks the sampling sequence.
+Corrected Jetson execution remains pending.
 
 ## Next experiment
 

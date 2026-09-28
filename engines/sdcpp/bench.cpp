@@ -51,6 +51,8 @@ struct RunTimes {
     double start = 0, cond = 0, sampling_start = 0, sampling_end = 0, decode_end = 0, end = 0;
     std::vector<double> step_end;
     int progress_calls = 0;
+    int expected_steps = 0;
+    int ignored_progress_calls = 0;
     int cond_cache_hits = 0;
     std::string open_range;  // name of the NVTX stage range currently open
 };
@@ -94,6 +96,18 @@ static void on_progress(int step, int steps, float, void* data) {
     auto* st = static_cast<State*>(data);
     RunTimes* r = st->cur;
     if (!r || r->cond == 0 || r->sampling_end != 0) return;  // only count calls inside sampling
+    // The pinned engine shares this callback with tensor-loading progress. Its
+    // totals count tensors, not sampling steps. Never let those events move NVTX
+    // ranges or overwrite the start of the first denoising step.
+    if (steps != r->expected_steps) {
+        r->ignored_progress_calls++;
+        return;
+    }
+    if (step != r->progress_calls || step > r->expected_steps) {
+        std::fprintf(stderr, "unexpected sampling progress: %d/%d, expected %d\n",
+                     step, steps, r->progress_calls);
+        std::exit(3);
+    }
     double t = now_s();
     r->progress_calls++;
     if (step == 0) {
@@ -214,6 +228,7 @@ int main(int argc, char** argv) {
 
     for (int i = 0; i < runs; i++) {
         RunTimes r;
+        r.expected_steps = steps;
         st.cur = &r;
         sd_image_t* images = nullptr;
         int n_images = 0;
@@ -232,6 +247,7 @@ int main(int argc, char** argv) {
         for (size_t k = 0; k < r.step_end.size(); k++) res << (k ? "," : "") << std::to_string(r.step_end[k]);
         res << "],\"t_sampling_end\":" << std::to_string(r.sampling_end) << ",\"t_decode_end\":"
             << std::to_string(r.decode_end) << ",\"t_end\":" << std::to_string(r.end)
+            << ",\"ignored_progress_calls\":" << r.ignored_progress_calls
             << ",\"progress_calls\":" << r.progress_calls << ",\"cond_cache_hits\":" << r.cond_cache_hits;
         if (ok && n_images == 1) {
             const sd_image_t& im = images[0];

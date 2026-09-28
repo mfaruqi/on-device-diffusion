@@ -1,6 +1,6 @@
 ---
 type: method
-summary: Jetson Orin Nano access from the Mac, CUDA shell setup, and the next verification steps.
+summary: Jetson access, CUDA setup, and stage-labelled profiling bundle transfer, build and capture procedures.
 status: active
 updated: 2026-09-28
 ---
@@ -77,7 +77,48 @@ instrumentation check of Jetson 003, not a repeated baseline. It verifies hashes
 capture (warming the filesystem cache), records whole-system tegrastats, and checks callback
 ordering and NVTX label presence. Original CLI and harness profiles are distinct captures.
 
-From an extracted repository bundle on Jetson:
+### What was sent and why
+
+The [source bundle](../../bundles/README.md) was introduced in commit `e6be8fb`
+on `feat/jetson-stage-profile`. It contains four files:
+
+| File | Purpose |
+|---|---|
+| [bench.cpp](../../engines/sdcpp/bench.cpp) | Calls sd.cpp through its public API, loads a context once, and emits NVTX ranges from log/progress callbacks. Adds optional explicit sampler/scheduler arguments. |
+| [CMakeLists.txt](../../engines/sdcpp/CMakeLists.txt) | Links the harness against existing sd.cpp static libraries; adds an NVTX3 header fallback for Jetson's older CMake. |
+| [profile_jetson_stages.py](../../scripts/profile_jetson_stages.py) | Checks the engine commit, model hashes and power mode, runs Nsight plus tegrastats, and checks stage callbacks and labels. |
+| [profile config](../../configs/jetson-flux-klein-stage-profile.json) | Specifies one generation with the successful quantized, disk-backed Jetson settings and explicit harness arguments. |
+
+The archive contains source/configuration, not model weights or compiled executables.
+The existing engine checkout at `~/tools/stable-diffusion.cpp` provides the built CUDA
+libraries; models remain at `~/models/flux2-klein`. The new executable is
+`~/tools/sd-bench-build/sd-bench-nvtx`. The harness labels are `load`, `generate`,
+`text_encode`, `denoise_step_0` through `denoise_step_3`, and `vae_decode`
+([source](../../engines/sdcpp/bench.cpp)). Callback boundaries and timing limitations
+follow the [measurement definitions](baseline-metrics.md#jetson-stage-labelled-profile-capture).
+
+### Transfer and build
+
+On the Mac, from the local repository checked out at the desired bundle version:
+
+```bash
+scp bundles/jetson-stage-profile.tar.gz mfaruqi@192.168.4.61:~/
+```
+
+Then on Jetson, inside tmux:
+
+```bash
+mkdir -p ~/tools/jetson-stage-profile
+tar -xzf ~/jetson-stage-profile.tar.gz -C ~/tools/jetson-stage-profile
+cd ~/tools/jetson-stage-profile
+```
+
+For future changes, rebuild the archive using the command in the
+[bundle README](../../bundles/README.md), transfer it again, extract it, and rebuild the
+harness. The extracted files are a snapshot, not a Git checkout; updating Git on the Mac
+or Gilbreth does not update the Jetson copy.
+
+Build and capture from `~/tools/jetson-stage-profile`:
 
 ```bash
 cmake -S engines/sdcpp -B ~/tools/sd-bench-build \
@@ -91,3 +132,11 @@ python3 scripts/profile_jetson_stages.py --config configs/jetson-flux-klein-stag
 The script prints its run directory; inspect `status.json`, `nsys-stats.txt`, `results.jsonl`
 and the trace before using stage attribution. Raw images are RGB files, not PNGs.
 Repeated timing still requires the Jetson memory adapter and baseline runner integration.
+
+### Confirmed installation status
+
+The transferred bundle built successfully on Jetson with GCC 11.4.0 and CUDA 12.6.68:
+`[100%] Built target sd-bench-nvtx`. An unchecked directory-creation return-value warning
+was emitted; it did not prevent linking ([build evidence](../../raw/jetson-stage-profile-build-2026-09-28.md)).
+This confirms the harness build only. Stage-labelled capture completion and repeated
+measurements remain pending.

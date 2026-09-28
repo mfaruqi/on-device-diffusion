@@ -200,3 +200,12 @@ retains raw timestamps in `results.jsonl`. Label presence and callback ordering 
 GPU timeline attribution requires subsequent analysis. Whole-system tegrastats stays at
 one-second sampling, without NVML or derived per-stage memory peaks. Model SHA256 checks
 read all files before profiling; this cache condition is recorded in `command.json`.
+
+The Jetson disk-backed capture `20260928-194910` exposed shared tensor-loading and sampling
+progress callbacks. The harness now filters callbacks by the configured sampling-step total
+and requires the sequence 0 through N; other totals increment `ignored_progress_calls`.
+This is scoped to the pinned, untiled single-image configuration; it is not a general event-type
+identifier for arbitrary models. Loading remains inside the active stage interval.
+The affected capture's denoise timings and labels are invalid
+([failure evidence](../../results/runs/jetson-flux-klein-003__profile__20260928-194910/status.json));
+do not compare them with corrected captures. Existing captures need callback validation.

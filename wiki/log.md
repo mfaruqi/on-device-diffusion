@@ -7,6 +7,16 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] experiment | Jetson harness callback validation failure
+[Record](../experiments/jetson-flux-klein-003.md#harness-profile-validation-failure): generation succeeded,
+tensor-loading callbacks contaminated step labels; filtering corrected and regression-tested locally.
+Jetson rerun pending.
+
+## [2026-09-28] ingest | Jetson stage-profile bundle installed and built
+[Procedure](methods/jetson-howto.md#what-was-sent-and-why) documents bundle contents, paths and updates;
+[build evidence](../raw/jetson-stage-profile-build-2026-09-28.md) confirms the harness linked successfully.
+Stage-labelled capture results remain pending.
+
 ## [2026-09-28] experiment | Jetson 003 CLI profile report generated
 [Record](../experiments/jetson-flux-klein-003.md#separate-cli-profile-capture-reported-validation-pending):
 image saved; supplied stats confirm CUDA kernels, copies and API calls. Original trace import and

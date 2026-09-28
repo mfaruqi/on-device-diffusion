@@ -74,5 +74,5 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 - **[Baseline metrics: what we measure and how](methods/baseline-metrics.md)**: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 - **[Running experiments on Gilbreth](methods/gilbreth-howto.md)**: How to run experiments on Gilbreth — Slurm basics, accounts, storage rules, the baseline procedure.
-- **[Working on the Jetson Orin Nano](methods/jetson-howto.md)**: Jetson Orin Nano access from the Mac, CUDA shell setup, and the next verification steps.
+- **[Working on the Jetson Orin Nano](methods/jetson-howto.md)**: Jetson access, CUDA setup, and stage-labelled profiling bundle transfer, build and capture procedures.
 - **[Running stable-diffusion.cpp on Gilbreth](methods/sdcpp-howto.md)**: How to build stable-diffusion.cpp and its benchmark harness, point it at the pinned weights, and run the protocol on Gilbreth.

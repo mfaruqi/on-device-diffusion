@@ -18,7 +18,8 @@ hypothesis ([milestones](project/milestones.md)).
 
 ## In progress / next
 1. Jetson: CUDA events confirmed in supplied Nsight stats; import/validate original trace, then
-   validate the prepared stage-labelled harness capture and instrument repeated timings ([record](../experiments/jetson-flux-klein-003.md)).
+   rerun/validate the callback-corrected [stage-labelled harness](methods/jetson-howto.md#confirmed-installation-status)
+   and instrument repeated timings ([record](../experiments/jetson-flux-klein-003.md)).
 2. DreamLite review ([reading list](papers/reading-list.md)).
 3. Write the bounded planning hypothesis ([RQ3](rq/rq3.md)).
 4. Shared initial noise for cross-engine image comparison ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
