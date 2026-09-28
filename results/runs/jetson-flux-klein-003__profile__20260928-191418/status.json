@@ -1,0 +1,10 @@
+{
+  "status": "partial",
+  "capture_reported": "finished; report generated",
+  "trace_validation_pending": true,
+  "original_status_not_imported": true,
+  "scope": "CUDA kernels, memory operations and API calls present in supplied stats; original artifacts, exit status and timeline validation pending.",
+  "evidence": "terminal-excerpts.json",
+  "cuda_event_presence_confirmed": true,
+  "stats_evidence": "nsys-stats-excerpts.json"
+}

@@ -54,5 +54,11 @@ endfunction()
 
 add_bench(sd-bench)
 add_bench(sd-bench-nvtx)
-target_link_libraries(sd-bench-nvtx PRIVATE CUDA::nvtx3)
+if(TARGET CUDA::nvtx3)
+  target_link_libraries(sd-bench-nvtx PRIVATE CUDA::nvtx3)
+else()
+  # Jetson's CMake 3.22 predates the imported NVTX3 target. NVTX3 is header-only.
+  find_path(NVTX3_INCLUDE_DIR nvtx3/nvToolsExt.h HINTS ${CUDAToolkit_INCLUDE_DIRS} REQUIRED)
+  target_include_directories(sd-bench-nvtx PRIVATE ${NVTX3_INCLUDE_DIR})
+endif()
 target_compile_definitions(sd-bench-nvtx PRIVATE SD_BENCH_NVTX)

@@ -1,0 +1,18 @@
+{
+  "provenance": "Operator-supplied terminal completion excerpt and directory listing; original files remain on Jetson.",
+  "original_directory": "/home/mfaruqi/results/runs/jetson-flux-klein-003__profile__20260928-191418",
+  "generation_excerpt": [
+    "[INFO   ] image.cpp:894  - sampling completed, taking 20.75s",
+    "[INFO   ] image.cpp:619  - decode_first_stage completed, taking 5.17s",
+    "[INFO   ] image.cpp:1045 - generate_image completed in 28.73s",
+    "[INFO   ] main.cpp:497  - save result image 0 to '/home/mfaruqi/results/runs/jetson-flux-klein-003__profile__20260928-191418/output.png' (success)",
+    "[INFO   ] main.cpp:573  - 1/1 images saved",
+    "Collecting data...",
+    "Generating '/tmp/nsys-report-020a.qdstrm'",
+    "[1/1] [========================100%] trace.nsys-rep",
+    "Generated:",
+    "    /home/mfaruqi/results/runs/jetson-flux-klein-003__profile__20260928-191418/trace.nsys-rep"
+  ],
+  "report_listing_size": "644K (ls -lh rounded)",
+  "trace_validation_pending": true
+}

@@ -1,0 +1,21 @@
+{
+  "record_kind": "CLI profile; partial terminal evidence only",
+  "status": "partial",
+  "saved_images_reported": 1,
+  "measured": null,
+  "measured_runs": 0,
+  "engine_log_diagnostics": {
+    "generate_image_seconds": 28.73,
+    "sampling_seconds": 20.75,
+    "decode_first_stage_seconds": 5.17,
+    "source": "terminal-excerpts.json",
+    "limitations": "Profiler attached; not a latency benchmark or matched warm-up comparison."
+  },
+  "unavailable_metrics": {
+    "trace": "CUDA kernel, memory-operation and API rows confirmed in supplied stats; original trace import and independent completeness/timeline validation pending.",
+    "memory": "Full monitoring log pending.",
+    "quality": "Profile image not imported or inspected."
+  },
+  "cuda_event_presence_confirmed": true,
+  "cuda_event_evidence": "nsys-stats-excerpts.json"
+}

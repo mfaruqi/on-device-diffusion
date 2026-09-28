@@ -1,0 +1,79 @@
+{
+  "source": "User-supplied nsys stats terminal output, 2026-09-28; original report and complete stats file remain on Jetson.",
+  "reports_present": [
+    "cuda_gpu_kern_sum",
+    "cuda_gpu_mem_time_sum",
+    "cuda_api_sum"
+  ],
+  "scope": "Whole CLI profile, including startup; selected rows transcribed, not a complete export. Kernel names truncated in terminal output.",
+  "selected_kernel_rows": [
+    {
+      "name_prefix": "mul_mat_q<(ggml_type)2, (int)128, (bool)0>",
+      "total_time_ns": 5827785408,
+      "instances": 320,
+      "kernel_time_percent": 39.3
+    },
+    {
+      "name_prefix": "im2col_kernel<__half>",
+      "total_time_ns": 1958122592,
+      "instances": 36,
+      "kernel_time_percent": 13.2
+    },
+    {
+      "name_prefix": "flash_attn_ext_f16<(int)128, (int)128, (int)64",
+      "total_time_ns": 1397083424,
+      "instances": 100,
+      "kernel_time_percent": 9.4
+    }
+  ],
+  "memory_operations": [
+    {
+      "operation": "Host-to-Device",
+      "total_time_ns": 4497710976,
+      "count": 1027
+    },
+    {
+      "operation": "Device-to-Device",
+      "total_time_ns": 259614400,
+      "count": 219
+    },
+    {
+      "operation": "Device-to-Host",
+      "total_time_ns": 3890400,
+      "count": 6
+    },
+    {
+      "operation": "memset",
+      "total_time_ns": 14080,
+      "count": 9
+    }
+  ],
+  "selected_api_rows": [
+    {
+      "name": "cudaStreamSynchronize",
+      "total_time_ns": 11974984800,
+      "calls": 1057
+    },
+    {
+      "name": "cudaMemcpyAsync",
+      "total_time_ns": 5138244992,
+      "calls": 1132
+    },
+    {
+      "name": "cudaMalloc",
+      "total_time_ns": 4012073760,
+      "calls": 13
+    },
+    {
+      "name": "cudaLaunchKernel",
+      "total_time_ns": 2025708000,
+      "calls": 5511
+    }
+  ],
+  "limitations": [
+    "CUDA kernel, memory-operation and API event presence confirmed by supplied stats; completeness and timeline not independently validated.",
+    "Summed GPU durations and CPU API durations overlap; do not add them into end-to-end time or interpret synchronization duration as removable overhead.",
+    "No stage attribution established; no added harness NVTX stage labels.",
+    "No repeated unprofiled baseline established."
+  ]
+}

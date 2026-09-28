@@ -4,7 +4,7 @@ id: jetson-flux-klein-003
 status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-003__attempt__20260928-185009]
+runs: [jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
 updated: 2026-09-28
 ---
 
@@ -85,6 +85,25 @@ The process exited successfully and saved one image. The imported 512×512 PNG s
 coherent cat holding a sign with legible “hello world” text and no obvious gross corruption
 ([inspection and hash](../results/runs/jetson-flux-klein-003__attempt__20260928-185009/image-inspection.json)). This is one visual
 smoke check, not a formal quality or repeatability assessment.
+
+## Separate CLI profile: capture reported, validation pending
+
+Nsight Systems wrote a report and the application saved an image. Supplied stats confirm
+CUDA kernel, memory-operation and API event presence; complete coverage, NVTX coverage and
+profiler exit status still require the original artifacts ([profile record](../results/runs/jetson-flux-klein-003__profile__20260928-191418/)).
+The supplied command requests CUDA, NVTX and OS-runtime tracing, with CPU sampling and
+context-switch tracing disabled. No harness stage markers were added to this CLI.
+The recorded engine timings are profiler diagnostics, not baseline results; any change
+in elapsed time cannot be attributed to profiling or caching from this single capture.
+
+The [selected stats rows](../results/runs/jetson-flux-klein-003__profile__20260928-191418/nsys-stats-excerpts.json)
+show `mul_mat_q` type 2 accounting for 39.3% of summed kernel duration, followed by
+`im2col_kernel` at 13.2% and the listed flash-attention specialization at 9.4%.
+Host-to-device copies total 4.50 s of GPU event duration; `cudaStreamSynchronize`
+accounts for 11.97 s of CPU API duration and `cudaMalloc` for 4.01 s.
+These are whole-capture aggregates with different denominators and overlapping intervals;
+they cannot be added into generation latency or attributed to stages from these tables.
+The selected rows are transcribed evidence; the complete stats file and trace remain on Jetson.
 
 ## Next experiment
 

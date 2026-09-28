@@ -190,3 +190,13 @@ Run directories are named `<experiment-id>__<kind>__<YYYYMMDD-HHMMSS>`. Kind `ba
 timing run under the full protocol; `repeat` re-runs a baseline to check reproducibility; `profile`
 has a profiler attached, so its latency is never quoted; `attempt` is a single feasibility try outside
 the protocol, with no medians. Old names and their mapping are in [results/README.md](../../results/README.md#run-directory-names).
+
+### Jetson stage-labelled profile capture
+
+`scripts/profile_jetson_stages.py` uses the same sd.cpp callback/NVTX boundaries defined
+above, with the disk-backed quantized configuration. Stage intervals include on-demand
+weight loading. It captures one generation, writes no baseline measurement rows, and
+retains raw timestamps in `results.jsonl`. Label presence and callback ordering are checked;
+GPU timeline attribution requires subsequent analysis. Whole-system tegrastats stays at
+one-second sampling, without NVML or derived per-stage memory peaks. Model SHA256 checks
+read all files before profiling; this cache condition is recorded in `command.json`.

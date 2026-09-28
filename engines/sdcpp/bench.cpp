@@ -196,6 +196,14 @@ int main(int argc, char** argv) {
     gp.batch_count = 1;
     gp.sample_params.sample_steps = steps;
     gp.sample_params.guidance.txt_cfg = std::stof(need(a, "cfg-scale"));
+    if (a.count("sampling-method")) {
+        gp.sample_params.sample_method = str_to_sample_method(a.at("sampling-method").c_str());
+        if (gp.sample_params.sample_method == SAMPLE_METHOD_COUNT) return 2;
+    }
+    if (a.count("scheduler")) {
+        gp.sample_params.scheduler = str_to_scheduler(a.at("scheduler").c_str());
+        if (gp.sample_params.scheduler == SCHEDULER_COUNT) return 2;
+    }
     // sample_method / scheduler stay at *_COUNT: the library resolves the model's defaults, as
     // sd-cli does. The resolved values appear in sdcpp.log and are recorded by the wrapper.
     gp.vae_tiling_params.enabled = false;

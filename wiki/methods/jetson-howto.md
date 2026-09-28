@@ -67,3 +67,27 @@ This setup supports Week 1's “A100 and Jetson image baselines” and RQ1:
 “Which diffusion optimization choices transfer across devices and workloads?”
 ([proposal overview](../project/overview.md)). See the [device page](../systems/jetson-orin-nano.md)
 and [metric definitions](baseline-metrics.md) before recording benchmark results.
+
+## Stage-labelled harness profile
+
+The [capture script](../../scripts/profile_jetson_stages.py) runs one generation using the
+[NVTX harness](../../engines/sdcpp/bench.cpp) and
+[profile config](../../configs/jetson-flux-klein-stage-profile.json). This is a planned
+instrumentation check of Jetson 003, not a repeated baseline. It verifies hashes before
+capture (warming the filesystem cache), records whole-system tegrastats, and checks callback
+ordering and NVTX label presence. Original CLI and harness profiles are distinct captures.
+
+From an extracted repository bundle on Jetson:
+
+```bash
+cmake -S engines/sdcpp -B ~/tools/sd-bench-build \
+  -DSDCPP_DIR="$HOME/tools/stable-diffusion.cpp" \
+  -DCUDAToolkit_ROOT=/usr/local/cuda -DCMAKE_BUILD_TYPE=Release
+cmake --build ~/tools/sd-bench-build --target sd-bench-nvtx -j2
+sudo -v
+python3 scripts/profile_jetson_stages.py --config configs/jetson-flux-klein-stage-profile.json
+```
+
+The script prints its run directory; inspect `status.json`, `nsys-stats.txt`, `results.jsonl`
+and the trace before using stage attribution. Raw images are RGB files, not PNGs.
+Repeated timing still requires the Jetson memory adapter and baseline runner integration.

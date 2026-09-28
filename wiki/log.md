@@ -7,6 +7,11 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] experiment | Jetson 003 CLI profile report generated
+[Record](../experiments/jetson-flux-klein-003.md#separate-cli-profile-capture-reported-validation-pending):
+image saved; supplied stats confirm CUDA kernels, copies and API calls. Original trace import and
+independent validation pending. No profiled timing used as baseline.
+
 ## [2026-09-28] schema | Uniform run names; W&B re-exported with outcome labels
 Run directories renamed to `<experiment-id>__<kind>__<stamp>` ([naming](methods/baseline-metrics.md#run-naming),
 [rename table](../results/README.md#run-directory-names)). All 10 runs re-exported; W&B names show
