@@ -24,6 +24,9 @@ set -euo pipefail
 cd "${SLURM_SUBMIT_DIR:-$(pwd)}"
 
 SD_CLI="${SD_CLI:-$HOME/tools/stable-diffusion.cpp/build/bin/sd-cli}"
+SDCPP_CUDA_ROOT="${SDCPP_CUDA_ROOT:-/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp}"
+# The CUDA shared libraries must be visible even when no CUDA module is loaded.
+export LD_LIBRARY_PATH="$SDCPP_CUDA_ROOT/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 # Pinned FLUX.2-klein-4B snapshot (same commit as configs/a100-flux-klein-bf16.resolved.json).
 SNAP="${SNAP:-/scratch/gilbreth/$USER/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294}"
 OUT="${OUT:-logs/sdcpp-smoke-$SLURM_JOB_ID.png}"

@@ -4,8 +4,8 @@ id: a100-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: pytorch-diffusers
-runs: [a100-flux-klein-001__baseline__20260923-221530, a100-flux-klein-001__profile__20260923-221717, a100-flux-klein-001__repeat__20260925-123908]
-updated: 2026-09-25
+runs: [a100-flux-klein-001__baseline__20260923-221530, a100-flux-klein-001__profile__20260923-221717, a100-flux-klein-001__repeat__20260925-123908, a100-flux-klein-001__attempt__20260929-001645]
+updated: 2026-09-29
 ---
 
 # a100-flux-klein-001: FLUX.2 [klein] 4B reference baseline on one A100-40GB
@@ -181,3 +181,24 @@ Shapes, from the recorded input dimensions:
 - Separately labelled A100 configs, one change each: sequential stage residency
   (release the text encoder after encoding), VAE tiling, and a quantized transformer. Record
   quality alongside for the quantized one.
+
+## Runner refactor smoke check (2026-09-29)
+
+[Run artifacts](../results/runs/a100-flux-klein-001__attempt__20260929-001645/), Slurm job `11839376`, account `you139`,
+node `gilbreth-g005`, NVIDIA A100-PCIE-40GB. This checks the Week 1 measurement
+infrastructure supporting RQ1; it is not a new performance baseline. The pinned
+BF16 workload is unchanged. The [saved config](../results/runs/a100-flux-klein-001__attempt__20260929-001645/config.json)
+explicitly reduces the protocol to **1 first + 0 warmup + 1 measured** generation,
+without profiling or downloads.
+
+The [status](../results/runs/a100-flux-klein-001__attempt__20260929-001645/status.json) is complete.
+[runs.csv](../results/runs/a100-flux-klein-001__attempt__20260929-001645/runs.csv) contains both generations and
+[stages.csv](../results/runs/a100-flux-klein-001__attempt__20260929-001645/stages.csv) contains seven stage rows per generation
+(text, four denoising steps, VAE and postprocessing). The refactored runner wrote its
+load, environment, memory-segment and summary artifacts successfully. Source was
+commit `cb76036` plus the uncommitted refactor listed in `environment.json`.
+
+One measured sample cannot establish latency distributions or determinism; the
+summary's determinism flag is trivially true for a one-element set. This smoke check
+validates execution and artifact production only. Full repeated timing and profiler
+validation of this refactor remain pending.

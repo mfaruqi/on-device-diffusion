@@ -2,7 +2,7 @@
 type: method
 summary: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 status: active
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
 # Baseline metrics: what we measure and how
@@ -183,6 +183,37 @@ Profiling: `--nsys` runs the harness build with NVTX ranges (`text_encode`, `den
 `vae_decode`) under Nsight Systems. `analyze_profile.py` assigns each kernel to the NVTX range that
 contains its GPU start time and groups ggml kernels by name (see `categorize_ggml`). There is no
 launching-op table for ggml.
+
+## Derived event records
+
+[measurement_events.py](../../scripts/measurement_events.py) derives `events.jsonl`
+after successful capture in the three measurement entry points. This additive artifact
+does not change the timing boundaries, CSVs or summary definitions above. It adds no
+CUDA synchronization or instrumentation inside timed regions. Historical runs can be
+replayed into a separate output directory without rewriting their evidence.
+
+Schema version 1 records `event`, `name`, `run_index`, `phase`, `start_s`, `end_s`,
+`duration_ms`, `clock`, `timing_method`, `source` and `details`. The source identifies
+the file and line or JSON key. `events-metadata.json` records input SHA256 hashes,
+event counts and interpretation limits. Missing values are null, not zero.
+
+| Observation | Evidence and timing |
+|---|---|
+| PyTorch load/generation | `load.json` / `runs.csv` host durations; absolute timestamps unavailable |
+| PyTorch stage | `stages.csv` CUDA-event duration; host launch duration retained in details; absolute timestamps unavailable |
+| sd.cpp load/generation/stage | Exact harness host callback intervals from `results.jsonl`, using the existing boundaries above |
+| sd.cpp parameter buffers prepared/released | Explicit engine log messages only; backend, printed MB, tensor/block counts and raw message retained |
+| sd.cpp tensor load complete | Rounded engine diagnostic duration; not a substitute for harness load time or a measurement of physical disk reads |
+
+Timestamped harness logs and callback records use that process's `steady_clock`.
+Untimestamped logs retain null timestamps. Do not align separate processes, runs or
+Nsight clocks by their raw values. Records are grouped by source rather than globally
+sorted. Parameter-buffer amounts retain the engine's printed MB label; they are not
+converted into an inferred allocation peak. Components and destinations are unknown.
+A buffer release does not establish CPU offload or a write to storage. Missing log
+messages do not prove that no release happened. PyTorch's existing artifacts expose
+no weight-release observations. [Regression tests](../../tests/test_measurement_events.py)
+cover these distinctions and replay saved A100/Jetson evidence.
 
 ## Run naming
 

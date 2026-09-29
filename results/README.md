@@ -25,6 +25,16 @@ Jetson feasibility attempt (partial evidence import; no benchmark medians):
 | `jetson-flux-klein-003__profile__20260928-194910` | [jetson-flux-klein-003](../experiments/jetson-flux-klein-003.md) | jetson-orin-nano | jetson-flux-klein-stage-profile | – | – | – | generation succeeded; stage validation failed |
 | `jetson-flux-klein-003__profile__20260928-191418` | [jetson-flux-klein-003](../experiments/jetson-flux-klein-003.md) | jetson-orin-nano | jetson-flux-klein-q4-512-segmented-disk-profile | – | – | – | CUDA events confirmed in supplied stats; original trace import pending |
 
+## Runner refactor smoke checks
+
+Reduced protocol (1 first, no warmup, 1 measured); functional checks, not baseline estimates.
+
+| Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
+|---|---|---|---|---|---|---|---|
+| `a100-flux-klein-001__attempt__20260929-001645` | [a100-flux-klein-001](../experiments/a100-flux-klein-001.md#runner-refactor-smoke-check-2026-09-29) | A100 PCIe, g005 | BF16, reduced smoke protocol | – | – | – | complete (job 11839376); functional only |
+| `a100-sdcpp-flux-klein-001__attempt__20260929-001722` | [a100-sdcpp-flux-klein-001](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-launch-failure-2026-09-29) | A100 PCIe, g005 | BF16, reduced smoke protocol | – | – | – | failed (job 11839376); CUDA shared library missing before load |
+| `a100-sdcpp-flux-klein-001__attempt__20260929-005352` | [a100-sdcpp-flux-klein-001](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-retry-passed-2026-09-29) | A100 PCIe, g010 | BF16, reduced smoke protocol | – | – | – | complete (job 11839470); launch fix verified, functional only |
+
 ## Run directory names
 
 `<experiment-id>__<kind>__<YYYYMMDD-HHMMSS>`, where kind is `baseline` (clean timing run), `profile`
@@ -66,3 +76,5 @@ show the old path from when they were written:
 | `profile/` | `op_table.txt` (committed), `trace.json` (git-ignored), only with `--profile`; `denoise_kernels.md/.json` from `scripts/analyze_profile.py` |
 | `engine/` | stable-diffusion.cpp runs only: harness command, sd.cpp log, raw stage timestamps (see [sdcpp-howto.md](../wiki/methods/sdcpp-howto.md)) |
 | `status.json` | running / complete / failed (+ traceback) |
+| `events.jsonl` | New successful captures: derived load/stage observations and explicit engine buffer messages; unknown timestamps/destinations stay null |
+| `events-metadata.json` | Event schema version, source hashes and limitations; see [definitions](../wiki/methods/baseline-metrics.md#derived-event-records). Historical runs are not rewritten |

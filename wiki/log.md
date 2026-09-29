@@ -2,10 +2,19 @@
 type: project
 summary: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
 status: active
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
 # Log
+
+## [2026-09-29] experiment | sd.cpp runner refactor smoke retry passed
+[Record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-retry-passed-2026-09-29): job 11839470
+completed under `you139`; two generations, stage records and engine audit passed. Functional check only.
+
+## [2026-09-29] experiment | A100 runner smoke checks: PyTorch passed, sd.cpp launch failed
+[PyTorch record](../experiments/a100-flux-klein-001.md#runner-refactor-smoke-check-2026-09-29): reduced protocol passed.
+[sd.cpp record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-launch-failure-2026-09-29): CUDA library path
+missing before model load; launch/error-reporting fixes applied, small retry job 11839470 pending.
 
 ## [2026-09-28] experiment | Jetson 003 stage-labelled profile exported to W&B
 Single profile, not a baseline: host durations under `diag/profile_*`, no `timing/*` or medians

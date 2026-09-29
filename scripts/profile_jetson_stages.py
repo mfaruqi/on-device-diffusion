@@ -1,99 +1,61 @@
 #!/usr/bin/env python3
-"""Single NVTX harness capture; not a repeated baseline runner. Standard library only."""
+"""Single NVTX harness capture; not a repeated baseline runner. Standard library only.
+
+Read capture_profile() for the sequence; jetson_profile.py holds validation,
+jetson_device.py owns system monitoring, and measurement.py records run status.
+"""
+
 import argparse
-import datetime
-import hashlib
 import json
 import os
 from pathlib import Path
 import subprocess
-import sys
+
+from benchlib import write_json
+from jetson_device import TegrastatsMonitor, memory_snapshot
+from jetson_profile import check_config, collect_environment, profile_command, save_profile_results, verified_model_paths
+from measurement import create_run_directory, run_status, sampling
+from measurement_events import export_events
 
 
-def write(path, value):
-    path.write_text(json.dumps(value, indent=2) + '\n')
+def capture_profile(config, run_dir, engine, binary, models):
+    check_config(config)
+    collect_environment(config, engine, binary, run_dir)
+    paths = verified_model_paths(config, models)
+    command = profile_command(config, binary, paths, run_dir)
+    write_json(run_dir / "command.json", {
+        "argv": command,
+        "cache_condition": "All weight files SHA256-read immediately before capture; no cache flush.",
+    })
+    memory_snapshot(run_dir / "memory-before.txt")
+    monitor = TegrastatsMonitor(run_dir / "tegrastats.log", config["protocol"]["tegrastats_interval_ms"])
+    with sampling(monitor):
+        with (run_dir / "profile.log").open("w") as log:
+            code = subprocess.call(command, stdout=log, stderr=subprocess.STDOUT,
+                                   env={**os.environ, "HF_HUB_OFFLINE": "1"})
+        if code:
+            raise RuntimeError(f"Profiler/harness exit code {code}; see {run_dir / 'profile.log'}")
+        save_profile_results(run_dir, config["workload"]["steps"])
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument('--config', type=Path, required=True)
-    p.add_argument('--engine', type=Path, default=Path.home() / 'tools/stable-diffusion.cpp')
-    p.add_argument('--binary', type=Path, default=Path.home() / 'tools/sd-bench-build/sd-bench-nvtx')
-    p.add_argument('--models', type=Path, default=Path.home() / 'models/flux2-klein')
-    a = p.parse_args()
-    c = json.loads(a.config.read_text())
-    r = Path.home() / 'results/runs' / (c['id'] + '__profile__' + datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
-    r.mkdir(parents=True)
-    print(r, flush=True)
-    write(r / 'config.json', c)
-    write(r / 'status.json', {'status': 'running'})
-    monitor = None
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--engine", type=Path, default=Path.home() / "tools/stable-diffusion.cpp")
+    parser.add_argument("--binary", type=Path, default=Path.home() / "tools/sd-bench-build/sd-bench-nvtx")
+    parser.add_argument("--models", type=Path, default=Path.home() / "models/flux2-klein")
+    args = parser.parse_args()
+    config = json.loads(args.config.read_text())
+    run_dir = create_run_directory(config, Path.home() / "results/runs", "profile")
     try:
-        commit = subprocess.check_output(['git', '-C', str(a.engine), 'rev-parse', 'HEAD'], text=True).strip()
-        if commit != c['engine']['commit']:
-            raise RuntimeError('Engine commit differs from config')
-        version = subprocess.check_output(['nsys', '--version'], text=True)
-        power = subprocess.check_output(['sudo', '-n', 'nvpmodel', '-q'], text=True)
-        if 'NV Power Mode: ' + c['required_power_mode'] not in power:
-            raise RuntimeError('Power mode differs from config')
-        write(r / 'environment.json', {'engine_commit': commit, 'nsys': version, 'power_mode': power,
-              'platform': list(os.uname()), 'binary_sha256': hashlib.sha256(a.binary.read_bytes()).hexdigest()})
-        paths = []
-        for part in c['model']['components']:
-            path = a.models / part['local_file']
-            h = hashlib.sha256()
-            with path.open('rb') as f:
-                for chunk in iter(lambda: f.read(8 * 1024 * 1024), b''):
-                    h.update(chunk)
-            if h.hexdigest() != part['sha256']:
-                raise RuntimeError('Weight hash mismatch: ' + str(path))
-            paths.append(str(path))
-        # Hash verification warms the filesystem cache; record this starting condition.
-        cmd = [str(a.binary), '--out-dir', str(r), '--diffusion-model', paths[0], '--llm', paths[1], '--vae', paths[2]]
-        for k, v in c['harness_arguments'].items():
-            cmd.extend(['--' + k, str(v)])
-        cmd = ['nsys', 'profile', '--trace=cuda,nvtx,osrt', '--sample=none', '--cpuctxsw=none', '--output=' + str(r / 'trace')] + cmd
-        write(r / 'command.json', {'argv': cmd, 'cache_condition': 'All weight files SHA256-read immediately before capture; no cache flush.'})
-        (r / 'memory-before.txt').write_text(subprocess.check_output(['free', '-h'], text=True))
-        with (r / 'tegrastats.log').open('w') as mon, (r / 'profile.log').open('w') as log:
-            monitor = subprocess.Popen(['tegrastats', '--interval', '1000'], stdout=mon, stderr=subprocess.STDOUT)
-            code = subprocess.call(cmd, stdout=log, stderr=subprocess.STDOUT, env={**os.environ, 'HF_HUB_OFFLINE': '1'})
-        if code:
-            raise RuntimeError('Profiler/harness exit code ' + str(code))
-        rows = [json.loads(line) for line in (r / 'results.jsonl').read_text().splitlines()]
-        generations = [x for x in rows if x['event'] == 'generate']
-        if len(generations) != 1 or not generations[0]['ok']:
-            raise RuntimeError('Expected one successful generation')
-        g = generations[0]
-        if len(g['t_step_end']) != 4 or g['progress_calls'] != 5 or g['cond_cache_hits']:
-            raise RuntimeError('Unexpected step callbacks or conditioning reuse')
-        times = [g['t_start'], g['t_cond'], g['t_sampling_start'], *g['t_step_end'], g['t_sampling_end'], g['t_decode_end'], g['t_end']]
-        if any(x <= 0 for x in times) or times != sorted(times):
-            raise RuntimeError('Missing or unordered stage boundaries')
-        with (r / 'nsys-stats.txt').open('w') as f:
-            subprocess.run(['nsys', 'stats', '--report', 'nvtx_sum,cuda_gpu_kern_sum,cuda_gpu_mem_time_sum,cuda_api_sum', str(r / 'trace.nsys-rep')], stdout=f, stderr=subprocess.STDOUT, check=True)
-        stats = (r / 'nsys-stats.txt').read_text()
-        for name in ['text_encode', 'vae_decode'] + ['denoise_step_' + str(i) for i in range(4)]:
-            if name not in stats:
-                raise RuntimeError('Missing NVTX label: ' + name)
-        write(r / 'load.json', next(x for x in rows if x['event'] == 'load'))
-        write(r / 'summary.json', {'record_kind': 'single stage-labelled profile', 'measured': None,
-              'stage_callbacks_validated': True, 'nvtx_labels_present': True,
-              'unavailable_metrics': {'baseline': 'No repeated unprofiled generations', 'memory': 'Raw whole-system tegrastats only; no NVML or per-stage peak derived', 'gpu_stage_time': 'Timeline analysis pending'}})
-        # These tables intentionally contain no baseline measurement rows.
-        (r / 'runs.csv').write_text('run_index,wall_ms\n')
-        (r / 'stages.csv').write_text('run_index,stage,wall_ms\n')
-        write(r / 'status.json', {'status': 'complete', 'trace_timeline_review_pending': True})
-    except BaseException as e:
-        write(r / 'status.json', {'status': 'failed', 'error': str(e)})
-        raise
+        with run_status(run_dir) as status:
+            capture_profile(config, run_dir, args.engine, args.binary, args.models)
+            export_events(run_dir, "sdcpp")
+            status["trace_timeline_review_pending"] = True
     finally:
-        if monitor is not None:
-            monitor.terminate()
-            monitor.wait()
-        (r / 'memory-after.txt').write_text(subprocess.check_output(['free', '-h'], text=True))
-        print('Artifacts: ' + str(r), flush=True)
+        memory_snapshot(run_dir / "memory-after.txt")
+        print("Artifacts: " + str(run_dir), flush=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
