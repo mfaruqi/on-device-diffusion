@@ -67,8 +67,14 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 ## Papers
 
+- **[DiCache](papers/dicache.md)** `ingested`: DiCache — shallow online probes control residual reuse and align cached trajectories; probe overhead and quality thresholds remain explicit costs.
+- **[DreamLite](papers/dreamlite.md)** `ingested`: DreamLite — compact distilled phone workload; Android paper timings use precomputed prompts, while the iOS reference uses MLX text encoding and Core ML diffusion stages.
 - **[ExecuTorch: A Unified PyTorch Solution to Run AI Models On-Device (MLSys 2026)](papers/executorch-mlsys2026.md)** `ingested`: ExecuTorch (Meta, MLSys 2026) — PyTorch-native ahead-of-time export plus a lean C++ runtime with pluggable hardware backends; LLM and vision results on phones, no diffusion. Design precedent for memory planning and capability-based backend delegation.
+- **[MetaSchedule](papers/metaschedule.md)** `ingested`: MetaSchedule — composable tensor-program search spaces, validated traces and measured-cost-guided search; precedent for RQ2, not evidence for diffusion plan quality.
+- **[MLC: compiler and runtime precedent](papers/mlc-compiler-precedent.md)** `ingested`: MLC-LLM and Web Stable Diffusion documentation — compilation, tuning history and memory-planning precedents; the proposed joint diffusion planner remains an untested contribution.
 - **[Reading list](papers/reading-list.md)** `unread`: References from the proposal and related work to read. A paper gets its own page only when it is ingested.
+- **[SVDQuant and Nunchaku](papers/svdquant.md)** `ingested`: SVDQuant — low-rank outlier handling enables low-bit diffusion, with Nunchaku kernel fusion needed to control overhead; target support requires verification.
+- **[TeaCache](papers/teacache.md)** `ingested`: TeaCache — adaptive residual reuse from timestep-modulated input differences; polynomial calibration and threshold selection are part of its integration cost.
 
 ## Methods
 

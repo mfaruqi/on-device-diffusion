@@ -12,7 +12,7 @@ is one of: done, partial, not started. Evidence links point to records or pages,
 
 | Week | Dates | Goal (proposal) | Status | Evidence / what's left |
 |---|---|---|---|---|
-| 1 | Sep 28–Oct 2 | Establish A100 and Jetson image baselines; review DreamLite and define the bounded planning hypothesis | **partial** | A100 done for two engines: [PyTorch](../../experiments/a100-flux-klein-001.md), [sd.cpp](../../experiments/a100-sdcpp-flux-klein-001.md). Left: Jetson baseline, DreamLite review, written planning hypothesis |
+| 1 | Sep 28–Oct 2 | Establish A100 and Jetson image baselines; review DreamLite and define the bounded planning hypothesis | **partial** | A100 done for two engines: [PyTorch](../../experiments/a100-flux-klein-001.md), [sd.cpp](../../experiments/a100-sdcpp-flux-klein-001.md). [DreamLite source review](../papers/dreamlite.md) done. Left: Jetson baseline, written planning hypothesis |
 | 2 | Oct 5–9 | Add M1 and A100 Wan baselines; verify iPhone/DreamLite export and device access; specify registry and history records | not started | – |
 | 3 | Oct 12–16 | Compile a denoising region; expose loop dependencies and candidate boundaries; verify target feasibility | not started | – |
 | 4 | Oct 19–23 | Connect stages and one reuse policy; add per-stage provider metadata and iOS measurement capture | not started | – |

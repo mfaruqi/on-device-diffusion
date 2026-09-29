@@ -15,13 +15,13 @@ Week 1 includes "review DreamLite" ([milestones](../project/milestones.md)).
 
 | Group | Reference | Why it matters | Status |
 |---|---|---|---|
-| Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone workload and Core ML/MLX reference; per-stage backend and precision choices | unread (**week 1**) |
-| Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse | unread |
-| Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | interchangeable second reuse policy | unread |
-| Precision | SVDQuant (Li et al., ICLR 2025), arXiv 2411.05007 | 4-bit diffusion, quantization matched to kernels | unread |
+| Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone workload; cached-prompt Android timing versus fresh-prompt protocol | [source review ingested](dreamlite.md); export/access verification pending |
+| Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse; polynomial calibration and threshold cost | [ingested](teacache.md); integration untested |
+| Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | online probe and trajectory alignment; second policy | [ingested](dicache.md); integration untested |
+| Precision | SVDQuant (Li et al., ICLR 2025), arXiv 2411.05007 | low-bit diffusion with fused low-rank kernels | [ingested](svdquant.md); target support unverified |
 | Compiler | TVM (Chen et al., OSDI 2018); Relax (Lai et al., arXiv 2311.02103) | initial compiler foundation | unread |
-| Compiler | TVM MetaSchedule (Shao et al., NeurIPS 2022, arXiv 2205.13603) | persistent tuning database, precedent for history | unread |
-| Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | pass/dispatch/runtime separation; JIT cache | unread |
+| Compiler | TVM MetaSchedule (Shao et al., NeurIPS 2022, arXiv 2205.13603) | composable search, measured-cost ranking and tuning history | [ingested](metaschedule.md) |
+| Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | compilation, tuning history and memory planning; joint-planner distinction | [documentation ingested](mlc-compiler-precedent.md); detailed pass/packaging audit pending |
 | Engines | stable-diffusion.cpp; edge-dit.cpp | engine baselines, auto-fitting | stable-diffusion.cpp in use ([engine](../systems/stable-diffusion-cpp.md)) |
 | Engines | FastVideo; Wan reference implementation | video baselines | unread |
 | Engines | ExecuTorch (Nachin et al., MLSys 2026) | PyTorch-native AOT export and runtime; memory planning and backend-delegation precedent | [ingested](executorch-mlsys2026.md) |

@@ -7,6 +7,16 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] ingest | Reuse, precision, search and phone-workload literature
+Reviewed [TeaCache](papers/teacache.md), [DiCache](papers/dicache.md), [SVDQuant](papers/svdquant.md),
+[MetaSchedule](papers/metaschedule.md) and [DreamLite](papers/dreamlite.md), with primary sources linked per page.
+Reading list and Week 1 review status updated; integration and device verification remain pending.
+
+## [2026-09-28] ingest | MLC compiler and runtime precedent
+[MLC-LLM documentation](https://llm.mlc.ai/docs/compilation/compile_models.html) and
+[Web SD source](https://github.com/mlc-ai/web-stable-diffusion#how) reviewed in
+[precedent page](papers/mlc-compiler-precedent.md): existing capabilities, proposed joint-planner distinction and evidence gaps.
+
 ## [2026-09-28] experiment | Jetson harness callback validation failure
 [Record](../experiments/jetson-flux-klein-003.md#harness-profile-validation-failure): generation succeeded,
 tensor-loading callbacks contaminated step labels; filtering corrected and regression-tested locally.
