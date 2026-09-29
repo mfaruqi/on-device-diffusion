@@ -7,6 +7,14 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] ingest | Jetson stage trace reviewed; W&B handoff prepared
+[Record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile): originals preserved, timeline
+validated, GPU tables and image derived, exporter dry-run passed. No W&B upload performed.
+
+## [2026-09-28] experiment | Corrected Jetson stage profile passed validation
+[Record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile): callback sequence and NVTX
+label presence passed; full trace import/review and repeated unprofiled measurements pending.
+
 ## [2026-09-28] experiment | Jetson harness callback validation failure
 [Record](../experiments/jetson-flux-klein-003.md#harness-profile-validation-failure): generation succeeded,
 tensor-loading callbacks contaminated step labels; filtering corrected and regression-tested locally.

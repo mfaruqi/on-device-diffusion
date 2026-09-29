@@ -1,0 +1,28 @@
+{
+  "record_kind": "single stage-labelled profile",
+  "measured": null,
+  "stage_callbacks_validated": true,
+  "nvtx_labels_present": true,
+  "unavailable_metrics": {
+    "baseline": "No repeated unprofiled generations",
+    "memory": "Raw whole-system tegrastats only; no NVML or per-stage peak derived",
+    "gpu_stage_time": "Per-stage captured GPU activity available in profile/*.json; not a clean GPU timing benchmark."
+  },
+  "trace_timeline_review_pending": false,
+  "monitor_window": {
+    "samples": 100,
+    "ram_peak_gib": 6.82421875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.8759765625,
+    "swap_max_gib": 1.134765625
+  },
+  "segments_reported": {
+    "qwen3": 1,
+    "flux": 1,
+    "vae": 1
+  },
+  "profile_host_diagnostics": {
+    "load_seconds": 64.25476600000002,
+    "generation_seconds": 27.172278000000006
+  }
+}

@@ -209,3 +209,10 @@ identifier for arbitrary models. Loading remains inside the active stage interva
 The affected capture's denoise timings and labels are invalid
 ([failure evidence](../../results/runs/jetson-flux-klein-003__profile__20260928-194910/status.json));
 do not compare them with corrected captures. Existing captures need callback validation.
+
+Imported stage profiles can be reviewed with `scripts/review_jetson_profile.py`. It uses the
+existing `analyze_profile.py` GPU-start-in-NVTX-window rule and rejects captured activities
+crossing a stage end. Kernel-table busy time is the union of captured GPU activity intervals;
+uncovered time is not a measurement of disk I/O. Tegrastats samples retain the existing
+whole-window shared-memory convention, without per-stage alignment. Profile host diagnostics
+remain separate from repeated unprofiled baseline metrics.

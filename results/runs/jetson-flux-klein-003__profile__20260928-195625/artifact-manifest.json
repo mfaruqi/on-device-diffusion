@@ -1,0 +1,74 @@
+{
+  "command.json": {
+    "bytes": 1340,
+    "sha256": "919b7bf3a1707426077d9f8fbbf6d2fb0eda5ac7e5218fe8c5a6a5b08fe36314"
+  },
+  "config.json": {
+    "bytes": 3072,
+    "sha256": "ea2c8e09d71fdfc1436fcf714177605db87fe9e48e5fbf65518ca90bc245c3f2"
+  },
+  "environment.json": {
+    "bytes": 412,
+    "sha256": "24ef95a51475a1bbfba60df7b6e56334ecbbc2dee20653a38c8259fe8720e975"
+  },
+  "load.json": {
+    "bytes": 123,
+    "sha256": "0e3aaa0c3e2d57e5314cd6e92fa6bf62a6f6bd6d3d700ac10ba325f241046c12"
+  },
+  "memory-after.txt": {
+    "bytes": 207,
+    "sha256": "706eaefabe479ad0474d10e13f6eb88ca6fae2131ff2ede5619aff3f2141b552"
+  },
+  "memory-before.txt": {
+    "bytes": 207,
+    "sha256": "f256ba108b298896f60d0d16acd24f660cfc5a9507448ee4e749205aab22f104"
+  },
+  "nsys-stats.txt": {
+    "bytes": 18720,
+    "sha256": "100884a72e2221037f66bf0a72679a2662410236d7dd554fcb68e56b37a1a9ee"
+  },
+  "profile.log": {
+    "bytes": 793,
+    "sha256": "968825bd4e4487c17f836324e2fd4a70d306da350edfb07f47dafd7f843b18cb"
+  },
+  "raw/run-0.rgb": {
+    "bytes": 786432,
+    "sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e"
+  },
+  "results.jsonl": {
+    "bytes": 475,
+    "sha256": "555443465bf1993c2053dd03256113cccd726fcf4bd738755dce4e0625133442"
+  },
+  "runs.csv": {
+    "bytes": 18,
+    "sha256": "ffe8bac4e361e2d954e880200b00ec89b401202405effef98ec538f0a032dbad"
+  },
+  "sdcpp.log": {
+    "bytes": 12475,
+    "sha256": "71243cf338eaf3f4b45e9c6ba60542f4f873f8b407f41e268547ffac41811dc6"
+  },
+  "stages.csv": {
+    "bytes": 24,
+    "sha256": "37cc869eaa8df9c97550d9c6df5c08c3afd5f9c855de685f7144ffb912f03a44"
+  },
+  "status.json": {
+    "bytes": 68,
+    "sha256": "9a8e29c661783e42165bc6f834aa04756c7200b2a8a7eb208295827b1dba2c4e"
+  },
+  "summary.json": {
+    "bytes": 362,
+    "sha256": "22e4bd964a76f93d5dff7182f875c5555f5f5cd6c2127c936e8c1bd134dd2481"
+  },
+  "tegrastats.log": {
+    "bytes": 28639,
+    "sha256": "8f7cbf3049f89f484d1276060c6d8255bc60d1797358820026fc108310c50604"
+  },
+  "trace.nsys-rep": {
+    "bytes": 641101,
+    "sha256": "8e918c559e4287d28a57384c4453cdc23a60a6f760adc68623da854231142d45"
+  },
+  "trace.sqlite": {
+    "bytes": 2002944,
+    "sha256": "a12103b6a2d9e14718f07eb019fb53466bbabde13952dcd2192a6915471377a4"
+  }
+}

@@ -138,5 +138,5 @@ Repeated timing still requires the Jetson memory adapter and baseline runner int
 The transferred bundle built successfully on Jetson with GCC 11.4.0 and CUDA 12.6.68:
 `[100%] Built target sd-bench-nvtx`. An unchecked directory-creation return-value warning
 was emitted; it did not prevent linking ([build evidence](../../raw/jetson-stage-profile-build-2026-09-28.md)).
-This confirms the harness build only. Stage-labelled capture completion and repeated
-measurements remain pending.
+This confirms the harness build only. The corrected harness later passed callback and NVTX label-presence checks
+([record](../../experiments/jetson-flux-klein-003.md#corrected-harness-profile)); the imported timeline has been reviewed. Repeated unprofiled measurements remain pending.

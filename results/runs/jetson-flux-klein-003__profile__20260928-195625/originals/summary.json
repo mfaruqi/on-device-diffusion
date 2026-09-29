@@ -1,0 +1,11 @@
+{
+  "record_kind": "single stage-labelled profile",
+  "measured": null,
+  "stage_callbacks_validated": true,
+  "nvtx_labels_present": true,
+  "unavailable_metrics": {
+    "baseline": "No repeated unprofiled generations",
+    "memory": "Raw whole-system tegrastats only; no NVML or per-stage peak derived",
+    "gpu_stage_time": "Timeline analysis pending"
+  }
+}

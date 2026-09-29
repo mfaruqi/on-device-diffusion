@@ -1,0 +1,10 @@
+{
+  "source": "originals/raw/run-0.rgb",
+  "derived_file": "output.png",
+  "width": 512,
+  "height": 512,
+  "conversion": "Lossless RGB-to-PNG serialization; no resizing or image modifications",
+  "sha256": "b42346b0cab02dcce4c0295e77088f23a36fbcbbf7c35594bbc8a0f6af3581d1",
+  "visual_smoke_check": "passed: coherent cat holding a sign with legible hello world text; no obvious gross corruption",
+  "formal_quality_evaluation": false
+}

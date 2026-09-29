@@ -1,0 +1,79 @@
+{
+  "source": "originals/trace.sqlite and originals/results.jsonl",
+  "sqlite_integrity": "ok",
+  "nvtx_ranges": [
+    {
+      "name": "load",
+      "start_ns": 1829825472,
+      "end_ns": 66098140640,
+      "duration_ms": 64268.315168
+    },
+    {
+      "name": "generate",
+      "start_ns": 66151987488,
+      "end_ns": 93324011520,
+      "duration_ms": 27172.024032
+    },
+    {
+      "name": "text_encode",
+      "start_ns": 66152002176,
+      "end_ns": 68866993088,
+      "duration_ms": 2714.990912
+    },
+    {
+      "name": "denoise_step_0",
+      "start_ns": 69072461184,
+      "end_ns": 80880552000,
+      "duration_ms": 11808.090816
+    },
+    {
+      "name": "denoise_step_1",
+      "start_ns": 80880555584,
+      "end_ns": 83633169792,
+      "duration_ms": 2752.614208
+    },
+    {
+      "name": "denoise_step_2",
+      "start_ns": 83633173088,
+      "end_ns": 86384324864,
+      "duration_ms": 2751.151776
+    },
+    {
+      "name": "denoise_step_3",
+      "start_ns": 86384328000,
+      "end_ns": 89133721824,
+      "duration_ms": 2749.393824
+    },
+    {
+      "name": "vae_decode",
+      "start_ns": 89317829600,
+      "end_ns": 93321769056,
+      "duration_ms": 4003.939456
+    }
+  ],
+  "gpu_activity_counts": {
+    "CUPTI_ACTIVITY_KIND_KERNEL": 5574,
+    "CUPTI_ACTIVITY_KIND_MEMCPY": 1252,
+    "CUPTI_ACTIVITY_KIND_MEMSET": 9
+  },
+  "events_crossing_stage_ends": [],
+  "segments_reported": {
+    "qwen3": 1,
+    "flux": 1,
+    "vae": 1
+  },
+  "monitor_window": {
+    "samples": 100,
+    "ram_peak_gib": 6.82421875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.8759765625,
+    "swap_max_gib": 1.134765625
+  },
+  "limitations": [
+    "One profiled generation; not baseline medians.",
+    "Stage assignment uses GPU start within CPU NVTX range; no events cross the reviewed stage ends.",
+    "Busy time is union of captured GPU activities, not SM utilization; its complement is not proven disk time.",
+    "System RAM samples include startup; no reliable wall-clock-to-stage mapping. Printed MB treated as MiB, consistent with existing Jetson metric convention.",
+    "GPU timestamps and CPU API time overlap; do not sum across those reports."
+  ]
+}

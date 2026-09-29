@@ -4,7 +4,7 @@ id: jetson-flux-klein-003
 status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
+runs: [jetson-flux-klein-003__profile__20260928-195625, jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
 updated: 2026-09-28
 ---
 
@@ -111,7 +111,30 @@ The [194910 capture](../results/runs/jetson-flux-klein-003__profile__20260928-19
 saved one image but failed callback validation: tensor-loading updates were counted as
 sampling progress. Its stage labels and denoise timings are invalid; generation did not
 fail. The corrected harness filters progress totals and checks the sampling sequence.
-Corrected Jetson execution remains pending.
+A corrected capture subsequently passed the callback and label-presence checks (below).
+
+## Corrected harness profile
+
+The [195625 capture](../results/runs/jetson-flux-klein-003__profile__20260928-195625/) reports successful generation,
+five sampling callbacks (start plus four completions), 37 excluded loading callbacks,
+and no conditioning-cache hits. NVTX label-presence checks and imported SQLite timeline review passed ([summary](../results/runs/jetson-flux-klein-003__profile__20260928-195625/summary.json)).
+Host callback durations with the profiler attached are preserved in
+[timing diagnostics](../results/runs/jetson-flux-klein-003__profile__20260928-195625/timing-diagnostics.json).
+These include weight-loading work inside stages and are not repeated baseline measurements.
+
+The imported [trace review](../results/runs/jetson-flux-klein-003__profile__20260928-195625/trace-review.json)
+confirms ordered, nested generation stages and no captured GPU events crossing their ends.
+Qwen3, diffusion and VAE each report one segment in this capture. Whole-window sampled RAM
+peaked at 6.824 GiB; swap occupancy ranged from 0.876 to 1.135 GiB. These are system totals,
+not per-stage memory or swap-I/O measurements.
+
+The [denoising breakdown](../results/runs/jetson-flux-klein-003__profile__20260928-195625/profile/denoise_kernels.md)
+shows substantial time outside captured GPU activity in the first step; this is not a measured
+physical disk-read duration. [Other stages](../results/runs/jetson-flux-klein-003__profile__20260928-195625/profile/other_stages.md)
+are recorded separately. The losslessly converted output passes a
+[visual smoke check](../results/runs/jetson-flux-klein-003__profile__20260928-195625/image-inspection.json).
+The [run README](../results/runs/jetson-flux-klein-003__profile__20260928-195625/README.md)
+describes reproduction, artifact provenance and the W&B handoff; no upload has been performed.
 
 ## Next experiment
 
