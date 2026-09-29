@@ -7,6 +7,10 @@ updated: 2026-09-28
 
 # Log
 
+## [2026-09-28] experiment | Jetson 003 stage-labelled profile exported to W&B
+Single profile, not a baseline: host durations under `diag/profile_*`, no `timing/*` or medians
+([record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile)). Earlier partial/failed profile attempts not exported.
+
 ## [2026-09-28] ingest | Jetson stage trace reviewed; W&B handoff prepared
 [Record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile): originals preserved, timeline
 validated, GPU tables and image derived, exporter dry-run passed. No W&B upload performed.

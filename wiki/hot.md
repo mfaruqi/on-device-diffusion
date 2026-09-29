@@ -17,7 +17,7 @@ hypothesis ([milestones](project/milestones.md)).
   ([record](../experiments/jetson-flux-klein-003.md)); visual smoke check passed.
 
 ## In progress / next
-1. Jetson: corrected stage profile imported/reviewed; W&B handoff prepared, then prepare
+1. Jetson: corrected stage profile imported, reviewed and in W&B; next, prepare
    repeated unprofiled measurements ([record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile)).
 2. DreamLite review ([reading list](papers/reading-list.md)).
 3. Write the bounded planning hypothesis ([RQ3](rq/rq3.md)).
@@ -25,7 +25,7 @@ hypothesis ([milestones](project/milestones.md)).
 
 ## Waiting on
 - Advisor's recommendation for storing and viewing results ([D-007](project/decisions.md#d-007-results-stay-in-run-directories-viewer-undecided)).
-- W&B viewer: all 7 runs exported, linked per experiment in the [registry](experiments.md). Advisor's view still pending.
+- W&B viewer: 11 runs exported (Jetson 003 profile added), linked per experiment in the [registry](experiments.md). Advisor's view still pending.
 
 ## Open questions
 4 unresolved ([open questions](open-questions.md)).

@@ -134,7 +134,8 @@ physical disk-read duration. [Other stages](../results/runs/jetson-flux-klein-00
 are recorded separately. The losslessly converted output passes a
 [visual smoke check](../results/runs/jetson-flux-klein-003__profile__20260928-195625/image-inspection.json).
 The [run README](../results/runs/jetson-flux-klein-003__profile__20260928-195625/README.md)
-describes reproduction, artifact provenance and the W&B handoff; no upload has been performed.
+describes reproduction and artifact provenance. Exported to W&B as a single profile
+([`jetson-flux-klein-003 · profile · OK`](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-003__profile__20260928-195625)); no baseline medians or `timing/*` fields.
 
 ## Next experiment
 
