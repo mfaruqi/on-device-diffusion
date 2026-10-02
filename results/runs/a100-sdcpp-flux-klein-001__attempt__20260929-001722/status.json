@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-09-29T04:17:22Z",
+  "finished_utc": "2026-09-29T04:17:23Z",
+  "error": "FileNotFoundError(2, 'No such file or directory')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion/scripts/measurement.py\", line 83, in run_status\n    yield\n  File \"/home/mfaruqi/on-device-diffusion/scripts/run_sdcpp.py\", line 169, in main\n    benchmark(cfg, run_dir, args.nsys)\n  File \"/home/mfaruqi/on-device-diffusion/scripts/run_sdcpp.py\", line 48, in benchmark\n    eng_dir, load, gens, child_peak_rss = run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys)\n  File \"/home/mfaruqi/on-device-diffusion/scripts/run_sdcpp.py\", line 88, in run_harness\n    results = [json.loads(ln) for ln in (eng_dir / \"results.jsonl\").read_text().splitlines() if ln.strip()]\n  File \"/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/pathlib.py\", line 1134, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\nFileNotFoundError: [Errno 2] No such file or directory: '/home/mfaruqi/on-device-diffusion/results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-001722/engine/results.jsonl'\n"
+}

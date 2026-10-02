@@ -2,10 +2,25 @@
 type: project
 summary: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
 status: active
-updated: 2026-09-28
+updated: 2026-10-02
 ---
 
 # Log
+
+## [2026-10-02] lint | Status and literature links refreshed
+[Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01-haoran-you.md) wording retained with GitHub/W&B links.
+
+## [2026-10-02] ingest | October 1 meeting priorities and engine candidates
+[Meeting memo](../raw/meetings/2026-10-01-haoran-you.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
+
+## [2026-09-29] experiment | sd.cpp runner refactor smoke retry passed
+[Record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-retry-passed-2026-09-29): job 11839470
+completed under `you139`; two generations, stage records and engine audit passed. Functional check only.
+
+## [2026-09-29] experiment | A100 runner smoke checks: PyTorch passed, sd.cpp launch failed
+[PyTorch record](../experiments/a100-flux-klein-001.md#runner-refactor-smoke-check-2026-09-29): reduced protocol passed.
+[sd.cpp record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-launch-failure-2026-09-29): CUDA library path
+missing before model load; launch/error-reporting fixes applied, small retry job 11839470 pending.
 
 ## [2026-09-28] experiment | Jetson 003 stage-labelled profile exported to W&B
 Single profile, not a baseline: host durations under `diag/profile_*`, no `timing/*` or medians

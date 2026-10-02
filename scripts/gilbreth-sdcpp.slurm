@@ -32,7 +32,10 @@ cd "${SLURM_SUBMIT_DIR:-$(pwd)}"
 FLUX_ENV="${FLUX_ENV:-$HOME/.conda/envs/2025.06-py313/flux_env}"
 PYTHON="$FLUX_ENV/bin/python"
 # nvcc / nsys from the same CUDA toolkit the harness was built with.
-export PATH="/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/bin:$PATH"
+SDCPP_CUDA_ROOT="${SDCPP_CUDA_ROOT:-/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp}"
+export PATH="$SDCPP_CUDA_ROOT/bin:$PATH"
+# PATH finds executables; the dynamic loader separately needs the toolkit libraries.
+export LD_LIBRARY_PATH="$SDCPP_CUDA_ROOT/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 export HF_HOME="${HF_HOME:-/scratch/gilbreth/$USER/huggingface}"
 export HF_HUB_OFFLINE=1

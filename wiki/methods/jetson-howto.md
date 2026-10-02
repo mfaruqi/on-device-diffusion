@@ -2,7 +2,7 @@
 type: method
 summary: Jetson access, CUDA setup, and stage-labelled profiling bundle transfer, build and capture procedures.
 status: active
-updated: 2026-09-28
+updated: 2026-09-29
 ---
 
 # Working on the Jetson Orin Nano
@@ -80,7 +80,7 @@ ordering and NVTX label presence. Original CLI and harness profiles are distinct
 ### What was sent and why
 
 The [source bundle](../../bundles/README.md) was introduced in commit `e6be8fb`
-on `feat/jetson-stage-profile`. It contains four files:
+on `feat/jetson-stage-profile`. Its original four files were:
 
 | File | Purpose |
 |---|---|
@@ -88,6 +88,14 @@ on `feat/jetson-stage-profile`. It contains four files:
 | [CMakeLists.txt](../../engines/sdcpp/CMakeLists.txt) | Links the harness against existing sd.cpp static libraries; adds an NVTX3 header fallback for Jetson's older CMake. |
 | [profile_jetson_stages.py](../../scripts/profile_jetson_stages.py) | Checks the engine commit, model hashes and power mode, runs Nsight plus tegrastats, and checks stage callbacks and labels. |
 | [profile config](../../configs/jetson-flux-klein-stage-profile.json) | Specifies one generation with the successful quantized, disk-backed Jetson settings and explicit harness arguments. |
+
+The refactored capture also ships five standard-library helper modules:
+`jetson_profile.py`, `jetson_device.py`, `measurement.py`, `measurement_events.py` and `benchlib.py`.
+[The bundle builder](../../scripts/build_jetson_bundle.py) packages all nine files;
+[CPU tests](../../tests/test_jetson_capture.py) verify saved command/schema compatibility,
+monitor cleanup and execution of the extracted CLI. The refactored capture has not yet
+been run on Jetson hardware. Rebuild and transfer the entire archive, not only the
+entry script ([bundle instructions](../../bundles/README.md)).
 
 The archive contains source/configuration, not model weights or compiled executables.
 The existing engine checkout at `~/tools/stable-diffusion.cpp` provides the built CUDA
