@@ -25,7 +25,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 ## Research questions
 
-- **[RQ1: Which diffusion optimization choices transfer across devices and workloads?](rq/rq1.md)**: RQ1 — which diffusion optimization choices transfer across devices and workloads. Evidence so far — one A100 engine comparison.
+- **[RQ1: Which diffusion optimization choices transfer across devices and workloads?](rq/rq1.md)**: RQ1 — one matched A100 engine comparison; Jetson feasibility and repeated baseline evidence exist, but matched cross-device transfer remains untested.
 - **[RQ2: Can structure, hardware information, and persistent history select effective plans at low cost?](rq/rq2.md)**: RQ2 — can structure, hardware information and persistent history select effective plans at low cost. No evidence yet.
 - **[RQ3: Does joint planning with bounded runtime adaptation outperform fixed or independently tuned policies?](rq/rq3.md)**: RQ3 — does joint planning with bounded runtime adaptation beat fixed or independently tuned policies. Candidate levers identified, nothing tested.
 
@@ -69,7 +69,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 - **[DiCache](papers/dicache.md)** `ingested`: DiCache — shallow online probes control residual reuse and align cached trajectories; probe overhead and quality thresholds remain explicit costs.
 - **[DreamLite](papers/dreamlite.md)** `ingested`: DreamLite — compact distilled phone workload; Android paper timings use precomputed prompts, while the iOS reference uses MLX text encoding and Core ML diffusion stages.
-- **[ExecuTorch: A Unified PyTorch Solution to Run AI Models On-Device (MLSys 2026)](papers/executorch-mlsys2026.md)** `ingested`: ExecuTorch (Meta, MLSys 2026) — PyTorch-native ahead-of-time export plus a lean C++ runtime with pluggable hardware backends; LLM and vision results on phones, no diffusion. Design precedent for memory planning and capability-based backend delegation.
+- **[ExecuTorch: A Unified PyTorch Solution to Run AI Models On-Device (MLSys 2026)](papers/executorch-mlsys2026.md)** `ingested`: ExecuTorch — deployment infrastructure with existing diffusion export and calibration recipes; automatic joint recipe selection is unverified, and a research contribution requires a closer prior-work audit.
 - **[MetaSchedule](papers/metaschedule.md)** `ingested`: MetaSchedule — composable tensor-program search spaces, validated traces and measured-cost-guided search; precedent for RQ2, not evidence for diffusion plan quality.
 - **[MLC: compiler and runtime precedent](papers/mlc-compiler-precedent.md)** `ingested`: MLC-LLM and Web Stable Diffusion documentation — compilation, tuning history and memory-planning precedents; the proposed joint diffusion planner remains an untested contribution.
 - **[Reading list](papers/reading-list.md)** `unread`: References from the proposal and related work to read. A paper gets its own page only when it is ingested.

@@ -56,3 +56,6 @@ results/runs/**/*.qdstrm
 results/runs/**/*.sqlite
 results/runs/**/*.log
 results/runs/**/*.png
+
+# Harness RGB outputs, including imported originals
+results/runs/**/*.rgb

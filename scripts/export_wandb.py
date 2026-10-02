@@ -120,7 +120,8 @@ def describe(run_dir):
         "protocol": cfg.get("protocol"),
         "optimizations": opt,
         "engine_settings": cfg.get("engine_settings"),
-        "power_mode": cfg.get("power_mode_observed_before_run") or cfg.get("required_power_mode"),
+        "power_mode": (env.get("power_mode") or cfg.get("power_mode_observed_before_run")
+                       or cfg.get("required_power_mode")),
         "model_storage": model_storage(env, device),
     }
 
@@ -144,31 +145,44 @@ def describe(run_dir):
         if v is not None:
             summary[f"first/{k}"] = v
     load = summ.get("load") or read_json(run_dir / "load.json")
-    if "load_total_s" in load:
+    if "load_total_s" in load and kind != "profile":
         summary["load_total_s"] = load["load_total_s"]
     if "deterministic_output" in summ:
         summary["deterministic_output"] = summ["deterministic_output"]
     for k, v in (summ.get("engine_log_diagnostics") or {}).items():
         summary[f"diag/{k}"] = v   # single-attempt engine-log durations; not protocol medians
-    mw = read_json(run_dir / "feasibility-analysis.json").get("monitor_window") or {}
+    mw = (read_json(run_dir / "feasibility-analysis.json").get("monitor_window")
+          or summ.get("monitor_window") or {})
     if "ram_peak_gib" in mw:
         summary["diag/system_ram_peak_gib"] = mw["ram_peak_gib"]   # tegrastats, 1 s sampling
         summary["diag/system_ram_total_gib"] = mw.get("ram_total_gib")
     # Uniform benchmark timing. W&B's own "Runtime" column is the duration of this export, not the
     # benchmark, and can't be set; these fields are what to look at instead.
     diag = summ.get("engine_log_diagnostics") or {}
-    if measured.get("wall_ms"):
+    if kind == "profile":
+        # A profiler was attached: its durations are diagnostics, never the uniform timing columns.
+        td = read_json(run_dir / "timing-diagnostics.json")
+        for k in ("load_seconds", "generation_seconds", "text_encode_seconds", "vae_decode_seconds"):
+            if isinstance(td.get(k), (int, float)):
+                summary[f"diag/profile_{k}"] = td[k]
+        for i, v in enumerate(td.get("denoise_step_seconds") or []):
+            summary[f"diag/profile_denoise_step_{i}_seconds"] = v
+        if td.get("scope"):
+            summary["diag/profile_scope"] = td["scope"]
+    elif measured.get("wall_ms"):
         summary["timing/generate_s"] = measured["wall_ms"]["median"] / 1000
         summary["timing/generate_basis"] = f"median of {measured['wall_ms']['n']} measured generations"
     elif "generate_image_seconds" in diag:
         summary["timing/generate_s"] = diag["generate_image_seconds"]
         summary["timing/generate_basis"] = "single attempt, engine-log duration (not a protocol median)"
-    if "load_total_s" in load:
+    if kind == "profile":
+        pass
+    elif "load_total_s" in load:
         summary["timing/load_s"] = load["load_total_s"]
     elif "initial_tensor_loading_seconds" in diag:
         summary["timing/load_s"] = diag["initial_tensor_loading_seconds"]
     t0, t1 = stat.get("started_utc"), stat.get("finished_utc")
-    if t0 and t1:
+    if t0 and t1 and kind != "profile":
         import datetime as dt
         f = lambda t: dt.datetime.strptime(t, "%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
         summary["timing/job_wall_s"] = (f(t1) - f(t0)).total_seconds()

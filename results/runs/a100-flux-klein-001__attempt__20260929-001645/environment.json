@@ -1,0 +1,47 @@
+{
+  "timestamp_utc": "2026-09-29T04:16:52Z",
+  "hostname": "gilbreth-g005.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-611.16.1.el9_7.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "python_executable": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/bin/python",
+  "torch": "2.5.1+cu121",
+  "torch_cuda_runtime": "12.1",
+  "cudnn": 90100,
+  "diffusers": "0.40.0",
+  "transformers": "5.16.1",
+  "gpu_name": "NVIDIA A100-PCIE-40GB",
+  "gpu_total_memory_gib": 39.4935302734375,
+  "gpu_uuid": "ade9b078-8aa4-36b8-7053-dfc5de446412",
+  "gpu_sm_count": 108,
+  "gpu_compute_capability": "8.0",
+  "nvidia_driver": "590.48.01",
+  "sdp_backends_enabled": {
+    "flash": true,
+    "mem_efficient": true,
+    "math": true
+  },
+  "tf32_matmul": false,
+  "device_memory_sampler": "nvml handle by uuid GPU-ade9b078-8aa4-36b8-7053-dfc5de446412",
+  "git_commit": "cb76036b245b5e880a45b5de8f81be8af10fc2f0",
+  "git_dirty_files": [
+    "M scripts/run_flux.py",
+    " M scripts/run_sdcpp.py",
+    "?? results/runs/a100-flux-klein-001__attempt__20260929-001645/",
+    "?? scripts/README.md",
+    "?? scripts/flux_engine.py",
+    "?? scripts/measurement.py",
+    "?? scripts/sdcpp_engine.py",
+    "?? scripts/torch_stages.py",
+    "?? tests/test_measurement.py"
+  ],
+  "env_vars": {
+    "SLURM_JOB_ID": "11839376",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g005",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": "/scratch/gilbreth/mfaruqi/huggingface",
+    "HF_HUB_OFFLINE": "1"
+  }
+}

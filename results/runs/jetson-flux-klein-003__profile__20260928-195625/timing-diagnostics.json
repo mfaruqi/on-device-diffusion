@@ -1,0 +1,14 @@
+{
+  "source": "results.jsonl (transcribed from supplied terminal output)",
+  "scope": "Host callback durations with profiler attached; not baseline medians or pure GPU compute time",
+  "load_seconds": 64.25476600000002,
+  "generation_seconds": 27.172278000000006,
+  "text_encode_seconds": 2.715007999999216,
+  "denoise_step_seconds": [
+    11.808210000001054,
+    2.7526440000001458,
+    2.751182999998491,
+    2.749427000000651
+  ],
+  "vae_decode_seconds": 4.003978999999163
+}

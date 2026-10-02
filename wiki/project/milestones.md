@@ -2,7 +2,7 @@
 type: project
 summary: Milestone status per week (Sep 28 – Dec 11, 2026). Goals are from the proposal; status and evidence are updated as work lands.
 status: active
-updated: 2026-09-28
+updated: 2026-10-02
 ---
 
 # Milestones
@@ -12,8 +12,8 @@ is one of: done, partial, not started. Evidence links point to records or pages,
 
 | Week | Dates | Goal (proposal) | Status | Evidence / what's left |
 |---|---|---|---|---|
-| 1 | Sep 28–Oct 2 | Establish A100 and Jetson image baselines; review DreamLite and define the bounded planning hypothesis | **partial** | A100 done for two engines: [PyTorch](../../experiments/a100-flux-klein-001.md), [sd.cpp](../../experiments/a100-sdcpp-flux-klein-001.md). [DreamLite source review](../papers/dreamlite.md) done. Left: Jetson baseline, written planning hypothesis |
-| 2 | Oct 5–9 | Add M1 and A100 Wan baselines; verify iPhone/DreamLite export and device access; specify registry and history records | not started | – |
+| 1 | Sep 28–Oct 2 | Establish A100 and Jetson image baselines; review DreamLite and define the bounded planning hypothesis | **partial** | A100 done for two engines: [PyTorch](../../experiments/a100-flux-klein-001.md), [sd.cpp](../../experiments/a100-sdcpp-flux-klein-001.md). Jetson repeated baseline/profile results available ([record](../../experiments/jetson-flux-klein-003.md), [viewer](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/jetson-flux-klein-003)); [DreamLite source review](../papers/dreamlite.md) ingested, device/export validation pending. Left: written planning hypothesis. |
+| 2 | Oct 5–9 | Add M1 and A100 Wan baselines; verify iPhone/DreamLite export and device access; specify registry and history records | not started | Further DreamLite work temporarily deferred; image-engine profiling/options prioritized ([D-009](decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)). Proposal goal retained. |
 | 3 | Oct 12–16 | Compile a denoising region; expose loop dependencies and candidate boundaries; verify target feasibility | not started | – |
 | 4 | Oct 19–23 | Connect stages and one reuse policy; add per-stage provider metadata and iOS measurement capture | not started | – |
 | 5 | Oct 26–30 | Implement bounded joint search using rules and measured costs; prepare compatible execution variants | not started | – |

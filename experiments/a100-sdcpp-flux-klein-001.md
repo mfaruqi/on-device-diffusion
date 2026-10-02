@@ -4,8 +4,8 @@ id: a100-sdcpp-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: stable-diffusion-cpp
-runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021]
-updated: 2026-09-25
+runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021, a100-sdcpp-flux-klein-001__attempt__20260929-001722, a100-sdcpp-flux-klein-001__attempt__20260929-005352]
+updated: 2026-09-29
 ---
 
 # a100-sdcpp-flux-klein-001: FLUX.2 [klein] 4B with stable-diffusion.cpp on one A100-PCIE-40GB
@@ -175,3 +175,39 @@ An earlier attempt (job 11817920, `gilbreth-g006`) failed at nsys startup: "Fail
 - One-change variants of this config: `vae_conv_direct`, `vae_tiling`, and quantized diffusion model
   weights (GGUF Q8_0/Q4_0, reported as a changed checkpoint).
 - Cross-engine comparison with the PyTorch reference: [compare-a100-pytorch-vs-sdcpp-flux-klein.md](compare-a100-pytorch-vs-sdcpp-flux-klein.md).
+
+## Runner refactor launch failure (2026-09-29)
+
+[Failed run artifacts](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-001722/), Slurm job `11839376`, account `you139`,
+node `gilbreth-g005`. The [saved config](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-001722/config.json) preserves
+the pinned BF16 workload and explicitly uses **1 first + 0 warmup + 1 measured**
+generation for a functional smoke check, with no profiling or downloads.
+
+The child process failed before model loading: the retained local `engine/stdout.txt`
+reports that `libcudart.so.12` could not be found (raw logs are not committed). No generation timestamps or timing
+summary exist. The [status traceback](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-001722/status.json) instead
+shows `FileNotFoundError` for `engine/results.jsonl`, because the wrapper tried to
+parse output before checking the child exit code.
+
+The launch scripts now explicitly expose the CUDA 12.6 toolkit's `lib64` directory
+through `LD_LIBRARY_PATH`. The wrapper now checks the child exit code before parsing
+results and includes the child error in failure status. CPU regression tests cover
+this launch failure and a successful exit that fails to create results. A small
+sd.cpp-only retry was submitted as job `11839470`; its completed outcome is recorded below. The failed
+artifacts are retained unchanged.
+
+## Runner refactor retry passed (2026-09-29)
+
+[Run artifacts](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-005352/), Slurm job `11839470`, account `you139`,
+node `gilbreth-g010`, A100-PCIE-40GB. The same reduced smoke configuration was used: one first
+and one measured generation, no warmups, profiling or downloads. The CUDA 12.6 library
+path is explicit in `environment.json`; pinned engine/weights and workload are unchanged.
+
+[Status](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-005352/status.json) is complete.
+[runs.csv](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-005352/runs.csv) has two rows, and
+[stages.csv](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-005352/stages.csv) has six stages per generation
+(text, four denoising steps and VAE). The [summary](../results/runs/a100-sdcpp-flux-klein-001__attempt__20260929-005352/summary.json)
+has no engine-audit problems. Load, environment, images and summary artifacts were produced.
+The Slurm job completed with exit code 0 in 25 seconds. This verifies the launch fix and
+refactored runner's functional path. One measured sample is not a latency distribution or
+quality evaluation, and the single-sample determinism flag is not evidence of repeatability.
