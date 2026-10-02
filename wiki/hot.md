@@ -14,6 +14,8 @@ October 1 priorities: deeper profiling and engine/option baselines; FastVideo an
 - A100-PCIE baselines for FLUX.2 klein with two engines, plus their comparison ([registry](experiments.md)).
 - Wiki set up ([SCHEMA.md](SCHEMA.md)).
 - Jetson disk-backed sd.cpp repeated baseline, targeted profile and full 14-generation profile validated/exported; ten measured observations ([record](../experiments/jetson-flux-klein-003.md)).
+- MLC documentation reviewed: [compiler precedents and proposed distinction](papers/mlc-compiler-precedent.md).
+- Core reuse, precision and search papers reviewed; [DreamLite](papers/dreamlite.md) timing scope checked ([reading list](papers/reading-list.md)).
 - Measurement refactor complete: readable runners, monitors, analysis and derived events;
   40 CPU checks pass locally/on Gilbreth, both A100 smoke checks pass ([validation](../scripts/README.md#compatibility-and-checks)).
 

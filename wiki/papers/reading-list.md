@@ -19,13 +19,13 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 
 | Group | Reference | Why it matters | Status |
 |---|---|---|---|
-| Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone workload and Core ML/MLX reference; per-stage backend and precision choices | [source review ingested](dreamlite.md); export/device validation pending, further work temporarily deferred |
-| Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse | [source review ingested](teacache.md); target integration unverified |
-| Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | interchangeable second reuse policy | [source review ingested](dicache.md); target integration unverified |
-| Precision | SVDQuant (Li et al., ICLR 2025), arXiv 2411.05007 | 4-bit diffusion, quantization matched to kernels | [source review ingested](svdquant.md); target integration unverified |
+| Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone/Core ML/MLX reference; cached-prompt Android timing versus fresh-prompt protocol | [source review ingested](dreamlite.md); export/device validation pending, further work temporarily deferred |
+| Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse; polynomial calibration and threshold cost | [source review ingested](teacache.md); target integration unverified |
+| Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | online probe and trajectory alignment; second policy | [source review ingested](dicache.md); target integration unverified |
+| Precision | SVDQuant (Li et al., ICLR 2025), arXiv 2411.05007 | low-bit diffusion with fused low-rank kernels | [source review ingested](svdquant.md); target integration unverified |
 | Compiler | TVM (Chen et al., OSDI 2018); Relax (Lai et al., arXiv 2311.02103) | initial compiler foundation | unread |
-| Compiler | TVM MetaSchedule (Shao et al., NeurIPS 2022, arXiv 2205.13603) | persistent tuning database, precedent for history | [source review ingested](metaschedule.md) |
-| Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | pass/dispatch/runtime separation; JIT cache | [source review ingested](mlc-compiler-precedent.md) |
+| Compiler | TVM MetaSchedule (Shao et al., NeurIPS 2022, arXiv 2205.13603) | composable search, measured-cost ranking and tuning history | [source review ingested](metaschedule.md) |
+| Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | compilation, tuning history and memory planning; joint-planner distinction | [source review ingested](mlc-compiler-precedent.md); detailed pass/packaging audit pending |
 | Engines | stable-diffusion.cpp; [edge-dit.cpp](https://github.com/THU-MIG/edge-dit.cpp) | engine baselines, auto-fitting | stable-diffusion.cpp in use ([engine](../systems/stable-diffusion-cpp.md)); edge-dit.cpp next for feasibility screening ([memo](../../raw/meetings/2026-10-01-haoran-you.md#to-do)) |
 | Engine candidates | [LightX2V](https://github.com/ModelTC/LightX2V) | screen an additional inference framework for supported model/device combinations and integration effort; Weeks 1-2 / RQ1 | suggested candidate; detailed review and local validation pending |
 | Engine candidates | [TensorRT diffusion pipeline](https://github.com/NVIDIA/TensorRT/tree/main/demo/Diffusion) | screen NVIDIA inference support, export/build requirements, and device compatibility; Weeks 1-2 / RQ1 | suggested candidate; exact FLUX.2 klein and Jetson support unverified |

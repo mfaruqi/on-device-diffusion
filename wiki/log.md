@@ -7,6 +7,9 @@ updated: 2026-10-02
 
 # Log
 
+## [2026-10-02] lint | Resolve wiki branch conflicts without restoring stale status
+Reconciled five conflicting wiki files against current [milestones](project/milestones.md), [priorities](hot.md) and [reading list](papers/reading-list.md); retained literature-review history and regenerated the index. No measurement or runner changes.
+
 ## [2026-10-02] lint | Status and literature links refreshed
 [Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01-haoran-you.md) wording retained with GitHub/W&B links.
 
@@ -91,6 +94,16 @@ Paper page [executorch-mlsys2026](papers/executorch-mlsys2026.md); related-evide
 ## [2026-09-28] schema | Wiki created from notes/
 Split `notes/` into `experiments/` (records) and `wiki/` (curated). See [SCHEMA.md](SCHEMA.md). Seeded
 project, RQ, finding, system and concept pages from the A100 work.
+
+## [2026-09-28] ingest | Reuse, precision, search and phone-workload literature
+Reviewed [TeaCache](papers/teacache.md), [DiCache](papers/dicache.md), [SVDQuant](papers/svdquant.md),
+[MetaSchedule](papers/metaschedule.md) and [DreamLite](papers/dreamlite.md), with primary sources linked per page.
+Reading list and Week 1 review status updated; integration and device verification remain pending.
+
+## [2026-09-28] ingest | MLC compiler and runtime precedent
+[MLC-LLM documentation](https://llm.mlc.ai/docs/compilation/compile_models.html) and
+[Web SD source](https://github.com/mlc-ai/web-stable-diffusion#how) reviewed in
+[precedent page](papers/mlc-compiler-precedent.md): existing capabilities, proposed joint-planner distinction and evidence gaps.
 
 ## [2026-09-26] decision | Shared initial noise from sd.cpp's Philox RNG (proposed)
 [D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed). Not implemented yet.
