@@ -30,7 +30,9 @@ under the [evaluation rules](../project/overview.md#evaluation-rules).
   and [iPhone](../systems/iphone.md) measurements remain planned.
 - No second workload yet: [Wan 2.1 T2V-1.3B](../systems/wan2-1-t2v-1-3b.md) and [DreamLite-mobile](../systems/dreamlite-mobile.md) are planned.
 - Jetson feasibility configurations change memory execution choices ([records](../experiments.md));
-  controlled latency/quality comparisons of optimization policies remain to be established. No reuse policy is measured yet ([reuse](../concepts/cross-step-reuse.md)).
+  single-device option comparisons exist (reuse effects reverse between 4 and 50 steps:
+  [finding](../findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md)), but cross-device transfer of a policy
+  is untested ([reuse](../concepts/cross-step-reuse.md)).
 - No quality measurement. Shared initial noise is needed first ([D-006](../project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
 
 ## Next

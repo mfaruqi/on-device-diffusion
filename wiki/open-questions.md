@@ -45,6 +45,14 @@ the resolution with a link. See [SCHEMA.md](SCHEMA.md#writing-rules), rule 4.
   the reply did not rank the remaining targets ([answer](../raw/meetings/2026-10-06-advisor-scope.md#scope-question-and-answer)).
 - Status: Unresolved
 
+### Is Jetson weight-reload time storage-bound or page-cache-bound?
+- Evidence: the same transformer reload is much faster when the text encoder was not re-read in that
+  generation ([finding](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md)), and loading dominates
+  4-step generations ([finding](findings/weight-reloading-dominates-disk-backed-jetson-generations.md)).
+- Not established: file-cache residency, physical microSD reads, or allocation cost; none were measured
+  ([record](../experiments/jetson-flux-klein-003.md)).
+- Status: Unresolved
+
 ## Archive
 
 (none yet)

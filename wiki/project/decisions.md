@@ -108,6 +108,21 @@ superseded record moves to Archive with a link to the one that replaced it.
   - MLC-LLM's existing Qwen3 support is a candidate text-encoder path, but its match to klein's encoder use is untested.
 - **Revisit if**: the Week 3 import gate for klein's transformer in TVM fails, or the advisor names a different priority target.
 
+### D-011: Build the compiled pipeline MLC-style on TVM, with an engine-level planner fallback (proposed)
+- **Date**: 2026-10-06
+- **Decision (proposed, not yet approved)**:
+  - **Model import, two stages.** First, `torch.export` → TVM Relax import, to pass the Week 3 numerics gate. Then rewrite klein's transformer and VAE in TVM's `nn` model API, as MLC-LLM defines its models, so quantization points and cache cut points are under the project's control.
+  - **Reuse from MLC-LLM:** its Qwen3 definition (pending a match check), group quantization and fused dequantize passes, static memory planning, and its WebGPU runtime. On CUDA, dispatch GEMMs and attention to library kernels where they win; tune elsewhere.
+  - **Engine-level planner first.** In parallel, build the planner's registry, history and search over existing engine options (stable-diffusion.cpp flags, edge-dit.cpp auto-fit, `torch.compile`), so the research does not wait on TVM.
+- **Why**:
+  - TVM is the only option assessed that reaches CUDA, Metal and WebGPU from one model definition *and* exposes a graph the planner can analyze ([levels](../concepts/kernel-graph-plan-search.md), [D-010](#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)).
+  - The alternatives each lose the browser target or the graph: a planner over ggml/stable-diffusion.cpp has no web build and no IR; PyTorch with ExecuTorch has no web target; ONNX Runtime exposes a graph but not custom loop control.
+- **Gates**:
+  - **Week 3:** the klein transformer imports into TVM and matches diffusers numerically.
+  - **Week 6:** klein runs in a browser via WebGPU; browser memory limits likely require stage-by-stage loading ([milestones](milestones.md#revised-schedule)).
+  - **On failure:** fall back to the engine-level planner (or ONNX Runtime for the web target), recorded as a new decision.
+- **Revisit if**: either gate fails, or the user/advisor prefers another stack.
+
 ## Archive
 
 (none yet)

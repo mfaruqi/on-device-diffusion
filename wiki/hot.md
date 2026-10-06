@@ -28,8 +28,10 @@ Schedule is optimistic with roll-over allowed ([milestones](project/milestones.m
 1. TVM sandbox: import a small randomly initialized FLUX-style transformer on CPU; inspect the IR, fusion and memory planning.
 2. Week 3 gate: import klein's transformer step into TVM Relax and match PyTorch numerics on CUDA ([milestones](project/milestones.md#revised-schedule)).
 3. MacBook Air M5 setup: sd.cpp Metal smoke ([system](systems/macbook-air-m5.md)).
-4. Write the bounded planning hypothesis ([RQ3](rq/rq3.md)); ingest CacheQuant, Q&C and MoDiff before any novelty claim ([reading list](papers/reading-list.md)).
-5. Shared initial noise for engine comparisons remains proposed ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
+4. Review the draft planning hypothesis and three candidate contributions ([RQ3](rq/rq3.md)); review CacheQuant and Q&C before any novelty claim ([reading list](papers/reading-list.md)).
+5. Approve or revise the TVM approach and engine-level planner fallback ([D-011, proposed](project/decisions.md#d-011-build-the-compiled-pipeline-mlc-style-on-tvm-with-an-engine-level-planner-fallback-proposed)).
+6. Shared initial noise for engine comparisons remains proposed ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
 
 ## Open
-- Next target after WebGPU (Android vs AMD/Intel) and four earlier questions ([open questions](open-questions.md)).
+- Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
+- New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).

@@ -27,20 +27,25 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 ## Research questions
 
 - **[RQ1: Which diffusion optimization choices transfer across devices and workloads?](rq/rq1.md)**: RQ1 — one matched A100 engine comparison; Jetson feasibility and repeated baseline evidence exist, but matched cross-device transfer remains untested.
-- **[RQ2: Can structure, hardware information, and persistent history select effective plans at low cost?](rq/rq2.md)**: RQ2 — can structure, hardware information and persistent history select effective plans at low cost. No evidence yet.
-- **[RQ3: Does joint planning with bounded runtime adaptation outperform fixed or independently tuned policies?](rq/rq3.md)**: RQ3 — does joint planning with bounded runtime adaptation beat fixed or independently tuned policies. Candidate levers identified, nothing tested.
+- **[RQ2: Can structure, hardware information, and persistent history select effective plans at low cost?](rq/rq2.md)**: RQ2 — can structure, hardware information and persistent history select effective plans at low cost. Seed measurements exist; selection untested.
+- **[RQ3: Does joint planning with bounded runtime adaptation outperform fixed or independently tuned policies?](rq/rq3.md)**: RQ3 — does joint planning with bounded runtime adaptation beat fixed or independently tuned policies. Jetson option evidence shows workload-dependent and non-additive effects; draft planning hypothesis and planner design written; no planner tested.
 
 ## Findings
 
 - **[A100-SXM4 runs faster than A100-PCIE for the same configuration](findings/a100-sxm4-runs-faster-than-a100-pcie.md)** `supported`: The same sd.cpp configuration runs 5.6% faster on Gilbreth's A100-SXM4-40GB nodes than on A100-PCIE-40GB nodes; the two must not share a device label.
 - **[BF16 GEMM time transfers across PyTorch and stable-diffusion.cpp](findings/bf16-gemm-time-matches-across-pytorch-and-sdcpp.md)** `supported`: With identical BF16 weights, per-step GEMM time on A100-PCIE is within ~7% between PyTorch (cuBLAS) and sd.cpp (cuBLAS via ggml).
+- **[Combined reuse savings overlap on the Jetson Base workload](findings/combined-reuse-savings-overlap-on-jetson-base.md)** `supported`: On Jetson klein Base, EasyCache plus exact conditioning reuse is faster than either alone but saves less than the two separate savings added together.
+- **[Exact conditioning reuse removes most of the Jetson reload time](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md)** `supported`: On Jetson with disk-backed weights, reusing the encoded prompt cuts a 4-step distilled generation about 3.9x, more than skipping text encoding alone explains.
 - **[ggml flash attention is ~4× slower than PyTorch SDPA-flash at 4608 tokens](findings/ggml-flash-attention-4x-slower-than-sdpa-flash-at-4608-tokens.md)** `supported`: For FLUX.2 klein's attention shape (B1, H24, S4608, D128) on A100-PCIE, ggml's F16 flash-attention kernel takes ~4× the time of PyTorch SDPA-flash.
 - **[ggml's FP32 activations cost ~70 ms per denoise step](findings/ggml-fp32-activations-add-conversion-and-idle-time.md)** `supported`: sd.cpp's FP32-activation design adds ~37 ms of dtype conversion, ~12 ms of host-device copies and ~20 ms of GPU idle per denoise step compared with PyTorch.
 - **[A third of a PyTorch denoise step is unfused memory-bound ops](findings/pytorch-denoise-step-third-in-unfused-memory-bound-ops.md)** `supported`: In the PyTorch reference on A100-PCIE, about a third of each FLUX.2 klein denoise step is unfused memory-bound ops; GEMMs already run near peak and the GPU is almost never idle.
+- **[sd.cpp auto-fit fails the first text encoding on the Jetson](findings/sdcpp-auto-fit-fails-first-text-encoding-on-jetson.md)** `supported`: sd.cpp auto-fit on Jetson placed the transformer on the GPU and the text encoder and VAE in CPU memory, then failed the first text encoding.
 - **[stable-diffusion.cpp has a much smaller cold-start cost than PyTorch](findings/sdcpp-starts-faster-than-pytorch.md)** `supported`: sd.cpp loads FLUX.2 klein 2.6× faster than PyTorch and its first generation is only ~7% slower than a warm one, versus 2.55× for PyTorch.
 - **[sd.cpp's VAE decode is dominated by im2col](findings/sdcpp-vae-decode-dominated-by-im2col.md)** `supported`: In sd.cpp, two thirds of FLUX.2 klein's VAE decode GPU time at 1024² is the im2col step of its convolutions; the decode is 3.65× slower than PyTorch's.
+- **[Step caching helps at 50 steps but not at 4 on the Jetson](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md)** `supported`: On Jetson, sd.cpp EasyCache cuts a 50-step klein Base generation by 44% (25 of 50 steps skipped) but makes the 4-step distilled generation slower (no steps skipped).
 - **[The text encoder is half the weights for a few percent of the time](findings/text-encoder-half-of-weights-little-of-time.md)** `supported`: In FLUX.2 klein the Qwen3 text encoder is half of the BF16 weights (7.49 of 14.87 GiB) but ~4% of warm latency, and is idle during denoise and decode.
 - **[The VAE decode sets FLUX.2 klein's peak memory](findings/vae-decode-sets-peak-memory.md)** `supported`: For FLUX.2 klein at 1024² on the A100, the VAE decode — not the transformer — sets the peak memory in both PyTorch and sd.cpp.
+- **[Weight reloading dominates disk-backed Jetson generations](findings/weight-reloading-dominates-disk-backed-jetson-generations.md)** `supported`: With disk-backed parameters on Jetson, sd.cpp reloads and releases each component every generation; engine-reported loading is most of a 4-step image.
 
 ## Systems (engines, devices, models, cluster)
 
@@ -65,6 +70,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[Flow-matching sampler (FLUX.2)](concepts/flow-matching-sampler.md)**: FLUX.2's sampling — Euler steps along a flow-matching trajectory with a resolution-dependent timestep shift (mu); defines what "4 steps" means.
 - **[im2col convolution](concepts/im2col-convolution.md)**: Lowering a convolution to a matrix multiply by unrolling input patches into a large matrix (im2col); simple, but memory- and bandwidth-heavy at high resolution.
 - **[Initial noise](concepts/initial-noise.md)**: The starting latent of a diffusion sample; the same integer seed gives different noise in different frameworks, so cross-engine image comparisons need shared noise.
+- **[Kernel, graph and plan search](concepts/kernel-graph-plan-search.md)**: Three levels at which diffusion inference can be optimized — kernel search (same math), graph transforms (fusion, memory planning) and plan search (what to compute, under memory and quality limits) — and where existing tools sit.
 - **[Stage residency](concepts/stage-residency.md)**: Which pipeline components' weights and buffers are resident on the device during each stage (text encode, denoise, decode) — a memory-planning choice.
 
 ## Papers
