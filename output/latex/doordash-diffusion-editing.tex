@@ -1,0 +1,87 @@
+\documentclass{article}
+
+% Uses the NeurIPS template when supplied; otherwise a standard article.
+\PassOptionsToPackage{numbers,compress}{natbib}
+\IfFileExists{neurips_2025.sty}{%
+  \usepackage[preprint]{neurips_2025}
+}{%
+  \usepackage[letterpaper,margin=1in]{geometry}
+  \usepackage{natbib}
+}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={Efficient Diffusion Editing that Preserves Food and Brand Identity},pdfauthor={Mahad Faruqi}}
+\bibliographystyle{abbrvnat}
+\setlength{\emergencystretch}{2em}
+\title{Efficient Diffusion Editing that Preserves Food and Brand Identity}
+\author{Mahad Faruqi \\
+  Purdue EcoAI Lab \\
+  Advisor: Prof. Haoran You}
+\date{DoorDash AI Research Fellowship Proposal}
+
+\begin{document}
+\maketitle
+
+\section{Motivation and Research Question}
+Can a diffusion runtime reduce the cost of merchant image editing while preserving the food, packaging, and branding that make an image commercially usable? I propose an execution planner that selects precision, denoising reuse, and memory residency under explicit image-fidelity constraints. The objective is cost per accepted creative, including validation and retries.
+
+DoorDash's 2025 creative-banner internship project combined image generation with masked repairs and identified distorted brand text and logos as a recurring challenge.~\citep{doordashBanner2025} DoorDash also offers photo-enhancement tools intended to improve backgrounds and lighting while preserving the food's appearance.~\citep{doordashPhotoTools2025} These applications make fidelity to the source image a concrete engineering requirement, beyond general visual appeal.
+
+My hypothesis is that the best execution plan depends jointly on hardware limits and the edit's fidelity requirements. A configuration that preserves overall aesthetics may still damage a small logo or food boundary; conversely, some edits may tolerate substantial approximation. A planner calibrated on protected regions should find a better cost-quality tradeoff than a single global acceleration setting.
+
+\section{Implementation Approach and Research Contribution}
+\textbf{Bound the workload.} Begin with one supported diffusion image-editing checkpoint and one task: background replacement or extension around an existing merchant photo. Specify permitted edits and protected regions with the product team. Keep source images, prompts, masks, resolution, sampler, and step count matched across configurations. Use original food and logo compositing wherever feasible as a strong baseline; measure failures at masks and boundaries rather than assuming preservation.
+
+\textbf{Measure a small execution space.} Profile a BF16 reference, one supported low-bit configuration, a few thresholds for one denoising-cache policy, and two stage-residency policies. Admit only compatible combinations. SVDQuant and TeaCache provide precedents for quantization and reuse; their availability and benefit on the chosen editing stack must be verified.~\citep{li2024svdquant,liu2024teacache} Attribute time and memory to encoding, denoising, decoding, transfers, and validation.
+
+\textbf{Select plans with localized quality evidence.} Build a measured-lookup planner using resolution, mask area, protected text, and available GPU memory. Each candidate must satisfy calibrated source-fidelity and edit-success thresholds before cost ranking. Record unsupported configurations explicitly and keep a no-reuse reference available. Any retry or fallback must count toward cost and latency; selecting a plan is not a guarantee that every image will pass review.
+
+The contribution would be an evaluation method and selection policy for commercially constrained image editing. Existing accelerators are components. The research tests whether localized fidelity requirements change which combinations are worth running, and whether a small profiling budget can identify those combinations.
+
+\section{Evaluation Plan}
+Build a merchant-disjoint evaluation set of source photos and editing requests, grouping related assets to prevent leakage. Include small text, packaging, difficult food boundaries, varied cuisines, and both simple and complex backgrounds. Calibrate on a separate subset, then freeze thresholds and planner policies before held-out evaluation. Use one GPU initially; transfer to a second memory tier is a stretch goal.
+
+Assess protected-region changes, OCR agreement for brand text, boundary artifacts, and success of the requested background edit. Have blinded reviewers judge food identity, portion appearance, branding, and overall acceptability against the source. Automated similarity scores are diagnostics, not substitutes for those judgments. Set fidelity floors and an allowed change in acceptance rate before tuning, with confidence intervals on the final result.
+
+Compare against the unoptimized reference, the best tuned fixed plan, independently chosen optimizations, and the best feasible configuration from a broader sweep. Give practical selectors equal profiling budgets. Ablate localized quality checks, joint selection, and reuse. Hold the compositing and validation pipeline constant. A simple source-compositing solution that meets every requirement at lower cost should win.
+
+Report GPU-seconds and estimated cost per accepted image, acceptance rate, retry rate, p50/p95 latency, peak memory, and amortized calibration cost. Count every attempted image and include failed runs. Success means lower end-to-end cost at the predefined fidelity and acceptance constraints. If local fidelity checks add no value over global metrics, or caching overhead outweighs saved work, the study should establish that boundary rather than claim universal gains.
+
+\section{Preparation and Why DoorDash}
+My master's research at Purdue's EcoAI Lab, advised by Prof. Haoran You, investigates a diffusion-aware compiler/runtime planner for precision, reuse, and memory residency. I have built reproducible benchmarks and profiling infrastructure around PyTorch and stable-diffusion.cpp. A100 profiles exposed attention, conversion, and VAE bottlenecks. On the 8 GB Jetson Orin Nano, I enabled a $512\times512$ FLUX.2 [klein] generation with quantized weights and disk-backed loading. That is feasibility evidence; the joint planner and matched-quality evaluation remain research in progress.
+
+DoorDash makes it possible to study which errors actually make a creative unusable. I would seek governed access to merchant assets, editing requests, and review feedback, with sponsorship from creative tooling and ML Platform teams. The existing banner workflow offers a potential integration point for a bounded execution planner, while product reviewers can define food and brand fidelity in terms a generic image benchmark cannot.~\citep{doordashBanner2025,doordashPhotoTools2025}
+
+\section{Milestones and Feasibility}
+\textbf{Weeks 1-2:} agree on the editing task and review rubric; verify model and kernel support. \textbf{Weeks 3-5:} build the benchmark and profile execution variants. \textbf{Weeks 6-8:} implement the planner and run ablations. \textbf{Weeks 9-12:} freeze policies, complete held-out evaluation, and deliver an instrumented prototype, configuration registry, and research report. If reuse is unsupported or unhelpful, narrow to joint precision and residency selection. Production rollout would follow a separate review.
+
+% References are embedded so this file compiles independently in the Codex editor.
+% For a BibTeX project, replace the thebibliography environment below with
+% \bibliography{references}; the accompanying references.bib retains cited keys.
+\begin{thebibliography}{9}
+\small
+\bibitem{doordashBanner2025}
+DoorDash. \emph{Part 2: DoorDash 2025 summer intern projects}. 2025. Section on creative banner automation. \href{https://careersatdoordash.com/blog/part-2-doordash-2025-summer-intern-projects/}{Engineering blog}.
+
+\bibitem{doordashPhotoTools2025}
+DoorDash. \emph{AI-powered tools to enhance online menus and streamline merchant operations}. 2025. \href{https://about.doordash.com/en-us/news/doordash-unveils-ai-powered-tools-to-enhance-online-menus-and-streamline-merchant-operations}{Product announcement}.
+
+\bibitem{li2024svdquant}
+M.~Li et al. \emph{SVDQuant: Absorbing Outliers by Low-Rank Components for 4-Bit Diffusion Models}. ICLR, 2025. \href{https://arxiv.org/abs/2411.05007}{arXiv:2411.05007}.
+
+\bibitem{liu2024teacache}
+F.~Liu et al. \emph{Timestep Embedding Tells: It\textquotesingle s Time to Cache for Video Diffusion Model}. CVPR, 2025. \href{https://arxiv.org/abs/2411.19108}{arXiv:2411.19108}.
+
+\end{thebibliography}
+\end{document}

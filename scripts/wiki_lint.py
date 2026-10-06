@@ -246,7 +246,7 @@ def main():
 
 SECTIONS = [
     ("Start here", ["hot.md", "SCHEMA.md", "project/overview.md", "project/milestones.md", "experiments.md",
-                    "open-questions.md", "log.md"]),
+                    "open-questions.md", "log.md"] + sorted(p.name for p in WIKI.glob("log-*.md"))),
     ("Project", "project/"),
     ("Research questions", "rq/"),
     ("Findings", "findings/"),

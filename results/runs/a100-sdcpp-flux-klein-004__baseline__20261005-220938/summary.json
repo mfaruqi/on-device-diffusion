@@ -1,0 +1,188 @@
+{
+  "id": "a100-sdcpp-flux-klein-004",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 2552.6710000121966,
+    "gpu_span_ms": null,
+    "text_encode_ms": 159.4160000095144,
+    "denoise_ms": 1737.9220000002533,
+    "denoise_step_0_ms": 457.41100001032464,
+    "denoise_step_1_ms": 432.55599998519756,
+    "denoise_step_2_ms": 422.8470000089146,
+    "denoise_step_3_ms": 425.1079999958165,
+    "vae_decode_ms": 628.1599999929313,
+    "postprocess_ms": null,
+    "other_ms": 27.173000009497628,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": 22.88031005859375,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 2428.830000004382,
+      "min": 2419.048000010662,
+      "max": 2440.712000010535,
+      "mean": 2428.738799999701,
+      "stdev": 6.005894548078815,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 65.038500004448,
+      "min": 64.12799999816343,
+      "max": 67.31800001580268,
+      "mean": 65.27439999917988,
+      "stdev": 0.8987972500325038,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 1726.22599999886,
+      "min": 1718.4720000077505,
+      "max": 1731.6219999920577,
+      "mean": 1725.8510000014212,
+      "stdev": 4.292363374758388,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 442.0305000094231,
+      "min": 437.5939999881666,
+      "max": 449.6530000178609,
+      "mean": 442.54349999828264,
+      "stdev": 3.4096744849170992,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 427.9454999923473,
+      "min": 424.4979999784846,
+      "max": 433.2760000252165,
+      "mean": 428.33550000505056,
+      "stdev": 2.36280292697733,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 427.1970000118017,
+      "min": 425.01599999377504,
+      "max": 428.5479999962263,
+      "mean": 427.0989999989979,
+      "stdev": 1.3221275762596298,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 427.9440000100294,
+      "min": 424.8230000084732,
+      "max": 434.209999977611,
+      "mean": 427.8729999990901,
+      "stdev": 2.63039510494767,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 607.1475000208011,
+      "min": 604.9559999955818,
+      "max": 615.4150000074878,
+      "mean": 608.5292000032496,
+      "stdev": 3.4316557011483995,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 29.097500009811483,
+      "min": 28.611999965505674,
+      "max": 29.45999999064952,
+      "mean": 29.084199995850213,
+      "stdev": 0.3248975325877052,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": {
+      "median": 22.88031005859375,
+      "min": 22.88031005859375,
+      "max": 22.88031005859375,
+      "mean": 22.88031005859375,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 3.2664930000028107,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": 17.02093505859375,
+    "device_used_peak_during_load_gib": 15.81195068359375,
+    "model_version": "Flux.2 klein"
+  },
+  "host_peak_rss_gib": 1.2249488830566406,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 1.00, img_cfg: 1.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 4, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "conditioning_cache_hits": 0,
+    "problems": [],
+    "mmap_io": {
+      "requested": false,
+      "confirmed_files": []
+    }
+  },
+  "cache_audit": {
+    "requested": null,
+    "enabled_generations": 0
+  },
+  "conditioning_cache_hits_per_generation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

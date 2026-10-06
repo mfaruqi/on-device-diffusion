@@ -1,0 +1,61 @@
+{
+  "id": "a100-sdcpp-flux-klein-base-001",
+  "description": "Separate FLUX.2 klein Base 4B workload reference: BF16, 1024x1024, 50 steps, guidance 4.0, fixed GPU residency and no reuse. Not an execution-only change to distilled klein.",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "tag": "master-919-19bbbca",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "source_dir": "~/tools/stable-diffusion.cpp",
+    "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+    "bench_build_dir": "~/tools/sd-bench-build-20261004"
+  },
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "files": {
+      "diffusion_model": "flux-2-klein-base-4b.safetensors",
+      "llm": "text_encoder",
+      "vae": "vae/diffusion_pytorch_model.safetensors"
+    }
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "engine_settings": {
+    "backend": "cuda0",
+    "params_backend": "cuda0",
+    "auto_fit": false,
+    "eager_load": true,
+    "disable_segmented_compute": true,
+    "disable_prefetch": false,
+    "conditioning_cache_size": 0,
+    "fa": false,
+    "diffusion_fa": true,
+    "mmap": false,
+    "threads": 4
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "step_cache": null,
+    "auto_fit": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "record_kind": "feasibility gate",
+  "baseline_comparison_eligible": false,
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "repeated_latency": "Not a repeated benchmark; no first/warmup/measured protocol",
+    "memory_peak": "No memory sampler in this gate"
+  },
+  "scope": "Functional feasibility only; see status.json and original logs."
+}

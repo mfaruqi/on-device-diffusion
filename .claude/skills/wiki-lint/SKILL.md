@@ -21,12 +21,15 @@ compaction into an Archive section. Orphan → which page should link to it, or 
 ## 2. Judgment pass (scoped)
 
 Check only the pages changed since the last `lint` entry in `wiki/log.md`, plus the pages they link to
-(`git diff --name-only <last-lint-commit> -- wiki/`, or file mtimes if nothing is committed).
+(`git diff --name-only <last-lint-commit> -- wiki/` plus uncommitted and untracked pages from
+`git status --porcelain wiki/`, or file mtimes if nothing is committed).
 For each page, look for:
 1. **Contradictions**: two pages, or a page and its cited record, saying different things. Never pick
    a winner. Propose an `open-questions.md` entry with both sides cited.
 2. **Stale claims**: a finding whose cited record or run has been superseded by a newer experiment
    (check `wiki/experiments.md`), or whose RQ page no longer matches its status.
+   On any page, including methods/how-tos, a status statement ("not yet", "pending", "remains",
+   "has not been run") must still be true according to the registry and records.
 3. **Unsupported claims**: a sentence on a finding, system or concept page with no link to evidence,
    or evidence that is only another wiki page.
 4. **Missing links**: a page names an entity or concept that has its own page but doesn't link to it.

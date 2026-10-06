@@ -1,0 +1,618 @@
+{
+  "id": "jetson-flux-klein-base-001",
+  "record_kind": "repeated unprofiled baseline",
+  "profiler": "none",
+  "profiling": null,
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 286869.30699999724,
+    "gpu_span_ms": null,
+    "text_encode_ms": 3016.012000000046,
+    "denoise_ms": 279792.2279999984,
+    "denoise_step_0_ms": 14173.957999999402,
+    "denoise_step_1_ms": 5415.890000000218,
+    "denoise_step_2_ms": 5407.789000000776,
+    "denoise_step_3_ms": 5405.343999998877,
+    "denoise_step_4_ms": 5414.947000001121,
+    "denoise_step_5_ms": 5417.431999998371,
+    "denoise_step_6_ms": 5417.819000002055,
+    "denoise_step_7_ms": 5417.622999997548,
+    "denoise_step_8_ms": 5418.517000001884,
+    "denoise_step_9_ms": 5419.57199999888,
+    "denoise_step_10_ms": 5421.27199999959,
+    "denoise_step_11_ms": 5420.505000001867,
+    "denoise_step_12_ms": 5421.072999997705,
+    "denoise_step_13_ms": 5419.318000000203,
+    "denoise_step_14_ms": 5420.227000002342,
+    "denoise_step_15_ms": 5420.212999997602,
+    "denoise_step_16_ms": 5421.057999999903,
+    "denoise_step_17_ms": 5420.519000002969,
+    "denoise_step_18_ms": 5420.448999997461,
+    "denoise_step_19_ms": 5421.7290000015055,
+    "denoise_step_20_ms": 5422.083999997994,
+    "denoise_step_21_ms": 5421.260000002803,
+    "denoise_step_22_ms": 5422.82399999749,
+    "denoise_step_23_ms": 5422.123000000283,
+    "denoise_step_24_ms": 5422.231000000465,
+    "denoise_step_25_ms": 5422.10200000045,
+    "denoise_step_26_ms": 5421.926999999414,
+    "denoise_step_27_ms": 5423.126000001503,
+    "denoise_step_28_ms": 5422.18800000046,
+    "denoise_step_29_ms": 5423.112000000401,
+    "denoise_step_30_ms": 5421.372999997402,
+    "denoise_step_31_ms": 5422.244000001228,
+    "denoise_step_32_ms": 5422.1939999988535,
+    "denoise_step_33_ms": 5424.018000001524,
+    "denoise_step_34_ms": 5422.97999999937,
+    "denoise_step_35_ms": 5423.165000000154,
+    "denoise_step_36_ms": 5423.025000000052,
+    "denoise_step_37_ms": 5423.525999998674,
+    "denoise_step_38_ms": 5423.462000002473,
+    "denoise_step_39_ms": 5423.3319999984815,
+    "denoise_step_40_ms": 5423.0160000006435,
+    "denoise_step_41_ms": 5423.236999999062,
+    "denoise_step_42_ms": 5423.457000000781,
+    "denoise_step_43_ms": 5423.9809999999125,
+    "denoise_step_44_ms": 5422.848999998678,
+    "denoise_step_45_ms": 5423.0270000007295,
+    "denoise_step_46_ms": 5422.568000001775,
+    "denoise_step_47_ms": 5423.7429999993765,
+    "denoise_step_48_ms": 5419.128999998065,
+    "denoise_step_49_ms": 5419.670999999653,
+    "vae_decode_ms": 3678.262999997969,
+    "postprocess_ms": null,
+    "other_ms": 382.80400000081863,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 328719.44500000065,
+      "min": 313962.9720000012,
+      "max": 331504.6390000025,
+      "mean": 324984.30119999975,
+      "stdev": 6782.908833941749,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 24192.235000000437,
+      "min": 16156.323000002885,
+      "max": 24600.9759999979,
+      "mean": 22244.089800000074,
+      "stdev": 3076.340278574793,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 299599.78400000185,
+      "min": 289221.9079999996,
+      "max": 301971.8070000018,
+      "mean": 297934.3873000002,
+      "stdev": 4274.623434082685,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 33523.778500000844,
+      "min": 23392.502000002423,
+      "max": 34719.475000001694,
+      "mean": 31751.958300000115,
+      "stdev": 3889.5151145351306,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 5428.280500000255,
+      "min": 5416.510999999446,
+      "max": 5607.596000001649,
+      "mean": 5449.240199999986,
+      "stdev": 57.35572057309652,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 5427.396999999473,
+      "min": 5415.251999998873,
+      "max": 5452.97600000049,
+      "mean": 5429.638499999783,
+      "stdev": 12.354467651382121,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 5427.1965000007185,
+      "min": 5415.796000001137,
+      "max": 5451.987000000372,
+      "mean": 5429.962700000397,
+      "stdev": 12.475083113271493,
+      "n": 10
+    },
+    "denoise_step_4_ms": {
+      "median": 5427.071500000238,
+      "min": 5416.565999999875,
+      "max": 5450.971999998728,
+      "mean": 5430.523499999617,
+      "stdev": 11.669676623331126,
+      "n": 10
+    },
+    "denoise_step_5_ms": {
+      "median": 5427.984500000093,
+      "min": 5416.249000001699,
+      "max": 5450.7530000009865,
+      "mean": 5430.901500000618,
+      "stdev": 11.80536440377232,
+      "n": 10
+    },
+    "denoise_step_6_ms": {
+      "median": 5428.846499999054,
+      "min": 5415.711999998166,
+      "max": 5451.271999998426,
+      "mean": 5430.974999999307,
+      "stdev": 11.626651863674454,
+      "n": 10
+    },
+    "denoise_step_7_ms": {
+      "median": 5428.824000000532,
+      "min": 5416.186999998899,
+      "max": 5452.468999999837,
+      "mean": 5431.040899999789,
+      "stdev": 12.042943940805175,
+      "n": 10
+    },
+    "denoise_step_8_ms": {
+      "median": 5428.391499999634,
+      "min": 5417.227000001731,
+      "max": 5451.857000000018,
+      "mean": 5430.719500000123,
+      "stdev": 11.843519787660068,
+      "n": 10
+    },
+    "denoise_step_9_ms": {
+      "median": 5428.781000000527,
+      "min": 5417.150000001129,
+      "max": 5452.664000000368,
+      "mean": 5431.2298000004375,
+      "stdev": 12.075575474768915,
+      "n": 10
+    },
+    "denoise_step_10_ms": {
+      "median": 5428.029499998956,
+      "min": 5415.887999999541,
+      "max": 5452.869000000646,
+      "mean": 5431.299699999727,
+      "stdev": 12.31734651277525,
+      "n": 10
+    },
+    "denoise_step_11_ms": {
+      "median": 5428.4815000009985,
+      "min": 5415.918999999121,
+      "max": 5454.8869999998715,
+      "mean": 5432.008400000268,
+      "stdev": 12.530985686627075,
+      "n": 10
+    },
+    "denoise_step_12_ms": {
+      "median": 5429.341499999282,
+      "min": 5418.154999999388,
+      "max": 5454.230999999709,
+      "mean": 5431.525499999407,
+      "stdev": 12.011516319769475,
+      "n": 10
+    },
+    "denoise_step_13_ms": {
+      "median": 5429.505500002051,
+      "min": 5416.989000001195,
+      "max": 5453.460000000632,
+      "mean": 5431.548400000975,
+      "stdev": 12.301077378810483,
+      "n": 10
+    },
+    "denoise_step_14_ms": {
+      "median": 5430.220499998541,
+      "min": 5417.85499999969,
+      "max": 5453.552999999374,
+      "mean": 5431.756299999324,
+      "stdev": 12.449977234236263,
+      "n": 10
+    },
+    "denoise_step_15_ms": {
+      "median": 5430.570500000613,
+      "min": 5417.645999998058,
+      "max": 5454.18200000131,
+      "mean": 5431.8475000000035,
+      "stdev": 12.543792889903699,
+      "n": 10
+    },
+    "denoise_step_16_ms": {
+      "median": 5430.163000000903,
+      "min": 5417.0110000013665,
+      "max": 5454.329999996844,
+      "mean": 5431.916600000113,
+      "stdev": 12.318537387489867,
+      "n": 10
+    },
+    "denoise_step_17_ms": {
+      "median": 5430.423499998142,
+      "min": 5416.346000001795,
+      "max": 5454.534000000422,
+      "mean": 5432.062299999961,
+      "stdev": 12.691443959347268,
+      "n": 10
+    },
+    "denoise_step_18_ms": {
+      "median": 5430.570500000613,
+      "min": 5417.559999998048,
+      "max": 5452.768999999535,
+      "mean": 5432.127799999944,
+      "stdev": 11.99712538639856,
+      "n": 10
+    },
+    "denoise_step_19_ms": {
+      "median": 5427.965000000768,
+      "min": 5416.550000001735,
+      "max": 5453.745000002527,
+      "mean": 5431.332100000509,
+      "stdev": 12.787021965757718,
+      "n": 10
+    },
+    "denoise_step_20_ms": {
+      "median": 5429.271000000881,
+      "min": 5416.345999998157,
+      "max": 5453.163999998651,
+      "mean": 5432.0089999997435,
+      "stdev": 11.94920452951746,
+      "n": 10
+    },
+    "denoise_step_21_ms": {
+      "median": 5428.456499999811,
+      "min": 5414.329999999609,
+      "max": 5454.377000001841,
+      "mean": 5431.139299999995,
+      "stdev": 13.744954315339722,
+      "n": 10
+    },
+    "denoise_step_22_ms": {
+      "median": 5423.945499998808,
+      "min": 5416.975000000093,
+      "max": 5455.584999999701,
+      "mean": 5430.567799999699,
+      "stdev": 14.029609163808315,
+      "n": 10
+    },
+    "denoise_step_23_ms": {
+      "median": 5427.891499999532,
+      "min": 5418.540999999095,
+      "max": 5454.219999999623,
+      "mean": 5431.70499999942,
+      "stdev": 12.53258133438967,
+      "n": 10
+    },
+    "denoise_step_24_ms": {
+      "median": 5431.2785000001895,
+      "min": 5418.217000002187,
+      "max": 5454.257999997935,
+      "mean": 5433.043400000315,
+      "stdev": 12.1014682404532,
+      "n": 10
+    },
+    "denoise_step_25_ms": {
+      "median": 5428.244999999151,
+      "min": 5418.473999998241,
+      "max": 5454.5040000011795,
+      "mean": 5431.361500000276,
+      "stdev": 12.88458956619675,
+      "n": 10
+    },
+    "denoise_step_26_ms": {
+      "median": 5429.198499999984,
+      "min": 5418.021000001318,
+      "max": 5453.754999998637,
+      "mean": 5432.579299999998,
+      "stdev": 12.02471444781451,
+      "n": 10
+    },
+    "denoise_step_27_ms": {
+      "median": 5429.722500000935,
+      "min": 5417.535999997199,
+      "max": 5453.727000000072,
+      "mean": 5432.445999999618,
+      "stdev": 11.804399124026112,
+      "n": 10
+    },
+    "denoise_step_28_ms": {
+      "median": 5430.472499998359,
+      "min": 5417.578000000503,
+      "max": 5455.258000001777,
+      "mean": 5432.275599999775,
+      "stdev": 12.323450303752228,
+      "n": 10
+    },
+    "denoise_step_29_ms": {
+      "median": 5430.540999999721,
+      "min": 5418.402999999671,
+      "max": 5455.108999998629,
+      "mean": 5432.722500000455,
+      "stdev": 12.141199713708906,
+      "n": 10
+    },
+    "denoise_step_30_ms": {
+      "median": 5430.797000002713,
+      "min": 5416.861000001518,
+      "max": 5455.840000002354,
+      "mean": 5432.605200000762,
+      "stdev": 12.553366869195635,
+      "n": 10
+    },
+    "denoise_step_31_ms": {
+      "median": 5430.1719999984925,
+      "min": 5418.809999999212,
+      "max": 5455.76599999913,
+      "mean": 5432.6516999994055,
+      "stdev": 12.299692552675484,
+      "n": 10
+    },
+    "denoise_step_32_ms": {
+      "median": 5430.610999999772,
+      "min": 5418.616999999358,
+      "max": 5453.8549999997485,
+      "mean": 5432.3512000002665,
+      "stdev": 12.114246551782248,
+      "n": 10
+    },
+    "denoise_step_33_ms": {
+      "median": 5430.004000001645,
+      "min": 5418.240000002697,
+      "max": 5455.49100000062,
+      "mean": 5432.854600000428,
+      "stdev": 12.397735171123545,
+      "n": 10
+    },
+    "denoise_step_34_ms": {
+      "median": 5430.781999999454,
+      "min": 5417.722999998659,
+      "max": 5455.943000000843,
+      "mean": 5432.5544999996055,
+      "stdev": 12.73727867517722,
+      "n": 10
+    },
+    "denoise_step_35_ms": {
+      "median": 5430.615499999476,
+      "min": 5418.376999998145,
+      "max": 5454.917999999452,
+      "mean": 5432.245099999636,
+      "stdev": 12.224014820485381,
+      "n": 10
+    },
+    "denoise_step_36_ms": {
+      "median": 5428.779500000019,
+      "min": 5419.799000002968,
+      "max": 5455.018000000564,
+      "mean": 5432.324800000424,
+      "stdev": 11.732169892955085,
+      "n": 10
+    },
+    "denoise_step_37_ms": {
+      "median": 5429.969499999061,
+      "min": 5418.421999998827,
+      "max": 5455.339999996795,
+      "mean": 5432.165099999111,
+      "stdev": 12.198059649380749,
+      "n": 10
+    },
+    "denoise_step_38_ms": {
+      "median": 5429.322500000126,
+      "min": 5419.337999999698,
+      "max": 5455.195000002277,
+      "mean": 5432.2555000006105,
+      "stdev": 12.7675502155935,
+      "n": 10
+    },
+    "denoise_step_39_ms": {
+      "median": 5430.611499999941,
+      "min": 5418.938000002527,
+      "max": 5456.257999998343,
+      "mean": 5432.910600000105,
+      "stdev": 12.258176863420868,
+      "n": 10
+    },
+    "denoise_step_40_ms": {
+      "median": 5428.636499998902,
+      "min": 5418.211999996856,
+      "max": 5456.5849999999045,
+      "mean": 5431.752099999721,
+      "stdev": 13.016922810236606,
+      "n": 10
+    },
+    "denoise_step_41_ms": {
+      "median": 5430.22000000019,
+      "min": 5419.626999999309,
+      "max": 5454.783000001044,
+      "mean": 5433.050200000434,
+      "stdev": 12.041640086442307,
+      "n": 10
+    },
+    "denoise_step_42_ms": {
+      "median": 5430.540500001371,
+      "min": 5419.23400000087,
+      "max": 5451.364000000467,
+      "mean": 5432.943599999999,
+      "stdev": 11.134618161206712,
+      "n": 10
+    },
+    "denoise_step_43_ms": {
+      "median": 5431.124499998987,
+      "min": 5419.620000000577,
+      "max": 5455.966000001354,
+      "mean": 5433.171899999434,
+      "stdev": 12.299789866865856,
+      "n": 10
+    },
+    "denoise_step_44_ms": {
+      "median": 5429.8410000010335,
+      "min": 5419.235000001208,
+      "max": 5456.823999997141,
+      "mean": 5432.504500000869,
+      "stdev": 12.504378798921204,
+      "n": 10
+    },
+    "denoise_step_45_ms": {
+      "median": 5429.713499999707,
+      "min": 5419.623999998294,
+      "max": 5453.13200000237,
+      "mean": 5432.755199999519,
+      "stdev": 11.699848687430169,
+      "n": 10
+    },
+    "denoise_step_46_ms": {
+      "median": 5429.766999999629,
+      "min": 5418.620000000374,
+      "max": 5457.331999998132,
+      "mean": 5432.717300000149,
+      "stdev": 12.378601177177904,
+      "n": 10
+    },
+    "denoise_step_47_ms": {
+      "median": 5428.577000000587,
+      "min": 5419.988999998168,
+      "max": 5455.117000001337,
+      "mean": 5432.313200000135,
+      "stdev": 11.799385848704134,
+      "n": 10
+    },
+    "denoise_step_48_ms": {
+      "median": 5428.491999999096,
+      "min": 5419.652999997197,
+      "max": 5456.021999998484,
+      "mean": 5432.320099999561,
+      "stdev": 11.919962299470923,
+      "n": 10
+    },
+    "denoise_step_49_ms": {
+      "median": 5429.749000000811,
+      "min": 5418.397000001278,
+      "max": 5454.15100000173,
+      "mean": 5432.47700000029,
+      "stdev": 11.925097567935078,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 4598.829500000647,
+      "min": 3588.229000000865,
+      "max": 4890.236999999615,
+      "mean": 4511.62869999971,
+      "stdev": 390.6152359764432,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 295.6549999998824,
+      "min": 280.56500000087544,
+      "max": 306.7080000001006,
+      "mean": 294.1953999997757,
+      "stdev": 7.3650969398719806,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 62.84456200000204,
+    "model_version": "Flux.2 klein",
+    "note": "new_sd_ctx; parameter policy: disk. Requested policy is not proof of continuous residency. Hash checks warmed file cache."
+  },
+  "monitor_window": {
+    "samples": 4540,
+    "ram_peak_gib": 6.0146484375,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.302734375,
+    "swap_max_gib": 0.31640625,
+    "gpu_temperature_max_c": 63.625,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "engine_audit": {
+    "settings_confirmed": true,
+    "settings_confirmation_scope": "requested context fields only",
+    "automatic_fitting": false,
+    "conditioning_reuse": false,
+    "parameter_storage": "disk",
+    "segmented_compute_allowed": true,
+    "requested": {
+      "backend": "CUDA0",
+      "params_backend": "disk",
+      "auto_fit": false,
+      "disable_segmented_compute": false,
+      "eager_load": true,
+      "conditioning_cache_size": 0,
+      "diffusion_fa": true,
+      "threads": 4
+    },
+    "reported_parameter_placement": [
+      "17613.012251 [1] model_manager.cpp:490  - model manager prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on CUDA0",
+      "17624.204870 [1] model_manager.cpp:490  - model manager prepared params backend buffers (658.13 MB, 60 tensors, 1 blocks, VRAM) on CUDA0",
+      "17896.462429 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "17922.385744 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "17952.642975 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "18226.448590 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "18252.041088 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "18275.408626 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "18548.345339 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "18566.335603 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "18595.149901 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "18868.058482 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "18885.711459 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "18910.464598 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "19182.210663 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "19201.324708 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "19230.591505 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "19502.988651 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "19525.672705 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "19545.554335 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "19818.460831 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "19844.303145 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "19872.950189 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "20146.152031 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "20168.715866 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "20192.608933 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "20465.759220 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "20491.510803 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "20522.036585 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "20795.901704 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "20821.869083 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "20852.757819 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "21127.453451 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "21153.590812 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "21184.079200 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "21457.486434 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "21483.278398 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "21514.044350 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "21788.261708 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "21813.950529 [1] model_manager.cpp:490  - model manager prepared params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) on CUDA0",
+      "21843.857073 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "22117.986620 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0"
+    ],
+    "auto_fit_plan_excerpt": [],
+    "unverified": [
+      "physical storage traffic",
+      "placement between logged transitions"
+    ]
+  },
+  "cache_audit": {
+    "requested": null,
+    "enabled_generations": 0
+  },
+  "stage_callbacks_validated": true,
+  "timing_method": "host steady_clock at sd.cpp callbacks; includes on-demand loading",
+  "unavailable_metrics": {
+    "gpu_span_ms": "No CUDA event span; use host wall_ms",
+    "postprocess_ms": "Included in sd.cpp decode/output boundary; no separate stage",
+    "peak_alloc_gib/peak_reserved_gib": "No PyTorch allocator",
+    "device_used_peak_gib": "No NVML; system RAM capture is separate and not stage-aligned",
+    "host_rss_gib": "Per-generation process RSS not sampled"
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

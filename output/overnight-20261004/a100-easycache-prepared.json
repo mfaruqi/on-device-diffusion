@@ -1,0 +1,74 @@
+{
+  "id": "a100-sdcpp-flux-klein-base-002",
+  "description": "EasyCache versus the sd.cpp Base BF16 50-step reference: threshold0.2, active percent0.15\u20130.95; unchanged checkpoint, precision, workload and fixed GPU residency. Approximate reuse; quality eligibility not established.",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "tag": "master-919-19bbbca",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "source_dir": "~/tools/stable-diffusion.cpp",
+    "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+    "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+  },
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "files": {
+      "diffusion_model": "flux-2-klein-base-4b.safetensors",
+      "llm": "text_encoder",
+      "vae": "vae/diffusion_pytorch_model.safetensors"
+    },
+    "sha256": {
+      "flux-2-klein-base-4b.safetensors": "9c5fed22b76baea749d88fc2abe3ad53245e7b21a0d353a762665eea00043b92",
+      "text_encoder/model-00001-of-00002.safetensors": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+      "text_encoder/model-00002-of-00002.safetensors": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+      "vae/diffusion_pytorch_model.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+    },
+    "resolved_at_utc": "2026-10-05T04:24:06Z"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "engine_settings": {
+    "backend": "cuda0",
+    "params_backend": "cuda0",
+    "auto_fit": false,
+    "eager_load": true,
+    "disable_segmented_compute": true,
+    "disable_prefetch": false,
+    "conditioning_cache_size": 0,
+    "fa": false,
+    "diffusion_fa": true,
+    "mmap": false,
+    "threads": 4
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "step_cache": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "auto_fit": false
+  },
+  "reference_config": "configs/a100-sdcpp-flux-klein-base-bf16.resolved.json"
+}

@@ -26,6 +26,19 @@ def render_md(res, top_n=15):
                      f"{s['median_kernel_us']:.1f} | {100 * s['frac_kernels_under_10us']:.0f}% "
                      f"({s['time_in_kernels_under_10us_ms']:.1f} ms) |")
 
+    if any("osrt_coverage" in s for s in st.values()):
+        lines += ["", "## Captured GPU / read-call coverage", "",
+                  "Intervals are restricted to the generating process and clipped to each stage.",
+                  "Read-only means inside captured read/pread64 calls with no captured GPU activity; it is not measured storage wait.",
+                  "Neither is unexplained by these activities, not necessarily idle. OSRT thresholds can omit short calls.", "",
+                  "| Stage | Stage span (ms) | GPU-covered (ms) | Read-only-covered (ms) | Neither-covered (ms) |",
+                  "|---|---|---|---|---|"]
+        for name, stage in st.items():
+            if "osrt_coverage" in stage:
+                c = stage["osrt_coverage"]
+                lines.append(f"| {name} | {stage['span_ms']:.3f} | {c['gpu_covered_ms']:.3f} | "
+                             f"{c['read_only_covered_ms']:.3f} | {c['neither_covered_ms']:.3f} |")
+
     def table(title, key):
         allk = collections.OrderedDict()
         for k in names:

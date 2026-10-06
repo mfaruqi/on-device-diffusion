@@ -2,7 +2,7 @@
 type: method
 summary: Rules for maintaining this wiki. Read before any wiki edit.
 status: active
-updated: 2026-09-28
+updated: 2026-10-06
 ---
 
 # Wiki schema
@@ -29,6 +29,7 @@ draw on what its implementers reported working (see [Why these rules](#why-these
 | [hot.md](hot.md) | current state: week, in progress, next actions, blockers. **Rewritten**, not appended | ≤ 40 lines |
 | [index.md](index.md) | one line per page: link and summary, grouped by section | one line per page |
 | [log.md](log.md) | chronological one-liners, `## [YYYY-MM-DD] kind \| title`, newest first | entries ≤ 5 lines |
+| [log-2026-09.md](log-2026-09.md) | archived log months (`log-YYYY-MM.md`), moved out of `log.md` when it exceeds its budget | ≤ 160 lines each |
 | [experiments.md](experiments.md) | registry: **one row per experiment**, linking to the record and run directories | one row each |
 | [open-questions.md](open-questions.md) | unresolved contradictions and open questions, each marked `Status: Unresolved` | – |
 

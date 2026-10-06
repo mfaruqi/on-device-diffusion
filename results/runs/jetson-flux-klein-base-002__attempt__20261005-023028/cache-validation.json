@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "reference": "jetson-flux-klein-base-001__baseline__20261005-005357",
+  "rgb_equal": false,
+  "psnr_db": 31.204132360069664,
+  "mse_rgb_8bit": 49.27959442138672,
+  "lpips": null,
+  "lpips_unavailable_reason": "No validated LPIPS evaluator in this capture environment; retain as pending diagnostic before selecting combinations.",
+  "cache_audit": {
+    "requested": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "enabled_generations": 2,
+    "steps_skipped": [
+      25,
+      25
+    ],
+    "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."
+  },
+  "transformer_executions": [
+    50,
+    50
+  ],
+  "scope": "One prompt/seed, two observations; functional and paired-pixel diagnostic only. No formal quality eligibility or repeated timing claim."
+}

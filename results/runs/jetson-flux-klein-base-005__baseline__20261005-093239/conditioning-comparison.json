@@ -1,0 +1,9 @@
+{
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "variant": "jetson-flux-klein-base-005__baseline__20261005-093239",
+  "matched_model_workload_protocol": true,
+  "only_harness_change": "conditioning-cache-size:0->2",
+  "speed_range_rule_pass": true,
+  "reference_over_variant_median": 1.1756553013465156,
+  "formal_quality_eligible": false
+}

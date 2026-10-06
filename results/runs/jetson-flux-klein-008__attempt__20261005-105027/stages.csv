@@ -1,0 +1,13 @@
+run_index,phase,stage,gpu_ms,host_ms,alloc_start_gib,alloc_end_gib,device_used_peak_gib
+0,first,text_encode,,2258.493000001181,,,
+0,first,denoise_step_0,,11487.237000001187,,,
+0,first,denoise_step_1,,2713.7199999997392,,,
+0,first,denoise_step_2,,2712.736000001314,,,
+0,first,denoise_step_3,,2711.8829999963054,,,
+0,first,vae_decode,,3479.184999996505,,,
+1,measured,text_encode,,23034.536999999546,,,
+1,measured,denoise_step_0,,24515.119000003324,,,
+1,measured,denoise_step_1,,2703.477999995812,,,
+1,measured,denoise_step_2,,2702.980000001844,,,
+1,measured,denoise_step_3,,2706.5769999971963,,,
+1,measured,vae_decode,,4545.999000001757,,,

@@ -1,0 +1,66 @@
+{
+  "timestamp_utc": "2026-10-05T23:35:30Z",
+  "hostname": "gilbreth-g007.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-687.49.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "python_executable": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/bin/python",
+  "nvidia_smi_gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "nvidia_driver": "595.91.07",
+  "git_commit": "a4b4028e0c13f9ac62b751886bccf7ce0013a617",
+  "git_dirty_files": [
+    "?? .gitignore",
+    "?? results/",
+    "?? source-manifest.json",
+    "?? submitted-jobs.tsv",
+    "?? tests/"
+  ],
+  "env_vars": {
+    "SLURM_JOB_ID": "11883786",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g007",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": "/scratch/gilbreth/mfaruqi/huggingface",
+    "HF_HUB_OFFLINE": "1",
+    "GGML_CUDA_CUBLAS_COMPUTE_TYPE": null,
+    "LD_LIBRARY_PATH": "/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64:/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64:/apps/spack/gilbreth-r9/apps/libxml2/2.10.3-gcc-11.5.0-wroyiwb/lib:/apps/spack/gilbreth-r9/apps/libiconv/1.17-gcc-11.5.0-36njf44/lib:/apps/spack/gilbreth-r9/apps/libfabric/1.19.1-gcc-11.5.0-b5idhcg/lib64:/apps/spack/gilbreth-r9/apps/libfabric/1.19.1-gcc-11.5.0-b5idhcg/lib:/apps/spack/gilbreth-r9/apps/openmpi/4.1.6-gcc-11.5.0-w7wc45k/lib"
+  },
+  "device_memory_sampler": "nvml handle by uuid GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "tag": "master-919-19bbbca",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "source_dir": "~/tools/stable-diffusion.cpp",
+    "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+    "bench_build_dir": "~/tools/sd-bench-build-cache-20261005",
+    "sdcpp_head": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_head": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "sdcpp_status": "",
+    "binary": "/home/mfaruqi/tools/sd-bench-build-cache-20261005/sd-bench",
+    "binary_sha256": "d5efff548b7e7b3bd7739c6a94d8b6df99a97aa9f961b6cff565bd3430a8f6cc"
+  },
+  "nvcc": [
+    "Build cuda_12.6.r12.6/compiler.34431801_0"
+  ],
+  "ldd": [
+    "linux-vdso.so.1 (0x00007ffc51b67000)",
+    "\t/apps/external/apps/xalt3/xalt/xalt/lib64/libxalt_init.so (0x0000145c8f1d1000)",
+    "\tlibcudart.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcudart.so.12 (0x0000145c8ef20000)",
+    "\tlibcublas.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcublas.so.12 (0x0000145c889c6000)",
+    "\tlibcublasLt.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcublasLt.so.12 (0x0000145c69572000)",
+    "\tlibcuda.so.1 => /lib64/libcuda.so.1 (0x0000145c63db3000)",
+    "\tlibnccl.so.2 => /lib64/libnccl.so.2 (0x0000145c536ab000)",
+    "\tlibgomp.so.1 => /lib64/libgomp.so.1 (0x0000145c53665000)",
+    "\tlibstdc++.so.6 => /lib64/libstdc++.so.6 (0x0000145c5343c000)",
+    "\tlibm.so.6 => /lib64/libm.so.6 (0x0000145c5335f000)",
+    "\tlibgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000145c53340000)",
+    "\tlibc.so.6 => /lib64/libc.so.6 (0x0000145c53136000)",
+    "\t/lib64/ld-linux-x86-64.so.2 (0x0000145c8f204000)",
+    "\tlibdl.so.2 => /lib64/libdl.so.2 (0x0000145c53131000)",
+    "\tlibpthread.so.0 => /lib64/libpthread.so.0 (0x0000145c5312c000)",
+    "\tlibrt.so.1 => /lib64/librt.so.1 (0x0000145c53127000)"
+  ],
+  "snapshot_dir": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294"
+}

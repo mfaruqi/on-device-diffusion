@@ -1,0 +1,18 @@
+{
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "variant": "jetson-flux-klein-base-003__baseline__20261005-060028",
+  "matched_model_workload_protocol_engine": true,
+  "same_binary": true,
+  "changed_argument": "eager-load:1 -> 0",
+  "median_ratio_reference_over_variant": 0.9940619365620867,
+  "wall_delta_ms": 1963.6169999993872,
+  "wall_delta_percent": 0.5973534665706826,
+  "range_rule_passed": false,
+  "fidelity_diagnostic_passed": true,
+  "combination_qualification": false,
+  "formal_quality_eligible": false,
+  "confounds": [
+    "Sequential captures; filesystem cache, swap and background state not controlled."
+  ],
+  "scope": "Descriptive comparison; no isolated causal speedup claim."
+}

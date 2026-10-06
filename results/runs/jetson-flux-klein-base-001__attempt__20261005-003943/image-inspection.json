@@ -1,0 +1,13 @@
+{
+  "images": [
+    "images/first.png",
+    "images/measured-0.png"
+  ],
+  "dimensions": [
+    512,
+    512
+  ],
+  "inspection": "Measured output visually inspected: coherent cat holding a sign with legible hello world and no obvious gross corruption. Saved PNG RGB hashes match the common hash in both generation rows.",
+  "scope": "Functional inspection only; not a formal quality evaluation.",
+  "validation": "Phase counts, indices, callbacks, dimensions, requested settings and all summary medians/min/max checked. Raw RGB files removed by runner after conversion; saved PNGs checked directly."
+}

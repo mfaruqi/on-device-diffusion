@@ -1,0 +1,12 @@
+{
+  "images": [
+    "images/first.png",
+    "images/measured-0.png"
+  ],
+  "dimensions": [
+    512,
+    512
+  ],
+  "inspection": "Measured output shows a coherent cat holding a sign with legible hello world; no obvious gross corruption. Same RGB hash across both observed outputs.",
+  "scope": "Functional inspection only, not a formal quality evaluation."
+}

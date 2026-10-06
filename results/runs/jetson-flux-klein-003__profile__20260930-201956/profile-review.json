@@ -1,0 +1,215 @@
+{
+  "scope": "Post-import verification; no new inference or profiling",
+  "input_sha256": {
+    "config.json": "ab6792adab7386fc4865ed0b52689a3c8e29b16df3f8c339d3102ebc0447860c",
+    "summary.json": "d91435bc2345be337fbbefe323beda08e4f7f27d1878d9dc6256657a8a982c0a",
+    "status.json": "1ba6a3fc070471b482d562fd38456248171ec0191a353eacb1dc11efe3863ae3",
+    "runs.csv": "5c930a8eea8172e2b7cc99a6b93d1f02db5a56e21633407e14bd758e5098bebb",
+    "stages.csv": "30f156cfec805b12e8c7640dcff2d5e345bb914457a99242167930b9c899838c",
+    "engine/results.jsonl": "d61c9507ba826be3ecfdd5597594b4028334f23315781c8bb87e5b9499e2e232",
+    "engine/sdcpp.log": "a4b38c2fd19be40b0bd02c255161c09e1319a951011de325f03fd663719cc8bd",
+    "tegrastats-samples.csv": "47a2b8c9f8c2d05ea1180963eb0e75cba783b09858cd8dc96df66a553fda0d1d",
+    "profile/trace.sqlite": "194898006e1efa04ac8a7ce0a105d89488f12b9520ac0ff3e5474dd751672e05"
+  },
+  "status_complete": true,
+  "config_matches_targeted_profile": true,
+  "generation_rows_verified": 5,
+  "stage_rows_verified": 30,
+  "summary_replayed": true,
+  "engine_audit_replayed": true,
+  "monitor_samples": 346,
+  "saved_pngs_verified": [
+    {
+      "file": "first.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "measured-0.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "all_recorded_image_hashes_equal": true,
+  "hash_limit": "Only first and first measured PNGs retained; other image hashes are the runner-recorded values.",
+  "baseline_comparison_eligible": false,
+  "engine_reload_intervals": [
+    {
+      "source_line": 147,
+      "run_index": 0,
+      "phase": "first",
+      "stage": "denoise_step_0",
+      "duration_s": 7.91,
+      "read_s": 7.49,
+      "source_text": "3630.853144 [2] model_loader.cpp:1366 - loading tensors completed, taking 7.91s (read: 7.49s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.14s)"
+    },
+    {
+      "source_line": 175,
+      "run_index": 0,
+      "phase": "first",
+      "stage": "vae_decode",
+      "duration_s": 0.2,
+      "read_s": 0.01,
+      "source_text": "3642.990536 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.20s (read: 0.01s, memcpy: 0.00s, convert: 0.07s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 220,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 21.85,
+      "read_s": 21.12,
+      "source_text": "3668.545371 [2] model_loader.cpp:1366 - loading tensors completed, taking 21.85s (read: 21.12s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 233,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 27.84,
+      "read_s": 26.61,
+      "source_text": "3698.044507 [2] model_loader.cpp:1366 - loading tensors completed, taking 27.84s (read: 26.61s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.51s)"
+    },
+    {
+      "source_line": 260,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.25,
+      "read_s": 0.96,
+      "source_text": "3710.532471 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.25s (read: 0.96s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 305,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 20.79,
+      "read_s": 20.03,
+      "source_text": "3735.026176 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.79s (read: 20.03s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 318,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 20.43,
+      "read_s": 19.37,
+      "source_text": "3757.109471 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.43s (read: 19.37s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.47s)"
+    },
+    {
+      "source_line": 345,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.0,
+      "read_s": 0.8,
+      "source_text": "3769.367218 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.00s (read: 0.80s, memcpy: 0.00s, convert: 0.09s, copy_to_backend: 0.01s)"
+    },
+    {
+      "source_line": 390,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 20.77,
+      "read_s": 20.13,
+      "source_text": "3793.806035 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.77s (read: 20.13s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 403,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 25.43,
+      "read_s": 24.18,
+      "source_text": "3820.916578 [2] model_loader.cpp:1366 - loading tensors completed, taking 25.43s (read: 24.18s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.54s)"
+    },
+    {
+      "source_line": 430,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.25,
+      "read_s": 1.01,
+      "source_text": "3833.703348 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.25s (read: 1.01s, memcpy: 0.00s, convert: 0.12s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 475,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 17.38,
+      "read_s": 16.57,
+      "source_text": "3856.238455 [2] model_loader.cpp:1366 - loading tensors completed, taking 17.38s (read: 16.57s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.45s)"
+    },
+    {
+      "source_line": 488,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 25.16,
+      "read_s": 24.23,
+      "source_text": "3883.062457 [2] model_loader.cpp:1366 - loading tensors completed, taking 25.16s (read: 24.23s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.51s)"
+    },
+    {
+      "source_line": 515,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 1.04,
+      "source_text": "3895.831670 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 1.04s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    }
+  ],
+  "measured_engine_loading_total_s": [
+    43.74
+  ],
+  "measured_engine_loading_median_s": 43.74,
+  "loading_limit": "Engine-reported rounded intervals, not physical storage I/O; attribution requires interval containment in callback stage.",
+  "trace": {
+    "captured_generations": 1,
+    "harness_generation_index": 4,
+    "trace_generation_index": 0,
+    "cuda_kernels": 5574,
+    "ranges": [
+      {
+        "name": "profile_capture",
+        "duration_ms": 60895.434208
+      },
+      {
+        "name": "generate",
+        "duration_ms": 60895.417856
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 18900.647232
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 28808.887872
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2755.129312
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2757.098304
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2755.466336
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4636.103584
+      }
+    ]
+  }
+}

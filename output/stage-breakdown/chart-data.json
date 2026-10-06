@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "method": "Means across measured generations only; first and warmups excluded. Remaining = wall - encoding - denoising - decoding; includes postprocessing where separately recorded and host/event boundary differences. PyTorch stages use CUDA events; sd.cpp uses host callbacks and includes in-stage reloads. sd.cpp decode includes output conversion. Initial loading excluded. Different precision, resolution and residency across devices; not a matched GPU speed comparison. Cross-engine quality equivalence is untested.",
+  "runs": [
+    {
+      "run_dir": "a100-flux-klein-001__baseline__20260923-221530",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "BF16 \u00b7 1024 \u00d7 1024",
+      "measured_count": 10,
+      "stages_s": {
+        "Text encoding": 0.047078233337402346,
+        "Denoising (4 steps)": 0.9804880950927733,
+        "VAE decoding": 0.165465087890625,
+        "Output / remaining time": 0.04769425787709203
+      },
+      "mean_s": 1.2407256741978927,
+      "median_s": 1.2405574479926145,
+      "min_s": 1.2331452129874378,
+      "max_s": 1.2449276940023992,
+      "config": {
+        "id": "a100-flux-klein-001",
+        "description": "FLUX.2 [klein] 4B reference baseline: BF16, batch 1, 1024x1024, 4 steps, guidance 1.0. No quantization, offloading or compilation.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "main",
+          "resolved_at_utc": "2026-09-24T02:14:37Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false
+        }
+      },
+      "source_sha256": {
+        "summary.json": "c92477913577fd481ee24743997754b6f4a3f9982595c4b9c8bed27bce106cfb",
+        "runs.csv": "e6ffdb49bf985180c4734796e9c4aaa130217c6b9426eaf71c5891a265e86f31",
+        "config.json": "4651705d90ff87e6d48770321d02da6b2070174da752c3144a67bb0533984c48"
+      }
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__baseline__20260925-114328",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "BF16 \u00b7 1024 \u00d7 1024",
+      "measured_count": 10,
+      "stages_s": {
+        "Text encoding": 0.06556590001564473,
+        "Denoising (4 steps)": 1.7250928000081331,
+        "VAE decoding": 0.6043113999941851,
+        "Output / remaining time": 0.02878369998652497
+      },
+      "mean_s": 2.423753800004488,
+      "median_s": 2.4232730000221636,
+      "min_s": 2.420481999986805,
+      "max_s": 2.4285190000082366,
+      "config": {
+        "id": "a100-sdcpp-flux-klein-001",
+        "description": "stable-diffusion.cpp reference run of FLUX.2 [klein] 4B: BF16 weights from the pinned HF commit, batch 1, 1024x1024, 4 steps, cfg 1.0. All weights and compute on the GPU; auto-fit, graph segmentation, conditioning cache, CPU offload, VAE tiling and step caching off. Flash attention in the diffusion model only.",
+        "device_label": "gilbreth-a100-40gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "~/tools/stable-diffusion.cpp",
+          "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+          "bench_build_dir": "~/tools/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b.safetensors",
+            "llm": "text_encoder",
+            "vae": "vae/diffusion_pytorch_model.safetensors"
+          },
+          "sha256": {
+            "flux-2-klein-4b.safetensors": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343",
+            "text_encoder/model-00001-of-00002.safetensors": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+            "text_encoder/model-00002-of-00002.safetensors": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+            "vae/diffusion_pytorch_model.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "equivalence_report": "configs/sdcpp-weights.check.json",
+          "resolved_at_utc": "2026-09-25T15:39:51Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "engine_settings": {
+          "backend": "cuda0",
+          "params_backend": "cuda0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false
+        }
+      },
+      "source_sha256": {
+        "summary.json": "023218d04dbb3b1fec8a3c5768d9f79ea14e975f58b494e84108ab3f5a9cea7c",
+        "runs.csv": "b37f9f26d1a71a52ce1dbd0b9c51413f8e54fa9a60bbe26625d9df9d382eb990",
+        "config.json": "229fca9f6feb5f4ac93e2b74d91eac37325738616cae5ead2e30bab084024a69"
+      }
+    },
+    {
+      "run_dir": "jetson-flux-klein-003__baseline__20260930-193208",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Q4_0 transformer / Q4_K_M text \u00b7 512 \u00d7 512 \u00b7 disk-backed",
+      "measured_count": 10,
+      "stages_s": {
+        "Text encoding": 22.140826499999992,
+        "Denoising (4 steps)": 37.45888080000003,
+        "VAE decoding": 4.447042800000019,
+        "Output / remaining time": 0.2878781999999376
+      },
+      "mean_s": 64.33462829999998,
+      "median_s": 66.1170495000001,
+      "min_s": 54.82989199999997,
+      "max_s": 69.04319299999997,
+      "config": {
+        "id": "jetson-flux-klein-003",
+        "record_kind": "repeated unprofiled baseline",
+        "provenance": "Derived from the Jetson 003 stage-profile config; component revision/SHA256 pins retained. Engine commit, power mode and model hashes must be verified again on the target before measurement.",
+        "description": "Jetson 003 unchanged quantized disk-backed 512x512 workload; repeated unprofiled baseline",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "cuda_architecture": 87
+        },
+        "model": {
+          "components": [
+            {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+              "local_file": "flux-2-klein-4b-Q4_0.gguf"
+            },
+            {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+              "local_file": "Qwen3-4B-Q4_K_M.gguf"
+            },
+            {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "local_file": "flux2-vae.safetensors"
+            }
+          ]
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_count": 1,
+          "sampling_method": "euler",
+          "scheduler": "flux2"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 1000
+        },
+        "engine_settings": {
+          "backend": "CUDA0",
+          "params_backend": "disk",
+          "auto_fit": false,
+          "disable_segmented_compute": false,
+          "eager_load": true,
+          "conditioning_cache_size": 0,
+          "diffusion_fa": true,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "graph_segmentation": true,
+          "parameter_storage": "disk"
+        },
+        "reference_config": "configs/jetson-flux-klein-stage-profile.json",
+        "required_power_mode": "25W",
+        "harness_arguments": {
+          "runs": 14,
+          "steps": 4,
+          "backend": "CUDA0",
+          "params-backend": "disk",
+          "threads": 4,
+          "mmap": 0,
+          "fa": 0,
+          "diffusion-fa": 1,
+          "auto-fit": 0,
+          "eager-load": 1,
+          "disable-segmented-compute": 0,
+          "disable-prefetch": 0,
+          "conditioning-cache-size": 0,
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "seed": 0,
+          "cfg-scale": 1,
+          "sampling-method": "euler",
+          "scheduler": "flux2"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "230169d1dca5f7da92a4d23420d0c9bfe9c8d16feba4760116375e1c7e66c408",
+        "runs.csv": "b956e9402e708956f14676ecec7a834b105339fdabce4e2f498cbbc12c6ff416",
+        "config.json": "188a80a63946e2e960905983236c976b788b2aeffea7c9f390ab98a60993c716"
+      }
+    }
+  ]
+}

@@ -13,12 +13,14 @@ import traceback
 from benchlib import now_utc, summarize, write_json
 
 
-def check_optimizations(cfg, known_keys):
-    """These reference runners support only disabled, explicitly known options."""
+def check_optimizations(cfg, known_keys, enabled_keys=()):
+    """Enabled options need explicit adapter support and their own value checks."""
     options = cfg["optimizations"]
     unknown = set(options) - known_keys
     assert not unknown, f"Unknown optimizations: {sorted(unknown)}"
-    assert not any(options.values()), f"Reference runner requires optimizations off: {options}"
+    assert not any(value for key, value in options.items() if key not in enabled_keys), (
+        f"Unsupported enabled optimizations: {options}"
+    )
 
 
 def phase_sequence(protocol):

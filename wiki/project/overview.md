@@ -2,7 +2,7 @@
 type: project
 summary: The research project as proposed — hypothesis, planner objective, components, workloads, targets, RQs, evaluation rules, milestones.
 status: active
-updated: 2026-09-28
+updated: 2026-10-06
 ---
 
 # Project overview (condensed from the proposal)
@@ -10,6 +10,15 @@ updated: 2026-09-28
 Source: [the proposal PDF](../../proposal/OnDeviceDiffusionProposal.pdf). This file is a faithful condensation for
 quick reference. If the two disagree, the PDF wins and this file gets fixed. Update this
 file only when the proposal itself changes, not when a session's plans change.
+
+## Scope amendments
+
+- **2026-10-06, [D-010](decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)** (advisor-confirmed):
+  - **Deliverable:** the thesis also delivers a TVM-compiled FLUX.2 [klein] pipeline on CUDA, Metal and **WebGPU**, with the planner below as the research contribution on top.
+  - **Apple laptop target:** a MacBook Air 15" M5 (24 GB) replaces the M1 MacBook Pro.
+  - **Wan:** baselines are deferred until the compiled klein pipeline runs.
+  - **Schedule:** [milestones](milestones.md) supersedes the milestone table at the end of this page.
+  - **Unchanged:** the hypothesis, the planner objective and the RQs.
 
 ## Hypothesis
 

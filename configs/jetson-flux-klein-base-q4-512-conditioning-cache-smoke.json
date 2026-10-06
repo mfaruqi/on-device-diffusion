@@ -1,0 +1,100 @@
+{
+  "id": "jetson-flux-klein-base-005",
+  "record_kind": "two-generation correctness attempt",
+  "provenance": "Pinned Base transformer with unchanged pinned Q4_K_M text encoder and original BF16 VAE; target hashes verified before measurement.",
+  "description": "Exact reuse of positive and negative prompt conditioning between repeated generations; two cache entries retain both CFG conditions. Base Q4 512, fifty steps, guidance four; step caching remains disabled. Two-generation correctness attempt.",
+  "device_label": "jetson-orin-nano",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "cuda_architecture": 87
+  },
+  "model": {
+    "components": [
+      {
+        "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+        "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+        "file": "flux-2-klein-base-4b-Q4_0.gguf",
+        "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+        "local_file": "flux-2-klein-base-4b-Q4_0.gguf"
+      },
+      {
+        "repo_id": "unsloth/Qwen3-4B-GGUF",
+        "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+        "file": "Qwen3-4B-Q4_K_M.gguf",
+        "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+        "local_file": "Qwen3-4B-Q4_K_M.gguf"
+      },
+      {
+        "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+        "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "file": "vae/diffusion_pytorch_model.safetensors",
+        "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+        "local_file": "flux2-vae.safetensors"
+      }
+    ]
+  },
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "steps": 50,
+    "cfg_scale": 4.0,
+    "seed": 0,
+    "batch_count": 1,
+    "sampling_method": "euler",
+    "scheduler": "flux2"
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "tegrastats_interval_ms": 1000
+  },
+  "engine_settings": {
+    "backend": "CUDA0",
+    "params_backend": "disk",
+    "auto_fit": false,
+    "disable_segmented_compute": false,
+    "eager_load": true,
+    "conditioning_cache_size": 2,
+    "diffusion_fa": true,
+    "threads": 4
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": "Q4_0",
+      "text_encoder": "Q4_K_M"
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "step_cache": null,
+    "graph_segmentation": true,
+    "parameter_storage": "disk",
+    "conditioning_cache_size": 2
+  },
+  "reference_config": "configs/jetson-flux-klein-base-q4-512-disk.json",
+  "required_power_mode": "25W",
+  "harness_arguments": {
+    "runs": 2,
+    "steps": 50,
+    "backend": "CUDA0",
+    "params-backend": "disk",
+    "threads": 4,
+    "mmap": 0,
+    "fa": 0,
+    "diffusion-fa": 1,
+    "auto-fit": 0,
+    "eager-load": 1,
+    "disable-segmented-compute": 0,
+    "disable-prefetch": 0,
+    "conditioning-cache-size": 2,
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "seed": 0,
+    "cfg-scale": 4.0,
+    "sampling-method": "euler",
+    "scheduler": "flux2"
+  }
+}

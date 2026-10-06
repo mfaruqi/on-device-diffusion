@@ -1,0 +1,2104 @@
+[
+  {
+    "run_index": 0,
+    "phase": "first",
+    "segments": [
+      {
+        "name": "between:start->text_encode",
+        "peak_alloc": 14.92723560333252,
+        "peak_reserved": 14.931640625
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.18505573272705,
+        "peak_reserved": 15.220703125
+      },
+      {
+        "name": "between:text_encode->text_encode",
+        "peak_alloc": 14.942509651184082,
+        "peak_reserved": 15.220703125
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.192395210266113,
+        "peak_reserved": 15.220703125
+      },
+      {
+        "name": "between:text_encode->denoise_step_0",
+        "peak_alloc": 14.950949668884277,
+        "peak_reserved": 15.220703125
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 15.51964521408081,
+        "peak_reserved": 15.9609375
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_0",
+        "peak_alloc": 14.951926231384277,
+        "peak_reserved": 15.9609375
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 15.52062177658081,
+        "peak_reserved": 15.9609375
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_1",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.9609375
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_1",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_2",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_2",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_3",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_3->denoise_step_3",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_3->denoise_step_4",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_4",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_4->denoise_step_4",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_4",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_4->denoise_step_5",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_5",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_5->denoise_step_5",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_5",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_5->denoise_step_6",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_6",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_6->denoise_step_6",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_6",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_6->denoise_step_7",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_7",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_7->denoise_step_7",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_7",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_7->denoise_step_8",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_8",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_8->denoise_step_8",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_8",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_8->denoise_step_9",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_9",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_9->denoise_step_9",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_9",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_9->denoise_step_10",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_10",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_10->denoise_step_10",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_10",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_10->denoise_step_11",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_11",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_11->denoise_step_11",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_11",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_11->denoise_step_12",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_12",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_12->denoise_step_12",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_12",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_12->denoise_step_13",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_13",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_13->denoise_step_13",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_13",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_13->denoise_step_14",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_14",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_14->denoise_step_14",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_14",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_14->denoise_step_15",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_15",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_15->denoise_step_15",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_15",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_15->denoise_step_16",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_16",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_16->denoise_step_16",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_16",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_16->denoise_step_17",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_17",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_17->denoise_step_17",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_17",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_17->denoise_step_18",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_18",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_18->denoise_step_18",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_18",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_18->denoise_step_19",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_19",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_19->denoise_step_19",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_19",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_19->denoise_step_20",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_20",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_20->denoise_step_20",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_20",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_20->denoise_step_21",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_21",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_21->denoise_step_21",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_21",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_21->denoise_step_22",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_22",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_22->denoise_step_22",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_22",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_22->denoise_step_23",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_23",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_23->denoise_step_23",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_23",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_23->denoise_step_24",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_24",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_24->denoise_step_24",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_24",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_24->denoise_step_25",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_25",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_25->denoise_step_25",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_25",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_25->denoise_step_26",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_26",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_26->denoise_step_26",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_26",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_26->denoise_step_27",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_27",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_27->denoise_step_27",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_27",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_27->denoise_step_28",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_28",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_28->denoise_step_28",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_28",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_28->denoise_step_29",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_29",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_29->denoise_step_29",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_29",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_29->denoise_step_30",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_30",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_30->denoise_step_30",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_30",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_30->denoise_step_31",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_31",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_31->denoise_step_31",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_31",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_31->denoise_step_32",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_32",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_32->denoise_step_32",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_32",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_32->denoise_step_33",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_33",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_33->denoise_step_33",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_33",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_33->denoise_step_34",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_34",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_34->denoise_step_34",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_34",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_34->denoise_step_35",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_35",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_35->denoise_step_35",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_35",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_35->denoise_step_36",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_36",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_36->denoise_step_36",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_36",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_36->denoise_step_37",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_37",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_37->denoise_step_37",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_37",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_37->denoise_step_38",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_38",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_38->denoise_step_38",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_38",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_38->denoise_step_39",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_39",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_39->denoise_step_39",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_39",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_39->denoise_step_40",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_40",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_40->denoise_step_40",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_40",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_40->denoise_step_41",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_41",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_41->denoise_step_41",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_41",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_41->denoise_step_42",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_42",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_42->denoise_step_42",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_42",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_42->denoise_step_43",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_43",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_43->denoise_step_43",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_43",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_43->denoise_step_44",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_44",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_44->denoise_step_44",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_44",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_44->denoise_step_45",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_45",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_45->denoise_step_45",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_45",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_45->denoise_step_46",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_46",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_46->denoise_step_46",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_46",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_46->denoise_step_47",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_47",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_47->denoise_step_47",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_47",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_47->denoise_step_48",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_48",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_48->denoise_step_48",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_48",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_48->denoise_step_49",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_49",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_49->denoise_step_49",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "denoise_step_49",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "between:denoise_step_49->vae_decode",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 15.962890625
+      },
+      {
+        "name": "vae_decode",
+        "peak_alloc": 17.331809043884277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:vae_decode->postprocess",
+        "peak_alloc": 14.959738731384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "postprocess",
+        "peak_alloc": 14.971457481384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:postprocess->end",
+        "peak_alloc": 14.959738731384277,
+        "peak_reserved": 19.6015625
+      }
+    ]
+  },
+  {
+    "run_index": 1,
+    "phase": "measured",
+    "segments": [
+      {
+        "name": "between:start->text_encode",
+        "peak_alloc": 14.935171127319336,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.185056686401367,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:text_encode->text_encode",
+        "peak_alloc": 14.942510604858398,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.19239616394043,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:text_encode->denoise_step_0",
+        "peak_alloc": 14.950950622558594,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 15.51964521408081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_0",
+        "peak_alloc": 14.951926231384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 15.52062177658081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_1",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_1",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_2",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_2",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_3",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_3->denoise_step_3",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_3->denoise_step_4",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_4",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_4->denoise_step_4",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_4",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_4->denoise_step_5",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_5",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_5->denoise_step_5",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_5",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_5->denoise_step_6",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_6",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_6->denoise_step_6",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_6",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_6->denoise_step_7",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_7",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_7->denoise_step_7",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_7",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_7->denoise_step_8",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_8",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_8->denoise_step_8",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_8",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_8->denoise_step_9",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_9",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_9->denoise_step_9",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_9",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_9->denoise_step_10",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_10",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_10->denoise_step_10",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_10",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_10->denoise_step_11",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_11",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_11->denoise_step_11",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_11",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_11->denoise_step_12",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_12",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_12->denoise_step_12",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_12",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_12->denoise_step_13",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_13",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_13->denoise_step_13",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_13",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_13->denoise_step_14",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_14",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_14->denoise_step_14",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_14",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_14->denoise_step_15",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_15",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_15->denoise_step_15",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_15",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_15->denoise_step_16",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_16",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_16->denoise_step_16",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_16",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_16->denoise_step_17",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_17",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_17->denoise_step_17",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_17",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_17->denoise_step_18",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_18",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_18->denoise_step_18",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_18",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_18->denoise_step_19",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_19",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_19->denoise_step_19",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_19",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_19->denoise_step_20",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_20",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_20->denoise_step_20",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_20",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_20->denoise_step_21",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_21",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_21->denoise_step_21",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_21",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_21->denoise_step_22",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_22",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_22->denoise_step_22",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_22",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_22->denoise_step_23",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_23",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_23->denoise_step_23",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_23",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_23->denoise_step_24",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_24",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_24->denoise_step_24",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_24",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_24->denoise_step_25",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_25",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_25->denoise_step_25",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_25",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_25->denoise_step_26",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_26",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_26->denoise_step_26",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_26",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_26->denoise_step_27",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_27",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_27->denoise_step_27",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_27",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_27->denoise_step_28",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_28",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_28->denoise_step_28",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_28",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_28->denoise_step_29",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_29",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_29->denoise_step_29",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_29",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_29->denoise_step_30",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_30",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_30->denoise_step_30",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_30",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_30->denoise_step_31",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_31",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_31->denoise_step_31",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_31",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_31->denoise_step_32",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_32",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_32->denoise_step_32",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_32",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_32->denoise_step_33",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_33",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_33->denoise_step_33",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_33",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_33->denoise_step_34",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_34",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_34->denoise_step_34",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_34",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_34->denoise_step_35",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_35",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_35->denoise_step_35",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_35",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_35->denoise_step_36",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_36",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_36->denoise_step_36",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_36",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_36->denoise_step_37",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_37",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_37->denoise_step_37",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_37",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_37->denoise_step_38",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_38",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_38->denoise_step_38",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_38",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_38->denoise_step_39",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_39",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_39->denoise_step_39",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_39",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_39->denoise_step_40",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_40",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_40->denoise_step_40",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_40",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_40->denoise_step_41",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_41",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_41->denoise_step_41",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_41",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_41->denoise_step_42",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_42",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_42->denoise_step_42",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_42",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_42->denoise_step_43",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_43",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_43->denoise_step_43",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_43",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_43->denoise_step_44",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_44",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_44->denoise_step_44",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_44",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_44->denoise_step_45",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_45",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_45->denoise_step_45",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_45",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_45->denoise_step_46",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_46",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_46->denoise_step_46",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_46",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_46->denoise_step_47",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_47",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_47->denoise_step_47",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_47",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_47->denoise_step_48",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_48",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_48->denoise_step_48",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_48",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_48->denoise_step_49",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_49",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_49->denoise_step_49",
+        "peak_alloc": 14.953879356384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "denoise_step_49",
+        "peak_alloc": 15.52159833908081,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:denoise_step_49->vae_decode",
+        "peak_alloc": 14.957785606384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "vae_decode",
+        "peak_alloc": 17.331809043884277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:vae_decode->postprocess",
+        "peak_alloc": 14.959738731384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "postprocess",
+        "peak_alloc": 14.971457481384277,
+        "peak_reserved": 19.6015625
+      },
+      {
+        "name": "between:postprocess->end",
+        "peak_alloc": 14.959738731384277,
+        "peak_reserved": 19.6015625
+      }
+    ]
+  }
+]

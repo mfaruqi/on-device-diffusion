@@ -12,6 +12,7 @@ Metric definitions are documented in wiki/methods/baseline-metrics.md.
 """
 
 import argparse
+from collections import Counter
 import csv
 import hashlib
 import json
@@ -62,8 +63,14 @@ def result_row(run_index, phase, image, result, steps, sampler, process):
     for stage in result["stages"]:
         stage_gpu_ms.setdefault(stage["stage"], 0.0)
         stage_gpu_ms[stage["stage"]] += stage["gpu_ms"]
-    n_calls = sum(1 for stage in result["stages"] if stage["stage"].startswith("denoise_step_"))
-    assert n_calls == steps, f"expected {steps} transformer calls, saw {n_calls} (CFG active?)"
+    calls = Counter(stage["stage"] for stage in result["stages"])
+    per_step = result["calls_per_step"]
+    assert per_step in (1, 2), f"unsupported klein transformer calls per step: {per_step}"
+    assert result["scheduler_steps"] == steps, f"expected {steps} completed scheduler steps, saw {result['scheduler_steps']}"
+    expected = {f"denoise_step_{k}": per_step for k in range(steps)}
+    observed = {name: n for name, n in calls.items() if name.startswith("denoise_step_")}
+    assert observed == expected, f"transformer calls per logical step: expected {expected}, saw {observed}"
+    assert calls["text_encode"] == per_step, f"expected {per_step} klein text encodes, saw {calls['text_encode']}"
     denoise = sum(stage_gpu_ms[f"denoise_step_{k}"] for k in range(steps))
     named = stage_gpu_ms["text_encode"] + denoise + stage_gpu_ms["vae_decode"] + stage_gpu_ms["postprocess"]
     row = {
@@ -130,6 +137,8 @@ def build_summary(cfg, rows, load):
         "id": cfg["id"],
         "device_label": cfg["device_label"],
         "gpu_name": torch.cuda.get_device_name(0),
+        "guidance_scale": cfg["workload"]["guidance_scale"],
+        "transformer_calls_per_step": 2 if cfg["workload"]["guidance_scale"] > 1 and not load["is_distilled"] else 1,
         **summarize_runs(rows),
         "load": {k: load[k] for k in ["load_total_s", "allocated_after_load_gib", "peak_alloc_during_load_gib"]},
         "weights_gib": {k: v["weights_gib"] for k, v in load["components"].items()},

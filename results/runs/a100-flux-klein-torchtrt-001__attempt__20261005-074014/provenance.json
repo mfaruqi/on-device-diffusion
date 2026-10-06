@@ -1,0 +1,15 @@
+{
+  "source_output": "output/torchtrt-smoke-11881410",
+  "slurm_job": "11881410",
+  "capture_kind": "feasibility gate; not uniform repeated timing output",
+  "original_file_sha256": {
+    "config.json": "99135482108a8cdabc24a90e9692a0c77dedf270388d9e3cad23f05ce0b0094b",
+    "export-graph.txt": "a78be8ac5f7c432cffe74c8aa759b7f736839bdbc1a26b61c155f5f0bb1ff618",
+    "inputs.json": "ec9a01b0388b9b6dda6bc2f8bf962c736305ac29e32530ab2b3095608b68ede4",
+    "eager-image.json": "55836929cbbf6a310d50d4986a66d3481817a02f1e01244e2aa3efafb591747a",
+    "load.json": "a1e4947da9d653aa4329359347bf2442c366eaadd809606b1a1c0b052e5e107b",
+    "status.json": "46d03962a3187b8f985c43537edc9001755fe3fc096e5d3af652e6a7db15a986",
+    "environment.json": "9af62b8f0e9364aa57fd462309e6ec11b2b0e7f455b8dc281451b0685dfa79ae",
+    "eager.png": "eec592390896ec421fd9dd05dbb72d0ae6bf7c624d9d5857cdbfb7c509cbebb9"
+  }
+}

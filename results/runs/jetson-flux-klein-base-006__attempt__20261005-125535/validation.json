@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "Two-generation functional attempt; callback/CFG/settings/phase/summary/image checks, no full performance conclusion.",
+  "steps": 50,
+  "transformer_passes": [
+    100,
+    100
+  ],
+  "conditioning_hits": [
+    0,
+    0
+  ],
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "reference_rgb_equal": true,
+  "formal_quality_eligible": false,
+  "same_binary_as_reference": true
+}

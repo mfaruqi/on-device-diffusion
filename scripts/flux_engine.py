@@ -42,6 +42,14 @@ def check_config(cfg):
     check_optimizations(cfg, {"quantization", "cpu_offload", "vae_tiling", "vae_slicing", "torch_compile"})
     assert cfg["precision"] == "bfloat16"
     assert cfg["workload"]["batch_size"] == 1
+    assert cfg["model"]["pipeline_class"] == "Flux2KleinPipeline", "Stage accounting supports Flux2KleinPipeline only"
+    w = cfg["workload"]
+    assert type(w["num_inference_steps"]) is int and w["num_inference_steps"] > 0
+    if w["guidance_scale"] > 1:
+        assert "negative_prompt" in w, 'CFG requires an explicit negative_prompt: ""'
+    # Diffusers 0.40.0 klein encodes "" internally; it has no negative_prompt
+    # keyword. Do not precompute embeddings here and move encoding outside timing.
+    assert w.get("negative_prompt", "") == "", "Only the pipeline's empty negative prompt is supported"
     assert re.fullmatch(r"[0-9a-f]{40}", cfg["model"]["revision"]), (
         "Config revision is not a commit hash. Run --prepare-only first."
     )
@@ -109,6 +117,9 @@ def load_pipeline(cfg, run_dir, sampler, proc):
     pipe = pipe_cls.from_pretrained(
         cfg["model"]["repo_id"], revision=cfg["model"]["revision"], torch_dtype=torch.bfloat16, local_files_only=True
     )
+    is_distilled = pipe.config.is_distilled
+    assert type(is_distilled) is bool, "Pipeline must declare is_distilled"
+    assert not (is_distilled and cfg["workload"]["guidance_scale"] > 1), "Distilled klein ignores CFG; use guidance 1.0"
     t1 = time.perf_counter()
     pipe = pipe.to("cuda")
     torch.cuda.synchronize()
@@ -127,6 +138,7 @@ def load_pipeline(cfg, run_dir, sampler, proc):
                 "device": str(next(comp.parameters()).device),
             }
     load = {
+        "is_distilled": is_distilled,
         "from_pretrained_s": t1 - t0,
         "to_cuda_s": t2 - t1,
         "load_total_s": t2 - t0,
@@ -172,6 +184,8 @@ def generate_once(pipe, recorder, w):
     h1 = time.perf_counter()
     stages, peak_alloc, peak_reserved, segments = recorder.finish()
     return image, {
+        "calls_per_step": 2 if pipe.do_classifier_free_guidance else 1,
+        "scheduler_steps": recorder.scheduler_steps,
         "wall_ms": (h1 - h0) * 1000,
         "gpu_span_ms": ev0.elapsed_time(ev1),
         "t0": h0,

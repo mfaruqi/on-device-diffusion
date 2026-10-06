@@ -1,0 +1,88 @@
+\documentclass{article}
+
+% Uses the NeurIPS template when supplied; otherwise a standard article.
+\PassOptionsToPackage{numbers,compress}{natbib}
+\IfFileExists{neurips_2025.sty}{%
+  \usepackage[preprint]{neurips_2025}
+}{%
+  \usepackage[letterpaper,margin=1in]{geometry}
+  \usepackage{natbib}
+}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+  pdftitle={Quality-Aware GPU Serving for Multimodal Catalog Models},pdfauthor={Mahad Faruqi}}
+\bibliographystyle{abbrvnat}
+\setlength{\emergencystretch}{2em}
+\title{Quality-Aware GPU Serving\\for Multimodal Catalog Models}
+\author{Mahad Faruqi \\
+  Purdue EcoAI Lab \\
+  Advisor: Prof. Haoran You}
+\date{DoorDash AI Research Fellowship Proposal}
+
+\begin{document}
+\maketitle
+
+\section{Motivation and Research Question}
+Can jointly choosing quantization and serving parameters lower the cost of accurate catalog metadata while meeting latency and memory limits? I propose a 12-week study of one merchant catalog task, with a reproducible benchmark and a small serving planner as the main artifacts.
+
+DoorDash describes a food-metadata pipeline that combines multimodal models, LLM-jury evaluation, and distributed batch inference to maintain catalog attributes. Its existing investment makes the next question concrete: which execution configuration delivers useful predictions most economically as input complexity and demand change?~\citep{doordashMetadata2026}
+
+My hypothesis is that precision and batching must be selected together. Quantization can free memory for larger batches, but kernel overhead, longer queues, or additional failed predictions may erase the savings. Aggregate accuracy can also hide regressions on uncommon cuisines or image-heavy inputs. I would test whether a small set of jointly validated plans improves cost over independently tuned settings, while preserving quality on predefined data slices.
+
+\section{Serving Architecture and Implementation Approach}
+\textbf{Start with one measurable task.} With a research sponsor, select catalog attribute extraction from menu text and available images, using one existing open-weight vision-language model. Freeze the checkpoint, prompts, image preprocessing, and output schema. Compare BF16 with supported 8-bit and 4-bit variants, recording the quantization method and actual kernel support. Model training and prompt optimization stay outside the initial experiment.
+
+\textbf{Measure the complete request path.} Build a replay harness that captures preprocessing, queueing, GPU execution, validation, and retries. Sweep precision, batch-token budget, and maximum concurrency on one serving engine. Begin on one GPU type; use a second to test transfer if time and allocation permit. Record weights, activations, and cache memory separately, alongside cold-start and steady-state behavior.
+
+\textbf{Turn measurements into deployable plans.} Build a lookup-based planner that accepts a workload profile, quality thresholds, memory budget, and deadline, then recommends the lowest-cost validated configuration. Each recommendation carries its evidence, supported input ranges, and rejection reasons. Initially, precision is fixed per deployment or batch job; runtime controls adjust batching and admission within tested bounds. This keeps model-loading costs explicit and makes the prototype feasible within the fellowship.
+
+INFaaS already studies automated selection among model variants under accuracy and performance requirements.~\citep{romero2021infaas} The proposed contribution is a focused evaluation of quantization-batching interactions for multimodal catalog tasks, including slice-level quality and the cost of validation and retries under workload shift.
+
+\section{Evaluation Plan}
+Separate calibration data from a final test set held out by merchant and time, with near-duplicate items grouped to prevent leakage. Evaluate field-level precision and recall, schema validity, and performance across predefined cuisine, language, text-length, and image-availability slices. Use adjudicated labels for a manageable test subset and audit automated-judge disagreements. Agree on minimum quality floors and allowed degradation before tuning; retain the reference plan when evidence is insufficient.
+
+Replay steady arrivals, update bursts, and backfill jobs. Compare the planner against a tuned BF16 configuration, precision and batching tuned independently, and the best feasible plan from a broader offline sweep. Give competing tuning methods equal profiling budgets. Ablate joint selection and slice-level quality checks to identify where any benefit comes from.
+
+Report cost per 1,000 correct, schema-valid item outputs on the labeled test set, with a fixed field set and all attempted-request, validation, and retry costs included. Pair that metric with completion coverage so dropping difficult items cannot look like an improvement. Measure p50/p95/p99 request latency for updates, backfill completion time, deadline misses, peak memory, and search overhead. Use repeated runs and confidence intervals. Success means a measurable cost reduction over tuned baselines while satisfying the preregistered quality and deadline constraints; mapping where quantization offers no benefit is also a useful result.
+
+\section{Preparation and Why DoorDash}
+My master's research in Purdue's EcoAI Lab, advised by Prof. Haoran You, investigates joint precision and memory planning for diffusion inference. I built benchmarking and profiling infrastructure around PyTorch and stable-diffusion.cpp, using A100 GPUs and Jetson Orin Nano. On A100, I traced engine-level latency differences to attention, conversions, and VAE execution. On Jetson, I enabled a $512\times512$ FLUX.2 [klein] generation using quantized weights and disk-backed parameter loading. That established feasibility, with repeated performance and formal quality evaluation still pending. These experiments motivate measuring whole-system behavior rather than assuming smaller weights imply cheaper inference.
+
+DoorDash offers the combination this study needs: a real catalog task, changing merchant inputs, operational traffic, and a path to validate recommendations with model owners. Its published metadata work provides a concrete starting point, and the fellowship offers research infrastructure, operational data under governance, and sponsor mentorship.~\citep{doordashMetadata2026,doordashFellowship2026} I would work with Merchant and ML Platform researchers to define meaningful errors and realistic service targets. This connects my systems experience directly to the fellowship's evaluation and multimodal-understanding priorities.
+
+\section{Milestones and Feasibility}
+\textbf{Weeks 1-2:} select the task, secure data access, define quality gates, and reproduce a baseline. \textbf{Weeks 3-5:} build the replay harness and characterize precision-batching tradeoffs. \textbf{Weeks 6-8:} implement the planner and run controlled ablations. \textbf{Weeks 9-12:} freeze policies, evaluate held-out data and workload shifts, and deliver a technical report, reproducible benchmark, and serving-configuration prototype. A shadow evaluation and a publishable systems study would be the next steps, subject to results and data review.
+
+% Embedded references keep this source independently compilable in the editor.
+% To use the accompanying references.bib in a BibTeX project, replace this
+% environment with \bibliography{references}.
+\begin{thebibliography}{9}
+\small
+\bibitem{doordashMetadata2026}
+D.~Lindsay, S.~Liu, and Y.~Yang.
+\emph{Building Food Metadata with LLM Juries, Context Optimization \& Multimodal AI}.
+DoorDash, 2026.
+\href{https://careersatdoordash.com/blog/building-food-metadata-with-llm-juries-context-optimization-multimodal-ai/}{Engineering blog}.
+
+\bibitem{romero2021infaas}
+F.~Romero, Q.~Li, N.~J.~Yadwadkar, and C.~Kozyrakis.
+\emph{INFaaS: Automated Model-less Inference Serving}.
+USENIX ATC, 2021.
+\href{https://www.usenix.org/conference/atc21/presentation/romero}{Conference paper}.
+
+\bibitem{doordashFellowship2026}
+DoorDash. \emph{AI Research Fellowship, Summer and Fall 2026}.
+\href{https://job-boards.greenhouse.io/doordashusa/jobs/7848317}{Fellowship posting}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "reference": "jetson-flux-klein-base-001__baseline__20261005-005357",
+  "rgb_equal": false,
+  "psnr_db": 31.204132360069664,
+  "mse_rgb_8bit": 49.27959442138672,
+  "cache_audit": {
+    "requested": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "enabled_generations": 14,
+    "steps_skipped": [
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+    ],
+    "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."
+  },
+  "transformer_executions": [
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50
+  ],
+  "scope": "Full 1+3+10 protocol; one development prompt/seed. Callback, settings, phase, CFG execution, image and summary checks passed. No formal quality eligibility.",
+  "pixels_equal_validated_attempt": true
+}

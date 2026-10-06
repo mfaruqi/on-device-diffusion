@@ -1,0 +1,143 @@
+{
+  "id": "jetson-flux-klein-003",
+  "record_kind": "later-generation targeted profile",
+  "profiler": "nsight-systems",
+  "profiling": {
+    "profiler": "nsight-systems",
+    "generation": 4
+  },
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 25866.75299999979,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2146.6239999999743,
+    "denoise_ms": 19673.44099999991,
+    "denoise_step_0_ms": 11519.260999999915,
+    "denoise_step_1_ms": 2719.920000000002,
+    "denoise_step_2_ms": 2719.6579999999813,
+    "denoise_step_3_ms": 2714.6020000000135,
+    "vae_decode_ms": 3554.3259999999464,
+    "postprocess_ms": null,
+    "other_ms": 492.36199999995733,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 60916.291,
+      "min": 60916.291,
+      "max": 60916.291,
+      "mean": 60916.291,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 18910.11000000026,
+      "min": 18910.11000000026,
+      "max": 18910.11000000026,
+      "mean": 18910.11000000026,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 37087.01999999994,
+      "min": 37087.01999999994,
+      "max": 37087.01999999994,
+      "mean": 37087.01999999994,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 28817.528999999922,
+      "min": 28817.528999999922,
+      "max": 28817.528999999922,
+      "mean": 28817.528999999922,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 2755.749999999807,
+      "min": 2755.749999999807,
+      "max": 2755.749999999807,
+      "mean": 2755.749999999807,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 2757.6960000001236,
+      "min": 2757.6960000001236,
+      "max": 2757.6960000001236,
+      "mean": 2757.6960000001236,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 2756.0450000000856,
+      "min": 2756.0450000000856,
+      "max": 2756.0450000000856,
+      "mean": 2756.0450000000856,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 4637.016000000131,
+      "min": 4637.016000000131,
+      "max": 4637.016000000131,
+      "mean": 4637.016000000131,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 282.14499999965483,
+      "min": 282.14499999965483,
+      "max": 282.14499999965483,
+      "mean": 282.14499999965483,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 63.03715800000009,
+    "model_version": "Flux.2 klein",
+    "note": "new_sd_ctx with disk-backed parameters; not all weights resident on GPU. Hash checks warmed file cache."
+  },
+  "monitor_window": {
+    "samples": 346,
+    "ram_peak_gib": 6.0869140625,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.3095703125,
+    "swap_max_gib": 0.3095703125,
+    "gpu_temperature_max_c": 52.406,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "engine_audit": {
+    "settings_confirmed": true,
+    "automatic_fitting": false,
+    "conditioning_reuse": false,
+    "parameter_storage": "disk",
+    "segmented_compute_allowed": true
+  },
+  "stage_callbacks_validated": true,
+  "timing_method": "host steady_clock at sd.cpp callbacks; includes on-demand loading",
+  "unavailable_metrics": {
+    "gpu_span_ms": "No CUDA event span; use host wall_ms",
+    "postprocess_ms": "Included in sd.cpp decode/output boundary; no separate stage",
+    "peak_alloc_gib/peak_reserved_gib": "No PyTorch allocator",
+    "device_used_peak_gib": "No NVML; system RAM capture is separate and not stage-aligned",
+    "host_rss_gib": "Per-generation process RSS not sampled"
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "timestamp_utc": "2026-10-05T12:12:19Z",
+  "hostname": "gilbreth-g007.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-687.49.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "python_executable": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/bin/python",
+  "nvidia_smi_gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-8bad8008-0310-578d-7c12-e4705e7e6e42, 250.00 W",
+  "nvidia_driver": "595.91.07",
+  "git_commit": "1e983ca8986116dd04970740909104072eaebc97",
+  "git_dirty_files": [
+    "?? build-edge-performance.sh",
+    "?? build-harness.sh",
+    "?? configs/a100-edgedit-flux-klein-bf16-smoke.json",
+    "?? edge-smoke.py",
+    "?? edge-smoke.slurm",
+    "?? output/",
+    "?? prepare-base-q4.py",
+    "?? prepare-base.sh",
+    "?? prepare-sdcpp-base.sh",
+    "?? results/",
+    "?? smoke-sdcpp.slurm",
+    "?? smoke.slurm"
+  ],
+  "env_vars": {
+    "SLURM_JOB_ID": "11882497",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g007",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": "/scratch/gilbreth/mfaruqi/huggingface",
+    "HF_HUB_OFFLINE": "1",
+    "GGML_CUDA_CUBLAS_COMPUTE_TYPE": null,
+    "LD_LIBRARY_PATH": "/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64:/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64:/apps/spack/gilbreth-r9/apps/libxml2/2.10.3-gcc-11.5.0-wroyiwb/lib:/apps/spack/gilbreth-r9/apps/libiconv/1.17-gcc-11.5.0-36njf44/lib:/apps/spack/gilbreth-r9/apps/libfabric/1.19.1-gcc-11.5.0-b5idhcg/lib64:/apps/spack/gilbreth-r9/apps/libfabric/1.19.1-gcc-11.5.0-b5idhcg/lib:/apps/spack/gilbreth-r9/apps/openmpi/4.1.6-gcc-11.5.0-w7wc45k/lib"
+  },
+  "device_memory_sampler": "nvml handle by uuid GPU-8bad8008-0310-578d-7c12-e4705e7e6e42",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "tag": "master-919-19bbbca",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "source_dir": "~/tools/stable-diffusion.cpp",
+    "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+    "bench_build_dir": "~/tools/sd-bench-build-20261004",
+    "sdcpp_head": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "ggml_head": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+    "sdcpp_status": "",
+    "binary": "/home/mfaruqi/tools/sd-bench-build-20261004/sd-bench-nvtx",
+    "binary_sha256": "3bd41f15fff3900f585ad678119e2d0c5388d224e9ae9f0c27a5f5243c3e3afb"
+  },
+  "nvcc": [
+    "Build cuda_12.6.r12.6/compiler.34431801_0"
+  ],
+  "ldd": [
+    "linux-vdso.so.1 (0x00007fff7f580000)",
+    "\t/apps/external/apps/xalt3/xalt/xalt/lib64/libxalt_init.so (0x000015534433f000)",
+    "\tlibcudart.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcudart.so.12 (0x000015534408e000)",
+    "\tlibcublas.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcublas.so.12 (0x000015533db34000)",
+    "\tlibcublasLt.so.12 => /apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64/libcublasLt.so.12 (0x000015531e6e0000)",
+    "\tlibcuda.so.1 => /lib64/libcuda.so.1 (0x0000155318f21000)",
+    "\tlibnccl.so.2 => /lib64/libnccl.so.2 (0x0000155308819000)",
+    "\tlibgomp.so.1 => /lib64/libgomp.so.1 (0x00001553087d3000)",
+    "\tlibstdc++.so.6 => /lib64/libstdc++.so.6 (0x00001553085aa000)",
+    "\tlibm.so.6 => /lib64/libm.so.6 (0x00001553084cd000)",
+    "\tlibgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00001553084ae000)",
+    "\tlibc.so.6 => /lib64/libc.so.6 (0x00001553082a4000)",
+    "\t/lib64/ld-linux-x86-64.so.2 (0x0000155344372000)",
+    "\tlibdl.so.2 => /lib64/libdl.so.2 (0x000015530829f000)",
+    "\tlibpthread.so.0 => /lib64/libpthread.so.0 (0x000015530829a000)",
+    "\tlibrt.so.1 => /lib64/librt.so.1 (0x0000155308295000)"
+  ],
+  "snapshot_dir": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d"
+}

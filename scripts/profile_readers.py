@@ -51,13 +51,20 @@ def load_torch_trace(trace_path, stage_re):
     starts = [w[0] for w in windows]
     chains = build_op_chains(events)
 
-    stages = {name: {"span_ms": (e - s) / 1000.0, "acts": []} for s, e, name in windows}
+    # Sequential CFG calls and positive/negative encodes can share a label.
+    # Sum their windows, excluding gaps between calls; never overwrite a span.
+    assert all(a[1] <= b[0] for a, b in zip(windows, windows[1:])), "overlapping selected stage windows"
+    stages = {}
+    for start, end, name in windows:
+        stage = stages.setdefault(name, {"span_ms": 0.0, "acts": []})
+        stage["span_ms"] += (end - start) / 1000.0
     for e in events:
         if e.get("cat") not in GPU_CATS:
             continue
         i = bisect.bisect_right(starts, e["ts"]) - 1
-        if i < 0 or e["ts"] > windows[i][1]:
+        if i < 0 or e["ts"] >= windows[i][1]:
             continue
+        assert e["ts"] + e["dur"] <= windows[i][1], "GPU activity crosses selected stage end"
         chain = chains.get(e.get("args", {}).get("correlation"), [])
         aten = [op for op in chain if op["name"].startswith("aten::")]
         top = aten[0]["name"] if aten else "(no aten op)"
@@ -102,32 +109,57 @@ def load_nsys(path, stage_re, generation=-1):
         path = db
     with closing(sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)) as con:
         tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+        has_pid = "globalTid" in {r[1] for r in con.execute("PRAGMA table_info(NVTX_EVENTS)")}
+        tid_column = "n.globalTid" if has_pid else "NULL"
         nvtx = con.execute(
-            "SELECT n.start, n.end, COALESCE(n.text, s.value) FROM NVTX_EVENTS n "
+            f"SELECT n.start, n.end, COALESCE(n.text, s.value), {tid_column} FROM NVTX_EVENTS n "
             "LEFT JOIN StringIds s ON n.textId = s.id WHERE n.end IS NOT NULL").fetchall()
-        gens = sorted((a / 1000.0, b / 1000.0) for a, b, name in nvtx if name == "generate")
+        gens = sorted((a / 1000.0, b / 1000.0, tid) for a, b, name, tid in nvtx if name == "generate")
         assert gens, f"no NVTX 'generate' ranges in {path}"
-        g0, g1 = gens[generation]
-        windows = sorted((a / 1000.0, b / 1000.0, name) for a, b, name in nvtx
-                         if name and re.fullmatch(stage_re, name) and g0 <= a / 1000.0 <= g1)
+        g0, g1, tid = gens[generation]
+        # Nsight packs HW/VM/PID above the low 24 thread bits. Keep all
+        # worker threads of this process, excluding unrelated processes.
+        process = tid >> 24 if tid is not None else None
+        windows = sorted((a / 1000.0, b / 1000.0, name) for a, b, name, thread in nvtx
+                         if name and re.fullmatch(stage_re, name) and g0 <= a / 1000.0 < g1
+                         and (process is None or thread is not None and thread >> 24 == process))
         assert windows, f"no NVTX range matching {stage_re!r} in generation {generation} of {path}"
         assert len({w[2] for w in windows}) == len(windows), "duplicate stage names within one generation"
+        assert all(a[1] <= b[0] for a, b in zip(windows, windows[1:])), "overlapping selected stage windows"
+        assert all(g0 <= a < b <= g1 for a, b, _ in windows), "stage crosses generation boundary"
         starts = [w[0] for w in windows]
         stages = {name: {"span_ms": (e - s) / 1000.0, "acts": []} for s, e, name in windows}
 
+        def process_filter(table, alias=""):
+            if process is None:
+                return ""
+            assert "globalPid" in {r[1] for r in con.execute(f"PRAGMA table_info({table})")}, f"missing process IDs in {table}"
+            return f" WHERE ({alias}globalPid >> 24) = {process}"
+
         rows = [("kernel", a, b, short, full) for a, b, short, full in con.execute(
             "SELECT k.start, k.end, s.value, d.value FROM CUPTI_ACTIVITY_KIND_KERNEL k "
-            "JOIN StringIds s ON k.shortName = s.id JOIN StringIds d ON k.demangledName = d.id")]
+            "JOIN StringIds s ON k.shortName = s.id JOIN StringIds d ON k.demangledName = d.id"
+            + process_filter("CUPTI_ACTIVITY_KIND_KERNEL", "k."))]
         for table, cat in (("CUPTI_ACTIVITY_KIND_MEMCPY", "gpu_memcpy"), ("CUPTI_ACTIVITY_KIND_MEMSET", "gpu_memset")):
             if table in tables:
-                rows += [(cat, a, b, cat, cat) for a, b in con.execute(f"SELECT start, end FROM {table}")]
+                rows += [(cat, a, b, cat, cat) for a, b in con.execute(f"SELECT start, end FROM {table}" + process_filter(table))]
         for cat, a, b, short, full in rows:
             ts = a / 1000.0
             i = bisect.bisect_right(starts, ts) - 1
-            if i < 0 or ts > windows[i][1]:
+            if i < 0 or ts >= windows[i][1]:
                 continue
+            assert b / 1000.0 <= windows[i][1], "GPU activity crosses selected stage end"
             group = categorize(full, None, cat)
             stages[windows[i][2]]["acts"].append(
                 {"name": full, "cat": cat, "ts": ts, "dur_us": (b - a) / 1000.0,
                  "top": group, "leaf": short, "leaf_op": None, "group": group})
+        if "OSRT_API" in tables and process is not None:
+            reads = con.execute(
+                "SELECT o.start / 1000.0, o.end / 1000.0 FROM OSRT_API o "
+                "JOIN StringIds s ON o.nameId = s.id "
+                "WHERE (o.globalTid >> 24) = ? AND s.value IN ('read', 'pread64') "
+                "AND o.end > ? AND o.start < ?", (process, g0 * 1000, g1 * 1000)).fetchall()
+            for start, end, name in windows:
+                stages[name]["read_intervals"] = [(max(start, a), min(end, b)) for a, b in reads if a < end and b > start]
+                stages[name]["osrt_process"] = process
         return stages

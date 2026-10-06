@@ -1,0 +1,572 @@
+{
+  "id": "a100-sdcpp-flux-klein-base-001",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-e3bd235a-a349-836b-1f0c-1b980023c5d7, 250.00 W",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 43720.67199999583,
+    "gpu_span_ms": null,
+    "text_encode_ms": 315.651999990223,
+    "denoise_ms": 42731.177000008756,
+    "denoise_step_0_ms": 875.0890000083018,
+    "denoise_step_1_ms": 849.447999993572,
+    "denoise_step_2_ms": 845.6080000032671,
+    "denoise_step_3_ms": 849.7380000044359,
+    "denoise_step_4_ms": 847.8499999910127,
+    "denoise_step_5_ms": 852.63200000918,
+    "denoise_step_6_ms": 848.7409999943338,
+    "denoise_step_7_ms": 850.4580000007991,
+    "denoise_step_8_ms": 849.3889999954263,
+    "denoise_step_9_ms": 851.5590000024531,
+    "denoise_step_10_ms": 851.8270000058692,
+    "denoise_step_11_ms": 850.282999992487,
+    "denoise_step_12_ms": 849.0339999989374,
+    "denoise_step_13_ms": 851.1690000013914,
+    "denoise_step_14_ms": 850.8920000022044,
+    "denoise_step_15_ms": 849.6129999984987,
+    "denoise_step_16_ms": 850.774000005913,
+    "denoise_step_17_ms": 853.6279999971157,
+    "denoise_step_18_ms": 852.5999999983469,
+    "denoise_step_19_ms": 851.9890000025043,
+    "denoise_step_20_ms": 851.3349999993807,
+    "denoise_step_21_ms": 865.3869999980088,
+    "denoise_step_22_ms": 851.6820000077132,
+    "denoise_step_23_ms": 855.6069999904139,
+    "denoise_step_24_ms": 852.0510000089416,
+    "denoise_step_25_ms": 850.559999991674,
+    "denoise_step_26_ms": 852.1279999986291,
+    "denoise_step_27_ms": 851.7810000048485,
+    "denoise_step_28_ms": 863.7909999961266,
+    "denoise_step_29_ms": 856.7110000003595,
+    "denoise_step_30_ms": 859.4000000011874,
+    "denoise_step_31_ms": 851.8730000068899,
+    "denoise_step_32_ms": 859.9589999939781,
+    "denoise_step_33_ms": 856.3290000020061,
+    "denoise_step_34_ms": 854.7980000003008,
+    "denoise_step_35_ms": 860.1999999955297,
+    "denoise_step_36_ms": 855.7120000041323,
+    "denoise_step_37_ms": 856.0929999948712,
+    "denoise_step_38_ms": 856.2510000047041,
+    "denoise_step_39_ms": 859.1310000047088,
+    "denoise_step_40_ms": 856.1090000002878,
+    "denoise_step_41_ms": 856.0319999960484,
+    "denoise_step_42_ms": 860.077999997884,
+    "denoise_step_43_ms": 854.9630000052275,
+    "denoise_step_44_ms": 856.1729999928502,
+    "denoise_step_45_ms": 855.6689999968512,
+    "denoise_step_46_ms": 867.1739999990677,
+    "denoise_step_47_ms": 856.0819999984233,
+    "denoise_step_48_ms": 859.6240000042599,
+    "denoise_step_49_ms": 856.1730000074022,
+    "vae_decode_ms": 645.8309999870835,
+    "postprocess_ms": null,
+    "other_ms": 28.01200000976678,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": 22.88031005859375,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 43850.116000001435,
+      "min": 43850.116000001435,
+      "max": 43850.116000001435,
+      "mean": 43850.116000001435,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 140.6319999950938,
+      "min": 140.6319999950938,
+      "max": 140.6319999950938,
+      "mean": 140.6319999950938,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 43070.48300000315,
+      "min": 43070.48300000315,
+      "max": 43070.48300000315,
+      "mean": 43070.48300000315,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 859.6120000001974,
+      "min": 859.6120000001974,
+      "max": 859.6120000001974,
+      "mean": 859.6120000001974,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 856.1710000067251,
+      "min": 856.1710000067251,
+      "max": 856.1710000067251,
+      "mean": 856.1710000067251,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 862.4609999969834,
+      "min": 862.4609999969834,
+      "max": 862.4609999969834,
+      "mean": 862.4609999969834,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 855.0610000093002,
+      "min": 855.0610000093002,
+      "max": 855.0610000093002,
+      "mean": 855.0610000093002,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_4_ms": {
+      "median": 857.345999989775,
+      "min": 857.345999989775,
+      "max": 857.345999989775,
+      "mean": 857.345999989775,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_5_ms": {
+      "median": 858.248000004096,
+      "min": 858.248000004096,
+      "max": 858.248000004096,
+      "mean": 858.248000004096,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_6_ms": {
+      "median": 862.4049999925774,
+      "min": 862.4049999925774,
+      "max": 862.4049999925774,
+      "mean": 862.4049999925774,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_7_ms": {
+      "median": 861.9680000119843,
+      "min": 861.9680000119843,
+      "max": 861.9680000119843,
+      "mean": 861.9680000119843,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_8_ms": {
+      "median": 857.929999998305,
+      "min": 857.929999998305,
+      "max": 857.929999998305,
+      "mean": 857.929999998305,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_9_ms": {
+      "median": 856.7209999891929,
+      "min": 856.7209999891929,
+      "max": 856.7209999891929,
+      "mean": 856.7209999891929,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_10_ms": {
+      "median": 858.3410000137519,
+      "min": 858.3410000137519,
+      "max": 858.3410000137519,
+      "mean": 858.3410000137519,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_11_ms": {
+      "median": 864.8239999893121,
+      "min": 864.8239999893121,
+      "max": 864.8239999893121,
+      "mean": 864.8239999893121,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_12_ms": {
+      "median": 866.7229999991832,
+      "min": 866.7229999991832,
+      "max": 866.7229999991832,
+      "mean": 866.7229999991832,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_13_ms": {
+      "median": 857.8600000037113,
+      "min": 857.8600000037113,
+      "max": 857.8600000037113,
+      "mean": 857.8600000037113,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_14_ms": {
+      "median": 859.840000004624,
+      "min": 859.840000004624,
+      "max": 859.840000004624,
+      "mean": 859.840000004624,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_15_ms": {
+      "median": 859.5479999930831,
+      "min": 859.5479999930831,
+      "max": 859.5479999930831,
+      "mean": 859.5479999930831,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_16_ms": {
+      "median": 858.6240000004182,
+      "min": 858.6240000004182,
+      "max": 858.6240000004182,
+      "mean": 858.6240000004182,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_17_ms": {
+      "median": 862.8410000092117,
+      "min": 862.8410000092117,
+      "max": 862.8410000092117,
+      "mean": 862.8410000092117,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_18_ms": {
+      "median": 860.6799999979557,
+      "min": 860.6799999979557,
+      "max": 860.6799999979557,
+      "mean": 860.6799999979557,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_19_ms": {
+      "median": 856.3649999996414,
+      "min": 856.3649999996414,
+      "max": 856.3649999996414,
+      "mean": 856.3649999996414,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_20_ms": {
+      "median": 859.1169999999693,
+      "min": 859.1169999999693,
+      "max": 859.1169999999693,
+      "mean": 859.1169999999693,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_21_ms": {
+      "median": 860.7999999949243,
+      "min": 860.7999999949243,
+      "max": 860.7999999949243,
+      "mean": 860.7999999949243,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_22_ms": {
+      "median": 865.2160000056028,
+      "min": 865.2160000056028,
+      "max": 865.2160000056028,
+      "mean": 865.2160000056028,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_23_ms": {
+      "median": 858.405999999377,
+      "min": 858.405999999377,
+      "max": 858.405999999377,
+      "mean": 858.405999999377,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_24_ms": {
+      "median": 861.1369999998715,
+      "min": 861.1369999998715,
+      "max": 861.1369999998715,
+      "mean": 861.1369999998715,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_25_ms": {
+      "median": 858.6090000026161,
+      "min": 858.6090000026161,
+      "max": 858.6090000026161,
+      "mean": 858.6090000026161,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_26_ms": {
+      "median": 858.8329999911366,
+      "min": 858.8329999911366,
+      "max": 858.8329999911366,
+      "mean": 858.8329999911366,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_27_ms": {
+      "median": 864.9890000087908,
+      "min": 864.9890000087908,
+      "max": 864.9890000087908,
+      "mean": 864.9890000087908,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_28_ms": {
+      "median": 860.9059999871533,
+      "min": 860.9059999871533,
+      "max": 860.9059999871533,
+      "mean": 860.9059999871533,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_29_ms": {
+      "median": 865.6290000071749,
+      "min": 865.6290000071749,
+      "max": 865.6290000071749,
+      "mean": 865.6290000071749,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_30_ms": {
+      "median": 860.5359999928623,
+      "min": 860.5359999928623,
+      "max": 860.5359999928623,
+      "mean": 860.5359999928623,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_31_ms": {
+      "median": 859.1220000089379,
+      "min": 859.1220000089379,
+      "max": 859.1220000089379,
+      "mean": 859.1220000089379,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_32_ms": {
+      "median": 863.3459999982733,
+      "min": 863.3459999982733,
+      "max": 863.3459999982733,
+      "mean": 863.3459999982733,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_33_ms": {
+      "median": 860.9679999935906,
+      "min": 860.9679999935906,
+      "max": 860.9679999935906,
+      "mean": 860.9679999935906,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_34_ms": {
+      "median": 863.3390000031795,
+      "min": 863.3390000031795,
+      "max": 863.3390000031795,
+      "mean": 863.3390000031795,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_35_ms": {
+      "median": 864.4340000028023,
+      "min": 864.4340000028023,
+      "max": 864.4340000028023,
+      "mean": 864.4340000028023,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_36_ms": {
+      "median": 861.099000001559,
+      "min": 861.099000001559,
+      "max": 861.099000001559,
+      "mean": 861.099000001559,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_37_ms": {
+      "median": 859.6010000037495,
+      "min": 859.6010000037495,
+      "max": 859.6010000037495,
+      "mean": 859.6010000037495,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_38_ms": {
+      "median": 863.2809999980964,
+      "min": 863.2809999980964,
+      "max": 863.2809999980964,
+      "mean": 863.2809999980964,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_39_ms": {
+      "median": 859.199999991688,
+      "min": 859.199999991688,
+      "max": 859.199999991688,
+      "mean": 859.199999991688,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_40_ms": {
+      "median": 872.1060000098078,
+      "min": 872.1060000098078,
+      "max": 872.1060000098078,
+      "mean": 872.1060000098078,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_41_ms": {
+      "median": 860.8169999934034,
+      "min": 860.8169999934034,
+      "max": 860.8169999934034,
+      "mean": 860.8169999934034,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_42_ms": {
+      "median": 866.1560000036843,
+      "min": 866.1560000036843,
+      "max": 866.1560000036843,
+      "mean": 866.1560000036843,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_43_ms": {
+      "median": 864.5779999933438,
+      "min": 864.5779999933438,
+      "max": 864.5779999933438,
+      "mean": 864.5779999933438,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_44_ms": {
+      "median": 861.3679999980377,
+      "min": 861.3679999980377,
+      "max": 861.3679999980377,
+      "mean": 861.3679999980377,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_45_ms": {
+      "median": 869.7270000120625,
+      "min": 869.7270000120625,
+      "max": 869.7270000120625,
+      "mean": 869.7270000120625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_46_ms": {
+      "median": 866.7889999924228,
+      "min": 866.7889999924228,
+      "max": 866.7889999924228,
+      "mean": 866.7889999924228,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_47_ms": {
+      "median": 860.5740000057267,
+      "min": 860.5740000057267,
+      "max": 860.5740000057267,
+      "mean": 860.5740000057267,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_48_ms": {
+      "median": 866.3079999969341,
+      "min": 866.3079999969341,
+      "max": 866.3079999969341,
+      "mean": 866.3079999969341,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_49_ms": {
+      "median": 859.9229999963427,
+      "min": 859.9229999963427,
+      "max": 859.9229999963427,
+      "mean": 859.9229999963427,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 612.0590000064112,
+      "min": 612.0590000064112,
+      "max": 612.0590000064112,
+      "mean": 612.0590000064112,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 26.941999996779487,
+      "min": 26.941999996779487,
+      "max": 26.941999996779487,
+      "mean": 26.941999996779487,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": {
+      "median": 22.88031005859375,
+      "min": 22.88031005859375,
+      "max": 22.88031005859375,
+      "mean": 22.88031005859375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 11.433880000011413,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": 17.02093505859375,
+    "device_used_peak_during_load_gib": 15.81195068359375,
+    "model_version": "Flux.2 klein"
+  },
+  "host_peak_rss_gib": 1.2053794860839844,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 4.00, img_cfg: 4.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 50, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "problems": []
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

@@ -2,7 +2,7 @@
 type: method
 summary: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 status: active
-updated: 2026-09-29
+updated: 2026-10-04
 ---
 
 # Baseline metrics: what we measure and how
@@ -46,8 +46,8 @@ Units: time in **ms** (load time in **s**), memory in **GiB** (2^30 bytes).
 |---|---|---|---|
 | `wall_ms` | Host wall-clock time from just before `pipe(...)` to after a final `cuda.synchronize()` | prompt encoding, denoising, VAE decode, GPU→CPU copy, PIL conversion | model load, downloads, saving the PNG |
 | `gpu_span_ms` | CUDA-event time on the stream across the same call | as above | same; should be within ~1% of `wall_ms` |
-| `text_encode_ms` | CUDA-event time around `pipe.encode_prompt` | tokenization (CPU) and Qwen3 text encoder forward pass | |
-| `denoise_step_i_ms` | CUDA-event time around the i-th transformer forward | one transformer call | scheduler step (goes into `other_ms`) |
+| `text_encode_ms` | Sum of CUDA-event intervals around `pipe.encode_prompt` | positive encoding and, with CFG, the empty negative-prompt encoding | gaps between encoding calls |
+| `denoise_step_i_ms` | Sum of CUDA-event intervals around transformer forwards before scheduler update i | one call without CFG; conditional and unconditional calls with klein Base CFG | guidance combination, gaps between calls and scheduler update (in `other_ms`) |
 | `denoise_ms` | sum of the `denoise_step_i_ms` values | all transformer calls | |
 | `vae_decode_ms` | CUDA-event time around `pipe.vae.decode` | VAE decoder | latent unpacking / de-normalisation |
 | `postprocess_ms` | CUDA-event time around `image_processor.postprocess` | denormalise, GPU→CPU copy, PIL image | |
@@ -64,6 +64,32 @@ the GPU. Do not report them as stage latency.
 
 Report the **median** and the **min–max range** of measured runs. Do not average the
 first run into these.
+
+### Klein Base and classifier-free guidance
+
+The [Base configuration](../../configs/a100-flux-klein-base-bf16.json) defines a
+separate workload: Base 4B, 50 steps, guidance 4.0, empty negative prompt. The
+four-step distilled reference above remains unchanged. Diffusers 0.40.0's
+[klein pipeline](https://github.com/huggingface/diffusers/blob/v0.40.0/src/diffusers/pipelines/flux2/pipeline_flux2_klein.py)
+encodes the empty negative prompt internally and does not accept a `negative_prompt`
+keyword. The runner records that explicit policy in the config, rejects nonempty
+values, and does not precompute embeddings outside the measured call.
+
+[StageRecorder](../../scripts/torch_stages.py) advances its logical step counter
+after each successful scheduler update. Both CFG forwards receive the same step
+name; `stages.csv` preserves the separate calls in execution order.
+[The runner](../../scripts/run_flux.py) validates completed scheduler steps, calls
+per step and text-encoding counts for this pipeline. `summary.json` records
+`guidance_scale` and `transformer_calls_per_step`; `load.json` records `is_distilled`.
+The old single-call distilled timing definitions and CSV columns are unchanged;
+this does not make Base and distilled workloads interchangeable comparisons.
+
+[The PyTorch trace reader](../../scripts/profile_readers.py) sums disjoint windows
+with the same label and unions captured GPU activity within them. Gaps between
+those windows are excluded. Overlapping selected windows or GPU activity crossing
+a selected window's end are rejected rather than assigned an ambiguous duration.
+Existing reports with unique windows are unaffected; reports with repeated names
+must be regenerated from the original trace to obtain corrected spans.
 
 ## Memory
 
@@ -115,6 +141,23 @@ benchmark runner and does not populate its measured-run timing or NVML columns.
 NVIDIA documents the fields in [tegrastats](https://docs.nvidia.com/jetson/archives/r36.4.3/DeveloperGuide/AT/JetsonLinuxDevelopmentTools/TegrastatsUtility.html).
 These diagnostics must not be compared as though they were repeated-run medians or
 20 ms NVML peaks. Existing benchmark metrics retain their definitions.
+
+### Jetson repeated baseline memory
+
+The [repeated runner](../../scripts/run_jetson_sdcpp.py) uses the same sd.cpp callback
+timing boundaries and phase summaries as the A100 wrapper, with disk-backed loading
+included inside the active stage. One first, three warm-ups and ten measured generations
+produce timing medians/ranges; the two-generation smoke config does not establish a baseline.
+The earlier single-capture artifacts retain their original definitions.
+
+[Tegrastats capture](../../scripts/jetson_device.py) retains the one-second interval and
+printed-MB-as-MiB conversion above. `monitor_window` summarizes the entire harness window,
+including model load, generations and untimed raw-image writes. It is not aligned to
+generation/stage boundaries and can miss short peaks. RAM, swap occupancy and GPU
+temperature are diagnostics, not per-process allocations, swap I/O or proof of throttling.
+`device_used_peak_gib` and PyTorch allocator columns stay empty with explanations.
+Raw lines and source line numbers remain available; an empty or unrecognized capture fails
+explicitly. [CPU tests](../../tests/test_jetson_baseline.py) check this separation.
 
 ## Repeatability checks
 
@@ -219,8 +262,48 @@ cover these distinctions and replay saved A100/Jetson evidence.
 
 Run directories are named `<experiment-id>__<kind>__<YYYYMMDD-HHMMSS>`. Kind `baseline` is a clean
 timing run under the full protocol; `repeat` re-runs a baseline to check reproducibility; `profile`
-has a profiler attached, so its latency is never quoted; `attempt` is a single feasibility try outside
-the protocol, with no medians. Old names and their mapping are in [results/README.md](../../results/README.md#run-directory-names).
+contains a profiler capture. In PyTorch, the extra traced generation follows the unprofiled
+protocol; in sd.cpp, Nsight attaches to the process, with either whole-process or explicitly
+selected-generation tracing. Profiled durations are diagnostics,
+not clean baseline timings. `attempt` marks a feasibility or smoke check outside the full
+baseline protocol; a smoke check can contain a one-sample aggregate.
+See the [PyTorch runner](../../scripts/run_flux.py), [sd.cpp launcher](../../scripts/gilbreth-sdcpp.slurm)
+and [run directory index](../../results/README.md#run-directory-names).
+
+### W&B timing labels
+
+The [exporter](../../scripts/export_wandb.py) preserves timing values and identifies their
+measurement conditions. This is viewer metadata; the saved measurements and their boundaries
+are unchanged. [Regression checks](../../tests/test_export_wandb.py) replay the saved runs.
+
+| Field | Meaning |
+|---|---|
+| Config and summary `profiler` | `none`, `torch.profiler`, or `nsight-systems`. Identifies the requested tool, including failed captures; it does not certify successful tracing. Historical values derive from engine and run kind. |
+| Config `measurement_scope`; summary `timing/measurement_scope` | `unprofiled`, `profiled`, or `unavailable`, for the generation statistic shown in `timing/generate_s` |
+| Config `measurement_basis` | `measured_median`, `single_engine_log`, `single_profile_callback`, or `unavailable` |
+| `timing/generate_s` | Measured `wall_ms` median divided by 1000, or an explicitly labelled single engine-log/callback duration |
+| `timing/generate_basis`, `timing/generate_samples`, `timing/generate_source` | Human-readable basis, sample count and source file/field |
+| `timing/load_scope` | Profiling conditions for `timing/load_s`, independently of generation availability; targeted Jetson capture uses `profiler_attached_untraced` |
+| `timing/scope_note` (also config `measurement_scope_note`) | Explains which part of the run was profiled |
+| Config `baseline_comparison_eligible`; summary `timing/baseline_comparison_eligible` | True only for a completed, unprofiled, multiple-measured-generation baseline/repeat/profile protocol with CSV phase counts matching config and summary |
+| `timing/job_wall_scope` | Explains that job wall time includes loading and all runner work, including profiling where applicable |
+
+A PyTorch profile run's ordinary generation aggregates can therefore be eligible, while
+its extra `profile/*` diagnostics remain profiled. sd.cpp profile timings remain visible
+with `measurement_scope=profiled` and eligibility false. Single Jetson attempts and captures
+are not eligible baseline medians. Eligibility is a protocol filter, not proof of matched
+hardware, workload, checkpoint, precision or quality; those conditions must still be matched.
+`median/*`, `first/*`, `gen/*`, `profile/*` and `diag/profile_*` retain their existing values.
+The W&B built-in Runtime reflects the export process; use the labelled benchmark fields instead.
+
+The [exporter](../../scripts/export_wandb.py) writes `median/*` only to Summary;
+[regression tests](../../tests/test_export_wandb.py) verify that no median history rows
+are added and all generation history is preserved. The earlier targeted Jetson upload
+retains one median-only row ([receipt](../../results/runs/jetson-flux-klein-003__profile__20260930-201956/wandb-export-verification.json));
+the exporter no longer creates these automatic panels. Existing history/layouts stay unchanged.
+`gen/*` charts contain all generations, indexed from zero; their Summary entries retain the
+last logged values. Count generation rows by `gen/*` data, not total W&B history length,
+which can also include tables, images and the historical median-only row.
 
 ### Jetson stage-labelled profile capture
 
@@ -241,9 +324,156 @@ The affected capture's denoise timings and labels are invalid
 ([failure evidence](../../results/runs/jetson-flux-klein-003__profile__20260928-194910/status.json));
 do not compare them with corrected captures. Existing captures need callback validation.
 
+### Jetson full-protocol capture
+
+The [full-profile config](../../configs/jetson-flux-klein-q4-512-disk-profile-full.json) preserves
+the baseline's first + three warm-ups + ten measured protocol and execution settings, while
+Nsight traces initial loading and all 14 generations. This matches the A100 sd.cpp capture
+scope. `summary.json.measured` summarizes only generations 4–13 (`n=10`); first and warm-up
+rows stay separate. W&B reports a profiled `measured_median` in `median/*` summary fields.
+Load is also profiled and baseline comparison eligibility stays false.
+
+Host callback timing definitions, stage boundaries and one-second whole-capture tegrastats
+sampling are unchanged. Trace validation requires the declared counts for initial load,
+generation and every stage, plus CUDA kernels. See the [runner](../../scripts/run_jetson_sdcpp.py)
+and [validation](../../scripts/jetson_profile.py). The prior five-generation capture remains
+a single targeted diagnostic; its results are never relabelled as a ten-sample measurement.
+
+### Jetson targeted later-generation capture
+
+The [targeted config](../../configs/jetson-flux-klein-q4-512-disk-profile.json) uses the
+[repeated runner](../../scripts/run_jetson_sdcpp.py) and unchanged baseline execution settings.
+Its diagnostic protocol is one first generation, three warm-ups, then one profiled generation,
+all in the same model context. Only index 4 is inside the registered `profile_capture` NVTX
+range. Nsight is attached throughout but tracing starts and stops at that range; the prefix
+and load are not claimed as independent clean baseline measurements. The total generation
+count is reduced from 14 to 5 to bound capture cost; this is a profiling protocol change,
+not a new optimization or replacement baseline.
+
+The existing callback clock and stage boundaries are unchanged. `runs.csv` retains five rows;
+`summary.json.measured` contains only the captured row (`n=1`). W&B labels it
+`single_profile_callback`, `profiled`, and baseline-ineligible. The registered trigger starts
+before the `generate` range and its host timer; collection stops after both close, before RGB
+file writes. The per-generation `profile_capture` boolean confirms harness selection;
+`profile/capture.json` is written only after checking one complete NVTX generation and CUDA
+kernels in the trace. See the [validation code](../../scripts/jetson_profile.py).
+
+Tegrastats still covers the entire five-generation process, including load, at one-second
+sampling. Its peak is not the captured generation's peak. Nsight trace generation index 0
+corresponds to harness generation index 4. The original one-generation startup profile and
+this later-generation trace have different contexts and must be labelled separately.
+
 Imported stage profiles can be reviewed with `scripts/review_jetson_profile.py`. It uses the
 existing `analyze_profile.py` GPU-start-in-NVTX-window rule and rejects captured activities
 crossing a stage end. Kernel-table busy time is the union of captured GPU activity intervals;
 uncovered time is not a measurement of disk I/O. Tegrastats samples retain the existing
 whole-window shared-memory convention, without per-stage alignment. Profile host diagnostics
 remain separate from repeated unprofiled baseline metrics.
+
+### Captured read-call / GPU coverage
+
+`analyze_profile.py --out-dir <separate-directory>` additionally reports `osrt_coverage`
+when an Nsight SQLite export contains OSRT calls and process identifiers. It selects the
+process owning the chosen `generate` range, includes its worker threads, and clips captured
+`read` and `pread64` intervals to each NVTX stage. GPU activities are also process-restricted;
+activities crossing a stage boundary fail validation. Process keys follow NVIDIA's
+[serialized identifier definition](https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html#serialized-process-and-thread-identifiers).
+
+For each stage, `gpu_covered_ms` is the union of captured kernel, memcpy and memset intervals;
+`read_only_covered_ms` is the union of reads and GPU intervals minus GPU coverage;
+`neither_covered_ms` is the stage span minus their combined union. These three terms sum to
+the stage span without double-counting concurrent threads or GPU/read overlap. Time inside
+read calls is not necessarily physical storage wait; neither-covered time is not necessarily
+idle. Capture thresholds can omit short OSRT calls. Missing OSRT data produces no coverage
+fields, not zero read time. These are new profile diagnostics; baseline CSV timing definitions
+and previously saved reports are unchanged. Multi-process traces are now filtered explicitly.
+
+### Approximate sd.cpp step reuse
+
+Optional EasyCache uses the same host callback stage boundaries. Each denoise_step_i is
+a scheduler step, including cache checking, residual application and any actual transformer
+computation; it is not a count of full transformer evaluations. Thus cache overhead stays
+inside the measured generation. summary.json.cache_audit records the explicit policy
+parameters, initialization count and skipped-step counts from each generation's engine log.
+A missing initialization or completion report fails validation. No-cache timing definitions
+are unchanged. Image agreement and formal quality eligibility remain separate from speed.
+
+### Paired saved-image diagnostics
+
+`quality-diagnostics.json`, when present, describes a separate evaluation of saved images;
+these values never enter generation latency or memory summaries. Decode full-resolution RGB
+with no crop or resize. `psnr_db` is 10 log10(255²/MSE), where MSE averages squared differences
+over all decoded 8-bit RGB values. Exact pixel equality is reported separately; do not encode
+infinity as a JSON number. Image-file and decoded-pixel SHA256 hashes identify the inputs.
+
+`lpips_alex_v0_1` uses the calibrated AlexNet LPIPS network, version0.1, with RGB tensors
+scaled to [-1,1], float32 CPU evaluation/inference mode and no spatial averaging override.
+Record package versions and both backbone/calibration weight hashes. A same-image distance
+check must be approximately zero. These conventions follow the [official LPIPS implementation](https://github.com/richzhang/PerceptualSimilarity).
+Lower LPIPS indicates greater perceptual similarity; neither LPIPS nor PSNR establishes
+prompt alignment or the proposal's formal quality requirement. A single development prompt
+is not a held-out test. Missing evaluators produce an explicit unavailable value, never zero.
+
+### Exact sd.cpp conditioning reuse
+
+A labelled sd.cpp A100 or Jetson variant can set `optimizations.conditioning_cache_size`: one entry without
+CFG, two with CFG, or zero for the unchanged no-cache reference. The pinned engine caches
+positive and negative conditions separately. With a repeated fixed prompt, the first generation
+must report zero hits and each later generation must report the configured number;
+`summary.json.conditioning_cache_hits_per_generation` contains those validated counts.
+The engine log's total is checked independently by `engine_audit.conditioning_cache_hits`.
+
+`text_encode_ms` retains the same host boundary: generation start through the engine's
+`get_learned_condition completed` log. A hit therefore measures conditioning retrieval and
+associated setup, not a fresh encoder forward. It is not set to zero or removed from wall time.
+Compare generation latency across policies, while describing this stage as conditioning time
+for cache-enabled runs. First-run encoding remains separate. Old no-cache measurements are
+unchanged. See [callback validation](../../scripts/jetson_profile.py),
+[runner audit](../../scripts/run_jetson_sdcpp.py) and [host timing](../../engines/sdcpp/bench.cpp).
+
+### sd.cpp mapped-I/O receipt
+
+For explicitly labelled sd.cpp A100 or Jetson mmap variants, `summary.json.engine_audit.mmap_io` records
+`requested` and `confirmed_files`. Confirmation requires the pinned engine's successful
+file-mapping log for each model component and no mapping fallback. This is an execution
+audit, not a memory or latency metric; stage boundaries and sampled system-memory definitions
+remain unchanged. File mapping does not prove zero-copy GPU access, continuous residency,
+or reduced physical disk traffic. See [audit implementation](../../scripts/run_jetson_sdcpp.py)
+and [pinned source excerpt](../../output/overnight-20261004/mmap-source-evidence.txt).
+
+## edge-dit ed-sample adapter
+
+`scripts/run_edgedit.py` wraps the pinned, validated four-step no-cache `ed-sample`
+interface. It requests zero upstream warm-ups and `first + warmup + measured`
+repeats in one loaded context, then labels and filters those observations through
+our shared protocol helpers. No engine source changes or additional GPU syncs are
+introduced. PNG saving occurs between repetitions, outside generation timing.
+
+- `wall_ms`: upstream `steady_clock` duration around `ed_generate_image`, parsed
+  from per-pass stdout rounded to 1 ms. Includes the returned image conversion,
+  excludes PNG encoding and context loading. Medians/min–max use measured rows only.
+- `load_total_s`: upstream `model_load_seconds` around context creation. Filesystem
+  cache may already be warm; this is not a claim of cold disk loading.
+- `stages.csv` `host_ms`: differences between upstream `system_clock` phase markers,
+  not GPU event durations. `denoise` spans the entire sampling loop; `vae_decode`
+  spans VAE decode and excludes final tensor-to-image conversion. `encode_setup`
+  includes prompt conditioning and latent/schedule preparation. It is not isolated
+  text encoding: `text_encode_ms` stays unavailable. `other_ms`, `postprocess_ms`
+  and per-step timings also stay unavailable. Marker order and containment in the
+  rounded generation interval are checked; undetected wall-clock adjustments remain
+  a limitation. Do not align those markers to the monotonic NVML sample clock.
+- `capture_device_used_peak_gib`: device-wide NVML peak over the entire child
+  process, including load and between-image PNG handling. Per-generation
+  `device_used_peak_gib` stays unavailable. Raw sampler observations are retained.
+- `host_peak_rss_gib`: maximum child RSS (`RUSAGE_CHILDREN`, Linux KiB converted
+  to GiB); not per-stage memory. Allocator metrics are unavailable.
+- Upstream overwrites each prompt's PNG on repeat. `output.png` is the final
+  measured image, with its actual index in `image-retention.json`; only that row has
+  a pixel hash. `deterministic_output` is null, since earlier images are unavailable.
+- The validated build reports BF16 weights and FP32 transformer activations.
+  Preserve that distinction in engine comparisons. `timing.json`'s
+  `time_wo_decoding` and `time_with_decoding` both duplicate its full e2e total;
+  neither is a stage metric. Full e2e aggregate also includes the first and warm-up
+  observations requested by this adapter, so it is not the measured median.
+
+Source semantics and functional evidence: [edge-dit record](../../experiments/a100-edgedit-flux-klein-001.md).

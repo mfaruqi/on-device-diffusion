@@ -2,6 +2,7 @@
 import contextlib
 import hashlib
 import json
+import sqlite3
 from pathlib import Path
 import subprocess
 import sys
@@ -15,6 +16,8 @@ sys.path.insert(0, str(ROOT / 'scripts'))
 from build_jetson_bundle import FILES, build_bundle
 from jetson_device import TegrastatsMonitor, memory_snapshot
 from jetson_profile import check_config, profile_command, save_profile_results, validate_callbacks, verified_model_paths
+from jetson_profile import targeted_profile_command, validate_targeted_trace
+from jetson_profile import full_profile_command, validate_profile_trace
 import profile_jetson_stages as capture
 
 EVIDENCE = ROOT / 'results/runs/jetson-flux-klein-003__profile__20260928-195625/originals'
@@ -29,6 +32,72 @@ def observations():
 
 
 class JetsonCaptureTests(unittest.TestCase):
+    def test_full_command_traces_entire_harness_without_capture_selector(self):
+        with tempfile.TemporaryDirectory() as temp:
+            with patch('jetson_profile.subprocess.check_output', return_value='{"profile_generation":true}'):
+                command = full_profile_command(['binary', '--runs', '14'], Path('binary'), Path(temp) / 'profile')
+            self.assertEqual(command[-3:], ['binary', '--runs', '14'])
+            self.assertIn('--trace=cuda,nvtx,osrt', command)
+            self.assertFalse(any('capture-range' in word or 'profile-generation' in word for word in command))
+
+    def test_full_trace_requires_all_fourteen_generations_and_initial_load(self):
+        for generations, load, valid in [(14, True, True), (1, True, False), (14, False, False), (13, True, False)]:
+            with self.subTest(generations=generations, load=load), tempfile.TemporaryDirectory() as temp:
+                directory = Path(temp)
+                db = sqlite3.connect(directory / 'trace.sqlite')
+                db.executescript('CREATE TABLE StringIds (id INTEGER, value TEXT); '
+                                 'CREATE TABLE NVTX_EVENTS (text TEXT, textId INTEGER, end INTEGER); '
+                                 'CREATE TABLE CUPTI_ACTIVITY_KIND_KERNEL (start INTEGER);')
+                names = (['generate', 'text_encode', 'vae_decode'] + [f'denoise_step_{i}' for i in range(4)]) * generations
+                if load: names.append('load')
+                db.executemany('INSERT INTO NVTX_EVENTS VALUES (?, NULL, 100)', [(n,) for n in names])
+                db.execute('INSERT INTO CUPTI_ACTIVITY_KIND_KERNEL VALUES (10)')
+                db.commit(); db.close()
+                with patch('jetson_profile.validate_trace_labels'):
+                    if valid:
+                        validate_profile_trace(directory, 4, generations=14, include_load=True)
+                    else:
+                        with self.assertRaises(RuntimeError):
+                            validate_profile_trace(directory, 4, generations=14, include_load=True)
+
+    def test_targeted_command_and_stale_binary_preflight(self):
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp) / 'profile'
+            with patch('jetson_profile.subprocess.check_output', return_value='{"profile_generation":false}'):
+                with self.assertRaisesRegex(RuntimeError, 'Rebuild'):
+                    targeted_profile_command(['binary'], Path('binary'), directory, 4)
+            self.assertFalse(directory.exists())
+            with patch('jetson_profile.subprocess.check_output', return_value='{"profile_generation":true}'):
+                command = targeted_profile_command(['binary', '--runs', '5'], Path('binary'), directory, 4)
+            for flag in ['--capture-range=nvtx', '--nvtx-capture=profile_capture', '--capture-range-end=stop']:
+                self.assertIn(flag, command)
+            self.assertEqual(command[-2:], ['--profile-generation', '4'])
+
+    def test_targeted_trace_rejects_extra_generations_and_absent_cuda(self):
+        for case in ['valid', 'extra_generation', 'load', 'no_cuda', 'missing_stage']:
+            with self.subTest(case=case), tempfile.TemporaryDirectory() as temp:
+                directory = Path(temp)
+                db = sqlite3.connect(directory / 'trace.sqlite')
+                db.executescript('CREATE TABLE StringIds (id INTEGER, value TEXT); '
+                                 'CREATE TABLE NVTX_EVENTS (text TEXT, textId INTEGER, end INTEGER); '
+                                 'CREATE TABLE CUPTI_ACTIVITY_KIND_KERNEL (start INTEGER);')
+                names = ['generate', 'text_encode', 'vae_decode'] + [f'denoise_step_{i}' for i in range(4)]
+                if case == 'extra_generation': names.append('generate')
+                if case == 'load': names.append('load')
+                if case == 'missing_stage': names.remove('text_encode')
+                # Include both inline and registered strings, as real Nsight exports do.
+                db.execute('INSERT INTO StringIds VALUES (1, ?)', (names[0],))
+                db.execute('INSERT INTO NVTX_EVENTS VALUES (NULL, 1, 100)')
+                db.executemany('INSERT INTO NVTX_EVENTS VALUES (?, NULL, 100)', [(n,) for n in names[1:]])
+                if case != 'no_cuda': db.execute('INSERT INTO CUPTI_ACTIVITY_KIND_KERNEL VALUES (10)')
+                db.commit(); db.close()
+                with patch('jetson_profile.validate_trace_labels'):
+                    if case == 'valid':
+                        validate_targeted_trace(directory, 4)
+                    else:
+                        with self.assertRaises(RuntimeError):
+                            validate_targeted_trace(directory, 4)
+
     def test_current_config_and_observed_callbacks_are_valid(self):
         check_config(configuration())
         rows = observations()
@@ -146,6 +215,10 @@ class JetsonCaptureTests(unittest.TestCase):
                                  cwd=directory, capture_output=True, text=True, env={})
             self.assertEqual(run.returncode, 0, run.stderr)
             self.assertIn('--models', run.stdout)
+            baseline = subprocess.run([sys.executable, "-S", str(directory / "scripts/run_jetson_sdcpp.py"), "--help"],
+                                      cwd=directory, capture_output=True, text=True, env={})
+            self.assertEqual(baseline.returncode, 0, baseline.stderr)
+            self.assertIn("--kind", baseline.stdout)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,181 @@
+{
+  "id": "a100-sdcpp-flux-klein-002",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 2591.404999984661,
+    "gpu_span_ms": null,
+    "text_encode_ms": 191.40999999945052,
+    "denoise_ms": 1744.9109999870416,
+    "denoise_step_0_ms": 468.7770000018645,
+    "denoise_step_1_ms": 424.08299999078736,
+    "denoise_step_2_ms": 426.2720000115223,
+    "denoise_step_3_ms": 425.7789999828674,
+    "vae_decode_ms": 628.2979999959935,
+    "postprocess_ms": null,
+    "other_ms": 26.78600000217557,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": 22.88031005859375,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 2420.973000000231,
+      "min": 2420.973000000231,
+      "max": 2420.973000000231,
+      "mean": 2420.973000000231,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 71.17300000390969,
+      "min": 71.17300000390969,
+      "max": 71.17300000390969,
+      "mean": 71.17300000390969,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 1714.1389999887906,
+      "min": 1714.1389999887906,
+      "max": 1714.1389999887906,
+      "mean": 1714.1389999887906,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 437.5270000018645,
+      "min": 437.5270000018645,
+      "max": 437.5270000018645,
+      "mean": 437.5270000018645,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 423.9930000039749,
+      "min": 423.9930000039749,
+      "max": 423.9930000039749,
+      "mean": 423.9930000039749,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 426.6029999998864,
+      "min": 426.6029999998864,
+      "max": 426.6029999998864,
+      "mean": 426.6029999998864,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 426.01599998306483,
+      "min": 426.01599998306483,
+      "max": 426.01599998306483,
+      "mean": 426.01599998306483,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 606.9940000015777,
+      "min": 606.9940000015777,
+      "max": 606.9940000015777,
+      "mean": 606.9940000015777,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 28.667000005953014,
+      "min": 28.667000005953014,
+      "max": 28.667000005953014,
+      "mean": 28.667000005953014,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": {
+      "median": 22.88031005859375,
+      "min": 22.88031005859375,
+      "max": 22.88031005859375,
+      "mean": 22.88031005859375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 6.706284000014421,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": 17.02093505859375,
+    "device_used_peak_during_load_gib": 15.81195068359375,
+    "model_version": "Flux.2 klein"
+  },
+  "host_peak_rss_gib": 1.2236442565917969,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 1.00, img_cfg: 1.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 4, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=4, mu=2.291"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "conditioning_cache_hits": 0,
+    "problems": [],
+    "mmap_io": {
+      "requested": false,
+      "confirmed_files": []
+    }
+  },
+  "cache_audit": {
+    "requested": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "enabled_generations": 2,
+    "steps_skipped": [
+      0,
+      0
+    ],
+    "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."
+  },
+  "conditioning_cache_hits_per_generation": [
+    0,
+    0
+  ],
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

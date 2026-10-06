@@ -31,7 +31,7 @@ class StageRecorder:
         self.segments = []  # dicts: name, peak_alloc, peak_reserved
         self._open = None
         self._last = "start"
-        self._step = 0
+        self.scheduler_steps = 0
         self.torch.cuda.reset_peak_memory_stats()
 
     def _close_segment(self, name):
@@ -94,21 +94,16 @@ class StageRecorder:
         peak_reserved = max(seg["peak_reserved"] for seg in self.segments)
         return rows, peak_alloc, peak_reserved, list(self.segments)
 
-    def next_step_name(self):
-        name = f"denoise_step_{self._step}"
-        self._step += 1
-        return name
-
     def install(self, pipe):
         rec = self
 
         def wrap(obj, attr, name):
             orig = getattr(obj, attr)
 
-            def wrapped(*a, **kw):
+            def wrapped(*args, **kwargs):
                 rec.start(name)
                 try:
-                    return orig(*a, **kw)
+                    return orig(*args, **kwargs)
                 finally:
                     rec.end()
 
@@ -117,5 +112,15 @@ class StageRecorder:
         wrap(pipe, "encode_prompt", "text_encode")
         wrap(pipe.vae, "decode", "vae_decode")
         wrap(pipe.image_processor, "postprocess", "postprocess")
-        pipe.transformer.register_forward_pre_hook(lambda m, a: rec.start(rec.next_step_name()))
+        # CFG makes two forwards before one scheduler update. Both belong to the
+        # same logical step; the scheduler itself stays outside the timed stages.
+        scheduler_step = pipe.scheduler.step
+
+        def step(*args, **kwargs):
+            result = scheduler_step(*args, **kwargs)
+            rec.scheduler_steps += 1
+            return result
+
+        pipe.scheduler.step = step
+        pipe.transformer.register_forward_pre_hook(lambda m, a: rec.start(f"denoise_step_{rec.scheduler_steps}"))
         pipe.transformer.register_forward_hook(lambda m, a, o: rec.end())

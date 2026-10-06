@@ -1,0 +1,25 @@
+{
+  "reference": "jetson-flux-klein-003__baseline__20261005-105911",
+  "variant": "jetson-flux-klein-006__baseline__20261005-111428",
+  "matched_model_workload_protocol_engine_settings": true,
+  "only_changed_policy": "EasyCache .2/.15/.95 enabled",
+  "variant_over_reference_median": 1.1198954643857413,
+  "speed_range_rule_pass": false,
+  "steps_skipped": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "formal_quality_eligible": false
+}

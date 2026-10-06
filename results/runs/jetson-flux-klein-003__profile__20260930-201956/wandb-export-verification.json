@@ -1,0 +1,22 @@
+{
+  "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-003__profile__20260930-201956",
+  "id": "jetson-flux-klein-003__profile__20260930-201956",
+  "state": "finished",
+  "generation_rows_verified": 5,
+  "config_and_summary_verified": true,
+  "artifact_ids": [
+    "QXJ0aWZhY3Q6Mzc5NTkyMjc1OA==",
+    "QXJ0aWZhY3Q6Mzc5NTkyMjc2OQ==",
+    "QXJ0aWZhY3Q6Mzc5NTkyMjc4Mw==",
+    "QXJ0aWZhY3Q6Mzc5NTkyMjc5Mg==",
+    "QXJ0aWZhY3Q6Mzc5NTkyMjgwMQ==",
+    "QXJ0aWZhY3Q6Mzc5NTkyMjgyNQ=="
+  ],
+  "scope": "profiled",
+  "basis": "single_profile_callback",
+  "baseline_comparison_eligible": false,
+  "median_chart_rows_verified": 1,
+  "profiler": "nsight-systems",
+  "generate_s": 60.916290999999994,
+  "created_new_run": true
+}

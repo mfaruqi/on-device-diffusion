@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-05T04:07:34Z",
+  "finished_utc": "2026-10-05T04:09:12Z",
+  "error": "KeyboardInterrupt()",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/measurement.py\", line 83, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/run_jetson_sdcpp.py\", line 230, in main\n    benchmark(config, directory, args.engine, args.binary, args.models)\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/run_jetson_sdcpp.py\", line 164, in benchmark\n    result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT,\n  File \"/usr/lib/python3.10/subprocess.py\", line 505, in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n  File \"/usr/lib/python3.10/subprocess.py\", line 1146, in communicate\n    self.wait()\n  File \"/usr/lib/python3.10/subprocess.py\", line 1209, in wait\n    return self._wait(timeout=timeout)\n  File \"/usr/lib/python3.10/subprocess.py\", line 1959, in _wait\n    (pid, sts) = self._try_wait(0)\n  File \"/usr/lib/python3.10/subprocess.py\", line 1917, in _try_wait\n    (pid, sts) = os.waitpid(self.pid, wait_flags)\nKeyboardInterrupt\n"
+}

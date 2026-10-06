@@ -1,0 +1,1993 @@
+{
+  "calls_per_step": 2,
+  "scheduler_steps": 50,
+  "wall_ms": 25313.186068990035,
+  "gpu_span_ms": 25312.826171875,
+  "stages": [
+    {
+      "stage": "text_encode",
+      "gpu_ms": 110.84588623046875,
+      "host_ms": 110.82682001870126,
+      "alloc_start_gib": 14.935171127319336,
+      "alloc_end_gib": 14.942510604858398,
+      "peak_alloc_gib": 15.185056686401367,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "text_encode",
+      "gpu_ms": 87.69430541992188,
+      "host_ms": 87.65739502268843,
+      "alloc_start_gib": 14.942510604858398,
+      "alloc_end_gib": 14.949850082397461,
+      "peak_alloc_gib": 15.19239616394043,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_0",
+      "gpu_ms": 248.0635223388672,
+      "host_ms": 58.96379199111834,
+      "alloc_start_gib": 14.950949668884277,
+      "alloc_end_gib": 14.951926231384277,
+      "peak_alloc_gib": 15.51964521408081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_0",
+      "gpu_ms": 246.73049926757812,
+      "host_ms": 221.18086100090295,
+      "alloc_start_gib": 14.951926231384277,
+      "alloc_end_gib": 14.952902793884277,
+      "peak_alloc_gib": 15.52062177658081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_1",
+      "gpu_ms": 247.7367706298828,
+      "host_ms": 244.74221299169585,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_1",
+      "gpu_ms": 249.7353973388672,
+      "host_ms": 246.64969998411834,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_2",
+      "gpu_ms": 247.34591674804688,
+      "host_ms": 247.35542698181234,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_2",
+      "gpu_ms": 248.4232940673828,
+      "host_ms": 247.05770800937898,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_3",
+      "gpu_ms": 247.00682067871094,
+      "host_ms": 245.56231399765238,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_3",
+      "gpu_ms": 250.1329345703125,
+      "host_ms": 245.79997098771855,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_4",
+      "gpu_ms": 247.6495361328125,
+      "host_ms": 247.7680929878261,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_4",
+      "gpu_ms": 248.81251525878906,
+      "host_ms": 247.22278700210154,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_5",
+      "gpu_ms": 247.2473907470703,
+      "host_ms": 246.21427099918947,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_5",
+      "gpu_ms": 249.7528076171875,
+      "host_ms": 246.34164001327008,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_6",
+      "gpu_ms": 249.10662841796875,
+      "host_ms": 248.09807300334796,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_6",
+      "gpu_ms": 247.90829467773438,
+      "host_ms": 248.26482697972097,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_7",
+      "gpu_ms": 248.22630310058594,
+      "host_ms": 245.00953499227762,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_7",
+      "gpu_ms": 248.66342163085938,
+      "host_ms": 247.41598099353723,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_8",
+      "gpu_ms": 247.8784942626953,
+      "host_ms": 246.42901399056427,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_8",
+      "gpu_ms": 249.0878143310547,
+      "host_ms": 247.25475799641572,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_9",
+      "gpu_ms": 247.11126708984375,
+      "host_ms": 246.59403500845656,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_9",
+      "gpu_ms": 249.50778198242188,
+      "host_ms": 246.75593999563716,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_10",
+      "gpu_ms": 247.26092529296875,
+      "host_ms": 246.96726698311977,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_10",
+      "gpu_ms": 248.94061279296875,
+      "host_ms": 246.40857698977925,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_11",
+      "gpu_ms": 247.1625213623047,
+      "host_ms": 246.27294100355357,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_11",
+      "gpu_ms": 250.56320190429688,
+      "host_ms": 246.6846060124226,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_12",
+      "gpu_ms": 249.59567260742188,
+      "host_ms": 248.45856198226102,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_12",
+      "gpu_ms": 247.31036376953125,
+      "host_ms": 247.93718100409023,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_13",
+      "gpu_ms": 248.85865783691406,
+      "host_ms": 245.48318597953767,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_13",
+      "gpu_ms": 247.92579650878906,
+      "host_ms": 247.61040598968975,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_14",
+      "gpu_ms": 248.31622314453125,
+      "host_ms": 245.43502597953193,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_14",
+      "gpu_ms": 250.47418212890625,
+      "host_ms": 247.7693859837018,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_15",
+      "gpu_ms": 247.53240966796875,
+      "host_ms": 247.83445900538936,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_15",
+      "gpu_ms": 249.19155883789062,
+      "host_ms": 246.0946660139598,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_16",
+      "gpu_ms": 247.5239715576172,
+      "host_ms": 247.39983002655208,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_16",
+      "gpu_ms": 249.10214233398438,
+      "host_ms": 246.40667298808694,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_17",
+      "gpu_ms": 249.77976989746094,
+      "host_ms": 247.57965898606926,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_17",
+      "gpu_ms": 247.97763061523438,
+      "host_ms": 247.94276198372245,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_18",
+      "gpu_ms": 248.8690185546875,
+      "host_ms": 245.6542769796215,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_18",
+      "gpu_ms": 248.96946716308594,
+      "host_ms": 248.25142198824324,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_19",
+      "gpu_ms": 248.55270385742188,
+      "host_ms": 246.2590450013522,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_19",
+      "gpu_ms": 249.93548583984375,
+      "host_ms": 247.80667602317408,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_20",
+      "gpu_ms": 248.03074645996094,
+      "host_ms": 247.65268599730916,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_20",
+      "gpu_ms": 248.37158203125,
+      "host_ms": 246.76903401268646,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_21",
+      "gpu_ms": 250.6907501220703,
+      "host_ms": 247.78499497915618,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_21",
+      "gpu_ms": 248.48057556152344,
+      "host_ms": 248.91483000828885,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_22",
+      "gpu_ms": 249.87213134765625,
+      "host_ms": 246.42763199517503,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_22",
+      "gpu_ms": 249.0716094970703,
+      "host_ms": 248.44964500516653,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_23",
+      "gpu_ms": 247.10313415527344,
+      "host_ms": 246.6117989970371,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_23",
+      "gpu_ms": 250.03602600097656,
+      "host_ms": 246.5631469967775,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_24",
+      "gpu_ms": 250.02540588378906,
+      "host_ms": 248.4671380079817,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_24",
+      "gpu_ms": 247.5476837158203,
+      "host_ms": 248.2365840114653,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_25",
+      "gpu_ms": 249.83319091796875,
+      "host_ms": 245.7527829974424,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_25",
+      "gpu_ms": 250.019775390625,
+      "host_ms": 249.46712801465765,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_26",
+      "gpu_ms": 247.7505645751953,
+      "host_ms": 247.14893900090829,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_26",
+      "gpu_ms": 249.47914123535156,
+      "host_ms": 247.01647899928503,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_27",
+      "gpu_ms": 249.4232635498047,
+      "host_ms": 247.36437399405986,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_27",
+      "gpu_ms": 248.29507446289062,
+      "host_ms": 247.69408398424275,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_28",
+      "gpu_ms": 250.42771911621094,
+      "host_ms": 246.5413959871512,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_28",
+      "gpu_ms": 250.1083221435547,
+      "host_ms": 249.95846298406832,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_29",
+      "gpu_ms": 248.35218811035156,
+      "host_ms": 247.12016500416212,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_29",
+      "gpu_ms": 248.8955841064453,
+      "host_ms": 247.1452520112507,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_30",
+      "gpu_ms": 248.8513641357422,
+      "host_ms": 246.76605901913717,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_30",
+      "gpu_ms": 251.05247497558594,
+      "host_ms": 248.74753499170765,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_31",
+      "gpu_ms": 251.3011474609375,
+      "host_ms": 248.1337900098879,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_31",
+      "gpu_ms": 248.43609619140625,
+      "host_ms": 249.93266400997527,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_32",
+      "gpu_ms": 248.45977783203125,
+      "host_ms": 246.3229249988217,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_32",
+      "gpu_ms": 250.7291259765625,
+      "host_ms": 248.0393630103208,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_33",
+      "gpu_ms": 250.08018493652344,
+      "host_ms": 249.26366598811,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_33",
+      "gpu_ms": 246.7389373779297,
+      "host_ms": 247.33514900435694,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_34",
+      "gpu_ms": 249.94837951660156,
+      "host_ms": 244.84131898498163,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_34",
+      "gpu_ms": 251.39234924316406,
+      "host_ms": 248.5457650036551,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_35",
+      "gpu_ms": 248.53366088867188,
+      "host_ms": 249.34046101407148,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_35",
+      "gpu_ms": 248.49363708496094,
+      "host_ms": 247.47514200862497,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_36",
+      "gpu_ms": 249.58087158203125,
+      "host_ms": 246.66300497483462,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_36",
+      "gpu_ms": 249.13526916503906,
+      "host_ms": 248.63901099888608,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_37",
+      "gpu_ms": 248.70457458496094,
+      "host_ms": 246.85398399014957,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_37",
+      "gpu_ms": 250.90687561035156,
+      "host_ms": 248.56090400135145,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_38",
+      "gpu_ms": 249.25648498535156,
+      "host_ms": 247.8235680027865,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_38",
+      "gpu_ms": 248.53724670410156,
+      "host_ms": 248.39169598999433,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_39",
+      "gpu_ms": 249.43385314941406,
+      "host_ms": 246.49841501377523,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_39",
+      "gpu_ms": 250.7637481689453,
+      "host_ms": 248.46119599533267,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_40",
+      "gpu_ms": 249.60850524902344,
+      "host_ms": 248.81752699729986,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_40",
+      "gpu_ms": 247.60934448242188,
+      "host_ms": 248.54296998819336,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_41",
+      "gpu_ms": 250.16310119628906,
+      "host_ms": 245.3752429864835,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_41",
+      "gpu_ms": 249.66184997558594,
+      "host_ms": 248.95672898855992,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_42",
+      "gpu_ms": 248.08102416992188,
+      "host_ms": 247.57404800038785,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_42",
+      "gpu_ms": 249.1925811767578,
+      "host_ms": 247.12484399788082,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_43",
+      "gpu_ms": 249.63040161132812,
+      "host_ms": 246.68859801022336,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_43",
+      "gpu_ms": 247.97488403320312,
+      "host_ms": 248.40750699513592,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_44",
+      "gpu_ms": 250.3880615234375,
+      "host_ms": 246.4980359945912,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_44",
+      "gpu_ms": 249.20069885253906,
+      "host_ms": 249.56875000498258,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_45",
+      "gpu_ms": 248.4694366455078,
+      "host_ms": 245.84700100240298,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_45",
+      "gpu_ms": 250.2303924560547,
+      "host_ms": 248.35799302672967,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_46",
+      "gpu_ms": 250.0748748779297,
+      "host_ms": 248.06181600433774,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_46",
+      "gpu_ms": 246.8931884765625,
+      "host_ms": 247.88613501004875,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_47",
+      "gpu_ms": 250.6472930908203,
+      "host_ms": 245.12107600457966,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_47",
+      "gpu_ms": 251.0847625732422,
+      "host_ms": 250.14334099250846,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_48",
+      "gpu_ms": 251.02703857421875,
+      "host_ms": 248.81245798314922,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_48",
+      "gpu_ms": 248.54380798339844,
+      "host_ms": 249.5114319899585,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_49",
+      "gpu_ms": 247.9600372314453,
+      "host_ms": 246.4501549839042,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "denoise_step_49",
+      "gpu_ms": 248.68179321289062,
+      "host_ms": 247.095578990411,
+      "alloc_start_gib": 14.952902793884277,
+      "alloc_end_gib": 14.953879356384277,
+      "peak_alloc_gib": 15.52159833908081,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "vae_decode",
+      "gpu_ms": 167.28384399414062,
+      "host_ms": 61.22265598969534,
+      "alloc_start_gib": 14.953879356384277,
+      "alloc_end_gib": 14.959738731384277,
+      "peak_alloc_gib": 17.331809043884277,
+      "peak_reserved_gib": 19.6015625
+    },
+    {
+      "stage": "postprocess",
+      "gpu_ms": 30.288991928100586,
+      "host_ms": 348.7940540071577,
+      "alloc_start_gib": 14.959738731384277,
+      "alloc_end_gib": 14.959738731384277,
+      "peak_alloc_gib": 14.971457481384277,
+      "peak_reserved_gib": 19.6015625
+    }
+  ],
+  "segments": [
+    {
+      "name": "between:start->text_encode",
+      "peak_alloc": 14.935171127319336,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "text_encode",
+      "peak_alloc": 15.185056686401367,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:text_encode->text_encode",
+      "peak_alloc": 14.942510604858398,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "text_encode",
+      "peak_alloc": 15.19239616394043,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:text_encode->denoise_step_0",
+      "peak_alloc": 14.950950622558594,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_0",
+      "peak_alloc": 15.51964521408081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_0->denoise_step_0",
+      "peak_alloc": 14.951926231384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_0",
+      "peak_alloc": 15.52062177658081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_0->denoise_step_1",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_1",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_1->denoise_step_1",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_1",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_1->denoise_step_2",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_2",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_2->denoise_step_2",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_2",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_2->denoise_step_3",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_3",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_3->denoise_step_3",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_3",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_3->denoise_step_4",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_4",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_4->denoise_step_4",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_4",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_4->denoise_step_5",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_5",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_5->denoise_step_5",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_5",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_5->denoise_step_6",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_6",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_6->denoise_step_6",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_6",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_6->denoise_step_7",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_7",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_7->denoise_step_7",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_7",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_7->denoise_step_8",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_8",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_8->denoise_step_8",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_8",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_8->denoise_step_9",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_9",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_9->denoise_step_9",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_9",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_9->denoise_step_10",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_10",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_10->denoise_step_10",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_10",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_10->denoise_step_11",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_11",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_11->denoise_step_11",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_11",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_11->denoise_step_12",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_12",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_12->denoise_step_12",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_12",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_12->denoise_step_13",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_13",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_13->denoise_step_13",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_13",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_13->denoise_step_14",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_14",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_14->denoise_step_14",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_14",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_14->denoise_step_15",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_15",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_15->denoise_step_15",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_15",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_15->denoise_step_16",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_16",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_16->denoise_step_16",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_16",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_16->denoise_step_17",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_17",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_17->denoise_step_17",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_17",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_17->denoise_step_18",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_18",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_18->denoise_step_18",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_18",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_18->denoise_step_19",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_19",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_19->denoise_step_19",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_19",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_19->denoise_step_20",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_20",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_20->denoise_step_20",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_20",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_20->denoise_step_21",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_21",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_21->denoise_step_21",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_21",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_21->denoise_step_22",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_22",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_22->denoise_step_22",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_22",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_22->denoise_step_23",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_23",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_23->denoise_step_23",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_23",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_23->denoise_step_24",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_24",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_24->denoise_step_24",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_24",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_24->denoise_step_25",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_25",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_25->denoise_step_25",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_25",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_25->denoise_step_26",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_26",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_26->denoise_step_26",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_26",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_26->denoise_step_27",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_27",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_27->denoise_step_27",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_27",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_27->denoise_step_28",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_28",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_28->denoise_step_28",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_28",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_28->denoise_step_29",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_29",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_29->denoise_step_29",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_29",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_29->denoise_step_30",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_30",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_30->denoise_step_30",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_30",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_30->denoise_step_31",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_31",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_31->denoise_step_31",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_31",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_31->denoise_step_32",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_32",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_32->denoise_step_32",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_32",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_32->denoise_step_33",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_33",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_33->denoise_step_33",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_33",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_33->denoise_step_34",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_34",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_34->denoise_step_34",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_34",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_34->denoise_step_35",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_35",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_35->denoise_step_35",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_35",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_35->denoise_step_36",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_36",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_36->denoise_step_36",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_36",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_36->denoise_step_37",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_37",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_37->denoise_step_37",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_37",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_37->denoise_step_38",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_38",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_38->denoise_step_38",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_38",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_38->denoise_step_39",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_39",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_39->denoise_step_39",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_39",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_39->denoise_step_40",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_40",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_40->denoise_step_40",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_40",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_40->denoise_step_41",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_41",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_41->denoise_step_41",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_41",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_41->denoise_step_42",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_42",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_42->denoise_step_42",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_42",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_42->denoise_step_43",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_43",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_43->denoise_step_43",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_43",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_43->denoise_step_44",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_44",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_44->denoise_step_44",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_44",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_44->denoise_step_45",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_45",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_45->denoise_step_45",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_45",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_45->denoise_step_46",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_46",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_46->denoise_step_46",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_46",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_46->denoise_step_47",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_47",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_47->denoise_step_47",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_47",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_47->denoise_step_48",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_48",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_48->denoise_step_48",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_48",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_48->denoise_step_49",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_49",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_49->denoise_step_49",
+      "peak_alloc": 14.953879356384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "denoise_step_49",
+      "peak_alloc": 15.52159833908081,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:denoise_step_49->vae_decode",
+      "peak_alloc": 14.957785606384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "vae_decode",
+      "peak_alloc": 17.331809043884277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:vae_decode->postprocess",
+      "peak_alloc": 14.959738731384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "postprocess",
+      "peak_alloc": 14.971457481384277,
+      "peak_reserved": 19.6015625
+    },
+    {
+      "name": "between:postprocess->end",
+      "peak_alloc": 14.959738731384277,
+      "peak_reserved": 19.6015625
+    }
+  ],
+  "peak_alloc_gib": 17.331809043884277,
+  "peak_reserved_gib": 19.6015625
+}

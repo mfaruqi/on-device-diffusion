@@ -1,0 +1,10 @@
+{
+  "record_kind": "feasibility",
+  "baseline_comparison_eligible": false,
+  "formal_quality_eligible": false,
+  "status": "failed",
+  "unavailable_metrics": {
+    "generation_latency": "No compiled transformer forward or compiled image was produced",
+    "memory": "No repeated benchmark memory protocol performed"
+  }
+}

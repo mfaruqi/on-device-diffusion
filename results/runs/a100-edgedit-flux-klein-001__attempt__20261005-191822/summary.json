@@ -1,0 +1,11 @@
+{
+  "record_kind": "repeated-interface feasibility gate",
+  "baseline_comparison_eligible": false,
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "repeated_latency": "Only two interface repetitions; first/warmup/measured benchmark adapter not used",
+    "memory_peak": "No memory sampler",
+    "per_step_latency": "No per-step timestamps in this gate"
+  },
+  "scope": "Original log/timing.json retained; validation.json documents boundaries. No protocol medians inferred."
+}

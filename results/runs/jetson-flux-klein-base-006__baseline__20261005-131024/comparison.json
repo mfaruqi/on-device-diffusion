@@ -1,0 +1,12 @@
+{
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "variant": "jetson-flux-klein-base-006__baseline__20261005-131024",
+  "matched_model_workload_protocol_binary": true,
+  "only_harness_argument_difference": "mmap:0 to1",
+  "speed_range_rule_passed": false,
+  "median_delta_ms": 705.8365000030026,
+  "median_delta_percent": 0.21472307487102604,
+  "reference_over_variant_ratio": 0.9978573699723681,
+  "exact_retained_rgb": true,
+  "formal_quality_eligible": false
+}

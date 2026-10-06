@@ -1,0 +1,20 @@
+{
+  "load_seconds": 63.11779000000024,
+  "successful_generations": 0,
+  "monitor_window": {
+    "samples": 68,
+    "ram_peak_gib": 6.69921875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.0,
+    "swap_max_gib": 0.080078125,
+    "gpu_temperature_max_c": 45.375,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "error_lines": [
+    "2182.586443 [3] model_manager.cpp:1826 - model manager cannot make enough memory available on CUDA0: need 577.93 MB device / 126.93 MB budget, available 557.18 MB device / 3611.02 MB budget",
+    "2182.707936 [3] model_manager.cpp:1826 - model manager cannot make enough memory available on CUDA0: need 577.93 MB device / 126.93 MB budget, available 557.17 MB device / 3665.19 MB budget",
+    "2182.707963 [4] ggml_runner.cpp:898  - qwen3 segment 14/29 (llm.text.layers.12) failed during weight preparation",
+    "2182.711351 [4] image.cpp:448  - failed to encode prompt"
+  ]
+}

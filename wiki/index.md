@@ -11,13 +11,14 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 ## Start here
 
-- **[Hot: current state](hot.md)**: Current state of the project — this week, in progress, next actions, blockers. Read first in every session; rewritten, not appended.
+- **[Hot: current state](hot.md)**: Current project state, active campaign and blockers. Read first each session.
 - **[Wiki schema](SCHEMA.md)**: Rules for maintaining this wiki. Read before any wiki edit.
 - **[Project overview (condensed from the proposal)](project/overview.md)**: The research project as proposed — hypothesis, planner objective, components, workloads, targets, RQs, evaluation rules, milestones.
-- **[Milestones](project/milestones.md)**: Milestone status per week (Sep 28 – Dec 11, 2026). Goals are from the proposal; status and evidence are updated as work lands.
+- **[Milestones](project/milestones.md)**: Milestone status per week. Revised schedule per D-010 (compiled klein pipeline on CUDA/Metal/WebGPU + planner); optimistic, with roll-over allowed past Dec 11.
 - **[Experiment registry](experiments.md)**: Registry of experiments — one row each, linking to the full record and the run directories. Details never live here.
 - **[Open questions](open-questions.md)**: Unresolved contradictions and open questions, each with both sides cited. Resolved items move to the Archive section.
 - **[Log](log.md)**: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
+- **[Log archive: September 2026](log-2026-09.md)** `archived`: Log archive for September 2026 (moved from log.md to keep it within budget).
 
 ## Project
 
@@ -50,7 +51,8 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[Gilbreth (Purdue RCAC)](systems/gilbreth.md)**: Purdue RCAC Gilbreth community GPU cluster — account you139 (one A100-40GB share), Slurm, storage layout.
 - **[iPhone (16 Pro or newer)](systems/iphone.md)** `planned`: iPhone 16 Pro / Pro Max (8 GB) or newer — Core ML / MLX phone target for DreamLite-mobile.
 - **[Jetson Orin Nano](systems/jetson-orin-nano.md)**: NVIDIA Jetson Orin Nano (8 GB shared CPU/GPU memory) — CUDA edge target.
-- **[M1 MacBook Pro](systems/m1-macbook-pro.md)** `planned`: Apple M1 MacBook Pro — Metal edge target.
+- **[M1 MacBook Pro](systems/m1-macbook-pro.md)** `retired`: Apple M1 MacBook Pro — former Metal edge target, replaced by the MacBook Air M5 (D-010).
+- **[MacBook Air 15" M5 (24 GB)](systems/macbook-air-m5.md)** `planned`: MacBook Air 15-inch M5, 24 GB unified memory — Metal laptop target (replaces the M1 MacBook Pro, D-010).
 - **[PyTorch / diffusers](systems/pytorch-diffusers.md)**: PyTorch + Hugging Face diffusers (Flux2KleinPipeline) — the reference engine for FLUX.2 klein on CUDA.
 - **[stable-diffusion.cpp](systems/stable-diffusion-cpp.md)**: stable-diffusion.cpp (ggml) — C/C++ diffusion engine with CUDA/Metal/Vulkan backends; a proposal baseline.
 - **[Wan 2.1 T2V-1.3B](systems/wan2-1-t2v-1-3b.md)** `planned`: Wan 2.1 T2V-1.3B — text-to-video workload, starting with short 480p clips.

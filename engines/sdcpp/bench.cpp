@@ -150,9 +150,33 @@ static bool flag(std::map<std::string, std::string>& a, const char* k) {
 
 int main(int argc, char** argv) {
     auto a = parse_args(argc, argv);
+    // Preflight lets the runner reject an old/plain binary before loading weights.
+    if (a.count("capabilities")) {
+#ifdef SD_BENCH_NVTX
+        std::puts("{\"profile_generation\":true,\"easycache\":true}");
+#else
+        std::puts("{\"profile_generation\":false,\"easycache\":true}");
+#endif
+        return 0;
+    }
     const std::string out_dir = need(a, "out-dir");
     const int runs = std::stoi(need(a, "runs"));
     const int steps = std::stoi(need(a, "steps"));
+    const int profile_generation = a.count("profile-generation") ? std::stoi(a.at("profile-generation")) : -1;
+    if (a.count("profile-generation") && (profile_generation < 0 || profile_generation >= runs)) return 2;
+#ifdef SD_BENCH_NVTX
+    // Registered strings allow Nsight to trigger without enabling costly string matching.
+    nvtxEventAttributes_t capture = {};
+    capture.version = NVTX_VERSION;
+    capture.size = NVTX_EVENT_ATTRIB_STRUCT_SIZE;
+    capture.messageType = NVTX_MESSAGE_TYPE_REGISTERED;
+    capture.message.registered = nvtxDomainRegisterStringA(nullptr, "profile_capture");
+#else
+    if (a.count("profile-generation")) {
+        std::fprintf(stderr, "--profile-generation requires sd-bench-nvtx\n");
+        return 2;
+    }
+#endif
 
     State st;
     st.log = std::fopen((out_dir + "/sdcpp.log").c_str(), "w");
@@ -175,7 +199,8 @@ int main(int argc, char** argv) {
     cp.flash_attn = flag(a, "fa");
     cp.diffusion_flash_attn = flag(a, "diffusion-fa");
     cp.backend = backend.c_str();
-    cp.params_backend = params_backend.c_str();
+    // An explicit "unset" lets sd.cpp's auto-fit choose parameter placement.
+    cp.params_backend = params_backend == "unset" ? nullptr : params_backend.c_str();
     cp.auto_fit = flag(a, "auto-fit");
     cp.eager_load = flag(a, "eager-load");
     cp.disable_segmented_compute = flag(a, "disable-segmented-compute");
@@ -222,6 +247,16 @@ int main(int argc, char** argv) {
     // sd-cli does. The resolved values appear in sdcpp.log and are recorded by the wrapper.
     gp.vae_tiling_params.enabled = false;
     gp.cache.mode = SD_CACHE_DISABLED;
+    if (a.count("cache-mode")) {
+        if (a.at("cache-mode") != "easycache") {
+            std::fprintf(stderr, "unsupported --cache-mode\n");
+            return 2;
+        }
+        gp.cache.mode = SD_CACHE_EASYCACHE;
+        gp.cache.reuse_threshold = std::stof(need(a, "cache-threshold"));
+        gp.cache.start_percent = std::stof(need(a, "cache-start"));
+        gp.cache.end_percent = std::stof(need(a, "cache-end"));
+    }
 
     const char* gp_str = sd_img_gen_params_to_str(&gp);
     if (st.log) std::fprintf(st.log, "%.6f [img_gen_params]\n%s\n", now_s(), gp_str);
@@ -232,6 +267,9 @@ int main(int argc, char** argv) {
         st.cur = &r;
         sd_image_t* images = nullptr;
         int n_images = 0;
+#ifdef SD_BENCH_NVTX
+        if (i == profile_generation) nvtxDomainRangePushEx(nullptr, &capture);
+#endif
         NVTX_PUSH("generate");
         r.start = now_s();
         open_stage(&r, "text_encode");
@@ -239,6 +277,9 @@ int main(int argc, char** argv) {
         r.end = now_s();
         open_stage(&r, "");
         NVTX_POP();
+#ifdef SD_BENCH_NVTX
+        if (i == profile_generation) nvtxDomainRangePop(nullptr);
+#endif
         st.cur = nullptr;
 
         res << "{\"event\":\"generate\",\"run_index\":" << i << ",\"ok\":" << (ok && n_images == 1 ? "true" : "false")
@@ -249,6 +290,7 @@ int main(int argc, char** argv) {
             << std::to_string(r.decode_end) << ",\"t_end\":" << std::to_string(r.end)
             << ",\"ignored_progress_calls\":" << r.ignored_progress_calls
             << ",\"progress_calls\":" << r.progress_calls << ",\"cond_cache_hits\":" << r.cond_cache_hits;
+        if (a.count("profile-generation")) res << ",\"profile_capture\":" << (i == profile_generation ? "true" : "false");
         if (ok && n_images == 1) {
             const sd_image_t& im = images[0];
             res << ",\"width\":" << im.width << ",\"height\":" << im.height << ",\"channels\":" << im.channel;

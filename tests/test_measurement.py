@@ -19,12 +19,13 @@ from unittest.mock import Mock, patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from benchlib import GIB
-from flux_engine import check_config
+from flux_engine import check_config, generate_once
 from measurement import phase_sequence, run_fields, run_status, sampling, summarize_runs
 from run_flux import measure_generations, result_row
 import run_flux
 import run_sdcpp
-from sdcpp_engine import rows_from_results
+from sdcpp_engine import conditioning_hits, rows_from_results
+from torch_stages import StageRecorder
 
 
 def read_rows(path):
@@ -50,8 +51,15 @@ class SavedRunTests(unittest.TestCase):
             if not expected.get("measured"):
                 continue
             with self.subTest(run=directory.name):
-                actual = summarize_runs(read_rows(directory / "runs.csv"))
+                rows = read_rows(directory / "runs.csv")
+                actual = summarize_runs(rows)
                 for key, value in actual.items():
+                    if key == "deterministic_output" and expected.get("engine") == "edge-dit.cpp":
+                        # The adapter overrides this field: upstream keeps only the final image.
+                        self.assertIsNone(expected[key])
+                        self.assertEqual(sum(bool(row['image_sha256']) for row in rows), 1)
+                        self.assertIn(key, expected['unavailable_metrics'])
+                        continue
                     if key != "measured":
                         self.assertEqual(value, expected[key], key)
                         continue
@@ -82,6 +90,10 @@ class SavedRunTests(unittest.TestCase):
                     result = {key: expected[key] for key in
                               ["wall_ms", "gpu_span_ms", "peak_alloc_gib", "peak_reserved_gib"]}
                     result.update(t0=0, t1=1, stages=[s for s in stages if s["run_index"] == expected["run_index"]])
+                    # Historical distilled runs predate these execution counters.
+                    summary = json.loads((directory / "summary.json").read_text())
+                    result.update(calls_per_step=summary.get("transformer_calls_per_step", 1),
+                                  scheduler_steps=cfg["workload"]["num_inference_steps"])
                     sampler = Mock()
                     sampler.peak_between.return_value = expected["device_used_peak_gib"]
                     process = Mock()
@@ -110,7 +122,8 @@ class SavedRunTests(unittest.TestCase):
             sampler = Mock()
             sampler.peak_between.return_value = None  # NVML samples are not stored in these artifacts.
             actual, stages = rows_from_results(generations, phase_sequence(cfg["protocol"]),
-                                               cfg["workload"]["num_inference_steps"], sampler)
+                                               cfg["workload"]["num_inference_steps"], sampler,
+                                               expected_conditioning_hits=conditioning_hits(cfg, len(generations)))
             with self.subTest(run=directory.name):
                 self.assertEqual(len(actual), len(expected))
                 for row, original in zip(actual, expected):
@@ -177,7 +190,104 @@ def fake_generation():
                    peak_alloc_gib=2, peak_reserved_gib=3)
               for name in ["text_encode", "denoise_step_0", "vae_decode", "postprocess"]]
     return FakeImage(), dict(wall_ms=50, gpu_span_ms=45, t0=0, t1=1, stages=stages,
-                             segments=[], peak_alloc_gib=2, peak_reserved_gib=3)
+                             segments=[], peak_alloc_gib=2, peak_reserved_gib=3,
+                             calls_per_step=1, scheduler_steps=1)
+
+
+class KleinGuidanceTests(unittest.TestCase):
+    def test_generation_uses_native_empty_negative_prompt_and_reports_counts(self):
+        cfg = json.loads((ROOT / "configs/a100-flux-klein-base-bf16.json").read_text())
+        image = FakeImage()
+        pipe = Mock(return_value=SimpleNamespace(images=[image]), do_classifier_free_guidance=True)
+        recorder = Mock(scheduler_steps=50)
+        recorder.finish.return_value = ([], 2, 3, [])
+        torch = Mock()
+        torch.cuda.Event.return_value.elapsed_time.return_value = 100
+        profiler = SimpleNamespace(record_function=lambda _: contextlib.nullcontext())
+        with patch.dict(sys.modules, torch=torch, **{"torch.profiler": profiler}):
+            returned_image, result = generate_once(pipe, recorder, cfg["workload"])
+        self.assertIs(returned_image, image)
+        self.assertNotIn("negative_prompt", pipe.call_args.kwargs)
+        self.assertNotIn("negative_prompt_embeds", pipe.call_args.kwargs)
+        self.assertEqual(pipe.call_args.kwargs["guidance_scale"], 4.0)
+        self.assertEqual(result["calls_per_step"], 2)
+        self.assertEqual(result["scheduler_steps"], 50)
+        self.assertEqual(torch.cuda.synchronize.call_count, 2)
+
+    def test_base_config_requires_explicit_empty_negative_prompt(self):
+        cfg = json.loads((ROOT / "configs/a100-flux-klein-base-bf16.json").read_text())
+        cfg["model"]["revision"] = "a" * 40
+        check_config(cfg)
+        for value in ["bad anatomy", None]:
+            cfg["workload"]["negative_prompt"] = value
+            with self.assertRaisesRegex(AssertionError, "empty negative prompt"):
+                check_config(cfg)
+        del cfg["workload"]["negative_prompt"]
+        with self.assertRaisesRegex(AssertionError, "explicit negative_prompt"):
+            check_config(cfg)
+
+    def test_cfg_sums_both_forwards_and_both_encodes(self):
+        image, result = fake_generation()
+        result.update(calls_per_step=2, scheduler_steps=2, gpu_span_ms=100, wall_ms=105)
+        result["stages"] = [dict(stage=name, gpu_ms=value) for name, value in [
+            ("text_encode", 3), ("text_encode", 4),
+            ("denoise_step_0", 10), ("denoise_step_0", 20),
+            ("denoise_step_1", 11), ("denoise_step_1", 21),
+            ("vae_decode", 8), ("postprocess", 2),
+        ]]
+        sampler, process = Mock(), Mock()
+        sampler.peak_between.return_value = None
+        process.memory_info.return_value.rss = GIB
+
+        def row():
+            return result_row(0, "first", image, result, 2, sampler, process)
+
+        actual = row()
+        self.assertEqual(actual["text_encode_ms"], 7)
+        self.assertEqual(actual["denoise_step_0_ms"], 30)
+        self.assertEqual(actual["denoise_step_1_ms"], 32)
+        self.assertEqual(actual["denoise_ms"], 62)
+        self.assertEqual(actual["other_ms"], 21)
+        result["scheduler_steps"] = 1
+        with self.assertRaisesRegex(AssertionError, "scheduler steps"):
+            row()
+        result["scheduler_steps"] = 2
+        # Total forward count still matches, but one belongs to the wrong step.
+        result["stages"][3]["stage"] = "denoise_step_1"
+        with self.assertRaisesRegex(AssertionError, "logical step"):
+            row()
+        result["stages"][3]["stage"] = "denoise_step_0"
+        del result["stages"][1]
+        with self.assertRaisesRegex(AssertionError, "text encodes"):
+            row()
+
+    def test_recorder_counts_scheduler_updates_not_transformer_calls(self):
+        pipe = SimpleNamespace(encode_prompt=Mock(), vae=SimpleNamespace(decode=Mock()),
+                               image_processor=SimpleNamespace(postprocess=Mock()),
+                               scheduler=SimpleNamespace(step=Mock(return_value="latents")),
+                               transformer=Mock())
+        recorder = StageRecorder(Mock())
+        recorder.start, recorder.end = Mock(), Mock()
+        scheduler_step = pipe.scheduler.step
+        recorder.install(pipe)
+        before = pipe.transformer.register_forward_pre_hook.call_args.args[0]
+        after = pipe.transformer.register_forward_hook.call_args.args[0]
+        for calls_per_step in [1, 2]:
+            recorder.reset()
+            recorder.start.reset_mock()
+            for _ in range(2):
+                for _ in range(calls_per_step):
+                    before(None, ())
+                    after(None, (), None)
+                self.assertEqual(pipe.scheduler.step("noise", return_dict=False), "latents")
+            self.assertEqual(recorder.scheduler_steps, 2)
+            self.assertEqual([call.args[0] for call in recorder.start.call_args_list],
+                             [f"denoise_step_{i}" for i in range(2) for _ in range(calls_per_step)])
+        # A failed scheduler update is not counted as a completed step.
+        scheduler_step.side_effect = RuntimeError("scheduler failed")
+        with self.assertRaisesRegex(RuntimeError, "scheduler failed"):
+            pipe.scheduler.step("noise")
+        self.assertEqual(recorder.scheduler_steps, 2)
 
 
 class LifecycleTests(unittest.TestCase):
@@ -247,7 +357,7 @@ class LifecycleTests(unittest.TestCase):
         cfg["model"]["revision"] = "a" * 40
         cfg["protocol"].update(first_runs=1, warmup_runs=1, measured_runs=1)
         cfg["workload"]["num_inference_steps"] = 1
-        load = dict(load_total_s=2, allocated_after_load_gib=1, peak_alloc_during_load_gib=2, components={})
+        load = dict(load_total_s=2, allocated_after_load_gib=1, peak_alloc_during_load_gib=2, components={}, is_distilled=True)
         with tempfile.TemporaryDirectory() as temp, contextlib.ExitStack() as stack:
             directory = Path(temp)
             stack.enter_context(contextlib.redirect_stdout(io.StringIO()))
@@ -313,7 +423,7 @@ class LifecycleTests(unittest.TestCase):
     def test_missing_denoise_callback_fails(self):
         image, result = fake_generation()
         result["stages"] = [stage for stage in result["stages"] if stage["stage"] != "denoise_step_0"]
-        with self.assertRaisesRegex(AssertionError, "expected 1 transformer calls"):
+        with self.assertRaisesRegex(AssertionError, "transformer calls per logical step"):
             result_row(0, "first", image, result, 1, Mock(), Mock())
 
 

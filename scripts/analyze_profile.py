@@ -54,6 +54,7 @@ def main():
     ap.add_argument("--run-dir", required=True, type=Path)
     ap.add_argument("--stages", default=r"denoise_step_\d+", help="regex over stage labels")
     ap.add_argument("--out-name", default="stage_kernels")
+    ap.add_argument("--out-dir", type=Path, help="write derived reports here, preserving existing reports")
     ap.add_argument("--generation", type=int, default=-1,
                     help="nsys reports only: which generation to analyse (index into 'generate' ranges; -1 = last)")
     args = ap.parse_args()
@@ -62,9 +63,11 @@ def main():
     trace = next((prof / n for n in ("trace.json", "trace.nsys-rep", "trace.sqlite") if (prof / n).exists()), None)
     assert trace, f"no trace.json / trace.nsys-rep in {prof}"
     res = analyze(trace, args.stages, args.generation)
-    (prof / f"{args.out_name}.json").write_text(json.dumps(res, indent=2) + "\n")
+    output = args.out_dir or prof
+    output.mkdir(parents=True, exist_ok=True)
+    (output / f"{args.out_name}.json").write_text(json.dumps(res, indent=2) + "\n")
     md = render_md(res)
-    (prof / f"{args.out_name}.md").write_text(md)
+    (output / f"{args.out_name}.md").write_text(md)
     print(md)
 
 

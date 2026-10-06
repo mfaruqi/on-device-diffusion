@@ -1,0 +1,92 @@
+{
+  "scope": "Post-import CPU verification; no new inference or profiling",
+  "input_sha256": {
+    "config.json": "ba7e942543c7057525946b3607b1ed898dcda9be24bf26cb6a3f5b53deeb2802",
+    "summary.json": "e25277397e85d64982aa8bb20a583186eed96dfd380023e9b1a71b308b1b1a29",
+    "status.json": "d83ab9f79b05eb16c72d080bc19384634f53509cf9daf81674543361c040ab85",
+    "runs.csv": "3958454c780b499cfbee03198957f72d2ae56e863a157a7271e68280d3e37d85",
+    "stages.csv": "01b3ce219d5d30dc4499ec5c7fb90c4470b6a9deb7eeb14d8143c5c714051b88",
+    "engine/results.jsonl": "f07c3dcfc4bbfa1a9e89ae91175c1e5b01d4aa9e26685121561ccbf182b6a428",
+    "engine/sdcpp.log": "1a1e7a26fa567baf370f860349e60be0d39453d907b385487e7128b8b285317b",
+    "tegrastats-samples.csv": "d43ca5f8bb8e2a8d4fda0a21fbd353cd5160180008ed7f9ec5174259eba2187e"
+  },
+  "status_complete": true,
+  "config_matches_smoke": true,
+  "generation_rows_verified": 2,
+  "stage_rows_verified": 12,
+  "callback_validation_passed": true,
+  "engine_audit_replayed": true,
+  "summary_replayed": true,
+  "monitor_samples": 148,
+  "images": [
+    {
+      "image": "first.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "image": "measured-0.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "first_and_measured_image_hashes_equal": true,
+  "visual_smoke_check": "First image is a recognizable cat holding a legible hello world sign; measured pixels hash-identical. Not a quality evaluation.",
+  "baseline_comparison_eligible": false,
+  "engine_reload_evidence": [
+    {
+      "source_line": 75,
+      "text": "487.831557 [2] model_loader.cpp:1366 - loading tensors completed, taking 58.59s (read: 55.85s, memcpy: 0.00s, convert: 0.24s, copy_to_backend: 1.49s)"
+    },
+    {
+      "source_line": 141,
+      "text": "490.139608 [1] model_manager.cpp:1175 - model manager released params backend buffers (3034.05 MB, 458 tensors, 3 blocks, VRAM) from CUDA0"
+    },
+    {
+      "source_line": 147,
+      "text": "498.293719 [2] model_loader.cpp:1366 - loading tensors completed, taking 7.93s (read: 7.57s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.14s)"
+    },
+    {
+      "source_line": 168,
+      "text": "510.238540 [1] model_manager.cpp:1175 - model manager released params backend buffers (2506.84 MB, 397 tensors, 3 blocks, VRAM) from CUDA0"
+    },
+    {
+      "source_line": 175,
+      "text": "510.447977 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.20s (read: 0.01s, memcpy: 0.00s, convert: 0.07s, copy_to_backend: 0.01s)"
+    },
+    {
+      "source_line": 181,
+      "text": "513.771891 [1] model_manager.cpp:1175 - model manager released params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) from CUDA0"
+    },
+    {
+      "source_line": 220,
+      "text": "536.011516 [2] model_loader.cpp:1366 - loading tensors completed, taking 21.87s (read: 21.26s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.41s)"
+    },
+    {
+      "source_line": 228,
+      "text": "537.144749 [1] model_manager.cpp:1175 - model manager released params backend buffers (1841.08 MB, 298 tensors, 2 blocks, VRAM) from CUDA0"
+    },
+    {
+      "source_line": 233,
+      "text": "557.869142 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.19s (read: 19.15s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.46s)"
+    },
+    {
+      "source_line": 254,
+      "text": "569.143418 [1] model_manager.cpp:1175 - model manager released params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) from CUDA0"
+    },
+    {
+      "source_line": 260,
+      "text": "570.398388 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.25s (read: 1.02s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 266,
+      "text": "573.709409 [1] model_manager.cpp:1175 - model manager released params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) from CUDA0"
+    }
+  ]
+}

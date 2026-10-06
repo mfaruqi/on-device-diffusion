@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package the Jetson capture and its complete standard-library dependency set."""
+"""Package Jetson profile/baseline entry points and their local helper modules."""
 
 import argparse
 import gzip
@@ -8,6 +8,17 @@ import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = (
+    "configs/jetson-flux-klein-q4-512-cache-control-smoke.json",
+    "configs/jetson-flux-klein-q4-512-cache-control.json",
+    "configs/jetson-flux-klein-q4-512-conditioning-cache-smoke.json",
+    "configs/jetson-flux-klein-q4-512-conditioning-cache.json",
+    "configs/jetson-flux-klein-q4-512-easycache-smoke.json",
+    "configs/jetson-flux-klein-q4-512-easycache.json",
+    "configs/jetson-flux-klein-q4-512-mmap-smoke.json",
+    "configs/jetson-flux-klein-q4-512-mmap.json",
+    "configs/jetson-flux-klein-q4-512-no-prefetch-smoke.json",
+    "configs/jetson-flux-klein-q4-512-no-prefetch.json",
+
     "engines/sdcpp/bench.cpp",
     "engines/sdcpp/CMakeLists.txt",
     "configs/jetson-flux-klein-stage-profile.json",
@@ -17,6 +28,26 @@ FILES = (
     "scripts/measurement.py",
     "scripts/measurement_events.py",
     "scripts/benchlib.py",
+    "scripts/run_jetson_sdcpp.py",
+    "scripts/sdcpp_engine.py",
+    "configs/jetson-flux-klein-q4-512-disk-baseline.json",
+    "configs/jetson-flux-klein-q4-512-disk-smoke.json",
+    "configs/jetson-flux-klein-q4-512-disk-profile.json",
+    "configs/jetson-flux-klein-q4-512-disk-profile-full.json",
+    "configs/jetson-flux-klein-q4-512-autofit.json",
+    "configs/jetson-flux-klein-q4-512-autofit-smoke.json",
+    "configs/jetson-flux-klein-q4-512-disk-lazy.json",
+    "configs/jetson-flux-klein-q4-512-disk-lazy-smoke.json",
+    "configs/jetson-flux-klein-base-q4-512-disk.json",
+    "configs/jetson-flux-klein-base-q4-512-disk-smoke.json",
+    "configs/jetson-flux-klein-base-q4-512-easycache.json",
+    "configs/jetson-flux-klein-base-q4-512-easycache-smoke.json",
+    "configs/jetson-flux-klein-base-q4-512-mmap.json",
+    "configs/jetson-flux-klein-base-q4-512-mmap-smoke.json",
+    "configs/jetson-flux-klein-base-q4-512-conditioning-cache.json",
+    "configs/jetson-flux-klein-base-q4-512-conditioning-cache-smoke.json",
+    "configs/jetson-flux-klein-base-q4-512-no-prefetch.json",
+    "configs/jetson-flux-klein-base-q4-512-no-prefetch-smoke.json",
 )
 
 

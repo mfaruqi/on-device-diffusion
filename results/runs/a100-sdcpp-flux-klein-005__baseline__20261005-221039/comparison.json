@@ -1,0 +1,35 @@
+{
+  "reference": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+  "variant": "a100-sdcpp-flux-klein-005__baseline__20261005-221039",
+  "matched_fields": [
+    "model",
+    "precision",
+    "workload",
+    "protocol",
+    "binary_sha256",
+    "hostname"
+  ],
+  "engine_settings_difference": {
+    "mmap": [
+      false,
+      true
+    ]
+  },
+  "optimizations_difference": {
+    "mmap": [
+      null,
+      true
+    ]
+  },
+  "wall_delta_ms": 10.49999997485429,
+  "median_ratio_reference_over_variant": 0.9956959143057074,
+  "wall_reduction_percent": -0.4322690926470196,
+  "speed_range_pass": false,
+  "diagnostic_fidelity_screen_pass": true,
+  "qualifies_for_later_combination": false,
+  "formal_quality_eligible": false,
+  "confounds": [
+    "sequential nonrandomized jobs",
+    "filesystem-cache/thermal/background conditions uncontrolled"
+  ]
+}

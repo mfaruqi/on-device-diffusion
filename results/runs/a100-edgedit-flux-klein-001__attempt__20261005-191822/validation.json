@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "generation_count": 2,
+  "one_loaded_context": true,
+  "retained_image": "engine/imgs/img_000000.png; final repeat only",
+  "visual_inspection": "Coherent cat holding a readable hello world sign; informal functional check only",
+  "weights": "BF16",
+  "transformer_activations": "FP32",
+  "raw_phase_times": [
+    {
+      "encode_setup_ms": 421.1010932922363,
+      "denoise_ms": 1399.4178771972656,
+      "decode_ms": 456.9430351257324
+    },
+    {
+      "encode_setup_ms": 266.8728828430176,
+      "denoise_ms": 1088.9639854431152,
+      "decode_ms": 270.0839042663574
+    }
+  ],
+  "phase_clock": "std::chrono::system_clock; not CUDA events or monotonic time",
+  "phase_semantics": "encode includes conditioning and latent/schedule setup before denoise; decode excludes final tensor-to-image conversion. Do not equate encode directly to isolated text encoder time.",
+  "e2e_clock": "Upstream steady_clock around ed_generate_image; PNG saving excluded; printed per-pass seconds rounded to milliseconds",
+  "unusable_stage_fields": "timing.json time_wo_decoding and time_with_decoding duplicate e2e total; do not use as stages",
+  "formal_quality_eligible": false
+}

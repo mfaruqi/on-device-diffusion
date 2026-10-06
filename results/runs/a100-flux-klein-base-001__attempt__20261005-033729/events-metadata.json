@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "engine": "pytorch",
+  "event_count": 211,
+  "parameter_release_observations": 0,
+  "source_sha256": {
+    "config.json": "2589ba2cf28ee24758a6711fe5d5342602cc621d78a84d10834ac87b96af477b",
+    "load.json": "5740289b4d99630ab0e40f3a0735ccdc5e8abbfd9930b998c52be5a3e1beaa64",
+    "runs.csv": "0a8d13a8dc1614e58611a86173014e8fd42f5741adfff43c6096fd24c50b0cab",
+    "stages.csv": "8f14de0e7aa84c493146a97c774abf75bf5a061329504286859933d2e5835c5e"
+  },
+  "limitations": [
+    "Derived after execution; event export adds no instrumentation inside measured regions.",
+    "Clocks are local to their source process/run; do not align different runs or Nsight clocks by raw value.",
+    "Records are grouped by source, not a globally sorted timeline. Null timestamps mean unavailable.",
+    "Buffer release is not evidence of a write to disk or a transfer to CPU; destination and component remain unknown.",
+    "Absence of matching log messages does not establish absence of releases; physical disk I/O is not measured.",
+    "PyTorch CSVs retain durations, not absolute stage/load timestamps or weight-release observations."
+  ]
+}
