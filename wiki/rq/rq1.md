@@ -35,7 +35,7 @@ under the [evaluation rules](../project/overview.md#evaluation-rules).
 
 ## Next
 Deepen profiling, screen edge-dit.cpp and audit existing auto-fit/caching options
-([meeting actions](../../raw/meetings/2026-10-01-haoran-you.md#to-do)). M1 and Wan remain proposal
+([meeting actions](../../raw/meetings/2026-10-01.md#to-do)). M1 and Wan remain proposal
 milestones; further DreamLite work and FastVideo are temporarily deferred ([D-009](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)).
 
 Related: [RQ2](rq2.md) (selecting plans from these measurements), [RQ3](rq3.md) (joint planning).

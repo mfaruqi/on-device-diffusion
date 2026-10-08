@@ -14,7 +14,7 @@ ingested (`/wiki-ingest`), it gets its own page in `papers/` and its line here l
 The proposal's Week 1 includes "review DreamLite" ([milestones](../project/milestones.md));
 further DreamLite work and FastVideo are temporarily deferred under the
 [October 1 priorities](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling).
-LightX2V and TensorRT are suggestions for screening from the [meeting memo](../../raw/meetings/2026-10-01-haoran-you.md#to-do),
+LightX2V and TensorRT are suggestions for screening from the [meeting memo](../../raw/meetings/2026-10-01.md#to-do),
 not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 
 | Group | Reference | Why it matters | Status |
@@ -26,10 +26,10 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 | Compiler | TVM (Chen et al., OSDI 2018); Relax (Lai et al., arXiv 2311.02103) | initial compiler foundation | unread |
 | Compiler | TVM MetaSchedule (Shao et al., NeurIPS 2022, arXiv 2205.13603) | composable search, measured-cost ranking and tuning history | [source review ingested](metaschedule.md) |
 | Compiler | MLC-LLM compiler passes and packaging; Web Stable Diffusion | compilation, tuning history and memory planning; joint-planner distinction | [source review ingested](mlc-compiler-precedent.md); detailed pass/packaging audit pending |
-| Engines | stable-diffusion.cpp; [edge-dit.cpp](https://github.com/THU-MIG/edge-dit.cpp) | engine baselines, auto-fitting | stable-diffusion.cpp in use ([engine](../systems/stable-diffusion-cpp.md)); edge-dit.cpp next for feasibility screening ([memo](../../raw/meetings/2026-10-01-haoran-you.md#to-do)) |
+| Engines | stable-diffusion.cpp; [edge-dit.cpp](https://github.com/THU-MIG/edge-dit.cpp) | engine baselines, auto-fitting | stable-diffusion.cpp in use ([engine](../systems/stable-diffusion-cpp.md)); edge-dit.cpp next for feasibility screening ([memo](../../raw/meetings/2026-10-01.md#to-do)) |
 | Engine candidates | [LightX2V](https://github.com/ModelTC/LightX2V) | screen an additional inference framework for supported model/device combinations and integration effort; Weeks 1-2 / RQ1 | suggested candidate; detailed review and local validation pending |
 | Engine candidates | [TensorRT diffusion pipeline](https://github.com/NVIDIA/TensorRT/tree/main/demo/Diffusion) | screen NVIDIA inference support, export/build requirements, and device compatibility; Weeks 1-2 / RQ1 | suggested candidate; exact FLUX.2 klein and Jetson support unverified |
-| Engine options | [sd.cpp caching documentation](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/caching.md) | audit EasyCache, DBCache, TaylorSeer, cache-dit and Spectrum against the pinned engine/model; measure speed, cache memory and quality | planned option audit ([memo](../../raw/meetings/2026-10-01-haoran-you.md#to-do)); no new measurements |
+| Engine options | [sd.cpp caching documentation](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/caching.md) | audit EasyCache, DBCache, TaylorSeer, cache-dit and Spectrum against the pinned engine/model; measure speed, cache memory and quality | planned option audit ([memo](../../raw/meetings/2026-10-01.md#to-do)); no new measurements |
 | Engines | FastVideo; Wan reference implementation | video baselines | unread; FastVideo temporarily deferred ([decision](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)) |
 | Engines | ExecuTorch (Nachin et al., MLSys 2026), official OpenVINO diffusion example | existing diffusion recipes; candidate infrastructure, automatic joint selection unverified | [ingested](executorch-mlsys2026.md) |
 | Joint optimization | [CacheQuant](https://arxiv.org/abs/2503.01323) (Liu et al., CVPR 2025) | caching/quantization coupling, cache scheduling and error correction; audit novelty overlap | screened; full review pending |

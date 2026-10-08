@@ -81,11 +81,11 @@ superseded record moves to Archive with a link to the one that replaced it.
 - **Date**: 2026-10-01
 - **Decision**: Prioritize deeper A100/Jetson profiling, edge-dit.cpp feasibility, and controlled
   tests of existing engine options; temporarily defer FastVideo and further DreamLite work
-  ([meeting memo](../../raw/meetings/2026-10-01-haoran-you.md#discussed)).
+  ([meeting memo](../../raw/meetings/2026-10-01.md#discussed)).
 - **Why**: Identify actual compute, transfer and host overhead, audit sd.cpp auto-fit decisions,
-  and evaluate caching before expanding the experiment set ([actions](../../raw/meetings/2026-10-01-haoran-you.md#to-do)).
+  and evaluate caching before expanding the experiment set ([actions](../../raw/meetings/2026-10-01.md#to-do)).
 - **Candidate boundary**: LightX2V and TensorRT are suggestions to screen, not selected or validated
-  baselines ([actions](../../raw/meetings/2026-10-01-haoran-you.md#to-do), [reading list](../papers/reading-list.md)).
+  baselines ([actions](../../raw/meetings/2026-10-01.md#to-do), [reading list](../papers/reading-list.md)).
 - **Scope**: Weeks 1-2 baselines and Weeks 3-4 analysis/instrumentation; primarily RQ1, with measurements
   feeding RQ2/RQ3. The [proposal's targets and RQs](overview.md) remain unchanged.
 - **Revisit if**: planning the next experiment batch requires rescheduling the deferred proposal work.

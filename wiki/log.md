@@ -11,10 +11,10 @@ updated: 2026-10-02
 Reconciled five conflicting wiki files against current [milestones](project/milestones.md), [priorities](hot.md) and [reading list](papers/reading-list.md); retained literature-review history and regenerated the index. No measurement or runner changes.
 
 ## [2026-10-02] lint | Status and literature links refreshed
-[Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01-haoran-you.md) wording retained with GitHub/W&B links.
+[Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01.md) wording retained with GitHub/W&B links.
 
 ## [2026-10-02] ingest | October 1 meeting priorities and engine candidates
-[Meeting memo](../raw/meetings/2026-10-01-haoran-you.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
+[Meeting memo](../raw/meetings/2026-10-01.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
 
 ## [2026-09-29] experiment | sd.cpp runner refactor smoke retry passed
 [Record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-retry-passed-2026-09-29): job 11839470

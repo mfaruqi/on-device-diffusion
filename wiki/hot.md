@@ -20,11 +20,11 @@ October 1 priorities: deeper profiling and engine/option baselines; FastVideo an
   40 CPU checks pass locally/on Gilbreth, both A100 smoke checks pass ([validation](../scripts/README.md#compatibility-and-checks)).
 
 ## In progress / next
-1. Profile kernels, transfers, loading and host overhead more closely, especially Jetson ([meeting actions](../raw/meetings/2026-10-01-haoran-you.md#to-do)); explain the step-0 captured-activity gap ([profile results](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/jetson-flux-klein-003)).
-2. Screen edge-dit.cpp first; keep LightX2V and TensorRT as unverified additional candidates ([reading list](papers/reading-list.md), [memo](../raw/meetings/2026-10-01-haoran-you.md#to-do)).
-3. Audit sd.cpp auto-fit's resolved decisions; test supported memory options and EasyCache/DBCache individually before combinations ([memo](../raw/meetings/2026-10-01-haoran-you.md#to-do)).
-4. Extend engine/device/model stage charts and collect operation/traffic data for roofline-style plots; label estimates and timing bases ([memo](../raw/meetings/2026-10-01-haoran-you.md#to-do)).
-5. Generalize configuration-driven runners/adapters with shared outputs, pinned revisions and explicit unsupported-option failures ([memo](../raw/meetings/2026-10-01-haoran-you.md#to-do)).
+1. Profile kernels, transfers, loading and host overhead more closely, especially Jetson ([meeting actions](../raw/meetings/2026-10-01.md#to-do)); explain the step-0 captured-activity gap ([profile results](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/jetson-flux-klein-003)).
+2. Screen edge-dit.cpp first; keep LightX2V and TensorRT as unverified additional candidates ([reading list](papers/reading-list.md), [memo](../raw/meetings/2026-10-01.md#to-do)).
+3. Audit sd.cpp auto-fit's resolved decisions; test supported memory options and EasyCache/DBCache individually before combinations ([memo](../raw/meetings/2026-10-01.md#to-do)).
+4. Extend engine/device/model stage charts and collect operation/traffic data for roofline-style plots; label estimates and timing bases ([memo](../raw/meetings/2026-10-01.md#to-do)).
+5. Generalize configuration-driven runners/adapters with shared outputs, pinned revisions and explicit unsupported-option failures ([memo](../raw/meetings/2026-10-01.md#to-do)).
 6. Write the bounded planning hypothesis ([RQ3](rq/rq3.md)); audit recipe/novelty overlap ([ExecuTorch review](papers/executorch-mlsys2026.md#what-it-means-for-this-project), [reading list](papers/reading-list.md)).
 7. Shared initial noise for cross-engine image comparison ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
 
