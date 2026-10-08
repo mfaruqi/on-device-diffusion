@@ -136,10 +136,10 @@ September entries moved unchanged to [log-2026-09.md](log-2026-09.md); [SCHEMA](
 [Jetson how-to](methods/jetson-howto.md) no longer says the refactored capture is untested on hardware; the [record](../experiments/jetson-flux-klein-003.md) shows Sep 30 runs. Lint skill scope now includes uncommitted pages, and stale-status checks cover method pages.
 
 ## [2026-10-02] lint | Status and literature links refreshed
-[Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01-haoran-you.md) wording retained with GitHub/W&B links.
+[Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01.md) wording retained with GitHub/W&B links.
 
 ## [2026-10-02] ingest | October 1 meeting priorities and engine candidates
-[Meeting memo](../raw/meetings/2026-10-01-haoran-you.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
+[Meeting memo](../raw/meetings/2026-10-01.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
 
 ## [2026-10-01] ingest | Week 1 evidence and status reconciliation review
 [Jetson baseline/profiles](../experiments/jetson-flux-klein-003.md) already registered; [DreamLite source review](papers/dreamlite.md) exists with export/device validation pending. Milestone, hot, RQ1 and DreamLite reading-list corrections prepared; substantive updates await approval.

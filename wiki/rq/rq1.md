@@ -37,7 +37,7 @@ under the [evaluation rules](../project/overview.md#evaluation-rules).
 
 ## Next
 Deepen profiling, screen edge-dit.cpp and audit existing auto-fit/caching options
-([meeting actions](../../raw/meetings/2026-10-01-haoran-you.md#to-do)). Further DreamLite work and FastVideo
+([meeting actions](../../raw/meetings/2026-10-01.md#to-do)). Further DreamLite work and FastVideo
 are temporarily deferred ([D-009](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)).
 Since [D-010](../project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top), transfer is evaluated
 across CUDA, Metal and WebGPU on the compiled klein pipeline; Wan is deferred until it runs.
