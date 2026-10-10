@@ -1,0 +1,13 @@
+# Synthetic engine context for parser tests; not experimental evidence.
+backend: CUDA0
+params_backend: disk
+n_threads: 4
+auto_fit: false
+eager_load: true
+disable_segmented_compute: false
+disable_prefetch: false
+conditioning_cache_size: 0
+flash_attn: false
+diffusion_flash_attn: true
+Using flash attention in the diffusion model
+prepared params backend buffers: disk

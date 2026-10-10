@@ -1,0 +1,10 @@
+{
+  "reference": "jetson-flux-klein-003__baseline__20261005-105911",
+  "variant": "jetson-flux-klein-007__baseline__20261005-113106",
+  "matched_model_workload_protocol": true,
+  "only_harness_change": "conditioning-cache-size:0->1",
+  "reference_over_variant_median": 3.8727522461565127,
+  "speed_range_rule_pass": true,
+  "formal_quality_eligible": false,
+  "campaign_scope": "No additional four-step combination authorized under the Jetson stopping boundary."
+}

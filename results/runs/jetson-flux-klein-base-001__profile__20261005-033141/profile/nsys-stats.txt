@@ -1,0 +1,147 @@
+Generating SQLite file results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.sqlite from results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.nsys-rep
+Processing [results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/nvtx_sum.py]... 
+
+ ** NVTX Range Summary (nvtx_sum):
+
+ Time (%)  Total Time (ns)  Instances     Avg (ns)        Med (ns)       Min (ns)      Max (ns)    StdDev (ns)   Style        Range      
+ --------  ---------------  ---------  --------------  --------------  ------------  ------------  -----------  -------  ----------------
+     33.3     328647505216          1  328647505216.0  328647505216.0  328647505216  328647505216          0.0  PushPop  :profile_capture
+     33.3     328647437472          1  328647437472.0  328647437472.0  328647437472  328647437472          0.0  PushPop  :generate       
+      3.4      33647068928          1   33647068928.0   33647068928.0   33647068928   33647068928          0.0  PushPop  :denoise_step_0 
+      1.9      18697086112          1   18697086112.0   18697086112.0   18697086112   18697086112          0.0  PushPop  :text_encode    
+      0.6       5543653024          1    5543653024.0    5543653024.0    5543653024    5543653024          0.0  PushPop  :denoise_step_41
+      0.6       5543446560          1    5543446560.0    5543446560.0    5543446560    5543446560          0.0  PushPop  :denoise_step_22
+      0.6       5543393440          1    5543393440.0    5543393440.0    5543393440    5543393440          0.0  PushPop  :denoise_step_32
+      0.6       5543320512          1    5543320512.0    5543320512.0    5543320512    5543320512          0.0  PushPop  :denoise_step_34
+      0.6       5543255104          1    5543255104.0    5543255104.0    5543255104    5543255104          0.0  PushPop  :denoise_step_15
+      0.6       5543223104          1    5543223104.0    5543223104.0    5543223104    5543223104          0.0  PushPop  :denoise_step_6 
+      0.6       5542958784          1    5542958784.0    5542958784.0    5542958784    5542958784          0.0  PushPop  :denoise_step_36
+      0.6       5542834176          1    5542834176.0    5542834176.0    5542834176    5542834176          0.0  PushPop  :denoise_step_26
+      0.6       5542779264          1    5542779264.0    5542779264.0    5542779264    5542779264          0.0  PushPop  :denoise_step_19
+      0.6       5542719744          1    5542719744.0    5542719744.0    5542719744    5542719744          0.0  PushPop  :denoise_step_5 
+      0.6       5542679264          1    5542679264.0    5542679264.0    5542679264    5542679264          0.0  PushPop  :denoise_step_40
+      0.6       5542591520          1    5542591520.0    5542591520.0    5542591520    5542591520          0.0  PushPop  :denoise_step_13
+      0.6       5542533792          1    5542533792.0    5542533792.0    5542533792    5542533792          0.0  PushPop  :denoise_step_33
+      0.6       5542431008          1    5542431008.0    5542431008.0    5542431008    5542431008          0.0  PushPop  :denoise_step_39
+      0.6       5542230208          1    5542230208.0    5542230208.0    5542230208    5542230208          0.0  PushPop  :denoise_step_12
+      0.6       5542229920          1    5542229920.0    5542229920.0    5542229920    5542229920          0.0  PushPop  :denoise_step_44
+      0.6       5542210688          1    5542210688.0    5542210688.0    5542210688    5542210688          0.0  PushPop  :denoise_step_37
+      0.6       5542182016          1    5542182016.0    5542182016.0    5542182016    5542182016          0.0  PushPop  :denoise_step_29
+      0.6       5542177376          1    5542177376.0    5542177376.0    5542177376    5542177376          0.0  PushPop  :denoise_step_23
+      0.6       5542088416          1    5542088416.0    5542088416.0    5542088416    5542088416          0.0  PushPop  :denoise_step_4 
+      0.6       5542042144          1    5542042144.0    5542042144.0    5542042144    5542042144          0.0  PushPop  :denoise_step_3 
+      0.6       5542026784          1    5542026784.0    5542026784.0    5542026784    5542026784          0.0  PushPop  :denoise_step_38
+      0.6       5541965056          1    5541965056.0    5541965056.0    5541965056    5541965056          0.0  PushPop  :denoise_step_31
+      0.6       5541916480          1    5541916480.0    5541916480.0    5541916480    5541916480          0.0  PushPop  :denoise_step_27
+      0.6       5541813888          1    5541813888.0    5541813888.0    5541813888    5541813888          0.0  PushPop  :denoise_step_30
+      0.6       5541777504          1    5541777504.0    5541777504.0    5541777504    5541777504          0.0  PushPop  :denoise_step_43
+      0.6       5541630784          1    5541630784.0    5541630784.0    5541630784    5541630784          0.0  PushPop  :denoise_step_14
+      0.6       5541593856          1    5541593856.0    5541593856.0    5541593856    5541593856          0.0  PushPop  :denoise_step_2 
+      0.6       5541556384          1    5541556384.0    5541556384.0    5541556384    5541556384          0.0  PushPop  :denoise_step_45
+      0.6       5541552896          1    5541552896.0    5541552896.0    5541552896    5541552896          0.0  PushPop  :denoise_step_48
+      0.6       5541415680          1    5541415680.0    5541415680.0    5541415680    5541415680          0.0  PushPop  :denoise_step_11
+      0.6       5541098720          1    5541098720.0    5541098720.0    5541098720    5541098720          0.0  PushPop  :denoise_step_17
+      0.6       5541098400          1    5541098400.0    5541098400.0    5541098400    5541098400          0.0  PushPop  :denoise_step_16
+      0.6       5540916320          1    5540916320.0    5540916320.0    5540916320    5540916320          0.0  PushPop  :denoise_step_7 
+      0.6       5540748416          1    5540748416.0    5540748416.0    5540748416    5540748416          0.0  PushPop  :denoise_step_49
+      0.6       5540062368          1    5540062368.0    5540062368.0    5540062368    5540062368          0.0  PushPop  :denoise_step_46
+      0.6       5539998144          1    5539998144.0    5539998144.0    5539998144    5539998144          0.0  PushPop  :denoise_step_47
+      0.6       5539678240          1    5539678240.0    5539678240.0    5539678240    5539678240          0.0  PushPop  :denoise_step_25
+      0.6       5539428800          1    5539428800.0    5539428800.0    5539428800    5539428800          0.0  PushPop  :denoise_step_10
+      0.6       5539421952          1    5539421952.0    5539421952.0    5539421952    5539421952          0.0  PushPop  :denoise_step_1 
+      0.6       5539308096          1    5539308096.0    5539308096.0    5539308096    5539308096          0.0  PushPop  :denoise_step_8 
+      0.6       5539300064          1    5539300064.0    5539300064.0    5539300064    5539300064          0.0  PushPop  :denoise_step_9 
+      0.6       5538085312          1    5538085312.0    5538085312.0    5538085312    5538085312          0.0  PushPop  :denoise_step_42
+      0.6       5538009568          1    5538009568.0    5538009568.0    5538009568    5538009568          0.0  PushPop  :denoise_step_20
+      0.6       5537679904          1    5537679904.0    5537679904.0    5537679904    5537679904          0.0  PushPop  :denoise_step_21
+      0.6       5537300032          1    5537300032.0    5537300032.0    5537300032    5537300032          0.0  PushPop  :denoise_step_18
+      0.6       5536827232          1    5536827232.0    5536827232.0    5536827232    5536827232          0.0  PushPop  :denoise_step_35
+      0.6       5536016704          1    5536016704.0    5536016704.0    5536016704    5536016704          0.0  PushPop  :denoise_step_28
+      0.6       5533889664          1    5533889664.0    5533889664.0    5533889664    5533889664          0.0  PushPop  :denoise_step_24
+      0.5       4504378208          1    4504378208.0    4504378208.0    4504378208    4504378208          0.0  PushPop  :vae_decode     
+
+Processing [results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_gpu_kern_sum.py]... 
+
+ ** CUDA GPU Kernel Summary (cuda_gpu_kern_sum):
+
+ Time (%)  Total Time (ns)  Instances   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  ----------------------------------------------------------------------------------------------------
+     52.8     144867370016       8000  18108421.3  17210576.0   1508160   41535488   14050797.1  void mul_mat_q<(ggml_type)2, (int)128, (bool)0>(const char *, const int *, const int *, const int *…
+     12.6      34666165920       2500  13866466.4  13796000.0  13740416   19200352     214716.8  void flash_attn_ext_f16<(int)128, (int)128, (int)64, (int)1, (bool)0, (bool)0>(const char *, const …
+      9.5      26003698784      17919   1451180.2   1995232.0     57216    3073888     834807.3  void cpy_scalar<&cpy_1_scalar<float, float>>(const char *, char *, long, long, long, long, long, lo…
+      5.2      14305003648      21184    675274.0    588800.0    184032    9983936     468477.8  void k_bin_bcast<&op_mul, float, float, float, const float *>(const T2 *, const T3 *, T4 *, unsigne…
+      3.5       9679353152       6108   1584700.9   1914496.0    209824    3298080     496995.3  void rms_norm_f32<(int)256, (bool)1, (bool)0>(const float *, float *, int, long, long, long, float,…
+      3.4       9301809664      17447    533146.7    644608.0     46912   14535008     276122.7  void k_bin_bcast<&op_add, float, float, float, const float *>(const T2 *, const T3 *, T4 *, unsigne…
+      3.2       8670666976       2004   4326680.1   4334816.0    596832    4529024     160659.5  void concat_cont<unsigned int, (int)0>(const T1 *, const T1 *, T1 *, long, long, long, long, long, …
+      1.8       4939612544      10000    493961.3    493792.0    484192     639488       4289.2  void k_bin_bcast<&op_repeat, float, float, float, >(const T2 *, const T3 *, T4 *, unsigned int, uns…
+      1.7       4780642304       3583   1334256.9   1877344.0      2784   10359904     740697.8  void unary_op_kernel<&op_silu, float>(const T2 *, T2 *, int)                                        
+      1.4       3824116064       5000    764823.2    764288.0    754592    1020640       8286.5  void cpy_scalar_contiguous<float, __half>(const char *, char *, long)                               
+      1.4       3768260160       8334    452155.0    286528.0     82688    1507648     401680.1  void quantize_mmq_q8_1<(mmq_q8_1_ds_layout)1, (bool)0>(const float *, const int *, void *, long, lo…
+      1.2       3314058624       4100    808307.0    726800.0    360992    2322304     294062.0  void norm_f32<(int)1024>(const float *, float *, int, long, long, long, float)                      
+      0.7       1963343584         36  54537321.8  27595520.0    215232  222383040   57600292.0  void im2col_kernel<__half>(const float *, T1 *, long, long, long, long, long, long, long, long, lon…
+      0.3        865116544        334   2590169.3   1872432.0    465952    6889024    1662170.9  void mul_mat_q<(ggml_type)12, (int)128, (bool)0>(const char *, const int *, const int *, const int …
+      0.3        836659232       1000    836659.2    837872.0    821920    1112992      16597.8  void concat_cont<unsigned int, (int)2>(const T1 *, const T1 *, T1 *, long, long, long, long, long, …
+      0.2        568059648        500   1136119.3    922720.0    311200    9952256     778269.6  void mul_mat_vec_f<__nv_bfloat16, float, (int)1, (int)256, (bool)0, (bool)0>(const T1 *, const floa…
+      0.2        473590208        500    947180.4    945408.0    941248    1265440      19449.0  void concat_non_cont<unsigned int, (int)2>(const char *, const char *, char *, long, long, long, lo…
+      0.1        362068608        200   1810343.0   1727904.0    125632   17631520    1957950.3  ampere_s16816gemm_bf16_128x128_ldg8_stages_32x5_tn                                                  
+      0.1        198153824         25   7926153.0   7520448.0   1704992   31022848    7703763.5  ampere_h16816gemm_128x128_ldg8_stages_32x5_tn                                                       
+      0.1        149041312         30   4968043.7   2748512.0    606752   21705888    5121253.1  void group_norm_f32<(int)1024>(const float *, float *, int, int, float)                             
+      0.1        138899616         54   2572215.1   2416944.0   2406240    8340992     805479.8  void soft_max_f32<(bool)1, (int)512, (int)512, float>(const float *, const T4 *, const float *, flo…
+      0.0        128769312         44   2926575.3   3730080.0    557376    6627072    2326517.8  void mul_mat_q<(ggml_type)14, (int)128, (bool)0>(const char *, const int *, const int *, const int …
+      0.0        122191648        100   1221916.5   1221632.0   1220384    1249952       2890.1  void concat_cont<unsigned int, (int)1>(const T1 *, const T1 *, T1 *, long, long, long, long, long, …
+      0.0        104982432        304    345336.9    441232.0     16768    1773888     246572.2  void convert_unary<float, __nv_bfloat16>(const void *, T2 *, long, long, long, uint3, long, long, l…
+      0.0         93965024         36   2610139.6   1377152.0     49888   11856736    2668446.6  void convert_unary<__half, float>(const void *, T2 *, long, long, long, uint3, long, long, long)    
+      0.0         88619040        155    571735.7      5184.0      4736   11683200    1137446.4  scale_f32(const float *, float *, float, float, long)                                               
+      0.0         79383392          6  13230565.3  10893536.0  10821216   24971712    5752282.7  void cutlass::Kernel2<cutlass_80_tensorop_h16816gemm_128x128_32x5_tn_align8>(T1::Params)            
+      0.0         49192288         54    910968.3    767008.0    758560    7997088     983066.3  void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_256x64_16x4_tn_align4>(T1::Params)              
+      0.0         44223456        108    409476.4    376032.0    374208    2117152     171530.8  void rms_norm_f32<(int)1024, (bool)1, (bool)0>(const float *, float *, int, long, long, long, float…
+      0.0         38587328         54    714580.1    672928.0    666592    2338432     226172.3  void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_128x64_16x6_tn_align4>(T1::Params)              
+      0.0         35668224        108    330261.3    457232.0    118752    3065280     322083.2  void rope_neox<(bool)1, (bool)0, float, float>(const T3 *, T4 *, int, int, int, int, int, int, int,…
+      0.0         29028640          3   9676213.3   8913984.0   2237952   17876704    7847189.7  upscale_f32(const float *, float *, int, int, int, int, int, int, int, int, float, float, float, fl…
+      0.0         27838496          1  27838496.0  27838496.0  27838496   27838496          0.0  ampere_h16816gemm_256x128_ldg8_stages_32x3_tn                                                       
+      0.0         26676032        100    266760.3    261376.0    259712     794720      53335.2  ampere_s16816gemm_bf16_64x64_ldg8_tn                                                                
+      0.0         10410272         44    236597.1    292064.0     81152    1243968     200219.0  void quantize_mmq_q8_1<(mmq_q8_1_ds_layout)0, (bool)0>(const float *, const int *, void *, long, lo…
+      0.0          9087680          1   9087680.0   9087680.0   9087680    9087680          0.0  void cutlass::Kernel2<cutlass_80_tensorop_h16816gemm_256x64_32x4_tn_align8>(T1::Params)             
+      0.0          8723072        100     87230.7     84144.0     83456     392704      30857.8  void mul_mat_vec_f<__nv_bfloat16, float, (int)1, (int)128, (bool)0, (bool)0>(const T1 *, const floa…
+      0.0          6663872          1   6663872.0   6663872.0   6663872    6663872          0.0  void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_256x128_16x3_tn_align4>(T1::Params)             
+      0.0          5591712          1   5591712.0   5591712.0   5591712    5591712          0.0  void cutlass::Kernel2<cutlass_80_tensorop_s1688gemm_128x256_16x3_tn_align4>(T1::Params)             
+      0.0          4139552          1   4139552.0   4139552.0   4139552    4139552          0.0  void soft_max_f32<(bool)1, (int)4096, (int)1024, float>(const float *, const T4 *, const float *, f…
+      0.0          3110720          1   3110720.0   3110720.0   3110720    3110720          0.0  ampere_h16816gemm_128x64_ldg8_tn                                                                    
+      0.0          1741920          4    435480.0    435936.0    433504     436544       1368.5  ampere_s16816gemm_bf16_128x64_ldg8_stages_64x3_tn                                                   
+      0.0           956000          2    478000.0    478000.0     93856     862144     543261.7  void k_get_rows_kq<float, &dequantize_q6_K<float>>(const void *, const int *, T1 *, long, long, uin…
+      0.0           576288        108      5336.0      5088.0      4544      19424       1468.9  k_compute_batched_ptrs(const void *, const void *, char *, const void **, void **, long, long, long…
+      0.0           553152          1    553152.0    553152.0    553152     553152          0.0  ampere_h1688gemm_128x256_ldg8_stages_32x1_tn                                                        
+      0.0           390304          2    195152.0    195152.0    125568     264736      98406.6  void cpy_scalar_transpose<float>(const char *, char *, long, long, long, long, long, long, long, lo…
+      0.0           365280        100      3652.8      3520.0      3488      14592       1106.9  timestep_embedding_f32(const float *, float *, int, int, int)                                       
+      0.0            36544          1     36544.0     36544.0     36544      36544          0.0  ampere_h1688gemm_256x64_ldg8_tn                                                                     
+
+Processing [results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_gpu_mem_time_sum.py]... 
+
+ ** CUDA GPU MemOps Summary (by Time) (cuda_gpu_mem_time_sum):
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)            Operation           
+ --------  ---------------  -----  ---------  ---------  --------  ---------  -----------  ------------------------------
+     59.0       4624204960   3990  1158948.6  1814208.0      5024    9282976     783461.9  [CUDA memcpy Device-to-Device]
+     40.9       3202448128   1200  2668706.8    30704.0       448  104504640    7963761.7  [CUDA memcpy Host-to-Device]  
+      0.1          7442240    103    72254.8    24032.0     23360    2368256     322704.9  [CUDA memcpy Device-to-Host]  
+      0.0           111552    201      555.0      512.0       448       4896        322.4  [CUDA memset]                 
+
+Processing [results/runs/jetson-flux-klein-base-001__profile__20261005-033141/profile/trace.sqlite] with [/opt/nvidia/nsight-systems/2024.5.4/host-linux-armv8/reports/cuda_api_sum.py]... 
+
+ ** CUDA API Summary (cuda_api_sum):
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)     Med (ns)    Min (ns)   Max (ns)   StdDev (ns)                 Name               
+ --------  ---------------  ---------  -----------  -----------  --------  ----------  -----------  ----------------------------------
+     82.1     232985589472       1715  135851655.7      45056.0      3872  2954999136  539691430.9  cudaStreamSynchronize             
+     14.8      41943037696     110181     380674.0      15264.0      7904   154301760    3073792.2  cudaLaunchKernel                  
+      2.2       6306803712       2293    2750459.5     198304.0     14944   107393344    7018975.3  cudaMemcpyAsync                   
+      0.6       1670898208          9  185655356.4  190246976.0   5513664   399312192  123355370.0  cudaMalloc                        
+      0.1        392995840          9   43666204.4   49192352.0   4109440   115641696   35393744.9  cudaFree                          
+      0.1        375806208       3000     125268.7      27200.0     16224     1352320     267646.2  cudaMemcpy2DAsync                 
+      0.1        170724928        201     849377.8    1230944.0     27168    40310432    2863110.7  cudaMemsetAsync                   
+      0.0         32287008        201     160631.9      10176.0      6912    30250720    2133003.7  cudaEventRecord                   
+      0.0         11041600        411      26865.2      21056.0     14752      161408      14464.4  cudaMemGetInfo                    
+      0.0          2579040       1005       2566.2       1664.0       512       23200       2269.4  cudaStreamGetCaptureInfo_v2_v11030
+      0.0          2439232        117      20848.1      18912.0     12096       60992       6360.6  cuLaunchKernel                    
+      0.0           305920        117       2614.7       2176.0       928       30944       3174.4  cuKernelGetFunction               
+

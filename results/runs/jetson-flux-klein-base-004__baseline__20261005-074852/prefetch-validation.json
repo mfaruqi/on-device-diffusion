@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "protocol": "1+3+10",
+  "steps_each": 50,
+  "transformer_passes_each": 100,
+  "reference_rgb_equal": true,
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "same_binary_as": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "scope": "Callbacks, CFG passes, settings, phases, all summary medians/min/max and saved RGB hashes validated. Saved pixels equal the previously visually inspected no-cache reference. No formal quality eligibility."
+}

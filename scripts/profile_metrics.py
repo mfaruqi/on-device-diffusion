@@ -152,7 +152,19 @@ def summarize_stage(stage):
             }
         return rows
 
+    coverage = {}
+    if "read_intervals" in stage:
+        combined = union_ms(stage["read_intervals"] + [(a["ts"], a["ts"] + a["dur_us"]) for a in acts])
+        coverage["osrt_coverage"] = {
+            "gpu_covered_ms": busy,
+            "read_only_covered_ms": combined - busy,
+            "neither_covered_ms": stage["span_ms"] - combined,
+            "process_key": stage["osrt_process"],
+            "read_functions": ["read", "pread64"],
+        }
+
     return {
+        **coverage,
         "span_ms": stage["span_ms"],
         "busy_ms": busy,
         "idle_ms": stage["span_ms"] - busy,

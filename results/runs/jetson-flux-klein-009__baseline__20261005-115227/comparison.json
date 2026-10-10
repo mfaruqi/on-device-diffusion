@@ -1,0 +1,10 @@
+{
+  "reference": "jetson-flux-klein-003__baseline__20261005-105911",
+  "variant": "jetson-flux-klein-009__baseline__20261005-115227",
+  "matched_model_workload_protocol": true,
+  "engine_settings_change": "mmap false(default)->true",
+  "only_harness_change": "mmap:0->1",
+  "variant_over_reference_median": 1.1119676685591655,
+  "speed_range_rule_pass": false,
+  "formal_quality_eligible": false
+}

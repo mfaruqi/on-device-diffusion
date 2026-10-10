@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "easycache_only_reference": "jetson-flux-klein-base-002__baseline__20261005-024556",
+  "same_binary": true,
+  "measured_rgb_equal_easycache_only": true,
+  "conditioning_hits": [
+    0,
+    2
+  ],
+  "steps_skipped": [
+    25,
+    25
+  ],
+  "actual_transformer_passes": [
+    50,
+    50
+  ],
+  "visual_check": "Coherent cat holding a legible hello world sign; one development image, informal inspection.",
+  "quality_scope": "PSNR/LPIPS against no-cache recorded separately; no formal quality eligibility."
+}

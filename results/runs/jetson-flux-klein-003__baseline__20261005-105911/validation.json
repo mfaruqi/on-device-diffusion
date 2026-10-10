@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "scope": "Full1+3+10: independent callback/settings/CFG execution count/phase/aggregate/image-hash checks; reference image equality recorded separately from execution validity.",
+  "steps": 4,
+  "transformer_passes": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "conditioning_hits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "reference": "jetson-flux-klein-003__attempt__20261005-104044",
+  "reference_rgb_equal": true,
+  "all_generation_rgb_hashes_equal": true,
+  "same_binary": true,
+  "formal_quality_eligible": false
+}

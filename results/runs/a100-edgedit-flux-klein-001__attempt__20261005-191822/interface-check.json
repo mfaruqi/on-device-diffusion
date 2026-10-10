@@ -1,0 +1,18 @@
+{
+  "passes": [
+    [
+      "1",
+      "2",
+      "2.283"
+    ],
+    [
+      "2",
+      "2",
+      "1.631"
+    ]
+  ],
+  "timing_source": "upstream steady_clock around ed_generate_image; stdout rounded to milliseconds",
+  "retained_images": "final repeat only; upstream overwrites index filename",
+  "stage_audit": "pending inspection",
+  "baseline_eligible": false
+}

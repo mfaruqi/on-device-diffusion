@@ -20,7 +20,7 @@ import argparse
 import hashlib
 import json
 import resource
-import shutil
+import re
 import subprocess
 from pathlib import Path
 
@@ -28,8 +28,8 @@ from benchlib import GIB, REPO_ROOT, DeviceMemorySampler, host_environment, sh, 
 from measurement import create_run_directory, phase_sequence, run_status, sampling, summarize_runs, write_csv
 from measurement_events import export_events
 from sdcpp_engine import (
-    audit_log, check_config, check_files, expand, harness_args, prepare,
-    rows_from_results, snapshot_dir,
+    audit_cache, audit_log, check_config, check_files, conditioning_hits, expand, harness_args, prepare,
+    rows_from_results, snapshot_dir, save_images,
 )
 
 
@@ -48,7 +48,8 @@ def benchmark(cfg, run_dir, nsys):
     env = collect_environment(cfg, run_dir, sampler, engine_git, binary, snap)
     eng_dir, load, gens, child_peak_rss = run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys)
     save_images(run_dir, eng_dir, gens, phases)
-    rows, stage_rows = rows_from_results(gens, phases, cfg["workload"]["num_inference_steps"], sampler)
+    rows, stage_rows = rows_from_results(gens, phases, cfg["workload"]["num_inference_steps"], sampler,
+                                        expected_conditioning_hits=conditioning_hits(cfg, len(gens)))
     write_csv(run_dir / "runs.csv", rows)
     write_csv(run_dir / "stages.csv", stage_rows)
     save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss)
@@ -103,23 +104,6 @@ def run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys):
     return eng_dir, load, gens, child_peak_rss
 
 
-def save_images(run_dir, eng_dir, gens, phases):
-    # Hash every image; keep PNGs of the first and first measured run, then drop the raw bytes.
-    from PIL import Image
-
-    (run_dir / "images").mkdir()
-    first_measured = phases.index("measured")
-    for g in gens:
-        raw = eng_dir / "raw" / f"run-{g['run_index']}.rgb"
-        data = raw.read_bytes()
-        g["image_sha256"] = hashlib.sha256(data).hexdigest()
-        name = {0: "first.png", first_measured: "measured-0.png"}.get(g["run_index"])
-        if name:
-            Image.frombytes("RGB", (g["width"], g["height"]), data).save(run_dir / "images" / name)
-    shutil.rmtree(eng_dir / "raw")
-
-
-
 def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss):
     load_rec = {
         "load_total_s": load["t_end"] - load["t_start"],
@@ -131,7 +115,18 @@ def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_pe
     write_json(run_dir / "load.json", load_rec)
     (run_dir / "nvidia-smi.txt").write_text(sh(["nvidia-smi"]) + "\n")
 
-    audit = audit_log((eng_dir / "sdcpp.log").read_text(errors="replace"), cfg["engine_settings"], gens[-1]["t_end"])
+    log = (eng_dir / "sdcpp.log").read_text(errors="replace")
+    hits = conditioning_hits(cfg, len(gens))
+    audit = audit_log(log, cfg["engine_settings"], gens[-1]["t_end"], expected_conditioning_hits=sum(hits))
+    for field in ['conditioning_cache_size', 'disable_prefetch']:
+        value = cfg['engine_settings'][field]
+        rendered = str(value).lower()
+        assert re.search(r'^' + field + ': ' + rendered + r'\s*$', log, re.MULTILINE), f'Missing context confirmation: {field}'
+    mapped = sorted({Path(p).name for p in re.findall(r"using mmap for '([^']+)'", log)})
+    expected = sorted(Path(p).name for p in cfg['model']['sha256']) if cfg['engine_settings']['mmap'] else []
+    assert mapped == expected and not re.search(r'failed to memory-map|mmap: (?:failed|.*cannot map)', log), 'mmap file confirmations differ or fallback reported'
+    audit['mmap_io'] = {'requested': cfg['engine_settings']['mmap'], 'confirmed_files': mapped}
+    cache_audit = audit_cache(log, cfg["optimizations"].get("step_cache"), len(gens))
     summary = {
         "id": cfg["id"],
         "device_label": cfg["device_label"],
@@ -148,6 +143,8 @@ def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_pe
             "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak",
         },
         "engine_audit": audit,
+        "cache_audit": cache_audit,
+        "conditioning_cache_hits_per_generation": hits,
         "units": {"time": "ms (load in s)", "memory": "GiB (2^30 bytes)"},
     }
     write_json(run_dir / "summary.json", summary)

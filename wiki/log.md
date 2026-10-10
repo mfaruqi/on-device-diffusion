@@ -2,13 +2,138 @@
 type: project
 summary: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
 status: active
-updated: 2026-10-02
+updated: 2026-10-06
 ---
 
 # Log
 
-## [2026-10-02] lint | Resolve wiki branch conflicts without restoring stale status
-Reconciled five conflicting wiki files against current [milestones](project/milestones.md), [priorities](hot.md) and [reading list](papers/reading-list.md); retained literature-review history and regenerated the index. No measurement or runner changes.
+Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
+
+## [2026-10-06] ingest | Campaign findings, planner design and prior art
+Five findings from the Jetson and campaign records ([step caching](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [reloading](findings/weight-reloading-dominates-disk-backed-jetson-generations.md), [overlap](findings/combined-reuse-savings-overlap-on-jetson-base.md), [auto-fit](findings/sdcpp-auto-fit-fails-first-text-encoding-on-jetson.md)); [levels concept](concepts/kernel-graph-plan-search.md); [RQ3](rq/rq3.md) draft hypothesis and planner design; [RQ2](rq/rq2.md) update; [D-011 proposed](project/decisions.md#d-011-build-the-compiled-pipeline-mlc-style-on-tvm-with-an-engine-level-planner-fallback-proposed); one [open question](open-questions.md); [reading list](papers/reading-list.md) additions.
+
+## [2026-10-06] schema | Log archived by month to keep log.md within budget
+September entries moved unchanged to [log-2026-09.md](log-2026-09.md); [SCHEMA](SCHEMA.md#special-files) lists the `log-YYYY-MM.md` convention; the index includes archive months.
+
+## [2026-10-06] decision | D-010: compiled klein pipeline on CUDA/Metal/WebGPU with the planner on top
+[Advisor overview and confirmation](../raw/meetings/2026-10-06-advisor-scope.md) → [D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top), [revised milestones](project/milestones.md) with roll-over, [overview amendment](project/overview.md#scope-amendments), [MacBook Air M5](systems/macbook-air-m5.md) replaces M1, Wan deferred; one [open question](open-questions.md) on the next target.
+
+## [2026-10-06] experiment | Edge full baseline and Base conditioning gate validated
+[Edge baseline](../experiments/a100-edgedit-flux-klein-001.md) completed1+3+10; [Base conditioning](../experiments/a100-sdcpp-flux-klein-base-003.md) preserved reference pixels with two prompt-cache hits. Full conditioning protocol11893094 queued.
+
+## [2026-10-06] experiment | A100 repeated options validated
+[Base comparison](../experiments/compare-a100-base-sdcpp-options.md) and [four-step comparison](../experiments/compare-a100-distilled-sdcpp-options.md) retain same-binary checks, timing ranges and image diagnostics. [edge adapter gate](../experiments/a100-edgedit-flux-klein-001.md) validated; full protocol11891242 submitted.
+
+## [2026-10-06] experiment | A100 reuse gates completed; repeated protocols queued
+[Base EasyCache](../experiments/a100-sdcpp-flux-klein-base-002.md) and four-step [control](../experiments/a100-sdcpp-flux-klein-001.md), [EasyCache](../experiments/a100-sdcpp-flux-klein-002.md), [conditioning](../experiments/a100-sdcpp-flux-klein-003.md), [prefetch](../experiments/a100-sdcpp-flux-klein-004.md), [mmap](../experiments/a100-sdcpp-flux-klein-005.md) gates validated. [edge-dit interface](../experiments/a100-edgedit-flux-klein-001.md) passed; [Nsight retry](../experiments/a100-sdcpp-flux-klein-base-001.md) failed before inference.
+
+## [2026-10-05] experiment | Jetson Base mmap full protocol validated
+
+[Base006](../experiments/jetson-flux-klein-base-006.md) completed; [comparison](../experiments/compare-jetson-base-mmap.md) retains identical pixels, overlapping timing ranges and failed speed-selection rule.
+
+## [2026-10-05] experiment | jetson-flux-klein-base-006: mmap functional gate
+
+[Record](../experiments/jetson-flux-klein-base-006.md): component mappings, CFG/callback checks and identical retained pixels validated; full repeated timing pending.
+
+## [2026-10-05] experiment | Jetson Base combined reuse full protocol validated
+[Base007](../experiments/jetson-flux-klein-base-007.md) complete; [matched comparison](../experiments/compare-jetson-base-combined-reuse.md) passes diagnostic speed selection against each individual policy, with EasyCache-only pixels.
+
+## [2026-10-05] experiment | Base combined reuse correctness passed
+[jetson-flux-klein-base-007](../experiments/jetson-flux-klein-base-007.md): exact conditioning and EasyCache both activate; functional/paired image diagnostics passed, full protocol running.
+
+## [2026-10-05] experiment | Jetson four-step mmap full protocol
+[008](../experiments/jetson-flux-klein-009.md) validated; [matched comparison](../experiments/compare-jetson-distilled-mmap.md) retains identical pixels and overlapping ranges, failing speed selection.
+
+## [2026-10-05] experiment | Jetson four-step prefetch-disabled full protocol
+[008](../experiments/jetson-flux-klein-008.md) validated; [matched comparison](../experiments/compare-jetson-distilled-prefetch.md) retains identical pixels and overlapping ranges, failing speed selection.
+
+## [2026-10-05] experiment | Jetson four-step exact conditioning full protocol
+[007](../experiments/jetson-flux-klein-007.md) validates exact prompt reuse; [comparison](../experiments/compare-jetson-distilled-conditioning-reuse.md) passes diagnostic speed/fidelity selection; no new combination scheduled.
+
+## [2026-10-05] experiment | Jetson four-step EasyCache full protocol and comparison
+[006](../experiments/jetson-flux-klein-006.md) validates enabled caching with zero skipped steps; [matched comparison](../experiments/compare-jetson-distilled-easycache.md) fails the declared speed-selection rule.
+
+## [2026-10-05] experiment | Jetson distilled full no-cache control validated
+[003 record](../experiments/jetson-flux-klein-003.md#cache-capable-harness-full-control-2026-10-05): matched harness reference completed with ten measured samples; timing spread and image equality preserved.
+
+## [2026-10-05] experiment | jetson-flux-klein-009: distilled memory-mapped weight-file I/O correctness
+[Record](../experiments/jetson-flux-klein-009.md); two-generation callback/settings/image validation passed; full protocol pending.
+
+## [2026-10-05] experiment | jetson-flux-klein-008: distilled prefetch disabled correctness
+[Record](../experiments/jetson-flux-klein-008.md); two-generation callback/settings/image validation passed; full protocol pending.
+
+## [2026-10-05] experiment | jetson-flux-klein-007: distilled exact conditioning reuse correctness
+[Record](../experiments/jetson-flux-klein-007.md); two-generation callback/settings/image validation passed; full protocol pending.
+
+## [2026-10-05] experiment | jetson-flux-klein-006: distilled EasyCache correctness
+[Record](../experiments/jetson-flux-klein-006.md); two-generation callback/settings/image validation passed; full protocol pending.
+
+## [2026-10-05] experiment | jetson-flux-klein-003: distilled no-cache control on the cache-capable harness correctness
+[Record](../experiments/jetson-flux-klein-003.md); two-generation callback/settings/image validation passed; full protocol pending.
+
+## [2026-10-05] experiment | Jetson Base conditioning full protocol validated
+[Base005](../experiments/jetson-flux-klein-base-005.md) retains identical pixels; [matched comparison](../experiments/compare-jetson-base-conditioning-reuse.md) passes the declared speed/fidelity screen.
+
+## [2026-10-05] experiment | Jetson Base exact conditioning reuse correctness passed
+[Base005](../experiments/jetson-flux-klein-base-005.md) confirms both CFG conditioning hits and identical output pixels; full protocol started separately.
+
+## [2026-10-05] experiment | Jetson Base prefetch protocol complete
+[Base004](../experiments/jetson-flux-klein-base-004.md) validated; [matched comparison](../experiments/compare-jetson-base-prefetch.md) preserves identical pixels but fails the speed-range selection rule.
+
+## [2026-10-05] experiment | BF16 compiler screen ends; A100 cache control passes
+[Torch-TensorRT002](../experiments/a100-flux-klein-torchtrt-002.md) failed scalar-multiply conversion after value-preserving layout copies. [sd.cpp Base001](../experiments/a100-sdcpp-flux-klein-base-001.md) no-cache control passed on the cache-capable harness.
+
+## [2026-10-05] experiment | A100 Base engine comparison
+[Comparison](../experiments/compare-a100-base-pytorch-vs-sdcpp.md) records repeated unprofiled timings and device-wide memory; unmatched initial noise, native schedules and stage timing semantics limit causal/quality claims.
+
+## [2026-10-05] experiment | A100 sd.cpp Base baseline validated; profile startup failed
+[Base001](../experiments/a100-sdcpp-flux-klein-base-001.md) completed1+3+10 with CFG/settings/image checks. Nsight failure preserved; one unchanged-workload retry queued on a different PCIe node.
+
+## [2026-10-05] experiment | A100 PyTorch Base profile validated
+[Base001](../experiments/a100-flux-klein-base-001.md) completed the separate torch.profiler capture; both CFG windows per step and derived kernel shares validated.
+
+## [2026-10-05] experiment | A100 PyTorch Base full baseline validated
+[Base001](../experiments/a100-flux-klein-base-001.md) completed1+3+10 with CFG/stage/hash/aggregate checks; separate profile started.
+
+## [2026-10-05] experiment | A100 engine gates and Jetson prefetch correctness
+[edge-dit](../experiments/a100-edgedit-flux-klein-001.md) generated an image; [Torch-TensorRT](../experiments/a100-flux-klein-torchtrt-001.md) failed input-layout preparation. [Jetson Base004](../experiments/jetson-flux-klein-base-004.md) correctness passed; full protocol running.
+
+## [2026-10-05] experiment | Jetson Base lazy-loading completed
+[Base003](../experiments/jetson-flux-klein-base-003.md) attempt and full protocol validated; [matched comparison](../experiments/compare-jetson-base-eager-vs-lazy.md) records identical pixels, overlapping timing ranges and no speed-selected combination.
+
+## [2026-10-05] experiment | Jetson same-binary reference repeat
+[Base reference](../experiments/jetson-flux-klein-base-001.md) repeated and validated on the cache-capable harness; [EasyCache comparison](../experiments/compare-jetson-base-easycache.md) now includes matched binary/protocol evidence. Diagnostic selection remains separate from formal quality eligibility.
+
+## [2026-10-05] experiment | Base profile and sd.cpp correctness validated
+[Jetson Base](../experiments/jetson-flux-klein-base-001.md): targeted profile validated and read/GPU coverage derived. [A100 sd.cpp Base](../experiments/a100-sdcpp-flux-klein-base-001.md): two-image correctness gate passed; full baseline and separate profile queued.
+
+## [2026-10-05] experiment | A100 PyTorch Base correctness
+
+[Record](../experiments/a100-flux-klein-base-001.md): pinned BF16 fifty-step guidance-four attempt passed; full reference and separate profile queued. No repeated baseline result yet.
+
+## [2026-10-05] experiment | Jetson Base EasyCache correctness and diagnostic comparison
+
+[Record](../experiments/jetson-flux-klein-base-002.md): two-generation attempt and repeated cache protocol validated. [Comparison](../experiments/compare-jetson-base-easycache.md) retains paired PSNR/LPIPS diagnostics, repeated results and harness-matching limits.
+
+## [2026-10-05] experiment | Jetson klein Base correctness
+
+[Record](../experiments/jetson-flux-klein-base-001.md): full fifty-step guidance-four no-cache1+3+10 reference completed; correctness attempt and cache-capable harness no-cache control retained separately.
+
+## [2026-10-05] experiment | Jetson eager versus lazy loading
+
+[Comparison](../experiments/compare-jetson-eager-vs-lazy-flux-klein.md): overlapping timing ranges and unmatched capture conditions; descriptive evidence only.
+
+## [2026-10-05] experiment | Jetson lazy-loading correctness passed
+[Record](../experiments/jetson-flux-klein-005.md): full unprofiled 1+3+10 protocol complete, with matching RGB hashes across fourteen outputs. An accidental terminal interruption is retained as a distinct attempt.
+
+## [2026-10-05] experiment | Jetson automatic placement attempt failed
+[Record](../experiments/jetson-flux-klein-004.md): engine selected CPU/GPU residency; first text encoding failed during segment weight preparation. No completed image or baseline median.
+
+## [2026-10-05] experiment | Jetson captured read/GPU coverage
+[Existing record](../experiments/jetson-flux-klein-003.md#process-restricted-read-call-analysis-2026-10-05): three saved captures reanalyzed with process filtering and interval unions; the CLI capture lacks stage markers. Baseline numbers unchanged.
+
+## [2026-10-04] lint | 1 fix, 0 open
+[Jetson how-to](methods/jetson-howto.md) no longer says the refactored capture is untested on hardware; the [record](../experiments/jetson-flux-klein-003.md) shows Sep 30 runs. Lint skill scope now includes uncommitted pages, and stale-status checks cover method pages.
 
 ## [2026-10-02] lint | Status and literature links refreshed
 [Milestones](project/milestones.md), [RQ1](rq/rq1.md), [Jetson](systems/jetson-orin-nano.md), [DreamLite](systems/dreamlite-mobile.md) and [reading list](papers/reading-list.md) updated from existing records/reviews; [meeting memo](../raw/meetings/2026-10-01.md) wording retained with GitHub/W&B links.
@@ -16,112 +141,5 @@ Reconciled five conflicting wiki files against current [milestones](project/mile
 ## [2026-10-02] ingest | October 1 meeting priorities and engine candidates
 [Meeting memo](../raw/meetings/2026-10-01.md) → [D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling), [next actions](hot.md), and [reading list](papers/reading-list.md): LightX2V/TensorRT screening candidates, engine-option audits and temporary FastVideo/DreamLite deferral; no new benchmark findings.
 
-## [2026-09-29] experiment | sd.cpp runner refactor smoke retry passed
-[Record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-retry-passed-2026-09-29): job 11839470
-completed under `you139`; two generations, stage records and engine audit passed. Functional check only.
-
-## [2026-09-29] experiment | A100 runner smoke checks: PyTorch passed, sd.cpp launch failed
-[PyTorch record](../experiments/a100-flux-klein-001.md#runner-refactor-smoke-check-2026-09-29): reduced protocol passed.
-[sd.cpp record](../experiments/a100-sdcpp-flux-klein-001.md#runner-refactor-launch-failure-2026-09-29): CUDA library path
-missing before model load; launch/error-reporting fixes applied, small retry job 11839470 pending.
-
-## [2026-09-28] experiment | Jetson 003 stage-labelled profile exported to W&B
-Single profile, not a baseline: host durations under `diag/profile_*`, no `timing/*` or medians
-([record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile)). Earlier partial/failed profile attempts not exported.
-
-## [2026-09-28] ingest | Jetson stage trace reviewed; W&B handoff prepared
-[Record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile): originals preserved, timeline
-validated, GPU tables and image derived, exporter dry-run passed. No W&B upload performed.
-
-## [2026-09-28] experiment | Corrected Jetson stage profile passed validation
-[Record](../experiments/jetson-flux-klein-003.md#corrected-harness-profile): callback sequence and NVTX
-label presence passed; full trace import/review and repeated unprofiled measurements pending.
-
-## [2026-09-28] experiment | Jetson harness callback validation failure
-[Record](../experiments/jetson-flux-klein-003.md#harness-profile-validation-failure): generation succeeded,
-tensor-loading callbacks contaminated step labels; filtering corrected and regression-tested locally.
-Jetson rerun pending.
-
-## [2026-09-28] ingest | Jetson stage-profile bundle installed and built
-[Procedure](methods/jetson-howto.md#what-was-sent-and-why) documents bundle contents, paths and updates;
-[build evidence](../raw/jetson-stage-profile-build-2026-09-28.md) confirms the harness linked successfully.
-Stage-labelled capture results remain pending.
-
-## [2026-09-28] experiment | Jetson 003 CLI profile report generated
-[Record](../experiments/jetson-flux-klein-003.md#separate-cli-profile-capture-reported-validation-pending):
-image saved; supplied stats confirm CUDA kernels, copies and API calls. Original trace import and
-independent validation pending. No profiled timing used as baseline.
-
-## [2026-09-28] schema | Uniform run names; W&B re-exported with outcome labels
-Run directories renamed to `<experiment-id>__<kind>__<stamp>` ([naming](methods/baseline-metrics.md#run-naming),
-[rename table](../results/README.md#run-directory-names)). All 10 runs re-exported; W&B names show
-`· OK`/`· FAILED` and failed runs use W&B's Failed state.
-
-## [2026-09-28] ingest | Jetson successful run: full CLI logs analyzed
-[Record](../experiments/jetson-flux-klein-003.md): load/stage diagnostics and whole-window sampled RAM extracted;
-command audited, eager CUDA loading followed by releases/reloads documented. Repeated timing/profile pending.
-
-## [2026-09-28] experiment | jetson-flux-klein-003: disk-backed generation completed
-[Record](../experiments/jetson-flux-klein-003.md): one image reported saved, exit 0.
-Partial logs preserved; imported image passed visual smoke check (hash recorded). Full logs and benchmark pending.
-
-## [2026-09-28] experiment | jetson-flux-klein-002: segmented feasibility failed
-[Record](../experiments/jetson-flux-klein-002.md): Qwen3 segment capacity failure with CUDA-resident weights.
-Partial terminal evidence preserved; disk-backed parameter variant prepared, not run.
-
-## [2026-09-28] experiment | jetson-flux-klein-001: quantized feasibility failed
-[Record](../experiments/jetson-flux-klein-001.md): insufficient memory during denoising preparation.
-Preserved terminal excerpts and reconstructed config/status; full Jetson logs pending import.
-
-Format: `## [YYYY-MM-DD] kind | title`, with at most five lines under each entry. Details live in the
-linked record or page. List the last five with `grep "^## \[" wiki/log.md | head -5`.
-
-## [2026-09-28] ingest | Jetson setup and SSH access
-[Setup evidence](../raw/jetson-setup-2026-09-28.md): boot, Mac SSH login, and CUDA compiler verified.
-Added [access/how-to](methods/jetson-howto.md); updated device and current state. GPU execution and benchmark pending.
-
-## [2026-09-28] experiment | Remaining 6 runs exported to W&B
-All 7 run directories are in the W&B project; medians verified against `summary.json`. Registry links
-point to each experiment's W&B group.
-
-## [2026-09-28] decision | First run exported to W&B (viewer pilot)
-[a100-flux-klein-001 baseline](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/a100-flux-klein-001) via `scripts/export_wandb.py`; values match `summary.json`. Run
-directories stay the record ([D-007](project/decisions.md#d-007-results-stay-in-run-directories-viewer-undecided)).
-
-## [2026-09-28] ingest | ExecuTorch (MLSys 2026)
-Paper page [executorch-mlsys2026](papers/executorch-mlsys2026.md); related-evidence links on three findings; one open question.
-
-## [2026-09-28] schema | Wiki created from notes/
-Split `notes/` into `experiments/` (records) and `wiki/` (curated). See [SCHEMA.md](SCHEMA.md). Seeded
-project, RQ, finding, system and concept pages from the A100 work.
-
-## [2026-09-28] ingest | Reuse, precision, search and phone-workload literature
-Reviewed [TeaCache](papers/teacache.md), [DiCache](papers/dicache.md), [SVDQuant](papers/svdquant.md),
-[MetaSchedule](papers/metaschedule.md) and [DreamLite](papers/dreamlite.md), with primary sources linked per page.
-Reading list and Week 1 review status updated; integration and device verification remain pending.
-
-## [2026-09-28] ingest | MLC compiler and runtime precedent
-[MLC-LLM documentation](https://llm.mlc.ai/docs/compilation/compile_models.html) and
-[Web SD source](https://github.com/mlc-ai/web-stable-diffusion#how) reviewed in
-[precedent page](papers/mlc-compiler-precedent.md): existing capabilities, proposed joint-planner distinction and evidence gaps.
-
-## [2026-09-26] decision | Shared initial noise from sd.cpp's Philox RNG (proposed)
-[D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed). Not implemented yet.
-
-## [2026-09-25] experiment | a100-sdcpp-flux-klein-001: stable-diffusion.cpp baseline + profile
-2423.3 ms end-to-end on A100-PCIE, 1.95× the PyTorch reference; record:
-[a100-sdcpp-flux-klein-001](../experiments/a100-sdcpp-flux-klein-001.md),
-comparison: [compare-a100-pytorch-vs-sdcpp-flux-klein](../experiments/compare-a100-pytorch-vs-sdcpp-flux-klein.md).
-
-## [2026-09-25] decision | Pin Slurm jobs to A100-PCIE nodes
-[D-002](project/decisions.md#d-002-pin-gilbreth-jobs-to-a100-pcie-nodes).
-
-## [2026-09-25] experiment | a100-flux-klein-001 repeated after runner refactor
-Same image hash, memory identical, GPU stages within 0.9%; record:
-[a100-flux-klein-001](../experiments/a100-flux-klein-001.md#repeatability).
-
-## [2026-09-24] experiment | a100-flux-klein-001: kernel mix inside one denoise step
-Record: [a100-flux-klein-001](../experiments/a100-flux-klein-001.md#kernel-mix-within-one-denoise-step-profiled-generation-job-11807396).
-
-## [2026-09-23] experiment | a100-flux-klein-001: PyTorch/diffusers reference baseline
-1240.6 ms end-to-end on A100-PCIE; record: [a100-flux-klein-001](../experiments/a100-flux-klein-001.md).
+## [2026-10-01] ingest | Week 1 evidence and status reconciliation review
+[Jetson baseline/profiles](../experiments/jetson-flux-klein-003.md) already registered; [DreamLite source review](papers/dreamlite.md) exists with export/device validation pending. Milestone, hot, RQ1 and DreamLite reading-list corrections prepared; substantive updates await approval.

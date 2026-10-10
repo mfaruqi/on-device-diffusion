@@ -88,6 +88,25 @@ class ProfileAnalysisTests(unittest.TestCase):
             self.assertEqual(stage['gemm_shapes']['M2 N4 K3']['calls'], 1)
             self.assertAlmostEqual(stage['gemm_shapes']['M2 N4 K3']['tflops'], 48 / .00002 / 1e12)
 
+    def test_repeated_torch_windows_sum_spans_without_counting_gaps(self):
+        with tempfile.TemporaryDirectory() as temp:
+            trace = Path(temp) / 'trace.json'
+            events = []
+            for name in ['text_encode', 'denoise_step_0']:
+                offset = 0 if name == 'text_encode' else 1000
+                for start, duration in [(100, 100), (300, 200)]:
+                    events.append(dict(cat='gpu_user_annotation', name=name, ts=offset + start, dur=duration))
+                    # Full coverage of both windows, with an overlapping copy.
+                    events.append(dict(cat='kernel', name='gemm_fixture', ts=offset + start, dur=duration))
+                    events.append(dict(cat='gpu_memcpy', name='copy', ts=offset + start + 10, dur=20))
+                events.append(dict(cat='kernel', name='in_gap', ts=offset + 220, dur=20))
+            trace.write_text(json.dumps({'traceEvents': events}))
+            for stage in analyze(trace, r'text_encode|denoise_step_\d+')['stages'].values():
+                self.assertAlmostEqual(stage['span_ms'], .3)
+                self.assertAlmostEqual(stage['busy_ms'], .3)
+                self.assertAlmostEqual(stage['idle_ms'], 0)
+                self.assertEqual(stage['n_kernels'], 4)
+
     def test_nsys_units_generation_and_input_immutability(self):
         with tempfile.TemporaryDirectory() as temp:
             trace = Path(temp) / 'trace.sqlite'
@@ -114,6 +133,37 @@ class ProfileAnalysisTests(unittest.TestCase):
             with self.assertRaises(sqlite3.OperationalError):
                 load_nsys(path, 'denoise_step_0')
             self.assertFalse(path.exists())
+
+    def test_osrt_process_filter_clipping_and_overlapping_workers(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / 'trace.sqlite'
+            make_nsys(path)
+            process = (1 << 48) | (42 << 24)
+            unrelated = (1 << 48) | (43 << 24)
+            with closing(sqlite3.connect(path)) as con, con:
+                con.execute('ALTER TABLE NVTX_EVENTS ADD COLUMN globalTid INTEGER')
+                con.execute('UPDATE NVTX_EVENTS SET globalTid = ?', (process + 42,))
+                for table in ['CUPTI_ACTIVITY_KIND_KERNEL', 'CUPTI_ACTIVITY_KIND_MEMCPY', 'CUPTI_ACTIVITY_KIND_MEMSET']:
+                    con.execute(f'ALTER TABLE {table} ADD COLUMN globalPid INTEGER')
+                    con.execute(f'UPDATE {table} SET globalPid = ?', (process,))
+                con.execute('CREATE TABLE OSRT_API(start INTEGER, end INTEGER, globalTid INTEGER, nameId INTEGER)')
+                con.execute("INSERT INTO StringIds VALUES (2, 'read'), (3, 'pread64'), (4, 'poll')")
+                con.executemany('INSERT INTO OSRT_API VALUES (?, ?, ?, ?)', [
+                    (1000, 5500, process + 44, 2), (8000, 15000, process + 45, 3),
+                    (9000, 11000, process + 46, 2), (0, 90000, unrelated + 43, 2),
+                    (0, 90000, process + 44, 4)])
+                con.execute('INSERT INTO CUPTI_ACTIVITY_KIND_KERNEL VALUES (2000, 12000, 1, 1, ?)', (unrelated,))
+                con.execute("INSERT INTO NVTX_EVENTS VALUES (2000, 12000, 'text_encode', NULL, ?)", (unrelated + 43,))
+            before = path.read_bytes()
+            result = analyze(path, 'text_encode')
+            stage = result['stages']['text_encode']
+            c = stage['osrt_coverage']
+            self.assertAlmostEqual(c['gpu_covered_ms'], .004)
+            self.assertAlmostEqual(c['read_only_covered_ms'], .005)
+            self.assertAlmostEqual(c['neither_covered_ms'], .001)
+            self.assertAlmostEqual(sum(c[k] for k in ['gpu_covered_ms', 'read_only_covered_ms', 'neither_covered_ms']), stage['span_ms'])
+            self.assertIn('not measured storage wait', render_md(result))
+            self.assertEqual(before, path.read_bytes())
 
     def test_union_handles_nested_and_adjacent_intervals(self):
         self.assertEqual(union_ms([]), 0)

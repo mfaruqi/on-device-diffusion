@@ -1,0 +1,138 @@
+{
+  "id": "jetson-flux-klein-003",
+  "record_kind": "integration smoke check",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 25896.51299999997,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2084.8490000000197,
+    "denoise_ms": 19766.175000000032,
+    "denoise_step_0_ms": 11577.82000000003,
+    "denoise_step_1_ms": 2730.07199999995,
+    "denoise_step_2_ms": 2729.276000000027,
+    "denoise_step_3_ms": 2729.007000000024,
+    "vae_decode_ms": 3535.4090000000156,
+    "postprocess_ms": null,
+    "other_ms": 510.0799999999035,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 59929.12999999999,
+      "min": 59929.12999999999,
+      "max": 59929.12999999999,
+      "mean": 59929.12999999999,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 23245.92800000005,
+      "min": 23245.92800000005,
+      "max": 23245.92800000005,
+      "mean": 23245.92800000005,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 31837.808999999994,
+      "min": 31837.808999999994,
+      "max": 31837.808999999994,
+      "mean": 31837.808999999994,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 23737.455000000067,
+      "min": 23737.455000000067,
+      "max": 23737.455000000067,
+      "mean": 23737.455000000067,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 2700.2479999999878,
+      "min": 2700.2479999999878,
+      "max": 2700.2479999999878,
+      "mean": 2700.2479999999878,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 2699.7339999999213,
+      "min": 2699.7339999999213,
+      "max": 2699.7339999999213,
+      "mean": 2699.7339999999213,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 2700.3720000000158,
+      "min": 2700.3720000000158,
+      "max": 2700.3720000000158,
+      "mean": 2700.3720000000158,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 4568.0900000000975,
+      "min": 4568.0900000000975,
+      "max": 4568.0900000000975,
+      "mean": 4568.0900000000975,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 277.3029999998471,
+      "min": 277.3029999998471,
+      "max": 277.3029999998471,
+      "mean": 277.3029999998471,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 61.926783,
+    "model_version": "Flux.2 klein",
+    "note": "new_sd_ctx with disk-backed parameters; not all weights resident on GPU. Hash checks warmed file cache."
+  },
+  "monitor_window": {
+    "samples": 148,
+    "ram_peak_gib": 6.2265625,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.0,
+    "swap_max_gib": 0.1142578125,
+    "gpu_temperature_max_c": 51.062,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "engine_audit": {
+    "settings_confirmed": true,
+    "automatic_fitting": false,
+    "conditioning_reuse": false,
+    "parameter_storage": "disk",
+    "segmented_compute_allowed": true
+  },
+  "stage_callbacks_validated": true,
+  "timing_method": "host steady_clock at sd.cpp callbacks; includes on-demand loading",
+  "unavailable_metrics": {
+    "gpu_span_ms": "No CUDA event span; use host wall_ms",
+    "postprocess_ms": "Included in sd.cpp decode/output boundary; no separate stage",
+    "peak_alloc_gib/peak_reserved_gib": "No PyTorch allocator",
+    "device_used_peak_gib": "No NVML; system RAM capture is separate and not stage-aligned",
+    "host_rss_gib": "Per-generation process RSS not sampled"
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "failed_compiler_gate_verified",
+  "input_layout_copies_preserve_values": true,
+  "failure": "Torch-TensorRT BF16 scalar aten.mul.Tensor conversion rejects NumPy dtype",
+  "compiled_forward_produced": false,
+  "formal_quality_eligible": false
+}

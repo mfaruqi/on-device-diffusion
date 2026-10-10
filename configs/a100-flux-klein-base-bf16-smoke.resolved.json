@@ -1,0 +1,45 @@
+{
+  "id": "a100-flux-klein-base-001",
+  "description": "Correctness attempt for a100-flux-klein-base-001; unchanged 50-step workload, first generation plus one measured observation, not the repeated baseline.",
+  "device_label": "gilbreth-a100-40gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ],
+    "requested_revision": "main",
+    "resolved_at_utc": "2026-10-05T03:51:13Z"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false
+  }
+}

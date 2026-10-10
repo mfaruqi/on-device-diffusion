@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "generations": 5,
+  "captured_generation": 4,
+  "trace_generations": 1,
+  "steps_each": 50,
+  "transformer_executions_each": 100,
+  "rgb_equal_reference": true,
+  "reference": "jetson-flux-klein-base-001__baseline__20261005-005357",
+  "sqlite_integrity": "ok",
+  "scope": "One captured generation; no baseline timing claim. Stage/callback/settings/phase/hash/summary checks passed.",
+  "analysis": "profile/osrt-analysis/stage_kernels.json"
+}

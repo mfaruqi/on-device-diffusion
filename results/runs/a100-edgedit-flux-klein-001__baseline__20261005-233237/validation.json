@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "generation_count": 14,
+  "phases": [
+    "first",
+    "warmup",
+    "warmup",
+    "warmup",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured",
+    "measured"
+  ],
+  "final_rgb_sha256": "c476fc325f80bc3386922415ed1e8c410a6f44ebca2a1d7cb02ca5899accad55",
+  "matches_interface_gate_final_image": true,
+  "determinism_available": false,
+  "memory_samples": 2729,
+  "stage_clock": "system_clock, host phase intervals",
+  "wall_clock": "steady_clock duration printed to1ms",
+  "scope": "Independent raw-log/CSV/summary/image/memory/event checks; no per-step timing, earlier image hashes or aligned per-generation memory. Formal quality eligibility false."
+}

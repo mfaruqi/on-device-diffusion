@@ -1,0 +1,80 @@
+{
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 2066.0,
+    "gpu_span_ms": null,
+    "text_encode_ms": null,
+    "denoise_ms": 1329.8439979553223,
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "vae_decode_ms": 366.78504943847656,
+    "postprocess_ms": null,
+    "other_ms": null,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 1641.0,
+      "min": 1637.0,
+      "max": 1644.0,
+      "mean": 1640.8,
+      "stdev": 2.573367875415838,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": null,
+    "denoise_ms": {
+      "median": 1096.152424812317,
+      "min": 1092.038869857788,
+      "max": 1099.545955657959,
+      "mean": 1096.0593461990356,
+      "stdev": 2.1024209774593268,
+      "n": 10
+    },
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "vae_decode_ms": {
+      "median": 269.8683738708496,
+      "min": 268.75996589660645,
+      "max": 272.7959156036377,
+      "mean": 270.06382942199707,
+      "stdev": 1.1944722896521274,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": null,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": null,
+  "id": "a100-edgedit-flux-klein-001",
+  "device_label": "a100-pcie-40gb",
+  "engine": "edge-dit.cpp",
+  "load": {
+    "load_total_s": 28.357095,
+    "note": "Upstream steady_clock around one context creation; filesystem cache may be warm."
+  },
+  "capture_device_used_peak_gib": 21.60687255859375,
+  "host_peak_rss_gib": 2.7402191162109375,
+  "timing_method": "ed-sample steady_clock per-pass stdout, rounded to 1ms; host system_clock phase intervals",
+  "precision_note": "BF16 weights; FP32 transformer activations",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "text_encode_ms": "Encode phase includes conditioning and latent/schedule setup; retained as encode_setup in stages.csv.",
+    "denoise_step_i_ms": "Engine prints completed steps without individual timestamps.",
+    "gpu_span_ms/gpu_ms": "No GPU event timing.",
+    "postprocess_ms/other_ms": "Final tensor-to-image conversion not separately timed; no comparable text boundary.",
+    "device_used_peak_gib": "Only whole-child NVML peak; sampler and phase clocks not aligned.",
+    "peak_alloc_gib/peak_reserved_gib/host_rss_gib": "No per-generation allocator or RSS observations.",
+    "deterministic_output": "Only final repeat image retained; preceding image hashes unavailable."
+  }
+}

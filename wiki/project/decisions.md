@@ -2,7 +2,7 @@
 type: project
 summary: Decision records — what was decided, why, the evidence, and when to revisit it. Superseded decisions move to Archive.
 status: active
-updated: 2026-10-02
+updated: 2026-10-06
 ---
 
 # Decisions
@@ -89,6 +89,39 @@ superseded record moves to Archive with a link to the one that replaced it.
 - **Scope**: Weeks 1-2 baselines and Weeks 3-4 analysis/instrumentation; primarily RQ1, with measurements
   feeding RQ2/RQ3. The [proposal's targets and RQs](overview.md) remain unchanged.
 - **Revisit if**: planning the next experiment batch requires rescheduling the deferred proposal work.
+
+### D-010: Deliver a TVM-compiled klein pipeline with the planner on top
+- **Date**: 2026-10-06
+- **Decision**: The thesis delivers two layers.
+  - **(a) Engineering artifact:** an MLC-style, TVM-compiled FLUX.2 [klein] pipeline running on CUDA (A100, Jetson), Metal (Apple laptop) and WebGPU (browser).
+  - **(b) Research contribution:** the joint reuse/precision/residency planner, built on top of that pipeline.
+  - **Baselines:** stable-diffusion.cpp, edge-dit.cpp and PyTorch/diffusers remain baselines.
+  - **Target and workload changes:** the Apple laptop target becomes a MacBook Air 15" M5 (24 GB) instead of the M1 MacBook Pro. Wan 2.1 baselines are deferred until the compiled klein pipeline runs.
+  - **Schedule:** the revised plan is in [milestones](milestones.md). Weeks may roll over past Dec 11.
+- **Why**:
+  - The advisor's overview asks for "a universal on-device suite" across NVIDIA, Intel, AMD and Apple hardware and macOS, Linux, Windows, Android and web, citing MLC-LLM ([overview](../../raw/meetings/2026-10-06-advisor-scope.md#project-overview-as-provided-by-prof-haoran-you)). The proposal's planner alone does not produce such an engine ([proposal overview](overview.md#hypothesis)).
+  - **Prior-art motivation remains provisional.** The 2026-10-06 README checks considered [MLC-LLM](https://github.com/mlc-ai/mlc-llm), [Web Stable Diffusion](https://github.com/mlc-ai/web-stable-diffusion) and [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp). Those checks alone do not establish that no maintained compiler-based engine covers modern diffusion transformers, or establish research novelty. The decision to build the pipeline is supported by the advisor's confirmation below; a broader prior-art audit remains necessary.
+- **Evidence**: the advisor confirmed (a) and (b) ([answer](../../raw/meetings/2026-10-06-advisor-scope.md#scope-question-and-answer)).
+- **Scope**:
+  - The hypothesis and RQ1–RQ3 are unchanged. WebGPU is added as a target.
+  - Roll-over candidates: Android/Vulkan, AMD/Intel, iPhone (Core ML/Core AI), DreamLite, and a compiled Wan pipeline.
+  - MLC-LLM's existing Qwen3 support is a candidate text-encoder path, but its match to klein's encoder use is untested.
+- **Revisit if**: the Week 3 import gate for klein's transformer in TVM fails, or the advisor names a different priority target.
+
+### D-011: Build the compiled pipeline MLC-style on TVM, with an engine-level planner fallback (proposed)
+- **Date**: 2026-10-06
+- **Decision (proposed, not yet approved)**:
+  - **Model import, two stages.** First, `torch.export` → TVM Relax import, to pass the Week 3 numerics gate. Then rewrite klein's transformer and VAE in TVM's `nn` model API, as MLC-LLM defines its models, so quantization points and cache cut points are under the project's control.
+  - **Reuse from MLC-LLM:** its Qwen3 definition (pending a match check), group quantization and fused dequantize passes, static memory planning, and its WebGPU runtime. On CUDA, dispatch GEMMs and attention to library kernels where they win; tune elsewhere.
+  - **Engine-level planner first.** In parallel, build the planner's registry, history and search over existing engine options (stable-diffusion.cpp flags, edge-dit.cpp auto-fit, `torch.compile`), so the research does not wait on TVM.
+- **Why**:
+  - TVM is the only option assessed that reaches CUDA, Metal and WebGPU from one model definition *and* exposes a graph the planner can analyze ([levels](../concepts/kernel-graph-plan-search.md), [D-010](#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)).
+  - The alternatives each lose the browser target or the graph: a planner over ggml/stable-diffusion.cpp has no web build and no IR; PyTorch with ExecuTorch has no web target; ONNX Runtime exposes a graph but not custom loop control.
+- **Gates**:
+  - **Week 3:** the klein transformer imports into TVM and matches diffusers numerically.
+  - **Week 6:** klein runs in a browser via WebGPU; browser memory limits likely require stage-by-stage loading ([milestones](milestones.md#revised-schedule)).
+  - **On failure:** fall back to the engine-level planner (or ONNX Runtime for the web target), recorded as a new decision.
+- **Revisit if**: either gate fails, or the user/advisor prefers another stack.
 
 ## Archive
 

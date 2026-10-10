@@ -5,6 +5,9 @@ import torch: a second context would contaminate device-wide memory measurements
 """
 
 import copy
+import hashlib
+import math
+import shutil
 import os
 import re
 from pathlib import Path
@@ -70,13 +73,16 @@ def check_config(cfg):
     assert HEX40.fullmatch(e["commit"]) and HEX40.fullmatch(e["ggml_commit"]), "engine commits must be hashes"
     assert HEX40.fullmatch(m["revision"]), "model.revision must be a commit hash"
     assert "resolved_at_utc" in m, "use the *.resolved.json config (run --prepare-only first)"
-    check_optimizations(cfg, {"quantization", "cpu_offload", "vae_tiling", "step_cache", "auto_fit"})
+    check_optimizations(cfg, {"quantization", "cpu_offload", "vae_tiling", "step_cache", "auto_fit",
+                              "conditioning_cache_size", "prefetch", "mmap"},
+                        {"step_cache", "conditioning_cache_size", "prefetch", "mmap"})
+    cache_arguments(cfg["optimizations"].get("step_cache"))
+    check_execution_options(cfg)
     assert cfg["precision"] == "bfloat16"
     assert cfg["workload"]["batch_size"] == 1
     # Reference placement: everything on one GPU, nothing automatic.
     assert s["backend"] == s["params_backend"] and s["backend"].startswith("cuda"), s
     assert s["auto_fit"] is False and s["eager_load"] is True and s["disable_segmented_compute"] is True, s
-    assert s["conditioning_cache_size"] == 0, "conditioning cache would skip text encoding in warm runs"
     assert os.environ.get("GGML_CUDA_CUBLAS_COMPUTE_TYPE") is None, "GGML_CUDA_CUBLAS_COMPUTE_TYPE overrides GEMM precision"
 
     src = expand(e["source_dir"])
@@ -87,6 +93,22 @@ def check_config(cfg):
     return {"sdcpp_head": head, "ggml_head": ggml, "sdcpp_status": sh(["git", "-C", str(src), "status", "--porcelain"])}
 
 
+def check_execution_options(cfg):
+    options, settings = cfg['optimizations'], cfg['engine_settings']
+    entries = options.get('conditioning_cache_size', 0)
+    needed = 2 if cfg['workload']['guidance_scale'] > 1 else 1
+    assert type(entries) is int and entries in (0, needed), 'Invalid conditioning cache capacity'
+    assert settings['conditioning_cache_size'] == entries, 'Conditioning cache differs from labelled policy'
+    for key, field, invert, default in [('prefetch', 'disable_prefetch', True, True),
+                                        ('mmap', 'mmap', False, False)]:
+        value = options.get(key, default)
+        assert type(value) is bool and settings[field] == (not value if invert else value), f'{key} differs from labelled policy'
+
+
+def conditioning_hits(cfg, count):
+    return [0] + [cfg['optimizations'].get('conditioning_cache_size', 0)] * (count - 1)
+
+
 def check_files(cfg, snap):
     """Confirm the snapshot files are the pinned ones (HF cache blobs are named by sha256)."""
     for rel, sha in cfg["model"]["sha256"].items():
@@ -94,13 +116,45 @@ def check_files(cfg, snap):
         assert blob == sha, f"{rel}: cached blob {blob} does not match pinned sha256 {sha}"
 
 
-def audit_log(log_text, settings, t_last_generation_end):
+def cache_arguments(cache):
+    """Expose one verified DiT policy; refuse unsupported modes and hidden defaults."""
+    if cache is None:
+        return {}
+    assert isinstance(cache, dict) and set(cache) == {"mode", "reuse_threshold", "start_percent", "end_percent"}, "Explicit EasyCache parameters required"
+    assert cache["mode"] == "easycache", "Only EasyCache is currently supported by this adapter"
+    for key in ("reuse_threshold", "start_percent", "end_percent"):
+        assert type(cache[key]) in (int, float) and math.isfinite(cache[key]), f"Invalid {key}"
+    assert cache["reuse_threshold"] >= 0
+    assert 0 <= cache["start_percent"] < cache["end_percent"] <= 1
+    return {"cache-mode": "easycache", "cache-threshold": cache["reuse_threshold"],
+            "cache-start": cache["start_percent"], "cache-end": cache["end_percent"]}
+
+
+def audit_cache(log, cache, generations):
+    enabled = re.findall(r"EasyCache enabled - threshold: ([\d.]+), start: ([\d.]+), end: ([\d.]+)", log)
+    outcomes = re.findall(r"EasyCache (?:skipped (\d+)/(\d+) steps|completed without skipping steps)", log)
+    if cache is None:
+        assert not enabled, "Unexpected EasyCache in no-reuse reference"
+        return {"requested": None, "enabled_generations": 0}
+    cache_arguments(cache)
+    assert len(enabled) == generations and len(outcomes) == generations, "EasyCache initialization/outcome missing; inspect unsupported/disabled warnings"
+    expected = (f"{cache['reuse_threshold']:.3f}", f"{cache['start_percent']:.2f}", f"{cache['end_percent']:.2f}")
+    assert all(values == expected for values in enabled), "Engine-reported cache parameters differ"
+    return {"requested": cache, "enabled_generations": len(enabled),
+            "steps_skipped": [int(skipped) if skipped else 0 for skipped, total in outcomes],
+            "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."}
+
+
+def audit_log(log_text, settings, t_last_generation_end, *, expected_conditioning_hits=0):
     """Extract what sd.cpp actually did, and fail on anything the reference config forbids.
 
     Log lines from the harness start with a steady_clock timestamp (s).
     """
     lines = log_text.splitlines()
     found = {k: [ln for ln in lines if re.search(p, ln)] for k, p in FORBIDDEN_LOG_PATTERNS.items()}
+    actual_hits = len(found['conditioning_cache_hit'])
+    if actual_hits == expected_conditioning_hits:
+        found['conditioning_cache_hit'] = []
 
     def ts(ln):
         m = re.match(r"(\d+\.\d+) ", ln)
@@ -121,6 +175,9 @@ def audit_log(log_text, settings, t_last_generation_end):
         "forbidden": {k: v[:5] for k, v in found.items() if v},
     }
     problems = list(audit["forbidden"])
+    if actual_hits != expected_conditioning_hits:
+        problems.append(f'conditioning hits: expected {expected_conditioning_hits}, saw {actual_hits}')
+    audit['conditioning_cache_hits'] = actual_hits
     if segments and max(segments) > 1:
         problems.append(f"graph ran in {max(segments)} segments")
     backend = settings["params_backend"].upper()
@@ -159,11 +216,15 @@ def harness_args(cfg, snap, out_dir, runs):
         "disable-segmented-compute": b(s["disable_segmented_compute"]),
         "disable-prefetch": b(s["disable_prefetch"]),
         "conditioning-cache-size": s["conditioning_cache_size"],
+        **cache_arguments(cfg["optimizations"].get("step_cache")),
     }
     return [x for k, v in args.items() for x in (f"--{k}", str(v))]
 
 
-def rows_from_results(results, phases, steps, sampler):
+def rows_from_results(results, phases, steps, sampler, *, expected_conditioning_hits=None):
+    expected_conditioning_hits = ([0] * len(results) if expected_conditioning_hits is None
+                                  else expected_conditioning_hits)
+    assert len(expected_conditioning_hits) == len(results), "conditioning-hit expectations must cover every generation"
     rows, stage_rows = [], []
     for g in results:
         i = g["run_index"]
@@ -175,7 +236,7 @@ def rows_from_results(results, phases, steps, sampler):
             prev = t
         assert g["ok"], f"generation {i} failed; see engine/sdcpp.log"
         assert len(step_ms) == steps, f"run {i}: expected {steps} denoise steps, saw {len(step_ms)}"
-        assert g["cond_cache_hits"] == 0, f"run {i}: conditioning cache hit"
+        assert g["cond_cache_hits"] == expected_conditioning_hits[i], f"run {i}: unexpected conditioning cache hits"
         wall = ms(g["t_start"], g["t_end"])
         stages = {
             "text_encode": ms(g["t_start"], g["t_cond"]),
@@ -213,3 +274,19 @@ def rows_from_results(results, phases, steps, sampler):
                 "device_used_peak_gib": sampler.peak_between(starts[name], starts[name] + v / 1000.0),
             })
     return rows, stage_rows
+
+
+def save_images(run_dir, eng_dir, gens, phases):
+    # Hash every image; keep PNGs of the first and first measured run, then drop the raw bytes.
+    from PIL import Image
+
+    (run_dir / "images").mkdir()
+    first_measured = phases.index("measured")
+    for g in gens:
+        raw = eng_dir / "raw" / f"run-{g['run_index']}.rgb"
+        data = raw.read_bytes()
+        g["image_sha256"] = hashlib.sha256(data).hexdigest()
+        name = {0: "first.png", first_measured: "measured-0.png"}.get(g["run_index"])
+        if name:
+            Image.frombytes("RGB", (g["width"], g["height"]), data).save(run_dir / "images" / name)
+    shutil.rmtree(eng_dir / "raw")

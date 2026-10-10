@@ -1,0 +1,43 @@
+{
+  "is_distilled": false,
+  "from_pretrained_s": 7.3592520240054,
+  "to_cuda_s": 17.50922082499892,
+  "load_total_s": 24.86847284900432,
+  "note": "Cached load + placement; the OS page cache may already hold the files. Not a cold read.",
+  "allocated_after_load_gib": 14.92723560333252,
+  "reserved_after_load_gib": 14.931640625,
+  "peak_alloc_during_load_gib": 14.92723560333252,
+  "device_used_after_load_gib": 15.85296630859375,
+  "host_rss_after_load_gib": 0.7765655517578125,
+  "components": {
+    "vae": {
+      "class": "AutoencoderKLFlux2",
+      "num_params": 84046115,
+      "weights_gib": 0.15654857270419598,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.int64"
+      ],
+      "device": "cuda:0"
+    },
+    "text_encoder": {
+      "class": "Qwen3ForCausalLM",
+      "num_params": 4022468096,
+      "weights_gib": 7.492431163787842,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.float32"
+      ],
+      "device": "cuda:0"
+    },
+    "transformer": {
+      "class": "Flux2Transformer2DModel",
+      "num_params": 3875544576,
+      "weights_gib": 7.218764305114746,
+      "dtypes": [
+        "torch.bfloat16"
+      ],
+      "device": "cuda:0"
+    }
+  }
+}

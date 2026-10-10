@@ -1,0 +1,187 @@
+void ModelLoader::process_model_files(bool enable_mmap, bool writable_mmap) {
+    if (model_files_processed) {
+        return;
+    }
+
+    std::vector<TensorStorage> processed_tensor_storages;
+    for (const auto& [name, tensor_storage] : tensor_storage_map) {
+        processed_tensor_storages.push_back(tensor_storage);
+    }
+
+    for (size_t file_index = 0; file_index < file_paths_.size(); file_index++) {
+        std::string file_path = file_paths_[file_index];
+
+        std::vector<TensorStorage> file_tensors;
+        for (const auto& ts : processed_tensor_storages) {
+            if (ts.file_index == file_index) {
+                file_tensors.push_back(ts);
+            }
+        }
+        if (file_tensors.empty()) {
+            continue;
+        }
+
+        bool is_zip = false;
+        for (auto const& ts : file_tensors) {
+            if (ts.index_in_zip >= 0) {
+                is_zip = true;
+                break;
+            }
+        }
+
+        ModelFileData fdata = {};
+        fdata.path          = file_path;
+        fdata.is_zip        = is_zip;
+        fdata.tensors       = std::move(file_tensors);
+
+        if (enable_mmap && !is_zip) {
+            LOG_VERBOSE("using mmap for I/O");
+            std::unique_ptr<MmapWrapper> mmapped = MmapWrapper::create(file_path, writable_mmap);
+            if (mmapped) {
+                uint8_t* mmap_data             = static_cast<uint8_t*>(mmapped->writable_data());
+                ggml_backend_buffer_t buf_mmap = ggml_backend_cpu_buffer_from_ptr(mmap_data, mmapped->size());
+                if (buf_mmap) {
+                    LOG_INFO("using mmap for '%s'", file_path.c_str());
+                    fdata.mmbuffer = std::shared_ptr<struct ggml_backend_buffer>(buf_mmap, ggml_backend_buffer_free);
+                } else {
+                    LOG_WARN("mmap: failed to create backend buffer for file %s", fdata.path.c_str());
+                }
+                fdata.mmapped = std::shared_ptr<MmapWrapper>(std::move(mmapped));
+            } else {
+                LOG_WARN("failed to memory-map '%s' (falling back to read())", file_path.c_str());
+            }
+        }
+
+        file_data.push_back(std::move(fdata));
+    }
+
+    model_files_processed = true;
+}
+
+std::vector<MmapTensorStore> ModelLoader::mmap_tensors(std::map<std::string, ggml_tensor*>& tensors,
+
+bool ModelManager::mmap_params(const std::vector<TensorState*>& states,
+                               std::vector<ParamsStorageBlock*>& created_storage_blocks) {
+    // A GPU that computes on mmapped params in place cannot address a CPU buffer, and nothing
+    // stages them for it, so they are mapped through a buffer of that GPU's device.
+    struct MmapGroup {
+        std::map<std::string, ggml_tensor*> candidates;
+        std::map<std::string, TensorState*> states;
+    };
+    std::map<ggml_backend_dev_t, MmapGroup> groups;
+    for (TensorState* state : states) {
+        if (state == nullptr || !can_mmap_storage(*state) || state->tensor == nullptr ||
+            state->tensor->data != nullptr || state->tensor->view_src != nullptr) {
+            continue;
+        }
+        ggml_backend_dev_t device = nullptr;
+        if (!sd_backend_is_cpu(state->compute_backend) && !sd_backend_is_cpu(state->params_backend)) {
+            device = ggml_backend_get_device(state->compute_backend);
+        }
+        MmapGroup& group              = groups[device];
+        group.candidates[state->name] = state->tensor;
+        group.states[state->name]     = state;
+    }
+
+    for (auto& [device, group] : groups) {
+        // Device buffers wrap read-only mappings only; params that LoRAs are merged into in place
+        // are loaded instead.
+        if (device != nullptr && writable_mmap_) {
+            continue;
+        }
+        auto mmap_store = model_loader_.mmap_tensors(group.candidates, {}, writable_mmap_, device);
+        if (mmap_store.empty()) {
+            continue;
+        }
+
+        auto block                = std::make_unique<ParamsStorageBlock>();
+        block->mmap_tensor_stores = std::move(mmap_store);
+        ParamsStorageBlock* raw   = block.get();
+        for (const auto& pair : group.states) {
+            TensorState* state = pair.second;
+            if (state != nullptr && state->tensor != nullptr && state->tensor->data != nullptr) {
+                block->states.push_back(state);
+            }
+        }
+
+        if (!block->states.empty()) {
+            params_storage_blocks_.push_back(std::move(block));
+            created_storage_blocks.push_back(raw);
+        }
+    }
+    return true;
+}
+
+bool ModelManager::can_mmap_storage(const TensorState& state) const {
+    if (state.source_file != 0 || !enable_mmap_ || state.residency_mode != ResidencyMode::ParamBackend) {
+        return false;
+    }
+    if (state.compute_backend == nullptr || state.params_backend == nullptr) {
+        return false;
+    }
+    return sd_backend_is_cpu(state.compute_backend) ||
+           sd_backend_is_cpu(state.params_backend) ||
+           backend_supports_host_buffer(state.compute_backend);
+}
+
+bool ModelManager::alloc_params_buffers(const std::vector<TensorState*>& states,
+                                        std::vector<ParamsStorageBlock*>& created_storage_blocks) {
+    std::map<std::pair<ggml_backend_buffer_type_t, int>, std::vector<TensorState*>> states_by_buffer_type;
+    for (TensorState* state : states) {
+        if (state == nullptr || state->tensor == nullptr) {
+            continue;
+        }
+        ggml_backend_buffer_type_t params_buft = params_buffer_type_for(*state);
+        if (params_buft == nullptr) {
+            return false;
+        }
+        states_by_buffer_type[{params_buft, static_cast<int>(state->residency_mode)}].push_back(state);
+    }
+
+    for (const auto& pair : states_by_buffer_type) {
+        ggml_backend_buffer_type_t params_buft  = pair.first.first;
+src/model_loader.cpp:825:void ModelLoader::process_model_files(bool enable_mmap, bool writable_mmap) {
+src/model_loader.cpp:861:        if (enable_mmap && !is_zip) {
+src/model_loader.cpp:862:            LOG_VERBOSE("using mmap for I/O");
+src/model_loader.cpp:863:            std::unique_ptr<MmapWrapper> mmapped = MmapWrapper::create(file_path, writable_mmap);
+src/model_loader.cpp:864:            if (mmapped) {
+src/model_loader.cpp:865:                uint8_t* mmap_data             = static_cast<uint8_t*>(mmapped->writable_data());
+src/model_loader.cpp:866:                ggml_backend_buffer_t buf_mmap = ggml_backend_cpu_buffer_from_ptr(mmap_data, mmapped->size());
+src/model_loader.cpp:867:                if (buf_mmap) {
+src/model_loader.cpp:868:                    LOG_INFO("using mmap for '%s'", file_path.c_str());
+src/model_loader.cpp:869:                    fdata.mmbuffer = std::shared_ptr<struct ggml_backend_buffer>(buf_mmap, ggml_backend_buffer_free);
+src/model_loader.cpp:871:                    LOG_WARN("mmap: failed to create backend buffer for file %s", fdata.path.c_str());
+src/model_loader.cpp:873:                fdata.mmapped = std::shared_ptr<MmapWrapper>(std::move(mmapped));
+src/model_loader.cpp:885:std::vector<MmapTensorStore> ModelLoader::mmap_tensors(std::map<std::string, ggml_tensor*>& tensors,
+src/model_loader.cpp:887:                                                       bool writable_mmap,
+src/model_loader.cpp:896:    process_model_files(true, writable_mmap);
+src/model_loader.cpp:899:    uint64_t mapped_bytes = 0;
+src/model_loader.cpp:900:    size_t mapped_tensors = 0;
+src/model_loader.cpp:928:                                                                            fdata.mmapped->writable_data(),
+src/model_loader.cpp:929:                                                                            fdata.mmapped->size(),
+src/model_loader.cpp:932:                LOG_WARN("mmap: %s cannot map '%s', loading it instead",
+src/model_loader.cpp:937:            LOG_INFO("mmap: mapped '%s' for %s", fdata.path.c_str(), ggml_backend_dev_name(device));
+src/model_loader.cpp:945:        size_t file_mapped_bytes   = 0;
+src/model_loader.cpp:946:        size_t file_mapped_tensors = 0;
+src/model_loader.cpp:991:            ggml_backend_buffer_t buf_mmap = buffer_for_file();
+src/model_loader.cpp:992:            if (buf_mmap == nullptr) {
+src/model_loader.cpp:995:            uint8_t* mmap_data = static_cast<uint8_t*>(ggml_backend_buffer_get_base(buf_mmap));
+src/model_loader.cpp:996:            dst_tensor->buffer = buf_mmap;
+src/model_loader.cpp:997:            dst_tensor->data   = mmap_data + tensor_offset;
+src/model_loader.cpp:999:            file_mapped_bytes += tensor_size;
+src/model_loader.cpp:1000:            file_mapped_tensors++;
+src/model_loader.cpp:1003:        if (file_mapped_bytes > 0) {
+src/model_loader.cpp:1004:            mapped_tensors += file_mapped_tensors;
+src/model_loader.cpp:1005:            mapped_bytes += file_mapped_bytes;
+src/model_loader.cpp:1006:            result.push_back({fdata.mmapped, file_buffer});
+src/model_loader.cpp:1013:    LOG_INFO("memory-mapped %zu tensors in %zu files (%.2f MB), taking %.2fs",
+src/model_loader.cpp:1014:             mapped_tensors,
+src/model_loader.cpp:1016:             mapped_bytes / (1024.0 * 1024.0),
+src/model_loader.cpp:1022:std::vector<ggml_backend_buffer_t> ModelLoader::get_device_mmap_buffers() const {
+src/model_loader.cpp:1033:                               bool enable_mmap,
+src/model_loader.cpp:1039:    process_model_files(enable_mmap, false);
+src/model_loader.cpp:1104:        std::shared_ptr<MmapWrapper> mmapped = fdata.mmapped;
+src/model_loader.cpp:1128:                } else if (!mmapped) {
+src/model_loader.cpp:1171:                    // skip mmapped tensors
+src/model_loader.cpp:1223:                        } else if (mmapped) {
+src/model_loader.cpp:1224:                            if (!mmapped->copy_data(buf, n, tensor_storage.offset)) {

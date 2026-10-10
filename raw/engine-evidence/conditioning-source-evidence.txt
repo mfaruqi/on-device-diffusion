@@ -1,0 +1,209 @@
+19bbbca1c736bbb9538679fc0ae690cb2b46b492
+        condition_params.clip_skip = request->clip_skip;
+        condition_params.width     = request->width;
+        condition_params.height    = request->height;
+        if (ref_image_params.pass_to_vlm) {
+            condition_params.ref_images = &latents->ref_images;
+        }
+
+        condition_params.ref_image_params = ref_image_params;
+
+        sd->prepare_generation_extensions(request->pm_params,
+                                          request->pulid_params,
+                                          condition_params,
+                                          plan->total_steps);
+        sd->compute_ip_adapter_tokens(sd_img_gen_params->ip_adapter_image, sd_img_gen_params->ip_adapter_strength);
+        int64_t prepare_start_ms         = ggml_time_ms();
+        condition_params.zero_out_masked = false;
+        auto cond                        = sd->get_learned_condition(condition_params);
+        if (cond.empty()) {
+            LOG_ERROR("failed to encode prompt");
+            return std::nullopt;
+        }
+        if (cond.c_concat.empty() && ref_image_params.pass_to_dit) {
+            cond.c_concat = latents->concat_latent;  // TODO: optimize
+        }
+
+        bool use_ref_latent_img_cfg = request->use_img_uncond &&
+                                      !latents->ref_images.empty() &&
+                                      sd_version_supports_ref_latent_img_cfg(sd->version);
+
+        SDCondition uncond;
+        if (request->use_uncond || request->use_high_noise_uncond) {
+            if (sd_version_is_ideogram4(sd->version)) {
+                uncond.c_vector = sd::Tensor<float>::from_vector({1.0f});
+            } else if (sd_version_is_minit2i(sd->version)) {
+                // MiniT2I derives the unconditional signal from the same T5 hidden
+                // states with a zeroed prompt mask, so no extra text encode is needed.
+                uncond.c_crossattn = cond.c_crossattn;
+                uncond.c_vector    = sd::Tensor<float>::zeros_like(cond.c_vector);
+            } else if (sd_version_is_sensenova_u1(sd->version)) {
+                auto* sensenova_conditioner = static_cast<SenseNovaU1Conditioner*>(sd->cond_stage_model.get());
+                uncond                      = sensenova_conditioner->get_unconditional_condition(request->negative_prompt);
+            } else {
+                bool zero_out_masked = false;
+                if (sd_version_is_sdxl(sd->version) &&
+                    request->negative_prompt.empty() &&
+                    !sd->is_using_edm_v_parameterization) {
+                    zero_out_masked = true;
+                }
+                condition_params.text            = request->negative_prompt;
+                condition_params.zero_out_masked = zero_out_masked;
+                if (sd_version_is_llada_image(sd->version)) {
+                    // LLaDA-Image CFG keeps the source latent but drops its SigVQ features.
+                    condition_params.ref_images = nullptr;
+                }
+                uncond = sd->get_learned_condition(condition_params);
+                if (uncond.empty()) {
+                    LOG_ERROR("failed to encode negative prompt");
+                    return std::nullopt;
+                }
+            }
+            if (uncond.c_concat.empty() && ref_image_params.pass_to_dit) {
+                uncond.c_concat = latents->concat_latent;  // TODO: optimize
+            }
+        }
+
+        SDCondition img_uncond;
+        if (request->use_img_uncond) {
+            if ((request->use_uncond || request->use_high_noise_uncond) && (latents->ref_images.empty() || !use_ref_latent_img_cfg)) {
+                img_uncond = SDCondition(uncond.c_crossattn, uncond.c_vector, latents->img_uncond_concat_latent);
+            } else {
+                bool zero_out_masked = false;
+                if (sd_version_is_sdxl(sd->version) &&
+                    request->negative_prompt.empty() &&
+                    !sd->is_using_edm_v_parameterization) {
+                    zero_out_masked = true;
+                }
+                condition_params.text            = request->negative_prompt;
+                condition_params.zero_out_masked = zero_out_masked;
+                std::vector<sd::Tensor<float>> empty_ref_images;
+                if (use_ref_latent_img_cfg) {
+                    condition_params.ref_images = &empty_ref_images;
+                }
+                img_uncond = sd->get_learned_condition(condition_params);
+                if (img_uncond.empty()) {
+                    LOG_ERROR("failed to encode image guidance prompt");
+                    return std::nullopt;
+                }
+                if (img_uncond.c_concat.empty() && ref_image_params.pass_to_dit) {
+                    img_uncond.c_concat = latents->img_uncond_concat_latent;  // TODO: optimize
+                }
+            }
+        }
+
+        int64_t t1 = ggml_time_ms();
+        LOG_INFO("get_learned_condition completed, taking %.2fs", (t1 - prepare_start_ms) * 1.0f / 1000);
+
+        ImageGenerationEmbeds embeds;
+        embeds.img_uncond = std::move(img_uncond);
+        embeds.cond       = std::move(cond);
+        embeds.uncond     = std::move(uncond);
+
+#ifndef __SD_CONDITIONING_CONDITIONING_CACHE_H__
+#define __SD_CONDITIONING_CONDITIONING_CACHE_H__
+
+#include <algorithm>
+#include <list>
+#include <tuple>
+
+#include "conditioning/conditioner.hpp"
+
+class ConditioningCache {
+    struct Entry {
+        ConditionerParams params;
+        std::vector<sd::Tensor<float>> ref_images;
+        std::vector<MiniMaxH3PresentationItem> references;
+        SDCondition condition;
+
+        Entry(const ConditionerParams& input, const SDCondition& output)
+            : params(input), condition(output) {
+            // Request-owned reference pointers must not outlive the request.
+            if (input.ref_images != nullptr) {
+                ref_images        = *input.ref_images;
+                params.ref_images = &ref_images;
+            }
+            if (input.minimax_h3_references != nullptr) {
+                references                   = *input.minimax_h3_references;
+                params.minimax_h3_references = &references;
+            }
+        }
+
+        Entry(const Entry&)            = delete;
+        Entry& operator=(const Entry&) = delete;
+    };
+
+    size_t capacity_ = 4;
+    std::list<Entry> entries_;
+
+    static bool same_images(const std::vector<sd::Tensor<float>>& a,
+                            const std::vector<sd::Tensor<float>>& b) {
+        return std::equal(a.begin(), a.end(), b.begin(), b.end(),
+                          [](const sd::Tensor<float>& x, const sd::Tensor<float>& y) {
+                              return x.shape() == y.shape() && x.values() == y.values();
+                          });
+    }
+
+    static bool same_params(const ConditionerParams& a, const ConditionerParams& b) {
+        const auto fields = [](const ConditionerParams& p) {
+            const auto& r = p.ref_image_params;
+            return std::tie(p.text, p.clip_skip, p.width, p.height, p.zero_out_masked,
+                            r.pass_to_vlm, r.pass_to_dit, r.ref_index_mode,
+                            r.force_ref_timestep_zero, r.resize_before_vae, r.vae_input_max_pixels,
+                            r.vlm_resize_mode, r.vlm_min_size, r.vlm_max_size, r.resize_vae_to_target);
+        };
+        if (fields(a) != fields(b) ||
+            (a.ref_images == nullptr) != (b.ref_images == nullptr) ||
+            (a.minimax_h3_references == nullptr) != (b.minimax_h3_references == nullptr)) {
+            return false;
+        }
+        if (a.ref_images != nullptr && !same_images(*a.ref_images, *b.ref_images)) {
+            return false;
+        }
+        if (a.minimax_h3_references != nullptr &&
+            !std::equal(a.minimax_h3_references->begin(), a.minimax_h3_references->end(),
+                        b.minimax_h3_references->begin(), b.minimax_h3_references->end(),
+                        [](const MiniMaxH3PresentationItem& x, const MiniMaxH3PresentationItem& y) {
+                            return x.kind == y.kind && x.timestamps == y.timestamps && same_images(x.frames, y.frames);
+                        })) {
+            return false;
+        }
+        return true;
+    }
+
+public:
+    void set_capacity(size_t capacity) {
+        capacity_ = capacity;
+        while (entries_.size() > capacity_) {
+            entries_.pop_back();
+        }
+    }
+
+    void clear() {
+        entries_.clear();
+    }
+
+    SDCondition get(Conditioner& conditioner, int n_threads, const ConditionerParams& params) {
+        if (capacity_ == 0) {
+            return conditioner.get_learned_condition(n_threads, params);
+        }
+        for (auto it = entries_.begin(); it != entries_.end(); ++it) {
+            if (same_params(it->params, params)) {
+                entries_.splice(entries_.begin(), entries_, it);
+                LOG_INFO("conditioning cache hit");
+                return entries_.front().condition;
+            }
+        }
+        auto condition = conditioner.get_learned_condition(n_threads, params);
+        if (!condition.empty()) {
+            if (entries_.size() == capacity_) {
+                entries_.pop_back();
+            }
+            entries_.emplace_front(params, condition);
+            LOG_VERBOSE("conditioning cache stored (%zu/%zu)", entries_.size(), capacity_);
+        }
+        return condition;
+    }
+};
+
+#endif  // __SD_CONDITIONING_CONDITIONING_CACHE_H__

@@ -1,0 +1,16 @@
+{
+  "runs": {
+    "No cache": "jetson-flux-klein-base-001__repeat__20261005-042014",
+    "EasyCache": "jetson-flux-klein-base-002__baseline__20261005-024556",
+    "Conditioning reuse": "jetson-flux-klein-base-005__baseline__20261005-093239",
+    "Combined": "jetson-flux-klein-base-007__baseline__20261005-121955"
+  },
+  "matched_model_workload_protocol_binary": true,
+  "speed_range_rule_vs": {
+    "No cache": true,
+    "EasyCache": true,
+    "Conditioning reuse": true
+  },
+  "quality": "Same saved RGB pixels as EasyCache-only; paired no-cache PSNR/LPIPS in quality-diagnostics.json.",
+  "formal_quality_eligible": false
+}

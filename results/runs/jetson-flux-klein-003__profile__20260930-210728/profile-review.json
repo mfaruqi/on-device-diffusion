@@ -1,0 +1,832 @@
+{
+  "scope": "Post-import verification; no new inference or profiling",
+  "input_sha256": {
+    "config.json": "2e7dc8bd54de8edd9cce5cfa9704fdf9c7245b56f708e2387e866f4105717bc1",
+    "summary.json": "1597ad0aa9713d486902405f202515fe2887941fa680a95f93ba2ea71535e60f",
+    "status.json": "227eff93026fc7c4507049eb0a79a72a34dd1f55290528bfe4417a76d24f91f7",
+    "runs.csv": "18b8f1f36e37d0b884be5e0a21118efcda2a1d785fced23c2c681b6572aac257",
+    "stages.csv": "669f89f543d09074462bd377c19bed13078fb3753b0ef194fe7fec1e2a60fd36",
+    "engine/results.jsonl": "d001554c358ef77b8e795784d09dd6a3455350d55f998f68a081359c5d04e53d",
+    "engine/sdcpp.log": "70b484e9109711298f58b56465e81da9d65992ef5f1382555c04a46fbbbdb62f",
+    "tegrastats-samples.csv": "dd65d081f83ed639b36f452d7d66c049a6535e70f10067904eb90bd8939fa055",
+    "profile/trace.sqlite": "f929fd807f122002fb43cbb1b26f3e40774b91f3bf8b7af84ff3f722f1acec2c"
+  },
+  "status_complete": true,
+  "config_matches_full_profile": true,
+  "generation_rows_verified": 14,
+  "stage_rows_verified": 84,
+  "summary_replayed": true,
+  "engine_audit_replayed": true,
+  "monitor_samples": 878,
+  "saved_pngs_verified": [
+    {
+      "file": "first.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "measured-0.png",
+      "rgb_sha256": "2d487c94ff5ddc94f1843cae0eb390ee80ddf45380953ad8d12e6591ef02517e",
+      "dimensions": [
+        512,
+        512
+      ]
+    }
+  ],
+  "all_recorded_image_hashes_equal": true,
+  "hash_limit": "Only first and first measured PNGs retained; other image hashes are the runner-recorded values.",
+  "baseline_comparison_eligible": false,
+  "engine_reload_intervals": [
+    {
+      "source_line": 147,
+      "run_index": 0,
+      "phase": "first",
+      "stage": "denoise_step_0",
+      "duration_s": 7.83,
+      "read_s": 7.44,
+      "source_text": "6480.147634 [2] model_loader.cpp:1366 - loading tensors completed, taking 7.83s (read: 7.44s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.15s)"
+    },
+    {
+      "source_line": 175,
+      "run_index": 0,
+      "phase": "first",
+      "stage": "vae_decode",
+      "duration_s": 0.2,
+      "read_s": 0.01,
+      "source_text": "6492.460784 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.20s (read: 0.01s, memcpy: 0.00s, convert: 0.07s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 220,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 21.81,
+      "read_s": 21.13,
+      "source_text": "6518.236632 [2] model_loader.cpp:1366 - loading tensors completed, taking 21.81s (read: 21.13s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.46s)"
+    },
+    {
+      "source_line": 233,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 28.2,
+      "read_s": 27.04,
+      "source_text": "6548.109920 [2] model_loader.cpp:1366 - loading tensors completed, taking 28.20s (read: 27.04s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.53s)"
+    },
+    {
+      "source_line": 260,
+      "run_index": 1,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.23,
+      "read_s": 1.05,
+      "source_text": "6561.118390 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.23s (read: 1.05s, memcpy: 0.00s, convert: 0.12s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 305,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 19.18,
+      "read_s": 18.54,
+      "source_text": "6584.204187 [2] model_loader.cpp:1366 - loading tensors completed, taking 19.18s (read: 18.54s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.47s)"
+    },
+    {
+      "source_line": 318,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 20.48,
+      "read_s": 19.46,
+      "source_text": "6606.360035 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.48s (read: 19.46s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 345,
+      "run_index": 2,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.22,
+      "read_s": 0.99,
+      "source_text": "6618.997960 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.22s (read: 0.99s, memcpy: 0.00s, convert: 0.12s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 390,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "text_encode",
+      "duration_s": 20.3,
+      "read_s": 19.63,
+      "source_text": "6643.138885 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.30s (read: 19.63s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 403,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "denoise_step_0",
+      "duration_s": 25.6,
+      "read_s": 24.5,
+      "source_text": "6670.367527 [2] model_loader.cpp:1366 - loading tensors completed, taking 25.60s (read: 24.50s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.47s)"
+    },
+    {
+      "source_line": 430,
+      "run_index": 3,
+      "phase": "warmup",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 0.96,
+      "source_text": "6683.199434 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 0.96s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 475,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 10.03,
+      "read_s": 9.47,
+      "source_text": "6697.068655 [2] model_loader.cpp:1366 - loading tensors completed, taking 10.03s (read: 9.47s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.26s)"
+    },
+    {
+      "source_line": 488,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 28.04,
+      "read_s": 26.9,
+      "source_text": "6726.797088 [2] model_loader.cpp:1366 - loading tensors completed, taking 28.04s (read: 26.90s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.53s)"
+    },
+    {
+      "source_line": 515,
+      "run_index": 4,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.0,
+      "read_s": 0.68,
+      "source_text": "6739.520874 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.00s (read: 0.68s, memcpy: 0.00s, convert: 0.12s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 560,
+      "run_index": 5,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 19.24,
+      "read_s": 18.63,
+      "source_text": "6762.632530 [2] model_loader.cpp:1366 - loading tensors completed, taking 19.24s (read: 18.63s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.38s)"
+    },
+    {
+      "source_line": 573,
+      "run_index": 5,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 25.84,
+      "read_s": 25.1,
+      "source_text": "6790.122834 [2] model_loader.cpp:1366 - loading tensors completed, taking 25.84s (read: 25.10s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.48s)"
+    },
+    {
+      "source_line": 600,
+      "run_index": 5,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 0.8,
+      "read_s": 0.54,
+      "source_text": "6802.354281 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.80s (read: 0.54s, memcpy: 0.00s, convert: 0.10s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 645,
+      "run_index": 6,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 18.68,
+      "read_s": 18.07,
+      "source_text": "6824.833815 [2] model_loader.cpp:1366 - loading tensors completed, taking 18.68s (read: 18.07s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.32s)"
+    },
+    {
+      "source_line": 658,
+      "run_index": 6,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 20.8,
+      "read_s": 19.75,
+      "source_text": "6847.312372 [2] model_loader.cpp:1366 - loading tensors completed, taking 20.80s (read: 19.75s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.47s)"
+    },
+    {
+      "source_line": 685,
+      "run_index": 6,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 0.89,
+      "source_text": "6859.983924 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 0.89s, memcpy: 0.00s, convert: 0.10s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 730,
+      "run_index": 7,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 21.8,
+      "read_s": 21.12,
+      "source_text": "6885.617794 [2] model_loader.cpp:1366 - loading tensors completed, taking 21.80s (read: 21.12s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.45s)"
+    },
+    {
+      "source_line": 743,
+      "run_index": 7,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 21.39,
+      "read_s": 20.28,
+      "source_text": "6908.931255 [2] model_loader.cpp:1366 - loading tensors completed, taking 21.39s (read: 20.28s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.42s)"
+    },
+    {
+      "source_line": 770,
+      "run_index": 7,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.4,
+      "read_s": 1.1,
+      "source_text": "6921.800767 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.40s (read: 1.10s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 815,
+      "run_index": 8,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 22.45,
+      "read_s": 21.69,
+      "source_text": "6948.075094 [2] model_loader.cpp:1366 - loading tensors completed, taking 22.45s (read: 21.69s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.41s)"
+    },
+    {
+      "source_line": 828,
+      "run_index": 8,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 16.71,
+      "read_s": 15.74,
+      "source_text": "6966.416455 [2] model_loader.cpp:1366 - loading tensors completed, taking 16.71s (read: 15.74s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.35s)"
+    },
+    {
+      "source_line": 855,
+      "run_index": 8,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 0.98,
+      "source_text": "6979.131758 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 0.98s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 900,
+      "run_index": 9,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 22.09,
+      "read_s": 21.31,
+      "source_text": "7005.037406 [2] model_loader.cpp:1366 - loading tensors completed, taking 22.09s (read: 21.31s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.52s)"
+    },
+    {
+      "source_line": 913,
+      "run_index": 9,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 25.33,
+      "read_s": 24.34,
+      "source_text": "7032.037396 [2] model_loader.cpp:1366 - loading tensors completed, taking 25.33s (read: 24.34s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.41s)"
+    },
+    {
+      "source_line": 940,
+      "run_index": 9,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 1.01,
+      "source_text": "7045.201298 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 1.01s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 985,
+      "run_index": 10,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 15.62,
+      "read_s": 15.04,
+      "source_text": "7064.747127 [2] model_loader.cpp:1366 - loading tensors completed, taking 15.62s (read: 15.04s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.43s)"
+    },
+    {
+      "source_line": 998,
+      "run_index": 10,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 27.05,
+      "read_s": 25.84,
+      "source_text": "7093.421264 [2] model_loader.cpp:1366 - loading tensors completed, taking 27.05s (read: 25.84s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.52s)"
+    },
+    {
+      "source_line": 1025,
+      "run_index": 10,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.24,
+      "read_s": 0.87,
+      "source_text": "7106.193733 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.24s (read: 0.87s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 1070,
+      "run_index": 11,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 18.86,
+      "read_s": 18.17,
+      "source_text": "7129.081161 [2] model_loader.cpp:1366 - loading tensors completed, taking 18.86s (read: 18.17s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.44s)"
+    },
+    {
+      "source_line": 1083,
+      "run_index": 11,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 28.22,
+      "read_s": 27.03,
+      "source_text": "7158.989153 [2] model_loader.cpp:1366 - loading tensors completed, taking 28.22s (read: 27.03s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.53s)"
+    },
+    {
+      "source_line": 1110,
+      "run_index": 11,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 0.84,
+      "read_s": 0.63,
+      "source_text": "7171.364628 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.84s (read: 0.63s, memcpy: 0.00s, convert: 0.11s, copy_to_backend: 0.02s)"
+    },
+    {
+      "source_line": 1155,
+      "run_index": 12,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 11.66,
+      "read_s": 11.12,
+      "source_text": "7186.832962 [2] model_loader.cpp:1366 - loading tensors completed, taking 11.66s (read: 11.12s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.34s)"
+    },
+    {
+      "source_line": 1168,
+      "run_index": 12,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 26.46,
+      "read_s": 25.36,
+      "source_text": "7214.958375 [2] model_loader.cpp:1366 - loading tensors completed, taking 26.46s (read: 25.36s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.56s)"
+    },
+    {
+      "source_line": 1195,
+      "run_index": 12,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 0.6,
+      "read_s": 0.47,
+      "source_text": "7227.059146 [2] model_loader.cpp:1366 - loading tensors completed, taking 0.60s (read: 0.47s, memcpy: 0.00s, convert: 0.10s, copy_to_backend: 0.01s)"
+    },
+    {
+      "source_line": 1240,
+      "run_index": 13,
+      "phase": "measured",
+      "stage": "text_encode",
+      "duration_s": 17.86,
+      "read_s": 17.32,
+      "source_text": "7248.665447 [2] model_loader.cpp:1366 - loading tensors completed, taking 17.86s (read: 17.32s, memcpy: 0.00s, convert: 0.00s, copy_to_backend: 0.32s)"
+    },
+    {
+      "source_line": 1253,
+      "run_index": 13,
+      "phase": "measured",
+      "stage": "denoise_step_0",
+      "duration_s": 16.44,
+      "read_s": 15.73,
+      "source_text": "7266.778132 [2] model_loader.cpp:1366 - loading tensors completed, taking 16.44s (read: 15.73s, memcpy: 0.00s, convert: 0.01s, copy_to_backend: 0.40s)"
+    },
+    {
+      "source_line": 1280,
+      "run_index": 13,
+      "phase": "measured",
+      "stage": "vae_decode",
+      "duration_s": 1.2,
+      "read_s": 0.88,
+      "source_text": "7279.468360 [2] model_loader.cpp:1366 - loading tensors completed, taking 1.20s (read: 0.88s, memcpy: 0.00s, convert: 0.10s, copy_to_backend: 0.02s)"
+    }
+  ],
+  "measured_engine_loading_total_s": [
+    39.07,
+    45.879999999999995,
+    40.68,
+    44.59,
+    40.36,
+    48.62,
+    43.91,
+    47.92,
+    38.72,
+    35.5
+  ],
+  "measured_engine_loading_median_s": 42.295,
+  "loading_limit": "Engine-reported rounded intervals, not physical storage I/O; attribution requires interval containment in callback stage.",
+  "trace": {
+    "captured_generations": 14,
+    "initial_load_captured": true,
+    "stage_ranges_verified": 84,
+    "cuda_kernels": 78036,
+    "each_generation_contains_cuda": true,
+    "ranges": [
+      {
+        "name": "load",
+        "duration_ms": 62778.24048
+      },
+      {
+        "name": "generate",
+        "duration_ms": 26077.46464
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 2150.060256
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 11495.642624
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2770.640576
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2768.794912
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2769.62464
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 3736.450912
+      },
+      {
+        "name": "generate",
+        "duration_ms": 68575.97104
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 23273.460832
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 32015.65616
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2775.476832
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2757.26208
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2757.134496
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4720.5824
+      },
+      {
+        "name": "generate",
+        "duration_ms": 57840.757696
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 20648.766848
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 24022.542848
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2751.573472
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2751.141824
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2751.850976
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4642.936032
+      },
+      {
+        "name": "generate",
+        "duration_ms": 64190.69792
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 21689.392736
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 29242.699776
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2798.546272
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2772.657376
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2771.769408
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4642.92224
+      },
+      {
+        "name": "generate",
+        "duration_ms": 56323.058368
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 11454.979296
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 31792.85152
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2768.86736
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2756.554944
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2761.907168
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4497.07808
+      },
+      {
+        "name": "generate",
+        "duration_ms": 62788.059168
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 20662.306912
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 29357.80544
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2753.228448
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2756.815904
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2761.52688
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4218.930336
+      },
+      {
+        "name": "generate",
+        "duration_ms": 57665.327616
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 20078.165216
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 24348.131424
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2756.594464
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2766.314624
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2766.272384
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4658.967968
+      },
+      {
+        "name": "generate",
+        "duration_ms": 61834.748256
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 23401.232896
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 24960.144384
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2751.076992
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2757.980128
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2759.916832
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4874.61344
+      },
+      {
+        "name": "generate",
+        "duration_ms": 57307.861856
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 23817.633248
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 20264.273824
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2762.319904
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2767.347296
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2767.030976
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4651.593824
+      },
+      {
+        "name": "generate",
+        "duration_ms": 66059.015648
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 23479.425408
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 29331.247552
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2776.256288
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2763.331008
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2763.486432
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4658.59488
+      },
+      {
+        "name": "generate",
+        "duration_ms": 60983.796192
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 17053.768928
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 30624.747488
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2758.66784
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2766.584448
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2765.324256
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4722.458592
+      },
+      {
+        "name": "generate",
+        "duration_ms": 64993.061824
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 20329.148
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 31810.800416
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2775.076192
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2776.606048
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2777.297728
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4253.845728
+      },
+      {
+        "name": "generate",
+        "duration_ms": 55641.092608
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 13075.387136
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 30011.991328
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2771.414368
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2771.376736
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2770.53984
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 3967.340736
+      },
+      {
+        "name": "generate",
+        "duration_ms": 52524.8944
+      },
+      {
+        "name": "text_encode",
+        "duration_ms": 19253.96448
+      },
+      {
+        "name": "denoise_step_0",
+        "duration_ms": 19987.942752
+      },
+      {
+        "name": "denoise_step_1",
+        "duration_ms": 2769.045952
+      },
+      {
+        "name": "denoise_step_2",
+        "duration_ms": 2767.942944
+      },
+      {
+        "name": "denoise_step_3",
+        "duration_ms": 2767.69616
+      },
+      {
+        "name": "vae_decode",
+        "duration_ms": 4687.640032
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "generations": 14,
+  "steps": 4,
+  "transformer_passes": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "conditioning_hits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mapped_files": [],
+  "cache_audit": {
+    "requested": null,
+    "enabled_generations": 0
+  },
+  "rgb_hashes": [
+    "834e7fb5eb19dc2b50bba97c6ee67bb57a82b8d61c840c44d49e922640dc70ed"
+  ],
+  "reference": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+  "reference_rgb_equal": true,
+  "formal_quality_eligible": false,
+  "scope": "Saved config, callback/actual CFG execution counts, one context, image, phase and CSV/summary arithmetic checked. Only two retained PNGs rehashed. One measured observation in attempts is not a repeated benchmark."
+}

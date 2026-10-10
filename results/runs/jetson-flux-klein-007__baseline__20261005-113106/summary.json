@@ -1,0 +1,213 @@
+{
+  "id": "jetson-flux-klein-007",
+  "record_kind": "repeated unprofiled baseline",
+  "profiler": "none",
+  "profiling": null,
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 25872.130999996443,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2117.9249999986496,
+    "denoise_ms": 19724.47000000102,
+    "denoise_step_0_ms": 11602.878999998211,
+    "denoise_step_1_ms": 2706.4469999968424,
+    "denoise_step_2_ms": 2708.1580000012764,
+    "denoise_step_3_ms": 2706.98600000469,
+    "vae_decode_ms": 3597.6710000031744,
+    "postprocess_ms": null,
+    "other_ms": 432.0649999935995,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 15734.541000001627,
+      "min": 15589.200000002165,
+      "max": 20335.52499999496,
+      "mean": 16318.155200000183,
+      "stdev": 1448.3278745528262,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 11.55049999943003,
+      "min": 11.238999999477528,
+      "max": 14.952999998058658,
+      "mean": 11.866600000212202,
+      "stdev": 1.094099243217089,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 12186.432499998773,
+      "min": 12096.184999994875,
+      "max": 16846.37100000691,
+      "mean": 12745.103499999823,
+      "stdev": 1475.0303013730177,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 4001.3029999972787,
+      "min": 3949.721999997564,
+      "max": 8677.430000003369,
+      "mean": 4573.036999999022,
+      "stdev": 1475.5985921069532,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 2725.108500002534,
+      "min": 2712.7200000031735,
+      "max": 2729.397000002791,
+      "mean": 2724.154000000999,
+      "stdev": 4.598732144054867,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 2725.197499999922,
+      "min": 2712.815999999293,
+      "max": 2728.6430000021937,
+      "mean": 2723.978899999929,
+      "stdev": 4.558148880241534,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 2724.7334999992745,
+      "min": 2712.941999998293,
+      "max": 2728.89999999461,
+      "mean": 2723.933599999873,
+      "stdev": 4.237815716018933,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 3336.363000002166,
+      "min": 3313.35200000467,
+      "max": 3859.7010000012233,
+      "mean": 3387.023100000806,
+      "stdev": 166.76333941351535,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 180.11650000335067,
+      "min": 158.05600000021514,
+      "max": 183.0119999940507,
+      "mean": 174.1619999993418,
+      "stdev": 10.88220624246948,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 63.07845400000224,
+    "model_version": "Flux.2 klein",
+    "note": "new_sd_ctx; parameter policy: disk. Requested policy is not proof of continuous residency. Hash checks warmed file cache."
+  },
+  "monitor_window": {
+    "samples": 328,
+    "ram_peak_gib": 6.0107421875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.3291015625,
+    "swap_max_gib": 0.330078125,
+    "gpu_temperature_max_c": 60.906,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "engine_audit": {
+    "settings_confirmed": true,
+    "settings_confirmation_scope": "requested context fields only",
+    "automatic_fitting": false,
+    "conditioning_reuse": true,
+    "conditioning_cache_hits": 13,
+    "mmap_io": {
+      "requested": false,
+      "confirmed_files": [],
+      "scope": "Engine-reported file mappings, not continuous parameter residency or physical I/O"
+    },
+    "parameter_storage": "disk",
+    "segmented_compute_allowed": true,
+    "requested": {
+      "backend": "CUDA0",
+      "params_backend": "disk",
+      "auto_fit": false,
+      "disable_segmented_compute": false,
+      "eager_load": true,
+      "conditioning_cache_size": 1,
+      "diffusion_fa": true,
+      "threads": 4
+    },
+    "reported_parameter_placement": [
+      "43460.254768 [1] model_manager.cpp:490  - model manager prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on CUDA0",
+      "43470.685514 [1] model_manager.cpp:490  - model manager prepared params backend buffers (658.13 MB, 60 tensors, 1 blocks, VRAM) on CUDA0",
+      "43482.778763 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43507.312107 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43519.565269 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43524.855325 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43536.256536 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43548.089601 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43559.547550 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43568.382930 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43579.882554 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43584.327170 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43595.744083 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43599.989998 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43611.326462 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43615.575565 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43627.341945 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43632.695278 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43644.154395 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43648.427221 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43659.832643 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43664.113517 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43675.544609 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43679.849184 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43691.260054 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43695.570127 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43706.958533 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "43711.292446 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "43722.707458 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0"
+    ],
+    "auto_fit_plan_excerpt": [],
+    "unverified": [
+      "physical storage traffic",
+      "placement between logged transitions"
+    ]
+  },
+  "cache_audit": {
+    "requested": null,
+    "enabled_generations": 0
+  },
+  "stage_callbacks_validated": true,
+  "conditioning_cache_hits_per_generation": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "timing_method": "host steady_clock at sd.cpp callbacks; includes on-demand loading",
+  "unavailable_metrics": {
+    "gpu_span_ms": "No CUDA event span; use host wall_ms",
+    "postprocess_ms": "Included in sd.cpp decode/output boundary; no separate stage",
+    "peak_alloc_gib/peak_reserved_gib": "No PyTorch allocator",
+    "device_used_peak_gib": "No NVML; system RAM capture is separate and not stage-aligned",
+    "host_rss_gib": "Per-generation process RSS not sampled"
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

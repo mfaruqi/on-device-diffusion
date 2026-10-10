@@ -2,7 +2,7 @@
 type: rq
 summary: RQ1 — one matched A100 engine comparison; Jetson feasibility and repeated baseline evidence exist, but matched cross-device transfer remains untested.
 status: active
-updated: 2026-10-02
+updated: 2026-10-06
 ---
 
 # RQ1: Which diffusion optimization choices transfer across devices and workloads?
@@ -26,16 +26,20 @@ This does not establish a matched cross-device transfer result; that requires a 
 under the [evaluation rules](../project/overview.md#evaluation-rules).
 
 ## Gaps
-- Matched cross-device transfer remains untested. [M1 MacBook Pro](../systems/m1-macbook-pro.md)
+- Matched cross-device transfer remains untested. [MacBook Air M5](../systems/macbook-air-m5.md)
   and [iPhone](../systems/iphone.md) measurements remain planned.
 - No second workload yet: [Wan 2.1 T2V-1.3B](../systems/wan2-1-t2v-1-3b.md) and [DreamLite-mobile](../systems/dreamlite-mobile.md) are planned.
 - Jetson feasibility configurations change memory execution choices ([records](../experiments.md));
-  controlled latency/quality comparisons of optimization policies remain to be established. No reuse policy is measured yet ([reuse](../concepts/cross-step-reuse.md)).
+  single-device option comparisons exist (reuse effects reverse between 4 and 50 steps:
+  [finding](../findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md)), but cross-device transfer of a policy
+  is untested ([reuse](../concepts/cross-step-reuse.md)).
 - No quality measurement. Shared initial noise is needed first ([D-006](../project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
 
 ## Next
 Deepen profiling, screen edge-dit.cpp and audit existing auto-fit/caching options
-([meeting actions](../../raw/meetings/2026-10-01.md#to-do)). M1 and Wan remain proposal
-milestones; further DreamLite work and FastVideo are temporarily deferred ([D-009](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)).
+([meeting actions](../../raw/meetings/2026-10-01.md#to-do)). Further DreamLite work and FastVideo
+are temporarily deferred ([D-009](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)).
+Since [D-010](../project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top), transfer is evaluated
+across CUDA, Metal and WebGPU on the compiled klein pipeline; Wan is deferred until it runs.
 
 Related: [RQ2](rq2.md) (selecting plans from these measurements), [RQ3](rq3.md) (joint planning).

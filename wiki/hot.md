@@ -1,38 +1,38 @@
 ---
 type: project
-summary: Current state of the project — this week, in progress, next actions, blockers. Read first in every session; rewritten, not appended.
+summary: Current project state, active campaign and blockers. Read first each session.
 status: active
-updated: 2026-10-02
+updated: 2026-10-10
 ---
 
 # Hot: current state
 
-**Week 1** (Sep 28 – Oct 2): image baselines and bounded planning hypothesis ([milestones](project/milestones.md)).
-October 1 priorities: deeper profiling and engine/option baselines; FastVideo and further DreamLite work temporarily deferred ([D-009](project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)).
+**Week 2** (Oct 5–9). **Scope changed** ([D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)):
+the thesis delivers (a) a TVM-compiled FLUX.2 klein pipeline on CUDA, Metal and WebGPU and (b) the joint
+reuse/precision/residency planner on top. Hypothesis and RQs unchanged ([overview](project/overview.md#scope-amendments)).
+Schedule is optimistic with roll-over allowed ([milestones](project/milestones.md#revised-schedule)).
 
-## Done
-- A100-PCIE baselines for FLUX.2 klein with two engines, plus their comparison ([registry](experiments.md)).
-- Wiki set up ([SCHEMA.md](SCHEMA.md)).
-- Jetson disk-backed sd.cpp repeated baseline, targeted profile and full 14-generation profile validated/exported; ten measured observations ([record](../experiments/jetson-flux-klein-003.md)).
-- MLC documentation reviewed: [compiler precedents and proposed distinction](papers/mlc-compiler-precedent.md).
-- Core reuse, precision and search papers reviewed; [DreamLite](papers/dreamlite.md) timing scope checked ([reading list](papers/reading-list.md)).
-- Measurement refactor complete: readable runners, monitors, analysis and derived events;
-  40 CPU checks pass locally/on Gilbreth, both A100 smoke checks pass ([validation](../scripts/README.md#compatibility-and-checks)).
+## Established evidence
+- A100 distilled klein baselines (PyTorch, sd.cpp) and comparison; Jetson disk-backed Q4 512² baseline and profiles ([registry](experiments.md)).
+- Base workload (50 steps, guidance 4) on A100 and Jetson; engine option sweeps with no-cache controls ([registry](experiments.md)).
+- Jetson Base: EasyCache + exact conditioning reuse combined passes the campaign speed rule; no formal quality approval ([comparison](../experiments/compare-jetson-base-combined-reuse.md)).
+- Jetson distilled: exact conditioning reuse passes the speed rule; EasyCache, prefetch-off and mmap fail it ([conditioning](../experiments/compare-jetson-distilled-conditioning-reuse.md), [EasyCache](../experiments/compare-jetson-distilled-easycache.md)).
+- Jetson auto-fit chose CPU/GPU placement but failed first text encoding ([004](../experiments/jetson-flux-klein-004.md)).
+- edge-dit full A100 baseline validated with stated limits ([record](../experiments/a100-edgedit-flux-klein-001.md)); Torch-TensorRT compile gate failed ([record](../experiments/a100-flux-klein-torchtrt-002.md)).
 
-## In progress / next
-1. Profile kernels, transfers, loading and host overhead more closely, especially Jetson ([meeting actions](../raw/meetings/2026-10-01.md#to-do)); explain the step-0 captured-activity gap ([profile results](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/jetson-flux-klein-003)).
-2. Screen edge-dit.cpp first; keep LightX2V and TensorRT as unverified additional candidates ([reading list](papers/reading-list.md), [memo](../raw/meetings/2026-10-01.md#to-do)).
-3. Audit sd.cpp auto-fit's resolved decisions; test supported memory options and EasyCache/DBCache individually before combinations ([memo](../raw/meetings/2026-10-01.md#to-do)).
-4. Extend engine/device/model stage charts and collect operation/traffic data for roofline-style plots; label estimates and timing bases ([memo](../raw/meetings/2026-10-01.md#to-do)).
-5. Generalize configuration-driven runners/adapters with shared outputs, pinned revisions and explicit unsupported-option failures ([memo](../raw/meetings/2026-10-01.md#to-do)).
-6. Write the bounded planning hypothesis ([RQ3](rq/rq3.md)); audit recipe/novelty overlap ([ExecuTorch review](papers/executorch-mlsys2026.md#what-it-means-for-this-project), [reading list](papers/reading-list.md)).
-7. Shared initial noise for cross-engine image comparison ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
+## Campaign records
+- Completed and failed runs are indexed in the [registry](experiments.md). Jetson scope closed; A100 Base conditioning full protocol recovered; different-GPU comparison caveat ([record](../experiments/a100-sdcpp-flux-klein-base-003.md)).
+- Stage charts: [27 completed runs, seven panels](../output/stage-breakdown-20261007/README.md); means stacked, total medians/ranges shown ([October log](log-2026-10.md)).
+- Base engine comparison keeps RNG/timer confounds ([comparison](../experiments/compare-a100-base-pytorch-vs-sdcpp.md)).
 
-## Waiting on
-- Advisor's recommendation for storing and viewing results ([D-007](project/decisions.md#d-007-results-stay-in-run-directories-viewer-undecided)).
-- W&B viewer: 14 runs retain timings with explicit [scope/basis and profiler labels](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion); links in the [registry](experiments.md). Advisor's view still pending.
-- Medians export to Summary only; generation curves retain all images. Existing uploads/panels stay unchanged ([results viewer](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion)).
-- Stage-mean overview and A100 detail charts uploaded as a separate [W&B analysis run](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/00321d37da374213).
+## Next (Week 2 → 3)
+1. TVM sandbox: import a small randomly initialized FLUX-style transformer on CPU; inspect the IR, fusion and memory planning.
+2. Week 3 gate: import klein's transformer step into TVM Relax and match PyTorch numerics on CUDA ([milestones](project/milestones.md#revised-schedule)).
+3. MacBook Air M5 setup: sd.cpp Metal smoke ([system](systems/macbook-air-m5.md)).
+4. Review the draft planning hypothesis and three candidate contributions ([RQ3](rq/rq3.md)); review CacheQuant and Q&C before any novelty claim ([reading list](papers/reading-list.md)).
+5. Approve or revise the TVM approach and engine-level planner fallback ([D-011, proposed](project/decisions.md#d-011-build-the-compiled-pipeline-mlc-style-on-tvm-with-an-engine-level-planner-fallback-proposed)).
+6. Shared initial noise for engine comparisons remains proposed ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
 
-## Open questions
-4 unresolved ([open questions](open-questions.md)).
+## Open
+- Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
+- New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).

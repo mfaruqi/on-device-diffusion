@@ -2,7 +2,7 @@
 type: method
 summary: Rules for maintaining this wiki. Read before any wiki edit.
 status: active
-updated: 2026-09-28
+updated: 2026-10-10
 ---
 
 # Wiki schema
@@ -29,6 +29,7 @@ draw on what its implementers reported working (see [Why these rules](#why-these
 | [hot.md](hot.md) | current state: week, in progress, next actions, blockers. **Rewritten**, not appended | ≤ 40 lines |
 | [index.md](index.md) | one line per page: link and summary, grouped by section | one line per page |
 | [log.md](log.md) | chronological one-liners, `## [YYYY-MM-DD] kind \| title`, newest first | entries ≤ 5 lines |
+| [log-2026-09.md](log-2026-09.md) | archived log months (`log-YYYY-MM.md`), moved out of `log.md` when it exceeds its budget | ≤ 160 lines each |
 | [experiments.md](experiments.md) | registry: **one row per experiment**, linking to the record and run directories | one row each |
 | [open-questions.md](open-questions.md) | unresolved contradictions and open questions, each marked `Status: Unresolved` | – |
 
@@ -106,6 +107,25 @@ Experiment records carry frontmatter too (`type: experiment-record`, `id`, `stat
   only what the user approves.
 - **Hot page**: rewrite `hot.md` at the end of a session that changed the project's state. It's a
   manual trigger, not every turn.
+
+## Repository hygiene
+
+Keep source, reusable tooling, labelled configs, small measurements, validation evidence and
+project documentation. Personal applications, unrelated drafts, empty editor files, temporary
+campaign launch/upload scripts and duplicate outputs do not belong in the shared repository.
+Keep operational scratch locally ignored; preserve unique evidence in `results/runs/` or `raw/`
+and repair its citations before untracking scratch. Failed runs and superseded findings remain evidence.
+
+The [lint script](../scripts/wiki_lint.py) checks tracked and non-ignored new files. It errors on
+tracked files prohibited by ignore rules and known unrelated application filenames; it warns on
+untitled placeholders and files over 5 MiB. It never deletes files. PDFs in `proposal/` and `raw/papers/`,
+source bundles and small chart inputs are legitimate project assets, not blanket deletion targets.
+
+Every wiki-lint review also checks file relevance against [scope](project/overview.md) and the
+repository map, including new files outside `wiki/`. Identify unnecessary generated files,
+duplicates and personal material; state the reason and preserve cited evidence before removal.
+Semantic relevance needs human/agent review; passing deterministic lint does not establish it.
+Remove or untrack only within the user's authorized cleanup scope; otherwise report candidates.
 
 ## Why these rules
 

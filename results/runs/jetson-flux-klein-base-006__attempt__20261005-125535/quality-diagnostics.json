@@ -1,0 +1,30 @@
+{
+  "reference": "results/runs/jetson-flux-klein-base-001__repeat__20261005-042014/images/measured-0.png",
+  "variant": "results/runs/jetson-flux-klein-base-006__attempt__20261005-125535/images/measured-0.png",
+  "image_file_sha256": {
+    "reference": "f3e182b5d57fb07b464a6e94b62a658afac468769172db3af4abe1d2248d15a7",
+    "variant": "f3e182b5d57fb07b464a6e94b62a658afac468769172db3af4abe1d2248d15a7"
+  },
+  "pixel_sha256": {
+    "reference": "c9e95da6549e62309719c357db61122d80beb220b6a94da84cd6fc0873110d7c",
+    "variant": "c9e95da6549e62309719c357db61122d80beb220b6a94da84cd6fc0873110d7c"
+  },
+  "psnr_db": "infinity (identical pixels)",
+  "mse_rgb_8bit": 0.0,
+  "lpips_alex_v0_1": 0.0,
+  "lpips_self_distance": 0.0,
+  "method": "Decoded full-resolution 512x512 RGB, no crop/resize; LPIPS calibrated AlexNet v0.1, inputs scaled to [-1,1], CPU float32 eval/inference mode, two threads. PSNR uses peak255 and mean squared error over all RGB channels.",
+  "versions": {
+    "torch": "2.7.1",
+    "torchvision": "0.22.1",
+    "lpips": "0.1.4",
+    "numpy": "2.5.3",
+    "Pillow": "12.3.0"
+  },
+  "weights_sha256": {
+    "alexnet-owt-7be5be79.pth": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "alex.pth": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+  },
+  "source": "https://github.com/richzhang/PerceptualSimilarity",
+  "scope": "One existing calibration/development prompt and seed; paired diagnostic only, no held-out data or formal quality eligibility."
+}

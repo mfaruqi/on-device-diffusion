@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "reference": "jetson-flux-klein-base-001__repeat__20261005-042014",
+  "variant": "jetson-flux-klein-base-002__baseline__20261005-024556",
+  "held_fixed": [
+    "model component hashes/revisions",
+    "engine commit and binary SHA256",
+    "workload",
+    "protocol",
+    "engine settings",
+    "non-cache harness arguments"
+  ],
+  "variable": "EasyCache threshold0.2,start0.15,end0.95",
+  "reference_to_variant_median_ratio": 1.784648939342912,
+  "range_rule_passed": true,
+  "diagnostic_screen": "PSNR/LPIPS recorded for approximate cache; identical reference and variant pixels to previously evaluated pair verified in run validation receipts.",
+  "selection": "EasyCache qualifies as a candidate for later combinations under the campaign diagnostic rule; no second qualified Base option yet.",
+  "quality_eligible": false,
+  "limitations": [
+    "one development prompt/seed",
+    "sequential captures; uncontrolled page cache, swap and background state",
+    "observed ratio is not an isolated causal estimate"
+  ]
+}

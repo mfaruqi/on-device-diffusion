@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-05T04:02:26Z",
+  "finished_utc": "2026-10-05T04:04:57Z",
+  "error": "RuntimeError('Expected one load and exactly the configured number of generations')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/measurement.py\", line 83, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/run_jetson_sdcpp.py\", line 230, in main\n    benchmark(config, directory, args.engine, args.binary, args.models)\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/run_jetson_sdcpp.py\", line 170, in benchmark\n    load, generations = read_generations(run_dir, config, phases)\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261004-overnight/scripts/run_jetson_sdcpp.py\", line 73, in read_generations\n    raise RuntimeError('Expected one load and exactly the configured number of generations')\nRuntimeError: Expected one load and exactly the configured number of generations\n"
+}

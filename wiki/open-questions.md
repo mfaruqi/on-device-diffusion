@@ -2,7 +2,7 @@
 type: project
 summary: Unresolved contradictions and open questions, each with both sides cited. Resolved items move to the Archive section.
 status: active
-updated: 2026-09-28
+updated: 2026-10-06
 ---
 
 # Open questions
@@ -36,6 +36,21 @@ the resolution with a link. See [SCHEMA.md](SCHEMA.md#writing-rules), rule 4.
   DreamLite Core ML/MLX reference and planner-selected variants within that stack ([overview](project/overview.md#evaluation-rules)).
 - Not established: whether it can export the diffusion workloads; its Metal backend is experimental.
 - A scope question for the advisor.
+- Status: Unresolved
+
+### Which target comes after WebGPU: Android, or AMD/Intel GPUs?
+- Evidence: the advisor's overview lists NVIDIA, Intel, AMD and Apple hardware and macOS, Linux, Windows,
+  Android and web platforms ([overview](../raw/meetings/2026-10-06-advisor-scope.md#project-overview-as-provided-by-prof-haoran-you)).
+  The confirmed scope fixes CUDA, Metal and WebGPU ([D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top));
+  the reply did not rank the remaining targets ([answer](../raw/meetings/2026-10-06-advisor-scope.md#scope-question-and-answer)).
+- Status: Unresolved
+
+### Is Jetson weight-reload time storage-bound or page-cache-bound?
+- Evidence: the same transformer reload is much faster when the text encoder was not re-read in that
+  generation ([finding](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md)), and loading dominates
+  4-step generations ([finding](findings/weight-reloading-dominates-disk-backed-jetson-generations.md)).
+- Not established: file-cache residency, physical microSD reads, or allocation cost; none were measured
+  ([record](../experiments/jetson-flux-klein-003.md)).
 - Status: Unresolved
 
 ## Archive

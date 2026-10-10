@@ -1,0 +1,35 @@
+{
+  "profiler": "nsight-systems",
+  "scope": "full-process",
+  "captured_generations": 14,
+  "initial_load_captured": true,
+  "trace_generation_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "measured_generation_indices": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "nvtx_and_cuda_validated": true
+}

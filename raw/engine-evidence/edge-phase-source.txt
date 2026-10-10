@@ -1,0 +1,87 @@
+#pragma once
+
+#include <chrono>
+#include <cstdint>
+#include <cstdio>
+
+namespace edgedit {
+
+// Benchmark-only instrumentation. Emits a stdout phase marker consumed by the
+// external benchmark harness (component-level latency/VRAM attribution).
+// Compiled out by default (empty function -> zero overhead, no stdout noise);
+// define ED_BENCHMARK_MARKERS in benchmark builds to enable it.
+inline void emit_phase_marker(const char* stage, const char* event) {
+#ifdef ED_BENCHMARK_MARKERS
+    const double epoch_s =
+        std::chrono::duration<double>(std::chrono::system_clock::now().time_since_epoch()).count();
+    std::printf("[[phase]] stage=%s event=%s t=%.6f\n", stage, event, epoch_s);
+    std::fflush(stdout);
+#else
+    (void)stage;
+    (void)event;
+#endif
+}
+
+inline float calculate_shift(int64_t image_seq_len,
+                             int64_t base_seq_len = 256,
+                             int64_t max_seq_len  = 4096,
+                             float base_shift      = 0.5f,
+                             float max_shift       = 1.15f) {
+    float m = (max_shift - base_shift) / static_cast<float>(max_seq_len - base_seq_len);
+    float b = base_shift - m * static_cast<float>(base_seq_len);
+    return static_cast<float>(image_seq_len) * m + b;
+}
+
+inline int64_t packed_latent_extent(int64_t image_extent, int64_t vae_scale_factor) {
+    return 2 * (image_extent / (vae_scale_factor * 2));
+}
+
+inline int64_t packed_latent_seq_len(int64_t width, int64_t height, int64_t vae_scale_factor) {
+    int64_t latent_w = packed_latent_extent(width, vae_scale_factor);
+    int64_t latent_h = packed_latent_extent(height, vae_scale_factor);
+    return (latent_w / 2) * (latent_h / 2);
+}
+
+}  // namespace edgedit
+13:#include "dit_models/components/autoencoders/auto_encoder_kl.hpp"
+14:#include "dit_models/components/text_encoders/conditioner.hpp"
+31:    if (starts_with(name, "text_encoders.clip_l.") || starts_with(name, "cond_stage_model.")) {
+34:    if (starts_with(name, "text_encoders.t5xxl.")) {
+37:    if (starts_with(name, "text_encoders.")) {
+38:        return "text_encoder";
+67:        return "transformer, text_encoder/LLM, and VAE";
+361:                            runtime_->plan_component_offload(loader, "text_encoders", remaining_free);
+476:            if (!has_component("text_encoder")) {
+478:                    *error = "Flux2 model is missing text_encoder/LLM tensors";
+487:                LOG_WARN("Flux manifest has no CLIP-L text encoder tensors; this is OK for transformer-only files");
+490:                LOG_WARN("Flux manifest has no T5XXL text encoder tensors; this is OK for transformer-only files");
+676:        if (!has_component("text_encoder")) {
+678:                *error = "Flux2 model is missing text_encoder tensors";
+684:                *error = "FluxPipeline requires a non-null text encoder backend from ModelRuntime";
+699:        registry.ignore_prefix("text_encoders.llm.lm_head.");
+700:        registry.ignore_prefix("text_encoders.llm.output.weight");
+701:        registry.ignore_prefix("text_encoders.llm.visual.");
+703:        // segment budget so an offloaded text encoder segments instead of staging whole.
+705:            runtime_->text_encoder_segment_budget(conditioner_->get_params_buffer_size()));
+710:                *error = "FluxPipeline requires a non-null text encoder backend from ModelRuntime";
+726:            runtime_->text_encoder_segment_budget(conditioner_->get_params_buffer_size()));
+758:        registry.ignore_prefix("text_encoders.");
+764:        registry.ignore_prefix("first_stage_model.encoder");
+964:    emit_phase_marker("encode", "begin");
+990:    LOG_INFO("flux prompt encoded: cross_attn=%s vector=%s",
+1066:    sd::Tensor<float> denoised = x;
+1094:    emit_phase_marker("encode", "end");
+1095:    emit_phase_marker("denoise", "begin");
+1287:        denoised = model_out * c_out + x * c_skip;
+1290:            x = denoised;
+1292:            const sd::Tensor<float> d = (x - denoised) / sigma;
+1308:    emit_phase_marker("denoise", "end");
+1315:    emit_phase_marker("decode", "begin");
+1318:    sd::Tensor<float> decoded = vae_->decode(n_threads,
+1324:    emit_phase_marker("decode", "end");
+1325:    if (decoded.empty()) {
+1327:            *error = "Flux VAE decode failed";
+1333:    const ed_status_t status = ed_tensor_to_image(decoded, image);
+1336:            *error = status == ED_STATUS_OUT_OF_MEMORY ? "failed to allocate decoded image" : "decoded Flux tensor has invalid shape";
+1342:    LOG_INFO("flux generate breakdown: total=%.2fs | text_encode=%.2fs sampling=%.2fs vae_decode=%.2fs other=%.2fs",
+examples/cli/sample_main.cpp

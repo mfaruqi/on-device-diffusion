@@ -59,3 +59,25 @@ results/runs/**/*.png
 
 # Harness RGB outputs, including imported originals
 results/runs/**/*.rgb
+
+# Local explainer videos/pages and their generators; never uploaded
+explainers/
+
+# Campaign scratch media, raw logs and profiler captures remain on the originating host.
+output/**/*.png
+output/**/*.jpg
+output/**/*.rgb
+output/**/*.log
+output/**/*.nsys-rep
+output/**/*.qdstrm
+output/**/*.sqlite
+results/runs/**/stdout.txt
+
+# Campaign scratch stays local. Keep only the reviewed chart inputs and receipts.
+/output/*
+!/output/stage-breakdown/
+!/output/stage-breakdown-20261007/
+output/**/*.html
+
+# Empty personal Obsidian table
+/Untitled.base

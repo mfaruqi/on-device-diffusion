@@ -1,0 +1,20 @@
+{
+  "engine_commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+  "nsys": null,
+  "power_mode": "NV Power Mode: 25W\n1\n",
+  "platform": [
+    "Linux",
+    "mfaruqi-desktop",
+    "5.15.148-tegra",
+    "#1 SMP PREEMPT Mon Jun 16 08:24:48 PDT 2025",
+    "aarch64"
+  ],
+  "binary_sha256": "2d66fa04053c02b441d61a84d24412537a16f9099d6cb31b80dcca3c8cc1f896",
+  "hostname": "mfaruqi-desktop",
+  "display_processes": "1553 /usr/lib/xorg/Xorg vt1 -displayfd 3 -auth /run/user/128/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3\n1992 /usr/bin/gnome-shell\n2069 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications\n2213 /usr/bin/gjs /usr/share/gnome-shell/org.gnome.ScreenSaver",
+  "engine_status": "",
+  "engine_submodules": "dd74a8e808aaa8b26124217424b23058935184de examples/server/frontend (heads/master)\n 4bf5f6000653b7881d00963cd6ddb665ccd62a8d ggml (remotes/origin/int8_convrot-7-g4bf5f600)\n 5bf12267eea773a32fcf4949de52b0add158a8d5 thirdparty/libwebm (libwebm-1.0.0.32-6-g5bf1226)\n 0c9546f7efc61eac7f79ae115c3f99c91c21c443 thirdparty/libwebp (v1.6.0-158-g0c9546f7)",
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Wed_Aug_14_10:14:07_PDT_2024\nCuda compilation tools, release 12.6, V12.6.68\nBuild cuda_12.6.r12.6/compiler.34714021_0",
+  "ldd": "linux-vdso.so.1 (0x0000ffff93105000)\n\tlibcudart.so.12 => /usr/local/cuda/lib64/libcudart.so.12 (0x0000ffff853c0000)\n\tlibcublas.so.12 => /usr/local/cuda/lib64/libcublas.so.12 (0x0000ffff7dcd0000)\n\tlibcublasLt.so.12 => /usr/local/cuda/lib64/libcublasLt.so.12 (0x0000ffff65c20000)\n\tlibcuda.so.1 => /usr/lib/aarch64-linux-gnu/nvidia/libcuda.so.1 (0x0000ffff633a0000)\n\tlibgomp.so.1 => /lib/aarch64-linux-gnu/libgomp.so.1 (0x0000ffff63340000)\n\tlibstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000ffff63110000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffff63070000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffff63040000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffff62e90000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffff930cc000)\n\tlibdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000ffff62e70000)\n\tlibpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000ffff62e50000)\n\tlibrt.so.1 => /lib/aarch64-linux-gnu/librt.so.1 (0x0000ffff62e30000)\n\tlibnvrm_gpu.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvrm_gpu.so (0x0000ffff62db0000)\n\tlibnvrm_mem.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvrm_mem.so (0x0000ffff62d90000)\n\tlibnvos.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvos.so (0x0000ffff62d60000)\n\tlibnvsocsys.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvsocsys.so (0x0000ffff62d40000)\n\tlibnvtegrahv.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvtegrahv.so (0x0000ffff62d20000)\n\tlibnvrm_sync.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvrm_sync.so (0x0000ffff62d00000)\n\tlibnvsciipc.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvsciipc.so (0x0000ffff62cc0000)\n\tlibnvrm_chip.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvrm_chip.so (0x0000ffff62ca0000)\n\tlibnvrm_host1x.so => /usr/lib/aarch64-linux-gnu/nvidia/libnvrm_host1x.so (0x0000ffff62c70000)",
+  "memory_source": "whole-system tegrastats, 1000 ms; no stage alignment"
+}

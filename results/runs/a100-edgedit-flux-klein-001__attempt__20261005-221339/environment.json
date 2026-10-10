@@ -1,0 +1,35 @@
+{
+  "timestamp_utc": "2026-10-06T02:13:39Z",
+  "hostname": "gilbreth-g007.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-687.49.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "python_executable": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/bin/python",
+  "nvidia_smi_gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "nvidia_driver": "595.91.07",
+  "git_commit": "aae3cb51ecfca5e9890d574dae685feb4320e28a",
+  "git_dirty_files": [
+    "?? logs/",
+    "?? output/",
+    "?? results/",
+    "?? scripts/__pycache__/"
+  ],
+  "env_vars": {
+    "SLURM_JOB_ID": "11890064",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g007",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": null,
+    "HF_HUB_OFFLINE": "1",
+    "LD_LIBRARY_PATH": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/site-packages/nvidia/cudnn/lib:/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/site-packages/nvidia/cublas/lib:/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/lib/python3.10/site-packages/nvidia/cuda_nvrtc/lib:/apps/spack/gilbreth-r9/apps/cuda/12.6.0-gcc-11.5.0-a7cv7sp/lib64"
+  },
+  "engine": {
+    "name": "edge-dit.cpp",
+    "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+    "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+    "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+  },
+  "device_memory_sampler": "nvml handle by uuid GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643",
+  "submodules": " f270346d688c7bec7c56bae2ae73343aba6817ad third_party/ggml (remotes/origin/edge-cudnn-sdpa)\n 5e9224036021433d2577548ed0539fe9a53256bc third_party/onednn (v0.1-rc-18028-g5e92240360)\n"
+}

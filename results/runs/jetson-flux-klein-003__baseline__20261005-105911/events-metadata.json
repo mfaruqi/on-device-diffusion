@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "engine": "sdcpp",
+  "event_count": 225,
+  "parameter_release_observations": 42,
+  "source_sha256": {
+    "config.json": "e6dedded3425f3038db25c9dcae632890ee3e35b6525ada504e738308009dbb3",
+    "engine/results.jsonl": "b35faf7f7a300c974deb12797ec9b45064d6d1d380bd1dfafa749f4a36eaf30f",
+    "engine/sdcpp.log": "d4780b44c0bec186a1e1523856499b328bd13a8aeee2a951dab4ff0409003a69",
+    "runs.csv": "bb7239b63a1e373d0c4c8d1b1c0e2133c64bad4868ef599caa54c32e9fabd25b"
+  },
+  "limitations": [
+    "Derived after execution; event export adds no instrumentation inside measured regions.",
+    "Clocks are local to their source process/run; do not align different runs or Nsight clocks by raw value.",
+    "Records are grouped by source, not a globally sorted timeline. Null timestamps mean unavailable.",
+    "Buffer release is not evidence of a write to disk or a transfer to CPU; destination and component remain unknown.",
+    "Absence of matching log messages does not establish absence of releases; physical disk I/O is not measured."
+  ]
+}

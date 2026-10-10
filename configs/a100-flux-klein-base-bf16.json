@@ -1,0 +1,43 @@
+{
+  "id": "a100-flux-klein-base-001",
+  "description": "Separate FLUX.2 [klein] Base 4B workload reference: BF16, batch 1, 1024x1024, 50 steps, guidance 4.0 and empty negative prompt. No quantization, offloading or compilation; not an execution-only variant of distilled klein.",
+  "device_label": "gilbreth-a100-40gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "main",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false
+  }
+}

@@ -4,8 +4,8 @@ id: a100-sdcpp-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: stable-diffusion-cpp
-runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021, a100-sdcpp-flux-klein-001__attempt__20260929-001722, a100-sdcpp-flux-klein-001__attempt__20260929-005352]
-updated: 2026-09-29
+runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021, a100-sdcpp-flux-klein-001__attempt__20260929-001722, a100-sdcpp-flux-klein-001__attempt__20260929-005352, a100-sdcpp-flux-klein-001__attempt__20261005-193229, a100-sdcpp-flux-klein-001__baseline__20261005-220435]
+updated: 2026-10-06
 ---
 
 # a100-sdcpp-flux-klein-001: FLUX.2 [klein] 4B with stable-diffusion.cpp on one A100-PCIE-40GB
@@ -211,3 +211,45 @@ has no engine-audit problems. Load, environment, images and summary artifacts we
 The Slurm job completed with exit code 0 in 25 seconds. This verifies the launch fix and
 refactored runner's functional path. One measured sample is not a latency distribution or
 quality evaluation, and the single-sample determinism flag is not evidence of repeatability.
+
+## Four-step no-cache control: two-generation validation, 2026-10-05
+
+[Run and raw outputs](../results/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229/), [saved config](../results/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229/config.json), [environment](../results/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229/environment.json), [summary](../results/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229/summary.json), [independent validation](../results/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229/validation.json). Slurm 11883783 on gilbreth-g000.rcac.purdue.edu; repository snapshot a4b4028e0c13f9ac62b751886bccf7ce0013a617. Measurement definitions: [baseline metrics](../wiki/methods/baseline-metrics.md).
+
+BF16 weights,1024×1024,4 scheduler steps,CFG 1.0,seed0,one development cat/sign prompt. One context,first image and one measured observation,zero discarded warm-ups. Engine and checkpoint revisions, all file hashes, fixed CUDA residency and all option values are preserved in the config. Cache-capable binary SHA256 `d5efff548b7e7b3bd7739c6a94d8b6df99a97aa9f961b6cff565bd3430a8f6cc`. Full benchmark queued as Slurm 11890006; these two observations are a functional gate.
+
+| Metric | Second image, ms |
+|---|---:|
+| wall_ms | 2411.007000 |
+| text_encode_ms | 64.491000 |
+| denoise_ms | 1711.380000 |
+| vae_decode_ms | 605.955000 |
+| other_ms | 29.181000 |
+
+First image 2648.748000ms. Context load 10.696340s (filesystem cache may be warm). Sampled generation device-wide peak 22.880310GiB; harness host peakRSS 1.206726GiB. GPU allocator counters unavailable.
+
+Actual transformer passes per image: [4, 4]; conditioning hits: [0, 0]. Approximate cache skips: [0, 0]. Confirmed mmap filenames: []. Settings, callback order, actual CFG execution counts, phases, CSV arithmetic and summary statistics passed independent checks. Both retained image files were rehashed; saved pixels equal same-binary reference: **True**.
+
+Interpretation: this verifies execution and saved-output behavior for this option. A single later observation cannot establish a latency improvement.
+
+[W&B run](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-sdcpp-flux-klein-001__attempt__20261005-193229).
+
+## Full protocol a100-sdcpp-flux-klein-001__baseline__20261005-220435
+
+[Summary](../results/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435/summary.json), [config](../results/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435/config.json), [independent validation](../results/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435/validation.json), [environment](../results/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435/environment.json). Slurm 11890006, gilbreth-g007.rcac.purdue.edu, 2026-10-06T02:04:35Z to 2026-10-06T02:05:22Z; repo snapshot `a4b4028e0c13f9ac62b751886bccf7ce0013a617`. One context; one first generation, three discarded warm-ups and ten measured generations. Same pinned BF16 workload as the functional gate; all requested settings retained. [Metric definitions](../wiki/methods/baseline-metrics.md).
+
+| Metric | Median, ms | Measured min–max, ms |
+|---|---:|---:|
+| wall_ms | 2429.042500 | 2416.243000–2439.335000 |
+| text_encode_ms | 65.255500 | 63.690000–68.030000 |
+| denoise_ms | 1725.524000 | 1717.460000–1735.248000 |
+| vae_decode_ms | 605.722500 | 604.704000–615.596000 |
+| other_ms | 28.993500 | 28.504000–29.653000 |
+
+First generation 2655.648000ms; context load 10.384540s (filesystem cache may be warm). Sampled generation device-wide peak 22.880310GiB; child host peak RSS 1.223545GiB. No allocator or per-stage RSS measurement.
+
+All14 generations passed callback/actual transformer-call accounting, phase, engine-setting and CSV/summary checks. Actual transformer passes per generation: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]. Conditioning hits: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]. Approximate steps skipped: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]. Mapped files: []. All14 runner-reported pixel hashes agree; both retained PNGs independently rehashed. Retained RGB equals the same-binary no-cache reference: True.
+
+Interpretation: this establishes a repeated timing distribution for the declared configuration. Selection and deltas belong in the matched comparison; sequential capture conditions were not randomized.
+
+[W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435).

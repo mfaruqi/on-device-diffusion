@@ -1,0 +1,603 @@
+{
+  "id": "a100-sdcpp-flux-klein-base-002",
+  "device_label": "gilbreth-a100-40gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 24068.095999973593,
+    "gpu_span_ms": null,
+    "text_encode_ms": 271.87599998433143,
+    "denoise_ms": 23137.538999988465,
+    "denoise_step_0_ms": 883.1190000055358,
+    "denoise_step_1_ms": 847.0839999790769,
+    "denoise_step_2_ms": 850.0500000081956,
+    "denoise_step_3_ms": 848.8749999960419,
+    "denoise_step_4_ms": 851.6030000173487,
+    "denoise_step_5_ms": 846.6809999954421,
+    "denoise_step_6_ms": 849.194999987958,
+    "denoise_step_7_ms": 844.4360000139568,
+    "denoise_step_8_ms": 856.0839999991003,
+    "denoise_step_9_ms": 848.571999988053,
+    "denoise_step_10_ms": 860.5830000014976,
+    "denoise_step_11_ms": 847.6770000124816,
+    "denoise_step_12_ms": 852.4359999864828,
+    "denoise_step_13_ms": 848.2549999898765,
+    "denoise_step_14_ms": 855.9670000104234,
+    "denoise_step_15_ms": 849.356999999145,
+    "denoise_step_16_ms": 848.2709999952931,
+    "denoise_step_17_ms": 852.7830000093672,
+    "denoise_step_18_ms": 866.4249999856111,
+    "denoise_step_19_ms": 3.423000016482547,
+    "denoise_step_20_ms": 3.4309999900870025,
+    "denoise_step_21_ms": 3.5100000095553696,
+    "denoise_step_22_ms": 851.4999999897555,
+    "denoise_step_23_ms": 3.335999994305894,
+    "denoise_step_24_ms": 3.2900000223889947,
+    "denoise_step_25_ms": 3.2179999980144203,
+    "denoise_step_26_ms": 853.62099998747,
+    "denoise_step_27_ms": 3.22400001459755,
+    "denoise_step_28_ms": 3.1599999929312617,
+    "denoise_step_29_ms": 3.2150000042747706,
+    "denoise_step_30_ms": 3.2559999963268638,
+    "denoise_step_31_ms": 861.2919999868609,
+    "denoise_step_32_ms": 3.488000016659498,
+    "denoise_step_33_ms": 3.3159999875351787,
+    "denoise_step_34_ms": 3.3509999921079725,
+    "denoise_step_35_ms": 3.1820000149309635,
+    "denoise_step_36_ms": 860.3789999906439,
+    "denoise_step_37_ms": 3.626000019721687,
+    "denoise_step_38_ms": 3.4119999909307808,
+    "denoise_step_39_ms": 3.5170000046491623,
+    "denoise_step_40_ms": 853.581999981543,
+    "denoise_step_41_ms": 3.380000009201467,
+    "denoise_step_42_ms": 3.224999993108213,
+    "denoise_step_43_ms": 3.2850000134203583,
+    "denoise_step_44_ms": 859.7519999893848,
+    "denoise_step_45_ms": 3.3150000090245157,
+    "denoise_step_46_ms": 3.376000007847324,
+    "denoise_step_47_ms": 859.7019999870099,
+    "denoise_step_48_ms": 3.331000014441088,
+    "denoise_step_49_ms": 853.3909999823663,
+    "vae_decode_ms": 631.5619999950286,
+    "postprocess_ms": null,
+    "other_ms": 27.119000005768612,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": 22.88031005859375,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 24192.53000000026,
+      "min": 24158.456999983173,
+      "max": 24244.361000019126,
+      "mean": 24194.379899997148,
+      "stdev": 30.363933002623266,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 118.9790000062203,
+      "min": 118.15100000239909,
+      "max": 132.2410000138916,
+      "mean": 121.53179999731947,
+      "stdev": 4.4930890124854574,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 23432.649500013213,
+      "min": 23398.612999997567,
+      "max": 23471.63200000068,
+      "mean": 23431.116000004113,
+      "stdev": 28.883650066419893,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 873.7815000058617,
+      "min": 864.8339999781456,
+      "max": 877.2600000083912,
+      "mean": 873.160400002962,
+      "stdev": 3.545411194900997,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 863.570500005153,
+      "min": 858.9919999940321,
+      "max": 866.8919999909122,
+      "mean": 863.6540000006789,
+      "stdev": 2.576667447048855,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 862.0310000114841,
+      "min": 856.7299999995157,
+      "max": 870.1200000068638,
+      "mean": 862.6576000009663,
+      "stdev": 3.8486179129426192,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 862.5194999913219,
+      "min": 859.5239999995101,
+      "max": 866.9430000009015,
+      "mean": 862.8281999932369,
+      "stdev": 2.407891320636075,
+      "n": 10
+    },
+    "denoise_step_4_ms": {
+      "median": 864.9509999959264,
+      "min": 859.7550000122283,
+      "max": 867.8530000033788,
+      "mean": 864.9409000005107,
+      "stdev": 2.4209417531052804,
+      "n": 10
+    },
+    "denoise_step_5_ms": {
+      "median": 864.5985000039218,
+      "min": 860.0819999992382,
+      "max": 872.0200000097975,
+      "mean": 865.2511000051163,
+      "stdev": 3.187458710986086,
+      "n": 10
+    },
+    "denoise_step_6_ms": {
+      "median": 862.5380000012228,
+      "min": 858.7109999789391,
+      "max": 865.8299999951851,
+      "mean": 862.5674999959301,
+      "stdev": 2.0695349596583066,
+      "n": 10
+    },
+    "denoise_step_7_ms": {
+      "median": 865.7010000024457,
+      "min": 860.3550000116229,
+      "max": 871.1480000056326,
+      "mean": 865.2581000031205,
+      "stdev": 3.239545317435015,
+      "n": 10
+    },
+    "denoise_step_8_ms": {
+      "median": 862.4119999876712,
+      "min": 858.4719999926165,
+      "max": 875.5330000130925,
+      "mean": 864.3735999969067,
+      "stdev": 5.647095960047354,
+      "n": 10
+    },
+    "denoise_step_9_ms": {
+      "median": 864.0050000103656,
+      "min": 859.5689999929164,
+      "max": 870.9620000154246,
+      "mean": 864.2238000087673,
+      "stdev": 3.8679791706707327,
+      "n": 10
+    },
+    "denoise_step_10_ms": {
+      "median": 862.8164999827277,
+      "min": 857.3489999980666,
+      "max": 870.8489999989979,
+      "mean": 863.4837999939919,
+      "stdev": 4.355257275657464,
+      "n": 10
+    },
+    "denoise_step_11_ms": {
+      "median": 863.0894999805605,
+      "min": 858.6459999787621,
+      "max": 874.061000009533,
+      "mean": 864.107499999227,
+      "stdev": 4.631922530561807,
+      "n": 10
+    },
+    "denoise_step_12_ms": {
+      "median": 862.9199999995762,
+      "min": 858.6559999966994,
+      "max": 869.447000004584,
+      "mean": 863.4242000000086,
+      "stdev": 3.5776405593553267,
+      "n": 10
+    },
+    "denoise_step_13_ms": {
+      "median": 864.7569999884581,
+      "min": 860.4530000011437,
+      "max": 870.0740000058431,
+      "mean": 864.5841999998083,
+      "stdev": 3.3595438117766694,
+      "n": 10
+    },
+    "denoise_step_14_ms": {
+      "median": 865.8270000159973,
+      "min": 861.4430000016,
+      "max": 874.6659999887925,
+      "mean": 866.6632999986177,
+      "stdev": 5.233082410677998,
+      "n": 10
+    },
+    "denoise_step_15_ms": {
+      "median": 864.0605000109645,
+      "min": 860.1100000087172,
+      "max": 870.4710000019986,
+      "mean": 864.4702000077814,
+      "stdev": 3.4540818925125367,
+      "n": 10
+    },
+    "denoise_step_16_ms": {
+      "median": 863.1349999923259,
+      "min": 861.306999984663,
+      "max": 868.0769999918994,
+      "mean": 863.9109999930952,
+      "stdev": 2.5546871932353983,
+      "n": 10
+    },
+    "denoise_step_17_ms": {
+      "median": 866.2855000147829,
+      "min": 861.6829999955371,
+      "max": 876.0780000011437,
+      "mean": 867.0046000013826,
+      "stdev": 4.966962166874596,
+      "n": 10
+    },
+    "denoise_step_18_ms": {
+      "median": 865.5480000015814,
+      "min": 862.0210000080988,
+      "max": 867.4290000053588,
+      "mean": 864.8471000022255,
+      "stdev": 2.1019477975475143,
+      "n": 10
+    },
+    "denoise_step_19_ms": {
+      "median": 3.332999986014329,
+      "min": 3.2110000029206276,
+      "max": 3.8779999886173755,
+      "mean": 3.3958999934839085,
+      "stdev": 0.20119114678687963,
+      "n": 10
+    },
+    "denoise_step_20_ms": {
+      "median": 3.229500012821518,
+      "min": 3.0430000042542815,
+      "max": 3.6429999745450914,
+      "mean": 3.276100000948645,
+      "stdev": 0.20803067939898656,
+      "n": 10
+    },
+    "denoise_step_21_ms": {
+      "median": 3.2604999869363382,
+      "min": 3.0740000074729323,
+      "max": 3.5180000122636557,
+      "mean": 3.271800000220537,
+      "stdev": 0.125900137583722,
+      "n": 10
+    },
+    "denoise_step_22_ms": {
+      "median": 864.8440000106348,
+      "min": 860.6129999971017,
+      "max": 873.5579999920446,
+      "mean": 865.2468000043882,
+      "stdev": 3.479797591405591,
+      "n": 10
+    },
+    "denoise_step_23_ms": {
+      "median": 3.2884999964153394,
+      "min": 3.0710000137332827,
+      "max": 3.372000006493181,
+      "mean": 3.2811000011861324,
+      "stdev": 0.09127059618964839,
+      "n": 10
+    },
+    "denoise_step_24_ms": {
+      "median": 3.215499993530102,
+      "min": 3.068999998504296,
+      "max": 3.335999994305894,
+      "mean": 3.2217999949352816,
+      "stdev": 0.07434274798489648,
+      "n": 10
+    },
+    "denoise_step_25_ms": {
+      "median": 3.241500016883947,
+      "min": 3.1430000090040267,
+      "max": 3.42100000125356,
+      "mean": 3.249300006427802,
+      "stdev": 0.08222064051967763,
+      "n": 10
+    },
+    "denoise_step_26_ms": {
+      "median": 863.9694999874337,
+      "min": 859.85099998652,
+      "max": 870.1570000266656,
+      "mean": 864.1343999945093,
+      "stdev": 2.913545470627644,
+      "n": 10
+    },
+    "denoise_step_27_ms": {
+      "median": 3.3380000095348805,
+      "min": 3.136000013910234,
+      "max": 3.479000006336719,
+      "mean": 3.324700004304759,
+      "stdev": 0.10378830103659947,
+      "n": 10
+    },
+    "denoise_step_28_ms": {
+      "median": 3.1980000057956204,
+      "min": 3.0620000034105033,
+      "max": 3.320999996503815,
+      "mean": 3.192000000854023,
+      "stdev": 0.0772528297703447,
+      "n": 10
+    },
+    "denoise_step_29_ms": {
+      "median": 3.2110000029206276,
+      "min": 3.109999990556389,
+      "max": 3.3790000015869737,
+      "mean": 3.2155999972019345,
+      "stdev": 0.08400820552048821,
+      "n": 10
+    },
+    "denoise_step_30_ms": {
+      "median": 3.2015000033425167,
+      "min": 3.085999982431531,
+      "max": 3.3709999988786876,
+      "mean": 3.217600000789389,
+      "stdev": 0.08701239403978146,
+      "n": 10
+    },
+    "denoise_step_31_ms": {
+      "median": 863.963000010699,
+      "min": 862.314999976661,
+      "max": 874.2300000158139,
+      "mean": 865.9037000004901,
+      "stdev": 4.226190253915299,
+      "n": 10
+    },
+    "denoise_step_32_ms": {
+      "median": 3.2824999798322096,
+      "min": 3.237999975681305,
+      "max": 3.435999999055639,
+      "mean": 3.2982999953674152,
+      "stdev": 0.06211289660093884,
+      "n": 10
+    },
+    "denoise_step_33_ms": {
+      "median": 3.2980000105453655,
+      "min": 3.089000005275011,
+      "max": 3.4509999968577176,
+      "mean": 3.26500000373926,
+      "stdev": 0.1263188206634752,
+      "n": 10
+    },
+    "denoise_step_34_ms": {
+      "median": 3.1864999909885228,
+      "min": 3.115000028628856,
+      "max": 3.4079999895766377,
+      "mean": 3.2082000019727275,
+      "stdev": 0.09290233363195212,
+      "n": 10
+    },
+    "denoise_step_35_ms": {
+      "median": 3.210499999113381,
+      "min": 3.0940000142436475,
+      "max": 3.3150000090245157,
+      "mean": 3.202599997166544,
+      "stdev": 0.07410532983183313,
+      "n": 10
+    },
+    "denoise_step_36_ms": {
+      "median": 864.7444999951404,
+      "min": 861.2029999785591,
+      "max": 873.2889999810141,
+      "mean": 866.2962999980664,
+      "stdev": 4.073168710834362,
+      "n": 10
+    },
+    "denoise_step_37_ms": {
+      "median": 3.3140000014100224,
+      "min": 3.208999987691641,
+      "max": 3.415999992284924,
+      "mean": 3.3148999966215342,
+      "stdev": 0.0622387021044865,
+      "n": 10
+    },
+    "denoise_step_38_ms": {
+      "median": 3.208999987691641,
+      "min": 3.056000015931204,
+      "max": 3.2950000022538006,
+      "mean": 3.1912999984342605,
+      "stdev": 0.07581856695555074,
+      "n": 10
+    },
+    "denoise_step_39_ms": {
+      "median": 3.26550001045689,
+      "min": 2.9959999956190586,
+      "max": 3.3930000208783895,
+      "mean": 3.2393000088632107,
+      "stdev": 0.1113613324772042,
+      "n": 10
+    },
+    "denoise_step_40_ms": {
+      "median": 866.8765000038547,
+      "min": 862.6820000063162,
+      "max": 873.3129999891389,
+      "mean": 866.8185999966227,
+      "stdev": 3.217262057290775,
+      "n": 10
+    },
+    "denoise_step_41_ms": {
+      "median": 3.2709999941289425,
+      "min": 3.0470000056084245,
+      "max": 3.632000007200986,
+      "mean": 3.30029999895487,
+      "stdev": 0.16770413869579515,
+      "n": 10
+    },
+    "denoise_step_42_ms": {
+      "median": 3.2075000199256465,
+      "min": 3.044000011868775,
+      "max": 3.435999999055639,
+      "mean": 3.2347000087611377,
+      "stdev": 0.12882981801229992,
+      "n": 10
+    },
+    "denoise_step_43_ms": {
+      "median": 3.2789999822853133,
+      "min": 3.13499997719191,
+      "max": 3.4579999919515103,
+      "mean": 3.284399988478981,
+      "stdev": 0.10227652877894414,
+      "n": 10
+    },
+    "denoise_step_44_ms": {
+      "median": 866.0369999997783,
+      "min": 861.6449999972247,
+      "max": 870.0090000056662,
+      "mean": 865.8493000024464,
+      "stdev": 3.0712562338097578,
+      "n": 10
+    },
+    "denoise_step_45_ms": {
+      "median": 3.351499995915219,
+      "min": 3.164000023389235,
+      "max": 3.4410000080242753,
+      "mean": 3.33080000418704,
+      "stdev": 0.07984957594170243,
+      "n": 10
+    },
+    "denoise_step_46_ms": {
+      "median": 3.235500000300817,
+      "min": 3.1079999753274024,
+      "max": 3.46400000853464,
+      "mean": 3.2466999982716516,
+      "stdev": 0.10237627005806405,
+      "n": 10
+    },
+    "denoise_step_47_ms": {
+      "median": 865.2655000041705,
+      "min": 862.7260000212118,
+      "max": 868.7999999965541,
+      "mean": 865.4985000001034,
+      "stdev": 1.8998112259277369,
+      "n": 10
+    },
+    "denoise_step_48_ms": {
+      "median": 3.313500012154691,
+      "min": 3.2629999914206564,
+      "max": 3.468999988399446,
+      "mean": 3.3337999979266897,
+      "stdev": 0.06725209434709861,
+      "n": 10
+    },
+    "denoise_step_49_ms": {
+      "median": 864.4999999960419,
+      "min": 859.5320000022184,
+      "max": 869.105000019772,
+      "mean": 864.8611000040546,
+      "stdev": 2.9137504089478385,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 611.2995000148658,
+      "min": 608.5939999902621,
+      "max": 626.6890000260901,
+      "mean": 612.4058000015793,
+      "stdev": 5.197494487469318,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 29.250999985379167,
+      "min": 28.9640000264626,
+      "max": 29.731999995419756,
+      "mean": 29.326299994136207,
+      "stdev": 0.2627195548484274,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": {
+      "median": 22.88031005859375,
+      "min": 22.88031005859375,
+      "max": 22.88031005859375,
+      "mean": 22.88031005859375,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 9.311283000017283,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": 17.02093505859375,
+    "device_used_peak_during_load_gib": 15.81195068359375,
+    "model_version": "Flux.2 klein"
+  },
+  "host_peak_rss_gib": 1.2059097290039062,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      i32: 1    |    bf16: 797  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:         bf16: 398  ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     bf16: 149  ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:490  - model manager prepared params backend buffers (15225.08 MB, 795 tensors, 16 blocks, VRAM) on CUDA0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 4.00, img_cfg: 4.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 50, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=4096, steps=50, mu=2.023",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "problems": []
+  },
+  "cache_audit": {
+    "requested": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "enabled_generations": 14,
+    "steps_skipped": [
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23,
+      23
+    ],
+    "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

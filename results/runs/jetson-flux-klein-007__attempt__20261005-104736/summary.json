@@ -1,0 +1,177 @@
+{
+  "id": "jetson-flux-klein-007",
+  "record_kind": "two-generation correctness attempt",
+  "profiler": "none",
+  "profiling": null,
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 25917.422999998962,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2266.852000000654,
+    "denoise_ms": 19658.574999994016,
+    "denoise_step_0_ms": 11516.27799999551,
+    "denoise_step_1_ms": 2714.187999998103,
+    "denoise_step_2_ms": 2714.971000001242,
+    "denoise_step_3_ms": 2713.1379999991623,
+    "vae_decode_ms": 3584.9060000036843,
+    "postprocess_ms": null,
+    "other_ms": 407.0900000006077,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 36491.04500000249,
+      "min": 36491.04500000249,
+      "max": 36491.04500000249,
+      "mean": 36491.04500000249,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 11.140000002342276,
+      "min": 11.140000002342276,
+      "max": 11.140000002342276,
+      "mean": 11.140000002342276,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 31985.232999999425,
+      "min": 31985.232999999425,
+      "max": 31985.232999999425,
+      "mean": 31985.232999999425,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 23848.897999996552,
+      "min": 23848.897999996552,
+      "max": 23848.897999996552,
+      "mean": 23848.897999996552,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 2709.818000002997,
+      "min": 2709.818000002997,
+      "max": 2709.818000002997,
+      "mean": 2709.818000002997,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 2713.324999996985,
+      "min": 2713.324999996985,
+      "max": 2713.324999996985,
+      "mean": 2713.324999996985,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 2713.1920000028913,
+      "min": 2713.1920000028913,
+      "max": 2713.1920000028913,
+      "mean": 2713.1920000028913,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 4314.51200000447,
+      "min": 4314.51200000447,
+      "max": 4314.51200000447,
+      "mean": 4314.51200000447,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 180.1599999962491,
+      "min": 180.1599999962491,
+      "max": 180.1599999962491,
+      "mean": 180.1599999962491,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 63.373436000001675,
+    "model_version": "Flux.2 klein",
+    "note": "new_sd_ctx; parameter policy: disk. Requested policy is not proof of continuous residency. Hash checks warmed file cache."
+  },
+  "monitor_window": {
+    "samples": 126,
+    "ram_peak_gib": 5.99609375,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.322265625,
+    "swap_max_gib": 0.3291015625,
+    "gpu_temperature_max_c": 53.25,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "engine_audit": {
+    "settings_confirmed": true,
+    "settings_confirmation_scope": "requested context fields only",
+    "automatic_fitting": false,
+    "conditioning_reuse": true,
+    "conditioning_cache_hits": 1,
+    "mmap_io": {
+      "requested": false,
+      "confirmed_files": [],
+      "scope": "Engine-reported file mappings, not continuous parameter residency or physical I/O"
+    },
+    "parameter_storage": "disk",
+    "segmented_compute_allowed": true,
+    "requested": {
+      "backend": "CUDA0",
+      "params_backend": "disk",
+      "auto_fit": false,
+      "disable_segmented_compute": false,
+      "eager_load": true,
+      "conditioning_cache_size": 1,
+      "diffusion_fa": true,
+      "threads": 4
+    },
+    "reported_parameter_placement": [
+      "40849.997905 [1] model_manager.cpp:490  - model manager prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on CUDA0",
+      "40860.433823 [1] model_manager.cpp:490  - model manager prepared params backend buffers (658.13 MB, 60 tensors, 1 blocks, VRAM) on CUDA0",
+      "40872.562157 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0",
+      "40896.841825 [1] model_manager.cpp:490  - model manager prepared params backend buffers (2346.40 MB, 149 tensors, 3 blocks, VRAM) on CUDA0",
+      "40909.133251 [1] model_manager.cpp:490  - model manager prepared params backend buffers ( 94.72 MB, 140 tensors, 1 blocks, VRAM) on CUDA0"
+    ],
+    "auto_fit_plan_excerpt": [],
+    "unverified": [
+      "physical storage traffic",
+      "placement between logged transitions"
+    ]
+  },
+  "cache_audit": {
+    "requested": null,
+    "enabled_generations": 0
+  },
+  "stage_callbacks_validated": true,
+  "conditioning_cache_hits_per_generation": [
+    0,
+    1
+  ],
+  "timing_method": "host steady_clock at sd.cpp callbacks; includes on-demand loading",
+  "unavailable_metrics": {
+    "gpu_span_ms": "No CUDA event span; use host wall_ms",
+    "postprocess_ms": "Included in sd.cpp decode/output boundary; no separate stage",
+    "peak_alloc_gib/peak_reserved_gib": "No PyTorch allocator",
+    "device_used_peak_gib": "No NVML; system RAM capture is separate and not stage-aligned",
+    "host_rss_gib": "Per-generation process RSS not sampled"
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

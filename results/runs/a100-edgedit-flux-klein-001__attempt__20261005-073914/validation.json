@@ -1,0 +1,15 @@
+{
+  "status": "functional_gate_passed",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "visual_inspection": "Coherent cat holding a readable hello world sign; no obvious corrupt output.",
+  "requested_weight_precision": "bf16",
+  "engine_reported_activation_precision": "f32",
+  "effective_schedule": "Flux2 automatic schedule; mu2.291, sigma sequence1,.967384,.908144,.767200,0",
+  "evidence": "engine.log and pinned flux_pipeline.cpp schedule branch",
+  "timing_eligible": false,
+  "formal_quality_eligible": false,
+  "limits": "CLI ED_WALL gen=0 is invalid timing; repeated adapter required. Placement/flags source audit remains part of integration."
+}
