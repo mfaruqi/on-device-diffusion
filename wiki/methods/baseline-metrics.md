@@ -439,7 +439,7 @@ file-mapping log for each model component and no mapping fallback. This is an ex
 audit, not a memory or latency metric; stage boundaries and sampled system-memory definitions
 remain unchanged. File mapping does not prove zero-copy GPU access, continuous residency,
 or reduced physical disk traffic. See [audit implementation](../../scripts/run_jetson_sdcpp.py)
-and [pinned source excerpt](../../output/overnight-20261004/mmap-source-evidence.txt).
+and [pinned source excerpt](../../raw/engine-evidence/mmap-source-evidence.txt).
 
 ## edge-dit ed-sample adapter
 

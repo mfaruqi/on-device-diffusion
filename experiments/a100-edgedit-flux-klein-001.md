@@ -22,7 +22,7 @@ What latency and memory evidence does the pinned performance build provide for t
 
 ## Results and validation
 
-[Status](../results/runs/a100-edgedit-flux-klein-001__attempt__20261005-073914/status.json), [engine log](../results/runs/a100-edgedit-flux-klein-001__attempt__20261005-073914/engine.log), [validation](../results/runs/a100-edgedit-flux-klein-001__attempt__20261005-073914/validation.json). Completed11:39:14–11:39:30UTC. Output1024×1024; visually coherent cat holding a readable hello world sign. Image hash and original-file hashes are retained in image-check.json and provenance.json.
+[Status](../results/runs/a100-edgedit-flux-klein-001__attempt__20261005-073914/status.json), [validation](../results/runs/a100-edgedit-flux-klein-001__attempt__20261005-073914/validation.json). Completed11:39:14–11:39:30UTC. Output1024×1024; visually coherent cat holding a readable hello world sign. Image hash and original-file hashes are retained in image-check.json and provenance.json.
 
 The engine reports BF16 model weights and **FP32 transformer activations**. BF16 therefore describes weight storage, not uniform activation arithmetic. The log confirms Flux2 scheduling with mu2.291 and four transitions ending at zero. Pinned source flux_pipeline.cpp selects ed_flux2_sigmas for Flux2 when no explicit flow shift is supplied.
 
@@ -44,7 +44,7 @@ This build can produce an image for the pinned workload. A repeated adapter must
 
 Per-pass stdout reports2.283s and1.631s from upstream steady_clock around ed_generate_image, rounded to milliseconds; PNG encoding is outside that interval. No1+3+10 benchmark or sampled memory measurement is claimed. Only the final image survives upstream filename overwriting, so no repeatability claim across the two images is possible.
 
-Raw encode/denoise/decode markers are complete and ordered. Source uses system_clock (epoch time), not CUDA events or a monotonic clock. The encode marker includes prompt conditioning plus latent/schedule setup; decode excludes final tensor-to-image conversion. Preserve those semantics before mapping to shared stage names. timing.json's time_wo_decoding and time_with_decoding both equal full e2e and must not be treated as separate stages. [Pinned source inspection](../output/overnight-20261004/edge-phase-source.txt).
+Raw encode/denoise/decode markers are complete and ordered. Source uses system_clock (epoch time), not CUDA events or a monotonic clock. The encode marker includes prompt conditioning plus latent/schedule setup; decode excludes final tensor-to-image conversion. Preserve those semantics before mapping to shared stage names. timing.json's time_wo_decoding and time_with_decoding both equal full e2e and must not be treated as separate stages. [Pinned source inspection](../raw/engine-evidence/edge-phase-source.txt).
 
 Next: a minimal parser/runner using existing ed-sample repeats, explicit timing limits and unavailable fields; no upstream source modification.
 

@@ -1,7 +1,0 @@
-{
-  "status": "failed",
-  "phase": "compile",
-  "started_utc": "2026-10-05T11:40:14.123606+00:00",
-  "finished_utc": "2026-10-05T11:43:38.860800+00:00",
-  "error": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-campaigns/20261005-options/torchtrt-smoke.py\", line 51, in <module>\n    compiled=torch_tensorrt.dynamo.compile(ep,arg_inputs=args,**settings)\n  File \"/scratch/gilbreth/mfaruqi/envs/torchtrt-2.5.0/lib/python3.10/site-packages/torch_tensorrt/dynamo/_compiler.py\", line 218, in compile\n    trt_arg_inputs: Sequence[Input] = prepare_inputs(arg_inputs)\n  File \"/scratch/gilbreth/mfaruqi/envs/torchtrt-2.5.0/lib/python3.10/site-packages/torch_tensorrt/dynamo/utils.py\", line 227, in prepare_inputs\n    torchtrt_input = prepare_inputs(\n  File \"/scratch/gilbreth/mfaruqi/envs/torchtrt-2.5.0/lib/python3.10/site-packages/torch_tensorrt/dynamo/utils.py\", line 220, in prepare_inputs\n    return Input.from_tensor(\n  File \"/scratch/gilbreth/mfaruqi/envs/torchtrt-2.5.0/lib/python3.10/site-packages/torch_tensorrt/_Input.py\", line 329, in from_tensor\n    raise ValueError(\nValueError: Tensor does not have a supported memory format, supported formats are contiguous or channel_last\n"
-}

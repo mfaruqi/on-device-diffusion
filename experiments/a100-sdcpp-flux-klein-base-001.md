@@ -60,7 +60,7 @@ First generation43610.616ms; eager context loading9.087711s (filesystem cache ma
 
 ## Failed separate profiler attempt
 
-[Run](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-081219/), [status and traceback](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-081219/status.json), [profiler output](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-081219/engine/stdout.txt). Job11882497 on gilbreth-g007 failed12:12:24UTC, before model loading/generation produced any measurements. Nsight Systems2024.4.2 reported `Failed to probe the process (sync). Timeout: 2 sec`. No latency, memory or image result is inferred from this failed attempt. Its config, command and environment remain intact.
+[Run](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-081219/), [status and traceback](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-081219/status.json). Job11882497 on gilbreth-g007 failed12:12:24UTC, before model loading/generation produced any measurements. Nsight Systems2024.4.2 reported `Failed to probe the process (sync). Timeout: 2 sec`. No latency, memory or image result is inferred from this failed attempt. Its config, command and environment remain intact.
 
 Hypothesis: the failure concerns profiler startup/environment; the available message does not establish its cause. The harness shared-library check resolved all dependencies. No model, precision or resolution fallback was attempted.
 
@@ -86,7 +86,7 @@ The specified Base configuration fits and passes the correctness gate. Denoising
 
 ## Nsight retry failed before inference, 2026-10-05
 
-[Failed run](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/), [status](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/status.json), [environment](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/environment.json), [profiler output](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/engine/stdout.txt). Slurm11883400 on gilbreth-g011 failed with the same `Failed to probe the process (sync). Timeout: 2 sec` error despite excluding the earlier g006/g007 nodes. No load, generation, stage timing or quality result was produced. The bounded retry is exhausted; further node retries are not scheduled. The message identifies a profiler startup failure, not its underlying cause.
+[Failed run](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/), [status](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/status.json), [environment](../results/runs/a100-sdcpp-flux-klein-base-001__profile__20261005-191522/environment.json). Slurm11883400 on gilbreth-g011 failed with the same `Failed to probe the process (sync). Timeout: 2 sec` error despite excluding the earlier g006/g007 nodes. No load, generation, stage timing or quality result was produced. The bounded retry is exhausted; further node retries are not scheduled. The message identifies a profiler startup failure, not its underlying cause.
 
 ## Full protocol a100-sdcpp-flux-klein-base-001__baseline__20261005-214624
 

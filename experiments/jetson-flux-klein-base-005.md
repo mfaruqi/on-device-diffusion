@@ -20,7 +20,7 @@ Can exact reuse of fixed positive and negative prompt conditioning remove repeat
 
 [Attempt config](../results/runs/jetson-flux-klein-base-005__attempt__20261005-091031/config.json), [full config](../configs/jetson-flux-klein-base-q4-512-conditioning-cache.json), [environment](../results/runs/jetson-flux-klein-base-005__attempt__20261005-091031/environment.json). Jetson Orin Nano25W, four CPU threads; pinned Base Q4_0 transformer, Qwen3 Q4_K_M encoder and BF16 VAE,512²,50Euler steps,flux2 scheduler,CFG4,seed0,one cat/sign prompt. Fixed eager disk-backed segmented CUDA, diffusion flash attention, prefetch enabled, no tiling. Runner snapshot f389548 preserves older checkouts and reuses the cache-capable harness binary without rebuilding.
 
-Two cache entries retain positive and negative conditioning separately. First generation must have zero hits, second two; both keep100transformer passes. [Metric definitions](../wiki/methods/baseline-metrics.md#exact-sdcpp-conditioning-reuse). Cache-hit text_encode_ms means conditioning retrieval and setup through the existing completion callback, not a new encoder forward. [Pinned-source evidence](../output/overnight-20261004/conditioning-source-evidence.txt).
+Two cache entries retain positive and negative conditioning separately. First generation must have zero hits, second two; both keep100transformer passes. [Metric definitions](../wiki/methods/baseline-metrics.md#exact-sdcpp-conditioning-reuse). Cache-hit text_encode_ms means conditioning retrieval and setup through the existing completion callback, not a new encoder forward. [Pinned-source evidence](../raw/engine-evidence/conditioning-source-evidence.txt).
 
 ## Results
 

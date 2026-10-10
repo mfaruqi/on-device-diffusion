@@ -22,7 +22,7 @@ Can Torch-TensorRT export, compile and run a real distilled klein transformer in
 
 ## Results
 
-[Status and traceback](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/status.json), [compiler log](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/compiler.log), [load](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/load.json), [inputs](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/inputs.json). Eager image and graph export completed. Context/pipeline loading took 16.562869s; export took 6.800670s. These are one-off preparation observations, not medians.
+[Status and traceback](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/status.json), [load](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/load.json), [inputs](../results/runs/a100-flux-klein-torchtrt-001__attempt__20261005-074014/inputs.json). Eager image and graph export completed. Context/pipeline loading took 16.562869s; export took 6.800670s. These are one-off preparation observations, not medians.
 
 Compilation failed in Input.from_tensor while preparing arguments: `Tensor does not have a supported memory format, supported formats are contiguous or channel_last`. No compiled runtime module inventory, compiled forward or full compiled image was produced. The failed phase is compile; precision and model were not changed. Original output hashes are saved in provenance.json.
 

@@ -18,11 +18,14 @@ Rules come from wiki/SCHEMA.md. Checks:
   index         wiki/index.md lists every page (regenerate with --write-index)
   log           entries use `## [YYYY-MM-DD] kind | title`
   open          number of `Status: Unresolved` items (reported, not an error)
+  hygiene       ignored files in Git, known unrelated drafts, placeholders and oversized files;
+                semantic project relevance still requires the wiki-lint skill's review
 """
 
 import argparse
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -106,12 +109,44 @@ def strip_code(text):
     return re.sub(r"`[^`\n]*`", lambda m: " " * len(m.group(0)), text)
 
 
+def repository_hygiene(root):
+    """Inspect versioned and non-ignored new files; never delete or traverse local caches."""
+    errors, warnings = [], []
+    try:
+        def git_paths(*args):
+            output = subprocess.check_output(
+                ["git", "ls-files", "-z", *args], cwd=root, stderr=subprocess.PIPE
+            )
+            return set(output.decode().split("\0")) - {""}
+
+        paths = git_paths("--cached", "--others", "--exclude-standard")
+        ignored = git_paths("--cached", "--ignored", "--exclude-standard")
+    except (OSError, subprocess.CalledProcessError) as exc:
+        return [f"hygiene: cannot inspect Git files ({type(exc).__name__})"], []
+
+    for name in sorted(paths):
+        path = root / name
+        # Removed files still appear in the index until staged; symlinks stay within Git's scope.
+        if not path.exists() or path.is_symlink():
+            continue
+        if name in ignored:
+            errors.append(f"hygiene: {name}: tracked despite ignore rules; untrack or justify the rule")
+        if "doordash" in path.name.lower():
+            errors.append(f"hygiene: {name}: unrelated application draft; keep outside this repository")
+        if re.match(r"^untitled(?:[ ._-]|$)", path.name, re.I):
+            warnings.append(f"hygiene: {name}: placeholder; review whether it belongs in the project")
+        if path.stat().st_size > 5 * 1024 * 1024:
+            warnings.append(f"hygiene: {name}: exceeds 5 MiB; review artifact storage instead of Git")
+    return errors, warnings
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--write-index", action="store_true")
     args = ap.parse_args()
 
-    errors, warnings, info = [], [], []
+    errors, warnings = repository_hygiene(ROOT)
+    info = []
     pages = md_files(WIKI)
     records = md_files(RECORDS)
     inbound = {p: 0 for p in pages}

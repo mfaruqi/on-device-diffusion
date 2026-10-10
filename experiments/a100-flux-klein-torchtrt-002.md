@@ -22,7 +22,7 @@ Can the real distilled klein transformer input compile at unchanged BF16 precisi
 
 ## Results
 
-[Status/traceback](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/status.json), [compiler log](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/compiler.log), [layout receipt](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/input-layout.json), [validation](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/validation.json), [provenance](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/provenance.json).
+[Status/traceback](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/status.json), [layout receipt](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/input-layout.json), [validation](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/validation.json), [provenance](../results/runs/a100-flux-klein-torchtrt-002__attempt__20261005-081316/provenance.json).
 
 All five compile inputs are contiguous and value-equal to their originals. Eager image and graph export completed. Pipeline loading took28.990065s and export7.112953s; these are one-off preparation observations, not timing medians.
 
