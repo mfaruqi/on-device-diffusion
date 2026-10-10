@@ -20,13 +20,6 @@ reuse, precision, and memory placement** to reduce latency while meeting a decla
 profiling, and experiment records. The compiled pipeline and planner are being developed;
 they are not yet a ready-to-use inference engine.
 
-## Proposed architecture
-
-![Proposed flow: import FLUX.2 klein into TVM, compile compatible variants, choose a plan within device and quality constraints, then execute with measured feedback. CUDA, Metal and WebGPU are planned targets.](docs/assets/proposed-architecture.png)
-
-The diagram shows the intended design. Today's benchmarking and profiling work supplies evidence
-for the compiler and planner; Wan and broader mobile support remain future work.
-
 ## Current focus
 
 | Area | Status |
@@ -60,6 +53,24 @@ optimization experiment, or a reproducibility problem. Useful reports include:
 
 Small, reproducible contributions are welcome. Keep model weights and large traces outside Git;
 link to artifacts and include the configuration needed to reproduce them.
+
+## Proposed architecture
+
+<details>
+<summary>View the planned compiler and runtime design</summary>
+
+The diagram shows the intended design. Today's benchmarking and profiling work supplies evidence
+for the compiler and planner; Wan and broader mobile support remain future work.
+
+<p align="center">
+  <a href="docs/assets/proposed-architecture.png">
+    <img src="docs/assets/proposed-architecture.png" width="640" alt="Proposed architecture: TVM compilation, device-aware plan selection, and adaptive execution on CUDA, Metal and WebGPU.">
+  </a>
+</p>
+
+Click the diagram to view it at full size.
+
+</details>
 
 ---
 
