@@ -1,0 +1,4 @@
+# Reproducible rendered charts and W&B runtime files stay local / in the W&B artifact.
+*.html
+*.pdf
+wandb/

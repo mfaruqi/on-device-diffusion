@@ -2,7 +2,7 @@
 type: project
 summary: Current project state, active campaign and blockers. Read first each session.
 status: active
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Hot: current state
@@ -21,7 +21,8 @@ Schedule is optimistic with roll-over allowed ([milestones](project/milestones.m
 - edge-dit full A100 baseline validated with stated limits ([record](../experiments/a100-edgedit-flux-klein-001.md)); Torch-TensorRT compile gate failed ([record](../experiments/a100-flux-klein-torchtrt-002.md)).
 
 ## Campaign (Codex is the single writer while it runs)
-- State and handoff: [state](../output/overnight-20261004/state.json), [README](../output/overnight-20261004/README.md). Jetson scope closed; A100 Base conditioning full protocol pending ([record](../experiments/a100-sdcpp-flux-klein-base-003.md)).
+- State and handoff: [state](../output/overnight-20261004/state.json), [README](../output/overnight-20261004/README.md). Jetson scope closed; A100 Base conditioning full protocol recovered; different-GPU comparison caveat ([record](../experiments/a100-sdcpp-flux-klein-base-003.md)).
+- Stage charts: [27 completed runs, seven panels](../output/stage-breakdown-20261007/README.md); means stacked, total medians/ranges shown ([October log](log-2026-10.md)).
 - Base engine comparison keeps RNG/timer confounds ([comparison](../experiments/compare-a100-base-pytorch-vs-sdcpp.md)).
 
 ## Next (Week 2 → 3)

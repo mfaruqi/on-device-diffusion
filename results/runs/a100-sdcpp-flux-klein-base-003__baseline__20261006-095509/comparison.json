@@ -1,0 +1,22 @@
+{
+  "reference": "a100-sdcpp-flux-klein-base-001__baseline__20261005-214624",
+  "variant": "a100-sdcpp-flux-klein-base-003__baseline__20261006-095509",
+  "same_workload_model_precision_protocol": true,
+  "same_binary": true,
+  "engine_setting_differences": {
+    "conditioning_cache_size": {
+      "reference": 0,
+      "variant": 2
+    }
+  },
+  "same_gpu_uuid": false,
+  "reference_device": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+  "variant_device": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-e4448b86-f07f-16f6-7dd5-325666c5aa40, 250.00 W",
+  "wall_delta_ms": -209.00499999697786,
+  "wall_delta_percent": -0.4752687972941672,
+  "reference_over_variant": 1.0047753838824862,
+  "speed_range_rule_arithmetic_pass": true,
+  "exact_pixel_screen_pass": true,
+  "combination_selection_status": "deferred until a paired reference/conditioning repeat on the same physical GPU; different GPUs confound this small difference",
+  "formal_quality_eligible": false
+}
