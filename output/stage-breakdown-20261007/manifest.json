@@ -342,6 +342,55 @@
       "gpu": "Apple M5",
       "label": "4-bit",
       "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-flux-klein-005__baseline__20261015-133226",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; resident; uncontrolled system swap",
+      "label": "TaylorSeer attention cache"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-004__baseline__20261015-134636",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "4-bit conditioning reuse"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-005__baseline__20261015-134829",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "4-bit VAE tiling 256"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-006__baseline__20261015-135054",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; 8-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "8-bit VAE tiling 256"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-004__baseline__20261015-135837",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16 resident; uncontrolled system swap",
+      "label": "torch.compile"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-005__baseline__20261015-143814",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16 resident; uncontrolled system swap",
+      "label": "TaylorSeer attention cache"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-004__baseline__20261015-150452",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit conditioning reuse",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap; exact repeated prompt-pair reuse"
     }
   ],
   "charts": [
@@ -452,20 +501,23 @@
       "runs": [
         "m5-flux-klein-001__baseline__20261010-183446",
         "m5-flux-klein-002__baseline__20261010-203805",
-        "m5-flux-klein-003__baseline__20261010-204109"
+        "m5-flux-klein-003__baseline__20261010-204109",
+        "m5-flux-klein-005__baseline__20261015-133226"
       ],
       "title": "M5 \u00b7 distilled / 4 steps \u00b7 PyTorch / Diffusers options",
-      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval. TaylorSeer predicts attention outputs; not whole-transformer skips. October 15 run had substantial swap pressure; no causal speedup or quality approval."
     },
     {
       "key": "m5-base-pytorch-options",
       "runs": [
         "m5-flux-klein-base-001__baseline__20261010-184312",
         "m5-flux-klein-base-002__baseline__20261010-210907",
-        "m5-flux-klein-base-003__baseline__20261010-214732"
+        "m5-flux-klein-base-003__baseline__20261010-214732",
+        "m5-flux-klein-base-004__baseline__20261015-135837",
+        "m5-flux-klein-base-005__baseline__20261015-143814"
       ],
       "title": "M5 \u00b7 base / 50 steps \u00b7 PyTorch / Diffusers options",
-      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval. October 15 additions: fullgraph Inductor; TaylorSeer attention predictions with separate CFG caches. Numerical/image differences and substantial swap; no formal quality or controlled speedup approval."
     },
     {
       "key": "m5-distilled-engines",
@@ -508,11 +560,33 @@
         "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
       ],
       "note": "Same pinned source checkpoint \u00b7 no reuse/offload \u00b7 eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
+    },
+    {
+      "key": "m5-distilled-mflux-options",
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 MFLUX individual options",
+      "runs": [
+        "m5-mflux-flux-klein-003__baseline__20261012-161546",
+        "m5-mflux-flux-klein-004__baseline__20261015-134636",
+        "m5-mflux-flux-klein-005__baseline__20261015-134829",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-006__baseline__20261015-135054"
+      ],
+      "note": "Compare each option to its same-bit reference. Native MLX compilation retained; synchronized host stages.<br>Repeated identical prompt; first/warmups excluded. System swap, thermals and background load uncontrolled; descriptive timings only.<br>Conditioning output matches 4-bit reference; tiling changes pixels and can change colors. No formal quality approval; 4-bit sign-text error retained."
+    },
+    {
+      "key": "m5-base-mflux-options",
+      "title": "M5 \u00b7 Base / 50 steps \u00b7 MFLUX individual options",
+      "runs": [
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+        "m5-mflux-flux-klein-base-004__baseline__20261015-150452"
+      ],
+      "note": "4-bit reference versus exact repeated prompt-pair reuse. Native MLX compilation; synchronized host stages.<br>First/warmups excluded; system swap, thermals and background load uncontrolled. Descriptive timings only.<br>Conditioning output matches reference; 4-bit sign-text errors retained. No formal quality approval."
     }
   ],
   "exclusions": [
     "Smoke attempts, failed/incomplete runs and profiler captures excluded.",
     "Older duplicate reference captures excluded except the original PyTorch and Jetson references.",
-    "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here."
+    "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here.",
+    "October 15 distilled compile failed the numerical gate; Base 4-bit tiling full was sleep-interrupted and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded; recovery pending."
   ]
 }

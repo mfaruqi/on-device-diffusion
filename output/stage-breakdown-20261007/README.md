@@ -1,8 +1,8 @@
-# Klein stage breakdowns — updated 2026-10-12
+# Klein stage breakdowns — updated 2026-10-15
 
-[Open the fifteen interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
+[Open the seventeen interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
 
-Week 2 baseline analysis, RQ1. Forty-nine completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
+Week 2–3 engine and individual-option analysis, RQ1. Fifty-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Earlier MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
 
 | Panel | Sources |
 |---|---|
@@ -14,9 +14,17 @@ Week 2 baseline analysis, RQ1. Forty-nine completed, unprofiled runs; one first 
 | A100 Base engine references | PyTorch/Diffusers and sd.cpp |
 | A100 edge-dit phases | Encoding + setup, denoising, decoding, remaining time |
 | M5 distilled / Base sd.cpp options (two panels) | Fresh mixed-Q4 reference, EasyCache, conditioning reuse, prefetch off, mmap |
-| M5 distilled / Base PyTorch options (two panels) | BF16 reference, conditioning reuse, VAE tiling 256 pixels / 25% overlap |
+| M5 distilled / Base PyTorch options (two panels) | BF16 reference, conditioning reuse, VAE tiling 256 pixels / 25% overlap, TaylorSeer; Base also fullgraph torch.compile |
 | M5 distilled / Base engine configurations (two panels) | PyTorch/Diffusers BF16, sd.cpp mixed Q4 and MFLUX BF16/8-bit/4-bit where completed; precision, timing and RNG differ |
 | M5 distilled / Base MFLUX precision (two panels) | Distilled BF16, 8-bit, 4-bit; Base 8-bit and 4-bit (BF16 smoke crashed) |
+
+| M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; distilled also 4-bit and 8-bit VAE tiling |
+
+## October 15 additions
+
+Seven validated full protocols were added, preserving all 49 earlier sources and 15 panels. [Remote verification](followup-upload-verification.json) checks the latest four modified/new option panels, all plot/image paths and the analysis artifact manifest. Distilled compilation failed its numerical gate; Base 4-bit tiling was interrupted by clamshell sleep and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded pending recovery.
+
+TaylorSeer predicts attention outputs with separate CFG histories; it is approximate and has no formal quality approval. Compile smoke uses an extra identical-input eager check; only the subsequent full protocol appears here. System swap, thermals and background load were uncontrolled; differences are descriptive, not isolated optimization speedups. Exact conditioning reuse applies only to repeated identical prompt pairs. Tiling changes pixels through local normalization.
 
 ## Reading the charts
 

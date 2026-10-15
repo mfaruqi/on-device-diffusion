@@ -323,3 +323,9 @@ M5 Metal bring-up (functional smoke, not a repeated baseline):
 | `m5-mflux-flux-klein-base-004__attempt__20261015-150106` | [m5-mflux-flux-klein-base-004](../experiments/m5-mflux-flux-klein-base-004.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-conditioning.resolved | — | — | — | Running smoke; no validated full result |
 
 | `m5-mflux-flux-klein-base-004__baseline__20261015-150452` | [m5-mflux-flux-klein-base-004](../experiments/m5-mflux-flux-klein-base-004.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-conditioning.resolved | — | — | — | Smoke gate passed; full protocol running |
+
+| `m5-mflux-flux-klein-base-005__attempt__20261015-153625` | [m5-mflux-flux-klein-base-005](../experiments/m5-mflux-flux-klein-base-005.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-vae-tiled256.resolved | 154681.6 | 588.3 / 152686.1 / 1400.9 | — | complete; see validation and environment limits |
+
+| `m5-mflux-flux-klein-base-005__baseline__20261015-154117` | [m5-mflux-flux-klein-base-005](../experiments/m5-mflux-flux-klein-base-005.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-vae-tiled256.resolved | — | — | — | Invalid full: clamshell sleep; partial evidence retained; recovery pending |
+
+| `m5-mflux-flux-klein-base-006__attempt__20261015-163359` | [m5-mflux-flux-klein-base-006](../experiments/m5-mflux-flux-klein-base-006.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q8-512-vae-tiled256.resolved | — | — | — | Failed preflight: AC power required; no inference |

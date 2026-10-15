@@ -4,7 +4,7 @@ summary: References from the proposal and related work to read. A paper gets its
 status: unread
 ref: proposal references [1]–[25]
 source: ../../proposal/OnDeviceDiffusionProposal.pdf
-updated: 2026-10-10
+updated: 2026-10-15
 ---
 
 # Reading list
@@ -19,6 +19,7 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 
 | Group | Reference | Why it matters | Status |
 |---|---|---|---|
+| Heterogeneous scheduling | HeteroMosaic (Jun et al., 2026), arXiv 2607.12839v1 | causal LLM micro-batching, shared-bandwidth roofline and trace-guided critical-interval tuning; diffusion transfer unverified | [source review ingested](heteromosaic.md) |
 | Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone/Core ML/MLX reference; cached-prompt Android timing versus fresh-prompt protocol | [source review ingested](dreamlite.md); export/device validation pending, further work temporarily deferred |
 | Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse; polynomial calibration and threshold cost | [source review ingested](teacache.md); target integration unverified |
 | Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | online probe and trajectory alignment; second policy | [source review ingested](dicache.md); target integration unverified |
