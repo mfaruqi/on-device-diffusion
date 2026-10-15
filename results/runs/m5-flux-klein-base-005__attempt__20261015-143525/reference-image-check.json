@@ -1,0 +1,13 @@
+{
+  "reference": "results/runs/m5-flux-klein-base-001__baseline__20261010-184312",
+  "variant_image": "01-measured.png",
+  "pixel_identical": false,
+  "pixel_mae_rgb": [
+    30.648128509521484,
+    30.69818115234375,
+    29.007408142089844
+  ],
+  "formal_quality_eligible": false,
+  "controlled_performance_eligible": false,
+  "note": "Single development prompt diagnostic. System swap/background activity uncontrolled."
+}

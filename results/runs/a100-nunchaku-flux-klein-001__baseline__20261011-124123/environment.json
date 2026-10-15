@@ -1,0 +1,65 @@
+{
+  "timestamp_utc": "2026-10-11T16:41:29Z",
+  "hostname": "gilbreth-g009.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-687.49.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "python": "3.11.7 (main, Dec 15 2023, 18:12:31) [GCC 11.2.0]",
+  "python_executable": "/scratch/gilbreth/mfaruqi/envs/nunchaku-klein-py311-cu128/bin/python",
+  "torch": "2.11.0+cu128",
+  "torch_cuda_runtime": "12.8",
+  "cudnn": 91900,
+  "diffusers": "0.40.0",
+  "transformers": "5.19.0",
+  "gpu_name": "NVIDIA A100-PCIE-40GB",
+  "gpu_total_memory_gib": 39.4935302734375,
+  "gpu_uuid": "b86058a3-07d9-2784-b167-976db5c2fee8",
+  "gpu_sm_count": 108,
+  "gpu_compute_capability": "8.0",
+  "nvidia_driver": "595.91.07",
+  "sdp_backends_enabled": {
+    "flash": true,
+    "mem_efficient": true,
+    "math": true
+  },
+  "tf32_matmul": false,
+  "device_memory_sampler": "nvml handle by uuid GPU-b86058a3-07d9-2784-b167-976db5c2fee8",
+  "git_commit": "",
+  "git_dirty_files": [],
+  "env_vars": {
+    "SLURM_JOB_ID": "11929464",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g009",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": "/scratch/gilbreth/mfaruqi/huggingface",
+    "HF_HUB_OFFLINE": "1"
+  },
+  "nunchaku": "1.3.0.dev20260622+cu12.8torch2.11",
+  "nunchaku_install": {
+    "archive_info": {
+      "hash": "sha256=bcdfe6fcc36cd37da34c1d0f1e0fa7c9b4201b2a70a89a3274d22420221afd2f",
+      "hashes": {
+        "sha256": "bcdfe6fcc36cd37da34c1d0f1e0fa7c9b4201b2a70a89a3274d22420221afd2f"
+      }
+    },
+    "url": "file:///scratch/gilbreth/mfaruqi/huggingface/hub/models--tonera--vitoom-nunchaku/snapshots/85bad5510d409570527b018387491fd0c81e4727/nunchaku-1.3.0.dev20260622%2Bcu12.8torch2.11-cp311-cp311-linux_x86_64.whl"
+  },
+  "source_snapshot": {
+    "git_commit": "9b4a245cf0ab157806d72363aa19be40bd78a426",
+    "local_edits_included": true,
+    "files": {
+      "scripts/run_nunchaku.py": "e1b2899ff8122b4285ba6d0522b5183766a6fdcfc3df0066b11645c2dc6d53cb",
+      "scripts/run_flux.py": "4debd1a9ce92273871bc40818e912c017361f766c195f7625e02a1a6f0adde4f",
+      "scripts/flux_engine.py": "aa17ec37ac15807187f521707ccc80caab6d1679f29d5a402751dc3ab80072db",
+      "scripts/benchlib.py": "387d0e2cbf3793c77a2c465d070941357679ee82bfcbbf56101e5ae189309fc0",
+      "scripts/measurement.py": "2e5511d58b5517a10069b0862352ad01f7f805c031bb842f39f843ba2b9a3883",
+      "scripts/measurement_events.py": "b642617c06640316e6c8993db9b835edebb8b718bc90593855d6c1fc5988aea0",
+      "scripts/torch_stages.py": "d7322e44588be8c8a608b1c4fbd2335ebde4de3e77221e98cf22a2e3c2648f94",
+      "scripts/nunchaku.slurm": "e9917aa953b29cb75e77701583119f25dcc27a7d44a5ac4be8b42a5543138332",
+      "configs/a100-nunchaku-flux-klein-int4-r32-smoke.json": "b8afcde06d7ddfcbc0c5c996089f3e69a3a7ad275c356a40dcf8c3e414e42f73",
+      "configs/a100-nunchaku-flux-klein-int4-r32.json": "21dc7e89ad04b809676e4ced4551e822c2e0c0d2a230bf1d2838aff8e21e7211"
+    },
+    "repair": "BF16 parameters remain required; permit only nonpersistent Qwen3 FP32 rotary buffers; record named tensor audit",
+    "prior_snapshot": "snapshots/job-11929279"
+  }
+}

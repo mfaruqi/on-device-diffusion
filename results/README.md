@@ -6,6 +6,9 @@ directory are git-ignored (kept locally, not in git).
 
 | Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
 |---|---|---|---|---|---|---|---|
+| `a100-nunchaku-flux-klein-001__attempt__20261011-123802` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 904.8 | 48.9 / 658.6 / 164.4 | 12.52 | complete (job 11929464): smoke; quality unassessed |
+| `a100-nunchaku-flux-klein-001__baseline__20261011-124123` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 897.8 | 47.1 / 663.2 / 164.8 | 12.52 | complete (job 11929464): full protocol; quality unassessed |
+| `a100-nunchaku-flux-klein-001__attempt__20261011-113031` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g005) | a100-nunchaku-flux-klein-int4-r32-smoke | – | – | – | failed (job 11929279): text-encoder dtype guard before generation |
 | `a100-flux-klein-001__baseline__20260923-221530` | [a100-flux-klein-001](../experiments/a100-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g008) | a100-flux-klein-bf16 | 1240.6 | 47.0 / 980.8 / 165.3 | 17.32 | complete (job 11807390) |
 | `a100-flux-klein-001__profile__20260923-221717` | [a100-flux-klein-001](../experiments/a100-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g008) | a100-flux-klein-bf16 + `--profile` | 1236.8 | 47 / 981 / 165 | 17.32 | complete (job 11807396) |
 | `a100-flux-klein-001__repeat__20260925-123908` | [a100-flux-klein-001](../experiments/a100-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g006) | a100-flux-klein-bf16 (repeat after runner refactor) | 1229.6 | 47.5 / 979.5 / 165.9 | 17.32 | complete (job 11817919) |
@@ -195,3 +198,128 @@ show the old path from when they were written:
 
 | `a100-sdcpp-flux-klein-base-003__attempt__20261005-234246` | [a100-sdcpp-flux-klein-base-003](../experiments/a100-sdcpp-flux-klein-base-003.md) | A100 PCIe40GB, g007 | Base exact conditioning cache capacity2 | 43698.488000 | 14.648000 / 43042.353000 / 613.112000 | unavailable | complete job11891252; two-generation gate, not full benchmark; device peak22.880310GiB |
 | `a100-sdcpp-flux-klein-base-003__baseline__20261006-095509` | [a100-sdcpp-flux-klein-base-003](../experiments/a100-sdcpp-flux-klein-base-003.md) | A100 PCIe40GB, g000 | Base exact conditioning cache capacity2 | 43767.162000 | 15.111000 / 43110.188000 / 613.090500 | unavailable | complete job11893094; 1+3+10; different physical GPU from reference; device peak22.880310GiB |
+
+M5 Metal bring-up (functional smoke, not a repeated baseline):
+
+| Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
+|---|---|---|---|---|---|---|---|
+| `m5-sdcpp-flux-klein-001__attempt__20261010-140940` | [m5-sdcpp-flux-klein-001](../experiments/m5-sdcpp-flux-klein-001.md) | MacBook Air M5 | mixed-Q4 512² smoke, sleep guard | 14709.992 | 488.476 / 11876.472 / 2342.870 | unavailable | complete smoke; one measured observation |
+
+| `m5-sdcpp-flux-klein-001__baseline__20261010-152141` | [m5-sdcpp-flux-klein-001](../experiments/m5-sdcpp-flux-klein-001.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512 | 17198.3 | 490.1 / 14038.4 / 2604.5 | — | complete; 1+3+10, background preparation caveat |
+
+
+
+| `m5-sdcpp-flux-klein-001__baseline__20261010-165421` | [m5-sdcpp-flux-klein-001](../experiments/m5-sdcpp-flux-klein-001.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512 | 16211.1 | 456.0 / 13401.1 / 2342.2 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-001__baseline__20261010-165813` | [m5-sdcpp-flux-klein-base-001](../experiments/m5-sdcpp-flux-klein-base-001.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512 | 407547.2 | 1202.9 / 403543.3 / 2798.8 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-001__attempt__20261010-183352` | [m5-flux-klein-001](../experiments/m5-flux-klein-001.md) | MacBook Air M5 | m5-flux-klein-bf16-512.resolved | 7597.7 | 600.4 / 6515.8 / 472.4 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-001__baseline__20261010-183446` | [m5-flux-klein-001](../experiments/m5-flux-klein-001.md) | MacBook Air M5 | m5-flux-klein-bf16-512.resolved | 8277.9 | 944.1 / 6861.6 / 480.8 | — | complete; see validation and environment limits |
+
+| `m5-edgedit-flux-klein-001__attempt__20261010-183705` | [m5-edgedit-flux-klein-001](../experiments/m5-edgedit-flux-klein-001.md) | MacBook Air M5 | m5-edgedit-flux-klein-bf16-512 | — | — | — | failed; see validation and environment limits |
+
+| `m5-flux-klein-base-001__attempt__20261010-183713` | [m5-flux-klein-base-001](../experiments/m5-flux-klein-base-001.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512.resolved | 169887.5 | 1743.2 / 167620.2 / 503.8 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-base-001__baseline__20261010-184312` | [m5-flux-klein-base-001](../experiments/m5-flux-klein-base-001.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512.resolved | 167100.9 | 2682.0 / 163212.1 / 570.0 | — | complete; see validation and environment limits |
+
+| `m5-edgedit-flux-klein-base-001__attempt__20261010-192312` | [m5-edgedit-flux-klein-base-001](../experiments/m5-edgedit-flux-klein-base-001.md) | MacBook Air M5 | m5-edgedit-flux-klein-base-bf16-512 | — | — | — | failed; see validation and environment limits |
+
+| `m5-flux-klein-002__attempt__20261010-203159` | [m5-flux-klein-002](../experiments/m5-flux-klein-002.md) | MacBook Air M5 | m5-flux-klein-bf16-512-conditioning.resolved | 4359.6 | 0.1 / 4088.4 / 264.4 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-002__baseline__20261010-203805` | [m5-flux-klein-002](../experiments/m5-flux-klein-002.md) | MacBook Air M5 | m5-flux-klein-bf16-512-conditioning.resolved | 4288.6 | 0.0 / 4015.4 / 266.3 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-003__attempt__20261010-204022` | [m5-flux-klein-003](../experiments/m5-flux-klein-003.md) | MacBook Air M5 | m5-flux-klein-bf16-512-vae-tiled256.resolved | 4871.0 | 450.7 / 3975.7 / 438.6 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-003__baseline__20261010-204109` | [m5-flux-klein-003](../experiments/m5-flux-klein-003.md) | MacBook Air M5 | m5-flux-klein-bf16-512-vae-tiled256.resolved | 5029.9 | 461.1 / 4125.2 / 440.6 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-002__attempt__20261010-204248` | [m5-sdcpp-flux-klein-002](../experiments/m5-sdcpp-flux-klein-002.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-easycache.resolved | 15127.5 | 435.6 / 12510.9 / 2179.0 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-002__baseline__20261010-204326` | [m5-sdcpp-flux-klein-002](../experiments/m5-sdcpp-flux-klein-002.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-easycache.resolved | 15807.4 | 441.7 / 13098.4 / 2260.8 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-003__attempt__20261010-204709` | [m5-sdcpp-flux-klein-003](../experiments/m5-sdcpp-flux-klein-003.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-conditioning.resolved | 14839.0 | 2.8 / 12664.3 / 2170.1 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-003__baseline__20261010-205038` | [m5-sdcpp-flux-klein-003](../experiments/m5-sdcpp-flux-klein-003.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-conditioning.resolved | 15298.6 | 2.4 / 13048.4 / 2230.1 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-004__attempt__20261010-205422` | [m5-sdcpp-flux-klein-004](../experiments/m5-sdcpp-flux-klein-004.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-prefetch-off.resolved | 16729.6 | 470.7 / 13910.1 / 2346.8 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-004__baseline__20261010-205458` | [m5-sdcpp-flux-klein-004](../experiments/m5-sdcpp-flux-klein-004.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-prefetch-off.resolved | 16814.6 | 475.4 / 13945.1 / 2377.2 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-005__attempt__20261010-205853` | [m5-sdcpp-flux-klein-005](../experiments/m5-sdcpp-flux-klein-005.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-mmap.resolved | 17446.0 | 455.1 / 14568.2 / 2420.6 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-005__baseline__20261010-205929` | [m5-sdcpp-flux-klein-005](../experiments/m5-sdcpp-flux-klein-005.md) | MacBook Air M5 | m5-sdcpp-flux-klein-q4-512-mmap.resolved | 17624.1 | 505.6 / 14592.5 / 2465.3 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-base-002__attempt__20261010-210338` | [m5-flux-klein-base-002](../experiments/m5-flux-klein-base-002.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-conditioning.resolved | 131725.1 | 0.1 / 131308.6 / 394.1 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-base-002__baseline__20261010-210907` | [m5-flux-klein-base-002](../experiments/m5-flux-klein-base-002.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-conditioning.resolved | 136075.5 | 0.1 / 135653.7 / 407.8 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-base-003__attempt__20261010-214141` | [m5-flux-klein-base-003](../experiments/m5-flux-klein-base-003.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-vae-tiled256.resolved | 164186.9 | 2786.1 / 160565.6 / 794.4 | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-base-003__baseline__20261010-214732` | [m5-flux-klein-base-003](../experiments/m5-flux-klein-base-003.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-vae-tiled256.resolved | 146049.4 | 1513.6 / 143696.0 / 623.0 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-002__attempt__20261010-222736` | [m5-sdcpp-flux-klein-base-002](../experiments/m5-sdcpp-flux-klein-base-002.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-easycache.resolved | 197683.9 | 1027.7 / 194067.2 / 2586.8 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-002__baseline__20261010-223355` | [m5-sdcpp-flux-klein-base-002](../experiments/m5-sdcpp-flux-klein-base-002.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-easycache.resolved | 200305.2 | 1155.7 / 196393.7 / 2735.2 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-003__attempt__20261010-232130` | [m5-sdcpp-flux-klein-base-003](../experiments/m5-sdcpp-flux-klein-base-003.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-conditioning.resolved | 365645.4 | 6.1 / 363054.2 / 2583.2 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-003__baseline__20261010-233405` | [m5-sdcpp-flux-klein-base-003](../experiments/m5-sdcpp-flux-klein-base-003.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-conditioning.resolved | 400140.9 | 7.4 / 397391.1 / 2760.5 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-004__attempt__20261011-010657` | [m5-sdcpp-flux-klein-base-004](../experiments/m5-sdcpp-flux-klein-base-004.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-prefetch-off.resolved | 386289.9 | 1070.1 / 382551.1 / 2666.6 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-004__baseline__20261011-012000` | [m5-sdcpp-flux-klein-base-004](../experiments/m5-sdcpp-flux-klein-base-004.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-prefetch-off.resolved | 386819.5 | 1112.4 / 383085.2 / 2707.1 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-005__attempt__20261011-025051` | [m5-sdcpp-flux-klein-base-005](../experiments/m5-sdcpp-flux-klein-base-005.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-mmap.resolved | 392819.0 | 1072.1 / 389045.8 / 2699.1 | — | complete; see validation and environment limits |
+
+| `m5-sdcpp-flux-klein-base-005__baseline__20261011-030358` | [m5-sdcpp-flux-klein-base-005](../experiments/m5-sdcpp-flux-klein-base-005.md) | MacBook Air M5 | m5-sdcpp-flux-klein-base-q4-512-mmap.resolved | 389532.8 | 1099.4 / 385716.1 / 2688.9 | — | complete; see validation and environment limits |
+
+| `m5-edgedit-flux-klein-001__attempt__20261011-043503` | [m5-edgedit-flux-klein-001](../experiments/m5-edgedit-flux-klein-001.md) | MacBook Air M5 | m5-edgedit-flux-klein-bf16-512-native | — | — | — | failed; see validation and environment limits |
+
+## MFLUX on M5
+
+| Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
+|---|---|---|---|---|---|---|---|
+| `m5-mflux-flux-klein-001__attempt__20261012-153912` | [m5-mflux-flux-klein-001](../experiments/m5-mflux-flux-klein-001.md) | macbook-air-m5 | m5-mflux-flux-klein-001 | – | – / – / – | – | failed; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-001__attempt__20261012-154009` | [m5-mflux-flux-klein-001](../experiments/m5-mflux-flux-klein-001.md) | macbook-air-m5 | m5-mflux-flux-klein-001 | 66054.5 | 31942.3 / 33358.9 / 747.4 | 17.247348265722394 | complete; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-001__baseline__20261012-154228` | [m5-mflux-flux-klein-001](../experiments/m5-mflux-flux-klein-001.md) | macbook-air-m5 | m5-mflux-flux-klein-001 | 80376.7 | 32541.9 / 48035.0 / 1275.5 | 17.24734838306904 | complete; full protocol; synchronized host stages |
+| `m5-mflux-flux-klein-002__attempt__20261012-155918` | [m5-mflux-flux-klein-002](../experiments/m5-mflux-flux-klein-002.md) | macbook-air-m5 | m5-mflux-flux-klein-002 | 21434.1 | 5369.5 / 9495.5 / 6559.6 | 10.351489501073956 | complete; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-002__baseline__20261012-160000` | [m5-mflux-flux-klein-002](../experiments/m5-mflux-flux-klein-002.md) | macbook-air-m5 | m5-mflux-flux-klein-002 | 71173.4 | 17209.2 / 26830.7 / 26509.8 | 10.351489618420601 | complete; full protocol; synchronized host stages |
+| `m5-mflux-flux-klein-003__attempt__20261012-161526` | [m5-mflux-flux-klein-003](../experiments/m5-mflux-flux-klein-003.md) | macbook-air-m5 | m5-mflux-flux-klein-003 | 7461.9 | 409.7 / 6230.4 / 818.5 | 6.6728090811520815 | complete; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-003__baseline__20261012-161546` | [m5-mflux-flux-klein-003](../experiments/m5-mflux-flux-klein-003.md) | macbook-air-m5 | m5-mflux-flux-klein-003 | 10296.2 | 650.1 / 8316.2 / 1033.0 | 6.6728091817349195 | complete; full protocol; synchronized host stages |
+| `m5-mflux-flux-klein-base-001__attempt__20261012-161808` | [m5-mflux-flux-klein-base-001](../experiments/m5-mflux-flux-klein-base-001.md) | macbook-air-m5 | m5-mflux-flux-klein-base-001 | – | – / – / – | – | failed; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-base-002__attempt__20261012-161817` | [m5-mflux-flux-klein-base-002](../experiments/m5-mflux-flux-klein-base-002.md) | macbook-air-m5 | m5-mflux-flux-klein-base-002 | 212971.5 | 17732.3 / 177542.6 / 17676.3 | 10.351490186527371 | complete; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-base-002__baseline__20261012-162447` | [m5-mflux-flux-klein-base-002](../experiments/m5-mflux-flux-klein-base-002.md) | macbook-air-m5 | m5-mflux-flux-klein-base-002 | 206174.7 | 13407.8 / 168837.0 / 23976.5 | 10.351491067558527 | complete; full protocol; synchronized host stages |
+| `m5-mflux-flux-klein-base-003__attempt__20261012-171421` | [m5-mflux-flux-klein-base-003](../experiments/m5-mflux-flux-klein-base-003.md) | macbook-air-m5 | m5-mflux-flux-klein-base-003 | 155085.6 | 645.3 / 152803.6 / 1627.3 | 6.672809766605496 | complete; smoke attempt; synchronized host stages |
+| `m5-mflux-flux-klein-base-003__baseline__20261012-171934` | [m5-mflux-flux-klein-base-003](../experiments/m5-mflux-flux-klein-base-003.md) | macbook-air-m5 | m5-mflux-flux-klein-base-003 | 151007.4 | 671.3 / 146880.3 / 3169.3 | 6.672810457646847 | complete; full protocol; synchronized host stages |
+
+| `m5-flux-klein-004__attempt__20261015-131752` | [m5-flux-klein-004](../experiments/m5-flux-klein-004.md) | MacBook Air M5 | m5-flux-klein-bf16-512-compile.resolved | — | — | — | complete; see validation and environment limits |
+
+| `m5-flux-klein-004__attempt__20261015-132823` | [m5-flux-klein-004](../experiments/m5-flux-klein-004.md) | MacBook Air M5 | m5-flux-klein-bf16-512-compile.resolved | — | — | — | failed; see validation and environment limits |
+
+| `m5-flux-klein-005__attempt__20261015-132946` | [m5-flux-klein-005](../experiments/m5-flux-klein-005.md) | MacBook Air M5 | m5-flux-klein-bf16-512-taylorseer.resolved | 64455.1 | 34626.9 / 28823.3 / 965.6 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-flux-klein-005__baseline__20261015-133226` | [m5-flux-klein-005](../experiments/m5-flux-klein-005.md) | MacBook Air M5 | m5-flux-klein-bf16-512-taylorseer.resolved | 57556.4 | 27491.7 / 17817.6 / 4900.0 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-004__attempt__20261015-134618` | [m5-mflux-flux-klein-004](../experiments/m5-mflux-flux-klein-004.md) | MacBook Air M5 | m5-mflux-flux-klein-q4-512-conditioning.resolved | 5021.5 | 0.0 / 4188.2 / 828.4 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-004__baseline__20261015-134636` | [m5-mflux-flux-klein-004](../experiments/m5-mflux-flux-klein-004.md) | MacBook Air M5 | m5-mflux-flux-klein-q4-512-conditioning.resolved | 5691.3 | 0.0 / 4803.0 / 884.1 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-005__attempt__20261015-134805` | [m5-mflux-flux-klein-005](../experiments/m5-mflux-flux-klein-005.md) | MacBook Air M5 | m5-mflux-flux-klein-q4-512-vae-tiled256.resolved | 8622.5 | 533.9 / 6898.2 / 1187.2 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-005__baseline__20261015-134829` | [m5-mflux-flux-klein-005](../experiments/m5-mflux-flux-klein-005.md) | MacBook Air M5 | m5-mflux-flux-klein-q4-512-vae-tiled256.resolved | 7661.5 | 416.3 / 6279.2 / 971.3 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-006__attempt__20261015-135027` | [m5-mflux-flux-klein-006](../experiments/m5-mflux-flux-klein-006.md) | MacBook Air M5 | m5-mflux-flux-klein-q8-512-vae-tiled256.resolved | 8547.7 | 1000.3 / 6545.2 / 999.2 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-mflux-flux-klein-006__baseline__20261015-135054` | [m5-mflux-flux-klein-006](../experiments/m5-mflux-flux-klein-006.md) | MacBook Air M5 | m5-mflux-flux-klein-q8-512-vae-tiled256.resolved | 8606.5 | 519.8 / 6835.6 / 1152.2 | — | Complete; validated protocol, uncontrolled memory pressure; no quality approval |
+
+| `m5-flux-klein-base-004__attempt__20261015-135305` | [m5-flux-klein-base-004](../experiments/m5-flux-klein-base-004.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-compile.resolved | 154718.1 | 22153.7 / 131383.6 / 1094.1 | — | Complete; validated protocol, uncontrolled swap; no formal quality approval |
+
+| `m5-flux-klein-base-004__baseline__20261015-135837` | [m5-flux-klein-base-004](../experiments/m5-flux-klein-base-004.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-compile.resolved | 143876.9 | 14959.6 / 127930.9 / 781.1 | — | Complete; validated protocol, uncontrolled swap; no formal quality approval |
+
+| `m5-flux-klein-base-005__attempt__20261015-143525` | [m5-flux-klein-base-005](../experiments/m5-flux-klein-base-005.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-taylorseer.resolved | 82751.9 | 14231.3 / 65449.7 / 3036.6 | — | Complete; validated protocol, uncontrolled swap; no formal quality approval |
+
+| `m5-flux-klein-base-005__baseline__20261015-143814` | [m5-flux-klein-base-005](../experiments/m5-flux-klein-base-005.md) | MacBook Air M5 | m5-flux-klein-base-bf16-512-taylorseer.resolved | 92473.8 | 21319.0 / 69631.0 / 524.2 | — | Complete; validated protocol, uncontrolled swap; no formal quality approval |
+
+| `m5-mflux-flux-klein-base-004__attempt__20261015-150106` | [m5-mflux-flux-klein-base-004](../experiments/m5-mflux-flux-klein-base-004.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-conditioning.resolved | — | — | — | Running smoke; no validated full result |
+
+| `m5-mflux-flux-klein-base-004__baseline__20261015-150452` | [m5-mflux-flux-klein-base-004](../experiments/m5-mflux-flux-klein-base-004.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-conditioning.resolved | — | — | — | Smoke gate passed; full protocol running |

@@ -39,7 +39,7 @@ METHOD = (
     "Means across measured generations only; first and warmups excluded. "
     "Remaining = wall - encoding - denoising - decoding; includes postprocessing "
     "where separately recorded and host/event boundary differences. "
-    "PyTorch stages use CUDA events; sd.cpp uses host callbacks and includes "
+    "PyTorch stages use CUDA or MPS events on the respective backend; sd.cpp uses host callbacks and includes "
     "in-stage reloads. sd.cpp decode includes output conversion. Initial loading excluded. "
     "Different precision, resolution and residency across devices; not a matched GPU "
     "speed comparison. Cross-engine quality equivalence is untested."
@@ -47,6 +47,8 @@ METHOD = (
     "formal quality acceptance. Edge-dit encoding includes latent/schedule setup and uses "
     "host system-clock stages with millisecond-rounded steady-clock totals. "
     "Whiskers show observed total min-max, not confidence intervals."
+    " MFLUX stages use synchronized host boundaries with lazy-array evaluation; denoising "
+    "includes CFG and scheduler updates. MLX noise is not shared with other engines."
 )
 
 
@@ -230,7 +232,7 @@ def upload(data, figures, output, args):
                               x_disable_machine_info=True, disable_git=True,
                               disable_code=True, disable_job_creation=True)
     with wandb.init(entity=args.entity, project=args.project, id=identity["id"],
-                    resume="allow", name=args.name, job_type="analysis",
+                    resume="allow", name=args.name, job_type="analysis", allow_val_change=True,
                     tags=["analysis", "stage-breakdown", "unprofiled-source-data"],
                     config={"measurement_basis": "mean", "method": data["method"],
                             "source_runs": [r["run_dir"] for r in data["runs"]],

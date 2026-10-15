@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "method": "Means across measured generations only; first and warmups excluded. Remaining = wall - encoding - denoising - decoding; includes postprocessing where separately recorded and host/event boundary differences. PyTorch stages use CUDA events; sd.cpp uses host callbacks and includes in-stage reloads. sd.cpp decode includes output conversion. Initial loading excluded. Different precision, resolution and residency across devices; not a matched GPU speed comparison. Cross-engine quality equivalence is untested. Conditioning hits include retrieval/setup; EasyCache is approximate and carries no formal quality acceptance. Edge-dit encoding includes latent/schedule setup and uses host system-clock stages with millisecond-rounded steady-clock totals. Whiskers show observed total min-max, not confidence intervals.",
+  "method": "Means across measured generations only; first and warmups excluded. Remaining = wall - encoding - denoising - decoding; includes postprocessing where separately recorded and host/event boundary differences. PyTorch stages use CUDA or MPS events on the respective backend; sd.cpp uses host callbacks and includes in-stage reloads. sd.cpp decode includes output conversion. Initial loading excluded. Different precision, resolution and residency across devices; not a matched GPU speed comparison. Cross-engine quality equivalence is untested. Conditioning hits include retrieval/setup; EasyCache is approximate and carries no formal quality acceptance. Edge-dit encoding includes latent/schedule setup and uses host system-clock stages with millisecond-rounded steady-clock totals. Whiskers show observed total min-max, not confidence intervals. MFLUX stages use synchronized host boundaries with lazy-array evaluation; denoising includes CFG and scheduler updates. MLX noise is not shared with other engines.",
   "runs": [
     {
       "run_dir": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
@@ -2981,6 +2981,2568 @@
         "stages.csv": "2d2e354be6bea5764b12f3c5bd87e22c9ebff68b756c4f2b5bdb68b10e5dc35d",
         "status.json": "028e789f514d9776680e5efc961ead14d04c63239ba6555ca08d8d9cf86cc289"
       }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "No reuse reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.4716568999865558,
+        "Denoising": 13.57078029999975,
+        "VAE decoding": 2.3648038000101224,
+        "Output / remaining time": 0.0020235999894794078
+      },
+      "mean_s": 16.40926459998591,
+      "median_s": 16.21112449996872,
+      "min_s": 15.217231999966316,
+      "max_s": 17.712327000044752,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-001",
+        "description": "M5 Metal distilled klein mixed-Q4 full protocol: 512x512, four steps, no reuse; same execution settings as the feasibility smoke. Separate quantized workload, not BF16 reference.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "sha256": {
+            "flux-2-klein-4b-Q4_0.gguf": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:21:19Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "e39d1ed8bd2700faa388b1905be92dccb4dc1de27803b06de314761ddc9395be",
+        "runs.csv": "b990c6bfab14cf66392c2e12f282a5e90e65835619b65e2a911733c9183267ec",
+        "config.json": "bf2f2316b3ec1c9f3836983a74dac392cc89caf003182a3c2e3e7eebcd2a42e1",
+        "stages.csv": "ad2ebb9ad3290108345a6d908043b4e2c8f7a6692fb67a4964151b2fd5d2800d",
+        "status.json": "faebb227c42c8dac0ebbf5a1fff965747a835d97c93900ca5d001d4048cfbea1"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "EasyCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.4422911000030581,
+        "Denoising": 13.056550000002607,
+        "VAE decoding": 2.25502840000554,
+        "Output / remaining time": 0.002030099998228252
+      },
+      "mean_s": 15.755899600009434,
+      "median_s": 15.807438500021817,
+      "min_s": 15.558422000030987,
+      "max_s": 15.869624999992084,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-002",
+        "description": "M5 flux-klein: easycache only against m5-sdcpp-flux-klein-001; same mixed-Q4 weights, 512x512, residency and sampling. Approximate step reuse; no quality eligibility implied.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "sha256": {
+            "flux-2-klein-4b-Q4_0.gguf": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:21:19Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": {
+            "mode": "easycache",
+            "reuse_threshold": 0.2,
+            "start_percent": 0.15,
+            "end_percent": 0.95
+          },
+          "auto_fit": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "61c33b42c4d6cb95a10636901c48ddd0c63ff64e0ea3ee6b40523b52cf77c7c8",
+        "runs.csv": "0736687340649150bc4b923dbe925a284bf0412553009b2897df7e86a1cf8b24",
+        "config.json": "c910673ef5566a9ad431fa750ce418fde33a69ee605a88b520ffff745b2bdb68",
+        "stages.csv": "0c8ee1374265f10a4bf88abe0ce69bc260df0941441f18def5657acb4d3e7d2e",
+        "status.json": "ed16a142c6b93d98f48a04d39958334e215b4340e791a5055c134abf083f3da3"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.0025592000049073247,
+        "Denoising": 12.952659999992466,
+        "VAE decoding": 2.2290588000032585,
+        "Output / remaining time": 0.001833800005260855
+      },
+      "mean_s": 15.186111800005893,
+      "median_s": 15.2985650000046,
+      "min_s": 14.800323000003118,
+      "max_s": 15.468149999971502,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-003",
+        "description": "M5 flux-klein: conditioning only against m5-sdcpp-flux-klein-001; same mixed-Q4 weights, 512x512, residency and sampling. Exact repeated identical prompt conditioning; first generation includes cache population.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "sha256": {
+            "flux-2-klein-4b-Q4_0.gguf": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:21:19Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 1,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "conditioning_cache_size": 1
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "312ff75067fef3c4a871fb73085cbc40254a5794573c9ef03e58bc009108067e",
+        "runs.csv": "ed8b3ec051e04ef6ce02094669445d91d311368efa18882e2d762ba607583a12",
+        "config.json": "4374e8ba84296e2102d3b855943c476f134c5db0b05347809431ba2f248456b3",
+        "stages.csv": "9fc2b57f4e38f9e56375c1a81d89f154ab704f1c355d458638325e527b26e9f3",
+        "status.json": "404a11c33a307a358006dbf58f80a77ce73f30fdc85bd3843d27f1b0caf60284"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "Prefetch off",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.48225400000810625,
+        "Denoising": 13.896657699992648,
+        "VAE decoding": 2.3834101000102237,
+        "Output / remaining time": 0.0020588999905157834
+      },
+      "mean_s": 16.764380700001492,
+      "median_s": 16.814649499981897,
+      "min_s": 16.46463699999731,
+      "max_s": 17.010473000002094,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-004",
+        "description": "M5 flux-klein: prefetch-off only against m5-sdcpp-flux-klein-001; same mixed-Q4 weights, 512x512, residency and sampling. Eager GPU residency is unchanged; this option may be inactive for this placement.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "sha256": {
+            "flux-2-klein-4b-Q4_0.gguf": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:21:19Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": true,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "prefetch": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "54c47ddd77e43d2376b811e3a3a0cbf6d7ed3ce9111d24fc9c4ca6388c4a9458",
+        "runs.csv": "0595c6a7e2c77e262f07bfded42889b651e4064e7f018a96a7e8c6e22a3ecdee",
+        "config.json": "a6b31fb8d46b88c0390db34b7256b1cb0b4557f8143daf2be296e4951ca007bd",
+        "stages.csv": "86ea4ddbf93335e2724f3cb671012843960bf5f6111c2e1d727fe2b2d0eea09e",
+        "status.json": "cec0f91d7d0e8dd2e851eb39d669bd35452f258276be90451494587d6c877ddb"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "mmap on",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.5114323999907355,
+        "Denoising": 14.676959399995393,
+        "VAE decoding": 2.4686293000064325,
+        "Output / remaining time": 0.002192800003103912
+      },
+      "mean_s": 17.659213899995667,
+      "median_s": 17.624144999979762,
+      "min_s": 17.20928399998229,
+      "max_s": 18.15013700001873,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-005",
+        "description": "M5 flux-klein: mmap only against m5-sdcpp-flux-klein-001; same mixed-Q4 weights, 512x512, residency and sampling. ",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "sha256": {
+            "flux-2-klein-4b-Q4_0.gguf": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:21:19Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": true,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "mmap": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "58eae8815b970b2c39df3daaee1194aadd33d5553b65550b2532dac9f70d541a",
+        "runs.csv": "7712597164f3cdea1469b827124901bf891fbc717d88515ae8baa84902e533e6",
+        "config.json": "697defd6930ddaa7cef1ef18631becdab7a16bf412ef3a41bcdf0e71fbf60ebf",
+        "stages.csv": "e847509ee59a2f21f3e7c2f5881fdc0bb735df127efbc1340fdfdd07f804332a",
+        "status.json": "c56310f69d326451bf9bed3541648ebcdbc7782da11a7a06a654b516572b4078"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "No reuse reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.2149623000004794,
+        "Denoising": 411.7885693999939,
+        "VAE decoding": 2.8244918999902437,
+        "Output / remaining time": 0.0021068000176455827
+      },
+      "mean_s": 415.83013040000225,
+      "median_s": 407.5471555000113,
+      "min_s": 400.2755640000105,
+      "max_s": 443.3879780000425,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-base-001",
+        "description": "M5 Metal non-distilled klein Base mixed-Q4 full protocol: 512x512, 50 steps, CFG 4, no reuse. Separate workload from distilled klein and the BF16 reference.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-base-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+              "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+              "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+              "file": "flux-2-klein-base-4b-Q4_0.gguf"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "sha256": {
+            "flux-2-klein-base-4b-Q4_0.gguf": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:39:39Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "fdf47fe449da8d1e9403ca26de08d307b782a7a77824b8ac853ee72165a81108",
+        "runs.csv": "ac3e860a8314d8801d2e3babef829e1a4dc7a6af17ab8c5cba5103fe8008d040",
+        "config.json": "738065e7565d79de23eade50cc15ad968f972ce4189003437225c8101fcffe37",
+        "stages.csv": "d7582792a18029fa38cb7ca654dc98de113efaf5eb413af9cd2e84ef41e92816",
+        "status.json": "1a861c63e122056fee370b64d648f4ae581e3a27ebea6d9555550b8254e22857"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "EasyCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.1822158999973909,
+        "Denoising": 198.5429361000075,
+        "VAE decoding": 2.811286099994322,
+        "Output / remaining time": 0.0027191000001039354
+      },
+      "mean_s": 202.53915719999932,
+      "median_s": 200.30524749998585,
+      "min_s": 194.84119599999394,
+      "max_s": 220.09268100000918,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-base-002",
+        "description": "M5 flux-klein-base: easycache only against m5-sdcpp-flux-klein-base-001; same mixed-Q4 weights, 512x512, residency and sampling. Approximate step reuse; no quality eligibility implied.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-base-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+              "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+              "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+              "file": "flux-2-klein-base-4b-Q4_0.gguf"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "sha256": {
+            "flux-2-klein-base-4b-Q4_0.gguf": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:39:39Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": {
+            "mode": "easycache",
+            "reuse_threshold": 0.2,
+            "start_percent": 0.15,
+            "end_percent": 0.95
+          },
+          "auto_fit": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "7f2f49870360b7275e59b857c633143cb498da3f3ae33b731886bc564b2f1e77",
+        "runs.csv": "7db1cf6ea94963a6794b8e35e46932724e119ceb605b081f598dbbb9b092078c",
+        "config.json": "0218f4919eb05d86a405ca3641e1f76ac903043d79624ca4ba999459270fc0e7",
+        "stages.csv": "25e10a89db053918059e8b7ddf3933bb7cf0efc7fa676300bcb6bec6aff26c79",
+        "status.json": "f2d8760066b9fe5c9d21747ec36f3d9bc4842fea60e213d399a57043362bfb2b"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.008147599996300414,
+        "Denoising": 401.9798246000079,
+        "VAE decoding": 2.806288200005656,
+        "Output / remaining time": 0.0025384999928064643
+      },
+      "mean_s": 404.7967989000026,
+      "median_s": 400.14087299999665,
+      "min_s": 389.49842600000557,
+      "max_s": 440.08520099997986,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-base-003",
+        "description": "M5 flux-klein-base: conditioning only against m5-sdcpp-flux-klein-base-001; same mixed-Q4 weights, 512x512, residency and sampling. Exact repeated identical prompt conditioning; first generation includes cache population.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-base-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+              "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+              "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+              "file": "flux-2-klein-base-4b-Q4_0.gguf"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "sha256": {
+            "flux-2-klein-base-4b-Q4_0.gguf": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:39:39Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 2,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "conditioning_cache_size": 2
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "ba856f51f148487dd2ced0ba4814a6ae8b0f9e8429fe0273633fa9d8260dfad5",
+        "runs.csv": "372a298831ce28954a7301e70ed17706235ba5945fed68a4f92917fce1533b9e",
+        "config.json": "eb506c6286780245659e569411249d0e812529bb3e2b70e82de0b37bd2bc1142",
+        "stages.csv": "1fb0cd4a45e403aab67d3e6bf3a6ac374b64635a8ddb62d53b0c48e194240444",
+        "status.json": "46a593f9c9aaaadd3c897e41d462d9ac4b16664267de6835c0e82ea00c559183"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "Prefetch off",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.1205290999962016,
+        "Denoising": 385.4085730999941,
+        "VAE decoding": 2.6979522000008727,
+        "Output / remaining time": 0.0025107000139541922
+      },
+      "mean_s": 389.2295651000051,
+      "median_s": 386.81950849998975,
+      "min_s": 385.2108939999598,
+      "max_s": 398.3165550000267,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-base-004",
+        "description": "M5 flux-klein-base: prefetch-off only against m5-sdcpp-flux-klein-base-001; same mixed-Q4 weights, 512x512, residency and sampling. Eager GPU residency is unchanged; this option may be inactive for this placement.",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-base-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+              "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+              "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+              "file": "flux-2-klein-base-4b-Q4_0.gguf"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "sha256": {
+            "flux-2-klein-base-4b-Q4_0.gguf": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:39:39Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": true,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "prefetch": false
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "993c43625b7989d32c3198fced59a8e5c920e90bb8578ad026bff3f0457619cd",
+        "runs.csv": "230e884ddd1152fe8cf45e80281c2104dca75c9d1abf6ca7771f298c9f4d9b80",
+        "config.json": "df9b8a248d7ab52a7b97bbe9240f4d3169e946d042091dfd2978c30d7082dbf1",
+        "stages.csv": "92a8d297c27b0cf32907f9822c593000bffa5d24734b59c439b78e8ac6e031e6",
+        "status.json": "a1848d68a4062729e2ace7c6fed245f50e9a5c01249fae75b83f77770bfa75f6"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory",
+      "label": "mmap on",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.1066207999945619,
+        "Denoising": 386.2230520999874,
+        "VAE decoding": 2.72492809999967,
+        "Output / remaining time": 0.0021071000315714627
+      },
+      "mean_s": 390.0567081000132,
+      "median_s": 389.5328370000352,
+      "min_s": 387.4928390000132,
+      "max_s": 395.48063400003593,
+      "config": {
+        "id": "m5-sdcpp-flux-klein-base-005",
+        "description": "M5 flux-klein-base: mmap only against m5-sdcpp-flux-klein-base-001; same mixed-Q4 weights, 512x512, residency and sampling. ",
+        "device_label": "macbook-air-m5-24gb",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "tag": "master-919-19bbbca",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+          "source_dir": "output/m5-prep/stable-diffusion.cpp",
+          "build_flags": "-DSD_METAL=ON -DGGML_METAL_EMBED_LIBRARY=ON -DGGML_OPENMP=OFF -DSD_BUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk",
+          "bench_build_dir": "output/m5-prep/sd-bench-build"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "local_dir": "output/m5-prep/models",
+          "files": {
+            "diffusion_model": "flux-2-klein-base-4b-Q4_0.gguf",
+            "llm": "Qwen3-4B-Q4_K_M.gguf",
+            "vae": "vae.safetensors"
+          },
+          "components": {
+            "diffusion_model": {
+              "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+              "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+              "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+              "file": "flux-2-klein-base-4b-Q4_0.gguf"
+            },
+            "llm": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "vae": {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+            }
+          },
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "sha256": {
+            "flux-2-klein-base-4b-Q4_0.gguf": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "Qwen3-4B-Q4_K_M.gguf": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "vae.safetensors": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          },
+          "resolved_at_utc": "2026-10-10T19:39:39Z"
+        },
+        "precision": "mixed-q4",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "engine_settings": {
+          "backend": "MTL0",
+          "params_backend": "MTL0",
+          "auto_fit": false,
+          "eager_load": true,
+          "disable_segmented_compute": true,
+          "disable_prefetch": false,
+          "conditioning_cache_size": 0,
+          "fa": false,
+          "diffusion_fa": true,
+          "mmap": true,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "diffusion_model": "Q4_0",
+            "llm": "Q4_K_M",
+            "vae": "BF16"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "auto_fit": false,
+          "mmap": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "cf12b96d0ba5931636000d145e76203f7431f98455565a35cff733af9da3ced7",
+        "runs.csv": "9f7ba34658bd70f4feffe131189793ac0226e51e24d0f325528e487852e79a1f",
+        "config.json": "fa53a3a384c37409cbb8e0bcadeb934009b5850ecb19c432e337fe48ae454516",
+        "stages.csv": "e7e73062a55d45956c61e53fe43902b29b7f69eeac657459dcc05995a225ee58",
+        "status.json": "d4c81da970f645e6969ab0c57280ed8b88742ddf85c67f93cd5ed916964f4d2d"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-001__baseline__20261010-183446",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory",
+      "label": "No reuse reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.9988685167,
+        "Denoising": 6.847286737599999,
+        "VAE decoding": 0.4769384792,
+        "Output / remaining time": 0.010724578908403152
+      },
+      "mean_s": 8.333818312408402,
+      "median_s": 8.277852229017299,
+      "min_s": 7.636086250015069,
+      "max_s": 8.855912333005108,
+      "config": {
+        "id": "m5-flux-klein-001",
+        "description": "M5 PyTorch/Diffusers BF16 reference, distilled four steps CFG 1, 512x512, no cache or offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "resolved_at_utc": "2026-10-10T20:08:57Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "43af9c0c9d9fe9f75ed92778dd1089586709202d767666eb08ef642edd174e81",
+        "runs.csv": "56613bbdf058fc6926f3f7f2872fec3a462f7e434559c68c44a4be9e08b09718",
+        "config.json": "56baacaabd4a1250c2d5a75783800776bcd17141b359622c9c397486aa48d95d",
+        "stages.csv": "943ecaf8528ab542f4db205a7539f161e8102a02c2fac80ce5e1a4e523094277",
+        "status.json": "b09efc06027a7049f957541989868e92276109830b5990babd85ea9c66812a7c"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-002__baseline__20261010-203805",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 2.32917e-05,
+        "Denoising": 4.0328279792999995,
+        "VAE decoding": 0.2669808001,
+        "Output / remaining time": 0.006158499602124493
+      },
+      "mean_s": 4.305990570702124,
+      "median_s": 4.288550541517907,
+      "min_s": 4.257107582991011,
+      "max_s": 4.409099791984772,
+      "config": {
+        "id": "m5-flux-klein-002",
+        "description": "M5 BF16 MPS flux-klein: exact repeated prompt encoding reuse only against m5-flux-klein-001; positive and CFG negative entries cached within one pipeline; first image populates the cache.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "resolved_at_utc": "2026-10-10T20:08:57Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "conditioning_reuse": true
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "1695e5f24ee77aa91e18d4e713c97ca1640c6c191b267da0d6fea18dfd60b5ce",
+        "runs.csv": "e7ba58145846c209b17b82d82c4098038518af46c320e727429f89dbb18f8743",
+        "config.json": "df5d554e8440a6f7734284e23ea8b215a8b09d601e8e3c6ee3b2eea81aba7019",
+        "stages.csv": "6b0676c8223c7a43e63f6e4bae4c5fba966ef3b15408a83dc2b90c5f1440e445",
+        "status.json": "13646a99696afb31f735f2dffd7f3f3e51e67655597021ded41467c2b210b732"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-003__baseline__20261010-204109",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory",
+      "label": "VAE tiling 256",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.46120876269999994,
+        "Denoising": 4.1295443372,
+        "VAE decoding": 0.44067630399999996,
+        "Output / remaining time": 0.005182946197857706
+      },
+      "mean_s": 5.036612350097857,
+      "median_s": 5.029940499996883,
+      "min_s": 4.928563916997518,
+      "max_s": 5.2241335840080865,
+      "config": {
+        "id": "m5-flux-klein-003",
+        "description": "M5 BF16 MPS flux-klein: VAE tiling only against m5-flux-klein-001; 256-pixel tiles and 25 percent overlap. Same checkpoint and sampling; tiled decode may change image pixels.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "resolved_at_utc": "2026-10-10T20:08:57Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": {
+            "tile_sample_size": 256,
+            "overlap_factor": 0.25
+          },
+          "vae_slicing": false,
+          "torch_compile": false
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "ff538856d8975b981dd28113ed514d00f4d66c820056c20a5e8b0994c191c3d2",
+        "runs.csv": "cc29d201eb5e1edaaf3198f8ae92bb09f6eeebfb512da6130bb3e9166d477e26",
+        "config.json": "2242df3889995288afe1059252d1b1bad57e3d0e1dd39378f0c374d7ebc623c6",
+        "stages.csv": "7603ff4625de0ddeeea9346a9d509bacdf3ceae6d08386de5102bc63175e4a99",
+        "status.json": "be1fc2560ce8777295e29a8bdce325af47a9428f8160fe0eb822fe8d7a2cf3bf"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-001__baseline__20261010-184312",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory",
+      "label": "No reuse reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 4.2904916043000005,
+        "Denoising": 163.7913866281,
+        "VAE decoding": 1.1431007375,
+        "Output / remaining time": 0.030494642596285967
+      },
+      "mean_s": 169.25547361249627,
+      "median_s": 167.1009457915061,
+      "min_s": 165.32609733298887,
+      "max_s": 182.82525833300315,
+      "config": {
+        "id": "m5-flux-klein-base-001",
+        "description": "M5 PyTorch/Diffusers BF16 reference, Base 50 steps CFG 4, 512x512, no cache or offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "resolved_at_utc": "2026-10-10T20:09:13Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "d5ee0145659e5dc66d3b215c7485c2ff00248b9c86d28eba2da48d8c61d8d9a8",
+        "runs.csv": "638c248ba29c325658370b2a30a4390397f76f3dcb76a6efc6c89bef75620275",
+        "config.json": "79fa3c25f9f2bdda0fef43b0f1f2275764a4252b6a1c12959f521ad04be1d99d",
+        "stages.csv": "dfdda31a87e0b3475e8a8b3df8556424f2ff3176c32c87703be121ddf95eb560",
+        "status.json": "a868581032376dde58eb42f6ca8cdc83de22c90dba4119a5c06810705953063a"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-002__baseline__20261010-210907",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.0001433958,
+        "Denoising": 140.8312079959,
+        "VAE decoding": 0.4127166999,
+        "Output / remaining time": 0.02299444999217315
+      },
+      "mean_s": 141.26706254159217,
+      "median_s": 136.07549202098744,
+      "min_s": 129.3592748340161,
+      "max_s": 164.20705674999044,
+      "config": {
+        "id": "m5-flux-klein-base-002",
+        "description": "M5 BF16 MPS flux-klein-base: exact repeated prompt encoding reuse only against m5-flux-klein-base-001; positive and CFG negative entries cached within one pipeline; first image populates the cache.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "resolved_at_utc": "2026-10-10T20:09:13Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "conditioning_reuse": true
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "9ddffe1ac6da365c92779bc68a4c942f994c4cddc60358356c8a3103efaf7021",
+        "runs.csv": "51f0eb172f7128dedc52a357f2cafe3113a7c31a576d6e44d45e3f4ced1274ec",
+        "config.json": "a89ec48159a855845b6cf1177a87a2bc6fa714abff01ace7d0923780cf021cde",
+        "stages.csv": "54fe4e8288aa72637fba885cfb0dea3eae1a453bb7b4c57c03014792c6d16c4f",
+        "status.json": "ba0683ff795e92d3c5487cd04594e6db02b685e9cd872de520bdc5a009490ee6"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-003__baseline__20261010-214732",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory",
+      "label": "VAE tiling 256",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.6152067043,
+        "Denoising": 143.2061532447,
+        "VAE decoding": 0.6623678666999999,
+        "Output / remaining time": 0.020139209606686234
+      },
+      "mean_s": 145.50386702530668,
+      "median_s": 146.04936610450386,
+      "min_s": 131.4202838340134,
+      "max_s": 158.93599370901939,
+      "config": {
+        "id": "m5-flux-klein-base-003",
+        "description": "M5 BF16 MPS flux-klein-base: VAE tiling only against m5-flux-klein-base-001; 256-pixel tiles and 25 percent overlap. Same checkpoint and sampling; tiled decode may change image pixels.",
+        "device_label": "macbook-air-m5-24gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ],
+          "requested_revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "resolved_at_utc": "2026-10-10T20:09:13Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": {
+            "tile_sample_size": 256,
+            "overlap_factor": 0.25
+          },
+          "vae_slicing": false,
+          "torch_compile": false
+        },
+        "backend": "mps",
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        }
+      },
+      "source_sha256": {
+        "summary.json": "75722a278ae34a7de8e0c80372bc2d5a7065f2eb73cc1885f84213b228114161",
+        "runs.csv": "9121a757d811557304d9c87c234223b6859467b743ade46e0206e68bc0d99b59",
+        "config.json": "33ba2b854d6c811f8a0259d2b5f78ac33c65607bdf7d912d294a6b899eec2b27",
+        "stages.csv": "1a7fe49bb3d5cbcaf218e30d63aebc635969aace5b484192c952cbceb444bd0c",
+        "status.json": "969d6394e0c1c7156848101a42952a18d1926893899c8e7ec1db70d55e508039"
+      }
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "engine": "Nunchaku INT4/r32",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; SVDQuant W4A4/r32 replacement transformer + BF16 text encoder/VAE; GPU-resident, no reuse. Different software environment/node; checkpoint ancestry and quality equivalence unestablished; fixed-seed hashes differ.",
+      "label": "SVDQuant W4A4/r32",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.04717070045471191,
+        "Denoising": 0.6630022186279296,
+        "VAE decoding": 0.16495360107421875,
+        "Output / remaining time": 0.022636241044150667
+      },
+      "mean_s": 0.8977627612010111,
+      "median_s": 0.8978261720039882,
+      "min_s": 0.8940519679454155,
+      "max_s": 0.9017563210218213,
+      "config": {
+        "id": "a100-nunchaku-flux-klein-001",
+        "description": "Candidate community SVDQuant INT4 W4A4/r32 distilled transformer against a100-flux-klein-001; unchanged BF16 text encoder and VAE. Quantized replacement checkpoint plus fused kernels; ancestry to the exact BF16 transformer revision unproven. A100 smoke gate required; not yet executed.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ],
+          "requested_revision": "main",
+          "resolved_at_utc": "2026-09-24T02:14:37Z"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "method": "svdquant",
+            "component": "transformer",
+            "weights_bits": 4,
+            "activations_bits": 4,
+            "low_rank": 32,
+            "format": "int4"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false
+        },
+        "engine": {
+          "name": "nunchaku",
+          "provider": "tonera/vitoom-nunchaku (community)",
+          "version": "1.3.0.dev20260622+cu12.8torch2.11",
+          "wheel": {
+            "repo_id": "tonera/vitoom-nunchaku",
+            "revision": "85bad5510d409570527b018387491fd0c81e4727",
+            "filename": "nunchaku-1.3.0.dev20260622+cu12.8torch2.11-cp311-cp311-linux_x86_64.whl",
+            "sha256": "bcdfe6fcc36cd37da34c1d0f1e0fa7c9b4201b2a70a89a3274d22420221afd2f"
+          }
+        },
+        "quantized_transformer": {
+          "repo_id": "tonera/FLUX.2-klein-4B-Nunchaku",
+          "revision": "8aa64445d8e45edc2ea431743b67ac7e2ca5f739",
+          "filename": "svdq-int4_r32-FLUX.2-klein-4B-Nunchaku.safetensors",
+          "sha256": "8b0adf66f9945eafb67a53abd12a4dd6d1d0d35e408242ab0e036ae917b49311"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "ceb96e8b219819a1bf5c8e8b1a42e002acbb1d10c8ddbe7c9ec378bcfd16cc81",
+        "runs.csv": "fbf4b2f217dc2c3face92ada957f58dd34e13ee8700c8db4d04b0d4bb8644ff3",
+        "config.json": "21dc7e89ad04b809676e4ced4551e822c2e0c0d2a230bf1d2838aff8e21e7211",
+        "stages.csv": "52f19435b5960ce0c55d2c1e99a8d8bf5a7ede5d3a9f8235b87b50f122189b44",
+        "status.json": "07b49fa450d303d3cd9cfb9169983fb72c9dbcb24031f52f719b5c6eb2633434"
+      }
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "engine": "MFLUX BF16",
+      "gpu": "Apple M5",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; BF16 eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text.",
+      "label": "BF16",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 34.02057008310803,
+        "Denoising": 47.36067698778934,
+        "VAE decoding": 1.4665306707902346,
+        "Output / remaining time": 0.06012369570671581
+      },
+      "mean_s": 82.90790143739432,
+      "median_s": 80.37672570798895,
+      "min_s": 64.3337754579843,
+      "max_s": 105.952715041989,
+      "config": {
+        "id": "m5-mflux-flux-klein-001",
+        "description": "M5 MFLUX Klein distilled, BF16 unquantized reference, 512x512, no reuse/offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "backend": "mlx-metal",
+        "precision": "bfloat16",
+        "engine": {
+          "name": "mflux",
+          "version": "0.22.0",
+          "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+          "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "files": {
+            "flux-2-klein-4b.safetensors": {
+              "sha256": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343",
+              "bytes": 7751105712
+            },
+            "model_index.json": {
+              "sha256": "51a76cb1cf3ed37423a1128c79c22faee8e6fbe7f5aaeb737f0a258930dbaac0",
+              "bytes": 446
+            },
+            "scheduler/scheduler_config.json": {
+              "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+              "bytes": 486
+            },
+            "text_encoder/config.json": {
+              "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+              "bytes": 1536
+            },
+            "text_encoder/generation_config.json": {
+              "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+              "bytes": 214
+            },
+            "text_encoder/model-00001-of-00002.safetensors": {
+              "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+              "bytes": 4967215360
+            },
+            "text_encoder/model-00002-of-00002.safetensors": {
+              "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+              "bytes": 3077766632
+            },
+            "text_encoder/model.safetensors.index.json": {
+              "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+              "bytes": 32855
+            },
+            "tokenizer/added_tokens.json": {
+              "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+              "bytes": 707
+            },
+            "tokenizer/chat_template.jinja": {
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+              "bytes": 4168
+            },
+            "tokenizer/merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "bytes": 1671853
+            },
+            "tokenizer/special_tokens_map.json": {
+              "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+              "bytes": 613
+            },
+            "tokenizer/tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "bytes": 11422654
+            },
+            "tokenizer/tokenizer_config.json": {
+              "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+              "bytes": 5404
+            },
+            "tokenizer/vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "bytes": 2776833
+            },
+            "transformer/config.json": {
+              "sha256": "09733c74a3da6d17dd0a0472a091a8950c7c6935889c32c16cc800ede05029de",
+              "bytes": 541
+            },
+            "transformer/diffusion_pytorch_model.safetensors": {
+              "sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+              "bytes": 7751109744
+            },
+            "vae/config.json": {
+              "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+              "bytes": 821
+            },
+            "vae/diffusion_pytorch_model.safetensors": {
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "bytes": 168120878
+            }
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        },
+        "optimizations": {
+          "quantization": null,
+          "conditioning_reuse": false,
+          "vae_tiling": false,
+          "offload": false
+        },
+        "engine_settings": {
+          "quantization_scope": "all_eligible_layers",
+          "group_size": 64,
+          "scheduler": "flow_match_euler_discrete",
+          "native_predict_compile": true,
+          "negative_prompt_override": "",
+          "timing": "synchronized_host"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "5e8a8bcc2c6bdd5afdd86099934c1e810680443bb87dacbb2273e684d247a0e0",
+        "runs.csv": "c5eeea171205070ce077440b3d36246c71cf22f414b2a4d5ac603e569cf7a2b5",
+        "config.json": "e0ddb4937d6ed02bdd060ca7cb0115c2b27c0b05587e5e1beca35e313e8a9a4a",
+        "stages.csv": "5b5f9386430196c2496e2496220183d27087602840be349eeddecb0c4455966a",
+        "status.json": "8ac7577eff65a07a03af0fa8a2bec1dc5fd33b9fe0a2fdac0228576982c257e3"
+      }
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text.",
+      "label": "8-bit",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 18.18909699989017,
+        "Denoising": 27.550565725017805,
+        "VAE decoding": 27.814776029100177,
+        "Output / remaining time": 0.012398158386349677
+      },
+      "mean_s": 73.5668369123945,
+      "median_s": 71.17339041648665,
+      "min_s": 66.16588979098015,
+      "max_s": 91.02256529097212,
+      "config": {
+        "id": "m5-mflux-flux-klein-002",
+        "description": "M5 MFLUX Klein distilled, 8-bit affine weight quantization of all eligible layers; reference m5-mflux-flux-klein-001, 512x512, no reuse/offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "backend": "mlx-metal",
+        "precision": "bfloat16",
+        "engine": {
+          "name": "mflux",
+          "version": "0.22.0",
+          "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+          "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "files": {
+            "flux-2-klein-4b.safetensors": {
+              "sha256": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343",
+              "bytes": 7751105712
+            },
+            "model_index.json": {
+              "sha256": "51a76cb1cf3ed37423a1128c79c22faee8e6fbe7f5aaeb737f0a258930dbaac0",
+              "bytes": 446
+            },
+            "scheduler/scheduler_config.json": {
+              "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+              "bytes": 486
+            },
+            "text_encoder/config.json": {
+              "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+              "bytes": 1536
+            },
+            "text_encoder/generation_config.json": {
+              "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+              "bytes": 214
+            },
+            "text_encoder/model-00001-of-00002.safetensors": {
+              "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+              "bytes": 4967215360
+            },
+            "text_encoder/model-00002-of-00002.safetensors": {
+              "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+              "bytes": 3077766632
+            },
+            "text_encoder/model.safetensors.index.json": {
+              "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+              "bytes": 32855
+            },
+            "tokenizer/added_tokens.json": {
+              "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+              "bytes": 707
+            },
+            "tokenizer/chat_template.jinja": {
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+              "bytes": 4168
+            },
+            "tokenizer/merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "bytes": 1671853
+            },
+            "tokenizer/special_tokens_map.json": {
+              "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+              "bytes": 613
+            },
+            "tokenizer/tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "bytes": 11422654
+            },
+            "tokenizer/tokenizer_config.json": {
+              "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+              "bytes": 5404
+            },
+            "tokenizer/vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "bytes": 2776833
+            },
+            "transformer/config.json": {
+              "sha256": "09733c74a3da6d17dd0a0472a091a8950c7c6935889c32c16cc800ede05029de",
+              "bytes": 541
+            },
+            "transformer/diffusion_pytorch_model.safetensors": {
+              "sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+              "bytes": 7751109744
+            },
+            "vae/config.json": {
+              "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+              "bytes": 821
+            },
+            "vae/diffusion_pytorch_model.safetensors": {
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "bytes": 168120878
+            }
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        },
+        "optimizations": {
+          "quantization": 8,
+          "conditioning_reuse": false,
+          "vae_tiling": false,
+          "offload": false
+        },
+        "engine_settings": {
+          "quantization_scope": "all_eligible_layers",
+          "group_size": 64,
+          "scheduler": "flow_match_euler_discrete",
+          "native_predict_compile": true,
+          "negative_prompt_override": "",
+          "timing": "synchronized_host"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "9daabfe91611cd31eb3fef8bb05c0f969200f4d2cc290dc222c11e77dbcbe774",
+        "runs.csv": "a156eea10858c80939404ab420e8ed3abb24d5df4b9ddcd9153ecf77ecb88290",
+        "config.json": "a2d01e2c4c996961eccda46672e0cbf86d0bf873885caf5fc880ee1239403507",
+        "stages.csv": "ac4dd04c4b3bf47adef9608f37a23fe3751a3201a1237d637f2ff1f9b351d477",
+        "status.json": "8776d1fd6bd518f71d24a81f99e0fa5ca4a0bebb6f77681c0485e5e055925b7e"
+      }
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text.",
+      "label": "4-bit",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.9525636541075073,
+        "Denoising": 8.350145162129774,
+        "VAE decoding": 1.0944749332091306,
+        "Output / remaining time": 0.14354743804433384
+      },
+      "mean_s": 10.540731187490746,
+      "median_s": 10.296159603982233,
+      "min_s": 7.597928540955763,
+      "max_s": 13.513044458988588,
+      "config": {
+        "id": "m5-mflux-flux-klein-003",
+        "description": "M5 MFLUX Klein distilled, 4-bit affine weight quantization of all eligible layers; reference m5-mflux-flux-klein-001, 512x512, no reuse/offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "backend": "mlx-metal",
+        "precision": "bfloat16",
+        "engine": {
+          "name": "mflux",
+          "version": "0.22.0",
+          "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+          "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "files": {
+            "flux-2-klein-4b.safetensors": {
+              "sha256": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343",
+              "bytes": 7751105712
+            },
+            "model_index.json": {
+              "sha256": "51a76cb1cf3ed37423a1128c79c22faee8e6fbe7f5aaeb737f0a258930dbaac0",
+              "bytes": 446
+            },
+            "scheduler/scheduler_config.json": {
+              "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+              "bytes": 486
+            },
+            "text_encoder/config.json": {
+              "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+              "bytes": 1536
+            },
+            "text_encoder/generation_config.json": {
+              "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+              "bytes": 214
+            },
+            "text_encoder/model-00001-of-00002.safetensors": {
+              "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+              "bytes": 4967215360
+            },
+            "text_encoder/model-00002-of-00002.safetensors": {
+              "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+              "bytes": 3077766632
+            },
+            "text_encoder/model.safetensors.index.json": {
+              "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+              "bytes": 32855
+            },
+            "tokenizer/added_tokens.json": {
+              "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+              "bytes": 707
+            },
+            "tokenizer/chat_template.jinja": {
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+              "bytes": 4168
+            },
+            "tokenizer/merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "bytes": 1671853
+            },
+            "tokenizer/special_tokens_map.json": {
+              "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+              "bytes": 613
+            },
+            "tokenizer/tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "bytes": 11422654
+            },
+            "tokenizer/tokenizer_config.json": {
+              "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+              "bytes": 5404
+            },
+            "tokenizer/vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "bytes": 2776833
+            },
+            "transformer/config.json": {
+              "sha256": "09733c74a3da6d17dd0a0472a091a8950c7c6935889c32c16cc800ede05029de",
+              "bytes": 541
+            },
+            "transformer/diffusion_pytorch_model.safetensors": {
+              "sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+              "bytes": 7751109744
+            },
+            "vae/config.json": {
+              "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+              "bytes": 821
+            },
+            "vae/diffusion_pytorch_model.safetensors": {
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "bytes": 168120878
+            }
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        },
+        "optimizations": {
+          "quantization": 4,
+          "conditioning_reuse": false,
+          "vae_tiling": false,
+          "offload": false
+        },
+        "engine_settings": {
+          "quantization_scope": "all_eligible_layers",
+          "group_size": 64,
+          "scheduler": "flow_match_euler_discrete",
+          "native_predict_compile": true,
+          "negative_prompt_override": "",
+          "timing": "synchronized_host"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "33c6a5363023b32110d8b73ddb0aabe7270dced31e78ab7d8c72c76c51d49154",
+        "runs.csv": "392175e02a100991e2b369c3c1d14933fd7729f7fd62b3c628d44ea16d2e8d8c",
+        "config.json": "878602f38428110f854a1c88c4ea7792eac6d5795e152941d5dd12fe3f6e1f50",
+        "stages.csv": "26a1d56f07a12b059bc123b68ed58824680f652c7b48081869f5e68e346a6fbb",
+        "status.json": "60757d2655abf2294f658d07d75318b566c705a1b9918699bbc1f88f1256c937"
+      }
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text.",
+      "label": "8-bit",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 13.560714529297547,
+        "Denoising": 174.96617508704077,
+        "VAE decoding": 24.00810388320242,
+        "Output / remaining time": 0.014141888177255169
+      },
+      "mean_s": 212.54913538771797,
+      "median_s": 206.17468504203134,
+      "min_s": 188.16116487502586,
+      "max_s": 249.2979683339945,
+      "config": {
+        "id": "m5-mflux-flux-klein-base-002",
+        "description": "M5 MFLUX Klein Base, 8-bit affine weight quantization of all eligible layers; reference m5-mflux-flux-klein-base-001, 512x512, no reuse/offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "backend": "mlx-metal",
+        "precision": "bfloat16",
+        "engine": {
+          "name": "mflux",
+          "version": "0.22.0",
+          "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+          "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "files": {
+            "model_index.json": {
+              "sha256": "de1fef01845f0af3e1e2f2581cd5e86f2dfa4a4776f7f0b26b4c77feac4ee70f",
+              "bytes": 422
+            },
+            "scheduler/scheduler_config.json": {
+              "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+              "bytes": 486
+            },
+            "text_encoder/config.json": {
+              "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+              "bytes": 1536
+            },
+            "text_encoder/generation_config.json": {
+              "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+              "bytes": 214
+            },
+            "text_encoder/model-00001-of-00002.safetensors": {
+              "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+              "bytes": 4967215360
+            },
+            "text_encoder/model-00002-of-00002.safetensors": {
+              "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+              "bytes": 3077766632
+            },
+            "text_encoder/model.safetensors.index.json": {
+              "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+              "bytes": 32855
+            },
+            "tokenizer/added_tokens.json": {
+              "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+              "bytes": 707
+            },
+            "tokenizer/chat_template.jinja": {
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+              "bytes": 4168
+            },
+            "tokenizer/merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "bytes": 1671853
+            },
+            "tokenizer/special_tokens_map.json": {
+              "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+              "bytes": 613
+            },
+            "tokenizer/tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "bytes": 11422654
+            },
+            "tokenizer/tokenizer_config.json": {
+              "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+              "bytes": 5404
+            },
+            "tokenizer/vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "bytes": 2776833
+            },
+            "transformer/config.json": {
+              "sha256": "c8a88c1433f24e52c01f46766c9f519e76d91d1c00bfb43fe0db2e4ed3c84d70",
+              "bytes": 531
+            },
+            "transformer/diffusion_pytorch_model.safetensors": {
+              "sha256": "e109674697ffa1a3983126e32512f5428a9442bd8df59f9c95566ee90a473bb6",
+              "bytes": 7751109744
+            },
+            "vae/config.json": {
+              "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+              "bytes": 821
+            },
+            "vae/diffusion_pytorch_model.safetensors": {
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "bytes": 168120878
+            }
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        },
+        "optimizations": {
+          "quantization": 8,
+          "conditioning_reuse": false,
+          "vae_tiling": false,
+          "offload": false
+        },
+        "engine_settings": {
+          "quantization_scope": "all_eligible_layers",
+          "group_size": 64,
+          "scheduler": "flow_match_euler_discrete",
+          "native_predict_compile": true,
+          "negative_prompt_override": "",
+          "timing": "synchronized_host"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "cd681609acba546701aef47e503c5926b23fcc287ec643b21c3339dc974cd51b",
+        "runs.csv": "1e450b2a42bf84153f8f431a441e02184a0849780558b2f5d82b8453664c5b66",
+        "config.json": "b53649059738f927ffa209c403bcdac2d6496786f641a2bba03fc00394920b83",
+        "stages.csv": "c0022a149cdfded79b9bf04cb3ba63ca953f21622fc0c0a0031edbadbfc4b4d3",
+        "status.json": "a8a8b60dc51112d49b1a8be5d7b54bdb793525dc050170992ee246eb09cc4ef7"
+      }
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text.",
+      "label": "4-bit",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.7257885457016527,
+        "Denoising": 147.81190047955607,
+        "VAE decoding": 4.42749576260685,
+        "Output / remaining time": 0.008270595339126885
+      },
+      "mean_s": 152.97345538320369,
+      "median_s": 151.00740633302485,
+      "min_s": 137.06702212500386,
+      "max_s": 178.486187875038,
+      "config": {
+        "id": "m5-mflux-flux-klein-base-003",
+        "description": "M5 MFLUX Klein Base, 4-bit affine weight quantization of all eligible layers; reference m5-mflux-flux-klein-base-001, 512x512, no reuse/offload.",
+        "device_label": "macbook-air-m5-24gb",
+        "backend": "mlx-metal",
+        "precision": "bfloat16",
+        "engine": {
+          "name": "mflux",
+          "version": "0.22.0",
+          "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+          "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "files": {
+            "model_index.json": {
+              "sha256": "de1fef01845f0af3e1e2f2581cd5e86f2dfa4a4776f7f0b26b4c77feac4ee70f",
+              "bytes": 422
+            },
+            "scheduler/scheduler_config.json": {
+              "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+              "bytes": 486
+            },
+            "text_encoder/config.json": {
+              "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+              "bytes": 1536
+            },
+            "text_encoder/generation_config.json": {
+              "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+              "bytes": 214
+            },
+            "text_encoder/model-00001-of-00002.safetensors": {
+              "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+              "bytes": 4967215360
+            },
+            "text_encoder/model-00002-of-00002.safetensors": {
+              "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+              "bytes": 3077766632
+            },
+            "text_encoder/model.safetensors.index.json": {
+              "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+              "bytes": 32855
+            },
+            "tokenizer/added_tokens.json": {
+              "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+              "bytes": 707
+            },
+            "tokenizer/chat_template.jinja": {
+              "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+              "bytes": 4168
+            },
+            "tokenizer/merges.txt": {
+              "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+              "bytes": 1671853
+            },
+            "tokenizer/special_tokens_map.json": {
+              "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+              "bytes": 613
+            },
+            "tokenizer/tokenizer.json": {
+              "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+              "bytes": 11422654
+            },
+            "tokenizer/tokenizer_config.json": {
+              "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+              "bytes": 5404
+            },
+            "tokenizer/vocab.json": {
+              "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+              "bytes": 2776833
+            },
+            "transformer/config.json": {
+              "sha256": "c8a88c1433f24e52c01f46766c9f519e76d91d1c00bfb43fe0db2e4ed3c84d70",
+              "bytes": 531
+            },
+            "transformer/diffusion_pytorch_model.safetensors": {
+              "sha256": "e109674697ffa1a3983126e32512f5428a9442bd8df59f9c95566ee90a473bb6",
+              "bytes": 7751109744
+            },
+            "vae/config.json": {
+              "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+              "bytes": 821
+            },
+            "vae/diffusion_pytorch_model.safetensors": {
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "bytes": 168120878
+            }
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 100,
+          "prevent_idle_sleep": true
+        },
+        "device_requirements": {
+          "chip": "Apple M5",
+          "memory_gib": 24
+        },
+        "optimizations": {
+          "quantization": 4,
+          "conditioning_reuse": false,
+          "vae_tiling": false,
+          "offload": false
+        },
+        "engine_settings": {
+          "quantization_scope": "all_eligible_layers",
+          "group_size": 64,
+          "scheduler": "flow_match_euler_discrete",
+          "native_predict_compile": true,
+          "negative_prompt_override": "",
+          "timing": "synchronized_host"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "7eeac5714a68b1b90e99afa3adf53d1c8c3bd4ae8495b7cb7cddaec44c92e223",
+        "runs.csv": "fac50466291ea8de7079c204676e4bd7eceb56d1b88cf7b4a64a0cffd5bd05d3",
+        "config.json": "7c134198599ee95a481d0411dcf96531a36ad8eaa8baba14437b9b8560c97272",
+        "stages.csv": "c9bcdae9ac3faddb2b26f5d69f6d425b64dfab5b3425cc0b368e0facda668821",
+        "status.json": "2a23a3261e60d9b55accd360daf4fca27b6ca4ad79f4fcdf0017d907d8eda571"
+      }
     }
   ],
   "charts": [
@@ -3037,12 +5599,13 @@
     },
     {
       "key": "a100-distilled-engines",
-      "title": "A100 \u00b7 distilled / 4 steps \u00b7 engine references",
+      "title": "A100 \u00b7 distilled / 4 steps \u00b7 engine configurations",
       "runs": [
         "a100-flux-klein-001__baseline__20260923-221530",
-        "a100-sdcpp-flux-klein-001__baseline__20261005-220435"
+        "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+        "a100-nunchaku-flux-klein-001__baseline__20261011-124123"
       ],
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>PyTorch: CUDA-event stages; sd.cpp: host callback stages. Different RNG paths; no cross-engine quality equivalence established."
+      "note": "1024\u00b2 \u00b7 no reuse \u00b7 10 measured generations; first, warm-ups and initial model loading excluded.<br>PyTorch and sd.cpp: BF16. Nunchaku: SVDQuant INT4 W4A4/r32 transformer + BF16 text encoder/VAE.<br>Software, nodes, checkpoint precision and RNG differ; descriptive configuration comparison, not an isolated engine speedup. Quality equivalence untested."
     },
     {
       "key": "a100-base-engines",
@@ -3060,10 +5623,97 @@
         "a100-edgedit-flux-klein-001__baseline__20261005-233237"
       ],
       "note": "BF16 weights / FP32 transformer activations \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>Encoding includes latent/schedule setup. Host system-clock phases; total steady-clock duration rounded to 1 ms.<br>Only final image retained; cross-repeat determinism and cross-engine quality equivalence unverified."
+    },
+    {
+      "key": "m5-distilled-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+        "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+        "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+        "m5-sdcpp-flux-klein-005__baseline__20261010-205929"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 0/4 steps skipped; cache enabled but no reuse."
+    },
+    {
+      "key": "m5-base-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+        "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+        "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+        "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358"
+      ],
+      "title": "M5 \u00b7 base / 50 steps \u00b7 stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 25/50 steps skipped; approximate, no formal quality approval."
+    },
+    {
+      "key": "m5-distilled-pytorch-options",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-flux-klein-002__baseline__20261010-203805",
+        "m5-flux-klein-003__baseline__20261010-204109"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+    },
+    {
+      "key": "m5-base-pytorch-options",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-flux-klein-base-002__baseline__20261010-210907",
+        "m5-flux-klein-base-003__baseline__20261010-214732"
+      ],
+      "title": "M5 \u00b7 base / 50 steps \u00b7 PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+    },
+    {
+      "key": "m5-distilled-engines",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 engine configurations",
+      "note": "512\u00b2 \u00b7 same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors."
+    },
+    {
+      "key": "m5-base-engines",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "title": "M5 \u00b7 Base / 50 steps \u00b7 engine configurations",
+      "note": "512\u00b2 \u00b7 same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors.<br>MFLUX Base BF16 absent: native MLX Metal smoke crash."
+    },
+    {
+      "key": "m5-distilled-mflux-quantization",
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "note": "Same pinned source checkpoint \u00b7 no reuse/offload \u00b7 eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
+    },
+    {
+      "key": "m5-base-mflux-quantization",
+      "title": "M5 \u00b7 Base / 50 steps \u00b7 MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "note": "Same pinned source checkpoint \u00b7 no reuse/offload \u00b7 eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
     }
   ],
   "exclusions": [
     "Smoke attempts, failed/incomplete runs and profiler captures excluded.",
-    "Older duplicate reference captures excluded except the original PyTorch and Jetson references."
+    "Older duplicate reference captures excluded except the original PyTorch and Jetson references.",
+    "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here."
   ]
 }

@@ -1,0 +1,495 @@
+{
+  "verified_utc": "2026-10-11T14:41:29.909511+00:00",
+  "project": "mfaruqi-purdue-university/on-device-diffusion",
+  "total": 35,
+  "checks": "W&B terminal state, Apple GPU label, measured median/min/max, clock continuity where available, image count, table presence and benchmark evidence artifact",
+  "runs": [
+    {
+      "run_dir": "m5-edgedit-flux-klein-001__attempt__20261010-183705",
+      "wandb_id": "m5-edgedit-flux-klein-001__attempt__20261010-183705",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-edgedit-flux-klein-001__attempt__20261010-183705",
+      "state": "failed",
+      "image_count": 0,
+      "measured_count": 0,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-edgedit-flux-klein-001__attempt__20261010-183705:v0",
+      "source_sha256": {
+        "config.json": "a580c542be5d4c57994f8b04cf7efb82df17390b8b3e36017ee8410a32ef37b8",
+        "status.json": "2d219b8331b401055734fabe65de45232c631a231e3e25cbbbfa6dde87056424"
+      }
+    },
+    {
+      "run_dir": "m5-edgedit-flux-klein-001__attempt__20261011-043503",
+      "wandb_id": "m5-edgedit-flux-klein-001__attempt__20261011-043503",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-edgedit-flux-klein-001__attempt__20261011-043503",
+      "state": "failed",
+      "image_count": 0,
+      "measured_count": 0,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-edgedit-flux-klein-001__attempt__20261011-043503:v0",
+      "source_sha256": {
+        "config.json": "a38253c3930c9d38aac18d339ba60625d564900b0136fc571fc6749c3d68aa52",
+        "status.json": "63f28d60a5f875814aa9622185eba823421c37760f8b9d177f34450ea95f7021"
+      }
+    },
+    {
+      "run_dir": "m5-edgedit-flux-klein-base-001__attempt__20261010-192312",
+      "wandb_id": "m5-edgedit-flux-klein-base-001__attempt__20261010-192312",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-edgedit-flux-klein-base-001__attempt__20261010-192312",
+      "state": "failed",
+      "image_count": 0,
+      "measured_count": 0,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-edgedit-flux-klein-base-001__attempt__20261010-192312:v0",
+      "source_sha256": {
+        "config.json": "e4a21e17eff47b46367145597117da134742820155872af6183b697956c12ef0",
+        "status.json": "97acf1df7e9e40b0327da62566f4af991c709a5fc4e205e74e119a88fe14ca29"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-001__attempt__20261010-183352",
+      "wandb_id": "m5-flux-klein-001__attempt__20261010-183352",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-001__attempt__20261010-183352",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-001__attempt__20261010-183352:v0",
+      "source_sha256": {
+        "config.json": "3b34a4b432a1b989452da4ab281961bca4ef9b302e7431ea470d3fcadc4a2026",
+        "summary.json": "7c3f24058ef988c6910345c19a3ad43e4590a02d220fbcf18c584b2951a563ec",
+        "status.json": "36bf8697ccea7204e16a3ae784ce563bcee7bdb638f21ce079cf06874f3caef1"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-001__baseline__20261010-183446",
+      "wandb_id": "m5-flux-klein-001__baseline__20261010-183446",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-001__baseline__20261010-183446",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-001__baseline__20261010-183446:v0",
+      "source_sha256": {
+        "config.json": "56baacaabd4a1250c2d5a75783800776bcd17141b359622c9c397486aa48d95d",
+        "summary.json": "43af9c0c9d9fe9f75ed92778dd1089586709202d767666eb08ef642edd174e81",
+        "status.json": "b09efc06027a7049f957541989868e92276109830b5990babd85ea9c66812a7c"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-002__attempt__20261010-203159",
+      "wandb_id": "m5-flux-klein-002__attempt__20261010-203159",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-002__attempt__20261010-203159",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-002__attempt__20261010-203159:v0",
+      "source_sha256": {
+        "config.json": "de304ec9cb91064199578ca030639a18fb1ac07bbed2b283565f511f3d2f3214",
+        "summary.json": "e0505b56c11fcb577cd29fc60cc462cdf43f3391eaf50acadf6af8aa67edae74",
+        "status.json": "cac5ccafec47d47516400c85df98d8aff11fa719af6225cda9b5bb4753b48a6d"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-002__baseline__20261010-203805",
+      "wandb_id": "m5-flux-klein-002__baseline__20261010-203805",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-002__baseline__20261010-203805",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-002__baseline__20261010-203805:v0",
+      "source_sha256": {
+        "config.json": "df5d554e8440a6f7734284e23ea8b215a8b09d601e8e3c6ee3b2eea81aba7019",
+        "summary.json": "1695e5f24ee77aa91e18d4e713c97ca1640c6c191b267da0d6fea18dfd60b5ce",
+        "status.json": "13646a99696afb31f735f2dffd7f3f3e51e67655597021ded41467c2b210b732"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-003__attempt__20261010-204022",
+      "wandb_id": "m5-flux-klein-003__attempt__20261010-204022",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-003__attempt__20261010-204022",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-003__attempt__20261010-204022:v0",
+      "source_sha256": {
+        "config.json": "f5e896d0515c86727d8417e80d2ddb9fcbbb48250f7802fd36d2a9c98fb1aa9f",
+        "summary.json": "1a7c3e331546a391041750980bdb726052d81de4adcb437ad1bc55cf322704e1",
+        "status.json": "16b1bf14e3079a6cae33e8efe5a2f4ce65d5b2650ffa30aec6118726b0d151f8"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-003__baseline__20261010-204109",
+      "wandb_id": "m5-flux-klein-003__baseline__20261010-204109",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-003__baseline__20261010-204109",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-003__baseline__20261010-204109:v0",
+      "source_sha256": {
+        "config.json": "2242df3889995288afe1059252d1b1bad57e3d0e1dd39378f0c374d7ebc623c6",
+        "summary.json": "ff538856d8975b981dd28113ed514d00f4d66c820056c20a5e8b0994c191c3d2",
+        "status.json": "be1fc2560ce8777295e29a8bdce325af47a9428f8160fe0eb822fe8d7a2cf3bf"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-001__attempt__20261010-183713",
+      "wandb_id": "m5-flux-klein-base-001__attempt__20261010-183713",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-001__attempt__20261010-183713",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-001__attempt__20261010-183713:v0",
+      "source_sha256": {
+        "config.json": "f1bab97f89034efbe0e1a7fb746bd3f052def2edd0b3861c29c05ad3e36d629f",
+        "summary.json": "bd4391db66e6c4d433eafce3d7f9e62f6ae3d99bf8167f406b4a4f42ada06f7d",
+        "status.json": "06079c684c19c4ef87181dd2daad63bf102d7cf55f845939bbb7fb55609286fa"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-001__baseline__20261010-184312",
+      "wandb_id": "m5-flux-klein-base-001__baseline__20261010-184312",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-001__baseline__20261010-184312",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-001__baseline__20261010-184312:v0",
+      "source_sha256": {
+        "config.json": "79fa3c25f9f2bdda0fef43b0f1f2275764a4252b6a1c12959f521ad04be1d99d",
+        "summary.json": "d5ee0145659e5dc66d3b215c7485c2ff00248b9c86d28eba2da48d8c61d8d9a8",
+        "status.json": "a868581032376dde58eb42f6ca8cdc83de22c90dba4119a5c06810705953063a"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-002__attempt__20261010-210338",
+      "wandb_id": "m5-flux-klein-base-002__attempt__20261010-210338",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-002__attempt__20261010-210338",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-002__attempt__20261010-210338:v0",
+      "source_sha256": {
+        "config.json": "320a500110a728d08ba05b6068eae0c1a0c0df3b61a6f5177f9048ce15d6fa02",
+        "summary.json": "e70ac5f58a78afcac57acf4c6bb92713047e452ce839f87cda0cbf6519630644",
+        "status.json": "f9fb243d63abb713a007384fa8ba94fd64affd1bd5851dc355a946913af1e2eb"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-002__baseline__20261010-210907",
+      "wandb_id": "m5-flux-klein-base-002__baseline__20261010-210907",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-002__baseline__20261010-210907",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-002__baseline__20261010-210907:v0",
+      "source_sha256": {
+        "config.json": "a89ec48159a855845b6cf1177a87a2bc6fa714abff01ace7d0923780cf021cde",
+        "summary.json": "9ddffe1ac6da365c92779bc68a4c942f994c4cddc60358356c8a3103efaf7021",
+        "status.json": "ba0683ff795e92d3c5487cd04594e6db02b685e9cd872de520bdc5a009490ee6"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-003__attempt__20261010-214141",
+      "wandb_id": "m5-flux-klein-base-003__attempt__20261010-214141",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-003__attempt__20261010-214141",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-003__attempt__20261010-214141:v0",
+      "source_sha256": {
+        "config.json": "57f34379674e5ab0b2c18095643679c1e9f481e552b356bd4e2a9cec5d6622df",
+        "summary.json": "15f57dc9f2c335996d092b6f7a1e4a8ceda4acb38aebf22cff87692e3f405d92",
+        "status.json": "6de92bbaa3b1a0202aacc29f99b3d0f68cd6b970ebc12148187a8eba2db041c6"
+      }
+    },
+    {
+      "run_dir": "m5-flux-klein-base-003__baseline__20261010-214732",
+      "wandb_id": "m5-flux-klein-base-003__baseline__20261010-214732",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-flux-klein-base-003__baseline__20261010-214732",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-flux-klein-base-003__baseline__20261010-214732:v0",
+      "source_sha256": {
+        "config.json": "33ba2b854d6c811f8a0259d2b5f78ac33c65607bdf7d912d294a6b899eec2b27",
+        "summary.json": "75722a278ae34a7de8e0c80372bc2d5a7065f2eb73cc1885f84213b228114161",
+        "status.json": "969d6394e0c1c7156848101a42952a18d1926893899c8e7ec1db70d55e508039"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__attempt__20261010-140940",
+      "wandb_id": "m5-sdcpp-flux-klein-001__attempt__20261010-140940",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-001__attempt__20261010-140940",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-001__attempt__20261010-140940:v0",
+      "source_sha256": {
+        "config.json": "c34216c02665f7d4c0f946e4fbcb7c2fac951c9174e3657cbc81b5f370001e05",
+        "summary.json": "ca671cc649b4a77b8828364e8ec8905b3f58a864bf09c1b2ea797a3bb61f73f8",
+        "status.json": "802b97c8ca8aac212a73fd5b86f12ac2900a0218960b1aa027f7e53650c4970c"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__baseline__20261010-152141",
+      "wandb_id": "m5-sdcpp-flux-klein-001__baseline__20261010-152141",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-001__baseline__20261010-152141",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-001__baseline__20261010-152141:v0",
+      "source_sha256": {
+        "config.json": "bf2f2316b3ec1c9f3836983a74dac392cc89caf003182a3c2e3e7eebcd2a42e1",
+        "summary.json": "a414535d05aba0d95711f5e65ff137b075b35d8b5191cd7a60ae6f2b62d72737",
+        "status.json": "2fa11f362d16529fc8d395351d69f999d29b470056fd2fd06aa0ff66275fe1c8"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "wandb_id": "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-001__baseline__20261010-165421:v0",
+      "source_sha256": {
+        "config.json": "bf2f2316b3ec1c9f3836983a74dac392cc89caf003182a3c2e3e7eebcd2a42e1",
+        "summary.json": "e39d1ed8bd2700faa388b1905be92dccb4dc1de27803b06de314761ddc9395be",
+        "status.json": "faebb227c42c8dac0ebbf5a1fff965747a835d97c93900ca5d001d4048cfbea1"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-002__attempt__20261010-204248",
+      "wandb_id": "m5-sdcpp-flux-klein-002__attempt__20261010-204248",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-002__attempt__20261010-204248",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-002__attempt__20261010-204248:v0",
+      "source_sha256": {
+        "config.json": "400cad3468f22c013dffe6dcd752a2431c3fd8699347b2d4dd86675e7289e3d6",
+        "summary.json": "1f4bc601f0d3bd778f3184a39026421ea503da5c2eaf38baeca109eeb182deee",
+        "status.json": "b08b35e2d3979b2dd3f73a0465dc8580b3e91432902df1b284ef2d8a513b535c"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "wandb_id": "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-002__baseline__20261010-204326:v0",
+      "source_sha256": {
+        "config.json": "c910673ef5566a9ad431fa750ce418fde33a69ee605a88b520ffff745b2bdb68",
+        "summary.json": "61c33b42c4d6cb95a10636901c48ddd0c63ff64e0ea3ee6b40523b52cf77c7c8",
+        "status.json": "ed16a142c6b93d98f48a04d39958334e215b4340e791a5055c134abf083f3da3"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-003__attempt__20261010-204709",
+      "wandb_id": "m5-sdcpp-flux-klein-003__attempt__20261010-204709",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-003__attempt__20261010-204709",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-003__attempt__20261010-204709:v0",
+      "source_sha256": {
+        "config.json": "c9fd0a7030c1b27a62d964d047bf14c2c76d01d162cb0ac18658460117b13d2c",
+        "summary.json": "72da6e8d2cbbb3e95b092fb8584467b3761645596e80199388eb7716c2ca3e6a",
+        "status.json": "98efb73e70db939d79701d49dd83ed614ec4ce85a9b755eed082962744999e40"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "wandb_id": "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-003__baseline__20261010-205038:v0",
+      "source_sha256": {
+        "config.json": "4374e8ba84296e2102d3b855943c476f134c5db0b05347809431ba2f248456b3",
+        "summary.json": "312ff75067fef3c4a871fb73085cbc40254a5794573c9ef03e58bc009108067e",
+        "status.json": "404a11c33a307a358006dbf58f80a77ce73f30fdc85bd3843d27f1b0caf60284"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-004__attempt__20261010-205422",
+      "wandb_id": "m5-sdcpp-flux-klein-004__attempt__20261010-205422",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-004__attempt__20261010-205422",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-004__attempt__20261010-205422:v0",
+      "source_sha256": {
+        "config.json": "6fc5dce2daf9361e3b72fce9505b72f82e8863c95f818184651212626266878a",
+        "summary.json": "9a67d34b07a8098761ffc17fb1bde93c6f4628046883d74dbe3c13a83d8d253c",
+        "status.json": "e9baa2a9c9a07d1e97c4aa88c18502f7a160173594a78b1fa4274ff99567b7bb"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "wandb_id": "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-004__baseline__20261010-205458:v0",
+      "source_sha256": {
+        "config.json": "a6b31fb8d46b88c0390db34b7256b1cb0b4557f8143daf2be296e4951ca007bd",
+        "summary.json": "54c47ddd77e43d2376b811e3a3a0cbf6d7ed3ce9111d24fc9c4ca6388c4a9458",
+        "status.json": "cec0f91d7d0e8dd2e851eb39d669bd35452f258276be90451494587d6c877ddb"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-005__attempt__20261010-205853",
+      "wandb_id": "m5-sdcpp-flux-klein-005__attempt__20261010-205853",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-005__attempt__20261010-205853",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-005__attempt__20261010-205853:v0",
+      "source_sha256": {
+        "config.json": "5d67b9bb0778b43f808135832831231297c232012df5be250c165d161afbc5b2",
+        "summary.json": "14d953223080af3ee8995c20f2c1eadb8f25e9c485528899dfa088f8c367ee70",
+        "status.json": "25692ac7267e537552aee10c925c594f0504c40f6f06960e9cb1e2eedddc5209"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "wandb_id": "m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-005__baseline__20261010-205929:v0",
+      "source_sha256": {
+        "config.json": "697defd6930ddaa7cef1ef18631becdab7a16bf412ef3a41bcdf0e71fbf60ebf",
+        "summary.json": "58eae8815b970b2c39df3daaee1194aadd33d5553b65550b2532dac9f70d541a",
+        "status.json": "c56310f69d326451bf9bed3541648ebcdbc7782da11a7a06a654b516572b4078"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "wandb_id": "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-001__baseline__20261010-165813:v0",
+      "source_sha256": {
+        "config.json": "738065e7565d79de23eade50cc15ad968f972ce4189003437225c8101fcffe37",
+        "summary.json": "fdf47fe449da8d1e9403ca26de08d307b782a7a77824b8ac853ee72165a81108",
+        "status.json": "1a861c63e122056fee370b64d648f4ae581e3a27ebea6d9555550b8254e22857"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-002__attempt__20261010-222736",
+      "wandb_id": "m5-sdcpp-flux-klein-base-002__attempt__20261010-222736",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-002__attempt__20261010-222736",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-002__attempt__20261010-222736:v0",
+      "source_sha256": {
+        "config.json": "48c3db66d5d7992b8b67af7f3789e383ca50087db284c6d8d3d4279cd0a13645",
+        "summary.json": "e4a786314cf5eb84b6da006bb88ad841613044dfd8746b6f069dbb509378b993",
+        "status.json": "08151ad037a2a32f8c720245bbe39b5f0724bffd7ee21373daceffa3ebfe6fc7"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "wandb_id": "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-002__baseline__20261010-223355:v0",
+      "source_sha256": {
+        "config.json": "0218f4919eb05d86a405ca3641e1f76ac903043d79624ca4ba999459270fc0e7",
+        "summary.json": "7f2f49870360b7275e59b857c633143cb498da3f3ae33b731886bc564b2f1e77",
+        "status.json": "f2d8760066b9fe5c9d21747ec36f3d9bc4842fea60e213d399a57043362bfb2b"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-003__attempt__20261010-232130",
+      "wandb_id": "m5-sdcpp-flux-klein-base-003__attempt__20261010-232130",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-003__attempt__20261010-232130",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-003__attempt__20261010-232130:v0",
+      "source_sha256": {
+        "config.json": "703d9b023a49dba41e43feefb2144af899f875ff662fe75ee601d20aac84e97b",
+        "summary.json": "277c9950cadcbe22a9c794ba49452db2fe6d2da3de393e87e5af5e3f3651be36",
+        "status.json": "862919d97353d7736a957ea27a497287ad645ebe8c22954bb9e0029e7628cc43"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "wandb_id": "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-003__baseline__20261010-233405:v0",
+      "source_sha256": {
+        "config.json": "eb506c6286780245659e569411249d0e812529bb3e2b70e82de0b37bd2bc1142",
+        "summary.json": "ba856f51f148487dd2ced0ba4814a6ae8b0f9e8429fe0273633fa9d8260dfad5",
+        "status.json": "46a593f9c9aaaadd3c897e41d462d9ac4b16664267de6835c0e82ea00c559183"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-004__attempt__20261011-010657",
+      "wandb_id": "m5-sdcpp-flux-klein-base-004__attempt__20261011-010657",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-004__attempt__20261011-010657",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-004__attempt__20261011-010657:v0",
+      "source_sha256": {
+        "config.json": "ca6bb7c24c9b4d4ce8aecfa7794aafb0ceb29dac2f3cd67c97cedeea64708e54",
+        "summary.json": "0cd27cf76ee53ab04c0620024ed1f344f23d5c1f00bb52acb17232010da81eeb",
+        "status.json": "4c9291419829a774a3943c127b76b39c927dcd66c870d941bd0d11e1959be91b"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "wandb_id": "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-004__baseline__20261011-012000:v0",
+      "source_sha256": {
+        "config.json": "df9b8a248d7ab52a7b97bbe9240f4d3169e946d042091dfd2978c30d7082dbf1",
+        "summary.json": "993c43625b7989d32c3198fced59a8e5c920e90bb8578ad026bff3f0457619cd",
+        "status.json": "a1848d68a4062729e2ace7c6fed245f50e9a5c01249fae75b83f77770bfa75f6"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-005__attempt__20261011-025051",
+      "wandb_id": "m5-sdcpp-flux-klein-base-005__attempt__20261011-025051",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-005__attempt__20261011-025051",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 1,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-005__attempt__20261011-025051:v0",
+      "source_sha256": {
+        "config.json": "7feff4b510e2a7059d821b7c6a9d1ff5cb14ba108b907513773dc72084d88f2a",
+        "summary.json": "36a2b29d2e7d671ca7fb55de063bd0f3ea2b960141a486a661bb70dfd733ab0c",
+        "status.json": "dac6ebc0ea122fa5142799c2a4a186e8af2f2454597d726dbd8cee5b1e0667cd"
+      }
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "wandb_id": "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "state": "finished",
+      "image_count": 2,
+      "measured_count": 10,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-m5-sdcpp-flux-klein-base-005__baseline__20261011-030358:v0",
+      "source_sha256": {
+        "config.json": "fa53a3a384c37409cbb8e0bcadeb934009b5850ecb19c432e337fe48ae454516",
+        "summary.json": "cf12b96d0ba5931636000d145e76203f7431f98455565a35cff733af9da3ced7",
+        "status.json": "d4c81da970f645e6969ab0c57280ed8b88742ddf85c67f93cd5ed916964f4d2d"
+      }
+    }
+  ]
+}

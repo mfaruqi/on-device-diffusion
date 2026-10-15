@@ -124,8 +124,12 @@ def describe(run_dir):
     gpu = env.get("gpu_name") or env.get("nvidia_smi_gpu", "").split(",")[0].strip()
     if not gpu and "jetson" in device:
         gpu = f"NVIDIA Jetson Orin Nano (sm_{engine.get('cuda_architecture', '?')})"
+    if not gpu:
+        gpu = (env.get("hardware", {}).get("chip_type") or summ.get("gpu")
+               or cfg.get("device_requirements", {}).get("chip") or "")
     variant = ("SXM4" if "SXM4" in gpu else "PCIE" if "PCIE" in gpu else
-               "jetson-orin-nano" if "jetson" in device else "unknown")
+               "jetson-orin-nano" if "jetson" in device else
+               gpu.lower().replace(" ", "-") if gpu.startswith("Apple ") else "unknown")
     opt = cfg.get("optimizations") or {}
     quant = opt.get("quantization")
 
@@ -157,10 +161,29 @@ def describe(run_dir):
         "protocol": cfg.get("protocol"),
         "optimizations": opt,
         "engine_settings": cfg.get("engine_settings"),
+        "timing_method": summ.get("timing_method"),
+        "memory_scope": summ.get("memory_scope") or env.get("memory_scope"),
+        "unavailable_metrics": summ.get("unavailable_metrics"),
         "power_mode": (env.get("power_mode") or cfg.get("power_mode_observed_before_run")
                        or cfg.get("required_power_mode")),
         "model_storage": model_storage(env, device),
     }
+
+    if engine_name == "mflux":
+        config["engine_version"] = env.get("packages", {}).get("mflux") or engine.get("version")
+        config["engine_commit"] = engine.get("commit")
+        config["precision"] = (f"{quant}-bit affine eligible weights, BF16 remaining parameters" if quant
+                               else "BF16 unquantized")
+        config["mlx_version"] = env.get("packages", {}).get("mlx")
+
+    if engine_name == "nunchaku":
+        config["engine_version"] = env.get("nunchaku") or engine.get("version")
+        config["engine_settings"] = engine
+        config["quantized_transformer"] = cfg.get("quantized_transformer")
+        config["precision"] = "INT4 W4A4/r32 transformer; BF16 text encoder and VAE" if quant == {
+            "method": "svdquant", "component": "transformer", "weights_bits": 4,
+            "activations_bits": 4, "low_rank": 32, "format": "int4"
+        } else cfg.get("precision")
 
     rows = read_csv(run_dir / "runs.csv")
     history = []
@@ -173,6 +196,11 @@ def describe(run_dir):
         history.append(step)
 
     summary = {"status": status, "outcome": config["outcome"]}
+    for key in ("system_memory", "clock_continuity_pass", "formal_quality_eligible",
+                "conditioning_cache", "vae_tiling", "cache_audit",
+                "conditioning_cache_hits_per_generation"):
+        if key in summ:
+            summary[key] = summ[key]
     measured = summ.get("measured") or {}
     for k, v in measured.items():
         if v:
@@ -280,6 +308,11 @@ def describe(run_dir):
 
     images = [p for p in (run_dir / "images" / "first.png", run_dir / "images" / "measured-0.png",
                           run_dir / "output.png") if p.exists()]
+    # MPS uses generation-prefixed filenames. Keep first + first measured, as on CUDA/native.
+    for pattern in ("*-first.png", "*-measured.png"):
+        matches = sorted((run_dir / "images").glob(pattern))
+        if matches:
+            images.append(matches[0])
     files = [p for p in run_dir.rglob("*") if p.is_file() and p.suffix in SMALL_SUFFIXES | {".log"}
              and "raw" not in p.parts and p.stat().st_size < 5_000_000]
     tags = [config["engine"], variant, kind, "failed" if failed else "complete"]

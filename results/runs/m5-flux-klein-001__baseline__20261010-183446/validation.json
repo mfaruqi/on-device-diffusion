@@ -1,0 +1,182 @@
+{
+  "functional_pass": true,
+  "protocol_pass": true,
+  "timing_continuity_pass": true,
+  "formal_quality_eligible": false,
+  "controlled_performance_eligible": false,
+  "images": {
+    "03-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "07-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "12-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "01-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "13-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "06-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "11-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "04-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "05-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "10-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "02-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "08-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "09-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    },
+    "00-first.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        50.05041339397163,
+        54.442915885128116,
+        56.70538211325033
+      ],
+      "sha256": "4ad6bd08adf4b1c63821977513c967450c71a537090e3cf5dfe7890e7fa82778"
+    }
+  },
+  "limitations": [
+    "Single development prompt; no semantic or held-out quality evaluation.",
+    "User applications and pre-existing swap were not controlled; model preparation completed before this fresh batch.",
+    "A complete protocol is not a matched-precision, matched-noise engine comparison."
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-11T15:30:31Z",
+  "finished_utc": "2026-10-11T15:32:56Z",
+  "error": "AssertionError('Unexpected dtype: text_encoder')",
+  "traceback": "Traceback (most recent call last):\n  File \"/scratch/gilbreth/mfaruqi/nunchaku-20261011/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/scratch/gilbreth/mfaruqi/nunchaku-20261011/scripts/run_nunchaku.py\", line 226, in main\n    benchmark(cfg, run_dir)\n  File \"/scratch/gilbreth/mfaruqi/nunchaku-20261011/scripts/run_nunchaku.py\", line 182, in benchmark\n    pipe, load = load_pipeline(cfg, run_dir, quantized)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/scratch/gilbreth/mfaruqi/nunchaku-20261011/scripts/run_nunchaku.py\", line 146, in load_pipeline\n    assert all(t.dtype == torch.bfloat16 for t in tensors if t.is_floating_point()), f\"Unexpected dtype: {name}\"\nAssertionError: Unexpected dtype: text_encoder\n"
+}

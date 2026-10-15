@@ -18,6 +18,34 @@ class TimingLabelTests(unittest.TestCase):
     def payload(self, name):
         return exporter.describe(exporter.RUNS / name)
 
+    def test_mflux_does_not_inherit_diffusers_engine_or_precision_label(self):
+        original = exporter.read_json
+        def read(path):
+            result = original(path)
+            if path.name == 'config.json':
+                result = {**result, 'engine': {'name': 'mflux', 'version': '0.22.0', 'commit': 'a'*40},
+                          'optimizations': {'quantization': 4}, 'precision': 'bfloat16'}
+            elif path.name == 'environment.json':
+                result = {**result, 'packages': {'mflux': '0.22.0', 'mlx': '0.32.3'}}
+            return result
+        with patch.object(exporter, 'read_json', side_effect=read):
+            config = self.payload('a100-flux-klein-001__baseline__20260923-221530')['config']
+        self.assertEqual(config['engine'], 'mflux')
+        self.assertEqual(config['engine_version'], '0.22.0')
+        self.assertEqual(config['mlx_version'], '0.32.3')
+        self.assertIn('4-bit affine', config['precision'])
+
+    def test_nunchaku_exports_checkpoint_identity_and_quality_limits(self):
+        payload = self.payload('a100-nunchaku-flux-klein-001__baseline__20261011-124123')
+        config = payload['config']
+        self.assertEqual(config['engine'], 'nunchaku')
+        self.assertEqual(config['engine_version'], '1.3.0.dev20260622+cu12.8torch2.11')
+        self.assertIn('INT4 W4A4/r32', config['precision'])
+        self.assertEqual(len(config['quantized_transformer']['sha256']), 64)
+        self.assertFalse(payload['summary']['formal_quality_eligible'])
+        self.assertFalse(payload['summary']['deterministic_output'])
+        self.assertEqual(len(payload['history']), 14)
+
     def test_edge_engine_identity_and_unknown_determinism_survive_export(self):
         payload = self.payload('a100-edgedit-flux-klein-001__baseline__20261005-233237')
         config = payload['config']

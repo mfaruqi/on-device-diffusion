@@ -82,6 +82,8 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[MetaSchedule](papers/metaschedule.md)** `ingested`: MetaSchedule — composable tensor-program search spaces, validated traces and measured-cost-guided search; precedent for RQ2, not evidence for diffusion plan quality.
 - **[MLC: compiler and runtime precedent](papers/mlc-compiler-precedent.md)** `ingested`: MLC-LLM and Web Stable Diffusion documentation — compilation, tuning history and memory-planning precedents; the proposed joint diffusion planner remains an untested contribution.
 - **[Reading list](papers/reading-list.md)** `unread`: References from the proposal and related work to read. A paper gets its own page only when it is ingested.
+- **[SemanticDialect](papers/semanticdialect.md)** `ingested`: SemanticDialect — 4-bit mixed-format (per-block "dialect") PTQ for video DiTs with activation residual decomposition; speedups are projected, not measured, and need hardware support.
+- **[SnapGen++](papers/snapgen-plus-plus.md)** `ingested`: SnapGen++ — compact three-stage DiT with sparse attention and few-step distillation, exported via Core ML to iPhones; a phone-scale DiT reference, not a FLUX.2 klein optimization.
 - **[SVDQuant and Nunchaku](papers/svdquant.md)** `ingested`: SVDQuant — low-rank outlier handling enables low-bit diffusion, with Nunchaku kernel fusion needed to control overhead; target support requires verification.
 - **[TeaCache](papers/teacache.md)** `ingested`: TeaCache — adaptive residual reuse from timestep-modulated input differences; polynomial calibration and threshold selection are part of its integration cost.
 
@@ -90,4 +92,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[Baseline metrics: what we measure and how](methods/baseline-metrics.md)**: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 - **[Running experiments on Gilbreth](methods/gilbreth-howto.md)**: How to run experiments on Gilbreth — Slurm basics, accounts, storage rules, the baseline procedure.
 - **[Working on the Jetson Orin Nano](methods/jetson-howto.md)**: Jetson access, CUDA setup, and stage-labelled profiling bundle transfer, build and capture procedures.
+- **[M5 Metal bring-up](methods/m5-howto.md)**: Prepare the M5 sd.cpp Metal smoke test with pinned mixed-Q4 weights and separate unified-memory accounting.
+- **[MFLUX / MLX on M5](methods/mflux-howto.md)**: Pinned MFLUX/MLX Klein on M5, with separate BF16, 8-bit and 4-bit smoke-gated protocols.
+- **[SVDQuant / Nunchaku screening and candidate runner — 2026-10-11](methods/nunchaku-howto.md)**: Candidate Nunchaku SVDQuant timing on A100; pinned community Klein adapter and explicit Jetson/Metal blockers.
 - **[Running stable-diffusion.cpp on Gilbreth](methods/sdcpp-howto.md)**: How to build stable-diffusion.cpp and its benchmark harness, point it at the pinned weights, and run the protocol on Gilbreth.

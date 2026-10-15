@@ -1,0 +1,44 @@
+{
+  "functional_gate": "pass",
+  "checks": {
+    "completed": true,
+    "phases": true,
+    "four_steps_each": true,
+    "cache_off": true,
+    "placement_and_execution_audit": true,
+    "stage_arithmetic": true,
+    "images_nonconstant": true,
+    "first_and_second_pixel_identical": true
+  },
+  "images": [
+    {
+      "file": "first.png",
+      "size": [
+        512,
+        512
+      ],
+      "pixel_stddev": [
+        57.66364868817817,
+        61.57853158611582,
+        64.81758678149117
+      ]
+    },
+    {
+      "file": "measured-0.png",
+      "size": [
+        512,
+        512
+      ],
+      "pixel_stddev": [
+        57.66364868817817,
+        61.57853158611582,
+        64.81758678149117
+      ]
+    }
+  ],
+  "visual_inspection": "Cat holding a legible hello world sign; no blank/black output. Single development prompt only.",
+  "formal_quality_eligible": false,
+  "timing_continuity_pass": true,
+  "benchmark_eligible": false,
+  "timing_scope": "Clean two-generation smoke; one measured observation, no warm-up or controlled background-load baseline."
+}

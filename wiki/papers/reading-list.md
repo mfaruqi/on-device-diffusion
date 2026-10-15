@@ -4,7 +4,7 @@ summary: References from the proposal and related work to read. A paper gets its
 status: unread
 ref: proposal references [1]–[25]
 source: ../../proposal/OnDeviceDiffusionProposal.pdf
-updated: 2026-10-06
+updated: 2026-10-10
 ---
 
 # Reading list
@@ -32,6 +32,9 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 | Engine options | [sd.cpp caching documentation](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/caching.md) | audit EasyCache, DBCache, TaylorSeer, cache-dit and Spectrum against the pinned engine/model; measure speed, cache memory and quality | planned option audit ([memo](../../raw/meetings/2026-10-01.md#to-do)); no new measurements |
 | Engines | FastVideo; Wan reference implementation | video baselines | unread; FastVideo temporarily deferred ([decision](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)) |
 | Engines | ExecuTorch (Nachin et al., MLSys 2026), official OpenVINO diffusion example | existing diffusion recipes; candidate infrastructure, automatic joint selection unverified | [ingested](executorch-mlsys2026.md) |
+| Phone workload | SnapGen++ (Hu et al., 2026), arXiv 2601.08303 | compact three-stage DiT with sparse attention, Core ML export to iPhone; phone-scale DiT reference | [source review ingested](snapgen-plus-plus.md); weights/export unverified |
+| Precision | SemanticDialect (Jang and Tambe, 2026), arXiv 2603.02883 | 4-bit mixed-format block PTQ for video DiTs; selective residual decomposition of sensitive layers | [source review ingested](semanticdialect.md); no edge kernels |
+| Survey | [Diffusion Models on the Edge](https://arxiv.org/abs/2504.15298) (Zheng, 2025) | general edge-ML survey (sampling, quantization, fusion, memory scheduling); no experiments, no DiT/FLUX coverage | screened; no page (background only) |
 | Joint optimization | [CacheQuant](https://arxiv.org/abs/2503.01323) (Liu et al., CVPR 2025) | caching/quantization coupling, cache scheduling and error correction; audit novelty overlap | screened; full review pending |
 | Joint optimization | [QuantCache](https://arxiv.org/abs/2503.06545) (Wu et al., 2025) | hierarchical caching, quantization and pruning for video diffusion | abstract screened; full review pending |
 | Joint optimization | [Q&C](https://arxiv.org/abs/2503.02508) (ICLR 2026) | interaction of quantization and caching errors; audit overlap with error-budget allocation ([RQ3](../rq/rq3.md)) | screened; full review pending |

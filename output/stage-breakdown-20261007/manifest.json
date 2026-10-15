@@ -188,6 +188,160 @@
       "gpu": "A100-PCIE-40GB",
       "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; different physical GPU from reference",
       "label": "Conditioning reuse<br>Different GPU"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "EasyCache",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Prefetch off",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "mmap on",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "EasyCache",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Prefetch off",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "mmap on",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-001__baseline__20261010-183446",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-002__baseline__20261010-203805",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-003__baseline__20261010-204109",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "VAE tiling 256",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-001__baseline__20261010-184312",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-002__baseline__20261010-210907",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-003__baseline__20261010-214732",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 \u00b7 24 GiB",
+      "label": "VAE tiling 256",
+      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "engine": "Nunchaku INT4/r32",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; SVDQuant W4A4/r32 replacement transformer + BF16 text encoder/VAE; GPU-resident, no reuse. Different software environment/node; checkpoint ancestry and quality equivalence unestablished; fixed-seed hashes differ.",
+      "label": "SVDQuant W4A4/r32"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "engine": "MFLUX BF16",
+      "gpu": "Apple M5",
+      "label": "BF16",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; BF16 eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "label": "8-bit",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "label": "8-bit",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
     }
   ],
   "charts": [
@@ -244,12 +398,13 @@
     },
     {
       "key": "a100-distilled-engines",
-      "title": "A100 \u00b7 distilled / 4 steps \u00b7 engine references",
+      "title": "A100 \u00b7 distilled / 4 steps \u00b7 engine configurations",
       "runs": [
         "a100-flux-klein-001__baseline__20260923-221530",
-        "a100-sdcpp-flux-klein-001__baseline__20261005-220435"
+        "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+        "a100-nunchaku-flux-klein-001__baseline__20261011-124123"
       ],
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>PyTorch: CUDA-event stages; sd.cpp: host callback stages. Different RNG paths; no cross-engine quality equivalence established."
+      "note": "1024\u00b2 \u00b7 no reuse \u00b7 10 measured generations; first, warm-ups and initial model loading excluded.<br>PyTorch and sd.cpp: BF16. Nunchaku: SVDQuant INT4 W4A4/r32 transformer + BF16 text encoder/VAE.<br>Software, nodes, checkpoint precision and RNG differ; descriptive configuration comparison, not an isolated engine speedup. Quality equivalence untested."
     },
     {
       "key": "a100-base-engines",
@@ -267,10 +422,97 @@
         "a100-edgedit-flux-klein-001__baseline__20261005-233237"
       ],
       "note": "BF16 weights / FP32 transformer activations \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>Encoding includes latent/schedule setup. Host system-clock phases; total steady-clock duration rounded to 1 ms.<br>Only final image retained; cross-repeat determinism and cross-engine quality equivalence unverified."
+    },
+    {
+      "key": "m5-distilled-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+        "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+        "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+        "m5-sdcpp-flux-klein-005__baseline__20261010-205929"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 0/4 steps skipped; cache enabled but no reuse."
+    },
+    {
+      "key": "m5-base-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+        "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+        "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+        "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358"
+      ],
+      "title": "M5 \u00b7 base / 50 steps \u00b7 stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 25/50 steps skipped; approximate, no formal quality approval."
+    },
+    {
+      "key": "m5-distilled-pytorch-options",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-flux-klein-002__baseline__20261010-203805",
+        "m5-flux-klein-003__baseline__20261010-204109"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+    },
+    {
+      "key": "m5-base-pytorch-options",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-flux-klein-base-002__baseline__20261010-210907",
+        "m5-flux-klein-base-003__baseline__20261010-214732"
+      ],
+      "title": "M5 \u00b7 base / 50 steps \u00b7 PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min\u2013max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval."
+    },
+    {
+      "key": "m5-distilled-engines",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 engine configurations",
+      "note": "512\u00b2 \u00b7 same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors."
+    },
+    {
+      "key": "m5-base-engines",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "title": "M5 \u00b7 Base / 50 steps \u00b7 engine configurations",
+      "note": "512\u00b2 \u00b7 same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors.<br>MFLUX Base BF16 absent: native MLX Metal smoke crash."
+    },
+    {
+      "key": "m5-distilled-mflux-quantization",
+      "title": "M5 \u00b7 distilled / 4 steps \u00b7 MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "note": "Same pinned source checkpoint \u00b7 no reuse/offload \u00b7 eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
+    },
+    {
+      "key": "m5-base-mflux-quantization",
+      "title": "M5 \u00b7 Base / 50 steps \u00b7 MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "note": "Same pinned source checkpoint \u00b7 no reuse/offload \u00b7 eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
     }
   ],
   "exclusions": [
     "Smoke attempts, failed/incomplete runs and profiler captures excluded.",
-    "Older duplicate reference captures excluded except the original PyTorch and Jetson references."
+    "Older duplicate reference captures excluded except the original PyTorch and Jetson references.",
+    "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here."
   ]
 }
