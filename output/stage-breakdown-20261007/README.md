@@ -1,8 +1,8 @@
 # Klein stage breakdowns — updated 2026-10-15
 
-[Open the twenty-four interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
+[Open the twenty-six interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
 
-Week 2–3 engine and option analysis, RQ1. Seventy-four completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
+Week 2–3 engine and option analysis, RQ1. Eighty-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
 
 | Panel | Sources |
 |---|---|
@@ -29,6 +29,8 @@ Week 2–3 engine and option analysis, RQ1. Seventy-four completed, unprofiled r
 
 The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-15 with the seven panels above, from 18 additional full protocols on Jetson Orin Nano and A100. Smoke tests, failed configuration attempts, the memory-guard-stopped edge-dit flash-off run, the contaminated PyTorch run 161717 and launch errors are excluded and uploaded separately ([manifest exclusions](manifest.json)). Visual checks only, no quality metric: TaylorSeer and MagCache visibly change the output; torch.compile is near-identical but not bit-identical; conditioning reuse is bit-identical. Text encoders, residency and initial noise differ across Jetson engines, so the engine panel is a descriptive configuration comparison ([comparison record](../../experiments/compare-jetson-engines-matched-options.md)).
 
+| A100 Base PyTorch torch 2.8 options | Reference, conditioning reuse, TaylorSeer, torch.compile (50 steps, CFG 4) |
+| A100 Base edge-dit caches | GGUF Q4 reference and seven engine step caches (50 steps, CFG 4) |
 | M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; distilled also 4-bit and 8-bit VAE tiling |
 
 ## October 15 additions

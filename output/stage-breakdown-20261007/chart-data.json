@@ -6819,7 +6819,7 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident",
       "label": "edge-dit resident<br>+ VAE tiling",
@@ -7476,7 +7476,7 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "TaylorSeer<br>(0/4 reused)",
@@ -7573,7 +7573,7 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "MagCache<br>(3/4 reused; output degraded)",
@@ -7670,7 +7670,7 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-014__baseline__20261015-135841",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "DiCache<br>(0/4 reused)",
@@ -8163,6 +8163,1050 @@
         "stages.csv": "9ed2618aa31ddb77825ba25d4b505c600d2bdc186435c5c6e227558e38648649",
         "status.json": "a7edf75e5a3c65f3bbc703a9149e1ca6fd1b304a7d47d2d39ac5037e6917601d"
       }
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch 2.8 reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.09336376609802247,
+        "Denoising": 26.176258299255373,
+        "VAE decoding": 0.17006192626953126,
+        "Output / remaining time": 0.04510454484373331
+      },
+      "mean_s": 26.48478853646666,
+      "median_s": 26.476562472933438,
+      "min_s": 26.38092245697044,
+      "max_s": 26.596742474939674,
+      "config": {
+        "id": "a100-flux-klein-base-torch28-001",
+        "description": "PyTorch klein Base BF16 1024\u00b2 (50 steps, CFG 4) reference in the torch 2.8 environment; pinned Base revision.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-base-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "a319ab8cede98e5e13294eb51ab3466266a48f9f849a07feeb84940129017a4e",
+        "runs.csv": "61b6a1c9faaa45e74ab53d844460849f8f973b487bf1da5076407619fc0585f1",
+        "config.json": "77f2e7307441e0e1d12c13f2627990eb60e6252d3b7ada537d733c7628b3f1b7",
+        "stages.csv": "cc17d06eb945128dcf6564cff9721830d5ea9b4cab0cd7afae339c87122fece6",
+        "status.json": "21b77d31bf1bc455e0b69b78e09a492c6e5998feb41aa06a72f869261aa3617b"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.00043589119613170624,
+        "Denoising": 26.069828482055666,
+        "VAE decoding": 0.1698272277832031,
+        "Output / remaining time": 0.0498828947801143
+      },
+      "mean_s": 26.289974495815112,
+      "median_s": 26.29040476452792,
+      "min_s": 26.259816884063184,
+      "max_s": 26.318019072059542,
+      "config": {
+        "id": "a100-flux-klein-base-torch28-002",
+        "description": "Exact conditioning reuse versus a100-flux-klein-base-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "conditioning_reuse": true
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-base-torch28-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "7a4e06ab2605db3b8c85df1e90b5806e7206c4d450dceb436f71431acb0dbe61",
+        "runs.csv": "b2e6a8c44d9d41d2bdc2ac0d9326f20ee34d210f74d373664f4a9f944a453463",
+        "config.json": "485eb45649e52061c01ed8dc9698c7982287171857822ee171c451027637d075",
+        "stages.csv": "d2f2d915ad193b7d31f22b53c98a966527a0df8b2481f9801094cd5ae305a7c4",
+        "status.json": "d48fb8b7d73b3d0ad3ecb3a39b7053825da16a0146aded7150ad16f2d2134833"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "TaylorSeer cache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.09366419792175293,
+        "Denoising": 9.663604132461547,
+        "VAE decoding": 0.169495654296875,
+        "Output / remaining time": 0.04939920461922884
+      },
+      "mean_s": 9.976163189299404,
+      "median_s": 9.980692410492338,
+      "min_s": 9.940086796996184,
+      "max_s": 9.992910982109606,
+      "config": {
+        "id": "a100-flux-klein-base-torch28-003",
+        "description": "diffusers TaylorSeer (default parameters: interval 5, from step 3, order 1) versus a100-flux-klein-base-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "step_cache": {
+            "method": "taylorseer",
+            "cache_interval": 5,
+            "disable_cache_before_step": 3,
+            "max_order": 1
+          }
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-base-torch28-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "1df33a8f460b1badbe4b7dae1a03b73ed3b70a685158fe844929431393ad94ff",
+        "runs.csv": "419fc5dc8654e4e4c02b86e8315ae4d4e60a3fe943014e4d8cbff272ad1d7f28",
+        "config.json": "f165eb92615d94538d165fa4600bd2fc136173e890e3a5f2468674954fe00410",
+        "stages.csv": "6470c2fe60ef00676da5dbdabbc8fbbf01475524c9b8fb1998392956ab2d0516",
+        "status.json": "f1cfaf699218bde77ebbad5eab37930ea0c72a07645964e91e104b4bd179b166"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch.compile",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.09507791671752928,
+        "Denoising": 19.207188595581055,
+        "VAE decoding": 0.17229076385498046,
+        "Output / remaining time": 0.0525118798696436
+      },
+      "mean_s": 19.52706915602321,
+      "median_s": 19.525410258036572,
+      "min_s": 19.455853556049988,
+      "max_s": 19.600205855094828,
+      "config": {
+        "id": "a100-flux-klein-base-torch28-004",
+        "description": "torch.compile (default mode) versus a100-flux-klein-base-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+          "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 50,
+          "guidance_scale": 4.0,
+          "max_sequence_length": 512,
+          "negative_prompt": ""
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": {
+            "name": "torch_compile",
+            "mode": "default"
+          }
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-base-torch28-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "3a0a6fcaa37c57109aaa280f65f63c4a8bd7aa2dd66befd1febebb3fc02cfa32",
+        "runs.csv": "9a34fc243dd997ec34c6582d09cd49147c3dd4d36d5d3c8a0347e7a488572ec2",
+        "config.json": "26ea436816581d4a2d3a40243943517ec71555abf2a26cbfa824f845cb5c4aa6",
+        "stages.csv": "8eac6ed49c14a68e0d6d51926d69639d318c53af713858a6617d7d055d5d7e5f",
+        "status.json": "e95b259c181e878bfe0a79ebd5f0c24e1306c9c040bc0a3b3ae8bcc5662a4f65"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "Reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.12,
+        "Denoising": 48.742,
+        "VAE decoding": 0.278,
+        "Output / remaining time": 0.2875
+      },
+      "mean_s": 49.4275,
+      "median_s": 49.4285,
+      "min_s": 49.408,
+      "max_s": 49.444,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-001",
+        "description": "edge-dit.cpp klein Base (50 steps, CFG 4) on A100 from GGUF components (Base Q4_0 transformer, original Q4_K_M encoder, BF16 VAE), 1024\u00b2, flash attention on, untiled VAE, no cache. Separately labelled compressed workload: the A100 edge-dit distilled reference is BF16.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": null
+        },
+        "reference_config": null
+      },
+      "source_sha256": {
+        "summary.json": "6a8868a4cd7ba7ffe751c474c90a0c4566d4118f89a8b62e1a2750eff8a409a1",
+        "runs.csv": "7833b491a49f0ef1c8e3d0e83115d93f15df47ea4e58fc26b18d93dac9bc2498",
+        "config.json": "c17a9922c42258ec735010eec02ade39ded9ddd940616ece0fa4771bdae0febb",
+        "stages.csv": "fa85cfcf816afa5e72315f49f00ddf6c53c35e8e03dc920de46adb6a915f32a4",
+        "status.json": "cc0f2b59450d10d3d9f7cbfc186e39399a0cbc6774ad8eb8ca860f491b8e9e93"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "EasyCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.12,
+        "Denoising": 34.741,
+        "VAE decoding": 0.279,
+        "Output / remaining time": 0.2979
+      },
+      "mean_s": 35.4379,
+      "median_s": 35.4355,
+      "min_s": 35.426,
+      "max_s": 35.453,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-002",
+        "description": "edge-dit step cache easycache (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "easycache"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "efae11c8d3ff18c68fd2bfcd0c75a681d941968d89381d5e8fd3e173d9702852",
+        "runs.csv": "1cd5ac87cb8ceae2591d3b5c69c319f0ac4e6404de3144ba3b415d232a57e671",
+        "config.json": "b5b09450fab0f0324119d17c6e338b50ec52586d30c3b9be8c1bc5c9a44371b9",
+        "stages.csv": "1904979db522dbb5731b6772e8122f4a41541ec42514de4992627b1a74d13e14",
+        "status.json": "e7fb6f9a9dd14ecaa6bd1a7aa8c68de9ccec31641b2cf9173debc9beef8b22d6"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "UCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.12,
+        "Denoising": 36.194,
+        "VAE decoding": 0.28,
+        "Output / remaining time": 0.28559999999999997
+      },
+      "mean_s": 36.879599999999996,
+      "median_s": 36.879,
+      "min_s": 36.875,
+      "max_s": 36.884,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-003",
+        "description": "edge-dit step cache ucache (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "ucache"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "4e921c8fc6d47941c817de04ccbb416bf4cc620eb6003ebd0c3fdb0782845ba5",
+        "runs.csv": "b0f721ba9980f560f8c36ee7bca05dbb979c345f812b10b498db63db3e3cd73e",
+        "config.json": "276870fd4ceea691a4f07326e9a5e6faca24ecc888aa314ed3015ef0b21ce2e1",
+        "stages.csv": "d3b57c57d052c38f0f5a0aa017b09b99388f850c0550f915beb9257b8d5c418c",
+        "status.json": "ad20afe62b0e3e711dfb43427a47315d5d95de50e8b8fd47b8b4f164d412e108"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DBCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.177,
+        "Denoising": 37.166,
+        "VAE decoding": 0.286,
+        "Output / remaining time": 0.3036
+      },
+      "mean_s": 37.9326,
+      "median_s": 37.91,
+      "min_s": 37.827,
+      "max_s": 38.07,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-004",
+        "description": "edge-dit step cache dbcache (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "dbcache"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "4e2cbb2be956be81ce6a90a459b3a4c27b2520552b20f198b50f3f5a65f19662",
+        "runs.csv": "0a82331de010ec1618692444e287780c57de8dd22f6a466393c15640a0e68df2",
+        "config.json": "d77b1125a4cff2b250eb2b8a9a64230ad812613950f0c94b5d70d25eec4d54f9",
+        "stages.csv": "529fac7bd05eb5ec5f493e2bd653309227bb5b209b8c9f27a6fa9b1f17175c90",
+        "status.json": "67264ba9483022a48a4bb5eceb090d2527754f46fad01793eef47d7ff70edd15"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "TaylorSeer",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.12,
+        "Denoising": 30.403,
+        "VAE decoding": 0.287,
+        "Output / remaining time": 0.3487
+      },
+      "mean_s": 31.1587,
+      "median_s": 31.128,
+      "min_s": 31.049,
+      "max_s": 31.372,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-005",
+        "description": "edge-dit step cache taylorseer (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "taylorseer"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "c4f5ebeba985e547a7830c8eb562d9a29ec250b05a6734ead228a4646bcef9dc",
+        "runs.csv": "af26fbd303dbccff874fada81d6a5957ff5df6cfa8d95d4e34744a0636f63551",
+        "config.json": "d15daa8255cfc47e39227a6314af6c78a8cd7733ad9df4a18d94afc2976f9358",
+        "stages.csv": "dc3e9672876ab8dd4cf26b09d44b0ef2749ae92e15f1ffc563e1b26cb81ec6df",
+        "status.json": "312916ec6e5f7e7fe23780248919dae99f376a64826b729859b21bcbff7dd82f"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "cache-dit",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.122,
+        "Denoising": 37.178,
+        "VAE decoding": 0.31,
+        "Output / remaining time": 0.3278
+      },
+      "mean_s": 37.9378,
+      "median_s": 37.925,
+      "min_s": 37.81,
+      "max_s": 38.079,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-006",
+        "description": "edge-dit step cache cache-dit (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "cache-dit"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "714d3565990704c9d9f89846f1d2064c530d861fc78dac3cc86483b1bb169390",
+        "runs.csv": "fd45bbe2dbeba6fb9b10e8d145c53f003356429f85ab5cb865353d35bf90b14a",
+        "config.json": "f4967cbb44a349cacbc3c3acc87a52a753dbb5b4f6a33e5fc038814a8b7e075f",
+        "stages.csv": "c74c01bddf9be6022c2775d305ac40284c7f37f6c1b2eb645911ce959a78eb25",
+        "status.json": "260d9445367d0e436140b73c6caa168f460f6d99e9b6201fab4ff30608ee1000"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "MagCache<br>(sign garbled)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.17,
+        "Denoising": 14.907,
+        "VAE decoding": 0.297,
+        "Output / remaining time": 0.3336
+      },
+      "mean_s": 15.707600000000001,
+      "median_s": 15.7075,
+      "min_s": 15.538,
+      "max_s": 15.843,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-007",
+        "description": "edge-dit step cache magcache (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "magcache"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "6107a95cf842f9e3aa20bfe13dc799ef24ce5db89d686f0370ddf20c766de174",
+        "runs.csv": "f2e12b00c6e6b54731a56fdf90a41cf8694e7d496fc6fdd25ed9411a5606fb64",
+        "config.json": "0725e79d58428a75d586f7f48558303b5ebda5d31a1da86998430a6478cb309a",
+        "stages.csv": "8c36f1061fa00aa4c2cb3162e7d7e08ba2f1539fff63ef5d866df4cb62e2acdd",
+        "status.json": "281bc91aacdce47ce057eaf77c727cd292e63d690fa25d30cc570bc3cd945b2e"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DiCache",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.12,
+        "Denoising": 24.413,
+        "VAE decoding": 0.297,
+        "Output / remaining time": 0.3366
+      },
+      "mean_s": 25.1666,
+      "median_s": 25.1545,
+      "min_s": 25.023,
+      "max_s": 25.462,
+      "config": {
+        "id": "a100-edgedit-flux-klein-base-008",
+        "description": "edge-dit step cache dicache (engine default parameters) versus a100-edgedit-flux-klein-base-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+            "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+            "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+            "expected_weight_type_stat": "q4_0:80|bf16:69",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf"
+          },
+          "llm": {
+            "repo_id": "unsloth/Qwen3-4B-GGUF",
+            "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--unsloth--Qwen3-4B-GGUF/snapshots/22c9fc8a8c7700b76a1789366280a6a5a1ad1120/Qwen3-4B-Q4_K_M.gguf",
+            "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+            "expected_weight_type_stat": "f32:145|q4_K:216|q6_K:37"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294/vae/diffusion_pytorch_model.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 50,
+          "guidance": 4.0,
+          "cfg_scale": 4.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "dicache"
+          }
+        },
+        "reference_config": "configs/a100-edgedit-flux-klein-base-q4-1024.json"
+      },
+      "source_sha256": {
+        "summary.json": "3ec5c388589c37b17768240ad800c83c0044bdf6c3bd11f7e34ca316fd1c086f",
+        "runs.csv": "235a25f5e3a91c872cda3beb31e8bb6321143fe7f706d139fbb28c9efff7dc86",
+        "config.json": "3f781734426b2c59d55c1ff4ce61f2c1a4528c7d0cc948931bb644229936763d",
+        "stages.csv": "6e7a0376aedc63532c2ae1f4db8385ee0622b38001265d8a27ad8330fbb85938",
+        "status.json": "f220fd0fe710e894ad0dfbef89b6244b114725e6e42865adbd1a246212c9f109"
+      }
     }
   ],
   "charts": [
@@ -8426,6 +9470,32 @@
       "runs": [
         "a100-edgedit-flux-klein-001__baseline__20261005-233237",
         "a100-edgedit-flux-klein-007__baseline__20261015-152117"
+      ]
+    },
+    {
+      "key": "a100-base-pytorch-torch28",
+      "title": "A100 \u00b7 Base / 50 steps \u00b7 PyTorch torch 2.8: reuse, TaylorSeer and compile",
+      "note": "BF16 \u00b7 1024\u00b2 \u00b7 CFG 4 (two transformer calls per step) \u00b7 GPU-resident. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). Conditioning reuse is bit-identical; TaylorSeer (default interval 5, from step 3) computes 13 of 50 steps and changes the image but stays legible; torch.compile near-identical.",
+      "runs": [
+        "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+        "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+        "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+        "a100-flux-klein-base-torch28-004__baseline__20261015-161253"
+      ]
+    },
+    {
+      "key": "a100-base-edgedit-caches",
+      "title": "A100 \u00b7 Base / 50 steps \u00b7 edge-dit step caches (GGUF Q4)",
+      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE \u00b7 1024\u00b2 \u00b7 CFG 4 \u00b7 engine default cache parameters. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). All caches except MagCache leave the image essentially unchanged; MagCache garbles the sign. Separately labelled compressed workload (A100 edge-dit distilled reference is BF16).",
+      "runs": [
+        "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+        "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+        "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+        "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+        "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+        "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+        "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+        "a100-edgedit-flux-klein-base-008__baseline__20261015-175727"
       ]
     }
   ],

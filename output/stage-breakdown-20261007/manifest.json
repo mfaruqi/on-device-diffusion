@@ -415,7 +415,7 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident",
       "label": "edge-dit resident<br>+ VAE tiling"
@@ -464,21 +464,21 @@
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "TaylorSeer<br>(0/4 reused)"
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "MagCache<br>(3/4 reused; output degraded)"
     },
     {
       "run_dir": "jetson-edgedit-flux-klein-014__baseline__20261015-135841",
-      "engine": "edge-dit.cpp (Jetson runner)",
+      "engine": "edge-dit.cpp (GGUF runner)",
       "gpu": "Jetson Orin Nano",
       "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
       "label": "DiCache<br>(0/4 reused)"
@@ -517,6 +517,90 @@
       "gpu": "A100-PCIE-40GB",
       "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16 weights / FP32 transformer activations",
       "label": "MagCache<br>(3/4 reused; output degraded)"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch 2.8 reference"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "TaylorSeer cache"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch.compile"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "Reference"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "EasyCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "UCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DBCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "TaylorSeer"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "cache-dit"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "MagCache<br>(sign garbled)"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DiCache"
     }
   ],
   "charts": [
@@ -780,6 +864,32 @@
       "runs": [
         "a100-edgedit-flux-klein-001__baseline__20261005-233237",
         "a100-edgedit-flux-klein-007__baseline__20261015-152117"
+      ]
+    },
+    {
+      "key": "a100-base-pytorch-torch28",
+      "title": "A100 · Base / 50 steps · PyTorch torch 2.8: reuse, TaylorSeer and compile",
+      "note": "BF16 · 1024² · CFG 4 (two transformer calls per step) · GPU-resident. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). Conditioning reuse is bit-identical; TaylorSeer (default interval 5, from step 3) computes 13 of 50 steps and changes the image but stays legible; torch.compile near-identical.",
+      "runs": [
+        "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+        "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+        "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+        "a100-flux-klein-base-torch28-004__baseline__20261015-161253"
+      ]
+    },
+    {
+      "key": "a100-base-edgedit-caches",
+      "title": "A100 · Base / 50 steps · edge-dit step caches (GGUF Q4)",
+      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE · 1024² · CFG 4 · engine default cache parameters. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). All caches except MagCache leave the image essentially unchanged; MagCache garbles the sign. Separately labelled compressed workload (A100 edge-dit distilled reference is BF16).",
+      "runs": [
+        "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+        "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+        "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+        "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+        "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+        "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+        "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+        "a100-edgedit-flux-klein-base-008__baseline__20261015-175727"
       ]
     }
   ],

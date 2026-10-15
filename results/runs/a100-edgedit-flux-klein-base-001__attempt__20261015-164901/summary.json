@@ -1,0 +1,437 @@
+{
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 50024.0,
+    "gpu_span_ms": null,
+    "text_encode_ms": 490.0,
+    "denoise_ms": 48410.0,
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "denoise_step_4_ms": null,
+    "denoise_step_5_ms": null,
+    "denoise_step_6_ms": null,
+    "denoise_step_7_ms": null,
+    "denoise_step_8_ms": null,
+    "denoise_step_9_ms": null,
+    "denoise_step_10_ms": null,
+    "denoise_step_11_ms": null,
+    "denoise_step_12_ms": null,
+    "denoise_step_13_ms": null,
+    "denoise_step_14_ms": null,
+    "denoise_step_15_ms": null,
+    "denoise_step_16_ms": null,
+    "denoise_step_17_ms": null,
+    "denoise_step_18_ms": null,
+    "denoise_step_19_ms": null,
+    "denoise_step_20_ms": null,
+    "denoise_step_21_ms": null,
+    "denoise_step_22_ms": null,
+    "denoise_step_23_ms": null,
+    "denoise_step_24_ms": null,
+    "denoise_step_25_ms": null,
+    "denoise_step_26_ms": null,
+    "denoise_step_27_ms": null,
+    "denoise_step_28_ms": null,
+    "denoise_step_29_ms": null,
+    "denoise_step_30_ms": null,
+    "denoise_step_31_ms": null,
+    "denoise_step_32_ms": null,
+    "denoise_step_33_ms": null,
+    "denoise_step_34_ms": null,
+    "denoise_step_35_ms": null,
+    "denoise_step_36_ms": null,
+    "denoise_step_37_ms": null,
+    "denoise_step_38_ms": null,
+    "denoise_step_39_ms": null,
+    "denoise_step_40_ms": null,
+    "denoise_step_41_ms": null,
+    "denoise_step_42_ms": null,
+    "denoise_step_43_ms": null,
+    "denoise_step_44_ms": null,
+    "denoise_step_45_ms": null,
+    "denoise_step_46_ms": null,
+    "denoise_step_47_ms": null,
+    "denoise_step_48_ms": null,
+    "denoise_step_49_ms": null,
+    "vae_decode_ms": 810.0,
+    "postprocess_ms": null,
+    "other_ms": 320.0,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 49129.0,
+      "min": 49129.0,
+      "max": 49129.0,
+      "mean": 49129.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 120.0,
+      "min": 120.0,
+      "max": 120.0,
+      "mean": 120.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 48430.0,
+      "min": 48430.0,
+      "max": 48430.0,
+      "mean": 48430.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "denoise_step_4_ms": null,
+    "denoise_step_5_ms": null,
+    "denoise_step_6_ms": null,
+    "denoise_step_7_ms": null,
+    "denoise_step_8_ms": null,
+    "denoise_step_9_ms": null,
+    "denoise_step_10_ms": null,
+    "denoise_step_11_ms": null,
+    "denoise_step_12_ms": null,
+    "denoise_step_13_ms": null,
+    "denoise_step_14_ms": null,
+    "denoise_step_15_ms": null,
+    "denoise_step_16_ms": null,
+    "denoise_step_17_ms": null,
+    "denoise_step_18_ms": null,
+    "denoise_step_19_ms": null,
+    "denoise_step_20_ms": null,
+    "denoise_step_21_ms": null,
+    "denoise_step_22_ms": null,
+    "denoise_step_23_ms": null,
+    "denoise_step_24_ms": null,
+    "denoise_step_25_ms": null,
+    "denoise_step_26_ms": null,
+    "denoise_step_27_ms": null,
+    "denoise_step_28_ms": null,
+    "denoise_step_29_ms": null,
+    "denoise_step_30_ms": null,
+    "denoise_step_31_ms": null,
+    "denoise_step_32_ms": null,
+    "denoise_step_33_ms": null,
+    "denoise_step_34_ms": null,
+    "denoise_step_35_ms": null,
+    "denoise_step_36_ms": null,
+    "denoise_step_37_ms": null,
+    "denoise_step_38_ms": null,
+    "denoise_step_39_ms": null,
+    "denoise_step_40_ms": null,
+    "denoise_step_41_ms": null,
+    "denoise_step_42_ms": null,
+    "denoise_step_43_ms": null,
+    "denoise_step_44_ms": null,
+    "denoise_step_45_ms": null,
+    "denoise_step_46_ms": null,
+    "denoise_step_47_ms": null,
+    "denoise_step_48_ms": null,
+    "denoise_step_49_ms": null,
+    "vae_decode_ms": {
+      "median": 280.0,
+      "min": 280.0,
+      "max": 280.0,
+      "mean": 280.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 300.0,
+      "min": 300.0,
+      "max": 300.0,
+      "mean": 300.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": null,
+  "id": "a100-edgedit-flux-klein-base-001",
+  "device_label": "a100-pcie-40gb",
+  "engine": "edge-dit.cpp",
+  "load": {
+    "load_total_s": 2.337733,
+    "note": "Upstream steady_clock around one context creation; files were hashed just before launch, so the page cache is warm for this load."
+  },
+  "schedule_sigmas": [
+    [
+      "1",
+      "1.000000",
+      "0.997309"
+    ],
+    [
+      "2",
+      "0.997309",
+      "0.994521"
+    ],
+    [
+      "3",
+      "0.994521",
+      "0.991632"
+    ],
+    [
+      "4",
+      "0.991632",
+      "0.988634"
+    ],
+    [
+      "5",
+      "0.988634",
+      "0.985523"
+    ],
+    [
+      "6",
+      "0.985523",
+      "0.982290"
+    ],
+    [
+      "7",
+      "0.982290",
+      "0.978931"
+    ],
+    [
+      "8",
+      "0.978931",
+      "0.975435"
+    ],
+    [
+      "9",
+      "0.975435",
+      "0.971796"
+    ],
+    [
+      "10",
+      "0.971796",
+      "0.968005"
+    ],
+    [
+      "11",
+      "0.968005",
+      "0.964050"
+    ],
+    [
+      "12",
+      "0.964050",
+      "0.959922"
+    ],
+    [
+      "13",
+      "0.959922",
+      "0.955609"
+    ],
+    [
+      "14",
+      "0.955609",
+      "0.951099"
+    ],
+    [
+      "15",
+      "0.951099",
+      "0.946376"
+    ],
+    [
+      "16",
+      "0.946376",
+      "0.941427"
+    ],
+    [
+      "17",
+      "0.941427",
+      "0.936234"
+    ],
+    [
+      "18",
+      "0.936234",
+      "0.930779"
+    ],
+    [
+      "19",
+      "0.930779",
+      "0.925041"
+    ],
+    [
+      "20",
+      "0.925041",
+      "0.918998"
+    ],
+    [
+      "21",
+      "0.918998",
+      "0.912626"
+    ],
+    [
+      "22",
+      "0.912626",
+      "0.905895"
+    ],
+    [
+      "23",
+      "0.905895",
+      "0.898776"
+    ],
+    [
+      "24",
+      "0.898776",
+      "0.891233"
+    ],
+    [
+      "25",
+      "0.891233",
+      "0.883227"
+    ],
+    [
+      "26",
+      "0.883227",
+      "0.874715"
+    ],
+    [
+      "27",
+      "0.874715",
+      "0.865647"
+    ],
+    [
+      "28",
+      "0.865647",
+      "0.855967"
+    ],
+    [
+      "29",
+      "0.855967",
+      "0.845610"
+    ],
+    [
+      "30",
+      "0.845610",
+      "0.834503"
+    ],
+    [
+      "31",
+      "0.834503",
+      "0.822562"
+    ],
+    [
+      "32",
+      "0.822562",
+      "0.809688"
+    ],
+    [
+      "33",
+      "0.809688",
+      "0.795769"
+    ],
+    [
+      "34",
+      "0.795769",
+      "0.780671"
+    ],
+    [
+      "35",
+      "0.780671",
+      "0.764237"
+    ],
+    [
+      "36",
+      "0.764237",
+      "0.746284"
+    ],
+    [
+      "37",
+      "0.746284",
+      "0.726589"
+    ],
+    [
+      "38",
+      "0.726589",
+      "0.704885"
+    ],
+    [
+      "39",
+      "0.704885",
+      "0.680851"
+    ],
+    [
+      "40",
+      "0.680851",
+      "0.654088"
+    ],
+    [
+      "41",
+      "0.654088",
+      "0.624104"
+    ],
+    [
+      "42",
+      "0.624104",
+      "0.590280"
+    ],
+    [
+      "43",
+      "0.590280",
+      "0.551828"
+    ],
+    [
+      "44",
+      "0.551828",
+      "0.507730"
+    ],
+    [
+      "45",
+      "0.507730",
+      "0.456641"
+    ],
+    [
+      "46",
+      "0.456641",
+      "0.396757"
+    ],
+    [
+      "47",
+      "0.396757",
+      "0.325593"
+    ],
+    [
+      "48",
+      "0.325593",
+      "0.239631"
+    ],
+    [
+      "49",
+      "0.239631",
+      "0.133719"
+    ],
+    [
+      "50",
+      "0.133719",
+      "0.000000"
+    ]
+  ],
+  "system_memory": null,
+  "device_used_peak_gib": 11.73187255859375,
+  "residency": "all weights resident; one load, 2 passes",
+  "timing_method": "ed-sample steady_clock per-pass stdout (1 ms rounding); stages from the engine \"flux generate breakdown\" line (10 ms rounding)",
+  "precision_note": "GGUF Q4_0 transformer, Q4_K_M encoder (see model), BF16 VAE; FP32 activations",
+  "flash_attention_evidence": "command-line flag only; the engine log does not report it",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "denoise_step_i_ms": "Engine prints completed steps without individual timestamps.",
+    "gpu_span_ms": "No GPU event timing.",
+    "peak_alloc_gib/peak_reserved_gib/device_used_peak_gib/host_rss_gib": "No per-generation allocator observations; whole-system tegrastats only.",
+    "deterministic_output": "Only final repeat image retained; earlier image hashes unavailable."
+  }
+}

@@ -10,11 +10,13 @@
     "allow_patterns": [
       "model_index.json",
       "scheduler/*",
-      "text_encoder/*",
       "tokenizer/*",
       "vae/*",
-      "transformer/config.json"
-    ]
+      "transformer/config.json",
+      "text_encoder/config.json",
+      "text_encoder/generation_config.json"
+    ],
+    "allow_patterns_note": "Encoder weights come from the pre-quantized NF4 copy (identical Base/distilled encoder files); only Base configs/VAE are needed from the snapshot"
   },
   "precision": "bfloat16",
   "workload": {

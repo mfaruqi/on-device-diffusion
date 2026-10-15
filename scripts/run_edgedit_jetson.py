@@ -226,7 +226,8 @@ def benchmark(cfg, out):
                        'denoise_step_i_ms': 'Engine prints completed steps without individual timestamps.',
                        'gpu_span_ms': 'No GPU event timing.',
                        'peak_alloc_gib/peak_reserved_gib/device_used_peak_gib/host_rss_gib':
-                           'No per-generation allocator observations; whole-system tegrastats only.',
+                           ('No per-generation allocator observations; whole-system tegrastats only.' if is_jetson(cfg) else
+                            'No per-generation allocator observations; whole-process NVML device peak only.'),
                        'deterministic_output': 'Only final repeat image retained; earlier image hashes unavailable.'})
     write_json(out / 'summary.json', summary)
 
