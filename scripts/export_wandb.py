@@ -108,6 +108,19 @@ def timing_labels(kind, is_sdcpp, summ, stat, cfg, rows):
 KIND_LABEL = {"baseline": "full", "attempt": "smoke", "repeat": "repeat", "profile": "profile"}
 
 
+def accelerator(cfg, experiment):
+    """W&B group: the physical accelerator, so the project groups by device by default.
+    The experiment id stays in config.experiment_id for a second grouping level."""
+    dev = (cfg.get("device_label") or cfg.get("backend") or experiment).lower()
+    if "jetson" in dev:
+        return "Jetson Orin Nano"
+    if "macbook" in dev or "m5" in dev or dev == "mps":
+        return "MacBook Air M5"
+    if "a100" in dev or dev == "cuda":
+        return "A100 PCIe 40GB"
+    return dev
+
+
 def run_label(cfg, experiment, kind, failed):
     """Human-readable W&B display name: device · engine · workload · options · run kind.
 
@@ -218,6 +231,7 @@ def describe(run_dir):
                           else f"diffusers {env.get('diffusers')} / torch {env.get('torch')}",
         "engine_commit": engine.get("commit") if is_native else None,
         "device_label": device,
+        "accelerator": accelerator(cfg, experiment),
         "gpu": gpu,
         "gpu_variant": variant,
         "node": env.get("hostname", "").split(".")[0] or device,
@@ -397,7 +411,7 @@ def describe(run_dir):
         "name": label,
         "run_dir": run_dir.name,
         "failed": failed,
-        "group": experiment,
+        "group": accelerator(cfg, experiment),
         "job_type": kind,
         "tags": tags,
         "config": config,
@@ -495,6 +509,8 @@ def main():
                 old.config[k] = v
             for k, v in p["summary"].items():
                 old.summary[k] = v
+            if "group" in p:
+                old.group = p["group"]
             if "name" in p:  # descriptive display name, notes and filter tags
                 old.name, old.notes = p["name"], p.get("notes")
                 old.tags = sorted(set(getattr(old, "tags", [])) | set(p.get("tags", [])))

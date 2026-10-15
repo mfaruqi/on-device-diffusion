@@ -43,6 +43,7 @@ On the Jetson, run it through scripts/jetson_memguard.sh. Metric definitions: wi
 
 import argparse
 import copy
+import csv
 import hashlib
 import json
 import os
@@ -476,6 +477,9 @@ def benchmark(cfg, run_dir):
                "system_memory": device.system_memory_summary(run_dir),
                "unavailable_metrics": device.unavailable_metrics(),
                "host_peak_rss_gib": peak_rss_gib(), "units": {"time": "ms (load in s)", "memory": "GiB (2^30 bytes)"}}
+    with (run_dir / "stages.csv").open() as stream:  # CFG runs call the transformer twice per step
+        first = [r for r in csv.DictReader(stream) if r["run_index"] == "0" and r["stage"] == "denoise_step_0"]
+    summary["transformer_calls_per_step"] = len(first)
     write_json(run_dir / "summary.json", summary)
     print(json.dumps(summary["measured"]["wall_ms"], indent=2))
 

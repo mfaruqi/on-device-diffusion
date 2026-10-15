@@ -240,3 +240,11 @@ class RunLabelTests(unittest.TestCase):
     def test_missing_config_is_explicit(self):
         label, _ = exporter.run_label({}, "jetson-edgedit-flux-klein-002", "attempt", True)
         self.assertIn("no config recorded", label)
+
+
+class AcceleratorGroupTests(unittest.TestCase):
+    def test_group_is_the_accelerator(self):
+        for label, expected in [("jetson-orin-nano", "Jetson Orin Nano"), ("jetson-orin-nano-8gb", "Jetson Orin Nano"),
+                                ("gilbreth-a100-40gb", "A100 PCIe 40GB"), ("a100-pcie-40gb", "A100 PCIe 40GB"),
+                                ("macbook-air-m5-24gb", "MacBook Air M5")]:
+            self.assertEqual(exporter.accelerator({"device_label": label}, "x"), expected)
