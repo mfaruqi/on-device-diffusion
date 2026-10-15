@@ -6439,6 +6439,1730 @@
         "stages.csv": "7f51290afb794e21c62a47c0823b288a4abe6a1cb26427c2e9cbd7b393268043",
         "status.json": "7dc83293d15f912c9f2b0d23c1126ed207e22af50188b1a06abbafc4bab1b08c"
       }
+    },
+    {
+      "run_dir": "jetson-flux-klein-003__repeat__20261014-163411",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp reference<br>disk \u00b7 untiled",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 20.966960899997503,
+        "Denoising": 36.002865299989935,
+        "VAE decoding": 4.546628500008955,
+        "Output / remaining time": 0.2826714999973774
+      },
+      "mean_s": 61.79912619999377,
+      "median_s": 60.64092800000799,
+      "min_s": 55.09917000000132,
+      "max_s": 67.03724199999124,
+      "config": {
+        "id": "jetson-flux-klein-003",
+        "record_kind": "repeated unprofiled baseline",
+        "provenance": "Derived from the Jetson 003 stage-profile config; component revision/SHA256 pins retained. Engine commit, power mode and model hashes must be verified again on the target before measurement.",
+        "description": "Jetson 003 unchanged quantized disk-backed 512x512 workload; repeated unprofiled baseline",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "cuda_architecture": 87
+        },
+        "model": {
+          "components": [
+            {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+              "local_file": "flux-2-klein-4b-Q4_0.gguf"
+            },
+            {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+              "local_file": "Qwen3-4B-Q4_K_M.gguf"
+            },
+            {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "local_file": "flux2-vae.safetensors"
+            }
+          ]
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_count": 1,
+          "sampling_method": "euler",
+          "scheduler": "flux2"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 1000
+        },
+        "engine_settings": {
+          "backend": "CUDA0",
+          "params_backend": "disk",
+          "auto_fit": false,
+          "disable_segmented_compute": false,
+          "eager_load": true,
+          "conditioning_cache_size": 0,
+          "diffusion_fa": true,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "graph_segmentation": true,
+          "parameter_storage": "disk"
+        },
+        "reference_config": "configs/jetson-flux-klein-stage-profile.json",
+        "required_power_mode": "25W",
+        "harness_arguments": {
+          "runs": 14,
+          "steps": 4,
+          "backend": "CUDA0",
+          "params-backend": "disk",
+          "threads": 4,
+          "mmap": 0,
+          "fa": 0,
+          "diffusion-fa": 1,
+          "auto-fit": 0,
+          "eager-load": 1,
+          "disable-segmented-compute": 0,
+          "disable-prefetch": 0,
+          "conditioning-cache-size": 0,
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "seed": 0,
+          "cfg-scale": 1,
+          "sampling-method": "euler",
+          "scheduler": "flux2"
+        }
+      },
+      "source_sha256": {
+        "summary.json": "48456fa430af16636afa6144f1d38e1c54d674bcf221db074dd796724625b89c",
+        "runs.csv": "efbda3dae3c9f57474c609514755e7fe6cb0447b2aadd5662ca5ac35c3c4961e",
+        "config.json": "188a80a63946e2e960905983236c976b788b2aeffea7c9f390ab98a60993c716",
+        "stages.csv": "fcbfa4a7310a1789457383c569d1e6eeb6eb2f726a874f990a893f00b3d479ef",
+        "status.json": "ac371b1c3095eff09f6c47673eb48aeb4b21c2cf565155397586f90108d9378d"
+      }
+    },
+    {
+      "run_dir": "jetson-flux-klein-010__baseline__20261014-183501",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp flash attention off",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 24.274027599988038,
+        "Denoising": 40.50028419999289,
+        "VAE decoding": 4.716156999993837,
+        "Output / remaining time": 0.2866752000176348
+      },
+      "mean_s": 69.7771439999924,
+      "median_s": 69.73937049997039,
+      "min_s": 61.022373000043444,
+      "max_s": 74.61276899999939,
+      "config": {
+        "id": "jetson-flux-klein-010",
+        "description": "Diffusion flash attention off versus jetson-flux-klein-003; everything else unchanged.",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "cuda_architecture": 87
+        },
+        "model": {
+          "components": [
+            {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+              "local_file": "flux-2-klein-4b-Q4_0.gguf"
+            },
+            {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+              "local_file": "Qwen3-4B-Q4_K_M.gguf"
+            },
+            {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "local_file": "flux2-vae.safetensors"
+            }
+          ]
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_count": 1,
+          "sampling_method": "euler",
+          "scheduler": "flux2"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 1000
+        },
+        "engine_settings": {
+          "backend": "CUDA0",
+          "params_backend": "disk",
+          "auto_fit": false,
+          "disable_segmented_compute": false,
+          "eager_load": true,
+          "conditioning_cache_size": 0,
+          "diffusion_fa": false,
+          "threads": 4
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "step_cache": null,
+          "graph_segmentation": true,
+          "parameter_storage": "disk",
+          "diffusion_flash_attention": false
+        },
+        "reference_config": "configs/jetson-flux-klein-q4-512-disk-baseline.json",
+        "required_power_mode": "25W",
+        "harness_arguments": {
+          "runs": 14,
+          "steps": 4,
+          "backend": "CUDA0",
+          "params-backend": "disk",
+          "threads": 4,
+          "mmap": 0,
+          "fa": 0,
+          "diffusion-fa": 0,
+          "auto-fit": 0,
+          "eager-load": 1,
+          "disable-segmented-compute": 0,
+          "disable-prefetch": 0,
+          "conditioning-cache-size": 0,
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "seed": 0,
+          "cfg-scale": 1,
+          "sampling-method": "euler",
+          "scheduler": "flux2"
+        },
+        "record_kind": "repeated unprofiled baseline"
+      },
+      "source_sha256": {
+        "summary.json": "6399eb9d50aadf96cd606e131d943b20c36af12a3d9734620d2f6c91d73a4e9d",
+        "runs.csv": "be0863ab23198747159c7683cae42572ef5f87388abb136e7338e5b19ab245ca",
+        "config.json": "68c75d74cc357ae634a8cd553bf38d490153df39482a27bf44c9bcd29189e01e",
+        "stages.csv": "462dcddd3fb1576dd363f7913e1b37eb526582db8782d09abed87a3143f3d14b",
+        "status.json": "263e60a121ee15ba7f33a4c56194f86d2e892a203b0a0424dab66df92640b6a4"
+      }
+    },
+    {
+      "run_dir": "jetson-flux-klein-011__baseline__20261014-185639",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp VAE tiling<br>128 px / 0.25",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 24.067094699991866,
+        "Denoising": 40.813755700003824,
+        "VAE decoding": 5.881058999995003,
+        "Output / remaining time": 0.27749070000718346
+      },
+      "mean_s": 71.03940009999788,
+      "median_s": 71.63370850001229,
+      "min_s": 66.97999000002164,
+      "max_s": 71.9659479999682,
+      "config": {
+        "id": "jetson-flux-klein-011",
+        "description": "sd.cpp VAE tiling on with 128 px tiles and 0.25 target overlap versus jetson-flux-klein-003; everything else unchanged. Needs the tiling-capable harness (sd-bench-build-tiling-20261014).",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "stable-diffusion.cpp",
+          "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+          "cuda_architecture": 87
+        },
+        "model": {
+          "components": [
+            {
+              "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+              "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+              "file": "flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+              "local_file": "flux-2-klein-4b-Q4_0.gguf"
+            },
+            {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+              "local_file": "Qwen3-4B-Q4_K_M.gguf"
+            },
+            {
+              "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+              "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+              "file": "vae/diffusion_pytorch_model.safetensors",
+              "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+              "local_file": "flux2-vae.safetensors"
+            }
+          ]
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_count": 1,
+          "sampling_method": "euler",
+          "scheduler": "flux2"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 1000
+        },
+        "engine_settings": {
+          "backend": "CUDA0",
+          "params_backend": "disk",
+          "auto_fit": false,
+          "disable_segmented_compute": false,
+          "eager_load": true,
+          "conditioning_cache_size": 0,
+          "diffusion_fa": true,
+          "threads": 4,
+          "vae_tiling": true,
+          "vae_tile_size": 128,
+          "vae_tile_overlap": 0.25
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M"
+          },
+          "cpu_offload": false,
+          "vae_tiling": true,
+          "step_cache": null,
+          "graph_segmentation": true,
+          "parameter_storage": "disk"
+        },
+        "reference_config": "configs/jetson-flux-klein-q4-512-disk-baseline.json",
+        "required_power_mode": "25W",
+        "harness_arguments": {
+          "runs": 14,
+          "steps": 4,
+          "backend": "CUDA0",
+          "params-backend": "disk",
+          "threads": 4,
+          "mmap": 0,
+          "fa": 0,
+          "diffusion-fa": 1,
+          "auto-fit": 0,
+          "eager-load": 1,
+          "disable-segmented-compute": 0,
+          "disable-prefetch": 0,
+          "conditioning-cache-size": 0,
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "seed": 0,
+          "cfg-scale": 1,
+          "sampling-method": "euler",
+          "scheduler": "flux2",
+          "vae-tiling": 1,
+          "vae-tile-size": 128,
+          "vae-tile-overlap": 0.25
+        },
+        "record_kind": "repeated unprofiled baseline"
+      },
+      "source_sha256": {
+        "summary.json": "66a0cddb255e45ba902fc739171d17ae8028acb54bdd79244635b29464e1768c",
+        "runs.csv": "9f0b239813025316f001123a08ace7cdfef43a0fec118926cfe6989990844498",
+        "config.json": "e2637f28e26ca879b9cef94894b8d968dc2c3ddd316489400f5210fd173a0442",
+        "stages.csv": "88ff5582a6e4fc5ffd3571dd39b71909bb511c64006856e36edf9800786d0402",
+        "status.json": "73c49336804d0b712d845733974eec82a8b7bddc293ba827dedd4eac8782a05d"
+      }
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+      "engine": "edge-dit.cpp (Jetson runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident",
+      "label": "edge-dit resident<br>+ VAE tiling",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.924,
+        "Denoising": 9.189,
+        "VAE decoding": 1.738,
+        "Output / remaining time": 0.1197
+      },
+      "mean_s": 11.9707,
+      "median_s": 11.9625,
+      "min_s": 11.943,
+      "max_s": 12.026,
+      "config": {
+        "id": "jetson-edgedit-flux-klein-006",
+        "description": "edge-dit.cpp 1+3+10 baseline on Jetson: first feasible placement (jetson-edgedit-flux-klein-005): all weights resident, converted encoder, VAE tiling on, flash attention on, no cache.",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "~/tools/edge-dit-20261010/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "5936674c22f1cc0054b84e6f3a7fac7617f88ab9dc88486bf8f3b915ea358992",
+          "build_evidence": "results/runs/jetson-edgedit-build-20261011/"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+            "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+            "path": "~/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+            "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+          },
+          "llm": {
+            "path": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+            "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+            "derived_from": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "conversion": "token_embd.weight Q6_K -> Q8_0 only (results/runs/jetson-edgedit-convert-20261011/requant.log)",
+            "expected_weight_type_stat": "f32:145|q8_0:1|q4_K:216|q6_K:36"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "~/models/flux2-klein/flux2-vae.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "guidance": 1.0,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)"
+          },
+          "cpu_offload": false,
+          "vae_tiling": true,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": null
+        },
+        "reference_config": null,
+        "reference_note": "First feasible edge-dit placement on this device (jetson-edgedit-flux-klein-005); VAE tiling is required to fit (004 untiled decode stopped by the memory guard).",
+        "required_power_mode": "25W"
+      },
+      "source_sha256": {
+        "summary.json": "879ba2dce4d76be42663cafaa2f5ff7b0451adb5d31e909c5822670de3fd33f0",
+        "runs.csv": "a55e3ae818726af731782ce8b0ce9d6dfadf7081b6381d5e1bcef55bdbc126f0",
+        "config.json": "8af5144e4bb6c1de627a456d3ef699bda9a82a3e61e164383329cbcf58e47fa4",
+        "stages.csv": "a52f512e96b614abbfc5edb5b644b272ea3b997ba6842b9c989c07e209c5e6fd",
+        "status.json": "c64228c8d713e9cc94f40511cb1641b62cfc91aa33f9decafa240927106cfa9a"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-001__baseline__20261014-171410",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch reference<br>sequential \u00b7 untiled",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.4028153564453125,
+        "Denoising": 14.776051025390625,
+        "VAE decoding": 0.49636213073730473,
+        "Output / remaining time": 63.61485812182566
+      },
+      "mean_s": 80.2900866343989,
+      "median_s": 80.31490273750387,
+      "min_s": 78.16975025099237,
+      "max_s": 82.5991944380221,
+      "config": {
+        "id": "jetson-torch-flux-klein-001",
+        "description": "Jetson PyTorch T1: distilled klein 512x512, 4 steps, guidance 1. GGUF Q4_0 transformer (the sd.cpp Jetson file, BF16 compute); Qwen3 text encoder in NF4 (bitsandbytes, pre-quantized copy). Sequential stage residency: only one large component is resident at a time; the encoder is loaded for each text encoding and the transformer reloaded after it, every generation, because the components plus encoding do not fit together in 8 GB. Reload time is inside wall_ms (other_ms), not text_encode. Separately labelled compressed workload.",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          }
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/a100-flux-klein-bf16.resolved.json"
+      },
+      "source_sha256": {
+        "summary.json": "6c62a32f6c2302885aa3512504d641e43e1d2d928be693f2f0d7668553e75f68",
+        "runs.csv": "b6c82015bf254e440e0549312cda8073f84c955e6b048e5f906b741abcec353a",
+        "config.json": "e20bd2272a266504f7c48b3714162ae4eaca2d8fd909f7d16fd252205155ce84",
+        "stages.csv": "5a082f97c09e0b93b15784e415c0cf8c8fa32e8674731ad785b5b8767b9f3fb4",
+        "status.json": "1a4752e7910c3b4abe3b764024bf15a2b0bded9c85bcfdef2cec39db3f37cfb2"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-002__baseline__20261014-174108",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch SDPA math",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.7649100097656252,
+        "Denoising": 19.338897265625,
+        "VAE decoding": 0.6016884643554687,
+        "Output / remaining time": 62.994311992957535
+      },
+      "mean_s": 84.69980773270363,
+      "median_s": 84.2214924970176,
+      "min_s": 82.45763304299908,
+      "max_s": 87.45328908402007,
+      "config": {
+        "id": "jetson-torch-flux-klein-002",
+        "description": "SDPA restricted to the math backend (no fused attention kernels) versus jetson-torch-flux-klein-001; everything else unchanged.",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          },
+          "attention_backend": "math"
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/jetson-torch-flux-klein-q4-nf4-512.json"
+      },
+      "source_sha256": {
+        "summary.json": "233c3dc4ddc03e0cf13fb639660d29eea99bab73057eab3ce35141ed30367c3c",
+        "runs.csv": "127f1d6ab9e652cafe76d2826c5c9d57d4433bcfcabd600cdb5e9faec9d6486d",
+        "config.json": "cd34b70f3afa0650dc711e040476ca5572e0e7fdc7b8d00a1f5ac6329bc609a2",
+        "stages.csv": "770209339d453858b2deed0bb37e772c75feb6b39a0051c89b0cb99c41a36254",
+        "status.json": "14bf58c5923ca09914fef8979251c9ea05819f41bae7ea32b8002b33b75d78e0"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-003__baseline__20261014-180843",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch VAE tiling<br>128 px / 0.25",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.56544912109375,
+        "Denoising": 14.79942080078125,
+        "VAE decoding": 1.9336666259765625,
+        "Output / remaining time": 65.07344420844848
+      },
+      "mean_s": 83.37198075630003,
+      "median_s": 82.99102029699134,
+      "min_s": 81.45659919199534,
+      "max_s": 86.35540026798844,
+      "config": {
+        "id": "jetson-torch-flux-klein-003",
+        "description": "Diffusers tiled VAE decode with 128 px tiles and 0.25 overlap versus jetson-torch-flux-klein-001; everything else unchanged.",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": {
+            "tile_sample_px": 128,
+            "overlap": 0.25
+          },
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          }
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/jetson-torch-flux-klein-q4-nf4-512.json"
+      },
+      "source_sha256": {
+        "summary.json": "784863c822c4fab9868d0088873e47ba8e082abf0442ed164c00c6df2d0d3ac8",
+        "runs.csv": "b919a6ceac4e7d968d514d03a1c5cf8e5a58267afdb0f16f82f61bb2c67a8f23",
+        "config.json": "feec5d54e19bbc37e5051156e7c620401ced2010eb69bd5a0445f646b94cf4e3",
+        "stages.csv": "b1d5cfac118bf498b715bec49deb11bca5ef03d1d6bc40778de45475969704a8",
+        "status.json": "75cd457a53e8888f10f0ce4c61fbb7bb2e864590974694c00b319f9a6e7a5e96"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-004__baseline__20261015-141028",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (encoder/transformer swap only in the first generation)",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.0010315712094306946,
+        "Denoising": 14.382223461914062,
+        "VAE decoding": 0.48574497375488285,
+        "Output / remaining time": 0.046485816031601276
+      },
+      "mean_s": 14.915485822909977,
+      "median_s": 14.911410601023817,
+      "min_s": 14.880561447003856,
+      "max_s": 14.96125612600008,
+      "config": {
+        "id": "jetson-torch-flux-klein-004",
+        "description": "Exact conditioning reuse versus jetson-torch-flux-klein-001: the prompt is encoded once; later generations reuse it, so the encoder load and transformer release/reload happen only in the first generation.",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          },
+          "conditioning_reuse": true
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/jetson-torch-flux-klein-q4-nf4-512.json"
+      },
+      "source_sha256": {
+        "summary.json": "c0da16c9b778c8e5e3aeb86fc16e520c8f871f955ef297179dca4319df8951ee",
+        "runs.csv": "8d78a3dc54c6e120cc02a1922efedabb3489a2f36f4253b61e3e9fe831bee76f",
+        "config.json": "a42b444d0fda649c8a8dd5da08084051fd0581d39c7a0b6a9304036ddae73dc4",
+        "stages.csv": "8198081240df6a45f978438bc652b33007ef0053aab54633c6dc049aaee1981f",
+        "status.json": "d98e75779c3861f568d8cdae03582c9f6961a706d74dfeff7627222964df5fc0"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-006__baseline__20261015-142456",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "TaylorSeer cache<br>(output changed)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 1.550597509765625,
+        "Denoising": 9.199270562744141,
+        "VAE decoding": 0.5309581298828125,
+        "Output / remaining time": 65.75616109069996
+      },
+      "mean_s": 77.03698729309254,
+      "median_s": 77.64421062648762,
+      "min_s": 74.82331082999008,
+      "max_s": 79.46914054802619,
+      "config": {
+        "id": "jetson-torch-flux-klein-006",
+        "description": "diffusers TaylorSeer cache (interval 2, from step 1, order 1; set for a 4-step schedule) versus jetson-torch-flux-klein-001.",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          },
+          "step_cache": {
+            "method": "taylorseer",
+            "cache_interval": 2,
+            "disable_cache_before_step": 1,
+            "max_order": 1
+          }
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/jetson-torch-flux-klein-q4-nf4-512.json"
+      },
+      "source_sha256": {
+        "summary.json": "c51b140cceaec9e1dae40c50fff94cf864311741b6ed2fb8cc202354fbc79035",
+        "runs.csv": "961202e4439657a4ce67c7afb910ba566020528e80f9c2f958ee99c85421799e",
+        "config.json": "c59724908df87bc312f1865a87e8ce639144bc8c573fa8af2a070f04204dff62",
+        "stages.csv": "2bf6b7c598aa23dd14841fdbb7003eb449f7f26e71e894ab323feda674ace0de",
+        "status.json": "eaca80a7db3cbbca0192df4c0c8b22212b1ad850637ac94b35cd7aad204c5b99"
+      }
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-007__baseline__20261015-145234",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (conditioning reuse)",
+      "label": "Conditioning reuse<br>+ torch.compile",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.0007679583966732025,
+        "Denoising": 7.249726318359375,
+        "VAE decoding": 0.4852652862548828,
+        "Output / remaining time": 0.04781120870001614
+      },
+      "mean_s": 7.783570771710947,
+      "median_s": 7.783626020012889,
+      "min_s": 7.7555487860227,
+      "max_s": 7.796753465023357,
+      "config": {
+        "id": "jetson-torch-flux-klein-007",
+        "description": "torch.compile (default mode, transformer forward; Triton 3.4.0) versus jetson-torch-flux-klein-004 (conditioning reuse keeps the transformer resident after the first generation, so the compiled module survives).",
+        "device_label": "jetson-orin-nano-8gb",
+        "backend": "jetson",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "vae/*",
+            "transformer/config.json"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 512,
+          "width": 512,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": {
+              "method": "gguf",
+              "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+              "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+            },
+            "text_encoder": {
+              "method": "bnb_nf4",
+              "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+              "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+              "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+            }
+          },
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": {
+            "name": "torch_compile",
+            "mode": "default"
+          },
+          "stage_residency": {
+            "text_encoder": "release_after_encode",
+            "transformer": "release_during_encode"
+          },
+          "conditioning_reuse": true
+        },
+        "environment": {
+          "venv": "~/venvs/torch-jp6-ailab",
+          "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+        },
+        "reference_config": "configs/jetson-torch-flux-klein-q4-nf4-512-condreuse.json"
+      },
+      "source_sha256": {
+        "summary.json": "294e945341318276d2c6e5cd682bc1b4f0af6ee05597566e1a7c816aac200d53",
+        "runs.csv": "0a7c0d44e735e075b7f625632e712a591c882ddb1806b9a939a95f3d79313ceb",
+        "config.json": "206c63b7eaf1c27d2f367cffe6c545ed47f32cc814ac9f8ab4a960f37edc428e",
+        "stages.csv": "136acdbcd0274ca76a1cc565a6cd3256a0577397f0d92ced2c6cbd84b2c2bfcc",
+        "status.json": "2604c10b40d56b9b8916b07dd7bbc9f6bd64823cfe8580cee966a348684037a3"
+      }
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
+      "engine": "edge-dit.cpp (Jetson runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "TaylorSeer<br>(0/4 reused)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.922,
+        "Denoising": 9.2,
+        "VAE decoding": 1.734,
+        "Output / remaining time": 0.1192
+      },
+      "mean_s": 11.975200000000001,
+      "median_s": 11.973,
+      "min_s": 11.946,
+      "max_s": 12.003,
+      "config": {
+        "id": "jetson-edgedit-flux-klein-011",
+        "description": "edge-dit step cache taylorseer (engine default parameters) versus jetson-edgedit-flux-klein-006.",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "~/tools/edge-dit-20261010/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "5936674c22f1cc0054b84e6f3a7fac7617f88ab9dc88486bf8f3b915ea358992",
+          "build_evidence": "results/runs/jetson-edgedit-build-20261011/"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+            "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+            "path": "~/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+            "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+          },
+          "llm": {
+            "path": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+            "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+            "derived_from": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "conversion": "token_embd.weight Q6_K -> Q8_0 only (results/runs/jetson-edgedit-convert-20261011/requant.log)",
+            "expected_weight_type_stat": "f32:145|q8_0:1|q4_K:216|q6_K:36"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "~/models/flux2-klein/flux2-vae.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "guidance": 1.0,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)"
+          },
+          "cpu_offload": false,
+          "vae_tiling": true,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "taylorseer"
+          }
+        },
+        "reference_config": "configs/jetson-edgedit-flux-klein-q4-embq8-512-vaetile.json",
+        "required_power_mode": "25W"
+      },
+      "source_sha256": {
+        "summary.json": "ab95a04ec53cdc84d28196bf6b6eb9b9d2fd9d3804d30cdccab2a20417b70f52",
+        "runs.csv": "abc219587e8a2c9c739735b00a00003ede5fa265f4bce866d204d8f9df56389d",
+        "config.json": "66574559e1f1ec739267861390f10a303a8d1bb23e490fe7ce6275c1154f6558",
+        "stages.csv": "d1dca1a0afb2f8681d1d25d00b3e0dad39e75a6226132b86aafd11b4c6425939",
+        "status.json": "706efdc91b27277feec2b2fbab0c1157fd99807c081c4b00c359bb8813a6d343"
+      }
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
+      "engine": "edge-dit.cpp (Jetson runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "MagCache<br>(3/4 reused; output degraded)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.917,
+        "Denoising": 2.339,
+        "VAE decoding": 1.737,
+        "Output / remaining time": 0.1142
+      },
+      "mean_s": 5.1072,
+      "median_s": 5.0995,
+      "min_s": 5.086,
+      "max_s": 5.139,
+      "config": {
+        "id": "jetson-edgedit-flux-klein-013",
+        "description": "edge-dit step cache magcache (engine default parameters) versus jetson-edgedit-flux-klein-006.",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "~/tools/edge-dit-20261010/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "5936674c22f1cc0054b84e6f3a7fac7617f88ab9dc88486bf8f3b915ea358992",
+          "build_evidence": "results/runs/jetson-edgedit-build-20261011/"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+            "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+            "path": "~/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+            "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+          },
+          "llm": {
+            "path": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+            "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+            "derived_from": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "conversion": "token_embd.weight Q6_K -> Q8_0 only (results/runs/jetson-edgedit-convert-20261011/requant.log)",
+            "expected_weight_type_stat": "f32:145|q8_0:1|q4_K:216|q6_K:36"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "~/models/flux2-klein/flux2-vae.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "guidance": 1.0,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)"
+          },
+          "cpu_offload": false,
+          "vae_tiling": true,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "magcache"
+          }
+        },
+        "reference_config": "configs/jetson-edgedit-flux-klein-q4-embq8-512-vaetile.json",
+        "required_power_mode": "25W"
+      },
+      "source_sha256": {
+        "summary.json": "8f3a432e2e5ea988b510c8fe1f1136bd823277d7e77f3100d768aa0fc2028eb7",
+        "runs.csv": "2eaed00cbc8fb40f33a496a6b8ea6e7691c6bb69e71a4bfa3dec4fdf8743e552",
+        "config.json": "d29be0109f572f8234123bb32469fee9259ae11a501cc9431586d9c9559033ac",
+        "stages.csv": "efee48d6472d88bd623ec3ee89f8ddb2ad904cb8161bbb736a351e8ab6107990",
+        "status.json": "41b97046a71c6174643681e2eeb0ade479a0386efd5de325c99f30b3ea50119c"
+      }
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-014__baseline__20261015-135841",
+      "engine": "edge-dit.cpp (Jetson runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "DiCache<br>(0/4 reused)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.922,
+        "Denoising": 9.396,
+        "VAE decoding": 1.732,
+        "Output / remaining time": 0.1185
+      },
+      "mean_s": 12.1685,
+      "median_s": 12.1745,
+      "min_s": 12.135,
+      "max_s": 12.204,
+      "config": {
+        "id": "jetson-edgedit-flux-klein-014",
+        "description": "edge-dit step cache dicache (engine default parameters) versus jetson-edgedit-flux-klein-006.",
+        "device_label": "jetson-orin-nano",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "~/tools/edge-dit-20261010/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "5936674c22f1cc0054b84e6f3a7fac7617f88ab9dc88486bf8f3b915ea358992",
+          "build_evidence": "results/runs/jetson-edgedit-build-20261011/"
+        },
+        "model": {
+          "diffusion_model": {
+            "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+            "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+            "path": "~/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+            "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+          },
+          "llm": {
+            "path": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+            "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+            "derived_from": {
+              "repo_id": "unsloth/Qwen3-4B-GGUF",
+              "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+              "file": "Qwen3-4B-Q4_K_M.gguf",
+              "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+            },
+            "conversion": "token_embd.weight Q6_K -> Q8_0 only (results/runs/jetson-edgedit-convert-20261011/requant.log)",
+            "expected_weight_type_stat": "f32:145|q8_0:1|q4_K:216|q6_K:36"
+          },
+          "vae": {
+            "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+            "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+            "path": "~/models/flux2-klein/flux2-vae.safetensors",
+            "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+          }
+        },
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 512,
+          "height": 512,
+          "steps": 4,
+          "guidance": 1.0,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "tegrastats_interval_ms": 200
+        },
+        "optimizations": {
+          "quantization": {
+            "transformer": "Q4_0",
+            "text_encoder": "Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)"
+          },
+          "cpu_offload": false,
+          "vae_tiling": true,
+          "flash_attention": true,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "dicache"
+          }
+        },
+        "reference_config": "configs/jetson-edgedit-flux-klein-q4-embq8-512-vaetile.json",
+        "required_power_mode": "25W"
+      },
+      "source_sha256": {
+        "summary.json": "08e133cb998b37bdc9882da68439b94e99410973ec6677f28ae089ca08b4ca78",
+        "runs.csv": "692521ca60fcf0d9d747539c4496246ae8d3227e13ba95c6365ee7c22fc0c5df",
+        "config.json": "555070a29807b1447dab3ce5e7a897f45057bc0c9c919de6c5eb9bee1528d14d",
+        "stages.csv": "b90e9537d6375a29155bcb4d9f352469bb3a81e8c42e27fb2ea7ab2b8158e89c",
+        "status.json": "7152efd9a0d686f9b2390906cc543abe5648131249fc85e028069ca0dacfa63e"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch 2.8 reference",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.04638617210388183,
+        "Denoising": 1.037363198852539,
+        "VAE decoding": 0.1681238021850586,
+        "Output / remaining time": 0.03790589976534248
+      },
+      "mean_s": 1.289779072906822,
+      "median_s": 1.290462295000907,
+      "min_s": 1.283260232070461,
+      "max_s": 1.2944270339794457,
+      "config": {
+        "id": "a100-flux-klein-torch28-001",
+        "description": "Same-environment control for the compiler screens: BF16 reference workload (1024x1024, 4 steps, guidance 1) on torch 2.8.0 instead of 2.5.1, no compiler. Isolates the torch-version effect from the compiler effect.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-bf16.resolved.json"
+      },
+      "source_sha256": {
+        "summary.json": "5cd22230d77941c76fc04d925065beaa528418b7a6c28adfbd9f7a9bfa11a72e",
+        "runs.csv": "6117c8383ef3e12d587cec6764e372587a4ab9f14d21cfab31ef57d6ad68d1ef",
+        "config.json": "e17040e658072d4af361db3af5e64d712b844cc07f76a777622ff4eaffbdc7d0",
+        "stages.csv": "a760283fd31babcc9897792900e9bfc4fcd8d967c2a6ffd5aa00c1d2324d007b",
+        "status.json": "cd44a2b4d550d92e2105922efdf1dce92768dfe51e16e4261e69a16df07ea2ff"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch.compile",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.04647532424926758,
+        "Denoising": 0.7575126022338867,
+        "VAE decoding": 0.17161072692871093,
+        "Output / remaining time": 0.04470885118339211
+      },
+      "mean_s": 1.0203075045952574,
+      "median_s": 1.0218703410355374,
+      "min_s": 1.011271412950009,
+      "max_s": 1.0238182869507,
+      "config": {
+        "id": "a100-flux-klein-compile-001",
+        "description": "torch.compile (Inductor, mode default) of the transformer forward; one change versus a100-flux-klein-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": {
+            "name": "torch_compile",
+            "mode": "default"
+          }
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-bf16.resolved.json"
+      },
+      "source_sha256": {
+        "summary.json": "58349d959fea2bd03425742d1c9708034577ac05a3fdf2ff2da550583a613d03",
+        "runs.csv": "4e437d13e048cb45458bb49b31738e77888ba6439b6313c9b2ee471ab617630b",
+        "config.json": "ad65638355fbeda14e279e8c2f1593d6668d228affc5c74faf5d2c3f6785cf50",
+        "stages.csv": "b233813f8bdba5dfd1ef97625a6a44f0d4604dff1bed548f4edf5c7b612c0389",
+        "status.json": "eed7dab441e1172dc92b57cc55fe0dba51587cc2bd4ef822a3bce48510521a22"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-002__baseline__20261015-151840",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "Conditioning reuse",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.00019874879866838455,
+        "Denoising": 1.0413382598876955,
+        "VAE decoding": 0.16954122314453124,
+        "Output / remaining time": 0.04941375336814672
+      },
+      "mean_s": 1.2604919851990417,
+      "median_s": 1.2614673050120473,
+      "min_s": 1.2523378829937428,
+      "max_s": 1.2697023559594527,
+      "config": {
+        "id": "a100-flux-klein-torch28-002",
+        "description": "Exact conditioning reuse versus a100-flux-klein-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "conditioning_reuse": true
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-torch28-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "0267c960ce12d4ff2a3876a069b67a1a3f4b1b74e6fbcf31d9d9e2a4adf7a4ce",
+        "runs.csv": "e0d244d6b8d9c4f863261b86bc394b6e5ddf8509570fe8b861dd68441d59d5d4",
+        "config.json": "4b6eccb1a00628c852ba68521d79ee05c662eac5e562847d291819f2745a44bc",
+        "stages.csv": "129a48ac3a9dc086d794723701ffc40961cc2594e63ee2b2a08060bc95a94a87",
+        "status.json": "630c51cc3d5747c2c6cddad86231c3be3178bbfe6e5fbf7cbef8a0cf91752f6f"
+      }
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-004__baseline__20261015-151949",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "TaylorSeer cache<br>(output changed)",
+      "measured_count": 10,
+      "stages_s": {
+        "Text conditioning": 0.046718681716918946,
+        "Denoising": 0.5923031017303467,
+        "VAE decoding": 0.1677980697631836,
+        "Output / remaining time": 0.04587894306695089
+      },
+      "mean_s": 0.8526987962774001,
+      "median_s": 0.8541769050061703,
+      "min_s": 0.8440769489388913,
+      "max_s": 0.858987447922118,
+      "config": {
+        "id": "a100-flux-klein-torch28-004",
+        "description": "diffusers TaylorSeer (interval 2, from step 1, order 1; set for 4 steps) versus a100-flux-klein-torch28-001.",
+        "device_label": "gilbreth-a100-40gb",
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "pipeline_class": "Flux2KleinPipeline",
+          "allow_patterns": [
+            "model_index.json",
+            "scheduler/*",
+            "text_encoder/*",
+            "tokenizer/*",
+            "transformer/*",
+            "vae/*"
+          ]
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "seed": 0,
+          "batch_size": 1,
+          "height": 1024,
+          "width": 1024,
+          "num_inference_steps": 4,
+          "guidance_scale": 1.0,
+          "max_sequence_length": 512
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "vae_slicing": false,
+          "torch_compile": false,
+          "compiler": null,
+          "step_cache": {
+            "method": "taylorseer",
+            "cache_interval": 2,
+            "disable_cache_before_step": 1,
+            "max_order": 1
+          }
+        },
+        "backend": "cuda",
+        "environment": {
+          "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+          "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+          "setup": "scripts/gilbreth_setup_torch28.sh",
+          "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+        },
+        "reference_config": "configs/a100-flux-klein-torch28-bf16.json"
+      },
+      "source_sha256": {
+        "summary.json": "152053cb9206414eb0a1ad0a7143099be137f02160c6eb1d94196cca2b325818",
+        "runs.csv": "7befa86ae41b2b27b8d7864fc9787db3617a3a7e0b80d7abd0bf4e516b67ee2a",
+        "config.json": "50b1672c4ad92a677df28adfb847aa1a053cc790dc827df7f41ccf75fe0c690b",
+        "stages.csv": "b5960f8d9c03a7a476e243ea5d87897fbf30a8c5a82422e2ffef24d3303476f2",
+        "status.json": "56ca8392c4135c163373b1277ff5d58eb5058379d4316f45b624a6334fa7d0d1"
+      }
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-007__baseline__20261015-152117",
+      "engine": "edge-dit.cpp",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16 weights / FP32 transformer activations",
+      "label": "MagCache<br>(3/4 reused; output degraded)",
+      "measured_count": 10,
+      "stages_s": {
+        "Encoding + setup (edge-dit)": 0.25841004848480226,
+        "Denoising": 0.28919756412506104,
+        "VAE decoding": 0.2725083351135254,
+        "Output / remaining time": 0.005184052276611328
+      },
+      "mean_s": 0.8252999999999999,
+      "median_s": 0.8255,
+      "min_s": 0.821,
+      "max_s": 0.833,
+      "config": {
+        "id": "a100-edgedit-flux-klein-007",
+        "description": "edge-dit step cache magcache (engine default parameters) versus a100-edgedit-flux-klein-001.",
+        "device_label": "a100-pcie-40gb",
+        "engine": {
+          "name": "edge-dit.cpp",
+          "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+          "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+          "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+        },
+        "model": {
+          "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+          "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+          "path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294"
+        },
+        "precision": "bfloat16",
+        "workload": {
+          "prompt": "A cat holding a sign that says hello world",
+          "width": 1024,
+          "height": 1024,
+          "steps": 4,
+          "guidance": 1.0,
+          "cfg_scale": 1.0,
+          "seed": 0,
+          "batch_size": 1,
+          "sampler": "euler",
+          "scheduler": "auto"
+        },
+        "protocol": {
+          "first_runs": 1,
+          "warmup_runs": 3,
+          "measured_runs": 10,
+          "device_memory_sample_ms": 20
+        },
+        "optimizations": {
+          "quantization": null,
+          "cpu_offload": false,
+          "vae_tiling": false,
+          "auto_fit": false,
+          "auto_allocate": false,
+          "step_cache": {
+            "method": "magcache"
+          }
+        },
+        "cli_arguments": [
+          "--backend",
+          "cuda",
+          "--type",
+          "bf16",
+          "--cache_method",
+          "magcache",
+          "--vae-tiling",
+          "off",
+          "--flash-attention",
+          "--threads",
+          "4"
+        ],
+        "reference_config": "configs/a100-edgedit-flux-klein-bf16.json",
+        "precision_note": "BF16 weights; existing functional gate reports FP32 transformer activations"
+      },
+      "source_sha256": {
+        "summary.json": "4fff61863c5b8760a8c076cac52cc9ce182561ee8faa2e4f87482fd0f53dd85a",
+        "runs.csv": "ba2fb0ba72590871c8ac8625b42f37c0b67d48c5c18465807822956de06d4cc8",
+        "config.json": "74fd2a552967ed23aeeb4071d43a1d924376376515c1d3607db4cfb82495704b",
+        "stages.csv": "9ed2618aa31ddb77825ba25d4b505c600d2bdc186435c5c6e227558e38648649",
+        "status.json": "a7edf75e5a3c65f3bbc703a9149e1ca6fd1b304a7d47d2d39ac5037e6917601d"
+      }
     }
   ],
   "charts": [
@@ -6629,12 +8353,87 @@
         "m5-mflux-flux-klein-base-004__baseline__20261015-150452"
       ],
       "note": "4-bit reference versus exact repeated prompt-pair reuse. Native MLX compilation; synchronized host stages.<br>First/warmups excluded; system swap, thermals and background load uncontrolled. Descriptive timings only.<br>Conditioning output matches reference; 4-bit sign-text errors retained. No formal quality approval."
+    },
+    {
+      "key": "jetson-distilled-engines",
+      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 engines and residency",
+      "note": "512\u00b2 \u00b7 CFG 1 \u00b7 same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>VAE tiling 128 px / 0.25 overlap where labelled (edge-dit requires it to fit). Not shown (no 10-image protocol): sd.cpp all-resident + tiling ran 4 images at ~16.3 s each, then failed weight preparation; sd.cpp auto-fit + tiling failed the first text encoding.",
+      "runs": [
+        "jetson-flux-klein-003__repeat__20261014-163411",
+        "jetson-flux-klein-011__baseline__20261014-185639",
+        "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-003__baseline__20261014-180843"
+      ]
+    },
+    {
+      "key": "jetson-distilled-sdcpp-session",
+      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 sd.cpp options (Oct 14\u201315 session)",
+      "note": "512\u00b2 \u00b7 CFG 1 \u00b7 same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>Later runs show 2\u20135 s longer reload-bearing stages (text encode, denoise step 0) unrelated to the option; steady per-step compute: reference 2.713 s, flash off 3.535 s, tiling 2.713 s. Resident + tiling and auto-fit + tiling did not complete the protocol (see engines panel note).",
+      "runs": [
+        "jetson-flux-klein-003__repeat__20261014-163411",
+        "jetson-flux-klein-010__baseline__20261014-183501",
+        "jetson-flux-klein-011__baseline__20261014-185639"
+      ]
+    },
+    {
+      "key": "jetson-distilled-pytorch-options",
+      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 PyTorch options",
+      "note": "512\u00b2 \u00b7 CFG 1 \u00b7 same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>SDPA math: all attention calls restricted to the math backend (137 per generation counted). Edge-dit flash-off run stopped by the memory guard (not shown).",
+      "runs": [
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-002__baseline__20261014-174108",
+        "jetson-torch-flux-klein-003__baseline__20261014-180843"
+      ]
+    },
+    {
+      "key": "jetson-distilled-pytorch-reuse-compile",
+      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 PyTorch reuse, cache and compile",
+      "note": "NF4 text / Q4_0 transformer \u00b7 512\u00b2 \u00b7 sequential residency \u00b7 CFG 1; first and warm-ups excluded. Reloads are in remaining time.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-004__baseline__20261015-141028",
+        "jetson-torch-flux-klein-006__baseline__20261015-142456",
+        "jetson-torch-flux-klein-007__baseline__20261015-145234"
+      ]
+    },
+    {
+      "key": "jetson-distilled-edgedit-caches",
+      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 edge-dit step caches",
+      "note": "Converted Q4_K_M encoder \u00b7 512\u00b2 \u00b7 all weights resident \u00b7 VAE tiling 128 px / 0.25 \u00b7 engine default cache parameters.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+        "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
+        "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
+        "jetson-edgedit-flux-klein-014__baseline__20261015-135841"
+      ]
+    },
+    {
+      "key": "a100-distilled-pytorch-torch28",
+      "title": "A100 \u00b7 distilled / 4 steps \u00b7 PyTorch torch 2.8: compile, reuse and cache",
+      "note": "BF16 \u00b7 1024\u00b2 \u00b7 GPU-resident \u00b7 torch 2.8.0 environment (the earlier BF16 reference used torch 2.5.1). Measured 2026-10-15, job 11959806.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "a100-flux-klein-torch28-001__baseline__20261015-151548",
+        "a100-flux-klein-compile-001__baseline__20261015-151740",
+        "a100-flux-klein-torch28-002__baseline__20261015-151840",
+        "a100-flux-klein-torch28-004__baseline__20261015-151949"
+      ]
+    },
+    {
+      "key": "a100-edgedit-caches",
+      "title": "A100 \u00b7 distilled / 4 steps \u00b7 edge-dit step caches",
+      "note": "BF16 weights / FP32 activations \u00b7 1024\u00b2. Reference measured 2026-10-05; MagCache 2026-10-15 on a different node (qualitative).<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+        "a100-edgedit-flux-klein-007__baseline__20261015-152117"
+      ]
     }
   ],
   "exclusions": [
     "Smoke attempts, failed/incomplete runs and profiler captures excluded.",
     "Older duplicate reference captures excluded except the original PyTorch and Jetson references.",
     "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here.",
-    "October 15 distilled compile failed the numerical gate; Base 4-bit tiling full was sleep-interrupted and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded; recovery pending."
+    "October 15 distilled compile failed the numerical gate; Base 4-bit tiling full was sleep-interrupted and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded; recovery pending.",
+    "Jetson 2026-10-14/15: failed smokes (config error), edge-dit flash-off full run (memory guard stop), contaminated PyTorch run 161717 and launch errors excluded; all uploaded separately."
   ]
 }

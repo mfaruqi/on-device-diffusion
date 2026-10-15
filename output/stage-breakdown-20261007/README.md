@@ -1,8 +1,8 @@
 # Klein stage breakdowns — updated 2026-10-15
 
-[Open the seventeen interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
+[Open the twenty-four interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
 
-Week 2–3 engine and individual-option analysis, RQ1. Fifty-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Earlier MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
+Week 2–3 engine and option analysis, RQ1. Seventy-four completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
 
 | Panel | Sources |
 |---|---|
@@ -17,6 +17,17 @@ Week 2–3 engine and individual-option analysis, RQ1. Fifty-six completed, unpr
 | M5 distilled / Base PyTorch options (two panels) | BF16 reference, conditioning reuse, VAE tiling 256 pixels / 25% overlap, TaylorSeer; Base also fullgraph torch.compile |
 | M5 distilled / Base engine configurations (two panels) | PyTorch/Diffusers BF16, sd.cpp mixed Q4 and MFLUX BF16/8-bit/4-bit where completed; precision, timing and RNG differ |
 | M5 distilled / Base MFLUX precision (two panels) | Distilled BF16, 8-bit, 4-bit; Base 8-bit and 4-bit (BF16 smoke crashed) |
+| Jetson distilled engines and residency | sd.cpp disk-backed reference and VAE tiling, edge-dit resident + VAE tiling, PyTorch sequential reference and VAE tiling (one 2026-10-14 session) |
+| Jetson distilled sd.cpp session options | Same-session reference, flash attention off, VAE tiling 128 px / 0.25 |
+| Jetson distilled PyTorch options | Sequential-residency reference, SDPA math backend, VAE tiling 128 px / 0.25 |
+| Jetson distilled PyTorch reuse, cache and compile | Reference, conditioning reuse, TaylorSeer (output changed), conditioning reuse + torch.compile |
+| Jetson distilled edge-dit step caches | Resident + VAE tiling reference, TaylorSeer and DiCache (0/4 reused), MagCache (3/4 reused; output degraded) |
+| A100 distilled PyTorch, torch 2.8 | torch 2.8 BF16 reference, torch.compile, conditioning reuse, TaylorSeer (output changed) |
+| A100 edge-dit step caches | No-reuse reference (2026-10-05), MagCache (3/4 reused; output degraded; different node) |
+
+## Gap-campaign additions (2026-10-15)
+
+The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-15 with the seven panels above, from 18 additional full protocols on Jetson Orin Nano and A100. Smoke tests, failed configuration attempts, the memory-guard-stopped edge-dit flash-off run, the contaminated PyTorch run 161717 and launch errors are excluded and uploaded separately ([manifest exclusions](manifest.json)). Visual checks only, no quality metric: TaylorSeer and MagCache visibly change the output; torch.compile is near-identical but not bit-identical; conditioning reuse is bit-identical. Text encoders, residency and initial noise differ across Jetson engines, so the engine panel is a descriptive configuration comparison ([comparison record](../../experiments/compare-jetson-engines-matched-options.md)).
 
 | M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; distilled also 4-bit and 8-bit VAE tiling |
 

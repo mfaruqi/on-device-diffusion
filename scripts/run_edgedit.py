@@ -28,12 +28,25 @@ CLI = ['--backend', 'cuda', '--type', 'bf16', '--cache_method', 'off',
        '--vae-tiling', 'off', '--flash-attention', '--threads', '4']
 
 
+CACHE_METHODS = ('easycache', 'ucache', 'dbcache', 'taylorseer', 'cache-dit', 'magcache', 'dicache', 'sencache')
+
+
+def expected_cli(cfg):
+    """The validated flags; a step_cache config changes only the --cache_method value."""
+    cache = cfg['optimizations'].get('step_cache')
+    return [cache['method'] if cache and a == 'off' and i and CLI[i-1] == '--cache_method' else a
+            for i, a in enumerate(CLI)]
+
+
 def check_config(cfg):
     check_optimizations(cfg, {'quantization', 'cpu_offload', 'vae_tiling',
-                              'auto_fit', 'auto_allocate', 'step_cache'})
+                              'auto_fit', 'auto_allocate', 'step_cache'}, enabled_keys={'step_cache'})
+    cache = cfg['optimizations'].get('step_cache')
+    assert cache is None or (set(cache) == {'method'} and cache['method'] in CACHE_METHODS), (
+        f'step_cache must be null or {{"method": one of {CACHE_METHODS}}} (engine default parameters)')
     assert cfg['engine']['commit'] == COMMIT and cfg['model']['revision'] == REVISION
     assert cfg['model']['repo_id'] == 'black-forest-labs/FLUX.2-klein-4B'
-    assert cfg['precision'] == 'bfloat16' and cfg['cli_arguments'] == CLI
+    assert cfg['precision'] == 'bfloat16' and cfg['cli_arguments'] == expected_cli(cfg)
     w = cfg['workload']
     expected = {'width': 1024, 'height': 1024, 'steps': 4, 'guidance': 1.0,
                 'cfg_scale': 1.0, 'seed': 0, 'batch_size': 1, 'sampler': 'euler', 'scheduler': 'auto'}
@@ -79,7 +92,8 @@ def parse_log(log, cfg, phases, timing):
     backend = 'MTL0' if cfg.get('backend') == 'metal' else 'CUDA0'
     for line in ['default backend: ' + backend, 'flux activation dtype: f32 (bf16_tensors=149/149)',
                  'Conditioner weight type stat: bf16:398', 'Diffusion model weight type stat: bf16:149',
-                 'VAE weight type stat: bf16:248', 'cache mode   : original']:
+                 'VAE weight type stat: bf16:248',
+                 'cache mode   : ' + ((cfg['optimizations'].get('step_cache') or {}).get('method') or 'original')]:
         assert line in log, 'Missing engine confirmation: '+line
     rows, stages, events = [], [], []
     for i, phase in enumerate(phases):
@@ -131,7 +145,14 @@ def benchmark(cfg, out):
     write_json(out/'device-memory.json',{'clock':'python_perf_counter','interval_ms':cfg['protocol']['device_memory_sample_ms'],
                                        'samples':sampler.samples,'scope':'Whole child process; not aligned to system-clock phases'})
     timing=json.loads((out/'engine/timing.json').read_text())
-    rows,stages,events=parse_log((out/'engine.log').read_text(),cfg,phases,timing)
+    log=(out/'engine.log').read_text()
+    rows,stages,events=parse_log(log,cfg,phases,timing)
+    if cfg['optimizations'].get('step_cache'):
+        assert log.count('cache enabled: mode=')==len(phases),'Cache not enabled for every generation'
+        found=re.findall(r'(\S+) (?:skipped|reused) (\d+)/(\d+) steps',log)
+        write_json(out/'step-cache.json',{'config':cfg['optimizations']['step_cache'],'steps':cfg['workload']['steps'],
+            'skipped_steps_per_generation':[int(k) for _,k,_ in found] if len(found)==len(phases) else None,
+            'note':'engine-reported "<method> skipped|reused k/N steps" lines (steps not fully computed); null if not printed'})
     from PIL import Image
     image=out/'engine/imgs/img_000000.png'
     with Image.open(image) as im:

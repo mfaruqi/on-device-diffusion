@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "engine": "edge-dit.cpp",
+  "event_count": 8,
+  "source_sha256": {
+    "engine.log": "fdd1bf60882ea4df8b54a5e8d8c19d2d54a53cf453fd9a1fc9b78ba6babf612a",
+    "config.json": "e40a22599566dddf6e5e145d8e4b143a4e53be86b407d2127b70d7229d3923c2",
+    "runs.csv": "88a12a6f8e3bf15c176343869c454274f5fc371b46d9c881860e0d55d1ee17b7"
+  },
+  "limitations": [
+    "E2E has durations only; stages use system_clock. Do not align the clocks.",
+    "encode_setup includes conditioning and latent/schedule preparation.",
+    "No per-step timings, earlier image hashes or per-generation memory peaks."
+  ]
+}

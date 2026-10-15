@@ -2,7 +2,7 @@
 type: method
 summary: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 status: active
-updated: 2026-10-12
+updated: 2026-10-15
 ---
 
 # Baseline metrics: what we measure and how
@@ -227,6 +227,17 @@ Profiling: `--nsys` runs the harness build with NVTX ranges (`text_encode`, `den
 contains its GPU start time and groups ggml kernels by name (see `categorize_ggml`). There is no
 launching-op table for ggml.
 
+### Derived per-generation quantities
+
+Records may report these values, computed per measured generation and summarized as median and
+min–max. They are derived from `runs.csv` or sd.cpp `engine/results.jsonl`, not `summary.json` fields.
+
+| Quantity | Definition | Notes |
+|---|---|---|
+| steady per-step time | mean of `denoise_step_1..n−1_ms` (sd.cpp: `(t_step_end[n−1] − t_step_end[0]) / (n−1)`) | excludes step 0 and therefore any weight reload or lazy compilation inside it; isolates an option's per-step compute when wall time carries reload drift. With a step cache it mixes computed and predicted steps; report per-step medians alongside it |
+| sd.cpp condition / first-step / decode | `t_cond − t_start`, `t_step_end[0] − t_sampling_start`, `t_decode_end − t_sampling_end` | identical to `text_encode_ms`, `denoise_step_0_ms`, `vae_decode_ms`; with disk-backed parameters the first two include encoder and transformer weight reload |
+| sd.cpp engine-reported loading per generation | sum of `loading tensors completed, taking X s` durations logged within `[t_start, t_end]` | rounded engine diagnostic; overlaps stage time, not additive, not physical storage I/O. Check that none falls inside the steady-step window |
+
 ## Derived event records
 
 [measurement_events.py](../../scripts/measurement_events.py) derives `events.jsonl`
@@ -441,6 +452,43 @@ remain unchanged. File mapping does not prove zero-copy GPU access, continuous r
 or reduced physical disk traffic. See [audit implementation](../../scripts/run_jetson_sdcpp.py)
 and [pinned source excerpt](../../raw/engine-evidence/mmap-source-evidence.txt).
 
+## Portable PyTorch runner options
+
+[`run_flux_portable.py`](../../scripts/run_flux_portable.py) keeps the CUDA-event stage boundaries
+of the [latency table](#latency). Each option below is a labelled change with its own receipt file.
+
+- `stage_residency` (`text_encoder: release_after_encode`, optional `transformer: release_during_encode`):
+  encoder load and transformer release/reload run between timed stages, so they fall in `wall_ms`
+  and `other_ms`, not `text_encode_ms`. Per-generation load/free durations go to
+  `stage-residency.json`, written after the last generation.
+- `attention_backend` (`null` | `math` | `flash` | `efficient`): the whole generation runs inside
+  `torch.nn.attention.sdpa_kernel([backend])`; SDPA calls are counted per generation in
+  `attention.json → sdpa_calls_per_generation`, and zero calls fail the run. `null` leaves selection
+  to PyTorch and writes nothing.
+- `vae_tiling` may be `{"tile_sample_px": int, "overlap": float}`: after `enable_tiling()` the runner
+  sets the sample/latent tile sizes and `tile_overlap_factor`, and fails unless `vae.tiled_decode` ran
+  once per generation (no receipt file; `complete` status is the receipt). `vae_decode_ms` keeps its
+  boundary and contains the whole tiled decode.
+- `conditioning_reuse: true`: `encode_prompt` is wrapped, innermost first, by the residency swaps,
+  the exact `ConditioningCache` ([source](../../scripts/mps_conditioning.py); key = full bound
+  arguments; capacity 1 without CFG, 2 with) and the stage recorder. On hits `text_encode_ms` is
+  conditioning **retrieval** and no swap occurs; on the single miss (first generation) it
+  **includes** the residency swap (without reuse, swaps count in `other_ms`). The run fails
+  unless misses = capacity and hits = (generations − 1) × capacity; receipts in
+  `conditioning-cache.json` and `stage-residency.json`.
+- `step_cache` (`first_block_cache` {threshold} | `taylorseer` {cache_interval,
+  disable_cache_before_step, max_order}): `transformer.enable_cache(...)` after load and on every
+  reloaded transformer. `step-cache.json → full_transformer_computations_per_generation` counts
+  pre-hook calls on the last single-stream block: it detects whole-step skips (First-Block Cache)
+  but **not** TaylorSeer, which predicts sub-module outputs inside blocks that still run. For
+  TaylorSeer the counter is uninformative; identify predicted steps from `denoise_step_i_ms`.
+- `compiler: {"name": "torch_compile", "mode": ...}` wraps `transformer.forward` only (stage hooks
+  stay outside). Compilation is lazy and falls in the first generation, reported separately.
+  `compiler.json → compilations_applied` counts **wrappings**, including re-wrapping of reloaded
+  modules, not executed compilations. A compiler with `transformer: release_during_encode` is
+  allowed only together with `conditioning_reuse`. `TORCHINDUCTOR_COMPILE_THREADS` is recorded in
+  `environment.json → env_vars`; the Triton version is not recorded.
+
 ## edge-dit ed-sample adapter
 
 `scripts/run_edgedit.py` wraps the pinned, validated four-step no-cache `ed-sample`
@@ -477,6 +525,22 @@ introduced. PNG saving occurs between repetitions, outside generation timing.
   observations requested by this adapter, so it is not the measured median.
 
 Source semantics and functional evidence: [edge-dit record](../../experiments/a100-edgedit-flux-klein-001.md).
+
+### Jetson edge-dit runner
+
+[`run_edgedit_jetson.py`](../../scripts/run_edgedit_jetson.py) keeps the per-pass `wall_ms` above
+but fills `text_encode_ms`, `denoise_ms` (engine `sampling`), `vae_decode_ms` and `other_ms` from
+the engine's `flux generate breakdown` line, printed in seconds to two decimals (10 ms rounding).
+Raw `[[phase]]` intervals stay in `stages.csv` (`host_marker_ms`, `engine_breakdown_total`).
+Memory is whole-system tegrastats only, as in [Jetson repeated baseline memory](#jetson-repeated-baseline-memory).
+The `summary.json` `residency` string reads "one load, 14 passes" even for two-pass smokes.
+
+`optimizations.step_cache: {"method": ...}` maps to `--cache_method <method>` with engine defaults
+(not logged). `step-cache.json → skipped_steps_per_generation` is parsed from the per-pass
+`<Method> skipped|reused k/4 steps` line (steps not fully computed); null if the line count does
+not match the pass count. Runner versions before 2026-10-15 matched only "skipped", so TaylorSeer,
+MagCache and DiCache runs from then read null; take their counts from `engine.log`. The engine
+reports no per-step times, so a step cache shows only in `denoise_ms`.
 
 ## macOS Metal sd.cpp
 

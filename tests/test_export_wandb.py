@@ -216,3 +216,27 @@ class SummaryOnlyMedianTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RunLabelTests(unittest.TestCase):
+    def test_label_names_device_engine_workload_options_and_kind(self):
+        cfg = {"device_label": "jetson-orin-nano", "backend": "jetson",
+               "workload": {"num_inference_steps": 4, "width": 512, "height": 512},
+               "model": {"repo_id": "black-forest-labs/FLUX.2-klein-4B"},
+               "optimizations": {"quantization": {"text_encoder": {"method": "bnb_nf4"}},
+                                 "conditioning_reuse": True,
+                                 "compiler": {"name": "torch_compile", "mode": "default"}}}
+        label, tags = exporter.run_label(cfg, "jetson-torch-flux-klein-007", "baseline", False)
+        self.assertEqual(label, "Jetson · PyTorch · distilled 512² · NF4/Q4 · cond reuse + torch.compile · full")
+        self.assertIn("torch.compile", tags)
+
+    def test_reference_base_and_failed(self):
+        cfg = {"device_label": "a100-pcie-40gb", "engine": {"name": "edge-dit.cpp"},
+               "workload": {"steps": 50, "width": 1024, "height": 1024},
+               "optimizations": {"quantization": None, "step_cache": None}}
+        label, _ = exporter.run_label(cfg, "a100-edgedit-flux-klein-base-001", "attempt", True)
+        self.assertEqual(label, "A100 · edge-dit · Base 1024² · BF16 · reference · smoke · FAILED")
+
+    def test_missing_config_is_explicit(self):
+        label, _ = exporter.run_label({}, "jetson-edgedit-flux-klein-002", "attempt", True)
+        self.assertIn("no config recorded", label)

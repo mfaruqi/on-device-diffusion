@@ -1,0 +1,14 @@
+{
+ "status": "failed",
+ "stage": "T1 full protocol (configs/jetson-torch-flux-klein-q4-nf4-512.json)",
+ "failure": "stopped by jetson_memguard.sh during generation index 12: swap grew 774 MB > 768 MB limit (memguard.json)",
+ "completed_generations": {
+  "first": 1,
+  "warmup": 3,
+  "measured": 8
+ },
+ "mem_available_min_mb": 1198,
+ "swap_trend_mb": "293 at start, rising steadily to ~1007 over 12 generations (tegrastats.log); RAM used stable ~5.1-5.8 GB after the first generations",
+ "interpretation_hypothesis": "Each generation streams ~5 GB of weights (NF4 encoder + GGUF transformer) through the page cache; the kernel moves idle anonymous pages to swap gradually. Not a shortage of available memory. Not yet verified.",
+ "note": "Partial protocol: 8 of 10 measured generations; status.json stays 'running' because the process was SIGKILLed. Not a valid baseline."
+}

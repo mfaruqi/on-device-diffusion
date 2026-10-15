@@ -105,6 +105,78 @@ def timing_labels(kind, is_sdcpp, summ, stat, cfg, rows):
     return scope, note, eligible
 
 
+KIND_LABEL = {"baseline": "full", "attempt": "smoke", "repeat": "repeat", "profile": "profile"}
+
+
+def run_label(cfg, experiment, kind, failed):
+    """Human-readable W&B display name: device · engine · workload · options · run kind.
+
+    The run directory / experiment id stays the record's identifier (W&B id and group);
+    this label only says what the run tests. Options are the enabled entries of `optimizations`.
+    """
+    dev = (cfg.get("device_label") or cfg.get("backend") or experiment).lower()
+    device = ("Jetson" if "jetson" in dev else "M5" if ("macbook" in dev or "m5" in dev or dev == "mps")
+              else "A100" if ("a100" in dev or dev == "cuda") else dev)
+    eng = cfg.get("engine") if isinstance(cfg.get("engine"), dict) else {}
+    engine = {"stable-diffusion.cpp": "sd.cpp", "edge-dit.cpp": "edge-dit", "mflux": "MFLUX",
+              "nunchaku": "Nunchaku"}.get(eng.get("name"))
+    engine = engine or ("edge-dit" if "edgedit" in experiment else "sd.cpp" if "sdcpp" in experiment
+                        else "MFLUX" if "mflux" in experiment else "Nunchaku" if "nunchaku" in experiment
+                        else "PyTorch")
+    if "-env-" in experiment:
+        return f"{device} · {engine} · environment check · {KIND_LABEL.get(kind, kind)}" + (" · FAILED" if failed else ""), [device.lower()]
+    if not cfg:
+        return f"{device} · {engine} · {experiment} (no config recorded) · {KIND_LABEL.get(kind, kind)}" + (" · FAILED" if failed else ""), [device.lower()]
+    w = cfg.get("workload") or {}
+    steps = w.get("num_inference_steps") or w.get("steps") or 0
+    model = json.dumps(cfg.get("model", "")).lower()
+    workload = "Base" if ("base" in experiment or "klein-base" in model or steps >= 20) else "distilled"
+    size = w.get("width") or w.get("height")
+    opt = cfg.get("optimizations") or {}
+    q = opt.get("quantization")
+    qs = json.dumps(q).lower() if q is not None else ""
+    precision = ("BF16" if not q else "INT4" if "int4" in qs else "NF4/Q4" if "nf4" in qs
+                 else "Q4" if "q4" in qs else f"{q}-bit" if isinstance(q, int) else "quantized")
+    opts = []
+    sc = opt.get("step_cache")
+    if sc:
+        m = sc.get("method") or sc.get("mode") or "step cache"
+        opts.append({"easycache": "EasyCache", "ucache": "UCache", "dbcache": "DBCache", "taylorseer": "TaylorSeer",
+                     "magcache": "MagCache", "dicache": "DiCache", "sencache": "SenCache",
+                     "first_block_cache": "First-Block Cache"}.get(m, m))
+    if opt.get("conditioning_reuse") or opt.get("conditioning_cache_size"):
+        opts.append("cond reuse")
+    comp = opt.get("compiler") or {}
+    if opt.get("torch_compile") or comp.get("name") == "torch_compile":
+        opts.append("torch.compile")
+    if opt.get("torch_tensorrt") or comp.get("name") == "tensorrt":
+        opts.append("TensorRT")
+    if opt.get("vae_tiling"):
+        opts.append("VAE tiling")
+    if opt.get("flash_attention") is False or opt.get("diffusion_flash_attention") is False:
+        opts.append("flash attn off")
+    if opt.get("attention_backend"):
+        opts.append(f"SDPA {opt['attention_backend']}")
+    if opt.get("auto_fit"):
+        opts.append("auto-fit")
+    es = cfg.get("engine_settings") or {}
+    if opt.get("parameter_storage") == "CUDA0" or es.get("params_backend") == "CUDA0":
+        opts.append("resident")
+    if es.get("disable_segmented_compute"):
+        opts.append("no segmentation")
+    if opt.get("eager_loading") is False:
+        opts.append("lazy load")
+    if opt.get("prefetch") is False:
+        opts.append("prefetch off")
+    if opt.get("mmap"):
+        opts.append("mmap")
+    if opt.get("stage_residency") == {"text_encoder": "release_after_encode"}:
+        opts.append("encoder release")
+    parts = [device, engine, f"{workload} {size}²" if size else workload, precision,
+             " + ".join(opts) if opts else "reference", KIND_LABEL.get(kind, kind)]
+    return " · ".join(parts) + (" · FAILED" if failed else ""), [device.lower(), workload.lower(), *[o.replace(" ", "-").lower() for o in opts]]
+
+
 def describe(run_dir):
     """Build the W&B payload for one run directory. Pure function of the files; no wandb calls."""
     cfg = read_json(run_dir / "config.json")
@@ -318,9 +390,11 @@ def describe(run_dir):
     tags = [config["engine"], variant, kind, "failed" if failed else "complete"]
     if quant:
         tags.append("quantized")
+    label, label_tags = run_label(cfg, experiment, kind, failed)
+    tags += [t for t in label_tags if t not in tags]
     return {
         "id": run_dir.name[:128],
-        "name": f"{experiment} · {kind} · {config['outcome']}",
+        "name": label,
         "run_dir": run_dir.name,
         "failed": failed,
         "group": experiment,
@@ -332,7 +406,7 @@ def describe(run_dir):
         "tables": tables,
         "images": images,
         "files": files,
-        "notes": cfg.get("description", ""),
+        "notes": f"{experiment}: {cfg.get('description', '')}".strip(),
     }
 
 
@@ -380,7 +454,14 @@ def main():
     Path(os.environ["WANDB_DIR"]).mkdir(parents=True, exist_ok=True)
 
     dirs = sorted(d for d in RUNS.iterdir() if d.is_dir() and args.only in d.name)
-    payloads = [describe(d) for d in dirs]
+    payloads = []
+    for d in dirs:
+        try:
+            payloads.append(describe(d))
+        except ValueError as error:
+            if "doesn't follow <experiment-id>__<kind>__<stamp>" not in str(error):
+                raise
+            print(f"skip {d.name} (not a <experiment-id>__<kind>__<stamp> run directory)")
     if args.dry_run:
         for p in payloads:
             print(f"{p['run_dir']} [{p['name']}]: group={p['group']} tags={p['tags']} steps={len(p['history'])} "
@@ -414,6 +495,9 @@ def main():
                 old.config[k] = v
             for k, v in p["summary"].items():
                 old.summary[k] = v
+            if "name" in p:  # descriptive display name, notes and filter tags
+                old.name, old.notes = p["name"], p.get("notes")
+                old.tags = sorted(set(getattr(old, "tags", [])) | set(p.get("tags", [])))
             old.update()
             print(f"update {p['run_dir']} -> {old.url}")
             continue

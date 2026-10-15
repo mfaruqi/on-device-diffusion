@@ -1,0 +1,71 @@
+{
+  "id": "jetson-torch-flux-klein-base-004",
+  "description": "torch.compile (default mode) versus jetson-torch-flux-klein-base-002.",
+  "device_label": "jetson-orin-nano-8gb",
+  "backend": "jetson",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "vae/*",
+      "transformer/config.json"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20,
+    "tegrastats_interval_ms": 200
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": {
+        "method": "gguf",
+        "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-base-4b-Q4_0.gguf",
+        "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b"
+      },
+      "text_encoder": {
+        "method": "bnb_nf4",
+        "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+        "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+        "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+      }
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": {
+      "name": "torch_compile",
+      "mode": "default"
+    },
+    "stage_residency": {
+      "text_encoder": "release_after_encode",
+      "transformer": "release_during_encode"
+    },
+    "conditioning_reuse": true
+  },
+  "environment": {
+    "venv": "~/venvs/torch-jp6-ailab",
+    "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+  },
+  "reference_config": "configs/jetson-torch-flux-klein-base-q4-nf4-512-condreuse.json"
+}

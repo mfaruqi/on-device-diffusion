@@ -1,0 +1,123 @@
+{
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 17667.0,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2350.0,
+    "denoise_ms": 10740.0,
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "vae_decode_ms": 4410.0,
+    "postprocess_ms": null,
+    "other_ms": 170.0,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 12069.0,
+      "min": 12069.0,
+      "max": 12069.0,
+      "mean": 12069.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 930.0,
+      "min": 930.0,
+      "max": 930.0,
+      "mean": 930.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 9270.0,
+      "min": 9270.0,
+      "max": 9270.0,
+      "mean": 9270.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "vae_decode_ms": {
+      "median": 1750.0,
+      "min": 1750.0,
+      "max": 1750.0,
+      "mean": 1750.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 120.0,
+      "min": 120.0,
+      "max": 120.0,
+      "mean": 120.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": null,
+  "id": "jetson-edgedit-flux-klein-011",
+  "device_label": "jetson-orin-nano",
+  "engine": "edge-dit.cpp",
+  "load": {
+    "load_total_s": 65.27864,
+    "note": "Upstream steady_clock around one context creation; files were hashed just before launch, so the page cache is warm for this load."
+  },
+  "schedule_sigmas": [
+    [
+      "1",
+      "1.000000",
+      "0.958085"
+    ],
+    [
+      "2",
+      "0.958085",
+      "0.883982"
+    ],
+    [
+      "3",
+      "0.883982",
+      "0.717497"
+    ],
+    [
+      "4",
+      "0.717497",
+      "0.000000"
+    ]
+  ],
+  "system_memory": {
+    "samples": 470,
+    "ram_peak_gib": 6.6826171875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.306640625,
+    "swap_max_gib": 0.306640625,
+    "gpu_temperature_max_c": 53.906,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "residency": "all weights resident; one load, 2 passes",
+  "timing_method": "ed-sample steady_clock per-pass stdout (1 ms rounding); stages from the engine \"flux generate breakdown\" line (10 ms rounding)",
+  "precision_note": "GGUF Q4_0 transformer, Q4_K_M encoder (see model), BF16 VAE; FP32 activations",
+  "flash_attention_evidence": "command-line flag only; the engine log does not report it",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "denoise_step_i_ms": "Engine prints completed steps without individual timestamps.",
+    "gpu_span_ms": "No GPU event timing.",
+    "peak_alloc_gib/peak_reserved_gib/device_used_peak_gib/host_rss_gib": "No per-generation allocator observations; whole-system tegrastats only.",
+    "deterministic_output": "Only final repeat image retained; earlier image hashes unavailable."
+  }
+}

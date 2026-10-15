@@ -17,11 +17,15 @@ def check_execution_config(config):
     options = config["optimizations"]
     unknown = set(options) - {"quantization", "cpu_offload", "vae_tiling", "step_cache",
                               "graph_segmentation", "parameter_storage", "auto_fit", "eager_loading", "prefetch",
-                              "conditioning_cache_size", "mmap"}
+                              "conditioning_cache_size", "mmap", "diffusion_flash_attention"}
     if unknown:
         raise ValueError(f"Unknown optimizations: {sorted(unknown)}")
-    if options.get("cpu_offload") or options.get("vae_tiling"):
-        raise ValueError("CPU offload and VAE tiling are unsupported by this capture")
+    if options.get("cpu_offload"):
+        raise ValueError("CPU offload is unsupported by this capture")
+    if bool(options.get("vae_tiling", False)) != bool(arguments.get("vae-tiling", 0)):
+        raise ValueError("vae_tiling must match the harness vae-tiling argument (tiling-capable harness only)")
+    if bool(options.get("diffusion_flash_attention", True)) != bool(arguments["diffusion-fa"]):
+        raise ValueError("diffusion_flash_attention must match the harness diffusion-fa argument")
     mmap = options.get("mmap", False)
     if type(mmap) is not bool or arguments["mmap"] != int(mmap):
         raise ValueError("mmap must be a boolean matching the harness argument")
