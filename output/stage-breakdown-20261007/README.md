@@ -1,8 +1,8 @@
-# Klein stage breakdowns — updated 2026-10-15
+# Klein stage breakdowns — updated 2026-10-16
 
-[Open the twenty-six interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
+[Open the twenty-eight interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
 
-Week 2–3 engine and option analysis, RQ1. Eighty-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
+Week 2–3 engine and option analysis, RQ1. Ninety-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
 
 | Panel | Sources |
 |---|---|
@@ -31,6 +31,8 @@ The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-15 with the seven
 
 | A100 Base PyTorch torch 2.8 options | Reference, conditioning reuse, TaylorSeer, torch.compile (50 steps, CFG 4) |
 | A100 Base edge-dit caches | GGUF Q4 reference and seven engine step caches (50 steps, CFG 4) |
+| Jetson Base edge-dit caches | Resident + VAE tiling Q4 reference and six engine step caches (50 steps, CFG 4; DiCache stopped by the memory guard; MagCache deforms the text) |
+| Jetson Base PyTorch reuse and compile | Sequential-residency reference (two weight swaps per image), conditioning reuse (bit-identical), conditioning reuse + torch.compile (TaylorSeer stopped by the memory guard) |
 | M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; distilled also 4-bit and 8-bit VAE tiling |
 
 ## October 15 additions
@@ -82,3 +84,7 @@ python scripts/plot_stage_breakdown.py \
 ```
 
 The output directory retains an upload ID so repeat uploads resume the same analysis run. PNG, PDF and standalone interactive HTML files are available locally and in its W&B analysis artifact. Generated renders and W&B runtime files are ignored by Git; the manifest and numeric export are retained. No model inference was run for these charts.
+
+## Jetson Base additions (2026-10-16)
+
+The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-16 with the two Jetson Base panels above, from 10 additional full protocols (queues `scripts/jetson_gap_queue_20261016f.sh` and `-g.sh`). Smoke tests, failed attempts and the memory-guard-stopped DiCache and TaylorSeer runs are not charted; their records are in the [registry](../../wiki/experiments.md).

@@ -456,7 +456,9 @@ def benchmark(cfg, run_dir):
             if opt.get("compiler"):
                 write_json(run_dir / "compiler.json", {**compiler, "compilations_applied": len(compiles)})
             if cfg["optimizations"].get("stage_residency"):
-                expected = conditioning.capacity if conditioning else len(phases)
+                # The pipeline calls encode_prompt once per prompt: twice per generation under CFG (prompt, negative).
+                encodes = 2 if cfg["workload"]["guidance_scale"] > 1 else 1
+                expected = conditioning.capacity if conditioning else encodes * len(phases)
                 assert len(reloads) == expected, f"encoder reloads {len(reloads)} != {expected}"
                 write_json(run_dir / "stage-residency.json", {"policy": cfg["optimizations"]["stage_residency"],
                                                                "per_generation": reloads})

@@ -2,7 +2,7 @@
 type: project
 summary: Current project state, active campaign and blockers. Read first each session.
 status: active
-updated: 2026-10-15
+updated: 2026-10-16
 ---
 
 # Hot: current state
@@ -10,7 +10,7 @@ updated: 2026-10-15
 **Week 3** (Oct 12–16). **Scope changed** ([D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)):
 the thesis delivers (a) a TVM-compiled FLUX.2 klein pipeline on CUDA, Metal and WebGPU and (b) the joint reuse/precision/residency planner on top. Hypothesis and RQs unchanged ([overview](project/overview.md#scope-amendments)).
 Schedule is optimistic with roll-over allowed ([milestones](project/milestones.md#revised-schedule)).
-**Priority (Oct 10):** evaluate every existing engine (PyTorch, sd.cpp, edge-dit) completely and holistically on each device before any optimization, planner or TVM work. Gap campaign (A100 + Jetson, M5 with Codex) distilled coverage done Oct 14–15; Base cache/compile queues running Oct 15–16; TVM items below wait on it ([plan](../output/gap-campaign-20261010/PLAN.md)).
+**Priority (Oct 10):** evaluate every existing engine (PyTorch, sd.cpp, edge-dit) completely and holistically on each device before any optimization, planner or TVM work. Gap campaign (A100 + Jetson, M5 with Codex) distilled coverage done Oct 14–15; Base cache/compile done on A100 and Jetson Oct 15–16; TVM items below wait on the gap review ([plan](../output/gap-campaign-20261010/PLAN.md)).
 
 ## Established evidence
 - A100 distilled klein baselines (PyTorch, sd.cpp) and comparison; Jetson disk-backed Q4 512² baseline and profiles ([registry](experiments.md)).
@@ -34,6 +34,6 @@ Schedule is optimistic with roll-over allowed ([milestones](project/milestones.m
 Nunchaku: A100 11929464 smoke + full validated and uploaded to W&B; fixed-seed hashes differ and quality remains unassessed ([record](../experiments/a100-nunchaku-flux-klein-001.md)). Jetson/Metal remain blocked ([how-to](methods/nunchaku-howto.md)).
 MFLUX M5: five full protocols validated and all twelve run records uploaded; [Klein charts](../output/stage-breakdown-20261007/README.md) include all completed precisions. Both 4-bit full samples have sign-text errors; [Base BF16](../experiments/m5-mflux-flux-klein-base-001.md) is blocked by a native MLX Metal crash. [Evidence verification](../output/mflux-prep/wandb-evidence-verification.json); swap/timing/quality caveats retained.
 ## Open
-- Base (50 steps) cache/compile queues running: Jetson edge-dit + PyTorch, A100 job 11959986 (configs `*-base-*`); records pending. Codex's 2026-10-15 M5 timings may overlap local chart/W&B work on the same Mac; check before comparing.
+- Jetson Base (Oct 16): edge-dit caches cut 23–70% of passes (TaylorSeer −37% closest to reference, MagCache deforms text, DiCache and PyTorch TaylorSeer stopped by the memory guard); PyTorch reuse −27% bit-identical, + compile −63% vs sequential ([comparison](../experiments/compare-jetson-base-caches-reuse-compile.md)). Codex's 2026-10-15 M5 timings may overlap local chart/W&B work on the same Mac; check before comparing.
 - Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
 - New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).

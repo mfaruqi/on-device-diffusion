@@ -1,0 +1,15 @@
+run_index,phase,wall_ms,gpu_span_ms,text_encode_ms,denoise_ms,denoise_step_0_ms,denoise_step_1_ms,denoise_step_2_ms,denoise_step_3_ms,denoise_step_4_ms,denoise_step_5_ms,denoise_step_6_ms,denoise_step_7_ms,denoise_step_8_ms,denoise_step_9_ms,denoise_step_10_ms,denoise_step_11_ms,denoise_step_12_ms,denoise_step_13_ms,denoise_step_14_ms,denoise_step_15_ms,denoise_step_16_ms,denoise_step_17_ms,denoise_step_18_ms,denoise_step_19_ms,denoise_step_20_ms,denoise_step_21_ms,denoise_step_22_ms,denoise_step_23_ms,denoise_step_24_ms,denoise_step_25_ms,denoise_step_26_ms,denoise_step_27_ms,denoise_step_28_ms,denoise_step_29_ms,denoise_step_30_ms,denoise_step_31_ms,denoise_step_32_ms,denoise_step_33_ms,denoise_step_34_ms,denoise_step_35_ms,denoise_step_36_ms,denoise_step_37_ms,denoise_step_38_ms,denoise_step_39_ms,denoise_step_40_ms,denoise_step_41_ms,denoise_step_42_ms,denoise_step_43_ms,denoise_step_44_ms,denoise_step_45_ms,denoise_step_46_ms,denoise_step_47_ms,denoise_step_48_ms,denoise_step_49_ms,vae_decode_ms,postprocess_ms,other_ms,peak_alloc_gib,peak_reserved_gib,device_used_peak_gib,host_rss_gib,image_sha256
+0,first,171297.0,,1600.0,164090.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,4550.0,,1060.0,,,,,
+1,warmup,166377.0,,930.0,162660.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1740.0,,1050.0,,,,,
+2,warmup,166288.0,,920.0,162570.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1040.0,,,,,
+3,warmup,166334.0,,930.0,162600.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1050.0,,,,,
+4,measured,166569.0,,920.0,162860.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1040.0,,,,,
+5,measured,166240.0,,910.0,162540.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1760.0,,1040.0,,,,,
+6,measured,167156.0,,930.0,163420.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1050.0,,,,,
+7,measured,166372.0,,930.0,162630.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1760.0,,1050.0,,,,,
+8,measured,166339.0,,910.0,162640.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1040.0,,,,,
+9,measured,166759.0,,930.0,163050.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1730.0,,1040.0,,,,,
+10,measured,166781.0,,920.0,163080.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1740.0,,1040.0,,,,,
+11,measured,166983.0,,930.0,163240.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1760.0,,1050.0,,,,,
+12,measured,167220.0,,910.0,163540.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1730.0,,1040.0,,,,,
+13,measured,166702.0,,910.0,163000.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,1750.0,,1040.0,,,,,26e9921f452cb5a7cca46548ee6688d08d92197acd461a345a93c58afcf2bc47

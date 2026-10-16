@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-16T05:16:04Z",
+  "finished_utc": "2026-10-16T05:35:01Z",
+  "error": "AssertionError('encoder reloads 4 != 2')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_flux_portable.py\", line 501, in main\n    benchmark(cfg, run_dir)\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_flux_portable.py\", line 460, in benchmark\n    assert len(reloads) == expected, f\"encoder reloads {len(reloads)} != {expected}\"\nAssertionError: encoder reloads 4 != 2\n"
+}

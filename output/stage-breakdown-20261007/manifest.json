@@ -601,6 +601,76 @@
       "gpu": "A100-PCIE-40GB",
       "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
       "label": "DiCache"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-001__baseline__20261015-193452",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "No cache (reference)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-002__baseline__20261015-204021",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "EasyCache<br>(29/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-003__baseline__20261015-213038",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "UCache<br>(26/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-004__baseline__20261015-222249",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "DBCache<br>(23/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-005__baseline__20261015-231521",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "TaylorSeer<br>(38/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-006__baseline__20261016-000110",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "cache-dit<br>(23/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-007__baseline__20261016-005119",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "MagCache<br>(70/100 passes; text deformed)"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-001__baseline__20261016-050136",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Sequential residency<br>(reference)"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-002__baseline__20261016-015207",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-004__baseline__20261016-033850",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Conditioning reuse<br>+ torch.compile"
     }
   ],
   "charts": [
@@ -890,6 +960,30 @@
         "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
         "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
         "a100-edgedit-flux-klein-base-008__baseline__20261015-175727"
+      ]
+    },
+    {
+      "key": "jetson-base-edgedit-caches",
+      "title": "Jetson Orin Nano · Base / 50 steps · edge-dit step caches",
+      "note": "Q4_0 transformer / Q4_K_M text (Q8_0 embedding) / BF16 VAE · 512² · CFG 4 · all resident + VAE tiling · engine default cache parameters. Visual check only, no quality metric. Measured 2026-10-15/16, one queue. Counts are transformer passes out of 100. DiCache is not shown: stopped by the memory guard at the start of its second pass. MagCache deforms the sign text.",
+      "runs": [
+        "jetson-edgedit-flux-klein-base-001__baseline__20261015-193452",
+        "jetson-edgedit-flux-klein-base-002__baseline__20261015-204021",
+        "jetson-edgedit-flux-klein-base-003__baseline__20261015-213038",
+        "jetson-edgedit-flux-klein-base-004__baseline__20261015-222249",
+        "jetson-edgedit-flux-klein-base-005__baseline__20261015-231521",
+        "jetson-edgedit-flux-klein-base-006__baseline__20261016-000110",
+        "jetson-edgedit-flux-klein-base-007__baseline__20261016-005119"
+      ]
+    },
+    {
+      "key": "jetson-base-torch-options",
+      "title": "Jetson Orin Nano · Base / 50 steps · PyTorch reuse and compile",
+      "note": "Q4_0 GGUF transformer / NF4 text / BF16 VAE · 512² · CFG 4 · sequential residency (encoder loaded only to encode; transformer released meanwhile). The reference swaps weights twice per image (prompt and negative prompt), counted in other. Measured 2026-10-16. Conditioning reuse is bit-identical to the reference; torch.compile output differs in pixels, visually the same. TaylorSeer is not shown: stopped by the memory guard during the first encoder load. Visual check only, no quality metric.",
+      "runs": [
+        "jetson-torch-flux-klein-base-001__baseline__20261016-050136",
+        "jetson-torch-flux-klein-base-002__baseline__20261016-015207",
+        "jetson-torch-flux-klein-base-004__baseline__20261016-033850"
       ]
     }
   ],
