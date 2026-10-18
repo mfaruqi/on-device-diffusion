@@ -4,8 +4,8 @@ id: jetson-torch-flux-klein-004
 status: complete
 device: jetson-orin-nano
 engine: pytorch-diffusers
-runs: [jetson-torch-flux-klein-004__baseline__20261015-141028, jetson-torch-flux-klein-004__attempt__20261015-140608]
-updated: 2026-10-15
+runs: [jetson-torch-flux-klein-004__baseline__20261015-141028, jetson-torch-flux-klein-004__attempt__20261015-140608, jetson-torch-flux-klein-004__profile__20261017-215429, jetson-torch-flux-klein-004__profile__20261017-222734]
+updated: 2026-10-18
 ---
 
 # jetson-torch-flux-klein-004: exact conditioning reuse, PyTorch/diffusers klein Q4_0 + NF4, sequential residency, 512×512
@@ -143,6 +143,26 @@ Tegrastats RAM peak 6.057 GiB; guard MemAvailable minimum 1170 MB, swap 316 → 
 | System RAM peak (tegrastats) | 6.114 GiB | 5.982 GiB | −0.132 GiB |
 | Guard MemAvailable minimum | 1206 MB | 1234 MB | +28 MB |
 | Guard swap growth | 957 MB | 375 MB | −582 MB |
+
+## Kernel profile (2026-10-17/18)
+
+Queues [jetson_gap_queue_20261017h.sh](../scripts/jetson_gap_queue_20261017h.sh) (as the user) and [jetson_gap_queue_20261018i.sh](../scripts/jetson_gap_queue_20261018i.sh) (as root via `sudo`, after the desktop session was stopped; MemAvailable 5949 MB at start). [run_flux_portable.py](../scripts/run_flux_portable.py) `--profile`: the unchanged config's full 1+3+10 protocol, then one extra generation under `torch.profiler` (CPU + CUDA activities, shapes, memory) with the tegrastats monitor already stopped; it is excluded from `runs.csv` and `summary.json`. Trace `profile/trace.json` (Chrome format, opens in Perfetto; git-ignored, kept locally); kernel tables from [analyze_profile.py](../scripts/analyze_profile.py) in `profile/stage_kernels.md`. Kernel times are from a profiled generation and are reported as shares and per-step means, not as baseline latency.
+
+- **Without root** ([jetson-torch-flux-klein-004__profile__20261017-215429](../results/runs/jetson-torch-flux-klein-004__profile__20261017-215429/), queue H): `complete`, but Kineto reported `CUPTI_ERROR_INSUFFICIENT_PRIVILEGES` and the trace holds CPU operators only (no kernel events). Its protocol repeat: wall median 15051.5 ms.
+- **As root** ([jetson-torch-flux-klein-004__profile__20261017-222734](../results/runs/jetson-torch-flux-klein-004__profile__20261017-222734/), queue I): `complete`; 9057 kernel events. Protocol repeat: wall median 14917.7 ms (14903.9–14930.0), first 94459.2 ms; profiled generation 15329.2 ms.
+
+Per denoise step (mean of the 4 steps of the profiled generation, [stage_kernels.md](../results/runs/jetson-torch-flux-klein-004__profile__20261017-222734/profile/stage_kernels.md)): GPU span 3691.8 ms, busy 99%, 2347 kernels.
+
+| Kernel group | ms / step | Share | Kernels / step |
+|---|---:|---:|---:|
+| gemm (cuBLAS/cutlass BF16) | 1374.4 | 37.7% | 109 |
+| copy/cast | 785.6 | 21.6% | 624 |
+| elementwise: mul | 713.1 | 19.6% | 451 |
+| elementwise: other | 588.5 | 16.1% | 583 |
+| attention (flash SDPA) | 79.2 | 2.2% | 25 |
+| everything else | 104.0 | 2.9% | – |
+
+By top-level op, `aten::to` (711.2 ms), `aten::mul` (652.6), `aten::__rshift__` (339.4), `aten::__and__` (83.5) and `aten::sub` (78.9) together take 1865.8 ms per step (51% of busy time): the diffusers GGUF Q4_0 path unpacks and rescales every weight to BF16 in separate kernels on each forward; `aten::linear` plus the cutlass kernels outside an aten op carry the matmuls.
 
 ## Observations
 

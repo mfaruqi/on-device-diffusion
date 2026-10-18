@@ -4,8 +4,8 @@ id: jetson-torch-flux-klein-007
 status: complete
 device: jetson-orin-nano
 engine: pytorch-diffusers
-runs: [jetson-torch-flux-klein-007__baseline__20261015-145234, jetson-torch-flux-klein-007__attempt__20261015-144541]
-updated: 2026-10-15
+runs: [jetson-torch-flux-klein-007__baseline__20261015-145234, jetson-torch-flux-klein-007__attempt__20261015-144541, jetson-torch-flux-klein-007__profile__20261017-220257, jetson-torch-flux-klein-007__profile__20261017-223538]
+updated: 2026-10-18
 ---
 
 # jetson-torch-flux-klein-007: torch.compile (default mode) on the transformer, with conditioning reuse, PyTorch/diffusers klein Q4_0 + NF4, 512×512
@@ -142,6 +142,25 @@ MemAvailable minimum 749 MB. Not a baseline (n = 1).
 | host_rss_gib | 1.834 | 2.137 | +0.303 GiB |
 | System RAM peak (tegrastats) | 5.982 GiB | 6.552 GiB | +0.570 GiB |
 | Guard MemAvailable minimum | 1234 MB | 700 MB | −534 MB |
+
+## Kernel profile (2026-10-17/18)
+
+Queues [jetson_gap_queue_20261017h.sh](../scripts/jetson_gap_queue_20261017h.sh) (as the user) and [jetson_gap_queue_20261018i.sh](../scripts/jetson_gap_queue_20261018i.sh) (as root via `sudo`, after the desktop session was stopped; MemAvailable 5949 MB at start). [run_flux_portable.py](../scripts/run_flux_portable.py) `--profile`: the unchanged config's full 1+3+10 protocol, then one extra generation under `torch.profiler` (CPU + CUDA activities, shapes, memory) with the tegrastats monitor already stopped; it is excluded from `runs.csv` and `summary.json`. Trace `profile/trace.json` (Chrome format, opens in Perfetto; git-ignored, kept locally); kernel tables from [analyze_profile.py](../scripts/analyze_profile.py) in `profile/stage_kernels.md`. Kernel times are from a profiled generation and are reported as shares and per-step means, not as baseline latency.
+
+- **Without root, desktop session active** ([jetson-torch-flux-klein-007__profile__20261017-220257](../results/runs/jetson-torch-flux-klein-007__profile__20261017-220257/), queue H): `failed`, killed by the memory guard (MemAvailable 391 MB < 400 MB) during the first generation's compilation; MemAvailable was 5243 MB at start (desktop session) against 5999 MB for the full run above.
+- **As root** ([jetson-torch-flux-klein-007__profile__20261017-223538](../results/runs/jetson-torch-flux-klein-007__profile__20261017-223538/), queue I): `complete`; 1909 kernel events. Protocol repeat: wall median 7846.6 ms (7835.0–7855.3; +0.8% vs the full run above), first 256211.9 ms; profiled generation 7910.0 ms.
+
+Per denoise step (mean of 4 steps, [stage_kernels.md](../results/runs/jetson-torch-flux-klein-007__profile__20261017-223538/profile/stage_kernels.md)), against the eager profile of [004](jetson-torch-flux-klein-004.md#kernel-profile-2026-10-1718):
+
+| Kernel group | 007 ms / step | 004 ms / step | Δ |
+|---|---:|---:|---:|
+| GPU span | 1839.2 | 3691.8 | −1852.6 (−50.2%) |
+| gemm (cuBLAS/cutlass BF16) | 1377.8 | 1374.4 | +3.4 |
+| weight unpack / rescale / cast (eager: copy/cast + elementwise mul + other; compiled: fused Triton `triton_poi_fused___rshift____to_copy_bitwise_and_…`) | 313.9 | 2087.1 | −1773.2 (−85.0%) |
+| attention | 105.1 | 79.2 | +25.9 |
+| Kernels / step | 460 | 2347 | −80% |
+
+GPU busy is 99–100% in both, so the saving is not launch overhead: Inductor fuses the Q4_0 unpack (shift, mask, subtract, scale) and the BF16 cast into one kernel per weight instead of several full-size passes; the BF16 matmuls are unchanged.
 
 ## Observations
 
