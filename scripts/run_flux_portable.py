@@ -37,7 +37,10 @@ torch_backends.py. Every change from the BF16 reference is one labelled entry in
                              first generation, which is reported separately. TensorRT is CUDA-only.
 
 Usage:
-  python scripts/run_flux_portable.py --config configs/<id>.json [--kind attempt|baseline]
+  python scripts/run_flux_portable.py --config configs/<id>.json [--kind attempt|baseline] [--profile]
+--profile (CUDA/Jetson only) adds one generation under torch.profiler after every measured generation and
+receipt, with the device monitor already stopped: profile/trace.json (Chrome trace, opens in Perfetto),
+profile/op_table.txt and profile/profiled_run.json. It is excluded from runs.csv and summary.json.
 On the Jetson, run it through scripts/jetson_memguard.sh. Metric definitions: wiki/methods/baseline-metrics.md.
 """
 
@@ -389,7 +392,7 @@ def environment(device):
     return env
 
 
-def benchmark(cfg, run_dir):
+def benchmark(cfg, run_dir, profile=False):
     import psutil
     from run_flux import measure_generations
 
@@ -467,6 +470,12 @@ def benchmark(cfg, run_dir):
                 write_json(run_dir / "attention.json", {"attention_backend": backend, "sdpa_calls_per_generation": sdpa_calls})
             if cfg["optimizations"].get("vae_tiling"):
                 assert len(tiled) == len(phases), f"VAE tiling requested; tiled decode ran {len(tiled)}/{len(phases)} times"
+            if profile:
+                assert device.torch_device == "cuda", "--profile needs CUDA (torch.profiler CUPTI activity)"
+                if hasattr(device, "stop_monitor"):
+                    device.stop_monitor()  # keep the profiled generation out of the tegrastats capture
+                from flux_engine import run_profile
+                run_profile(generate, run_dir)
     finally:
         if hasattr(device, "stop_monitor"):
             device.stop_monitor()
@@ -489,7 +498,9 @@ def benchmark(cfg, run_dir):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--config", required=True, type=Path)
-    ap.add_argument("--kind", choices=["baseline", "repeat", "attempt"], default="attempt")
+    ap.add_argument("--kind", choices=["baseline", "repeat", "attempt", "profile"], default=None,
+                    help="run kind in the directory name (default: profile with --profile, else attempt)")
+    ap.add_argument("--profile", action="store_true", help="add one torch.profiler generation after the protocol")
     ap.add_argument("--out-root", type=Path, default=REPO_ROOT / "results" / "runs")
     ap.add_argument("--check-only", action="store_true", help="validate the config and exit (no torch import)")
     args = ap.parse_args()
@@ -498,9 +509,9 @@ def main():
     if args.check_only:
         print("config ok")
         return
-    run_dir = create_run_directory(cfg, args.out_root, args.kind)
+    run_dir = create_run_directory(cfg, args.out_root, args.kind or ("profile" if args.profile else "attempt"))
     with run_status(run_dir):
-        benchmark(cfg, run_dir)
+        benchmark(cfg, run_dir, args.profile)
 
 
 if __name__ == "__main__":
