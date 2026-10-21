@@ -145,6 +145,101 @@ def build(output):
     return data
 
 
+# 3 x 2 engine comparison: rows total time / denoise / peak shared memory, columns distilled / Base.
+# Per engine: plain reference (light) and best configuration without step skipping (solid).
+PAIRS = {
+    'distilled': [('sd.cpp', 'jetson-flux-klein-003__repeat__20261014-163411', 'jetson-flux-klein-007__baseline__20261005-113106', '+ reuse'),
+                  ('edge-dit', 'jetson-edgedit-flux-klein-006__baseline__20261014-170149', None, None),
+                  ('PyTorch', 'jetson-torch-flux-klein-001__baseline__20261014-171410', 'jetson-torch-flux-klein-007__baseline__20261015-145234', '+ reuse\n+ compile')],
+    'base': [('sd.cpp', 'jetson-flux-klein-base-001__baseline__20261005-005357', 'jetson-flux-klein-base-005__baseline__20261005-093239', '+ reuse'),
+             ('edge-dit', 'jetson-edgedit-flux-klein-base-001__baseline__20261015-193452', None, None),
+             ('PyTorch', 'jetson-torch-flux-klein-base-001__baseline__20261016-050136', 'jetson-torch-flux-klein-base-004__baseline__20261016-033850', '+ reuse\n+ compile')],
+}
+REF_NOTE = {'sd.cpp': 'reference', 'edge-dit': 'reference', 'PyTorch': 'reference'}
+
+
+def build_3x2(output):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Patch
+    rows_def = [('wall', 'Total generation time per image (s)'), ('denoise', 'Denoising time per image (s)'),
+                ('ram', 'Peak shared memory (GiB)')]
+    rc = {'font.family': 'serif', 'font.serif': ['STIXGeneral', 'DejaVu Serif'], 'mathtext.fontset': 'stix',
+          'font.size': 11, 'axes.titlesize': 13, 'axes.titleweight': 'bold', 'axes.labelsize': 11.5,
+          'xtick.direction': 'in', 'ytick.direction': 'in', 'pdf.fonttype': 42}
+    table = []
+    with plt.rc_context(rc):
+        fig, axes = plt.subplots(3, 2, figsize=(13, 13.5), gridspec_kw={'hspace': .42, 'wspace': .16})
+        for c, (workload, title) in enumerate([('distilled', 'Distilled · 4 steps, CFG 1'), ('base', 'Base · 50 steps, CFG 4')]):
+            bars = []  # (x, engine, kind, label, row)
+            x = 0.0
+            for engine, ref, best, best_label in PAIRS[workload]:
+                bars.append((x, engine, 'reference', REF_NOTE[engine], load(ref)))
+                if best:
+                    bars.append((x + .82, engine, 'best', best_label, load(best)))
+                    centre = x + .41
+                    x += 2.6
+                else:
+                    centre = x
+                    x += 1.8
+                bars[-1] = bars[-1] + (centre,)
+                if best:
+                    bars[-2] = bars[-2] + (centre,)
+            for xpos, engine, kind, label, row, centre in bars:
+                table.append({'workload': workload, 'engine': engine, 'kind': kind, 'config': label, **{k: row[k] for k in
+                              ('run', 'wall_ms', 'wall_min', 'wall_max', 'denoise_ms', 'denoise_min', 'denoise_max', 'ram_peak_gib')}})
+            for r, (metric, ylabel) in enumerate(rows_def):
+                ax = axes[r][c]
+                for xpos, engine, kind, label, row, centre in bars:
+                    if metric == 'ram':
+                        v, lo, hi = row['ram_peak_gib'], None, None
+                    else:
+                        v, lo, hi = (row[f'{metric}_ms']/1000, row[f'{metric}_min']/1000, row[f'{metric}_max']/1000)
+                    solid = kind == 'best' or engine == 'edge-dit'
+                    ax.bar(xpos, v, width=.78, color=COLOR[engine], alpha=1 if solid else .38, edgecolor='#333333', lw=.7,
+                           yerr=None if lo is None else [[v-lo], [hi-v]], capsize=3)
+                    ax.text(xpos, v + (hi - v if hi else 0) + ax.get_ylim()[1]*0, f'{v:.1f}' if metric != 'ram' else f'{v:.2f}',
+                            ha='center', va='bottom', fontsize=9.5)
+                    ax.text(xpos, -0.02, label, transform=ax.get_xaxis_transform(), ha='center', va='top', fontsize=9.5)
+                centres = sorted({b[5]: b[1] for b in bars}.items())
+                ax.set_xticks([cx for cx, _ in centres])
+                ax.set_xticklabels([e for _, e in centres], fontsize=11.5, fontweight='bold')
+                ax.tick_params(axis='x', pad=30, length=0)
+                top = max((b[4]['ram_peak_gib'] if metric == 'ram' else b[4][f'{metric}_max']/1000) for b in bars)
+                if metric == 'ram':
+                    ax.axhline(BOARD_GIB, color='#D55E00', ls='--', lw=1)
+                    ax.text(ax.get_xlim()[1] if False else bars[-1][0] + .45, BOARD_GIB, f'board {BOARD_GIB:.2f} GiB', color='#D55E00',
+                            fontsize=9, ha='right', va='bottom')
+                    ax.set_ylim(0, 8.2)
+                else:
+                    ax.set_ylim(0, top*1.15)
+                ax.set_ylabel(ylabel)
+                ax.grid(axis='y', lw=.4, alpha=.35)
+                ax.set_title(f'({"abcdef"[r*2+c]}) ' + ylabel.split(' (')[0], loc='left')
+                if r == 0:
+                    ax.annotate(title, xy=(.5, 1.17), xycoords='axes fraction', ha='center', fontsize=14.5, fontweight='bold')
+        handles = [Patch(facecolor=col, edgecolor='#333333', label=e) for e, col in COLOR.items()] + \
+                  [Patch(facecolor='#999999', alpha=.38, edgecolor='#333333', label='reference configuration'),
+                   Patch(facecolor='#999999', edgecolor='#333333', label='best without step skipping')]
+        fig.legend(handles=handles, loc='lower center', ncol=5, frameon=False, fontsize=10.5, bbox_to_anchor=(.5, .085))
+        fig.suptitle('Jetson Orin Nano 8GB · 25 W · FLUX.2 klein 4B · 512² · Q4_0 transformer',
+                     fontsize=16, fontweight='bold', y=.99)
+        fig.text(.03, .008, 'Medians of 10 measured generations after 1 first + 3 warm-ups; error bars min–max; one prompt, seed 0. '
+                 'Total time excludes model load. Text encoders differ:\n'
+                 'sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 embedding, PyTorch NF4. Timers differ: PyTorch CUDA events, sd.cpp host callbacks, '
+                 'edge-dit engine breakdown (10 ms).\nReferences: sd.cpp disk-backed parameters; edge-dit all resident + VAE tiling (it has no faster option without step skipping); PyTorch sequential\nresidency (encoder and transformer swapped). + reuse = exact conditioning reuse; + compile = torch.compile. sd.cpp conditioning-reuse and Base runs '
+                 'are from an earlier session (Oct 5). torch.compile output differs\nslightly in pixels (visually the same). Peak shared memory: '
+                 'tegrastats whole-system RAM over the capture, including load and the OS. Quality not yet measured.',
+                 fontsize=9.3, color='#555555')
+        fig.subplots_adjust(left=.07, right=.985, top=.92, bottom=.18)
+        fig.savefig(output/'jetson-engines-3x2.png', dpi=200)
+        fig.savefig(output/'jetson-engines-3x2.pdf')
+    (output/'jetson-engines-3x2-data.json').write_text(json.dumps({'pairs': PAIRS, 'rows': table, 'script_sha256': sha(Path(__file__))},
+                                                                 indent=2) + '\n')
+    return table
+
+
 def upload(data, output, name, entity, project):
     import base64
     import wandb
@@ -160,16 +255,18 @@ def upload(data, output, name, entity, project):
         for w, rows in data.items():
             for p in rows:
                 table.add_data(w, *[p[c] for c in cols[1:]])
-        run.log({'jetson_engines/2x3': wandb.Image(str(output/'jetson-engines-2x3.png')), 'jetson_engines/table': table})
+        run.log({'jetson_engines/2x3': wandb.Image(str(output/'jetson-engines-2x3.png')),
+                 'jetson_engines/3x2': wandb.Image(str(output/'jetson-engines-3x2.png')), 'jetson_engines/table': table})
         art = wandb.Artifact(name, type='analysis')
-        for f in ('jetson-engines-2x3.png', 'jetson-engines-2x3.pdf', 'jetson-engines-data.json'):
+        for f in ('jetson-engines-2x3.png', 'jetson-engines-2x3.pdf', 'jetson-engines-data.json',
+                  'jetson-engines-3x2.png', 'jetson-engines-3x2.pdf', 'jetson-engines-3x2-data.json'):
             art.add_file(str(output/f))
         art.add_file(str(Path(__file__).resolve()), name='plot_jetson_engines.py')
         run.log_artifact(art)
         ident['url'] = run.url
     remote = wandb.Api().run(f"{entity}/{project}/{ident['id']}")
     files = {f.name for f in remote.files()}
-    ok_panels = all(k in remote.summary and remote.summary[k].get('path') in files for k in ('jetson_engines/2x3', 'jetson_engines/table'))
+    ok_panels = all(k in remote.summary and remote.summary[k].get('path') in files for k in ('jetson_engines/2x3', 'jetson_engines/3x2', 'jetson_engines/table'))
     ev = [a for a in remote.logged_artifacts() if a.type == 'analysis' and a.name.split(':')[0] == name]
     digest = base64.b64encode(hashlib.md5((output/'jetson-engines-data.json').read_bytes()).digest()).decode()
     ok_art = bool(ev) and ev[-1].manifest.entries['jetson-engines-data.json'].digest == digest
@@ -189,6 +286,7 @@ def main():
     ap.add_argument('--project', default='on-device-diffusion')
     args = ap.parse_args()
     data = build(args.output)
+    build_3x2(args.output)
     print('wrote', args.output/'jetson-engines-2x3.png')
     if args.upload:
         upload(data, args.output, args.name, args.entity, args.project)
