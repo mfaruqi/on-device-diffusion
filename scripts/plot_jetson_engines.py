@@ -146,16 +146,23 @@ def build(output):
 
 
 # 3 x 2 engine comparison: rows total time / denoise / peak shared memory, columns distilled / Base.
-# Per engine: plain reference (light) and best configuration without step skipping (solid).
-PAIRS = {
-    'distilled': [('sd.cpp', 'jetson-flux-klein-003__repeat__20261014-163411', 'jetson-flux-klein-007__baseline__20261005-113106', '+ reuse'),
-                  ('edge-dit', 'jetson-edgedit-flux-klein-006__baseline__20261014-170149', None, None),
-                  ('PyTorch', 'jetson-torch-flux-klein-001__baseline__20261014-171410', 'jetson-torch-flux-klein-007__baseline__20261015-145234', '+ reuse\n+ compile')],
-    'base': [('sd.cpp', 'jetson-flux-klein-base-001__baseline__20261005-005357', 'jetson-flux-klein-base-005__baseline__20261005-093239', '+ reuse'),
-             ('edge-dit', 'jetson-edgedit-flux-klein-base-001__baseline__20261015-193452', None, None),
-             ('PyTorch', 'jetson-torch-flux-klein-base-001__baseline__20261016-050136', 'jetson-torch-flux-klein-base-004__baseline__20261016-033850', '+ reuse\n+ compile')],
+# Per engine: plain reference (light), VAE tiling (dotted; distilled only), and the best configuration
+# without step skipping (solid). edge-dit's only working exact placement already uses VAE tiling.
+GROUPS = {
+    'distilled': [('sd.cpp', [('jetson-flux-klein-003__repeat__20261014-163411', 'reference', 'reference'),
+                              ('jetson-flux-klein-011__baseline__20261014-185639', '+ VAE\ntiling', 'tiled'),
+                              ('jetson-flux-klein-007__baseline__20261005-113106', '+ reuse', 'best')]),
+                  ('edge-dit', [('jetson-edgedit-flux-klein-006__baseline__20261014-170149', 'resident\n+ VAE tiling', 'best-tiled')]),
+                  ('PyTorch', [('jetson-torch-flux-klein-001__baseline__20261014-171410', 'reference', 'reference'),
+                               ('jetson-torch-flux-klein-003__baseline__20261014-180843', '+ VAE\ntiling', 'tiled'),
+                               ('jetson-torch-flux-klein-007__baseline__20261015-145234', '+ reuse\n+ compile', 'best')])],
+    'base': [('sd.cpp', [('jetson-flux-klein-base-001__baseline__20261005-005357', 'reference', 'reference'),
+                         ('jetson-flux-klein-base-005__baseline__20261005-093239', '+ reuse', 'best')]),
+             ('edge-dit', [('jetson-edgedit-flux-klein-base-001__baseline__20261015-193452', 'resident\n+ VAE tiling', 'best-tiled')]),
+             ('PyTorch', [('jetson-torch-flux-klein-base-001__baseline__20261016-050136', 'reference', 'reference'),
+                          ('jetson-torch-flux-klein-base-004__baseline__20261016-033850', '+ reuse\n+ compile', 'best')])],
 }
-REF_NOTE = {'sd.cpp': 'reference', 'edge-dit': 'reference', 'PyTorch': 'reference'}
+STEP, GAP = .84, 1.0
 
 
 def build_3x2(output):
@@ -172,20 +179,13 @@ def build_3x2(output):
     with plt.rc_context(rc):
         fig, axes = plt.subplots(3, 2, figsize=(13, 13.5), gridspec_kw={'hspace': .42, 'wspace': .16})
         for c, (workload, title) in enumerate([('distilled', 'Distilled · 4 steps, CFG 1'), ('base', 'Base · 50 steps, CFG 4')]):
-            bars = []  # (x, engine, kind, label, row)
+            bars = []  # (x, engine, kind, label, row, group centre)
             x = 0.0
-            for engine, ref, best, best_label in PAIRS[workload]:
-                bars.append((x, engine, 'reference', REF_NOTE[engine], load(ref)))
-                if best:
-                    bars.append((x + .82, engine, 'best', best_label, load(best)))
-                    centre = x + .41
-                    x += 2.6
-                else:
-                    centre = x
-                    x += 1.8
-                bars[-1] = bars[-1] + (centre,)
-                if best:
-                    bars[-2] = bars[-2] + (centre,)
+            for engine, members in GROUPS[workload]:
+                centre = x + STEP*(len(members)-1)/2
+                for i, (run, label, kind) in enumerate(members):
+                    bars.append((x + i*STEP, engine, kind, label, load(run), centre))
+                x += STEP*len(members) + GAP
             for xpos, engine, kind, label, row, centre in bars:
                 table.append({'workload': workload, 'engine': engine, 'kind': kind, 'config': label, **{k: row[k] for k in
                               ('run', 'wall_ms', 'wall_min', 'wall_max', 'denoise_ms', 'denoise_min', 'denoise_max', 'ram_peak_gib')}})
@@ -196,8 +196,9 @@ def build_3x2(output):
                         v, lo, hi = row['ram_peak_gib'], None, None
                     else:
                         v, lo, hi = (row[f'{metric}_ms']/1000, row[f'{metric}_min']/1000, row[f'{metric}_max']/1000)
-                    solid = kind == 'best' or engine == 'edge-dit'
+                    solid = kind.startswith('best')
                     ax.bar(xpos, v, width=.78, color=COLOR[engine], alpha=1 if solid else .38, edgecolor='#333333', lw=.7,
+                           hatch='..' if 'tiled' in kind else None,
                            yerr=None if lo is None else [[v-lo], [hi-v]], capsize=3)
                     ax.text(xpos, v + (hi - v if hi else 0) + ax.get_ylim()[1]*0, f'{v:.1f}' if metric != 'ram' else f'{v:.2f}',
                             ha='center', va='bottom', fontsize=9.5)
@@ -220,22 +221,25 @@ def build_3x2(output):
                 if r == 0:
                     ax.annotate(title, xy=(.5, 1.17), xycoords='axes fraction', ha='center', fontsize=14.5, fontweight='bold')
         handles = [Patch(facecolor=col, edgecolor='#333333', label=e) for e, col in COLOR.items()] + \
-                  [Patch(facecolor='#999999', alpha=.38, edgecolor='#333333', label='reference configuration'),
-                   Patch(facecolor='#999999', edgecolor='#333333', label='best without step skipping')]
-        fig.legend(handles=handles, loc='lower center', ncol=5, frameon=False, fontsize=10.5, bbox_to_anchor=(.5, .085))
+                  [Patch(facecolor='#999999', alpha=.38, edgecolor='#333333', label='reference / single option'),
+                   Patch(facecolor='#999999', edgecolor='#333333', label='best without step skipping'),
+                   Patch(facecolor='white', edgecolor='#333333', hatch='..', label='VAE tiling on (128 px, 0.25)')]
+        fig.legend(handles=handles, loc='lower center', ncol=6, frameon=False, fontsize=10.5, bbox_to_anchor=(.5, .1))
         fig.suptitle('Jetson Orin Nano 8GB · 25 W · FLUX.2 klein 4B · 512² · Q4_0 transformer',
                      fontsize=16, fontweight='bold', y=.99)
-        fig.text(.03, .008, 'Medians of 10 measured generations after 1 first + 3 warm-ups; error bars min–max; one prompt, seed 0. '
-                 'Total time excludes model load. Text encoders differ:\n'
-                 'sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 embedding, PyTorch NF4. Timers differ: PyTorch CUDA events, sd.cpp host callbacks, '
-                 'edge-dit engine breakdown (10 ms).\nReferences: sd.cpp disk-backed parameters; edge-dit all resident + VAE tiling (it has no faster option without step skipping); PyTorch sequential\nresidency (encoder and transformer swapped). + reuse = exact conditioning reuse; + compile = torch.compile. sd.cpp conditioning-reuse and Base runs '
-                 'are from an earlier session (Oct 5). torch.compile output differs\nslightly in pixels (visually the same). Peak shared memory: '
-                 'tegrastats whole-system RAM over the capture, including load and the OS. Quality not yet measured.',
+        fig.text(.03, .008, '\n'.join([
+            'Medians of 10 measured generations after 1 first + 3 warm-ups; error bars min–max; one prompt, seed 0; total time excludes model load.',
+            'Text encoders differ: sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 embedding, PyTorch NF4. Timers differ: PyTorch CUDA events, sd.cpp host callbacks,',
+            'edge-dit engine breakdown (10 ms). References: sd.cpp disk-backed parameters, PyTorch sequential residency (encoder and transformer swapped),',
+            'both untiled. edge-dit has one bar: resident + VAE tiling is its only placement that fits without step skipping. Tiled sd.cpp/PyTorch runs exist',
+            'for distilled only. + reuse = exact conditioning reuse; + compile = torch.compile (pixels differ slightly, visually the same). sd.cpp + reuse and',
+            'sd.cpp Base runs are from an earlier session (Oct 5). Peak shared memory: tegrastats whole-system RAM over the capture, incl. load and the OS.',
+            'Quality not yet measured.']),
                  fontsize=9.3, color='#555555')
-        fig.subplots_adjust(left=.07, right=.985, top=.92, bottom=.18)
+        fig.subplots_adjust(left=.07, right=.985, top=.92, bottom=.19)
         fig.savefig(output/'jetson-engines-3x2.png', dpi=200)
         fig.savefig(output/'jetson-engines-3x2.pdf')
-    (output/'jetson-engines-3x2-data.json').write_text(json.dumps({'pairs': PAIRS, 'rows': table, 'script_sha256': sha(Path(__file__))},
+    (output/'jetson-engines-3x2-data.json').write_text(json.dumps({'groups': GROUPS, 'rows': table, 'script_sha256': sha(Path(__file__))},
                                                                  indent=2) + '\n')
     return table
 
