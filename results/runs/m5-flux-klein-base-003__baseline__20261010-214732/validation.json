@@ -1,0 +1,182 @@
+{
+  "functional_pass": true,
+  "protocol_pass": true,
+  "timing_continuity_pass": true,
+  "formal_quality_eligible": false,
+  "controlled_performance_eligible": false,
+  "images": {
+    "03-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "07-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "12-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "01-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "13-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "06-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "11-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "04-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "05-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "10-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "02-warmup.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "08-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "09-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    },
+    "00-first.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        52.96042378978215,
+        54.97175240037852,
+        55.45787079880442
+      ],
+      "sha256": "158843572a42f8f08e26214fc1fe4d9b170800e7dcacc9ba318884761a2e4da3"
+    }
+  },
+  "limitations": [
+    "Single development prompt; no semantic or held-out quality evaluation.",
+    "User applications and pre-existing swap were not controlled; model preparation completed before this fresh batch.",
+    "A complete protocol is not a matched-precision, matched-noise engine comparison."
+  ]
+}

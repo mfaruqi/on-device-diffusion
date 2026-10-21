@@ -18,6 +18,34 @@ class TimingLabelTests(unittest.TestCase):
     def payload(self, name):
         return exporter.describe(exporter.RUNS / name)
 
+    def test_mflux_does_not_inherit_diffusers_engine_or_precision_label(self):
+        original = exporter.read_json
+        def read(path):
+            result = original(path)
+            if path.name == 'config.json':
+                result = {**result, 'engine': {'name': 'mflux', 'version': '0.22.0', 'commit': 'a'*40},
+                          'optimizations': {'quantization': 4}, 'precision': 'bfloat16'}
+            elif path.name == 'environment.json':
+                result = {**result, 'packages': {'mflux': '0.22.0', 'mlx': '0.32.3'}}
+            return result
+        with patch.object(exporter, 'read_json', side_effect=read):
+            config = self.payload('a100-flux-klein-001__baseline__20260923-221530')['config']
+        self.assertEqual(config['engine'], 'mflux')
+        self.assertEqual(config['engine_version'], '0.22.0')
+        self.assertEqual(config['mlx_version'], '0.32.3')
+        self.assertIn('4-bit affine', config['precision'])
+
+    def test_nunchaku_exports_checkpoint_identity_and_quality_limits(self):
+        payload = self.payload('a100-nunchaku-flux-klein-001__baseline__20261011-124123')
+        config = payload['config']
+        self.assertEqual(config['engine'], 'nunchaku')
+        self.assertEqual(config['engine_version'], '1.3.0.dev20260622+cu12.8torch2.11')
+        self.assertIn('INT4 W4A4/r32', config['precision'])
+        self.assertEqual(len(config['quantized_transformer']['sha256']), 64)
+        self.assertFalse(payload['summary']['formal_quality_eligible'])
+        self.assertFalse(payload['summary']['deterministic_output'])
+        self.assertEqual(len(payload['history']), 14)
+
     def test_edge_engine_identity_and_unknown_determinism_survive_export(self):
         payload = self.payload('a100-edgedit-flux-klein-001__baseline__20261005-233237')
         config = payload['config']
@@ -188,3 +216,35 @@ class SummaryOnlyMedianTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RunLabelTests(unittest.TestCase):
+    def test_label_names_device_engine_workload_options_and_kind(self):
+        cfg = {"device_label": "jetson-orin-nano", "backend": "jetson",
+               "workload": {"num_inference_steps": 4, "width": 512, "height": 512},
+               "model": {"repo_id": "black-forest-labs/FLUX.2-klein-4B"},
+               "optimizations": {"quantization": {"text_encoder": {"method": "bnb_nf4"}},
+                                 "conditioning_reuse": True,
+                                 "compiler": {"name": "torch_compile", "mode": "default"}}}
+        label, tags = exporter.run_label(cfg, "jetson-torch-flux-klein-007", "baseline", False)
+        self.assertEqual(label, "Jetson · PyTorch · distilled 512² · NF4/Q4 · cond reuse + torch.compile · full")
+        self.assertIn("torch.compile", tags)
+
+    def test_reference_base_and_failed(self):
+        cfg = {"device_label": "a100-pcie-40gb", "engine": {"name": "edge-dit.cpp"},
+               "workload": {"steps": 50, "width": 1024, "height": 1024},
+               "optimizations": {"quantization": None, "step_cache": None}}
+        label, _ = exporter.run_label(cfg, "a100-edgedit-flux-klein-base-001", "attempt", True)
+        self.assertEqual(label, "A100 · edge-dit · Base 1024² · BF16 · reference · smoke · FAILED")
+
+    def test_missing_config_is_explicit(self):
+        label, _ = exporter.run_label({}, "jetson-edgedit-flux-klein-002", "attempt", True)
+        self.assertIn("no config recorded", label)
+
+
+class AcceleratorGroupTests(unittest.TestCase):
+    def test_group_is_the_accelerator(self):
+        for label, expected in [("jetson-orin-nano", "Jetson Orin Nano"), ("jetson-orin-nano-8gb", "Jetson Orin Nano"),
+                                ("gilbreth-a100-40gb", "A100 PCIe 40GB"), ("a100-pcie-40gb", "A100 PCIe 40GB"),
+                                ("macbook-air-m5-24gb", "MacBook Air M5")]:
+            self.assertEqual(exporter.accelerator({"device_label": label}, "x"), expected)

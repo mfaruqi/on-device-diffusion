@@ -1,0 +1,32 @@
+{
+  "policy": {
+    "text_encoder": "release_after_encode",
+    "transformer": "release_during_encode"
+  },
+  "per_generation": [
+    {
+      "transformer_free_s": 0.8296875319792889,
+      "text_encoder_load_s": 30.928815777995624,
+      "text_encoder_free_s": 0.5882670260034502,
+      "transformer_load_s": 32.697482163028326
+    },
+    {
+      "transformer_free_s": 0.8620238219737075,
+      "text_encoder_load_s": 34.87467666796874,
+      "text_encoder_free_s": 0.6267024889821187,
+      "transformer_load_s": 33.93052815296687
+    },
+    {
+      "transformer_free_s": 0.6214846160146408,
+      "text_encoder_load_s": 34.48412996198749,
+      "text_encoder_free_s": 0.46061457198811695,
+      "transformer_load_s": 32.71756029501557
+    },
+    {
+      "transformer_free_s": 0.8465533269918524,
+      "text_encoder_load_s": 33.457338190986775,
+      "text_encoder_free_s": 0.47628459200495854,
+      "transformer_load_s": 30.553878745995462
+    }
+  ]
+}

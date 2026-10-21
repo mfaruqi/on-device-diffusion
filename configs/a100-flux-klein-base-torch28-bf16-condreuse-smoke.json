@@ -1,0 +1,53 @@
+{
+  "id": "a100-flux-klein-base-torch28-002",
+  "description": "Smoke (first + one measured) for a100-flux-klein-base-torch28-002",
+  "device_label": "gilbreth-a100-40gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": null,
+    "conditioning_reuse": true
+  },
+  "backend": "cuda",
+  "environment": {
+    "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+    "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+    "setup": "scripts/gilbreth_setup_torch28.sh",
+    "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+  },
+  "reference_config": "configs/a100-flux-klein-base-torch28-bf16.json"
+}

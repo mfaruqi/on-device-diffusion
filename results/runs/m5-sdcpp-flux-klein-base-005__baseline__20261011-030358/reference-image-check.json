@@ -1,0 +1,14 @@
+{
+  "reference": "results/runs/m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+  "reference_image": "results/runs/m5-sdcpp-flux-klein-base-001__baseline__20261010-165813/images/measured-0.png",
+  "variant_image": "results/runs/m5-sdcpp-flux-klein-base-005__baseline__20261011-030358/images/measured-0.png",
+  "pixel_identical": true,
+  "pixel_mae_rgb": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "approximate_policy": false,
+  "formal_quality_eligible": false,
+  "note": "One development prompt/seed diagnostic, not held-out quality assessment."
+}

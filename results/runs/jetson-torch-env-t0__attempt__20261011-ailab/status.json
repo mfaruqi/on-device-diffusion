@@ -1,0 +1,83 @@
+{
+ "status": "complete",
+ "stage": "gate T0 (PyTorch environment on Jetson), Jetson AI Lab stack",
+ "index": "https://pypi.jetson-ai-lab.io/jp6/cu126/+simple/",
+ "checks": {
+  "bitsandbytes_nf4_cuda": {
+   "ok": true,
+   "value": {
+    "out_shape": [
+     8,
+     2560
+    ],
+    "finite": true
+   }
+  },
+  "cuda": {
+   "ok": true,
+   "value": {
+    "device": "Orin",
+    "cc": "8.7",
+    "total_gib": 7.441371917724609,
+    "cuda": "12.6",
+    "cudnn": 90300,
+    "bf16": true
+   }
+  },
+  "diffusers_flux2": {
+   "ok": true,
+   "value": {
+    "Flux2KleinPipeline": true,
+    "Flux2Transformer2DModel": true,
+    "GGUFQuantizationConfig": true,
+    "AutoencoderKLFlux2": true
+   }
+  },
+  "gguf": {
+   "ok": true,
+   "value": {
+    "gguf": "present",
+    "diffusers_gguf_utils": true
+   }
+  },
+  "matmul_bf16": {
+   "ok": true,
+   "value": {
+    "ms": 4.394398049953452,
+    "tflops": 3.909493174880227
+   }
+  },
+  "sdpa_backends": {
+   "ok": true,
+   "value": {
+    "flash": "ok",
+    "efficient": "ok",
+    "math": "ok"
+   }
+  },
+  "torchao_int4_cuda": {
+   "ok": true,
+   "value": {
+    "out_shape": [
+     8,
+     2560
+    ],
+    "finite": true
+   }
+  },
+  "versions": {
+   "ok": true,
+   "value": {
+    "torch": "2.8.0",
+    "diffusers": "0.40.0",
+    "transformers": "5.16.1",
+    "accelerate": "1.15.0",
+    "gguf": "0.19.0",
+    "torchao": "0.13.0",
+    "bitsandbytes": "0.48.0.dev0+ff389db",
+    "numpy": "1.26.4"
+   }
+  }
+ },
+ "note": "torch 2.8.0 here vs torch 2.5.1 in the A100 reference; diffusers 0.40.0 and transformers 5.16.1 match."
+}

@@ -1,0 +1,32 @@
+{
+  "load_total_s": 26.79102137501468,
+  "from_pretrained_s": 0.7203917500155512,
+  "to_mps_s": 26.07062962499913,
+  "allocated_after_load_gib": 14.97126054763794,
+  "driver_allocated_after_load_gib": 15.75042724609375,
+  "is_distilled": true,
+  "components": {
+    "vae": {
+      "weights_gib": 0.15654808841645718,
+      "dtypes": [
+        "torch.bfloat16"
+      ],
+      "device": "mps"
+    },
+    "text_encoder": {
+      "weights_gib": 7.492430686950684,
+      "dtypes": [
+        "torch.bfloat16"
+      ],
+      "device": "mps"
+    },
+    "transformer": {
+      "weights_gib": 7.218764305114746,
+      "dtypes": [
+        "torch.bfloat16"
+      ],
+      "device": "mps"
+    }
+  },
+  "note": "Cached load and placement; not a cold-storage measurement."
+}

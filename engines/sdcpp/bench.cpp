@@ -153,9 +153,9 @@ int main(int argc, char** argv) {
     // Preflight lets the runner reject an old/plain binary before loading weights.
     if (a.count("capabilities")) {
 #ifdef SD_BENCH_NVTX
-        std::puts("{\"profile_generation\":true,\"easycache\":true}");
+        std::puts("{\"profile_generation\":true,\"easycache\":true,\"vae_tiling\":true}");
 #else
-        std::puts("{\"profile_generation\":false,\"easycache\":true}");
+        std::puts("{\"profile_generation\":false,\"easycache\":true,\"vae_tiling\":true}");
 #endif
         return 0;
     }
@@ -245,7 +245,13 @@ int main(int argc, char** argv) {
     }
     // sample_method / scheduler stay at *_COUNT: the library resolves the model's defaults, as
     // sd-cli does. The resolved values appear in sdcpp.log and are recorded by the wrapper.
-    gp.vae_tiling_params.enabled = false;
+    // Optional so every earlier config (no --vae-tiling) keeps the untiled decode it was measured with.
+    gp.vae_tiling_params.enabled = a.count("vae-tiling") ? flag(a, "vae-tiling") : false;
+    if (gp.vae_tiling_params.enabled) {
+        // Explicit so a tiled run never depends on library defaults: tile edge in image pixels, overlap fraction.
+        gp.vae_tiling_params.tile_size_w = gp.vae_tiling_params.tile_size_h = std::stoi(need(a, "vae-tile-size"));
+        gp.vae_tiling_params.target_overlap = std::stof(need(a, "vae-tile-overlap"));
+    }
     gp.cache.mode = SD_CACHE_DISABLED;
     if (a.count("cache-mode")) {
         if (a.at("cache-mode") != "easycache") {

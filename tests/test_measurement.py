@@ -306,7 +306,8 @@ class LifecycleTests(unittest.TestCase):
                     with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
                         with self.assertRaisesRegex(RuntimeError, message), run_status(directory):
                             run_sdcpp.run_harness(cfg, directory, Path("/fake/sd-bench"), Path("/fake/cache"),
-                                                 ["first", "measured"], monitor, False)
+                                                 ["first", "measured"], monitor, False,
+                                                 SimpleNamespace(wrap_command=lambda command: command))
                 status = json.loads((directory / "status.json").read_text())
                 self.assertEqual(status["status"], "failed")
                 self.assertIn(message, status["error"])
@@ -333,7 +334,8 @@ class LifecycleTests(unittest.TestCase):
                 with patch.object(run_sdcpp.subprocess, "run", side_effect=child_process) as child:
                     with contextlib.redirect_stdout(io.StringIO()):
                         _, load, generations, _ = run_sdcpp.run_harness(
-                            cfg, directory, Path("/fake/sd-bench"), Path("/fake/cache"), phases, sampler, profile
+                            cfg, directory, Path("/fake/sd-bench"), Path("/fake/cache"), phases, sampler, profile,
+                            SimpleNamespace(wrap_command=lambda command: command)
                         )
                 child.assert_called_once()
                 command = child.call_args.args[0]

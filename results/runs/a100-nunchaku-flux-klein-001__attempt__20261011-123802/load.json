@@ -1,0 +1,36 @@
+{
+  "is_distilled": true,
+  "load_total_s": 22.22877046704525,
+  "allocated_after_load_gib": 10.122471809387207,
+  "peak_alloc_during_load_gib": 10.122471809387207,
+  "components": {
+    "transformer": {
+      "class": "NunchakuFlux2Transformer2DModel",
+      "weights_gib": 2.2797231674194336,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.int8"
+      ],
+      "device": "cuda"
+    },
+    "text_encoder": {
+      "class": "Qwen3ForCausalLM",
+      "weights_gib": 7.492431163787842,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.float32"
+      ],
+      "device": "cuda"
+    },
+    "vae": {
+      "class": "AutoencoderKLFlux2",
+      "weights_gib": 0.15654857270419598,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.int64"
+      ],
+      "device": "cuda"
+    }
+  },
+  "note": "Cached load and CUDA placement; SHA256 validation occurred before load timing. Not cold-storage latency."
+}

@@ -1,0 +1,141 @@
+{
+  "procName": "python3.12",
+  "pid": 2594,
+  "parentPid": 98727,
+  "procLaunch": "2026-10-12 16:18:08.8629 -0400",
+  "captureTime": "2026-10-12 16:18:17.4227 -0400",
+  "exception": {
+    "codes": "0x0000000000000001, 0x0000000000000000",
+    "rawCodes": [
+      1,
+      0
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGSEGV",
+    "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000000"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 11,
+    "namespace": "SIGNAL",
+    "indicator": "Segmentation fault: 11",
+    "byProc": "exc handler",
+    "byPid": 2594
+  },
+  "faultingThread": 0,
+  "frames": [
+    {
+      "imageOffset": 13344224,
+      "symbol": "mlx::core::metal::CommandEncoder::set_input_array(mlx::core::array const&, int, long long)",
+      "symbolLocation": 48,
+      "imageIndex": 2
+    },
+    {
+      "imageOffset": 13233332,
+      "symbol": "mlx::core::Compiled::eval_gpu(std::__1::vector<mlx::core::array, std::__1::allocator<mlx::core::array>> const&, std::__1::vector<mlx::core::array, std::__1::allocator<mlx::core::array>>&)",
+      "symbolLocation": 1064,
+      "imageIndex": 2
+    },
+    {
+      "imageOffset": 13419084,
+      "symbol": "mlx::core::gpu::eval(mlx::core::array&)",
+      "symbolLocation": 200,
+      "imageIndex": 2
+    },
+    {
+      "imageOffset": 1672460,
+      "symbol": "mlx::core::eval_impl(std::__1::vector<mlx::core::array, std::__1::allocator<mlx::core::array>>, bool)",
+      "symbolLocation": 5736,
+      "imageIndex": 2
+    },
+    {
+      "imageOffset": 1677864,
+      "symbol": "mlx::core::eval(std::__1::vector<mlx::core::array, std::__1::allocator<mlx::core::array>>)",
+      "symbolLocation": 132,
+      "imageIndex": 2
+    },
+    {
+      "imageOffset": 908280,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 27440,
+      "imageIndex": 1
+    },
+    {
+      "imageOffset": 1080220,
+      "symbol": "_PyEval_EvalFrameDefault",
+      "symbolLocation": 238136,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1490620,
+      "symbol": "PyEval_EvalCode",
+      "symbolLocation": 216,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1490080,
+      "symbol": "run_mod",
+      "symbolLocation": 228,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2557388,
+      "symbol": "pyrun_file",
+      "symbolLocation": 156,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2555424,
+      "symbol": "_PyRun_SimpleFileObject",
+      "symbolLocation": 288,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2554808,
+      "symbol": "_PyRun_AnyFileObject",
+      "symbolLocation": 80,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2554440,
+      "symbol": "pymain_run_file_obj",
+      "symbolLocation": 164,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2554092,
+      "symbol": "pymain_run_file",
+      "symbolLocation": 72,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 2078908,
+      "symbol": "Py_RunMain",
+      "symbolLocation": 1068,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1868416,
+      "symbol": "pymain_main",
+      "symbolLocation": 472,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 1867932,
+      "symbol": "main",
+      "symbolLocation": 44,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 132324,
+      "symbol": "start",
+      "symbolLocation": 6992,
+      "imageIndex": 26
+    }
+  ],
+  "source_report": "/Users/mfaruqi/Library/Logs/DiagnosticReports/python3.12-2026-10-12-161825.ips",
+  "preserved_report": "output/mflux-prep/base-bf16-crash-evidence/python3.12-2026-10-12-161825.ips",
+  "interpretation": "Native MLX Metal compiled evaluation fault before any completed generation. Root cause unproven; no precision, backend, compilation or residency fallback applied."
+}

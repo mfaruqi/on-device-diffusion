@@ -22,6 +22,7 @@ FORBIDDEN_LOG_PATTERNS = {
     "auto_fit_plan": r"auto-fit plan:",
     "conditioning_cache_hit": r"conditioning cache hit",
     "graph_cut_layer_split": r"graph-cut layer split",
+    "automatic_vae_tiling": r"VAE decode ran out of memory; retrying",
 }
 # Weights leaving the params backend is only a problem while generations are still running
 # (sd.cpp also logs a release when the context is freed at exit).
@@ -37,6 +38,8 @@ def snapshot_dir(cfg):
     from huggingface_hub.constants import HF_HUB_CACHE
 
     m = cfg["model"]
+    if "components" in m:
+        return expand(m["local_dir"])
     snap = Path(HF_HUB_CACHE) / f"models--{m['repo_id'].replace('/', '--')}" / "snapshots" / m["revision"]
     assert snap.is_dir(), f"{snap} missing: run --prepare-only on the login node"
     return snap
@@ -48,6 +51,32 @@ def prepare(cfg, config_path):
 
     m = cfg["model"]
     assert HEX40.fullmatch(m["revision"]), "model.revision must be a commit hash"
+    if "components" in m:
+        resolved = copy.deepcopy(cfg)
+        root = expand(m["local_dir"])
+        root.mkdir(parents=True, exist_ok=True)
+        assert set(m["components"]) == set(m["files"])
+        for role, component in m["components"].items():
+            assert HEX40.fullmatch(component["revision"])
+            source = Path(hf_hub_download(component["repo_id"], component["file"], revision=component["revision"]))
+            digest = hashlib.sha256()
+            with source.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+                    digest.update(chunk)
+            assert digest.hexdigest() == component["sha256"], f"Hash mismatch: {role}"
+            destination = root / m["files"][role]
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            if destination.is_symlink():
+                assert destination.resolve() == source.resolve(), f"Conflicting file: {destination}"
+            else:
+                assert not destination.exists(), f"Refusing to overwrite {destination}"
+                destination.symlink_to(source.resolve())
+        resolved["model"]["sha256"] = {m["files"][role]: c["sha256"] for role, c in m["components"].items()}
+        resolved["model"]["resolved_at_utc"] = now_utc()
+        out = config_path.with_name(config_path.stem + ".resolved.json")
+        write_json(out, resolved)
+        print(f"Wrote {out}")
+        return
     info = HfApi().model_info(m["repo_id"], revision=m["revision"], files_metadata=True)
     lfs = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs}
     patterns = []
@@ -73,15 +102,22 @@ def check_config(cfg):
     assert HEX40.fullmatch(e["commit"]) and HEX40.fullmatch(e["ggml_commit"]), "engine commits must be hashes"
     assert HEX40.fullmatch(m["revision"]), "model.revision must be a commit hash"
     assert "resolved_at_utc" in m, "use the *.resolved.json config (run --prepare-only first)"
+    metal = s["backend"].lower() in ("metal", "mtl0")
     check_optimizations(cfg, {"quantization", "cpu_offload", "vae_tiling", "step_cache", "auto_fit",
                               "conditioning_cache_size", "prefetch", "mmap"},
-                        {"step_cache", "conditioning_cache_size", "prefetch", "mmap"})
+                        {"step_cache", "conditioning_cache_size", "prefetch", "mmap"} | ({"quantization"} if metal else set()))
     cache_arguments(cfg["optimizations"].get("step_cache"))
     check_execution_options(cfg)
-    assert cfg["precision"] == "bfloat16"
+    if metal:
+        assert cfg["precision"] == "mixed-q4", "Metal bring-up requires the labelled mixed-Q4 config"
+        assert cfg["optimizations"]["quantization"] == {"diffusion_model": "Q4_0", "llm": "Q4_K_M", "vae": "BF16"}
+        assert set(m["components"]) == {"diffusion_model", "llm", "vae"}
+        assert m["sha256"] == {m["files"][role]: c["sha256"] for role, c in m["components"].items()}, "Resolved hashes differ from labelled components"
+    else:
+        assert cfg["precision"] == "bfloat16"
     assert cfg["workload"]["batch_size"] == 1
     # Reference placement: everything on one GPU, nothing automatic.
-    assert s["backend"] == s["params_backend"] and s["backend"].startswith("cuda"), s
+    assert s["backend"] == s["params_backend"] and (metal or s["backend"].startswith("cuda")), s
     assert s["auto_fit"] is False and s["eager_load"] is True and s["disable_segmented_compute"] is True, s
     assert os.environ.get("GGML_CUDA_CUBLAS_COMPUTE_TYPE") is None, "GGML_CUDA_CUBLAS_COMPUTE_TYPE overrides GEMM precision"
 
@@ -181,6 +217,8 @@ def audit_log(log_text, settings, t_last_generation_end, *, expected_conditionin
     if segments and max(segments) > 1:
         problems.append(f"graph ran in {max(segments)} segments")
     backend = settings["params_backend"].upper()
+    if backend in ("METAL", "MTL0") and not placements:
+        problems.append("Metal parameter placement not confirmed in engine log")
     off_gpu = [p for p in placements if not re.search(rf"ON {backend}\b", p.upper())]
     if off_gpu:
         problems.append(f"params placed off {settings['params_backend']}: {off_gpu[:3]}")

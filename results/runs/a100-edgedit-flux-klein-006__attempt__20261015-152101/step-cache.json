@@ -1,0 +1,11 @@
+{
+  "config": {
+    "method": "cache-dit"
+  },
+  "steps": 4,
+  "skipped_steps_per_generation": [
+    0,
+    0
+  ],
+  "note": "engine-reported \"<method> skipped|reused k/N steps\" lines (steps not fully computed); null if not printed"
+}

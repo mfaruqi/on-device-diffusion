@@ -1,0 +1,51 @@
+{
+  "id": "m5-flux-klein-002",
+  "description": "M5 BF16 MPS flux-klein: exact repeated prompt encoding reuse only against m5-flux-klein-001; positive and CFG negative entries cached within one pipeline; first image populates the cache.",
+  "device_label": "macbook-air-m5-24gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+    "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ],
+    "requested_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "resolved_at_utc": "2026-10-10T20:08:57Z"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 4,
+    "guidance_scale": 1.0,
+    "max_sequence_length": 512
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 100,
+    "prevent_idle_sleep": true
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "conditioning_reuse": true
+  },
+  "backend": "mps",
+  "device_requirements": {
+    "chip": "Apple M5",
+    "memory_gib": 24
+  }
+}

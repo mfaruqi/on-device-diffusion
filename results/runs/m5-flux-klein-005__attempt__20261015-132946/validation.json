@@ -1,0 +1,38 @@
+{
+  "functional_pass": true,
+  "protocol_pass": true,
+  "timing_continuity_pass": true,
+  "formal_quality_eligible": false,
+  "controlled_performance_eligible": false,
+  "images": {
+    "01-measured.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        46.64551433434207,
+        50.12985519125842,
+        51.05723002595828
+      ],
+      "sha256": "88696583c1f9db7f46e475befae998812ff1e7851f7a9c0e49951183bf6cefd3"
+    },
+    "00-first.png": {
+      "size": [
+        512,
+        512
+      ],
+      "stddev": [
+        46.64551433434207,
+        50.12985519125842,
+        51.05723002595828
+      ],
+      "sha256": "88696583c1f9db7f46e475befae998812ff1e7851f7a9c0e49951183bf6cefd3"
+    }
+  },
+  "limitations": [
+    "Single development prompt; no semantic or held-out quality evaluation.",
+    "User applications and pre-existing swap were not controlled; model preparation completed before this fresh batch.",
+    "A complete protocol is not a matched-precision, matched-noise engine comparison."
+  ]
+}
