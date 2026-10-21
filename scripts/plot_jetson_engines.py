@@ -269,7 +269,8 @@ def upload(data, output, name, entity, project):
     ok_panels = all(k in remote.summary and remote.summary[k].get('path') in files for k in ('jetson_engines/2x3', 'jetson_engines/3x2', 'jetson_engines/table'))
     ev = [a for a in remote.logged_artifacts() if a.type == 'analysis' and a.name.split(':')[0] == name]
     digest = base64.b64encode(hashlib.md5((output/'jetson-engines-data.json').read_bytes()).digest()).decode()
-    ok_art = bool(ev) and ev[-1].manifest.entries['jetson-engines-data.json'].digest == digest
+    latest = max(ev, key=lambda a: int(a.version.removeprefix('v'))) if ev else None
+    ok_art = latest is not None and latest.manifest.entries['jetson-engines-data.json'].digest == digest
     ident['status'] = 'verified' if remote.state == 'finished' and ok_panels and ok_art else 'NOT verified'
     receipt.write_text(json.dumps(ident, indent=2) + '\n')
     print(ident['status'], ident['url'])
