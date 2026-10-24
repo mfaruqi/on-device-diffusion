@@ -423,7 +423,7 @@ Record package versions and both backbone/calibration weight hashes. A same-imag
 check must be approximately zero. These conventions follow the [official LPIPS implementation](https://github.com/richzhang/PerceptualSimilarity).
 Lower LPIPS indicates greater perceptual similarity; neither LPIPS nor PSNR establishes
 prompt alignment or the proposal's formal quality requirement. A single development prompt
-is not a held-out test. Missing evaluators produce an explicit unavailable value, never zero.
+is not a held-out test. Missing evaluators produce an explicit unavailable value, never zero. Implementation for any engine: [quality_diagnostics.py](../../scripts/quality_diagnostics.py) (fixed pair list; never overwrites an existing file).
 
 ### Exact sd.cpp conditioning reuse
 
