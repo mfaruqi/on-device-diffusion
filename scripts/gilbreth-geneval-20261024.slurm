@@ -25,12 +25,12 @@ OUT=/scratch/gilbreth/$USER/geneval/images
 log() { echo "$(date -Is) $*" | tee -a logs/geneval-gen-queue.log; }
 log "BEGIN job=$SLURM_JOB_ID node=$(hostname) gpu=$(nvidia-smi --query-gpu=name --format=csv,noheader)"
 for stem in ${CONFIGS:-a100-flux-klein-torch28-bf16 a100-flux-klein-torch28-bf16-compile a100-flux-klein-torch28-bf16-taylorseer}; do
-  if "$PY" scripts/geneval_generate.py --config configs/$stem.json --limit 2 --out-root "$OUT" > logs/geneval-$stem-smoke.log 2>&1; then
+  if "$PY" scripts/geneval_generate.py --config configs/$stem.json --subset "${SUBSET:-calibration_subset}" --limit 2 --out-root "$OUT" > logs/geneval-$stem-${SUBSET:-calibration_subset}-smoke.log 2>&1; then
     log "SMOKE ok $stem"
-    "$PY" scripts/geneval_generate.py --config configs/$stem.json --out-root "$OUT" > logs/geneval-$stem.log 2>&1
-    log "FULL $stem rc=$? $(tail -1 logs/geneval-$stem.log)"
+    "$PY" scripts/geneval_generate.py --config configs/$stem.json --subset "${SUBSET:-calibration_subset}" --out-root "$OUT" > logs/geneval-$stem-${SUBSET:-calibration_subset}.log 2>&1
+    log "FULL $stem rc=$? $(tail -1 logs/geneval-$stem-${SUBSET:-calibration_subset}.log)"
   else
-    log "SMOKE FAILED $stem: $(tail -2 logs/geneval-$stem-smoke.log | tr '\n' ' ')"
+    log "SMOKE FAILED $stem: $(tail -2 logs/geneval-$stem-${SUBSET:-calibration_subset}-smoke.log | tr '\n' ' ')"
   fi
 done
 log "END"

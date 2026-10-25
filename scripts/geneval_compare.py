@@ -19,12 +19,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def load(run):
+def load(runs):
+    """One run, or several comma-separated runs covering disjoint prompts of the same configuration."""
     out = {}
-    for line in (ROOT/'results'/'geneval'/run/'geneval-results.jsonl').read_text().splitlines():
+    lines = [l for run in runs.split(',') for l in (ROOT/'results'/'geneval'/run/'geneval-results.jsonl').read_text().splitlines()]
+    for line in lines:
         r = json.loads(line)
         m = re.search(r'/images/(\d+)/samples/(\d+)\.png$', r['filename'])
-        out[(int(m.group(1)), int(m.group(2)))] = (r['tag'], bool(r['correct']))
+        key = (int(m.group(1)), int(m.group(2)))
+        assert key not in out, f'duplicate prompt/seed {key} across {runs}'
+        out[key] = (r['tag'], bool(r['correct']))
     return out
 
 

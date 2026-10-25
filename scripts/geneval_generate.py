@@ -34,7 +34,8 @@ def sha(path):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--config', type=Path, required=True)
-    ap.add_argument('--subset', choices=['calibration_subset', 'calibration', 'heldout'], default='calibration_subset')
+    ap.add_argument('--subset', choices=['calibration_subset', 'calibration_rest', 'calibration', 'heldout'], default='calibration_subset',
+                    help='calibration_rest = calibration half minus the 96-prompt subset')
     ap.add_argument('--out-root', type=Path, default=ROOT/'results'/'geneval')
     ap.add_argument('--limit', type=int, default=None, help='first N prompts only (smoke)')
     args = ap.parse_args()
@@ -53,7 +54,11 @@ def main():
     split = json.loads(SPLIT.read_text())
     assert split['metadata_sha256'] == sha(META), 'GenEval metadata changed since the split was frozen'
     meta = META.read_text().splitlines()
-    indices = split[args.subset][:args.limit] if args.limit else split[args.subset]
+    if args.subset == 'calibration_rest':
+        chosen = [i for i in split['calibration'] if i not in set(split['calibration_subset'])]
+    else:
+        chosen = split[args.subset]
+    indices = chosen[:args.limit] if args.limit else chosen
     seeds = split['image_seeds']
 
     stamp = dt.datetime.now().strftime('%Y%m%d-%H%M%S')
