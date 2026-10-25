@@ -639,3 +639,26 @@ so matching seeds across engines does not imply matching initial latents or imag
 TaylorSeer uses upstream attention-output prediction. Per-generation receipts count computed/predicted calls for each conditional/unconditional context, with caches reset inside generation timing. These counts are not denoising-step skips; the outer transformer and scheduler still run. Approximation quality is not established by protocol completion.
 
 [MFLUX option instrumentation](../../scripts/mflux_engine.py) caches the complete prompt-pair return within one resident model. Population stays in the first image, while lookup and synchronization stay in the text stage. Explicit VAE tiling uses 256-pixel tiles with 64-pixel overlap (eight latent pixels); actual decode shapes are audited. Tile-local normalization can change colors. Same-engine image diagnostics and execution receipts accompany the unchanged synchronized host timings. Whole-system memory pressure remains an uncontrolled performance confound.
+
+## GenEval (formal image-quality metric)
+
+The proposal's formal image-quality requirement is a maximum degradation on GenEval
+([overview](../project/overview.md#evaluation-rules)); paired PSNR/LPIPS stay diagnostics.
+
+- **Prompts and split.** GenEval's 553 prompts ([djghosh13/geneval `af4902f`](https://github.com/djghosh13/geneval/blob/af4902f24d3ca90ebbb446dd9891a59e0f82725f/prompts/evaluation_metadata.jsonl),
+  six tasks), frozen by [geneval_split.py](../../scripts/geneval_split.py) into
+  [split-20261024.json](../../configs/geneval/split-20261024.json): 50/50 stratified by task, seed 20261024; 277
+  calibration, 276 held-out (sealed until 2026-11-30; the generator refuses them before then). Working set: a
+  96-prompt calibration subset, 16 per task. Four images per prompt, seeds 0–3.
+- **Generation.** [geneval_generate.py](../../scripts/geneval_generate.py) loads a benchmark configuration through
+  the portable runner's own code (quantization, VAE tiling, compiler, step cache) and changes only prompt and
+  seed; one CUDA generator per image. Conditioning reuse and stage residency are not used. Per-image wall time
+  is bookkeeping, not a latency measurement.
+- **Scoring.** The official evaluator (Mask2Former Swin-S COCO detector, sha256 `743b7d99…`; CLIP ViT-L/14 colour
+  classifier; mmdetection 2.28.2, mmcv-full 1.7.1, torch 1.12.1, open-clip 2.20.0) via
+  [gilbreth-geneval-score.slurm](../../scripts/gilbreth-geneval-score.slurm), default thresholds.
+  **GenEval score** = mean over the six tasks of the fraction of correct images (official `summary_scores.py`).
+- **Comparison.** [geneval_compare.py](../../scripts/geneval_compare.py) pairs variant and reference images by
+  (prompt, seed): score difference, 95% bootstrap interval over prompts (10,000 draws, seed 0), and an exact
+  two-sided McNemar test on discordant images. A variant is compared only with the reference configuration of
+  the same engine, workload and device class.
