@@ -1,0 +1,75 @@
+{
+  "id": "a100-geneval-torch-flux-klein-q4-nf4-512-condreuse-compile",
+  "description": "GenEval-only A100 copy of jetson-torch-flux-klein-007 (torch.compile (default mode, transformer forward; Triton 3.4.0) versus jetson-torch-flux-klein-004 (conditioning reuse keeps the transformer resident after the first generation, so the compiled module survives).)",
+  "device_label": "gilbreth-a100-40gb",
+  "backend": "cuda",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+    "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "vae/*",
+      "transformer/config.json"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 4,
+    "guidance_scale": 1.0,
+    "max_sequence_length": 512
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": {
+        "method": "gguf",
+        "file": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-4B-GGUF/snapshots/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd/flux-2-klein-4b-Q4_0.gguf",
+        "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+      },
+      "text_encoder": {
+        "method": "bnb_nf4",
+        "path": "/scratch/gilbreth/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+        "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+        "source": "klein revision e7b7dc27 text_encoder quantized on Gilbreth by scripts/save_quantized_text_encoder.py",
+        "jetson_sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883"
+      }
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": {
+      "name": "torch_compile",
+      "mode": "default"
+    },
+    "stage_residency": null,
+    "conditioning_reuse": false
+  },
+  "reference_config": null,
+  "derived_from": {
+    "config": "configs/jetson-torch-flux-klein-q4-nf4-512-condreuse-compile.json",
+    "changed": [
+      "backend",
+      "device_label",
+      "file paths",
+      "stage_residency -> null",
+      "conditioning_reuse -> false",
+      "tegrastats_interval_ms removed",
+      "NF4 encoder copy"
+    ]
+  }
+}

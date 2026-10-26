@@ -5,7 +5,7 @@ status: complete
 device: a100-pcie-40gb
 engine: pytorch-diffusers
 runs: []
-updated: 2026-10-24
+updated: 2026-10-26
 ---
 
 # Compare: GenEval (calibration subset) for the A100 distilled BF16 reference, torch.compile and TaylorSeer
@@ -44,6 +44,20 @@ Reference GenEval **0.7995**; per task: single object 1.000, two objects 0.938, 
 - torch.compile leaves GenEval unchanged within this subset's resolution: Δ −0.003 with an interval of about ±0.012, and only 5 of 384 images flip.
 - TaylorSeer's point estimate is −0.023 (−2.3 points), concentrated in colour tasks (colour attribution −9.4, colours −7.8 points); 43 images flip (26 against, 17 for). With 96 prompts the interval (−0.070 … +0.020) includes zero, so the degradation is suggestive, not established.
 - The reference itself is weakest on position (0.562) and colour attribution (0.609), the tasks where small changes are most visible.
+
+
+## Full calibration half (277 prompts, 2026-10-26)
+
+The remaining 181 calibration prompts were generated for the reference and TaylorSeer (Slurm 12019638, gilbreth-g010; scoring 12021910) with `--subset calibration_rest` and merged with the 96-prompt runs above (disjoint prompt sets, same configuration and seeds); runs `a100-flux-klein-torch28-001__geneval-calibration_rest__20261025-154356` and `a100-flux-klein-torch28-004__geneval-calibration_rest__20261025-161004`. Comparison: [compare-a100-distilled-taylorseer-calibration277.json](../results/geneval/compare-a100-distilled-taylorseer-calibration277.json).
+
+| Configuration | GenEval (277 × 4) | Δ vs reference (95% bootstrap) | Discordant (ref-only / variant-only) | McNemar p |
+|---|---:|---|---|---:|
+| reference | 0.8388 | – | – | – |
+| TaylorSeer | 0.8138 | -0.0250 (-0.0486 … -0.0018) | 77 / 47 | 0.009 |
+
+Task Δ (points): single object -0.6, two objects +0.5, counting +2.5, colours -6.4, position +1.0, colour attribution -12.0.
+
+With the full calibration half the TaylorSeer degradation is resolved: the interval excludes zero and the paired test rejects equality. Its size (-2.5 points) and concentration in colour attribution match the 96-prompt estimate. Whether it is acceptable depends on the maximum degradation still to be declared.
 
 ## Limits
 

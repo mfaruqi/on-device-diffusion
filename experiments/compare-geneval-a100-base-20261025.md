@@ -5,7 +5,7 @@ status: complete
 device: a100-pcie-40gb
 engine: pytorch-diffusers
 runs: []
-updated: 2026-10-25
+updated: 2026-10-26
 ---
 
 # Compare: GenEval (calibration subset) for the A100 Base BF16 reference, torch.compile and TaylorSeer; and against the distilled result
@@ -49,6 +49,20 @@ Lever effects side by side (Δ GenEval vs each workload's own reference; per-ima
 - torch.compile is GenEval-neutral on both workloads (|Δ| ≤ 0.005; 5 and 12 images flip out of 384).
 - TaylorSeer's GenEval cost is small and not significant on either workload at this sample size (−1.6 points on Base, −2.3 on distilled), concentrated in colour attribution (−7.8 and −9.4 points). On Base it removes 62% of wall time for that cost; on distilled it removes 34% and visibly changes images.
 - The distilled reference scores higher than the Base reference on this subset (0.800 vs 0.747), mainly on counting, colours and position; this is a checkpoint/schedule difference, not a lever effect.
+
+
+## Full calibration half (277 prompts, 2026-10-26)
+
+The remaining 181 calibration prompts were generated for the reference and TaylorSeer (Slurm 12019638, gilbreth-g010; scoring 12021910) with `--subset calibration_rest` and merged with the 96-prompt runs above (disjoint prompt sets, same configuration and seeds); runs `a100-flux-klein-base-torch28-001__geneval-calibration_rest__20261025-184809` and `a100-flux-klein-base-torch28-003__geneval-calibration_rest__20261025-163150`. Comparison: [compare-a100-base-taylorseer-calibration277.json](../results/geneval/compare-a100-base-taylorseer-calibration277.json).
+
+| Configuration | GenEval (277 × 4) | Δ vs reference (95% bootstrap) | Discordant (ref-only / variant-only) | McNemar p |
+|---|---:|---|---|---:|
+| reference | 0.7852 | – | – | – |
+| TaylorSeer | 0.7650 | -0.0202 (-0.0359 … -0.0048) | 57 / 34 | 0.021 |
+
+Task Δ (points): single object +0.0, two objects -1.0, counting -3.1, colours +0.0, position -1.5, colour attribution -6.5.
+
+With the full calibration half the TaylorSeer degradation is resolved: the interval excludes zero and the paired test rejects equality. Its size (-2.0 points) and concentration in colour attribution match the 96-prompt estimate. Whether it is acceptable depends on the maximum degradation still to be declared.
 
 ## Limits
 
