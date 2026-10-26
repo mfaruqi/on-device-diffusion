@@ -66,6 +66,83 @@ def diag_rows():
     return rows
 
 
+RECORDS = {'a100-flux-klein-torch28': 'experiments/compare-geneval-a100-distilled-20261024.md',
+           'a100-flux-klein-compile': 'experiments/compare-geneval-a100-distilled-20261024.md',
+           'a100-flux-klein-base-torch28': 'experiments/compare-geneval-a100-base-20261025.md',
+           'a100-geneval-torch': 'experiments/compare-geneval-jetson-matched-20261026.md'}
+
+
+def benchmark_id(config_id):
+    """GenEval config id -> benchmark config id (Jetson-matched copies point to their Jetson config)."""
+    path = ROOT/'configs'/'geneval'/f'{config_id}.json'
+    if path.exists():
+        src = json.loads(path.read_text())['derived_from']['config']
+        return json.loads((ROOT/src).read_text())['id'], 'A100 GenEval run of the identical Jetson weights and options (residency/reuse off)'
+    return config_id, 'GenEval run of this configuration'
+
+
+def attachments():
+    """Per benchmark config id: GenEval score on the largest prompt set, and its paired comparison if any."""
+    runs = [r for r in run_rows()]
+    by_cfg = defaultdict(list)
+    for r in runs:
+        by_cfg[r['config_id']].append(r)
+    comps = comparison_rows()
+    out = {}
+    for cid, rs in by_cfg.items():
+        # combine disjoint subsets of the same configuration (calibration_subset + calibration_rest = 277 prompts)
+        tags = defaultdict(list)
+        for r in rs:
+            for line in (GENEVAL/r['run']/'geneval-results.jsonl').read_text().splitlines():
+                x = json.loads(line)
+                tags[x['tag']].append(bool(x['correct']))
+        tasks = {t: sum(v)/len(v) for t, v in tags.items()}
+        images = sum(len(v) for v in tags.values())
+        names = sorted(r['run'] for r in rs)
+        comp = [c for c in comps if set(c['variant'].split(',')) == set(names)] or \
+               [c for c in comps if set(c['variant'].split(',')) & set(names)]
+        comp = max(comp, key=lambda c: c['pairs']) if comp else None
+        bid, basis = benchmark_id(cid)
+        rec = next((v for k, v in RECORDS.items() if cid.startswith(k)), None)
+        out[bid] = {'quality/geneval': sum(tasks.values())/len(tasks), 'quality/geneval_images': images,
+                    'quality/geneval_prompts': images // 4, 'quality/geneval_basis': basis,
+                    'quality/geneval_runs': ','.join(names), 'quality/geneval_record': rec,
+                    **{f'quality/geneval_task/{t}': tasks.get(t) for t in TASKS},
+                    **({'quality/geneval_delta': comp['delta'], 'quality/geneval_delta_ci95_low': comp['ci95_low'],
+                        'quality/geneval_delta_ci95_high': comp['ci95_high'], 'quality/geneval_mcnemar_p': comp['mcnemar_p'],
+                        'quality/geneval_delta_pairs': comp['pairs'],
+                        'quality/geneval_reference_runs': comp['reference']} if comp else {})}
+    return out
+
+
+def attach(api, entity, project, dry):
+    att = attachments()
+    diag = {r['variant_run']: r for r in diag_rows()}
+    changed = []
+    for run in api.runs(f'{entity}/{project}'):
+        bid = run.id.split('__')[0]
+        fields = dict(att.get(bid, {}))
+        if run.id in diag:
+            d = diag[run.id]
+            fields.update({'quality/lpips_alex_v0_1': d['lpips_alex_v0_1'], 'quality/psnr_db': d['psnr_db'],
+                           'quality/pixels_identical_to_reference': d['pixels_identical'],
+                           'quality/paired_reference_run': d['reference_run']})
+        if not fields:
+            continue
+        changed.append((run.id, fields.get('quality/geneval'), fields.get('quality/lpips_alex_v0_1')))
+        if not dry:
+            run.summary.update(fields)
+    for c in changed:
+        print('  ', c)
+    print(f'{len(changed)} benchmark runs {"would be" if dry else ""} updated')
+    if not dry:  # verify
+        for rid, g, l in changed:
+            r = api.run(f'{entity}/{project}/{rid}')
+            assert (g is None or abs(r.summary.get('quality/geneval') - g) < 1e-12) and \
+                   (l is None or abs(r.summary.get('quality/lpips_alex_v0_1') - l) < 1e-12), rid
+        print('verified')
+
+
 def table(wandb, rows):
     cols = list(rows[0]) if rows else ['empty']
     t = wandb.Table(columns=cols)
@@ -80,9 +157,14 @@ def main():
     ap.add_argument('--entity', default='mfaruqi-purdue-university')
     ap.add_argument('--project', default='on-device-diffusion')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--attach', action='store_true', help='also add quality/* summary fields to the matching benchmark runs')
     args = ap.parse_args()
     runs, comps, diags = run_rows(), comparison_rows(), diag_rows()
     print(f'{len(runs)} GenEval runs, {len(comps)} comparisons, {len(diags)} paired diagnostics')
+    if args.attach:
+        import wandb
+        attach(wandb.Api(timeout=60), args.entity, args.project, args.dry_run)
+        return
     if args.dry_run:
         for r in comps:
             print(f"  {r['variant'].split('__')[0]:62s} Δ {r['delta']:+.4f} [{r['ci95_low']:+.4f}, {r['ci95_high']:+.4f}] p={r['mcnemar_p']:.3f}")
