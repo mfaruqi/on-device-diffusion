@@ -1,0 +1,75 @@
+{
+  "id": "a100-geneval-torch-flux-klein-base-q4-nf4-512",
+  "description": "GenEval-only A100 copy of jetson-torch-flux-klein-base-001 (PyTorch klein Base (50 steps, CFG 4) on Jetson: Base Q4_0 GGUF transformer, NF4 encoder (identical encoder weights to distilled), sequential stage residency; counterpart of jetson-torch-flux-klein-001.)",
+  "device_label": "gilbreth-a100-40gb",
+  "backend": "cuda",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "tokenizer/*",
+      "vae/*",
+      "transformer/config.json",
+      "text_encoder/config.json",
+      "text_encoder/generation_config.json"
+    ],
+    "allow_patterns_note": "Encoder weights come from the pre-quantized NF4 copy (identical Base/distilled encoder files); only Base configs/VAE are needed from the snapshot"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": {
+        "method": "gguf",
+        "file": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf",
+        "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b"
+      },
+      "text_encoder": {
+        "method": "bnb_nf4",
+        "path": "/scratch/gilbreth/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+        "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+        "source": "klein revision e7b7dc27 text_encoder quantized on Gilbreth by scripts/save_quantized_text_encoder.py",
+        "jetson_sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883"
+      }
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": null,
+    "stage_residency": null,
+    "conditioning_reuse": false
+  },
+  "reference_config": null,
+  "derived_from": {
+    "config": "configs/jetson-torch-flux-klein-base-q4-nf4-512.json",
+    "changed": [
+      "backend",
+      "device_label",
+      "file paths",
+      "stage_residency -> null",
+      "conditioning_reuse -> false",
+      "tegrastats_interval_ms removed",
+      "NF4 encoder copy"
+    ]
+  }
+}

@@ -45,7 +45,8 @@ def main():
 
     import torch
     from benchlib import write_json
-    from run_flux_portable import apply_compiler, apply_step_cache, apply_vae_tiling, check_config, load_pipeline
+    from run_flux_portable import (apply_compiler, apply_step_cache, apply_vae_tiling, check_config, load_pipeline,
+                                   restrict_attention)
     from torch_backends import make_device
 
     cfg = json.loads(args.config.read_text())
@@ -72,7 +73,12 @@ def main():
         device = make_device(cfg, run_dir)
         pipe, load, _ = load_pipeline(cfg, device, run_dir)
         opt = cfg['optimizations']
-        apply_vae_tiling(pipe, opt.get('vae_tiling', False))
+        # Every option must be applied here or refused: an option silently ignored would mislabel the images.
+        applied = {'quantization', 'vae_tiling', 'compiler', 'step_cache', 'attention_backend'}
+        unknown = {k for k, v in opt.items() if v not in (None, False, {}) and k not in applied} - {'stage_residency', 'conditioning_reuse'}
+        assert not unknown, f'options not applied by the GenEval generator: {sorted(unknown)}'
+        assert not opt.get('stage_residency') and not opt.get('conditioning_reuse'), 'residency/reuse are not used for GenEval'
+        tiled = apply_vae_tiling(pipe, opt.get('vae_tiling', False))
         compiler = apply_compiler(pipe, opt.get('compiler'))
         apply_step_cache(pipe.transformer, opt.get('step_cache'))
         w = cfg['workload']
@@ -84,19 +90,29 @@ def main():
             (folder/'metadata.jsonl').write_text(meta[index] + '\n')
             for seed in seeds:
                 generator = torch.Generator(device='cuda').manual_seed(seed)
+
+                def generate_once():
+                    return pipe(prompt=item['prompt'], height=w['height'], width=w['width'],
+                                num_inference_steps=w['num_inference_steps'], guidance_scale=w['guidance_scale'],
+                                max_sequence_length=w['max_sequence_length'], generator=generator, output_type='pil').images[0]
+
+                generate, sdpa_calls = restrict_attention(generate_once, opt.get('attention_backend'))
                 torch.cuda.synchronize()
                 t = time.perf_counter()
-                image = pipe(prompt=item['prompt'], height=w['height'], width=w['width'],
-                             num_inference_steps=w['num_inference_steps'], guidance_scale=w['guidance_scale'],
-                             max_sequence_length=w['max_sequence_length'], generator=generator, output_type='pil').images[0]
+                image = generate()
                 torch.cuda.synchronize()
+                if opt.get('attention_backend') is not None:
+                    assert sdpa_calls and sdpa_calls[-1] > 0, 'attention backend restriction not exercised'
                 ms = (time.perf_counter() - t)*1000
                 path = folder/'samples'/f'{seed:04d}.png'
                 image.save(path)
                 rows.append({'index': index, 'tag': item['tag'], 'seed': seed, 'wall_ms': ms,
                              'png_sha256': sha(path), 'rgb_sha256': hashlib.sha256(image.convert('RGB').tobytes()).hexdigest()})
             print(f'{n+1}/{len(indices)} [{item["tag"]}] {item["prompt"]}: {ms:.0f} ms (last seed)', flush=True)
-        write_json(run_dir/'generations.json', {'subset': args.subset, 'indices': indices, 'seeds': seeds, 'rows': rows,
+        if opt.get('vae_tiling'):
+            assert len(tiled) == len(rows), f'VAE tiling requested; tiled decode ran {len(tiled)}/{len(rows)} times'
+        write_json(run_dir/'generations.json', {'subset': args.subset, 'applied_options': {k: opt.get(k) for k in sorted(applied)},
+                                                'tiled_decodes': len(tiled), 'indices': indices, 'seeds': seeds, 'rows': rows,
                                                 'compiler': compiler, 'load': {k: load[k] for k in ('load_total_s',)},
                                                 'split_sha256': sha(SPLIT), 'config_sha256': sha(args.config),
                                                 'source_sha256': {p: sha(ROOT/'scripts'/p) for p in
