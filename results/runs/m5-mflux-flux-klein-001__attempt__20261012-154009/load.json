@@ -1,0 +1,20 @@
+{
+  "load_total_s": 5.270716125029139,
+  "allocated_after_load_gib": 14.867743803188205,
+  "mlx_cache_after_load_gib": 8.001923561096191e-06,
+  "components": {
+    "text_encoder": {
+      "weights_gib": 7.492430925369263,
+      "quantized_layer_count": 0
+    },
+    "transformer": {
+      "weights_gib": 7.218764305114746,
+      "quantized_layer_count": 0
+    },
+    "vae": {
+      "weights_gib": 0.15654856525361538,
+      "quantized_layer_count": 0
+    }
+  },
+  "note": "Cached checkpoint load, on-load quantization and materialization; not cold-storage time."
+}

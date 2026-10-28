@@ -1,0 +1,79 @@
+{
+  "engine": "edge-dit.cpp",
+  "template_run": "results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seed_rule": "engine seed = 4 * position + sample (ed-sample base 0 + image index)",
+  "rows": [
+    {
+      "index": 9,
+      "sample": 0,
+      "engine_seed": 0,
+      "latency_s": 24.596945,
+      "png_sha256": "8e7a1b4129395e11654cad068cf34a6cc44e2d0ed2f0fef8ed5b05096c019612"
+    },
+    {
+      "index": 9,
+      "sample": 1,
+      "engine_seed": 1,
+      "latency_s": 24.385319,
+      "png_sha256": "94375a18536e9c6acc8fddf0860ce55c3545c36bbccbc7c373eac828bf909038"
+    },
+    {
+      "index": 9,
+      "sample": 2,
+      "engine_seed": 2,
+      "latency_s": 24.440156,
+      "png_sha256": "d3e8be28a7a2851ce2b9106ce926e0406353f5ceb4b93861718a8bdf50a97630"
+    },
+    {
+      "index": 9,
+      "sample": 3,
+      "engine_seed": 3,
+      "latency_s": 23.902372,
+      "png_sha256": "b6c9eadb671c093a0120516b4b5987aef80aef6beca091f58f59bad7dcac0632"
+    },
+    {
+      "index": 12,
+      "sample": 0,
+      "engine_seed": 4,
+      "latency_s": 24.454689,
+      "png_sha256": "0a22c60b42e83885e3cfbc25e73b6579a7688e43b24c13b26f1d04c3a0d8ab1c"
+    },
+    {
+      "index": 12,
+      "sample": 1,
+      "engine_seed": 5,
+      "latency_s": 24.449975,
+      "png_sha256": "d0d35fdf35aa95d34e843a22ecbe5df51fdb919966a3d75d05dff94e1404639e"
+    },
+    {
+      "index": 12,
+      "sample": 2,
+      "engine_seed": 6,
+      "latency_s": 24.472671,
+      "png_sha256": "f3919058261b9915593685b847094a18b5d34dc15a7a13420588c83f4b942c33"
+    },
+    {
+      "index": 12,
+      "sample": 3,
+      "engine_seed": 7,
+      "latency_s": 24.493387,
+      "png_sha256": "aa72c7a2ecdb0eba45adada994fcc1aedc2351c0841876800cd68596cb62be94"
+    }
+  ],
+  "cache_lines": [
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/dicache_policy.cpp:333 [info] DiCache reused 54/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/dicache_policy.cpp:333 [info] DiCache reused 54/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/dicache_policy.cpp:333 [info] DiCache reused 54/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/dicache_policy.cpp:333 [info] DiCache reused 55/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/dicache_policy.cpp:333 [info] DiCache reused 54/50 steps"
+  ],
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "template_command_sha256": "1556d00b2047ad506b79a66af658804506dd4309e3888d845b9cdaf06bc2b798",
+  "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725",
+  "script_sha256": "e4edc251e867c8f46a6d01707ba5ede8889c07712f05f743657fd296cae5ae6b"
+}

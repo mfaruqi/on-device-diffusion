@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-14T20:15:55Z",
+  "finished_utc": "2026-10-14T20:15:55Z",
+  "error": "AssertionError('Inference must run offline (HF_HUB_OFFLINE=1)')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_flux_portable.py\", line 372, in main\n    benchmark(cfg, run_dir)\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_flux_portable.py\", line 315, in benchmark\n    assert os.environ.get(\"HF_HUB_OFFLINE\") == \"1\", \"Inference must run offline (HF_HUB_OFFLINE=1)\"\nAssertionError: Inference must run offline (HF_HUB_OFFLINE=1)\n"
+}

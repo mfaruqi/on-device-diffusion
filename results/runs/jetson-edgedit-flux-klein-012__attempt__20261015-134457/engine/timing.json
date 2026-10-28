@@ -1,0 +1,14 @@
+{
+  "e2e_time": {"total": 30.086625, "average": 15.043313},
+  "time_wo_decoding": {"total": 30.086625, "average": 15.043313},
+  "time_with_decoding": {"total": 30.086625, "average": 15.043313},
+  "num_images": 2,
+  "model_load_seconds": 64.587170,
+  "e2e_seconds": {
+    "min": 12.056823,
+    "mean": 15.043313,
+    "median": 15.043313,
+    "max": 18.029803,
+    "stddev": 2.986490
+  }
+}

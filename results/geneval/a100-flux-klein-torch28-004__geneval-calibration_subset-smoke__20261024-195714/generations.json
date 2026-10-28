@@ -1,0 +1,94 @@
+{
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "rows": [
+    {
+      "index": 9,
+      "tag": "single_object",
+      "seed": 0,
+      "wall_ms": 24764.852127002086,
+      "png_sha256": "8939f66cf428722e920d48c5613d95c42e9d331ce3cf732c428212813d0328e2",
+      "rgb_sha256": "99b0ac8191767a980cf225104d4978bb94d10e757374e91da8c6579bd3f4cd15"
+    },
+    {
+      "index": 9,
+      "tag": "single_object",
+      "seed": 1,
+      "wall_ms": 892.6244990143459,
+      "png_sha256": "40ce321ca4ca0dcb7508957437be57659f455052643591cc53ee1e9484161afd",
+      "rgb_sha256": "8506372d666e0e5ddcce19998922c0457863ad6fb64c714ad247c62995352bff"
+    },
+    {
+      "index": 9,
+      "tag": "single_object",
+      "seed": 2,
+      "wall_ms": 845.0378669949714,
+      "png_sha256": "3f6bf05588725a206cd424770a3007a64353f8361e7cb9f98fd9b73383056b14",
+      "rgb_sha256": "d6b2e05d4b02767670c2479bb16250019ad5a80c03cb8180f955fd2a5e44b1e0"
+    },
+    {
+      "index": 9,
+      "tag": "single_object",
+      "seed": 3,
+      "wall_ms": 839.447028003633,
+      "png_sha256": "6d1fbeaf4fe95921aa1117840bf81643ccc49f5b565669b1e7db6e056c3bc695",
+      "rgb_sha256": "0310c60db44911e3d1a0aae35b9d88b32d6c7c06e9f875fdcbbffd781e048a90"
+    },
+    {
+      "index": 12,
+      "tag": "single_object",
+      "seed": 0,
+      "wall_ms": 844.4323889852967,
+      "png_sha256": "d921b376a12c0eb585c92cbe8cc810e1cd99e3557036aa4c9e9df725d126c0a7",
+      "rgb_sha256": "fcca3b8084698cfe8f9d9bd423e6632a121f9a6dc07565bf6beec14cae736b4d"
+    },
+    {
+      "index": 12,
+      "tag": "single_object",
+      "seed": 1,
+      "wall_ms": 840.221873979317,
+      "png_sha256": "fd871a3ab6dcc0e28ccd7b0cb5401105bc5004201a6363a17d964bcfc31f5475",
+      "rgb_sha256": "5aca5815e567c3d20a678056c04549384d1becc41bb47ea9558d47df6d76a6d5"
+    },
+    {
+      "index": 12,
+      "tag": "single_object",
+      "seed": 2,
+      "wall_ms": 842.6007459929679,
+      "png_sha256": "a3073052d48a8628db69280df77ce197edc546320a219c22158f84f19a1ff0e0",
+      "rgb_sha256": "94022f3fda8456dcad3b03122d189363b0a90f0e3c0ffb44f2112f51c80d7e0d"
+    },
+    {
+      "index": 12,
+      "tag": "single_object",
+      "seed": 3,
+      "wall_ms": 846.7694820137694,
+      "png_sha256": "80e614ac3285848a9a3a2162c3d97f99fc7f6a7c5b77397febbb3c242706002d",
+      "rgb_sha256": "6f4302f5b133657df316f50df232f4d37cb437033bb0b945d925d04387cc8f48"
+    }
+  ],
+  "compiler": {
+    "name": null
+  },
+  "load": {
+    "load_total_s": 41.40910515602445
+  },
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "config_sha256": "b6bf0e3f9e043f3c0fa312e9f51c3e6fb9c49f7f4ca8ed6c9215a499b8cb294b",
+  "source_sha256": {
+    "geneval_generate.py": "35968ff3cbdeeb248d04a0db89ebda30440899a46b79a18f0b2d8e22b58447c7",
+    "run_flux_portable.py": "ab9831c56a0766efd30b1fdb4c4890dde0cc7e369314e7cc631c8ca6e8e3699d",
+    "torch_backends.py": "d2155ddcacf5b04f3527210067412b2aeae5263c6a0a118d1dffda0ee34e8b69"
+  },
+  "torch": "2.8.0+cu126",
+  "gpu": "NVIDIA A100-PCIE-40GB"
+}

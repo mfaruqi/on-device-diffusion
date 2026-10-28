@@ -1,0 +1,132 @@
+{
+  "id": "m5-mflux-flux-klein-base-005",
+  "description": "M5 MFLUX Klein-base q4: vae-tiled256 only versus configs/m5-mflux-flux-klein-base-q4-512.resolved.json; native MLX compilation retained.",
+  "device_label": "macbook-air-m5-24gb",
+  "backend": "mlx-metal",
+  "precision": "bfloat16",
+  "engine": {
+    "name": "mflux",
+    "version": "0.22.0",
+    "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+    "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+  },
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "local_path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "files": {
+      "model_index.json": {
+        "sha256": "de1fef01845f0af3e1e2f2581cd5e86f2dfa4a4776f7f0b26b4c77feac4ee70f",
+        "bytes": 422
+      },
+      "scheduler/scheduler_config.json": {
+        "sha256": "067afb012cef64553a763447d1efd93daeffcc0123ca7e25b09f8de20b90762e",
+        "bytes": 486
+      },
+      "text_encoder/config.json": {
+        "sha256": "214b4c29a0d975e9fddf9994a5673f22cb2c4c5750352f9227c2c3251ebeab40",
+        "bytes": 1536
+      },
+      "text_encoder/generation_config.json": {
+        "sha256": "4347b1aeed2b2b78bc059920a0b7f5fec71482e1344952b76d7665d638d71f13",
+        "bytes": 214
+      },
+      "text_encoder/model-00001-of-00002.safetensors": {
+        "sha256": "8c0506e7f4936fa7e26183a4fd8da4e2bdbc5990ba64ae441f965d51228f36ea",
+        "bytes": 4967215360
+      },
+      "text_encoder/model-00002-of-00002.safetensors": {
+        "sha256": "82f2bd839378541b0557bfabaf37c7d3d637071fdcb73302dedd7cf61162ce07",
+        "bytes": 3077766632
+      },
+      "text_encoder/model.safetensors.index.json": {
+        "sha256": "06b3d5319b6d76d1a4a2433419180016cfd54ed62d086a5e6567a809f8c82634",
+        "bytes": 32855
+      },
+      "tokenizer/added_tokens.json": {
+        "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "bytes": 707
+      },
+      "tokenizer/chat_template.jinja": {
+        "sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "bytes": 4168
+      },
+      "tokenizer/merges.txt": {
+        "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "bytes": 1671853
+      },
+      "tokenizer/special_tokens_map.json": {
+        "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd",
+        "bytes": 613
+      },
+      "tokenizer/tokenizer.json": {
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "bytes": 11422654
+      },
+      "tokenizer/tokenizer_config.json": {
+        "sha256": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+        "bytes": 5404
+      },
+      "tokenizer/vocab.json": {
+        "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+        "bytes": 2776833
+      },
+      "transformer/config.json": {
+        "sha256": "c8a88c1433f24e52c01f46766c9f519e76d91d1c00bfb43fe0db2e4ed3c84d70",
+        "bytes": 531
+      },
+      "transformer/diffusion_pytorch_model.safetensors": {
+        "sha256": "e109674697ffa1a3983126e32512f5428a9442bd8df59f9c95566ee90a473bb6",
+        "bytes": 7751109744
+      },
+      "vae/config.json": {
+        "sha256": "0d6dfb69ae95a5e2ac9836284bbb63d8b38ce67b25ba2dff380752b2a10ab948",
+        "bytes": 821
+      },
+      "vae/diffusion_pytorch_model.safetensors": {
+        "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+        "bytes": 168120878
+      }
+    }
+  },
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 100,
+    "prevent_idle_sleep": true
+  },
+  "device_requirements": {
+    "chip": "Apple M5",
+    "memory_gib": 24
+  },
+  "optimizations": {
+    "quantization": 4,
+    "conditioning_reuse": false,
+    "vae_tiling": {
+      "tile_size_pixels": 256,
+      "overlap_pixels": 64
+    },
+    "offload": false
+  },
+  "engine_settings": {
+    "quantization_scope": "all_eligible_layers",
+    "group_size": 64,
+    "scheduler": "flow_match_euler_discrete",
+    "native_predict_compile": true,
+    "negative_prompt_override": "",
+    "timing": "synchronized_host"
+  },
+  "reference_config": "configs/m5-mflux-flux-klein-base-q4-512.resolved.json"
+}

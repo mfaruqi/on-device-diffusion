@@ -1,0 +1,6 @@
+{
+  "observed_utc": "2026-10-15T20:32:57.185593+00:00",
+  "timing_valid": false,
+  "reason": "macOS power log confirms clamshell sleep during full measured protocol, 16:06:07\u201316:30:59 America/Indianapolis; partial evidence retained.",
+  "action": "SIGINT only this verified benchmark process; preserve sampler/partial outputs and allow queue to proceed. Retry only this uncompleted full protocol after remaining queue is idle, reusing its previously valid unchanged smoke gate."
+}

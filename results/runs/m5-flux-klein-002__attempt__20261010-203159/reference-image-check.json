@@ -1,0 +1,14 @@
+{
+  "reference": "results/runs/m5-flux-klein-001__baseline__20261010-183446",
+  "reference_image": "results/runs/m5-flux-klein-001__baseline__20261010-183446/images/04-measured.png",
+  "variant_image": "results/runs/m5-flux-klein-002__attempt__20261010-203159/images/01-measured.png",
+  "pixel_identical": true,
+  "pixel_mae_rgb": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "approximate_policy": false,
+  "formal_quality_eligible": false,
+  "note": "One development prompt/seed diagnostic, not held-out quality assessment."
+}

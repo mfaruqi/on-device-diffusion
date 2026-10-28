@@ -1,0 +1,130 @@
+{
+  "reference": "a100-edgedit-flux-klein-base-001__geneval-calibration_subset__20261026-045452",
+  "variants": [
+    {
+      "variant": "a100-edgedit-flux-klein-base-005__geneval-calibration_subset__20261026-101028",
+      "geneval": 0.7317708333333334,
+      "delta": 0.0,
+      "delta_ci95": [
+        -0.014612661303837648,
+        0.01458333333333317
+      ],
+      "tasks": {
+        "single_object": 0.984375,
+        "two_object": 0.8125,
+        "counting": 0.796875,
+        "colors": 0.828125,
+        "position": 0.453125,
+        "color_attr": 0.515625
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": -0.015625,
+        "counting": 0.03125,
+        "colors": 0.0,
+        "position": -0.015625,
+        "color_attr": 0.0
+      },
+      "ref_only_correct": 4,
+      "variant_only_correct": 4,
+      "mcnemar_p": 1.0,
+      "pairs": 384
+    },
+    {
+      "variant": "a100-edgedit-flux-klein-base-008__geneval-calibration_subset__20261026-133147",
+      "geneval": 0.7265625,
+      "delta": -0.00520833333333337,
+      "delta_ci95": [
+        -0.020200742240215952,
+        0.009398148148148211
+      ],
+      "tasks": {
+        "single_object": 0.984375,
+        "two_object": 0.8125,
+        "counting": 0.75,
+        "colors": 0.84375,
+        "position": 0.453125,
+        "color_attr": 0.515625
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": -0.015625,
+        "counting": -0.015625,
+        "colors": 0.015625,
+        "position": -0.015625,
+        "color_attr": 0.0
+      },
+      "ref_only_correct": 5,
+      "variant_only_correct": 3,
+      "mcnemar_p": 0.7265625,
+      "pairs": 384
+    },
+    {
+      "variant": "a100-edgedit-flux-klein-base-002__geneval-calibration_subset__20261026-161831",
+      "geneval": 0.7317708333333334,
+      "delta": 0.0,
+      "delta_ci95": [
+        -0.03105936819172106,
+        0.03003323836657157
+      ],
+      "tasks": {
+        "single_object": 0.96875,
+        "two_object": 0.828125,
+        "counting": 0.765625,
+        "colors": 0.8125,
+        "position": 0.421875,
+        "color_attr": 0.59375
+      },
+      "task_delta": {
+        "single_object": -0.015625,
+        "two_object": 0.0,
+        "counting": 0.0,
+        "colors": -0.015625,
+        "position": -0.046875,
+        "color_attr": 0.078125
+      },
+      "ref_only_correct": 16,
+      "variant_only_correct": 16,
+      "mcnemar_p": 1.0,
+      "pairs": 384
+    },
+    {
+      "variant": "a100-edgedit-flux-klein-base-007__geneval-calibration_subset__20261026-200541",
+      "geneval": 0.7239583333333334,
+      "delta": -0.0078125,
+      "delta_ci95": [
+        -0.0359862329434697,
+        0.01938540260908672
+      ],
+      "tasks": {
+        "single_object": 0.984375,
+        "two_object": 0.828125,
+        "counting": 0.734375,
+        "colors": 0.84375,
+        "position": 0.421875,
+        "color_attr": 0.53125
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": 0.0,
+        "counting": -0.03125,
+        "colors": 0.015625,
+        "position": -0.046875,
+        "color_attr": 0.015625
+      },
+      "ref_only_correct": 16,
+      "variant_only_correct": 13,
+      "mcnemar_p": 0.711071103811264,
+      "pairs": 384
+    }
+  ],
+  "reference_geneval": 0.7317708333333334,
+  "reference_tasks": {
+    "single_object": 0.984375,
+    "color_attr": 0.515625,
+    "two_object": 0.828125,
+    "position": 0.46875,
+    "counting": 0.765625,
+    "colors": 0.828125
+  }
+}

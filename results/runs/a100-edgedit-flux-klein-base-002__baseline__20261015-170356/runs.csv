@@ -1,0 +1,15 @@
+run_index,phase,wall_ms,gpu_span_ms,text_encode_ms,denoise_ms,denoise_step_0_ms,denoise_step_1_ms,denoise_step_2_ms,denoise_step_3_ms,denoise_step_4_ms,denoise_step_5_ms,denoise_step_6_ms,denoise_step_7_ms,denoise_step_8_ms,denoise_step_9_ms,denoise_step_10_ms,denoise_step_11_ms,denoise_step_12_ms,denoise_step_13_ms,denoise_step_14_ms,denoise_step_15_ms,denoise_step_16_ms,denoise_step_17_ms,denoise_step_18_ms,denoise_step_19_ms,denoise_step_20_ms,denoise_step_21_ms,denoise_step_22_ms,denoise_step_23_ms,denoise_step_24_ms,denoise_step_25_ms,denoise_step_26_ms,denoise_step_27_ms,denoise_step_28_ms,denoise_step_29_ms,denoise_step_30_ms,denoise_step_31_ms,denoise_step_32_ms,denoise_step_33_ms,denoise_step_34_ms,denoise_step_35_ms,denoise_step_36_ms,denoise_step_37_ms,denoise_step_38_ms,denoise_step_39_ms,denoise_step_40_ms,denoise_step_41_ms,denoise_step_42_ms,denoise_step_43_ms,denoise_step_44_ms,denoise_step_45_ms,denoise_step_46_ms,denoise_step_47_ms,denoise_step_48_ms,denoise_step_49_ms,vae_decode_ms,postprocess_ms,other_ms,peak_alloc_gib,peak_reserved_gib,device_used_peak_gib,host_rss_gib,image_sha256
+0,first,35610.0,,180.0,34750.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,380.0,,310.0,,,,,
+1,warmup,35380.0,,120.0,34680.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+2,warmup,35414.0,,120.0,34720.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+3,warmup,35432.0,,120.0,34740.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+4,measured,35435.0,,120.0,34740.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+5,measured,35448.0,,120.0,34750.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+6,measured,35452.0,,120.0,34750.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+7,measured,35453.0,,120.0,34760.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+8,measured,35435.0,,120.0,34740.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+9,measured,35437.0,,120.0,34740.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+10,measured,35436.0,,120.0,34740.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+11,measured,35428.0,,120.0,34730.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,270.0,,300.0,,,,,
+12,measured,35426.0,,120.0,34730.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,
+13,measured,35429.0,,120.0,34730.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,280.0,,300.0,,,,,eaf83530913a90c1e31fae4af483485ffe40e0281040ed4fd6a7ee171abedd35

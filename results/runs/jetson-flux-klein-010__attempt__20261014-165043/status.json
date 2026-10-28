@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-14T20:50:43Z",
+  "finished_utc": "2026-10-14T20:54:19Z",
+  "error": "KeyError('record_kind')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_jetson_sdcpp.py\", line 274, in main\n    benchmark(config, directory, args.engine, args.binary, args.models)\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_jetson_sdcpp.py\", line 236, in benchmark\n    summary = {'id': config['id'], 'record_kind': config['record_kind'],\nKeyError: 'record_kind'\n"
+}

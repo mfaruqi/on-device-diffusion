@@ -1,0 +1,19 @@
+{
+ "stage": "gate T1 smoke (jetson-torch-flux-klein-q4-nf4-512-smoke.json)",
+ "status": "failed",
+ "result": {
+  "failure": "killed by jetson_memguard.sh during the first generation's text encoding (memguard.json)",
+  "load": {
+   "load_total_s": 163.6,
+   "allocated_after_load_gib": 5.139
+  },
+  "memory_budget_mb": {
+   "transformer_gguf_q4_0_cuda": 2365,
+   "text_encoder_nf4_cuda": 2721,
+   "vae_cuda": 165,
+   "mem_available_after_load": 843,
+   "text_encode_first_call_needs_approx": 815
+  },
+  "cause": "all three components plus the first text-encoding forward pass do not fit in 8 GB shared memory; see ../jetson-torch-t1-memory-diag-20261012/"
+ }
+}

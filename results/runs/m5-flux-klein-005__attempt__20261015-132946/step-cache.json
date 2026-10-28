@@ -1,0 +1,50 @@
+{
+  "implementation": "diffusers.hooks.taylorseer_cache",
+  "hooked_modules": [
+    "transformer_blocks.0.attn",
+    "transformer_blocks.1.attn",
+    "transformer_blocks.2.attn",
+    "transformer_blocks.3.attn",
+    "transformer_blocks.4.attn",
+    "single_transformer_blocks.0.attn",
+    "single_transformer_blocks.1.attn",
+    "single_transformer_blocks.2.attn",
+    "single_transformer_blocks.3.attn",
+    "single_transformer_blocks.4.attn",
+    "single_transformer_blocks.5.attn",
+    "single_transformer_blocks.6.attn",
+    "single_transformer_blocks.7.attn",
+    "single_transformer_blocks.8.attn",
+    "single_transformer_blocks.9.attn",
+    "single_transformer_blocks.10.attn",
+    "single_transformer_blocks.11.attn",
+    "single_transformer_blocks.12.attn",
+    "single_transformer_blocks.13.attn",
+    "single_transformer_blocks.14.attn",
+    "single_transformer_blocks.15.attn",
+    "single_transformer_blocks.16.attn",
+    "single_transformer_blocks.17.attn",
+    "single_transformer_blocks.18.attn",
+    "single_transformer_blocks.19.attn"
+  ],
+  "generations": [
+    {
+      "compute": 75,
+      "predict": 25,
+      "contexts": [
+        "cond"
+      ],
+      "steps": 4
+    },
+    {
+      "compute": 75,
+      "predict": 25,
+      "contexts": [
+        "cond"
+      ],
+      "steps": 4
+    }
+  ],
+  "formal_quality_eligible": false,
+  "scope": "Attention-output prediction, not whole-transformer step skipping"
+}

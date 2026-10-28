@@ -4,8 +4,8 @@ id: jetson-flux-klein-003
 status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-003__baseline__20261005-105911, jetson-flux-klein-003__attempt__20261005-104044, jetson-flux-klein-003__profile__20260930-210728, jetson-flux-klein-003__profile__20260930-201956, jetson-flux-klein-003__baseline__20260930-193208, jetson-flux-klein-003__attempt__20260930-192732, jetson-flux-klein-003__profile__20260928-195625, jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
-updated: 2026-10-05
+runs: [jetson-flux-klein-003__repeat__20261014-163411, jetson-flux-klein-003__baseline__20261005-105911, jetson-flux-klein-003__attempt__20261005-104044, jetson-flux-klein-003__profile__20260930-210728, jetson-flux-klein-003__profile__20260930-201956, jetson-flux-klein-003__baseline__20260930-193208, jetson-flux-klein-003__attempt__20260930-192732, jetson-flux-klein-003__profile__20260928-195625, jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
+updated: 2026-10-14
 ---
 
 # jetson-flux-klein-003: disk-backed quantized 512×512 baseline
@@ -474,3 +474,83 @@ First generation25722.318ms; context creation58.405591s. Whole-capture system RA
 Observation: measured wall time ranges from46863.060to70348.506ms. This spread must be retained in later option comparisons. Interpretation: this is a validated reference distribution for the current harness; timing spread alone does not identify storage,thermal or memory-pressure causes.
 
 Next experiment: finish the unchanged four-step EasyCache full protocol.
+
+## Results: 2026-10-14 repeat with the tiling-capable harness
+
+Run: [`jetson-flux-klein-003__repeat__20261014-163411`](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/);
+[status](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/status.json) complete, 20:34:11–20:50:12 UTC;
+[summary](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/summary.json),
+[config](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/config.json),
+[environment](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/environment.json),
+[callbacks](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/engine/results.jsonl),
+[engine log](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/engine/sdcpp.log),
+[memguard](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/memguard.json).
+
+Setup: [configs/jetson-flux-klein-q4-512-disk-baseline.json](../configs/jetson-flux-klein-q4-512-disk-baseline.json),
+unchanged; the run config equals the 2026-10-05 control config except for its description. Same pinned
+sd.cpp `19bbbca`, weights, 512×512 four-step workload, eager disk-backed segmented CUDA execution,
+diffusion flash attention on, prefetch on, mmap off, conditioning cache 0, step cache off, 25 W.
+One context, 1 first + 3 discarded warm-ups + 10 measured; weight files SHA256-read before loading
+(warm filesystem cache). The only difference from earlier 003 runs is the harness binary:
+`sd-bench` rebuilt from `engines/sdcpp/bench.cpp` of this branch (SHA256
+`f9ed5788425f5ce53bf6da86182fdaeba2fa00e7c1c73a2c309f2f63808607f4`), which adds optional
+`--vae-tiling/--vae-tile-size/--vae-tile-overlap` flags and contains the EasyCache and auto-fit code
+paths. None of these is active at the reference settings: the audit reports no tiled decodes, no
+auto-fit, zero conditioning-cache hits and no step cache. A memory guard outside the config kills the
+run if MemAvailable falls below 400 MB or swap use grows by more than 768 MB; it was not triggered
+(MemAvailable minimum 1232 MB, swap 287 → 294 MB). This run is the same-session, same-binary
+reference for [jetson-flux-klein-010](jetson-flux-klein-010.md) and [jetson-flux-klein-011](jetson-flux-klein-011.md).
+
+| Metric | Median (ms) | Min–max (ms) |
+|---|---:|---:|
+| wall_ms | 60640.928 | 55099.170–67037.242 |
+| text_encode_ms | 22563.202 | 11849.407–24803.551 |
+| denoise_ms | 36009.000 | 29349.382–41558.702 |
+| denoise_step_0_ms | 27890.725 | 21213.419–33427.716 |
+| denoise_step_1_ms | 2710.426 | 2699.724–2722.160 |
+| denoise_step_2_ms | 2713.217 | 2701.700–2729.147 |
+| denoise_step_3_ms | 2716.341 | 2702.550–2725.100 |
+| vae_decode_ms | 4638.280 | 3833.073–4861.999 |
+| other_ms | 281.891 | 251.918–321.627 |
+
+Wall standard deviation 4120.616 ms. First generation 26738.272 ms (text_encode 2292.791,
+denoise_step_0 12300.532, vae_decode 3650.802 ms); context creation 66.281 s. Whole-capture system RAM
+peak 6.000 GiB of 7.441 GiB, swap 0.280–0.287 GiB, 887 samples, maximum sampled GPU temperature
+53.156 °C; not a per-stage allocation peak. Engine-printed compute buffers: flux 329.00 MB,
+qwen3 65.00 MB, vae 1664.50 MB (printed MB treated as MiB). All 14 RGB hashes are `2d487c94…517e`,
+the same hash as every generation of the 2026-09-30 and 2026-10-05 baselines. No visual inspection
+or paired image diagnostic was recorded for this run.
+
+Derived quantities, computed from `engine/results.jsonl` for measured generations 4–13 as defined in
+[jetson-flux-klein-010](jetson-flux-klein-010.md#derived-quantities-used-in-this-record) (s, median and min–max):
+
+| Quantity | 2026-09-30 baseline | 2026-10-05 control | 2026-10-14 repeat |
+|---|---:|---:|---:|
+| wall | 66.117 (54.830–69.043) | 60.936 (46.863–70.349) | 60.641 (55.099–67.037) |
+| condition time (`t_cond − t_start`) | 23.109 (14.616–24.468) | 22.139 (12.379–24.547) | 22.563 (11.849–24.804) |
+| first-step interval (`t_step_end[0] − t_sampling_start`) | 30.622 (23.245–32.487) | 28.765 (21.955–32.957) | 27.891 (21.213–33.428) |
+| steady per-step time (`(t_step_end[3] − t_step_end[0]) / 3`) | 2.712 (2.705–2.721) | 2.716 (2.706–2.728) | 2.713 (2.701–2.725) |
+| decode (`t_decode_end − t_sampling_end`) | 4.547 (3.610–4.645) | 4.564 (3.611–4.659) | 4.638 (3.833–4.862) |
+| first generation | 25.785 | 25.722 | 26.738 |
+| context creation | 58.069 | 58.406 | 66.281 |
+
+Sources: [2026-09-30 summary](../results/runs/jetson-flux-klein-003__baseline__20260930-193208/summary.json),
+[2026-10-05 summary](../results/runs/jetson-flux-klein-003__baseline__20261005-105911/summary.json), callback records
+in each run's `engine/results.jsonl`. The three runs used three different harness binaries.
+
+Engine-reported tensor-loading intervals inside each measured generation of the repeat sum to a
+median of 43.62 s (38.43–50.49 s); none falls inside steps 1–3. These are rounded engine diagnostics
+that overlap stage time and do not measure physical storage I/O.
+
+**Observations:** steady per-step time agrees within 0.004 s across the three baselines and its
+per-generation range is at most 0.024 s wide in each. Condition time and the first-step interval,
+which include weight reloading, vary by up to 13 s and 12 s within a run. The repeat's wall median
+is within 0.3 s of the 2026-10-05 control and 5.5 s below the 2026-09-30 baseline; its output hash is
+unchanged. Context creation is about 8 s longer than in the two earlier baselines.
+
+**Interpretation:** the tiling-capable harness reproduces the reference at reference settings: the
+steady per-step time and output pixels match the earlier baselines and decode is within 0.1 s. Wall-time medians of this
+disk-backed configuration move by several seconds between sessions while steady per-step time does
+not, so variant comparisons should report steady per-step time and decode alongside wall time.
+**Hypothesis:** the longer context creation reflects filesystem or storage state at load time; it is
+not measured.

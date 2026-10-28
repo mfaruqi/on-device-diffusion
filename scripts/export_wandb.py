@@ -105,6 +105,91 @@ def timing_labels(kind, is_sdcpp, summ, stat, cfg, rows):
     return scope, note, eligible
 
 
+KIND_LABEL = {"baseline": "full", "attempt": "smoke", "repeat": "repeat", "profile": "profile"}
+
+
+def accelerator(cfg, experiment):
+    """W&B group: the physical accelerator, so the project groups by device by default.
+    The experiment id stays in config.experiment_id for a second grouping level."""
+    dev = (cfg.get("device_label") or cfg.get("backend") or experiment).lower()
+    if "jetson" in dev:
+        return "Jetson Orin Nano"
+    if "macbook" in dev or "m5" in dev or dev == "mps":
+        return "MacBook Air M5"
+    if "a100" in dev or dev == "cuda":
+        return "A100 PCIe 40GB"
+    return dev
+
+
+def run_label(cfg, experiment, kind, failed):
+    """Human-readable W&B display name: device · engine · workload · options · run kind.
+
+    The run directory / experiment id stays the record's identifier (W&B id and group);
+    this label only says what the run tests. Options are the enabled entries of `optimizations`.
+    """
+    dev = (cfg.get("device_label") or cfg.get("backend") or experiment).lower()
+    device = ("Jetson" if "jetson" in dev else "M5" if ("macbook" in dev or "m5" in dev or dev == "mps")
+              else "A100" if ("a100" in dev or dev == "cuda") else dev)
+    eng = cfg.get("engine") if isinstance(cfg.get("engine"), dict) else {}
+    engine = {"stable-diffusion.cpp": "sd.cpp", "edge-dit.cpp": "edge-dit", "mflux": "MFLUX",
+              "nunchaku": "Nunchaku"}.get(eng.get("name"))
+    engine = engine or ("edge-dit" if "edgedit" in experiment else "sd.cpp" if "sdcpp" in experiment
+                        else "MFLUX" if "mflux" in experiment else "Nunchaku" if "nunchaku" in experiment
+                        else "PyTorch")
+    if "-env-" in experiment:
+        return f"{device} · {engine} · environment check · {KIND_LABEL.get(kind, kind)}" + (" · FAILED" if failed else ""), [device.lower()]
+    if not cfg:
+        return f"{device} · {engine} · {experiment} (no config recorded) · {KIND_LABEL.get(kind, kind)}" + (" · FAILED" if failed else ""), [device.lower()]
+    w = cfg.get("workload") or {}
+    steps = w.get("num_inference_steps") or w.get("steps") or 0
+    model = json.dumps(cfg.get("model", "")).lower()
+    workload = "Base" if ("base" in experiment or "klein-base" in model or steps >= 20) else "distilled"
+    size = w.get("width") or w.get("height")
+    opt = cfg.get("optimizations") or {}
+    q = opt.get("quantization")
+    qs = json.dumps(q).lower() if q is not None else ""
+    precision = ("BF16" if not q else "INT4" if "int4" in qs else "NF4/Q4" if "nf4" in qs
+                 else "Q4" if "q4" in qs else f"{q}-bit" if isinstance(q, int) else "quantized")
+    opts = []
+    sc = opt.get("step_cache")
+    if sc:
+        m = sc.get("method") or sc.get("mode") or "step cache"
+        opts.append({"easycache": "EasyCache", "ucache": "UCache", "dbcache": "DBCache", "taylorseer": "TaylorSeer",
+                     "magcache": "MagCache", "dicache": "DiCache", "sencache": "SenCache",
+                     "first_block_cache": "First-Block Cache"}.get(m, m))
+    if opt.get("conditioning_reuse") or opt.get("conditioning_cache_size"):
+        opts.append("cond reuse")
+    comp = opt.get("compiler") or {}
+    if opt.get("torch_compile") or comp.get("name") == "torch_compile":
+        opts.append("torch.compile")
+    if opt.get("torch_tensorrt") or comp.get("name") == "tensorrt":
+        opts.append("TensorRT")
+    if opt.get("vae_tiling"):
+        opts.append("VAE tiling")
+    if opt.get("flash_attention") is False or opt.get("diffusion_flash_attention") is False:
+        opts.append("flash attn off")
+    if opt.get("attention_backend"):
+        opts.append(f"SDPA {opt['attention_backend']}")
+    if opt.get("auto_fit"):
+        opts.append("auto-fit")
+    es = cfg.get("engine_settings") or {}
+    if opt.get("parameter_storage") == "CUDA0" or es.get("params_backend") == "CUDA0":
+        opts.append("resident")
+    if es.get("disable_segmented_compute"):
+        opts.append("no segmentation")
+    if opt.get("eager_loading") is False:
+        opts.append("lazy load")
+    if opt.get("prefetch") is False:
+        opts.append("prefetch off")
+    if opt.get("mmap"):
+        opts.append("mmap")
+    if opt.get("stage_residency") == {"text_encoder": "release_after_encode"}:
+        opts.append("encoder release")
+    parts = [device, engine, f"{workload} {size}²" if size else workload, precision,
+             " + ".join(opts) if opts else "reference", KIND_LABEL.get(kind, kind)]
+    return " · ".join(parts) + (" · FAILED" if failed else ""), [device.lower(), workload.lower(), *[o.replace(" ", "-").lower() for o in opts]]
+
+
 def describe(run_dir):
     """Build the W&B payload for one run directory. Pure function of the files; no wandb calls."""
     cfg = read_json(run_dir / "config.json")
@@ -124,8 +209,12 @@ def describe(run_dir):
     gpu = env.get("gpu_name") or env.get("nvidia_smi_gpu", "").split(",")[0].strip()
     if not gpu and "jetson" in device:
         gpu = f"NVIDIA Jetson Orin Nano (sm_{engine.get('cuda_architecture', '?')})"
+    if not gpu:
+        gpu = (env.get("hardware", {}).get("chip_type") or summ.get("gpu")
+               or cfg.get("device_requirements", {}).get("chip") or "")
     variant = ("SXM4" if "SXM4" in gpu else "PCIE" if "PCIE" in gpu else
-               "jetson-orin-nano" if "jetson" in device else "unknown")
+               "jetson-orin-nano" if "jetson" in device else
+               gpu.lower().replace(" ", "-") if gpu.startswith("Apple ") else "unknown")
     opt = cfg.get("optimizations") or {}
     quant = opt.get("quantization")
 
@@ -142,6 +231,7 @@ def describe(run_dir):
                           else f"diffusers {env.get('diffusers')} / torch {env.get('torch')}",
         "engine_commit": engine.get("commit") if is_native else None,
         "device_label": device,
+        "accelerator": accelerator(cfg, experiment),
         "gpu": gpu,
         "gpu_variant": variant,
         "node": env.get("hostname", "").split(".")[0] or device,
@@ -157,10 +247,29 @@ def describe(run_dir):
         "protocol": cfg.get("protocol"),
         "optimizations": opt,
         "engine_settings": cfg.get("engine_settings"),
+        "timing_method": summ.get("timing_method"),
+        "memory_scope": summ.get("memory_scope") or env.get("memory_scope"),
+        "unavailable_metrics": summ.get("unavailable_metrics"),
         "power_mode": (env.get("power_mode") or cfg.get("power_mode_observed_before_run")
                        or cfg.get("required_power_mode")),
         "model_storage": model_storage(env, device),
     }
+
+    if engine_name == "mflux":
+        config["engine_version"] = env.get("packages", {}).get("mflux") or engine.get("version")
+        config["engine_commit"] = engine.get("commit")
+        config["precision"] = (f"{quant}-bit affine eligible weights, BF16 remaining parameters" if quant
+                               else "BF16 unquantized")
+        config["mlx_version"] = env.get("packages", {}).get("mlx")
+
+    if engine_name == "nunchaku":
+        config["engine_version"] = env.get("nunchaku") or engine.get("version")
+        config["engine_settings"] = engine
+        config["quantized_transformer"] = cfg.get("quantized_transformer")
+        config["precision"] = "INT4 W4A4/r32 transformer; BF16 text encoder and VAE" if quant == {
+            "method": "svdquant", "component": "transformer", "weights_bits": 4,
+            "activations_bits": 4, "low_rank": 32, "format": "int4"
+        } else cfg.get("precision")
 
     rows = read_csv(run_dir / "runs.csv")
     history = []
@@ -173,6 +282,11 @@ def describe(run_dir):
         history.append(step)
 
     summary = {"status": status, "outcome": config["outcome"]}
+    for key in ("system_memory", "clock_continuity_pass", "formal_quality_eligible",
+                "conditioning_cache", "vae_tiling", "cache_audit",
+                "conditioning_cache_hits_per_generation"):
+        if key in summ:
+            summary[key] = summ[key]
     measured = summ.get("measured") or {}
     for k, v in measured.items():
         if v:
@@ -280,17 +394,24 @@ def describe(run_dir):
 
     images = [p for p in (run_dir / "images" / "first.png", run_dir / "images" / "measured-0.png",
                           run_dir / "output.png") if p.exists()]
+    # MPS uses generation-prefixed filenames. Keep first + first measured, as on CUDA/native.
+    for pattern in ("*-first.png", "*-measured.png"):
+        matches = sorted((run_dir / "images").glob(pattern))
+        if matches:
+            images.append(matches[0])
     files = [p for p in run_dir.rglob("*") if p.is_file() and p.suffix in SMALL_SUFFIXES | {".log"}
              and "raw" not in p.parts and p.stat().st_size < 5_000_000]
     tags = [config["engine"], variant, kind, "failed" if failed else "complete"]
     if quant:
         tags.append("quantized")
+    label, label_tags = run_label(cfg, experiment, kind, failed)
+    tags += [t for t in label_tags if t not in tags]
     return {
         "id": run_dir.name[:128],
-        "name": f"{experiment} · {kind} · {config['outcome']}",
+        "name": label,
         "run_dir": run_dir.name,
         "failed": failed,
-        "group": experiment,
+        "group": accelerator(cfg, experiment),
         "job_type": kind,
         "tags": tags,
         "config": config,
@@ -299,7 +420,7 @@ def describe(run_dir):
         "tables": tables,
         "images": images,
         "files": files,
-        "notes": cfg.get("description", ""),
+        "notes": f"{experiment}: {cfg.get('description', '')}".strip(),
     }
 
 
@@ -347,7 +468,14 @@ def main():
     Path(os.environ["WANDB_DIR"]).mkdir(parents=True, exist_ok=True)
 
     dirs = sorted(d for d in RUNS.iterdir() if d.is_dir() and args.only in d.name)
-    payloads = [describe(d) for d in dirs]
+    payloads = []
+    for d in dirs:
+        try:
+            payloads.append(describe(d))
+        except ValueError as error:
+            if "doesn't follow <experiment-id>__<kind>__<stamp>" not in str(error):
+                raise
+            print(f"skip {d.name} (not a <experiment-id>__<kind>__<stamp> run directory)")
     if args.dry_run:
         for p in payloads:
             print(f"{p['run_dir']} [{p['name']}]: group={p['group']} tags={p['tags']} steps={len(p['history'])} "
@@ -381,6 +509,11 @@ def main():
                 old.config[k] = v
             for k, v in p["summary"].items():
                 old.summary[k] = v
+            if "group" in p:
+                old.group = p["group"]
+            if "name" in p:  # descriptive display name, notes and filter tags
+                old.name, old.notes = p["name"], p.get("notes")
+                old.tags = sorted(set(getattr(old, "tags", [])) | set(p.get("tags", [])))
             old.update()
             print(f"update {p['run_dir']} -> {old.url}")
             continue

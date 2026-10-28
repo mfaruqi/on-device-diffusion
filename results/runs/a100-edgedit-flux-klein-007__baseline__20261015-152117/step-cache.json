@@ -1,0 +1,23 @@
+{
+  "config": {
+    "method": "magcache"
+  },
+  "steps": 4,
+  "skipped_steps_per_generation": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "note": "engine-reported \"<method> skipped|reused k/N steps\" lines (steps not fully computed); null if not printed"
+}

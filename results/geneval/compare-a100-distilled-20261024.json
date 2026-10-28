@@ -1,0 +1,72 @@
+{
+  "reference": "a100-flux-klein-torch28-001__geneval-calibration_subset__20261024-192745",
+  "variants": [
+    {
+      "variant": "a100-flux-klein-compile-001__geneval-calibration_subset__20261024-194449",
+      "geneval": 0.796875,
+      "delta": -0.0026041666666666297,
+      "delta_ci95": [
+        -0.014285714285714346,
+        0.009247076023391698
+      ],
+      "tasks": {
+        "single_object": 1.0,
+        "two_object": 0.9375,
+        "counting": 0.828125,
+        "colors": 0.84375,
+        "position": 0.578125,
+        "color_attr": 0.59375
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": 0.0,
+        "counting": 0.0,
+        "colors": -0.015625,
+        "position": 0.015625,
+        "color_attr": -0.015625
+      },
+      "ref_only_correct": 3,
+      "variant_only_correct": 2,
+      "mcnemar_p": 1.0,
+      "pairs": 384
+    },
+    {
+      "variant": "a100-flux-klein-torch28-004__geneval-calibration_subset__20261024-195927",
+      "geneval": 0.7760416666666666,
+      "delta": -0.0234375,
+      "delta_ci95": [
+        -0.06947541186671635,
+        0.020150672448466578
+      ],
+      "tasks": {
+        "single_object": 1.0,
+        "two_object": 0.953125,
+        "counting": 0.828125,
+        "colors": 0.78125,
+        "position": 0.578125,
+        "color_attr": 0.515625
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": 0.015625,
+        "counting": 0.0,
+        "colors": -0.078125,
+        "position": 0.015625,
+        "color_attr": -0.09375
+      },
+      "ref_only_correct": 26,
+      "variant_only_correct": 17,
+      "mcnemar_p": 0.2220528201560228,
+      "pairs": 384
+    }
+  ],
+  "reference_geneval": 0.7994791666666666,
+  "reference_tasks": {
+    "two_object": 0.9375,
+    "colors": 0.859375,
+    "counting": 0.828125,
+    "color_attr": 0.609375,
+    "single_object": 1.0,
+    "position": 0.5625
+  }
+}

@@ -4,197 +4,680 @@
       "run_dir": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
       "engine": "edge-dit.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16 weights / FP32 transformer activations",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16 weights / FP32 transformer activations",
       "label": "No reuse reference"
     },
     {
       "run_dir": "a100-flux-klein-001__baseline__20260923-221530",
       "engine": "PyTorch / Diffusers",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "No reuse reference"
     },
     {
       "run_dir": "a100-flux-klein-base-001__baseline__20261005-074425",
       "engine": "PyTorch / Diffusers",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
       "label": "No reuse reference"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "No reuse reference"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-002__baseline__20261005-220636",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "EasyCache"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-003__baseline__20261005-220737",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "Conditioning reuse"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-004__baseline__20261005-220938",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "Prefetch off"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-005__baseline__20261005-221039",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Distilled klein 4B; 1024 \u00d7 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident",
       "label": "mmap on"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-base-001__baseline__20261005-080118",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
       "label": "Initial reference"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-base-001__baseline__20261005-214624",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
       "label": "No reuse reference"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-base-002__baseline__20261005-215731",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident",
       "label": "EasyCache"
     },
     {
       "run_dir": "jetson-flux-klein-003__baseline__20260930-193208",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Original reference<br>Sep 30"
     },
     {
       "run_dir": "jetson-flux-klein-003__baseline__20261005-105911",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "No reuse reference"
     },
     {
       "run_dir": "jetson-flux-klein-005__baseline__20261005-001522",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Lazy loading"
     },
     {
       "run_dir": "jetson-flux-klein-006__baseline__20261005-111428",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "EasyCache"
     },
     {
       "run_dir": "jetson-flux-klein-007__baseline__20261005-113106",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Conditioning reuse"
     },
     {
       "run_dir": "jetson-flux-klein-008__baseline__20261005-113721",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Prefetch off"
     },
     {
       "run_dir": "jetson-flux-klein-009__baseline__20261005-115227",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Distilled klein 4B; 512 \u00d7 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "mmap on"
     },
     {
       "run_dir": "jetson-flux-klein-base-001__baseline__20261005-005357",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Initial reference<br>Oct 5, 00:53"
     },
     {
       "run_dir": "jetson-flux-klein-base-001__repeat__20261005-042014",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Repeat reference<br>Oct 5, 04:20"
     },
     {
       "run_dir": "jetson-flux-klein-base-002__baseline__20261005-024556",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "EasyCache"
     },
     {
       "run_dir": "jetson-flux-klein-base-003__baseline__20261005-060028",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Lazy loading"
     },
     {
       "run_dir": "jetson-flux-klein-base-004__baseline__20261005-074852",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Prefetch off"
     },
     {
       "run_dir": "jetson-flux-klein-base-005__baseline__20261005-093239",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "Conditioning reuse"
     },
     {
       "run_dir": "jetson-flux-klein-base-006__baseline__20261005-131024",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "mmap on"
     },
     {
       "run_dir": "jetson-flux-klein-base-007__baseline__20261005-121955",
       "engine": "stable-diffusion.cpp",
       "gpu": "Jetson Orin Nano",
-      "workload": "Base klein 4B; 512 \u00d7 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
       "label": "EasyCache<br>+ Conditioning reuse"
     },
     {
       "run_dir": "a100-sdcpp-flux-klein-base-003__baseline__20261006-095509",
       "engine": "stable-diffusion.cpp",
       "gpu": "A100-PCIE-40GB",
-      "workload": "Base klein 4B; 1024 \u00d7 1024; 50 steps; CFG 4.0; BF16; GPU-resident; different physical GPU from reference",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; different physical GPU from reference",
       "label": "Conditioning reuse<br>Different GPU"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "EasyCache",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Prefetch off",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-005__baseline__20261010-205929",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "mmap on",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "EasyCache",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Prefetch off",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "mmap on",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; Q4_0 transformer / Q4_K_M text / BF16 VAE; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-001__baseline__20261010-183446",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-002__baseline__20261010-203805",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-003__baseline__20261010-204109",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "VAE tiling 256",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-001__baseline__20261010-184312",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "No reuse reference",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-002__baseline__20261010-210907",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "Conditioning reuse",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-003__baseline__20261010-214732",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5 · 24 GiB",
+      "label": "VAE tiling 256",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; BF16; Metal shared memory"
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "engine": "Nunchaku INT4/r32",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; SVDQuant W4A4/r32 replacement transformer + BF16 text encoder/VAE; GPU-resident, no reuse. Different software environment/node; checkpoint ancestry and quality equivalence unestablished; fixed-seed hashes differ.",
+      "label": "SVDQuant W4A4/r32"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "engine": "MFLUX BF16",
+      "gpu": "Apple M5",
+      "label": "BF16",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; BF16 eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "label": "8-bit",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit",
+      "workload": "Klein distilled 4B; 512 x 512; 4 steps; CFG 1.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "label": "8-bit",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 8-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit",
+      "workload": "Klein Base 4B; 512 x 512; 50 steps; CFG 4.0; 4-bit eligible weights; no reuse/offload. Synchronized host MLX stages include scheduler. System swap/thermal state uncontrolled; noise differs across engines; quality unassessed; inspected 4-bit samples have incorrect sign text."
+    },
+    {
+      "run_dir": "m5-flux-klein-005__baseline__20261015-133226",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; BF16; resident; uncontrolled system swap",
+      "label": "TaylorSeer attention cache"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-004__baseline__20261015-134636",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "4-bit conditioning reuse"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-005__baseline__20261015-134829",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "4-bit VAE tiling 256"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-006__baseline__20261015-135054",
+      "engine": "MFLUX 8-bit",
+      "gpu": "Apple M5",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1; 8-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap",
+      "label": "8-bit VAE tiling 256"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-004__baseline__20261015-135837",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; BF16 resident; uncontrolled system swap",
+      "label": "torch.compile"
+    },
+    {
+      "run_dir": "m5-flux-klein-base-005__baseline__20261015-143814",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Apple M5",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; BF16 resident; uncontrolled system swap",
+      "label": "TaylorSeer attention cache"
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-004__baseline__20261015-150452",
+      "engine": "MFLUX 4-bit",
+      "gpu": "Apple M5",
+      "label": "4-bit conditioning reuse",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4; 4-bit affine eligible weights, BF16 remaining; resident; uncontrolled system swap; exact repeated prompt-pair reuse"
+    },
+    {
+      "run_dir": "jetson-flux-klein-003__repeat__20261014-163411",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp reference<br>disk · untiled"
+    },
+    {
+      "run_dir": "jetson-flux-klein-010__baseline__20261014-183501",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp flash attention off"
+    },
+    {
+      "run_dir": "jetson-flux-klein-011__baseline__20261014-185639",
+      "engine": "stable-diffusion.cpp",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text / BF16 VAE; disk-backed",
+      "label": "sd.cpp VAE tiling<br>128 px / 0.25"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident",
+      "label": "edge-dit resident<br>+ VAE tiling"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-001__baseline__20261014-171410",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch reference<br>sequential · untiled"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-002__baseline__20261014-174108",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch SDPA math"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-003__baseline__20261014-180843",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (reload per generation)",
+      "label": "PyTorch VAE tiling<br>128 px / 0.25"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-004__baseline__20261015-141028",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (encoder/transformer swap only in the first generation)",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-006__baseline__20261015-142456",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "TaylorSeer cache<br>(output changed)"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-007__baseline__20261015-145234",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency (conditioning reuse)",
+      "label": "Conditioning reuse<br>+ torch.compile"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "TaylorSeer<br>(0/4 reused)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "MagCache<br>(3/4 reused; output degraded)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-014__baseline__20261015-135841",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Distilled klein 4B; 512 × 512; 4 steps; CFG 1.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "DiCache<br>(0/4 reused)"
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch 2.8 reference"
+    },
+    {
+      "run_dir": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch.compile"
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-002__baseline__20261015-151840",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-004__baseline__20261015-151949",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "TaylorSeer cache<br>(output changed)"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-007__baseline__20261015-152117",
+      "engine": "edge-dit.cpp",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Distilled klein 4B; 1024 × 1024; 4 steps; CFG 1.0; BF16 weights / FP32 transformer activations",
+      "label": "MagCache<br>(3/4 reused; output degraded)"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch 2.8 reference"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "TaylorSeer cache"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; BF16; GPU-resident; torch 2.8.0",
+      "label": "torch.compile"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "Reference"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "EasyCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "UCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DBCache"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "TaylorSeer"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "cache-dit"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "MagCache<br>(sign garbled)"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "A100-PCIE-40GB",
+      "workload": "Base klein 4B; 1024 × 1024; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text / BF16 VAE (GGUF); all resident; untiled",
+      "label": "DiCache"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-001__baseline__20261015-193452",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "No cache (reference)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-002__baseline__20261015-204021",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "EasyCache<br>(29/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-003__baseline__20261015-213038",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "UCache<br>(26/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-004__baseline__20261015-222249",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "DBCache<br>(23/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-005__baseline__20261015-231521",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "TaylorSeer<br>(38/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-006__baseline__20261016-000110",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "cache-dit<br>(23/100 passes)"
+    },
+    {
+      "run_dir": "jetson-edgedit-flux-klein-base-007__baseline__20261016-005119",
+      "engine": "edge-dit.cpp (GGUF runner)",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / Q4_K_M text with Q8_0 token embedding / BF16 VAE; all weights resident; VAE tiling 128 px / 0.25",
+      "label": "MagCache<br>(70/100 passes; text deformed)"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-001__baseline__20261016-050136",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Sequential residency<br>(reference)"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-002__baseline__20261016-015207",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Conditioning reuse"
+    },
+    {
+      "run_dir": "jetson-torch-flux-klein-base-004__baseline__20261016-033850",
+      "engine": "PyTorch / Diffusers",
+      "gpu": "Jetson Orin Nano",
+      "workload": "Base klein 4B; 512 × 512; 50 steps; CFG 4.0; Q4_0 transformer / NF4 text / BF16 VAE; sequential residency",
+      "label": "Conditioning reuse<br>+ torch.compile"
     }
   ],
   "charts": [
     {
       "key": "a100-distilled-options",
-      "title": "A100 \u00b7 distilled / 4 steps \u00b7 sd.cpp options",
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 GPU-resident \u00b7 CFG 1. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15\u20130.95; approximate execution, no formal quality acceptance.",
+      "title": "A100 · distilled / 4 steps · sd.cpp options",
+      "note": "BF16 · 1024² · GPU-resident · CFG 1. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15–0.95; approximate execution, no formal quality acceptance.",
       "runs": [
         "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
         "a100-sdcpp-flux-klein-002__baseline__20261005-220636",
@@ -205,8 +688,8 @@
     },
     {
       "key": "a100-base-options",
-      "title": "A100 \u00b7 Base / 50 steps \u00b7 sd.cpp options",
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 50 steps \u00b7 CFG 4 \u00b7 GPU-resident. Ten measured images with identical prompt/seed.<br>Conditioning variant used a different physical A100: its small timing difference is not an isolated cache effect.<br>sd.cpp host callback stages; initial loading excluded. EasyCache .2/.15/.95 is approximate; quality not formally accepted.",
+      "title": "A100 · Base / 50 steps · sd.cpp options",
+      "note": "BF16 · 1024² · 50 steps · CFG 4 · GPU-resident. Ten measured images with identical prompt/seed.<br>Conditioning variant used a different physical A100: its small timing difference is not an isolated cache effect.<br>sd.cpp host callback stages; initial loading excluded. EasyCache .2/.15/.95 is approximate; quality not formally accepted.",
       "runs": [
         "a100-sdcpp-flux-klein-base-001__baseline__20261005-214624",
         "a100-sdcpp-flux-klein-base-002__baseline__20261005-215731",
@@ -215,8 +698,8 @@
     },
     {
       "key": "jetson-distilled-options",
-      "title": "Jetson Orin Nano \u00b7 distilled / 4 steps \u00b7 sd.cpp options",
-      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE \u00b7 512\u00b2 \u00b7 disk-backed \u00b7 CFG 1. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15\u20130.95; approximate execution, no formal quality acceptance.",
+      "title": "Jetson Orin Nano · distilled / 4 steps · sd.cpp options",
+      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE · 512² · disk-backed · CFG 1. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15–0.95; approximate execution, no formal quality acceptance.",
       "runs": [
         "jetson-flux-klein-003__baseline__20260930-193208",
         "jetson-flux-klein-003__baseline__20261005-105911",
@@ -229,8 +712,8 @@
     },
     {
       "key": "jetson-base-options",
-      "title": "Jetson Orin Nano \u00b7 Base / 50 steps \u00b7 sd.cpp options",
-      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE \u00b7 512\u00b2 \u00b7 disk-backed \u00b7 CFG 4. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15\u20130.95; approximate execution, no formal quality acceptance.",
+      "title": "Jetson Orin Nano · Base / 50 steps · sd.cpp options",
+      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE · 512² · disk-backed · CFG 4. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>sd.cpp host callback stages include in-stage loading; conditioning hits include retrieval/setup.<br>EasyCache: threshold 0.2, active interval 0.15–0.95; approximate execution, no formal quality acceptance.",
       "runs": [
         "jetson-flux-klein-base-001__baseline__20261005-005357",
         "jetson-flux-klein-base-001__repeat__20261005-042014",
@@ -244,33 +727,271 @@
     },
     {
       "key": "a100-distilled-engines",
-      "title": "A100 \u00b7 distilled / 4 steps \u00b7 engine references",
+      "title": "A100 · distilled / 4 steps · engine configurations",
       "runs": [
         "a100-flux-klein-001__baseline__20260923-221530",
-        "a100-sdcpp-flux-klein-001__baseline__20261005-220435"
+        "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+        "a100-nunchaku-flux-klein-001__baseline__20261011-124123"
       ],
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>PyTorch: CUDA-event stages; sd.cpp: host callback stages. Different RNG paths; no cross-engine quality equivalence established."
+      "note": "1024² · no reuse · 10 measured generations; first, warm-ups and initial model loading excluded.<br>PyTorch and sd.cpp: BF16. Nunchaku: SVDQuant INT4 W4A4/r32 transformer + BF16 text encoder/VAE.<br>Software, nodes, checkpoint precision and RNG differ; descriptive configuration comparison, not an isolated engine speedup. Quality equivalence untested."
     },
     {
       "key": "a100-base-engines",
-      "title": "A100 \u00b7 Base / 50 steps \u00b7 engine references",
+      "title": "A100 · Base / 50 steps · engine references",
       "runs": [
         "a100-flux-klein-base-001__baseline__20261005-074425",
         "a100-sdcpp-flux-klein-base-001__baseline__20261005-080118"
       ],
-      "note": "BF16 \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>PyTorch: CUDA-event stages; sd.cpp: host callback stages. Different RNG paths; no cross-engine quality equivalence established."
+      "note": "BF16 · 1024² · no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>PyTorch: CUDA-event stages; sd.cpp: host callback stages. Different RNG paths; no cross-engine quality equivalence established."
     },
     {
       "key": "a100-edgedit-stages",
-      "title": "A100 \u00b7 distilled / 4 steps \u00b7 edge-dit phase breakdown",
+      "title": "A100 · distilled / 4 steps · edge-dit phase breakdown",
       "runs": [
         "a100-edgedit-flux-klein-001__baseline__20261005-233237"
       ],
-      "note": "BF16 weights / FP32 transformer activations \u00b7 1024\u00b2 \u00b7 no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>Encoding includes latent/schedule setup. Host system-clock phases; total steady-clock duration rounded to 1 ms.<br>Only final image retained; cross-repeat determinism and cross-engine quality equivalence unverified."
+      "note": "BF16 weights / FP32 transformer activations · 1024² · no reuse. Repeated identical prompt/seed; first and warm-ups excluded. Initial model loading excluded.<br>Encoding includes latent/schedule setup. Host system-clock phases; total steady-clock duration rounded to 1 ms.<br>Only final image retained; cross-repeat determinism and cross-engine quality equivalence unverified."
+    },
+    {
+      "key": "m5-distilled-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-sdcpp-flux-klein-002__baseline__20261010-204326",
+        "m5-sdcpp-flux-klein-003__baseline__20261010-205038",
+        "m5-sdcpp-flux-klein-004__baseline__20261010-205458",
+        "m5-sdcpp-flux-klein-005__baseline__20261010-205929"
+      ],
+      "title": "M5 · distilled / 4 steps · stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min–max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 0/4 steps skipped; cache enabled but no reuse."
+    },
+    {
+      "key": "m5-base-sdcpp-options",
+      "runs": [
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-sdcpp-flux-klein-base-002__baseline__20261010-223355",
+        "m5-sdcpp-flux-klein-base-003__baseline__20261010-233405",
+        "m5-sdcpp-flux-klein-base-004__baseline__20261011-012000",
+        "m5-sdcpp-flux-klein-base-005__baseline__20261011-030358"
+      ],
+      "title": "M5 · base / 50 steps · stable-diffusion.cpp options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min–max. System load, swap and thermals not controlled; differences are descriptive. EasyCache .2/.15/.95: 25/50 steps skipped; approximate, no formal quality approval."
+    },
+    {
+      "key": "m5-distilled-pytorch-options",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-flux-klein-002__baseline__20261010-203805",
+        "m5-flux-klein-003__baseline__20261010-204109",
+        "m5-flux-klein-005__baseline__20261015-133226"
+      ],
+      "title": "M5 · distilled / 4 steps · PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min–max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval. TaylorSeer predicts attention outputs; not whole-transformer skips. October 15 run had substantial swap pressure; no causal speedup or quality approval."
+    },
+    {
+      "key": "m5-base-pytorch-options",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-flux-klein-base-002__baseline__20261010-210907",
+        "m5-flux-klein-base-003__baseline__20261010-214732",
+        "m5-flux-klein-base-004__baseline__20261015-135837",
+        "m5-flux-klein-base-005__baseline__20261015-143814"
+      ],
+      "title": "M5 · base / 50 steps · PyTorch / Diffusers options",
+      "note": "Single-option configurations; repeated identical prompt. Stage means; total median/min–max. System load, swap and thermals not controlled; differences are descriptive. MPS events; VAE tiling 256 pixels, 25% overlap changes pixels; no formal quality approval. October 15 additions: fullgraph Inductor; TaylorSeer attention predictions with separate CFG caches. Numerical/image differences and substantial swap; no formal quality or controlled speedup approval."
+    },
+    {
+      "key": "m5-distilled-engines",
+      "runs": [
+        "m5-flux-klein-001__baseline__20261010-183446",
+        "m5-sdcpp-flux-klein-001__baseline__20261010-165421",
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "title": "M5 · distilled / 4 steps · engine configurations",
+      "note": "512² · same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors."
+    },
+    {
+      "key": "m5-base-engines",
+      "runs": [
+        "m5-flux-klein-base-001__baseline__20261010-184312",
+        "m5-sdcpp-flux-klein-base-001__baseline__20261010-165813",
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "title": "M5 · Base / 50 steps · engine configurations",
+      "note": "512² · same nominal prompt/steps/CFG; native RNG differs.<br>PyTorch BF16, sd.cpp mixed Q4, MFLUX eligible-layer affine weights; different quantization scopes/kernels.<br>MFLUX uses synchronized host stages including scheduler; system swap/thermal conditions uncontrolled. Quality equivalence untested; 4-bit samples have sign-text errors.<br>MFLUX Base BF16 absent: native MLX Metal smoke crash."
+    },
+    {
+      "key": "m5-distilled-mflux-quantization",
+      "title": "M5 · distilled / 4 steps · MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-001__baseline__20261012-154228",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "note": "Same pinned source checkpoint · no reuse/offload · eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
+    },
+    {
+      "key": "m5-base-mflux-quantization",
+      "title": "M5 · Base / 50 steps · MFLUX precision",
+      "runs": [
+        "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "note": "Same pinned source checkpoint · no reuse/offload · eligible-layer affine quantization.<br>Synchronized host stages, native compilation retained; first/warmups/load excluded.<br>System swap/thermal state uncontrolled; single-prompt images do not establish quality eligibility; 4-bit sign-text errors observed."
+    },
+    {
+      "key": "m5-distilled-mflux-options",
+      "title": "M5 · distilled / 4 steps · MFLUX individual options",
+      "runs": [
+        "m5-mflux-flux-klein-003__baseline__20261012-161546",
+        "m5-mflux-flux-klein-004__baseline__20261015-134636",
+        "m5-mflux-flux-klein-005__baseline__20261015-134829",
+        "m5-mflux-flux-klein-002__baseline__20261012-160000",
+        "m5-mflux-flux-klein-006__baseline__20261015-135054"
+      ],
+      "note": "Compare each option to its same-bit reference. Native MLX compilation retained; synchronized host stages.<br>Repeated identical prompt; first/warmups excluded. System swap, thermals and background load uncontrolled; descriptive timings only.<br>Conditioning output matches 4-bit reference; tiling changes pixels and can change colors. No formal quality approval; 4-bit sign-text error retained."
+    },
+    {
+      "key": "m5-base-mflux-options",
+      "title": "M5 · Base / 50 steps · MFLUX individual options",
+      "runs": [
+        "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+        "m5-mflux-flux-klein-base-004__baseline__20261015-150452"
+      ],
+      "note": "4-bit reference versus exact repeated prompt-pair reuse. Native MLX compilation; synchronized host stages.<br>First/warmups excluded; system swap, thermals and background load uncontrolled. Descriptive timings only.<br>Conditioning output matches reference; 4-bit sign-text errors retained. No formal quality approval."
+    },
+    {
+      "key": "jetson-distilled-engines",
+      "title": "Jetson Orin Nano · distilled / 4 steps · engines and residency",
+      "note": "512² · CFG 1 · same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>VAE tiling 128 px / 0.25 overlap where labelled (edge-dit requires it to fit). Not shown (no 10-image protocol): sd.cpp all-resident + tiling ran 4 images at ~16.3 s each, then failed weight preparation; sd.cpp auto-fit + tiling failed the first text encoding.",
+      "runs": [
+        "jetson-flux-klein-003__repeat__20261014-163411",
+        "jetson-flux-klein-011__baseline__20261014-185639",
+        "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-003__baseline__20261014-180843"
+      ]
+    },
+    {
+      "key": "jetson-distilled-sdcpp-session",
+      "title": "Jetson Orin Nano · distilled / 4 steps · sd.cpp options (Oct 14–15 session)",
+      "note": "512² · CFG 1 · same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>Later runs show 2–5 s longer reload-bearing stages (text encode, denoise step 0) unrelated to the option; steady per-step compute: reference 2.713 s, flash off 3.535 s, tiling 2.713 s. Resident + tiling and auto-fit + tiling did not complete the protocol (see engines panel note).",
+      "runs": [
+        "jetson-flux-klein-003__repeat__20261014-163411",
+        "jetson-flux-klein-010__baseline__20261014-183501",
+        "jetson-flux-klein-011__baseline__20261014-185639"
+      ]
+    },
+    {
+      "key": "jetson-distilled-pytorch-options",
+      "title": "Jetson Orin Nano · distilled / 4 steps · PyTorch options",
+      "note": "512² · CFG 1 · same prompt/seed; first and warm-ups excluded; initial model loading excluded. Measured 2026-10-14/15 in one session.<br>sd.cpp callback stages include in-stage weight reloads (disk-backed); PyTorch reloads are in remaining time; edge-dit keeps weights resident.<br>Text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token embedding, PyTorch NF4); initial noise not shared; qualitative across engines.<br>SDPA math: all attention calls restricted to the math backend (137 per generation counted). Edge-dit flash-off run stopped by the memory guard (not shown).",
+      "runs": [
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-002__baseline__20261014-174108",
+        "jetson-torch-flux-klein-003__baseline__20261014-180843"
+      ]
+    },
+    {
+      "key": "jetson-distilled-pytorch-reuse-compile",
+      "title": "Jetson Orin Nano · distilled / 4 steps · PyTorch reuse, cache and compile",
+      "note": "NF4 text / Q4_0 transformer · 512² · sequential residency · CFG 1; first and warm-ups excluded. Reloads are in remaining time.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "jetson-torch-flux-klein-001__baseline__20261014-171410",
+        "jetson-torch-flux-klein-004__baseline__20261015-141028",
+        "jetson-torch-flux-klein-006__baseline__20261015-142456",
+        "jetson-torch-flux-klein-007__baseline__20261015-145234"
+      ]
+    },
+    {
+      "key": "jetson-distilled-edgedit-caches",
+      "title": "Jetson Orin Nano · distilled / 4 steps · edge-dit step caches",
+      "note": "Converted Q4_K_M encoder · 512² · all weights resident · VAE tiling 128 px / 0.25 · engine default cache parameters.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+        "jetson-edgedit-flux-klein-011__baseline__20261015-133915",
+        "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
+        "jetson-edgedit-flux-klein-014__baseline__20261015-135841"
+      ]
+    },
+    {
+      "key": "a100-distilled-pytorch-torch28",
+      "title": "A100 · distilled / 4 steps · PyTorch torch 2.8: compile, reuse and cache",
+      "note": "BF16 · 1024² · GPU-resident · torch 2.8.0 environment (the earlier BF16 reference used torch 2.5.1). Measured 2026-10-15, job 11959806.<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "a100-flux-klein-torch28-001__baseline__20261015-151548",
+        "a100-flux-klein-compile-001__baseline__20261015-151740",
+        "a100-flux-klein-torch28-002__baseline__20261015-151840",
+        "a100-flux-klein-torch28-004__baseline__20261015-151949"
+      ]
+    },
+    {
+      "key": "a100-edgedit-caches",
+      "title": "A100 · distilled / 4 steps · edge-dit step caches",
+      "note": "BF16 weights / FP32 activations · 1024². Reference measured 2026-10-05; MagCache 2026-10-15 on a different node (qualitative).<br>Visual check only, no quality metric: conditioning reuse is bit-identical to its reference; torch.compile is visually near-identical but not bit-identical; TaylorSeer and MagCache visibly change the sign lettering (MagCache also blurs detail). First generation (excluded) includes compilation for torch.compile. diffusers First-Block Cache does not support FLUX.2 blocks (diffusers 0.40.0); edge-dit SenCache needs a calibrated profile; EasyCache, UCache, DBCache and cache-dit reused 0/4 steps (smoke only, not shown).",
+      "runs": [
+        "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+        "a100-edgedit-flux-klein-007__baseline__20261015-152117"
+      ]
+    },
+    {
+      "key": "a100-base-pytorch-torch28",
+      "title": "A100 · Base / 50 steps · PyTorch torch 2.8: reuse, TaylorSeer and compile",
+      "note": "BF16 · 1024² · CFG 4 (two transformer calls per step) · GPU-resident. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). Conditioning reuse is bit-identical; TaylorSeer (default interval 5, from step 3) computes 13 of 50 steps and changes the image but stays legible; torch.compile near-identical.",
+      "runs": [
+        "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+        "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+        "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+        "a100-flux-klein-base-torch28-004__baseline__20261015-161253"
+      ]
+    },
+    {
+      "key": "a100-base-edgedit-caches",
+      "title": "A100 · Base / 50 steps · edge-dit step caches (GGUF Q4)",
+      "note": "Q4_0 transformer / Q4_K_M text / BF16 VAE · 1024² · CFG 4 · engine default cache parameters. Visual check only, no quality metric. Measured 2026-10-15 (jobs 11959986, 11960173; different nodes). All caches except MagCache leave the image essentially unchanged; MagCache garbles the sign. Separately labelled compressed workload (A100 edge-dit distilled reference is BF16).",
+      "runs": [
+        "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+        "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+        "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+        "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+        "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+        "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+        "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+        "a100-edgedit-flux-klein-base-008__baseline__20261015-175727"
+      ]
+    },
+    {
+      "key": "jetson-base-edgedit-caches",
+      "title": "Jetson Orin Nano · Base / 50 steps · edge-dit step caches",
+      "note": "Q4_0 transformer / Q4_K_M text (Q8_0 embedding) / BF16 VAE · 512² · CFG 4 · all resident + VAE tiling · engine default cache parameters. Visual check only, no quality metric. Measured 2026-10-15/16, one queue. Counts are transformer passes out of 100. DiCache is not shown: stopped by the memory guard at the start of its second pass. MagCache deforms the sign text.",
+      "runs": [
+        "jetson-edgedit-flux-klein-base-001__baseline__20261015-193452",
+        "jetson-edgedit-flux-klein-base-002__baseline__20261015-204021",
+        "jetson-edgedit-flux-klein-base-003__baseline__20261015-213038",
+        "jetson-edgedit-flux-klein-base-004__baseline__20261015-222249",
+        "jetson-edgedit-flux-klein-base-005__baseline__20261015-231521",
+        "jetson-edgedit-flux-klein-base-006__baseline__20261016-000110",
+        "jetson-edgedit-flux-klein-base-007__baseline__20261016-005119"
+      ]
+    },
+    {
+      "key": "jetson-base-torch-options",
+      "title": "Jetson Orin Nano · Base / 50 steps · PyTorch reuse and compile",
+      "note": "Q4_0 GGUF transformer / NF4 text / BF16 VAE · 512² · CFG 4 · sequential residency (encoder loaded only to encode; transformer released meanwhile). The reference swaps weights twice per image (prompt and negative prompt), counted in other. Measured 2026-10-16. Conditioning reuse is bit-identical to the reference; torch.compile output differs in pixels, visually the same. TaylorSeer is not shown: stopped by the memory guard during the first encoder load. Visual check only, no quality metric.",
+      "runs": [
+        "jetson-torch-flux-klein-base-001__baseline__20261016-050136",
+        "jetson-torch-flux-klein-base-002__baseline__20261016-015207",
+        "jetson-torch-flux-klein-base-004__baseline__20261016-033850"
+      ]
     }
   ],
   "exclusions": [
     "Smoke attempts, failed/incomplete runs and profiler captures excluded.",
-    "Older duplicate reference captures excluded except the original PyTorch and Jetson references."
+    "Older duplicate reference captures excluded except the original PyTorch and Jetson references.",
+    "M5 smoke tests and three failed edge-dit attempts excluded from timing charts; uploaded separately. Older valid sd.cpp distilled baseline 20261010-152141 retained in W&B; fresh 20261010-165421 reference used here.",
+    "October 15 distilled compile failed the numerical gate; Base 4-bit tiling full was sleep-interrupted and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded; recovery pending.",
+    "Jetson 2026-10-14/15: failed smokes (config error), edge-dit flash-off full run (memory guard stop), contaminated PyTorch run 161717 and launch errors excluded; all uploaded separately."
   ]
 }

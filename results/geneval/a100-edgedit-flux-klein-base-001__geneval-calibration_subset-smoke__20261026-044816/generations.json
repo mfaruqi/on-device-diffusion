@@ -1,0 +1,73 @@
+{
+  "engine": "edge-dit.cpp",
+  "template_run": "results/runs/a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seed_rule": "engine seed = 4 * position + sample (ed-sample base 0 + image index)",
+  "rows": [
+    {
+      "index": 9,
+      "sample": 0,
+      "engine_seed": 0,
+      "latency_s": 48.433453,
+      "png_sha256": "1457afe0a111e67d8179a8a48ac7838bb4d3ed3ada40465ab98135de68abbfad"
+    },
+    {
+      "index": 9,
+      "sample": 1,
+      "engine_seed": 1,
+      "latency_s": 48.138453,
+      "png_sha256": "b524db54d71f56f36d2d53c64419a667d32616e792c4df4659d847b8e1b246d7"
+    },
+    {
+      "index": 9,
+      "sample": 2,
+      "engine_seed": 2,
+      "latency_s": 48.259062,
+      "png_sha256": "461102083d9132a6c6743c37a1c92f5b406c49c97a68408d60cecf33766e875a"
+    },
+    {
+      "index": 9,
+      "sample": 3,
+      "engine_seed": 3,
+      "latency_s": 48.297544,
+      "png_sha256": "8b9c1e70edb2743f3eee689de7f556c47d52668e3d5b8bfaf3d171435b422a54"
+    },
+    {
+      "index": 12,
+      "sample": 0,
+      "engine_seed": 4,
+      "latency_s": 48.347532,
+      "png_sha256": "2cf8eb686bb8fdf30181d7d8746745f3750f76e841e47c82eaa93b120ebbc934"
+    },
+    {
+      "index": 12,
+      "sample": 1,
+      "engine_seed": 5,
+      "latency_s": 48.351593,
+      "png_sha256": "5963c0c4c0ea3acf13aedda1bbdbd976e02fca7089dbe013dbba087f2e70a810"
+    },
+    {
+      "index": 12,
+      "sample": 2,
+      "engine_seed": 6,
+      "latency_s": 48.348958,
+      "png_sha256": "f52cfafbdc305ff3d7564db04a93cbca5edc609e0babd0154de73e5b5fd68d5d"
+    },
+    {
+      "index": 12,
+      "sample": 3,
+      "engine_seed": 7,
+      "latency_s": 48.328933,
+      "png_sha256": "f6342524d3a10cffc86f1a6f33de25ac6126b3fd5ce6ccf90188555f680119cc"
+    }
+  ],
+  "cache_lines": [],
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "template_command_sha256": "5a6d43ff84093ef0e2f91719e2da1e2259953c100c16a01795ad5c380cd68023",
+  "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725",
+  "script_sha256": "e4edc251e867c8f46a6d01707ba5ede8889c07712f05f743657fd296cae5ae6b"
+}

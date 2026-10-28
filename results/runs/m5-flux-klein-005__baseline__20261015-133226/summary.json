@@ -1,0 +1,333 @@
+{
+  "id": "m5-flux-klein-005",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "PyTorch/Diffusers MPS",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 62756.73641602043,
+    "gpu_span_ms": 62753.880791999996,
+    "text_encode_ms": 31927.549417,
+    "denoise_ms": 22993.427875999998,
+    "denoise_step_0_ms": 20273.129459,
+    "denoise_step_1_ms": 1502.2393749999999,
+    "denoise_step_2_ms": 1028.564792,
+    "denoise_step_3_ms": 189.49425,
+    "vae_decode_ms": 7721.0059169999995,
+    "postprocess_ms": 58.885124999999995,
+    "other_ms": 53.012456999997084,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 0.0618438720703125
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 57556.44749948988,
+      "min": 41794.45954191033,
+      "max": 69496.59408407751,
+      "mean": 55991.24777930556,
+      "stdev": 9486.728629292791,
+      "n": 10
+    },
+    "gpu_span_ms": {
+      "median": 57556.3495005,
+      "min": 41794.346083,
+      "max": 69496.453417,
+      "mean": 55991.1479084,
+      "stdev": 9486.731696458186,
+      "n": 10
+    },
+    "text_encode_ms": {
+      "median": 27491.711603999996,
+      "min": 25035.040542,
+      "max": 36664.042667,
+      "mean": 29718.9668833,
+      "stdev": 5126.5043515127445,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 17817.564416,
+      "min": 12135.919957,
+      "max": 34885.607041999996,
+      "mean": 20275.107808399996,
+      "stdev": 7131.419420948305,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 15001.287563,
+      "min": 9613.73775,
+      "max": 24407.391959,
+      "mean": 16092.9194086,
+      "stdev": 5319.239814835775,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 1864.3574795,
+      "min": 1266.705041,
+      "max": 9273.290874999999,
+      "mean": 2755.0864166,
+      "stdev": 2479.263914334755,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 1014.5433125,
+      "min": 1007.8343329999999,
+      "max": 2672.525417,
+      "mean": 1234.1377624,
+      "stdev": 533.1865393384456,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 189.936125,
+      "min": 187.733125,
+      "max": 222.88125,
+      "mean": 192.9642208,
+      "stdev": 10.62299555524834,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 4900.0394375,
+      "min": 4300.300666,
+      "max": 14139.104958,
+      "mean": 5955.611516499999,
+      "stdev": 3016.191263722579,
+      "n": 10
+    },
+    "postprocess_ms": {
+      "median": 6.032375,
+      "min": 2.288875,
+      "max": 121.665083,
+      "mean": 17.185329099999997,
+      "stdev": 36.822617107246,
+      "n": 10
+    },
+    "other_ms": {
+      "median": 17.499583999997412,
+      "min": 7.698126000002958,
+      "max": 68.80966699999408,
+      "mean": 24.27637109999996,
+      "stdev": 19.125300595439302,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 0.06081390380859375,
+      "min": 0.04925537109375,
+      "max": 0.0829620361328125,
+      "mean": 0.06638641357421875,
+      "stdev": 0.011753362407219053,
+      "n": 10
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 27.088862667093053,
+    "from_pretrained_s": 0.6967070000246167,
+    "to_mps_s": 26.392155667068437,
+    "allocated_after_load_gib": 14.97126054763794,
+    "driver_allocated_after_load_gib": 15.75042724609375,
+    "is_distilled": true,
+    "components": {
+      "vae": {
+        "weights_gib": 0.15654808841645718,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "text_encoder": {
+        "weights_gib": 7.492430686950684,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "transformer": {
+        "weights_gib": 7.218764305114746,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      }
+    },
+    "note": "Cached load and placement; not a cold-storage measurement."
+  },
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": 0.0005461230175569654,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 0.034332275390625,
+    "system_total_minus_available_peak_gib": 23.965667724609375,
+    "system_swap_used_start_gib": 17.7708740234375,
+    "system_swap_used_peak_gib": 25.12335205078125,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "host_peak_rss_gib": 0.4967041015625,
+  "clock_continuity_pass": true,
+  "timing_method": "MPS events at stage boundaries; host wall includes final synchronization; no per-stage sync",
+  "rng": "CPU generator; initial noise not matched to sd.cpp",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "peak_alloc_gib/peak_reserved_gib": "No equivalent MPS peak counters recorded.",
+    "device_used_peak_gib": "Whole-system memory is separate, not device-wide GPU usage."
+  },
+  "conditioning_cache": null,
+  "compiler": null,
+  "first_image_includes_compile_verification": false,
+  "step_cache": {
+    "implementation": "diffusers.hooks.taylorseer_cache",
+    "hooked_modules": [
+      "transformer_blocks.0.attn",
+      "transformer_blocks.1.attn",
+      "transformer_blocks.2.attn",
+      "transformer_blocks.3.attn",
+      "transformer_blocks.4.attn",
+      "single_transformer_blocks.0.attn",
+      "single_transformer_blocks.1.attn",
+      "single_transformer_blocks.2.attn",
+      "single_transformer_blocks.3.attn",
+      "single_transformer_blocks.4.attn",
+      "single_transformer_blocks.5.attn",
+      "single_transformer_blocks.6.attn",
+      "single_transformer_blocks.7.attn",
+      "single_transformer_blocks.8.attn",
+      "single_transformer_blocks.9.attn",
+      "single_transformer_blocks.10.attn",
+      "single_transformer_blocks.11.attn",
+      "single_transformer_blocks.12.attn",
+      "single_transformer_blocks.13.attn",
+      "single_transformer_blocks.14.attn",
+      "single_transformer_blocks.15.attn",
+      "single_transformer_blocks.16.attn",
+      "single_transformer_blocks.17.attn",
+      "single_transformer_blocks.18.attn",
+      "single_transformer_blocks.19.attn"
+    ],
+    "generations": [
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      },
+      {
+        "compute": 75,
+        "predict": 25,
+        "contexts": [
+          "cond"
+        ],
+        "steps": 4
+      }
+    ],
+    "formal_quality_eligible": false,
+    "scope": "Attention-output prediction, not whole-transformer step skipping"
+  },
+  "vae_tiling": {
+    "parameters": false,
+    "tiled_decodes": 0
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB"
+  }
+}

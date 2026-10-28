@@ -1,0 +1,40 @@
+{
+  "is_distilled": false,
+  "from_pretrained_s": 2.778394733031746,
+  "to_device_s": 5.980638478009496,
+  "load_total_s": 8.759033211041242,
+  "allocated_after_load_gib": 14.92723560333252,
+  "reserved_after_load_gib": 14.9296875,
+  "peak_alloc_during_load_gib": 14.92723560333252,
+  "components": {
+    "vae": {
+      "class": "AutoencoderKLFlux2",
+      "weights_gib": 0.15654857270419598,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.int64"
+      ],
+      "device": "cuda"
+    },
+    "text_encoder": {
+      "class": "Qwen3ForCausalLM",
+      "weights_gib": 7.492431163787842,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.float32"
+      ],
+      "device": "cuda"
+    },
+    "transformer": {
+      "class": "Flux2Transformer2DModel",
+      "weights_gib": 7.218764305114746,
+      "dtypes": [
+        "torch.bfloat16"
+      ],
+      "device": "cuda"
+    }
+  },
+  "quantization": {},
+  "snapshot": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+  "note": "Cached load and placement; the OS page cache may already hold the files. Not a cold read."
+}

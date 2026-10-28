@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-12T19:39:12Z",
+  "finished_utc": "2026-10-12T19:39:37Z",
+  "error": "AssertionError('text_encoder: unexpected floating parameter dtype')",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/run_mflux.py\", line 127, in main\n    benchmark(cfg,out)\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/run_mflux.py\", line 62, in benchmark\n    audit = tensor_audit(model,cfg['optimizations']['quantization'])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/mflux_engine.py\", line 83, in tensor_audit\n    assert all(a.dtype == mx.bfloat16 for _, a in floats), f'{name}: unexpected floating parameter dtype'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: text_encoder: unexpected floating parameter dtype\n"
+}

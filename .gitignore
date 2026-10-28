@@ -13,6 +13,7 @@ huggingface/
 
 # Environments
 .venv/
+.venv-*/
 venv/
 env/
 __pycache__/
@@ -65,6 +66,7 @@ explainers/
 
 # Campaign scratch media, raw logs and profiler captures remain on the originating host.
 output/**/*.png
+output/**/*.pdf
 output/**/*.jpg
 output/**/*.rgb
 output/**/*.log
@@ -77,6 +79,8 @@ results/runs/**/stdout.txt
 /output/*
 !/output/stage-breakdown/
 !/output/stage-breakdown-20261007/
+!/output/speedups-20261028/
+!/output/best-configs-20261028/
 output/**/*.html
 
 # Empty personal Obsidian table

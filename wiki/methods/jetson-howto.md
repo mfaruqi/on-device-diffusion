@@ -2,7 +2,7 @@
 type: method
 summary: Jetson access, CUDA setup, and stage-labelled profiling bundle transfer, build and capture procedures.
 status: active
-updated: 2026-10-04
+updated: 2026-10-18
 ---
 
 # Working on the Jetson Orin Nano
@@ -313,3 +313,16 @@ python3 scripts/analyze_profile.py --run-dir results/runs/<new-profile-directory
 Here `--generation 0` selects the only generation in the trace, which is generation 4
 of the full harness process. These commands run from the repository; analysis scripts
 are not needed in the transfer bundle.
+
+## PyTorch kernel traces (torch.profiler)
+
+`run_flux_portable.py --profile` adds one profiled generation after the protocol and writes
+`profile/trace.json` (Chrome trace; open at ui.perfetto.dev). On this board CUPTI refuses
+non-root processes (`CUPTI_ERROR_INSUFFICIENT_PRIVILEGES`): the trace then has CPU operators
+only. Run the queue as root, as in [jetson_gap_queue_20261018i.sh](../../scripts/jetson_gap_queue_20261018i.sh),
+which re-homes to the invoking user and chowns the outputs. A logged-in desktop session costs
+about 0.75 GB of MemAvailable, and the gdm login screen about 0.35 GB more; stop the graphical
+target (`sudo systemctl isolate multi-user.target`) before memory-tight runs. Example traces and
+kernel tables: [jetson-torch-flux-klein-004](../../experiments/jetson-torch-flux-klein-004.md#kernel-profile-2026-10-1718),
+[-007](../../experiments/jetson-torch-flux-klein-007.md#kernel-profile-2026-10-1718).
+

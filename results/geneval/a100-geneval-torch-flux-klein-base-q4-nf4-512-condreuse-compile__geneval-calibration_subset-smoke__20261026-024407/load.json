@@ -1,0 +1,121 @@
+{
+  "is_distilled": false,
+  "from_pretrained_s": 54.56693047500448,
+  "to_device_s": 0.9058841579826549,
+  "load_total_s": 55.47281463298714,
+  "allocated_after_load_gib": 5.119494438171387,
+  "reserved_after_load_gib": 5.142578125,
+  "peak_alloc_during_load_gib": 5.119494438171387,
+  "components": {
+    "vae": {
+      "class": "AutoencoderKLFlux2",
+      "weights_gib": 0.15654857270419598,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.int64"
+      ],
+      "device": "cuda"
+    },
+    "text_encoder": {
+      "class": "Qwen3ForCausalLM",
+      "weights_gib": 2.416747570037842,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.float32",
+        "torch.uint8"
+      ],
+      "device": "cuda"
+    },
+    "transformer": {
+      "class": "Flux2Transformer2DModel",
+      "weights_gib": 2.291396141052246,
+      "dtypes": [
+        "torch.bfloat16",
+        "torch.uint8"
+      ],
+      "device": "cuda"
+    }
+  },
+  "quantization": {
+    "transformer": {
+      "method": "gguf",
+      "file": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--leejet--FLUX.2-klein-base-4B-GGUF/snapshots/d12671125306ca6b5f6db1b33ed4c80c8511a53f/flux-2-klein-base-4b-Q4_0.gguf",
+      "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+      "compute_dtype": "bfloat16",
+      "decoded_non_linear_bf16_tensors": [
+        "transformer_blocks.0.attn.norm_q.weight",
+        "transformer_blocks.0.attn.norm_k.weight",
+        "transformer_blocks.0.attn.norm_added_q.weight",
+        "transformer_blocks.0.attn.norm_added_k.weight",
+        "transformer_blocks.1.attn.norm_q.weight",
+        "transformer_blocks.1.attn.norm_k.weight",
+        "transformer_blocks.1.attn.norm_added_q.weight",
+        "transformer_blocks.1.attn.norm_added_k.weight",
+        "transformer_blocks.2.attn.norm_q.weight",
+        "transformer_blocks.2.attn.norm_k.weight",
+        "transformer_blocks.2.attn.norm_added_q.weight",
+        "transformer_blocks.2.attn.norm_added_k.weight",
+        "transformer_blocks.3.attn.norm_q.weight",
+        "transformer_blocks.3.attn.norm_k.weight",
+        "transformer_blocks.3.attn.norm_added_q.weight",
+        "transformer_blocks.3.attn.norm_added_k.weight",
+        "transformer_blocks.4.attn.norm_q.weight",
+        "transformer_blocks.4.attn.norm_k.weight",
+        "transformer_blocks.4.attn.norm_added_q.weight",
+        "transformer_blocks.4.attn.norm_added_k.weight",
+        "single_transformer_blocks.0.attn.norm_q.weight",
+        "single_transformer_blocks.0.attn.norm_k.weight",
+        "single_transformer_blocks.1.attn.norm_q.weight",
+        "single_transformer_blocks.1.attn.norm_k.weight",
+        "single_transformer_blocks.2.attn.norm_q.weight",
+        "single_transformer_blocks.2.attn.norm_k.weight",
+        "single_transformer_blocks.3.attn.norm_q.weight",
+        "single_transformer_blocks.3.attn.norm_k.weight",
+        "single_transformer_blocks.4.attn.norm_q.weight",
+        "single_transformer_blocks.4.attn.norm_k.weight",
+        "single_transformer_blocks.5.attn.norm_q.weight",
+        "single_transformer_blocks.5.attn.norm_k.weight",
+        "single_transformer_blocks.6.attn.norm_q.weight",
+        "single_transformer_blocks.6.attn.norm_k.weight",
+        "single_transformer_blocks.7.attn.norm_q.weight",
+        "single_transformer_blocks.7.attn.norm_k.weight",
+        "single_transformer_blocks.8.attn.norm_q.weight",
+        "single_transformer_blocks.8.attn.norm_k.weight",
+        "single_transformer_blocks.9.attn.norm_q.weight",
+        "single_transformer_blocks.9.attn.norm_k.weight",
+        "single_transformer_blocks.10.attn.norm_q.weight",
+        "single_transformer_blocks.10.attn.norm_k.weight",
+        "single_transformer_blocks.11.attn.norm_q.weight",
+        "single_transformer_blocks.11.attn.norm_k.weight",
+        "single_transformer_blocks.12.attn.norm_q.weight",
+        "single_transformer_blocks.12.attn.norm_k.weight",
+        "single_transformer_blocks.13.attn.norm_q.weight",
+        "single_transformer_blocks.13.attn.norm_k.weight",
+        "single_transformer_blocks.14.attn.norm_q.weight",
+        "single_transformer_blocks.14.attn.norm_k.weight",
+        "single_transformer_blocks.15.attn.norm_q.weight",
+        "single_transformer_blocks.15.attn.norm_k.weight",
+        "single_transformer_blocks.16.attn.norm_q.weight",
+        "single_transformer_blocks.16.attn.norm_k.weight",
+        "single_transformer_blocks.17.attn.norm_q.weight",
+        "single_transformer_blocks.17.attn.norm_k.weight",
+        "single_transformer_blocks.18.attn.norm_q.weight",
+        "single_transformer_blocks.18.attn.norm_k.weight",
+        "single_transformer_blocks.19.attn.norm_q.weight",
+        "single_transformer_blocks.19.attn.norm_k.weight"
+      ],
+      "note": "BF16 tensors outside GGUFLinear decoded to BF16 parameters (lossless); diffusers 0.40.0 leaves them as raw bytes"
+    },
+    "text_encoder": {
+      "method": "bnb_nf4",
+      "path": "/scratch/gilbreth/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+      "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "source": "klein revision e7b7dc27 text_encoder quantized on Gilbreth by scripts/save_quantized_text_encoder.py",
+      "jetson_sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "sha256_verified": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "resident": true
+    }
+  },
+  "snapshot": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+  "note": "Cached load and placement; the OS page cache may already hold the files. Not a cold read."
+}

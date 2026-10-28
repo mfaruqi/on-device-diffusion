@@ -1,0 +1,59 @@
+{
+ "device": "jetson-orin-nano-8gb",
+ "power_mode": "25W",
+ "jetpack": "R36.4.4",
+ "engine": {
+  "name": "edge-dit.cpp",
+  "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+  "ggml": "f270346d688c7bec7c56bae2ae73343aba6817ad",
+  "build": "../jetson-edgedit-build-20261011/build-config.txt",
+  "ed_cli_sha256": "271d8fa2ceca1c05401feecc09d286720e4a8019ad132ddd05a65282afb050b3"
+ },
+ "weights": "model-sha256.txt (the sd.cpp Jetson GGUF files: Q4_0 transformer, Qwen3-4B Q4_K_M, BF16 VAE)",
+ "workload": {
+  "width": 512,
+  "height": 512,
+  "steps": 4,
+  "guidance": 1.0,
+  "cfg_scale": 1.0,
+  "seed": 0,
+  "prompt": "A cat holding a sign that says hello world"
+ },
+ "fixed_options": [
+  "--backend cuda",
+  "--type preserve",
+  "--vae-tiling off",
+  "--flash-attention",
+  "--cache off",
+  "--threads 4"
+ ],
+ "status": "failed",
+ "workload_label": "compressed text encoder: Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)",
+ "text_encoder": {
+  "file": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+  "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+  "derived_from": "Qwen3-4B-Q4_K_M.gguf (sha256 f6f85177...), token_embd.weight Q6_K -> Q8_0 only; other 397 tensors and metadata copied",
+  "procedure": "../jetson-edgedit-convert-20261011/requant.log (scripts/requant_gguf_tensor.py)",
+  "rel_rms_diff_token_embd_vs_source": 0.005288755985412679
+ },
+ "stage": "gate E2: explicit all-GPU placement with the converted encoder",
+ "change": "text-encoder checkpoint only",
+ "result": {
+  "exit_code": 137,
+  "failure": "killed by jetson_memguard.sh at MemAvailable 345 MB during VAE decode",
+  "gpu_param_buffers_MB": {
+   "transformer": 2346.4,
+   "qwen3": 2465.75,
+   "vae": 94.72
+  },
+  "phase_markers_s": {
+   "encode_setup": 2.84,
+   "denoise_4_steps": 10.574
+  },
+  "decode": "not completed"
+ },
+ "notes": [
+  "edge-dit 97cc585 keeps an embedding table compressed only for F16/Q8_0/Q5_x/Q4_x (support_get_rows, src/core/backend/ggml/ggml_extend.hpp:7874) and expands other types to F32; with the Q6_K source table this added 1179.5 MiB (1483.8 MiB F32 - 304.3 MiB Q6_K), exactly the gap between the 3555.38 MB buffer and the 2375.9 MiB of tensors in the file.",
+  "Phase durations are from a single first generation (host clock markers); not timing results."
+ ]
+}

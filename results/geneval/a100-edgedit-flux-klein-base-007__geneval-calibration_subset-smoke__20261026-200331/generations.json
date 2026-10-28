@@ -1,0 +1,79 @@
+{
+  "engine": "edge-dit.cpp",
+  "template_run": "results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seed_rule": "engine seed = 4 * position + sample (ed-sample base 0 + image index)",
+  "rows": [
+    {
+      "index": 9,
+      "sample": 0,
+      "engine_seed": 0,
+      "latency_s": 15.437666,
+      "png_sha256": "8925bfbf564cba09238102ee1ba9ed9bd9851fa40ab758ca707495a62dee0142"
+    },
+    {
+      "index": 9,
+      "sample": 1,
+      "engine_seed": 1,
+      "latency_s": 15.118348,
+      "png_sha256": "b8f1bf811e583cc33655670108b3fd5818eb95b7d5da02fe58ebcfe68ca3f974"
+    },
+    {
+      "index": 9,
+      "sample": 2,
+      "engine_seed": 2,
+      "latency_s": 15.176549,
+      "png_sha256": "b82c59cc91724251764a6c57f9864ed4c229226e8aaf7fae2c0dd9c4201cac60"
+    },
+    {
+      "index": 9,
+      "sample": 3,
+      "engine_seed": 3,
+      "latency_s": 15.179075,
+      "png_sha256": "f49006e3fdc19ea55a04d3bcd489079828ad10d8727ef8dff1708ee6fa96466e"
+    },
+    {
+      "index": 12,
+      "sample": 0,
+      "engine_seed": 4,
+      "latency_s": 15.196609,
+      "png_sha256": "8030dde9329a506f9e21e802ae3fd9424015a8e3eba7d0ef86b3b2486ffa759b"
+    },
+    {
+      "index": 12,
+      "sample": 1,
+      "engine_seed": 5,
+      "latency_s": 15.214681,
+      "png_sha256": "0bc02f98472e1a215e410f5a695088ef9438dcb990bdbb6030d09b69284fcdd5"
+    },
+    {
+      "index": 12,
+      "sample": 2,
+      "engine_seed": 6,
+      "latency_s": 15.222959,
+      "png_sha256": "c9f7068f0f050e3655d379ffb26cc39324d7fd29b8d18500b613a3374c519e8c"
+    },
+    {
+      "index": 12,
+      "sample": 3,
+      "engine_seed": 7,
+      "latency_s": 15.220678,
+      "png_sha256": "3253c5e64eb422713d6c840a98c8187a7f4e9e78c68d329e4da5ee971febe334"
+    }
+  ],
+  "cache_lines": [
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/magcache_policy.cpp:359 [info] MagCache reused 70/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/magcache_policy.cpp:359 [info] MagCache reused 70/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/magcache_policy.cpp:359 [info] MagCache reused 70/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/magcache_policy.cpp:359 [info] MagCache reused 70/50 steps",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/magcache_policy.cpp:359 [info] MagCache reused 70/50 steps"
+  ],
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "template_command_sha256": "bb2d4bd77d514211cc42d2f8cac0ed6b58b0cb0104537306a6dc95aa33b7fd89",
+  "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725",
+  "script_sha256": "e4edc251e867c8f46a6d01707ba5ede8889c07712f05f743657fd296cae5ae6b"
+}
