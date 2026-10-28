@@ -84,11 +84,7 @@ def rows_for(device, geneval):
 
 
 def speed_table(rows):
-    best = set()
-    for precision in {r['precision'] for r in rows}:
-        ok = [r for r in rows if r['precision'] == precision and not r['degraded']]
-        if ok:
-            best.add(id(min(ok, key=lambda r: r['e2e'])))
+    best = {id(min((r for r in rows if not r['degraded']), key=lambda r: r['e2e']))}
     lines = ['| System | Precision | Budget | Configuration | DiT | E2E | TE | VAE | n |',
              '|---|---|---|---|--:|--:|--:|--:|--:|']
     for r in rows:
@@ -101,15 +97,24 @@ def speed_table(rows):
 
 def memory_table(rows):
     lines = ['| Model | System | Precision | Budget | Configuration | Peak (GiB) | Basis |', '|---|---|---|---|---|--:|---|']
-    for r in rows:
-        if r['mem'] is not None:
-            lines.append(f"| {r['model']} | {r['system']} | {r['precision']} | {r['budget']} | {r['label']} | {r['mem']:.2f} | {r['mem_basis']} |")
+    have = [r for r in rows if r['mem'] is not None]
+    best = {id(min((r for r in have if r['model'] == m), key=lambda r: r['mem'])) for m in {r['model'] for r in have}}
+    for r in have:
+        mem = f"**{r['mem']:.2f}**" if id(r) in best else f"{r['mem']:.2f}"
+        lines.append(f"| {r['model']} | {r['system']} | {r['precision']} | {r['budget']} | {r['label']} | {mem} | {r['mem_basis']} |")
     return lines
 
 
 def quality_table(rows, geneval):
     lines = ['| Model | System | Configuration | GenEval | Δ vs same-system ref [95% CI] | prompts | PSNR (dB) | LPIPS |',
              '|---|---|---|--:|---|--:|--:|--:|']
+    scored = [r for r in rows if r['config_id'] in geneval]
+    best = set()
+    for m in {r['model'] for r in scored}:  # compare only scores from the same prompt count
+        same = [r for r in scored if r['model'] == m]
+        n = max(geneval[r['config_id']]['quality/geneval_prompts'] for r in same)
+        best.add(id(max((r for r in same if geneval[r['config_id']]['quality/geneval_prompts'] == n),
+                        key=lambda r: geneval[r['config_id']]['quality/geneval'])))
     for r in rows:
         g = geneval.get(r['config_id'])
         d = r['diag']
@@ -117,6 +122,7 @@ def quality_table(rows, geneval):
             continue
         if g:
             score = f"{g['quality/geneval']:.3f}"
+            score = f'**{score}**' if id(r) in best else score
             delta = (f"{g['quality/geneval_delta']:+.3f} [{g['quality/geneval_delta_ci95_low']:+.3f}, "
                      f"{g['quality/geneval_delta_ci95_high']:+.3f}]" if 'quality/geneval_delta' in g else '— (reference)')
             prompts = g['quality/geneval_prompts']
@@ -136,20 +142,23 @@ def speedup_table(device, degraded):
     lines = ['| Workload | System | Option | Reference E2E (s) | Option E2E (s) | Speedup |', '|---|---|---|--:|--:|--:|']
     for r in rows:
         r['degraded_quality'] = r['run'] in degraded  # same ⚠ rule as the speed tables
+    top = max((r for r in rows if not r['degraded_quality']), key=lambda r: r['speedup'])
+    for r in rows:
         lines.append(f"| {r['group'].removeprefix(device + ' ')} | {r['panel'][4:]} | {r['bar']}{' ⚠' if r['degraded_quality'] else ''}"
                      f"{' †' if r['incremental'] else ''} | {r['reference_median_s']:.2f} | {r['variant_median_s']:.2f} | "
-                     f"{'**' if r['speedup'] >= 1.5 and not r['degraded_quality'] else ''}{r['speedup']:.2f}×"
-                     f"{'**' if r['speedup'] >= 1.5 and not r['degraded_quality'] else ''} |")
+                     f"{'**' if r is top else ''}{r['speedup']:.2f}×{'**' if r is top else ''} |")
     return lines
 
 
 def readout(rows):
     lines = ['| Model | System | Precision | Budget | Reference | DiT | E2E | Peak (GiB) |', '|---|---|---|---|---|--:|--:|--:|']
-    for r in rows:
-        if r['reference']:
-            mem = '—' if r['mem'] is None else f"{r['mem']:.2f}"
-            lines.append(f"| {r['model']} | {r['system']} | {r['precision']} | {r['budget']} | {r['label']} | "
-                         f"{ms(r['dit'])} | {ms(r['e2e'])} | {mem} |")
+    refs = [r for r in rows if r['reference']]
+    best = {id(min((r for r in refs if r['model'] == m), key=lambda r: r['e2e'])) for m in {r['model'] for r in refs}}
+    for r in refs:
+        mem = '—' if r['mem'] is None else f"{r['mem']:.2f}"
+        e2e = f"**{ms(r['e2e'])}**" if id(r) in best else ms(r['e2e'])
+        lines.append(f"| {r['model']} | {r['system']} | {r['precision']} | {r['budget']} | {r['label']} | "
+                     f"{ms(r['dit'])} | {e2e} | {mem} |")
     return lines
 
 
@@ -187,8 +196,10 @@ def main():
           'all transformers are Q4_0, but text encoders differ (sd.cpp Q4_K_M, edge-dit Q4_K_M with Q8_0 token '
           'embedding, PyTorch NF4).',
           '- **⚠** = the option changes the image in a way measured as worse: a paired GenEval interval entirely below '
-          'zero, or visibly damaged text/content in the benchmark image. **Bold** = fastest E2E without ⚠ within '
-          'each precision group of a table.',
+          'zero, or visibly damaged text/content in the benchmark image. **Bold** = the best result in each table '
+          '(speed: fastest E2E row without ⚠; readout: fastest reference per model; memory: lowest peak per model; '
+          'quality: highest GenEval per model among rows scored on the largest prompt set; options: largest speedup without ⚠). Speed bold spans precision '
+          'groups, so read it together with the same-precision rule.',
           '- **Quality:** GenEval is the formal metric (calibration prompts, 4 seeds; Δ is paired against the same '
           'system\'s reference). PSNR/LPIPS compare the single benchmark image with the same system\'s reference '
           'image (∞ = identical pixels). Jetson GenEval rows are A100 generations of the identical Jetson weights and '
