@@ -1,0 +1,123 @@
+{
+  "datasheet": {
+    "bw_gbs": 1555.0,
+    "bf16_tensor": 312.0,
+    "fp32": 19.5,
+    "int4_tensor_tops": 1248.0,
+    "source": "NVIDIA A100 datasheet (PCIe 40GB: same peaks, 250 W)"
+  },
+  "measured_ceilings": {
+    "bw_gbs": 1550.4885148556923,
+    "bf16_tensor": 218.603442124359,
+    "fp32": 17.546241941144135,
+    "source": "a100-ceilings-001__ceilings__20261029-042704"
+  },
+  "kernel_step": {
+    "step": "denoise_step_1",
+    "kernels": 1543,
+    "placed": 903,
+    "unplaced_time_share_pct": 14.625829013905209,
+    "by_class": {
+      "GEMM": {
+        "kernels": 110,
+        "time_share_pct": 47.83389939814444,
+        "hbm_gb": 41.928655104,
+        "counted_tops": 28.322265706496
+      },
+      "attention": {
+        "kernels": 25,
+        "time_share_pct": 14.142849865280867,
+        "hbm_gb": 3.12467456,
+        "counted_tops": 6.5899339776
+      },
+      "norm": {
+        "kernels": 41,
+        "time_share_pct": 0.780296130176806,
+        "hbm_gb": 1.768587776,
+        "counted_tops": 0.007697103872
+      },
+      "elementwise / reduction": {
+        "kernels": 1367,
+        "time_share_pct": 37.24295460639789,
+        "hbm_gb": 96.766147712,
+        "counted_tops": 0.033037878617
+      }
+    }
+  },
+  "engine_points": [
+    {
+      "label": "PyTorch 2.8 BF16 \u00b7 eager",
+      "engine": "PyTorch / Diffusers",
+      "source_run": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "precision": "bfloat16",
+      "flops_per_pass": 34819836739584.0,
+      "ms_per_pass": 259.4429454803467,
+      "achieved_tflops": 134.20999624837233,
+      "analytic_ai": 1616.0973513419615,
+      "measured_bytes_per_pass": 143582020928.0,
+      "measured_ai": 242.50833436203408,
+      "bytes_basis": "mean of 4 NVTX-labelled denoising steps",
+      "capture": "a100-flux-klein-torch28-001__profile__20261024-161538"
+    },
+    {
+      "label": "PyTorch 2.8 BF16 \u00b7 compiled",
+      "engine": "PyTorch / Diffusers",
+      "source_run": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "precision": "bfloat16",
+      "flops_per_pass": 34819836739584.0,
+      "ms_per_pass": 189.5368938446045,
+      "achieved_tflops": 183.71007371330944,
+      "analytic_ai": 1616.0973513419615,
+      "measured_bytes_per_pass": 60262940800.0,
+      "measured_ai": 577.798499000301,
+      "bytes_basis": "one steady denoising pass (281 launches, last generation), Nsight Compute dram read + write",
+      "capture": "a100-flux-klein-compile-001__counters__20261028-200944"
+    },
+    {
+      "label": "sd.cpp BF16 / FP32 activations",
+      "engine": "stable-diffusion.cpp",
+      "source_run": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+      "precision": "bfloat16",
+      "flops_per_pass": 34819836739584.0,
+      "ms_per_pass": 431.38100000214763,
+      "achieved_tflops": 80.71713111938323,
+      "analytic_ai": 985.2763720511718,
+      "measured_bytes_per_pass": 176846556544.0,
+      "measured_ai": 196.89293034620502,
+      "bytes_basis": "one steady denoising pass (1081 launches, last generation), Nsight Compute dram read + write",
+      "capture": "a100-sdcpp-flux-klein-001__counters__20261028-204743"
+    },
+    {
+      "label": "edge-dit BF16 / FP32 activations",
+      "engine": "edge-dit.cpp",
+      "source_run": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+      "precision": "bfloat16",
+      "flops_per_pass": 34819836739584.0,
+      "ms_per_pass": 274.0381062030792,
+      "achieved_tflops": 127.06202513959991,
+      "analytic_ai": 985.2763720511718,
+      "measured_bytes_per_pass": 154105075328.0,
+      "measured_ai": 225.9486695390975,
+      "bytes_basis": "one steady denoising pass (787 launches, last generation), Nsight Compute dram read + write",
+      "capture": "a100-edgedit-flux-klein-001__counters__20261029-033447"
+    },
+    {
+      "label": "Nunchaku W4A4/r32 \u00b7 mixed",
+      "engine": "Nunchaku / SVDQuant",
+      "source_run": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "precision": "W4A4/r32 (mixed BF16)",
+      "flops_per_pass": 34819836739584.0,
+      "ms_per_pass": 165.8056983947754,
+      "achieved_tflops": 210.00386040218984,
+      "analytic_ai": 2143.7650147730114,
+      "measured_bytes_per_pass": 43638440448.0,
+      "measured_ai": 797.9166162245341,
+      "bytes_basis": "one steady denoising pass (711 launches, last generation), Nsight Compute dram read + write",
+      "capture": "a100-nunchaku-flux-klein-001__counters__20261029-001046"
+    }
+  ],
+  "inputs": {
+    "points": "output/roofline-a100-20261021/roofline-points.csv",
+    "counters": "results/runs/a100-flux-klein-torch28-001__profile__20261024-161538"
+  }
+}

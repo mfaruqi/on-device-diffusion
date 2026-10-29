@@ -1,0 +1,73 @@
+{
+  "runs": [
+    {
+      "run_dir": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "label": "PyTorch 2.8 BF16 \u00b7 eager",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "label": "PyTorch 2.8 BF16 \u00b7 compiled",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+      "label": "sd.cpp BF16 / FP32 activations",
+      "activation_bytes": 4,
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+      "label": "edge-dit BF16 / FP32 activations",
+      "activation_bytes": 4,
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "label": "Nunchaku W4A4/r32 \u00b7 mixed",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "label": "PyTorch 2.8 BF16 \u00b7 eager",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "label": "PyTorch 2.8 BF16 \u00b7 compiled",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-base-001__baseline__20261005-214624",
+      "label": "sd.cpp BF16 / FP32 activations",
+      "activation_bytes": 4,
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "label": "edge-dit mixed Q4",
+      "activation_bytes": 4,
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-flux-klein-001__profile__20260923-221717",
+      "label": "Historical PyTorch distilled profile",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-001__profile__20261005-075123",
+      "label": "Historical PyTorch Base profile",
+      "ceiling": "bf16_tensor"
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__profile__20260925-124703",
+      "label": "Historical sd.cpp distilled profile",
+      "ceiling": "bf16_tensor"
+    }
+  ],
+  "exclusions": [
+    "Reference/compiled A100 overview only; approximate cache variants excluded until executed-work accounting is established.",
+    "A100 profile samples use historical environments; do not attribute their kernel mix to the newer compiled runs.",
+    "No Nunchaku Base full protocol in the selected evidence."
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-24T20:15:38Z",
+  "finished_utc": "2026-10-24T23:24:09Z",
+  "error": "ValueError(\"Missing captured stage labels: {'denoise_step_3', 'vae_decode', 'denoise_step_2', 'denoise_step_0', 'text_encode', 'denoise_step_1'}\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/scratch/gilbreth/mfaruqi/a100-ncu-20261024c/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/scratch/gilbreth/mfaruqi/a100-ncu-20261024c/scripts/profile_a100_counters.py\", line 270, in orchestrate\n    raise ValueError(f'Missing captured stage labels: {required - names}')\nValueError: Missing captured stage labels: {'denoise_step_3', 'vae_decode', 'denoise_step_2', 'denoise_step_0', 'text_encode', 'denoise_step_1'}\n"
+}

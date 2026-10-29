@@ -4,8 +4,8 @@ id: a100-sdcpp-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: stable-diffusion-cpp
-runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021, a100-sdcpp-flux-klein-001__attempt__20260929-001722, a100-sdcpp-flux-klein-001__attempt__20260929-005352, a100-sdcpp-flux-klein-001__attempt__20261005-193229, a100-sdcpp-flux-klein-001__baseline__20261005-220435]
-updated: 2026-10-06
+runs: [a100-sdcpp-flux-klein-001__baseline__20260925-114328, a100-sdcpp-flux-klein-001__profile__20260925-124703, a100-sdcpp-flux-klein-001__baseline__20260925-114138, a100-sdcpp-flux-klein-001__profile__20260925-124021, a100-sdcpp-flux-klein-001__attempt__20260929-001722, a100-sdcpp-flux-klein-001__attempt__20260929-005352, a100-sdcpp-flux-klein-001__attempt__20261005-193229, a100-sdcpp-flux-klein-001__baseline__20261005-220435, a100-sdcpp-flux-klein-001__counters__20261028-204743]
+updated: 2026-10-29
 ---
 
 # a100-sdcpp-flux-klein-001: FLUX.2 [klein] 4B with stable-diffusion.cpp on one A100-PCIE-40GB
@@ -253,3 +253,40 @@ All14 generations passed callback/actual transformer-call accounting, phase, eng
 Interpretation: this establishes a repeated timing distribution for the declared configuration. Selection and deltas belong in the matched comparison; sequential capture conditions were not randomized.
 
 [W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435).
+
+## Hardware-counter capture (2026-10-28/29)
+
+Measured DRAM traffic of one steady denoising pass of this configuration, for the measured A100 roofline
+([procedure](../docs/a100-hardware-counters.md#engine-counter-captures), [metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-a100)). [Counter plan](../configs/ncu/a100-sdcpp-flux-klein-001-counters.json),
+[controller](../scripts/profile_engine_counters.py). The template run [a100-sdcpp-flux-klein-001__baseline__20261005-220435](../results/runs/a100-sdcpp-flux-klein-001__baseline__20261005-220435/)
+is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation). Job 12038728 on gilbreth-g001.
+Run: [a100-sdcpp-flux-klein-001__counters__20261028-204743](../results/runs/a100-sdcpp-flux-klein-001__counters__20261028-204743/) ([status](../results/runs/a100-sdcpp-flux-klein-001__counters__20261028-204743/status.json), [counter-summary.json](../results/runs/a100-sdcpp-flux-klein-001__counters__20261028-204743/profile/counter-summary.json),
+[pass-kernels.json](../results/runs/a100-sdcpp-flux-klein-001__counters__20261028-204743/profile/pass-kernels.json)).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. The pass is the last full denoising
+pass of the measured generation, found as the repeating kernel-name period with the most kernel time. FLOPs
+per pass stay analytic (34.82 T); counted Tensor Core + FP32 work is the check. Replay kernel time is not
+latency; the benchmark time per pass comes from the template run.
+
+| Quantity | Value |
+|---|---:|
+| Kernels per pass | 1081 |
+| DRAM read + write per pass | 176.85 GB |
+| Counted operations per pass (ratio to analytic) | 31.65 T (0.909) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 196.9 FLOP/B |
+| Summed replay kernel time per pass | 380.7 ms |
+| Benchmark denoise time per pass (template run) | 431.4 ms |
+| Analytic bytes per pass (earlier roofline estimate) | 35.34 GB (5.0× measured / analytic) |
+
+Kernel time and DRAM bytes by kernel class (kernel-name rules in
+[plot_roofline_measured.py](../scripts/plot_roofline_measured.py)): attention 25 kernels, 35 % of time, 4.4 GB; elementwise/reduction 872, 31 %, 114.8 GB; GEMM 83, 30 %, 48.4 GB; norm 101, 4 %, 9.3 GB.
+
+Observations:
+
+- Counted operations are 91 % of the analytic FLOPs.
+- Elementwise and reduction kernels (872 launches) move 114.8 GB, 65 % of the pass's traffic; GEMMs move 48.4 GB.
+- Attention takes 35 % of kernel time in 25 launches while moving 4.4 GB.
+- Measured traffic is 5.0× the analytic estimate (which already assumed four-byte activations); intensity 197 FLOP/B.
+- Summed replay kernel time is 88 % of the benchmark time per pass.
+
+Interpretation: the pass is dominated by data movement outside the matrix multiplies (type conversions and elementwise work on FP32 activations) and by attention kernel time; both are levers for this engine, the GEMMs less so.

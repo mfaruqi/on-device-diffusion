@@ -1,0 +1,19 @@
+{
+  "reference_config": "results/runs/a100-flux-klein-torch28-001__baseline__20261015-151548/config.json",
+  "reference_config_sha256": "e17040e658072d4af361db3af5e64d712b844cc07f76a777622ff4eaffbdc7d0",
+  "reference_run": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+  "expected_image_sha256": "f11220f630cce576da295977e5f575a1c1b391c8d117dc5db263cf5ab04624dd",
+  "expected_environment": {
+    "torch": "2.8.0+cu126",
+    "diffusers": "0.40.0",
+    "transformers": "5.16.1",
+    "gpu_name": "NVIDIA A100-PCIE-40GB",
+    "torch_cuda_runtime": "12.6",
+    "cudnn": 91002
+  },
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "cache_control": "none",
+  "probe_timeout_s": 180,
+  "capture_timeout_s": 5400,
+  "description": "Hardware counters on the unchanged A100 torch2.8 eager distilled image workload. Original 1+3+10 prefix, then one captured image. Kernel replay with no clock override or explicit cache flush. Counter-derived operation families are incomplete, not total algorithmic FLOPs."
+}

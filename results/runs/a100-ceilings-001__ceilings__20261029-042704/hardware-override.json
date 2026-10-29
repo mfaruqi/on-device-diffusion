@@ -1,0 +1,14 @@
+{
+  "gilbreth-a100-40gb": {
+    "bw_gbs": 1550.4885148556923,
+    "ceilings": {
+      "bf16_tensor": 218.603442124359,
+      "fp16_tensor": 206.97613053446503,
+      "tf32_tensor": 101.15185548707379,
+      "fp32": 17.546241941144135,
+      "int8_tensor_tops": 395.25211321356176
+    },
+    "source": "measured: a100-ceilings-001__ceilings__20261029-042704",
+    "note": "Measured sustained ceilings (median of timed blocks); clocks not locked."
+  }
+}

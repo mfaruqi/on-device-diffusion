@@ -150,6 +150,29 @@ class RooflineSchemaTests(unittest.TestCase):
             roof.collect(self.root, self.manifest)
         self.assertIn('PCIe', roof.collect(self.root)['exclusions'][0]['reason'])
 
+    def test_paper_export_preserves_coordinates_and_separates_timers(self):
+        try:
+            import matplotlib.pyplot as plt
+        except ImportError:
+            self.skipTest('Optional paper-export dependency matplotlib is not installed')
+        data = roof.collect(self.root, self.manifest)
+        operator = copy.deepcopy(data['points'][0])
+        operator.update(tier='operator', point_id='fixture:operator', shape='M2 N3 K4')
+        data['points'].append(operator)
+        before = copy.deepcopy(data)
+        figures = roof.matplotlib_figures(data, ['a100'])
+        try:
+            self.assertEqual(data, before)
+            self.assertEqual(set(figures), {'a100-stage-roofline', 'a100-kernel-roofline'})
+            for fig in figures.values():
+                offsets = [xy for collection in fig.axes[0].collections for xy in collection.get_offsets()]
+                self.assertEqual(len(offsets), 1)
+                self.assertEqual(tuple(offsets[0]), (operator['arithmetic_intensity'], operator['achieved_tflops']))
+                self.assertFalse(fig.axes[1].collections)
+        finally:
+            for fig in figures.values():
+                plt.close(fig)
+
     def test_no_output_in_sources_or_ancestor(self):
         for output in [self.run/'charts', self.root/'results', self.root/'originals'/'plots']:
             with self.assertRaises(ValueError):

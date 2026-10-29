@@ -1,0 +1,70 @@
+{
+  "status": "validated",
+  "kernel_count": 8719,
+  "metrics": [
+    "gpu__time_duration.sum",
+    "dram__bytes_read.sum",
+    "dram__bytes_write.sum",
+    "sm__ops_path_tensor_src_bf16_dst_fp32_sparsity_off.sum",
+    "sm__ops_path_tensor_src_fp16_dst_fp32_sparsity_off.sum",
+    "sm__ops_path_tensor_src_tf32_dst_fp32_sparsity_off.sum",
+    "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+    "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+    "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum"
+  ],
+  "hbm_bytes_sum": 662669432448.0,
+  "counted_tensor_ops_sum": 154184796078080.0,
+  "counted_fp32_add_mul_fma_ops_sum": 543608981998.0,
+  "by_stage": {
+    "denoise_step_0": {
+      "kernels": 1543,
+      "hbm_bytes": 143693829760.0,
+      "tensor_ops": 34841580011520.0,
+      "fp32_add_mul_fma_ops": 111354655053.0
+    },
+    "denoise_step_1": {
+      "kernels": 1543,
+      "hbm_bytes": 143588065152.0,
+      "tensor_ops": 34841580011520.0,
+      "fp32_add_mul_fma_ops": 111354655065.0
+    },
+    "denoise_step_2": {
+      "kernels": 1543,
+      "hbm_bytes": 143525664000.0,
+      "tensor_ops": 34841580011520.0,
+      "fp32_add_mul_fma_ops": 111354655071.0
+    },
+    "denoise_step_3": {
+      "kernels": 1543,
+      "hbm_bytes": 143520524800.0,
+      "tensor_ops": 34841580011520.0,
+      "fp32_add_mul_fma_ops": 111354655057.0
+    },
+    "postprocess": {
+      "kernels": 3,
+      "hbm_bytes": 16900736.0,
+      "tensor_ops": 0.0,
+      "fp32_add_mul_fma_ops": 9437184.0
+    },
+    "profile_capture": {
+      "kernels": 42,
+      "hbm_bytes": 27168128.0,
+      "tensor_ops": 0.0,
+      "fp32_add_mul_fma_ops": 25891588.0
+    },
+    "text_encode": {
+      "kernels": 2166,
+      "hbm_bytes": 18667139840.0,
+      "tensor_ops": 4273760894976.0,
+      "fp32_add_mul_fma_ops": 8786107352.0
+    },
+    "vae_decode": {
+      "kernels": 336,
+      "hbm_bytes": 69630140032.0,
+      "tensor_ops": 10544715137024.0,
+      "fp32_add_mul_fma_ops": 89368925628.0
+    }
+  },
+  "scope": "One warmed full image; kernel replay; memcpy and CPU work excluded",
+  "limitations": "Counted BF16/FP16/TF32 dense Tensor Core ops and FP32 add/mul/FMA only; not all arithmetic. No FP64, scalar FP16, SFU or integer accounting. Replay can change cache state and serialize kernels. Summed kernel duration is not stage elapsed time; do not use this as normal generation latency."
+}

@@ -1,0 +1,32 @@
+{
+  "status": "complete",
+  "started_utc": "2026-10-29T07:34:47Z",
+  "finished_utc": "2026-10-29T14:15:39Z",
+  "analysis_resumed_utc": "2026-10-29T14:15:39Z",
+  "slurm_jobs": [
+    {
+      "job": "12044294",
+      "node": "gilbreth-g009",
+      "passes": "sequence, counter window (engine binary under ncu directly)"
+    }
+  ],
+  "sequence": {
+    "launches": 9356,
+    "pass_start": 7388,
+    "period": 787,
+    "window": [
+      7192,
+      1179
+    ]
+  },
+  "window_offset": 92,
+  "bytes_per_pass_gb": 154.11,
+  "history": [
+    {
+      "status": "failed",
+      "error": "ValueError('Counter-pass launches do not match the sequence pass; launch order is not deterministic')",
+      "note": "The counter window matched the sequence exactly at offset +92 (fewer setup launches before the window); accepted by the single-offset rule on re-analysis."
+    }
+  ],
+  "note": "Values re-derived from the saved CSVs with the final scripts/profile_engine_counters.py (--resume); bytes and pass identical across re-analyses."
+}

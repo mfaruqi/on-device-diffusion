@@ -4,8 +4,8 @@ id: a100-flux-klein-compile-001
 status: complete
 device: a100-pcie-40gb
 engine: pytorch-diffusers
-runs: [a100-flux-klein-compile-001__baseline__20261015-151740, a100-flux-klein-compile-001__attempt__20261015-151623]
-updated: 2026-10-15
+runs: [a100-flux-klein-compile-001__baseline__20261015-151740, a100-flux-klein-compile-001__attempt__20261015-151623, a100-flux-klein-compile-001__counters__20261028-200944]
+updated: 2026-10-29
 ---
 
 # a100-flux-klein-compile-001: torch.compile (Inductor, mode default) of the transformer forward, BF16 1024² klein, torch 2.8.0
@@ -140,3 +140,41 @@ complete, `compilations_applied: 1`. First generation 32155.9 ms (denoise 31399.
 
 - Copy of `a100-flux-klein-torch28-bf16-compile.json` with `mode: "max-autotune"` (separately labelled; first generation reported separately).
 - Runner: record the Inductor cache directory and cache hit/miss counters, and the Triton version, in the run directory.
+
+## Hardware-counter capture (2026-10-28/29)
+
+Measured DRAM traffic of one steady denoising pass of this configuration, for the measured A100 roofline
+([procedure](../docs/a100-hardware-counters.md#engine-counter-captures), [metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-a100)). [Counter plan](../configs/ncu/a100-flux-klein-compile-001-counters.json),
+[controller](../scripts/profile_engine_counters.py). The template run [a100-flux-klein-compile-001__baseline__20261015-151740](../results/runs/a100-flux-klein-compile-001__baseline__20261015-151740/)
+is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation). An uncaptured warm run first fills the compiler caches, so both Nsight passes launch the same compiled kernels. Jobs: 12038727 on gilbreth-g006 (warm run, sequence, first counter window) and 12044293 on gilbreth-g011 (warm run, second counter window).
+Run: [a100-flux-klein-compile-001__counters__20261028-200944](../results/runs/a100-flux-klein-compile-001__counters__20261028-200944/) ([status](../results/runs/a100-flux-klein-compile-001__counters__20261028-200944/status.json), [counter-summary.json](../results/runs/a100-flux-klein-compile-001__counters__20261028-200944/profile/counter-summary.json),
+[pass-kernels.json](../results/runs/a100-flux-klein-compile-001__counters__20261028-200944/profile/pass-kernels.json)).
+
+The first counter window (job 12038727) failed its alignment check on a demangling difference (`arch::Sm80` vs `cutlass::Sm80` in one attention kernel name), and had selected a 531-launch text-encoder block as the period; it is kept in `profile/misplaced-window/`. Names are now compared without namespace qualifiers and the period with the most kernel time is selected; the window was re-captured on the corrected pass.
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. The pass is the last full denoising
+pass of the measured generation, found as the repeating kernel-name period with the most kernel time. FLOPs
+per pass stay analytic (34.82 T); counted Tensor Core + FP32 work is the check. Replay kernel time is not
+latency; the benchmark time per pass comes from the template run.
+
+| Quantity | Value |
+|---|---:|
+| Kernels per pass | 281 |
+| DRAM read + write per pass | 60.26 GB |
+| Counted operations per pass (ratio to analytic) | 34.94 T (1.003) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 577.8 FLOP/B |
+| Summed replay kernel time per pass | 155.5 ms |
+| Benchmark denoise time per pass (template run) | 189.5 ms |
+| Analytic bytes per pass (earlier roofline estimate) | 21.55 GB (2.8× measured / analytic) |
+
+Kernel time and DRAM bytes by kernel class (kernel-name rules in
+[plot_roofline_measured.py](../scripts/plot_roofline_measured.py)): GEMM 110 kernels, 70 % of time, 41.8 GB; attention 55, 23 %, 6.4 GB; elementwise/reduction 75, 4 %, 8.5 GB; norm 41, 2 %, 3.6 GB.
+
+Observations:
+
+- Counted operations match the analytic FLOPs within 0.3 %, so the selected 281 launches are one full transformer pass.
+- GEMMs carry 70 % of the pass's kernel time and 69 % of its bytes; elementwise and reduction kernels move 8.5 GB in 4 % of the time.
+- Measured traffic is 2.8× the analytic estimate; intensity 578 FLOP/B is above the BF16 ridge (141 FLOP/B with the [measured ceilings](a100-ceilings-001.md), 201 with the datasheet).
+- Summed replay kernel time is 82 % of the benchmark time per pass.
+
+Interpretation: the compiled pass is compute-bound by this measure; most of its kernel time is in GEMMs and attention, so further speed-up would come from those kernels rather than from fusing the rest.

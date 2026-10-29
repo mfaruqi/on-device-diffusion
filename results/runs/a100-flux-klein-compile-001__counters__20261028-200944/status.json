@@ -1,0 +1,47 @@
+{
+  "status": "complete",
+  "started_utc": "2026-10-29T00:09:44Z",
+  "finished_utc": "2026-10-29T14:15:40Z",
+  "analysis_resumed_utc": "2026-10-29T14:15:40Z",
+  "slurm_jobs": [
+    {
+      "job": "12038727",
+      "node": "gilbreth-g006",
+      "passes": "warm run, sequence, counter window (first)"
+    },
+    {
+      "job": "12044293",
+      "node": "gilbreth-g011",
+      "passes": "warm run, counter window (second)"
+    }
+  ],
+  "sequence": {
+    "launches": 9110,
+    "pass_start": 8202,
+    "period": 281,
+    "window": [
+      8132,
+      421
+    ]
+  },
+  "window_offset": 0,
+  "bytes_per_pass_gb": 60.26,
+  "history": [
+    {
+      "status": "failed",
+      "finished_utc": "2026-10-29T01:32:55Z",
+      "error": "ValueError('Counter-pass launches do not match the sequence pass; launch order is not deterministic')",
+      "sequence": {
+        "launches": 9110,
+        "pass_start": 6572,
+        "period": 531,
+        "window": [
+          6440,
+          795
+        ]
+      },
+      "note": "Name comparison failed on demangling only (arch::Sm80 vs cutlass::Sm80). The selected period (531) was a text-encoder block; the first window and its summary are kept in profile/misplaced-window/."
+    }
+  ],
+  "note": "Values re-derived from the saved CSVs with the final scripts/profile_engine_counters.py (--resume); bytes and pass identical across re-analyses."
+}

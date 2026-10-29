@@ -4,13 +4,13 @@ This is a Week 2 baseline-analysis tool supporting RQ1: “Which diffusion optim
 
 ## Run and publish
 
-Dependencies: Python 3.10+, `plotly`; `wandb` and `pillow` for upload with image panels; `kaleido` and Chrome for optional PNG/PDF exports. Install them in a dedicated environment outside timed benchmark execution.
+Dependencies: Python 3.10+, `plotly`; `wandb` and `pillow` for upload with image panels; `matplotlib` for paper PNG/PDF exports. The optional legacy Plotly renderer needs `kaleido` and Chrome. Install them in a dedicated environment outside timed benchmark execution.
 
 ## Paper-style presentation
 
-The plot is constructed from coordinates: arithmetic intensity on X, effective TFLOP/s on Y. The reference curve is `min(peak, bandwidth × intensity)`. Its bend is the ridge point `peak / bandwidth`. Both axes are logarithmic; the horizontal red guide marks the primary compute ceiling, and the vertical green guide marks its ridge. Distinct colours, outlined markers, compact ranges, powers-of-ten ticks, dotted minor grids and an inset legend reproduce common paper-figure styling. A reference screenshot cannot establish which software its authors used. This implementation uses Plotly for both interactive charts and vector PDF exports; Matplotlib or LaTeX/PGFPlots can produce similar graphics.
+The plot is constructed from coordinates: arithmetic intensity on X, effective TFLOP/s on Y. The reference curve is `min(peak, bandwidth × intensity)`. Its bend is the ridge point `peak / bandwidth`. Both axes are logarithmic; the horizontal red guide marks the primary compute ceiling, and the vertical green guide marks its ridge. Distinct colours, outlined markers, compact ranges, powers-of-ten ticks, dotted minor grids and an inset legend reproduce common paper-figure styling. A reference screenshot cannot establish which software its authors used. Interactive charts use Plotly. Paper PNG/PDF exports now use Matplotlib, following the verified [ShiftAddQwen plotting source](https://github.com/ranery/ShiftAddQwen/blob/5bf17676f28b0a5411781f1a61798f87cb3e7e05/tools/plot.py): STIX serif fonts, Okabe–Ito colours, inward ticks and light grids. The reference itself is a model-size/quality/throughput frontier, not a roofline.
 
-`--static` additionally writes `m5-paper-roofline.{html,png,pdf}`: side-by-side distilled and Base panels with shared bounds, per-option marker styling and separate legends. All saved M5 stage coordinates are retained exactly, without jitter or averaging repeated source runs. Filled markers denote MPS BF16 and open markers denote sd.cpp mixed Q4; the assumed M5 ceiling remains explicit. The W&B upload adds `roofline_images/*` image panels (including `roofline_images/m5-paper`) as well as responsive interactive `roofline/*` panels. Use the image panels when a fixed paper layout matters. W&B interactive panels use automatic sizing, concise axis titles and a compact scope note to fit dashboard tiles. Full scope notes remain in exports and the data artifact. No benchmark measurement or coordinate formula changes with the styling.
+The legacy `--static --static-backend plotly` additionally writes `m5-paper-roofline.{html,png,pdf}`: side-by-side distilled and Base panels with shared bounds, per-option marker styling and separate legends. All saved M5 stage coordinates are retained exactly, without jitter or averaging repeated source runs. Filled markers denote MPS BF16 and open markers denote sd.cpp mixed Q4; the assumed M5 ceiling remains explicit. The W&B upload adds `roofline_images/*` image panels (including `roofline_images/m5-paper`) as well as responsive interactive `roofline/*` panels. Use the image panels when a fixed paper layout matters. W&B interactive panels use automatic sizing, concise axis titles and a compact scope note to fit dashboard tiles. Full scope notes remain in exports and the data artifact. No benchmark measurement or coordinate formula changes with the styling.
 
 ```sh
 python scripts/plot_roofline.py --output output/roofline --upload
@@ -27,6 +27,20 @@ An exported dataset can be rendered/uploaded on another host:
 ```sh
 python scripts/plot_roofline.py --data-json output/roofline/roofline-data.json --output output/roofline-copy
 ```
+
+## Matplotlib A100 exports (October 21)
+
+`--static` now defaults to Matplotlib. `--static-device a100` limits paper exports to A100; interactive Plotly output still contains all devices in the supplied dataset. Two files separate timer scopes: `a100-stage-roofline.{png,pdf}` compares denoising stages; `a100-kernel-roofline.{png,pdf}` shows historical profiled GEMM/attention observations. Each has distilled and Base panels, shared limits and legends below the axes. Coordinates are unchanged by rendering. The floating-point axis no longer includes an INT4 TOP/s curve.
+
+[Input/tool inventory](../output/a100-roofline-prep/README.md) and [curated A100 selections](../output/roofline-a100-20261021/a100-manifest.json) distinguish nine unprofiled full runs from three historical profiles. The selected sd.cpp and edge-dit stages explicitly estimate four-byte activations; their BF16 reference roof is context for a mixed execution path, not a hardware-utilization claim. Nunchaku's low-rank corrections/dequantization remain excluded from the reference-work estimate. Approximate step caches are excluded from this overview pending executed-work accounting. Other devices' historical coordinates are retained unchanged in the combined dataset.
+
+```sh
+MPLCONFIGDIR=/tmp/odd-matplotlib python scripts/plot_roofline.py \
+  --data-json output/roofline-a100-20261021/roofline-data.json \
+  --output output/roofline-a100-20261021 --static --static-device a100 --upload
+```
+
+The saved upload receipt resumes the existing roofline analysis. Images appear under `roofline_images/a100-stage` and `roofline_images/a100-kernel`; interactive panels remain under `roofline/*`. Upload validation compares the remote table and data JSON with local coordinates/provenance and verifies exported PNG/PDF artifact digests. No new GPU measurement is performed by this command. Actual HBM counter collection remains deferred; these are analytic estimates with measured timings.
 
 ## Select runs and override assumptions
 
@@ -70,4 +84,4 @@ Executed passes are steps × CFG multiplicity (one at guidance ≤1, two at guid
 
 Jetson no-cache references get paired `denoise_step_0` and steady `denoise_step_1..3` points using the same baseline's measured `stages.csv`. Steady duration is the median of each generation's mean of steps 1–3. A dashed downward connector shows the observed rate difference including the first-step reload stall. Attribution to read/pread64 comes from the separately saved OSRT profiles ([distilled](../experiments/jetson-flux-klein-003.md), [Base](../experiments/jetson-flux-klein-base-001.md)); the connector alone cannot prove storage causality or distinguish storage from page-cache effects. No illustrative ~10× ratio or fixed latency from task prose is substituted for saved data.
 
-Normalization is `100*effective_tflops/min(ceiling, bw_gbs/1000*AI)`, using each point's stated reference ceiling. Nunchaku's mixed stage uses the BF16 reference denominator: neither pure INT4 nor pure BF16 utilization is inferred. Integer roofs are labelled TOP/s and are contextual reference lines. Values over 100% remain visible as an analytic-model discrepancy. These percentages are not matched-quality comparisons or measured hardware utilization. Different workloads, precision, residency, engine timers and profile instrumentation limit cross-device interpretation ([metric definitions](../wiki/methods/baseline-metrics.md)).
+Normalization is `100*effective_tflops/min(ceiling, bw_gbs/1000*AI)`, using each point's stated reference ceiling. Nunchaku's mixed stage uses the BF16 reference denominator: neither pure INT4 nor pure BF16 utilization is inferred. Integer specifications remain labelled TOP/s in the metadata and are not drawn on the floating-point axes. Values over 100% remain visible as an analytic-model discrepancy. These percentages are not matched-quality comparisons or measured hardware utilization. Different workloads, precision, residency, engine timers and profile instrumentation limit cross-device interpretation ([metric definitions](../wiki/methods/baseline-metrics.md)).

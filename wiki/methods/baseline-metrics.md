@@ -662,3 +662,23 @@ The proposal's formal image-quality requirement is a maximum degradation on GenE
   (prompt, seed): score difference, 95% bootstrap interval over prompts (10,000 draws, seed 0), and an exact
   two-sided McNemar test on discordant images. A variant is compared only with the reference configuration of
   the same engine, workload and device class.
+
+## Nsight Compute hardware counters (A100)
+
+The [counter controller](../../scripts/profile_a100_counters.py) uses the unchanged [reference config](../../configs/a100-flux-klein-torch28-ncu.json) and portable runner; [capture procedure](../../docs/a100-hardware-counters.md). The original first + warm-up + measured prefix runs attached to NCU with capture disabled. Its summary is labelled `profiler=nsight-compute`, `timing_scope=profiler-attached, capture-disabled prefix`; these timings are diagnostic, not a replacement baseline. One additional image is captured separately in `profile/captured-generation.json` and excluded from `runs.csv`/summary aggregates.
+
+`profile/counter-kernels.json.gz` reports per-launch `duration_s` (`gpu__time_duration.sum` nanoseconds / 1e9), `hbm_bytes` (DRAM read + write bytes), `tensor_ops` (dense BF16/FP16/TF32 Tensor Core operations with FP32 accumulation), and `fp32_add_mul_fma_ops` (predicated FP32 thread add + multiply + 2×FMA instructions). `counted_ops` sums these covered families only; it excludes scalar FP16, FP64, SFU, integer and CPU work. `counted_ops_per_byte` is null for zero traffic, otherwise counted ops / HBM bytes; `counted_tops` divides counted ops by measured kernel seconds and 1e12. Raw metric names/values and kernel identities remain in CSV/JSON and the NCU report. These are not shape-estimated FLOPs or complete algorithmic work.
+
+## Nsight Compute engine counter captures (A100)
+
+[profile_engine_counters.py](../../scripts/profile_engine_counters.py) measures one steady denoising pass of any A100 engine from a completed template run ([procedure](../../docs/a100-hardware-counters.md#engine-counter-captures)). The template config is reused with protocol 1 + 0 + 1; the same metric list as above is used. Two passes of the same command run under `ncu --replay-mode kernel --cache-control none --clock-control none`: a sequence pass (kernel time only) and a counter pass over a window of 1.5 L launches.
+
+- **Pass**: the repeating kernel-name period L (repeated at least steps − 2 times, up to max(3, L/200) differing names per repeat) whose last full repeat has the most kernel time. Kernel names are compared without namespace qualifiers.
+- **Alignment**: the counter window must equal a slice of the sequence pass exactly, at one offset within ±L/4; the offset is recorded (`window_offset`).
+- `bytes_per_pass`: summed `dram__bytes_read.sum + dram__bytes_write.sum` over the pass's L launches (decimal GB in records).
+- `analytic_ai` = analytic FLOPs per pass (plan; 34.82 T for klein distilled 1024²) / `bytes_per_pass`. This is the roofline x for engines. `counted_ai` uses counted operations instead and is reported as a check (INT4/INT8 Tensor Core work is not counted).
+- `pass_replay_kernel_s`: summed replay kernel durations; not latency. Engine roofline y stays analytic FLOPs / the template run's measured denoise time per pass.
+
+## Measured ceilings (A100)
+
+[measure_ceilings_cuda.py](../../scripts/measure_ceilings_cuda.py) ([config](../../configs/a100-ceilings.json)). Bandwidth kernels (copy, read, write, triad over 2 GiB FP32 buffers) count the minimum bytes moved, in decimal GB/s. GEMMs use cuBLAS in the `nn.Linear` layout with work 2·M·N·K. Each test: 5 warm-up calls, then 10 timed blocks of 20 calls (CUDA events); the test value is the median block; a **ceiling** is the highest test median for that precision (bandwidth: highest kernel). Clocks are not locked; `gpu-samples.csv` records clocks, power and throttle reasons. A sustained 60 s BF16 GEMM reports the change between its first- and last-quarter medians. Ceilings are written to `hardware-override.json` for the roofline scripts.

@@ -1,0 +1,29 @@
+{
+  "status": "validated",
+  "template_run": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+  "metrics": [
+    "gpu__time_duration.sum",
+    "dram__bytes_read.sum",
+    "dram__bytes_write.sum",
+    "sm__ops_path_tensor_src_bf16_dst_fp32_sparsity_off.sum",
+    "sm__ops_path_tensor_src_fp16_dst_fp32_sparsity_off.sum",
+    "sm__ops_path_tensor_src_tf32_dst_fp32_sparsity_off.sum",
+    "smsp__sass_thread_inst_executed_op_fadd_pred_on.sum",
+    "smsp__sass_thread_inst_executed_op_fmul_pred_on.sum",
+    "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum"
+  ],
+  "bytes_per_pass": 43638440448.0,
+  "bytes_basis": "one steady denoising pass (711 launches, last generation), Nsight Compute dram read + write",
+  "pass_kernels": 711,
+  "pass_replay_kernel_s": 0.148347424,
+  "counted_ops_per_pass": 852476597344.0,
+  "analytic_flops_per_pass": 34819836739584.0,
+  "counted_over_analytic": 0.02448249840226519,
+  "analytic_ai": 797.9166162245341,
+  "counted_ai": 19.534992281858,
+  "sequence_launches": 10726,
+  "steps": 4,
+  "window_offset": 0,
+  "scope": "Kernel replay, no cache flush, clocks not locked; memcpy and CPU work excluded.",
+  "limitations": "Counted BF16/FP16/TF32 Tensor Core ops and FP32 add/mul/FMA only; INT4/INT8 Tensor Core, scalar FP16/BF16 and SFU work are not counted."
+}

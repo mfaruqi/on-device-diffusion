@@ -1,0 +1,24 @@
+{
+  "id": "a100-ceilings-001",
+  "description": "Measured roofline ceilings on the A100 PCIe 40GB: STREAM-style bandwidth and dense cuBLAS GEMM throughput per precision, square and FLUX.2 klein single-block shapes, plus a 60 s sustained BF16 GEMM. No model loaded; clocks not locked.",
+  "device_label": "gilbreth-a100-40gb",
+  "expected_gpu_name": "NVIDIA A100-PCIE-40GB",
+  "protocol": {"warmup_iters": 5, "iters": 20, "trials": 10},
+  "bandwidth": {"buffer_gib": 2, "kernels": ["copy", "read", "write", "triad"]},
+  "gemm": {
+    "dtypes": ["bf16", "fp16", "tf32", "fp32", "int8"],
+    "square_sizes": [4096, 8192],
+    "model_shapes": [
+      {"label": "klein 1024² single-block in (seq 4608, 9D)", "mnk": [4608, 27648, 3072]},
+      {"label": "klein 1024² single-block out (seq 4608, 4D)", "mnk": [4608, 3072, 12288]},
+      {"label": "klein 512² single-block in (seq 1536, 9D)", "mnk": [1536, 27648, 3072]}
+    ]
+  },
+  "sustained": {"dtype": "bf16", "mnk": [8192, 8192, 8192], "seconds": 60},
+  "datasheet": {
+    "source": "https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet.pdf",
+    "bw_gbs": 1555.0,
+    "ceilings": {"bf16_tensor": 312.0, "fp16_tensor": 312.0, "tf32_tensor": 156.0, "fp32": 19.5, "int8_tensor_tops": 624.0},
+    "ceiling_keys": {"bf16": "bf16_tensor", "fp16": "fp16_tensor", "tf32": "tf32_tensor", "fp32": "fp32", "int8": "int8_tensor_tops"}
+  }
+}

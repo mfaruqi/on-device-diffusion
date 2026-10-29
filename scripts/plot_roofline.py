@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Rooflines from immutable completed FLUX.2 klein 4B artifacts; no model execution.
 
-Requires plotly; --upload requires wandb; --static requires kaleido + Chrome.
+Requires plotly; --upload requires wandb; --static uses matplotlib by default.
 python scripts/plot_roofline.py --output output/roofline --upload
 Manifest: {"runs": [{"run_dir": "...", "label": "..."}], "hardware_specs": {...}}.
 Optional run overrides: weight_gib, activation_bytes, ceiling. Hardware overrides
 are explicit JSON dictionaries via --hardware-specs or the manifest.
 """
 import argparse
+import base64
 import copy
 import csv
 import hashlib
@@ -445,7 +446,7 @@ def figures(data):
         if device:
             add_roof(fig, spec, PRIMARY_CEILING[device], xlim)
             if device == 'gilbreth-a100-40gb':
-                for ceiling, label in [('fp32', 'FP32 reference'), ('int4_tensor_tops', 'INT4 context (TOP/s)')]:
+                for ceiling, label in [('fp32', 'FP32 reference')]:
                     peak = spec['ceilings'][ceiling]
                     ridge = peak/(spec['bw_gbs']/1000)
                     xs = sorted({10**xlim[0], ridge, 10**xlim[1]})
@@ -563,6 +564,112 @@ def paper_m5(data):
     return fig
 
 
+def matplotlib_figures(data, devices=None):
+    """Paper exports from the same coordinates; never mix stage and kernel timers.
+
+    Visual reference: ranery/ShiftAddQwen tools/plot.py at 5bf17676.
+    Uses Matplotlib/STIX and Okabe-Ito colours, not that project's LLM data.
+    """
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import LogLocator, NullFormatter
+
+    aliases = {'a100': 'gilbreth-a100-40gb', 'jetson': 'jetson-orin-nano',
+               'm5': 'macbook-air-m5'}
+    styles = {
+        'PyTorch / Diffusers': ('#009E73', 'o'),
+        'stable-diffusion.cpp': ('#0072B2', 's'),
+        'edge-dit.cpp': ('#E69F00', '^'),
+        'Nunchaku / SVDQuant': ('#CC79A7', 'D'),
+    }
+    charts = {}
+    with plt.rc_context({
+        'font.family': 'serif', 'font.serif': ['STIXGeneral', 'DejaVu Serif'],
+        'mathtext.fontset': 'stix', 'font.size': 12, 'axes.labelsize': 14,
+        'axes.titlesize': 16, 'axes.titleweight': 'bold', 'axes.linewidth': 1.0,
+        'xtick.direction': 'in', 'ytick.direction': 'in',
+        'xtick.top': True, 'ytick.right': True, 'pdf.fonttype': 42,
+    }):
+        for alias in devices or aliases:
+            device = aliases[alias]
+            spec = data['hardware_specs'][device]
+            for scope in ('stage', 'kernel'):
+                tiers = {'stage'} if scope == 'stage' else {'operator', 'operator-inferred'}
+                subset = [p for p in data['points'] if p['device'] == device and p['tier'] in tiers]
+                if not subset:
+                    continue
+                fig, axes = plt.subplots(1, 2, figsize=(13, 7.4), sharex=True, sharey=True)
+                xlim, ylim = chart_bounds(subset, spec)
+                primary = PRIMARY_CEILING[device]
+                peak, bw = spec['ceilings'][primary], spec['bw_gbs']/1000
+                ridge = peak/bw
+                for ax, base, letter in zip(axes, (False, True), ('a', 'b')):
+                    rows = [p for p in subset if ('klein-base-' in p['source_run']) == base]
+                    xs = sorted({10**xlim[0], ridge, 10**xlim[1]})
+                    ax.plot(xs, [min(peak, bw*x) for x in xs], color='#333333', lw=1.9)
+                    ax.axhline(peak, color='#D55E00', ls='--', lw=.8, alpha=.65)
+                    ax.axvline(ridge, color='#777777', ls=':', lw=.9)
+                    ax.text(.02, .97, f'{peak:g} TFLOP/s reference; {spec["bw_gbs"]:g} GB/s',
+                            transform=ax.transAxes, va='top', fontsize=10, color='#555555')
+                    # Additional compute roofs only when used by points; no integer TOP/s
+                    # curve on the floating-point axis.
+                    for ceiling in sorted({p['ceiling'] for p in rows} - {primary}):
+                        cp = spec['ceilings'][ceiling]
+                        cx = sorted({10**xlim[0], cp/bw, 10**xlim[1]})
+                        ax.plot(cx, [min(cp, bw*x) for x in cx], ls='--', lw=1,
+                                color='#999999', label=f'{ceiling}: {cp:g} TFLOP/s roof')
+                    groups = {}
+                    for p in rows:
+                        label = p['label'] if scope == 'stage' else (
+                            ENGINE_STYLE.get(p['engine'], (p['engine'],))[0] + ': ' +
+                            ('GEMM' if p['shape'].startswith('M') else 'attention') +
+                            (' (inferred shape)' if p['tier'] == 'operator-inferred' else ''))
+                        groups.setdefault((p['engine'], label), []).append(p)
+                    for (engine, label), pts in groups.items():
+                        color, marker = styles.get(engine, ('#777777', 'o'))
+                        if scope == 'kernel':
+                            marker = 'o' if pts[0]['shape'].startswith('M') else '^'
+                        compiled = 'compil' in label.lower()
+                        inferred = any(p['tier'] == 'operator-inferred' for p in pts)
+                        ax.scatter([p['arithmetic_intensity'] for p in pts],
+                                   [p['achieved_tflops'] for p in pts],
+                                   marker=marker, s=95 if scope == 'stage' else 28,
+                                   facecolors='none' if compiled or inferred else color,
+                                   edgecolors=color, linewidths=1.4 if compiled else .7,
+                                   alpha=.95 if scope == 'stage' else .55, label=label, zorder=4)
+                    ax.set_xscale('log'); ax.set_yscale('log')
+                    ax.set_xlim(10**xlim[0], 10**xlim[1]); ax.set_ylim(10**ylim[0], 10**ylim[1])
+                    ax.xaxis.set_major_locator(LogLocator(base=10))
+                    ax.yaxis.set_major_locator(LogLocator(base=10))
+                    ax.xaxis.set_minor_formatter(NullFormatter())
+                    ax.yaxis.set_minor_formatter(NullFormatter())
+                    ax.grid(which='major', lw=.45, alpha=.3)
+                    ax.grid(which='minor', lw=.3, alpha=.12)
+                    ax.set_xlabel('Arithmetic intensity (FLOP/byte, estimated)')
+                    ax.set_title(f'({letter}) ' + ('Base · 50 steps, CFG 4' if base else 'Distilled · 4 steps, CFG 1'), pad=12)
+                    if rows:
+                        ax.legend(loc='upper left', bbox_to_anchor=(0, -.20), frameon=False,
+                                  fontsize=10, ncol=1, borderaxespad=0, labelspacing=.4)
+                    else:
+                        ax.text(.5, .5, 'No matching profile data', transform=ax.transAxes,
+                                ha='center', va='center', color='#666666')
+                axes[0].set_ylabel('Effective performance (TFLOP/s)')
+                fig.suptitle(f'{spec["label"]} — ' + ('denoising stage estimates' if scope == 'stage' else 'profiled kernel estimates'),
+                             fontsize=20, fontweight='bold', y=.98)
+                note = ('Estimated FLOPs and tensor traffic; measured ' +
+                        ('denoising time. Timer scopes, precision and checkpoint quality differ.' if scope == 'stage' else
+                         'kernel durations. Repeated shape/step observations are retained; not HBM counters.'))
+                note += '\n' + ('Mixed quantized paths use a reference roof, not a utilization claim. Loading is excluded.' if scope == 'stage' else
+                                'Historical profiles are separate captures; they do not describe the newer compiled runs.')
+                if alias == 'm5':
+                    note += '\nM5 compute ceiling is an illustrative assumption, not a measured or published peak.'
+                fig.text(.08, .025, note, fontsize=10, va='bottom', color='#555555')
+                fig.subplots_adjust(left=.08, right=.98, top=.86, bottom=.34, wspace=.16)
+                charts[f'{alias}-{scope}-roofline'] = fig
+    return charts
+
+
 def guard_output(root, output):
     output = Path(output).resolve()
     for protected in [ROOT/'results'/'runs', ROOT/'originals', Path(root)/'results'/'runs', Path(root)/'originals']:
@@ -593,14 +700,16 @@ def upload(data, charts, output, args):
                     config={'method': data['method'], 'hardware_specs': data['hardware_specs'],
                             'source_runs': [r['source_run'] for r in data['runs']],
                             'packages': {p: importlib.metadata.version(p) for p in
-                                         ['plotly', 'wandb'] + (['pillow'] if any(output.glob('*roofline*.png')) else [])}}) as run:
+                                         ['plotly', 'wandb'] + (['pillow'] if any(output.glob('*roofline*.png')) else []) +
+                                         (['matplotlib'] if data.get('static_backend') == 'matplotlib' else [])}}) as run:
         table = wandb.Table(columns=TABLE_COLUMNS)
         for p in data['points']:
             row = {**p, 'source_sha256': json.dumps(p['source_sha256'], sort_keys=True)}
             table.add_data(*[row.get(k) for k in TABLE_COLUMNS])
         payload = {panel_keys[key]: wandb.Plotly(wandb_figure(fig)) for key, fig in charts.items()}
         image_keys = []
-        for key in [*charts, 'm5-paper-roofline']:
+        export_keys = list(dict.fromkeys([*charts, 'm5-paper-roofline', *data.get('static_figures', [])]))
+        for key in export_keys:
             path = output/f'{key}.png'
             if path.exists():
                 image_key = 'roofline_images/' + key.replace('-roofline', '').replace('cross-device-', '')
@@ -610,7 +719,7 @@ def upload(data, charts, output, args):
         artifact = wandb.Artifact(args.name, type='analysis')
         for filename in ['roofline-data.json', 'roofline-points.csv', 'README.md']:
             artifact.add_file(str(output/filename), name=filename)
-        for key in [*charts, 'm5-paper-roofline']:
+        for key in export_keys:
             for ext in ['html', 'png', 'pdf']:
                 path = output/f'{key}.{ext}'
                 if path.exists():
@@ -656,10 +765,20 @@ def upload(data, charts, output, args):
     artifact_file = evidence.get_entry('roofline-data.json').download(root=str(output/'verification'/'artifact'))
     if Path(artifact_file).read_bytes() != (output/'roofline-data.json').read_bytes():
         raise RuntimeError('Remote evidence JSON differs from local dataset')
+    image_digests = {}
+    for key in export_keys:
+        for ext in ['png', 'pdf']:
+            path = output/f'{key}.{ext}'
+            if path.exists():
+                digest = base64.b64encode(hashlib.md5(path.read_bytes()).digest()).decode()
+                if path.name not in evidence.manifest.entries or evidence.manifest.entries[path.name].digest != digest:
+                    raise RuntimeError(f'Remote figure differs from local export: {path.name}')
+                image_digests[path.name] = digest
     verification = {'status': 'verified', 'url': identity['url'], 'state': remote.state,
                     'point_count': len(expected_rows), 'panels': required_keys,
                     'artifact': evidence.name, 'artifact_data_digest': entry.digest,
-                    'table_contents_match': True, 'artifact_data_match': True}
+                    'table_contents_match': True, 'artifact_data_match': True,
+                    'figure_digests_match': image_digests}
     write_json(output/'wandb-verification.json', verification)
     identity['status'] = 'verified'
     write_json(receipt, identity)
@@ -675,12 +794,18 @@ def main():
     parser.add_argument('--hardware-specs', type=Path, help='Explicit JSON ceiling overrides')
     parser.add_argument('--name', default='klein-roofline-analysis')
     parser.add_argument('--static', action='store_true')
+    parser.add_argument('--static-backend', choices=['matplotlib', 'plotly'], default='matplotlib',
+                        help='Paper PNG/PDF rendering; interactive HTML always uses Plotly')
+    parser.add_argument('--static-device', choices=['a100', 'jetson', 'm5'], action='append',
+                        help='Limit Matplotlib paper exports (repeatable); coordinates are unchanged')
     parser.add_argument('--upload', action='store_true')
     parser.add_argument('--entity', default='mfaruqi-purdue-university')
     parser.add_argument('--project', default='on-device-diffusion')
     args = parser.parse_args()
     if args.data_json and (args.manifest or args.hardware_specs):
         parser.error('--data-json cannot be combined with manifest/hardware overrides')
+    if args.static_device and args.static_backend != 'matplotlib':
+        parser.error('--static-device requires the matplotlib static backend')
     args.output = guard_output(args.root, args.output)
     manifest = json.loads(args.manifest.read_text()) if args.manifest else None
     overrides = json.loads(args.hardware_specs.read_text()) if args.hardware_specs else None
@@ -701,17 +826,30 @@ def main():
     charts = figures(data)
     for key, fig in charts.items():
         fig.write_html(args.output/f'{key}.html', include_plotlyjs=True)
-        if args.static:
+        if args.static and args.static_backend == 'plotly':
             fig.write_image(args.output/f'{key}.png', scale=2)
             fig.write_image(args.output/f'{key}.pdf')
-    if args.static:
+    if args.static and args.static_backend == 'plotly':
         paper = paper_m5(data)
         paper.write_html(args.output/'m5-paper-roofline.html', include_plotlyjs=True)
         paper.write_image(args.output/'m5-paper-roofline.png', scale=2)
         paper.write_image(args.output/'m5-paper-roofline.pdf')
+    if args.static and args.static_backend == 'matplotlib':
+        import matplotlib.pyplot as plt
+        static = matplotlib_figures(data, args.static_device)
+        for key, fig in static.items():
+            fig.savefig(args.output/f'{key}.png', dpi=220)
+            fig.savefig(args.output/f'{key}.pdf')
+            plt.close(fig)
+        data['static_figures'] = list(static)
+        data['static_backend'] = 'matplotlib'
+        data['static_style_reference'] = 'https://github.com/ranery/ShiftAddQwen/blob/5bf17676f28b0a5411781f1a61798f87cb3e7e05/tools/plot.py'
+        write_json(args.output/'roofline-data.json', data)
     links = '\n'.join(f'- [{key}]({key}.html)' for key in charts)
     if (args.output/'m5-paper-roofline.html').exists():
         links += '\n- [M5 paper-style panels](m5-paper-roofline.html) · [PDF](m5-paper-roofline.pdf) · [PNG](m5-paper-roofline.png)'
+    for key in data.get('static_figures', []):
+        links += f'\n- [{key} PNG]({key}.png) · [vector PDF]({key}.pdf)'
     (args.output/'README.md').write_text(f'# Klein roofline analysis\n\n{len(data["runs"])} source runs; {len(data["points"])} points.\n\n{links}\n\n{METHOD}\n\nSee [building instructions](../../docs/roofline-plots.md).\n')
     print(f'Validated {len(data["runs"])} source runs; wrote {len(data["points"])} points and four charts to {args.output}')
     if args.upload:

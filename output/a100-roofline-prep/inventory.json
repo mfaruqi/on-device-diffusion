@@ -1,0 +1,2563 @@
+{
+  "date": "2026-10-21",
+  "source_commit": "cf48eb96f09695d34ff388356aa0621bf6a0cce9",
+  "scope": "Inventory only; no new profiling or roofline coordinates. Historical summaries are not new measurements.",
+  "runs": [
+    {
+      "run_dir": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+      "experiment_id": "a100-edgedit-flux-klein-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 4,
+        "guidance": 1.0,
+        "cfg_scale": 1.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": null
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 1641.0,
+        "denoise_ms": 1096.152424812317,
+        "vae_decode_ms": 269.8683738708496
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "83d88d854b24a1ef0eabe1fb736f67a68073af127636417c36e38d951fc419c9",
+          "bytes": 1765
+        },
+        "summary.json": {
+          "sha256": "925893f59809045f9e98f6fdc107c6199eee29855ee8c100ec7833f7c1643de3",
+          "bytes": 2749
+        },
+        "environment.json": {
+          "sha256": "86df8ed3769d40149da895d418c46f1902c93bcc56cda030440920e04bc5f361",
+          "bytes": 2300
+        },
+        "status.json": {
+          "sha256": "8cdfcb693e7a75f819e3752793c76ad4fc4c9802d5b86d6b9eac8959c2af54f3",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "7ef17f954d37d0269f573e0773a62e570c90b8023342478450ac64e16991a668",
+          "bytes": 1285
+        },
+        "stages.csv": {
+          "sha256": "487bd4b0c1fb9d057b094f9e3f99c294972544635bef92cbf3089d480e256126",
+          "bytes": 1796
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-007__baseline__20261015-152117",
+      "experiment_id": "a100-edgedit-flux-klein-007",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 4,
+        "guidance": 1.0,
+        "cfg_scale": 1.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "magcache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-bbeb84b7-27e2-1898-0610-7751c68ab709, 250.00 W",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 825.5,
+        "denoise_ms": 290.14742374420166,
+        "vae_decode_ms": 272.53103256225586
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "74fd2a552967ed23aeeb4071d43a1d924376376515c1d3607db4cfb82495704b",
+          "bytes": 1751
+        },
+        "summary.json": {
+          "sha256": "4fff61863c5b8760a8c076cac52cc9ce182561ee8faa2e4f87482fd0f53dd85a",
+          "bytes": 2747
+        },
+        "environment.json": {
+          "sha256": "5027cf0b635cca05197373bd710a43138e0a4351017cf5991ddcaf6435711abc",
+          "bytes": 1804
+        },
+        "status.json": {
+          "sha256": "a7edf75e5a3c65f3bbc703a9149e1ca6fd1b304a7d47d2d39ac5037e6917601d",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "ba2fb0ba72590871c8ac8625b42f37c0b67d48c5c18465807822956de06d4cc8",
+          "bytes": 1260
+        },
+        "stages.csv": {
+          "sha256": "9ed2618aa31ddb77825ba25d4b505c600d2bdc186435c5c6e227558e38648649",
+          "bytes": 1779
+        },
+        "step-cache.json": {
+          "sha256": "e58605ff4099ad9ea1570e606a4f86854c936f91831a1270b440bb974b38eecf",
+          "bytes": 320
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "experiment_id": "a100-edgedit-flux-klein-base-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": null
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 49428.5,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 48740.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "c17a9922c42258ec735010eec02ade39ded9ddd940616ece0fa4771bdae0febb",
+          "bytes": 2683
+        },
+        "summary.json": {
+          "sha256": "6a8868a4cd7ba7ffe751c474c90a0c4566d4118f89a8b62e1a2750eff8a409a1",
+          "bytes": 8778
+        },
+        "environment.json": {
+          "sha256": "a2b3d347473e8c7772dd62d5548bc87a408da9235edb2e4819b21e045215eaff",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "cc0f2b59450d10d3d9f7cbfc186e39399a0cbc6774ad8eb8ca860f491b8e9e93",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "7833b491a49f0ef1c8e3d0e83115d93f15df47ea4e58fc26b18d93dac9bc2498",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "fa85cfcf816afa5e72315f49f00ddf6c53c35e8e03dc920de46adb6a915f32a4",
+          "bytes": 2405
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+      "experiment_id": "a100-edgedit-flux-klein-base-002",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "easycache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 35435.5,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 34740.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "b5b09450fab0f0324119d17c6e338b50ec52586d30c3b9be8c1bc5c9a44371b9",
+          "bytes": 2586
+        },
+        "summary.json": {
+          "sha256": "efae11c8d3ff18c68fd2bfcd0c75a681d941968d89381d5e8fd3e173d9702852",
+          "bytes": 8775
+        },
+        "environment.json": {
+          "sha256": "767658ebaf129672a576be57005a37496ca5b57a1bbaa01df48af44401da54ea",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "e7fb6f9a9dd14ecaa6bd1a7aa8c68de9ccec31641b2cf9173debc9beef8b22d6",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "1cd5ac87cb8ceae2591d3b5c69c319f0ac4e6404de3144ba3b415d232a57e671",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "1904979db522dbb5731b6772e8122f4a41541ec42514de4992627b1a74d13e14",
+          "bytes": 2406
+        },
+        "step-cache.json": {
+          "sha256": "bac64e0b43349c8b1c521465655ecf05572adcd24de745c1ad69d44dc0b9a70b",
+          "bytes": 336
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-003__baseline__20261015-171344",
+      "experiment_id": "a100-edgedit-flux-klein-base-003",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "ucache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 36879.0,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 36190.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "276870fd4ceea691a4f07326e9a5e6faca24ecc888aa314ed3015ef0b21ce2e1",
+          "bytes": 2580
+        },
+        "summary.json": {
+          "sha256": "4e921c8fc6d47941c817de04ccbb416bf4cc620eb6003ebd0c3fdb0782845ba5",
+          "bytes": 8763
+        },
+        "environment.json": {
+          "sha256": "01a2e868e4a80c34b606d8ac60c626d01dc2dd8dae6abf2588b8a627f2b1cafa",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "ad20afe62b0e3e711dfb43427a47315d5d95de50e8b8fd47b8b4f164d412e108",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "b0f721ba9980f560f8c36ee7bca05dbb979c345f812b10b498db63db3e3cd73e",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "d3b57c57d052c38f0f5a0aa017b09b99388f850c0550f915beb9257b8d5c418c",
+          "bytes": 2408
+        },
+        "step-cache.json": {
+          "sha256": "901bfc50c249bc206f8aea159618641b8d06b0d0ad6a5447ed2ee45ee811e7c0",
+          "bytes": 333
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-004__baseline__20261015-172354",
+      "experiment_id": "a100-edgedit-flux-klein-base-004",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "dbcache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 37910.0,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 37150.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "d77b1125a4cff2b250eb2b8a9a64230ad812613950f0c94b5d70d25eec4d54f9",
+          "bytes": 2582
+        },
+        "summary.json": {
+          "sha256": "4e2cbb2be956be81ce6a90a459b3a4c27b2520552b20f198b50f3f5a65f19662",
+          "bytes": 8804
+        },
+        "environment.json": {
+          "sha256": "61c3a0148448b356e8f8b314177fd518fde25f52b50ea204b16cb4780d65a4fe",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "67264ba9483022a48a4bb5eceb090d2527754f46fad01793eef47d7ff70edd15",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "0a82331de010ec1618692444e287780c57de8dd22f6a466393c15640a0e68df2",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "529fac7bd05eb5ec5f493e2bd653309227bb5b209b8c9f27a6fa9b1f17175c90",
+          "bytes": 2407
+        },
+        "step-cache.json": {
+          "sha256": "797cc632be088f922f3c5f76d4bbc620f4b8e56e39859f2831d38e12208750d7",
+          "bytes": 334
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+      "experiment_id": "a100-edgedit-flux-klein-base-005",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "taylorseer"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 31128.0,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 30370.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "d15daa8255cfc47e39227a6314af6c78a8cd7733ad9df4a18d94afc2976f9358",
+          "bytes": 2588
+        },
+        "summary.json": {
+          "sha256": "c4f5ebeba985e547a7830c8eb562d9a29ec250b05a6734ead228a4646bcef9dc",
+          "bytes": 8790
+        },
+        "environment.json": {
+          "sha256": "ad317f127ad28412d8bfe2b7e917214c46b32d8feb8db51136166a034ec78298",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "312916ec6e5f7e7fe23780248919dae99f376a64826b729859b21bcbff7dd82f",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "af26fbd303dbccff874fada81d6a5957ff5df6cfa8d95d4e34744a0636f63551",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "dc3e9672876ab8dd4cf26b09d44b0ef2749ae92e15f1ffc563e1b26cb81ec6df",
+          "bytes": 2412
+        },
+        "step-cache.json": {
+          "sha256": "b2a9b9b62babe8c8768889c2067abb61582e7b36036ba88132c8f4bb8bb63116",
+          "bytes": 337
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-006__baseline__20261015-174257",
+      "experiment_id": "a100-edgedit-flux-klein-base-006",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "cache-dit"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 37925.0,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 37140.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "f4967cbb44a349cacbc3c3acc87a52a753dbb5b4f6a33e5fc038814a8b7e075f",
+          "bytes": 2586
+        },
+        "summary.json": {
+          "sha256": "714d3565990704c9d9f89846f1d2064c530d861fc78dac3cc86483b1bb169390",
+          "bytes": 8804
+        },
+        "environment.json": {
+          "sha256": "0cb34ed420420b04565022def2c4d2638db39b5022e5f6ba28e25886b29d12d3",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "260d9445367d0e436140b73c6caa168f460f6d99e9b6201fab4ff30608ee1000",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "fd45bbe2dbeba6fb9b10e8d145c53f003356429f85ab5cb865353d35bf90b14a",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "c74c01bddf9be6022c2775d305ac40284c7f37f6c1b2eb645911ce959a78eb25",
+          "bytes": 2399
+        },
+        "step-cache.json": {
+          "sha256": "786e5d40d212fbdc813a1c39f5dcf8995f9207a888595dde86fdcef8350485be",
+          "bytes": 336
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+      "experiment_id": "a100-edgedit-flux-klein-base-007",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "magcache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 15707.5,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 14890.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "0725e79d58428a75d586f7f48558303b5ebda5d31a1da86998430a6478cb309a",
+          "bytes": 2584
+        },
+        "summary.json": {
+          "sha256": "6107a95cf842f9e3aa20bfe13dc799ef24ce5db89d686f0370ddf20c766de174",
+          "bytes": 8804
+        },
+        "environment.json": {
+          "sha256": "4ac9f393f8e541e42878532926179524837815023df49cc85d0d692f2347155b",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "281bc91aacdce47ce057eaf77c727cd292e63d690fa25d30cc570bc3cd945b2e",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "f2e12b00c6e6b54731a56fdf90a41cf8694e7d496fc6fdd25ed9411a5606fb64",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "8c36f1061fa00aa4c2cb3162e7d7e08ba2f1539fff63ef5d866df4cb62e2acdd",
+          "bytes": 2417
+        },
+        "step-cache.json": {
+          "sha256": "86a33c6b21ef75fd638fedfb38244a5471c187d2e7857a16026d7dbfdfd5577e",
+          "bytes": 335
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+      "experiment_id": "a100-edgedit-flux-klein-base-008",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "edge-dit.cpp",
+        "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+        "binary": "/home/mfaruqi/tools/edge-dit-campaign-20261004/build-cuda-performance/bin/ed-sample",
+        "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725"
+      },
+      "precision": null,
+      "workload": {
+        "width": 1024,
+        "height": 1024,
+        "steps": 50,
+        "guidance": 4.0,
+        "cfg_scale": 4.0,
+        "seed": 0,
+        "batch_size": 1,
+        "sampler": "euler",
+        "scheduler": "auto"
+      },
+      "optimizations": {
+        "quantization": {
+          "transformer": "Q4_0",
+          "text_encoder": "Q4_K_M"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "flash_attention": true,
+        "auto_fit": false,
+        "auto_allocate": false,
+        "step_cache": {
+          "method": "dicache"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-93d69a7a-672a-4faa-8842-0ff509e75433, 250.00 W",
+      "node": "gilbreth-g002.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 25154.5,
+        "text_encode_ms": 120.0,
+        "denoise_ms": 24400.0,
+        "vae_decode_ms": 280.0
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "3f781734426b2c59d55c1ff4ce61f2c1a4528c7d0cc948931bb644229936763d",
+          "bytes": 2582
+        },
+        "summary.json": {
+          "sha256": "3ec5c388589c37b17768240ad800c83c0044bdf6c3bd11f7e34ca316fd1c086f",
+          "bytes": 8791
+        },
+        "environment.json": {
+          "sha256": "99394cff148c3b97d282d32ad6a5af61bc15c345af2208a63b25df6ed469a175",
+          "bytes": 1577
+        },
+        "status.json": {
+          "sha256": "f220fd0fe710e894ad0dfbef89b6244b114725e6e42865adbd1a246212c9f109",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "235a25f5e3a91c872cda3beb31e8bb6321143fe7f706d139fbb28c9efff7dc86",
+          "bytes": 2622
+        },
+        "stages.csv": {
+          "sha256": "6e7a0376aedc63532c2ae1f4db8385ee0622b38001265d8a27ad8330fbb85938",
+          "bytes": 2406
+        },
+        "step-cache.json": {
+          "sha256": "1dc57a5f0217092f8a28307958020b26701c711a4af07fdb077b7d07395a5b01",
+          "bytes": 334
+        },
+        "source-provenance.json": {
+          "sha256": "039258a0a3095b822703c8bf65b17458d1538a9c3f629635698cff21185fba44",
+          "bytes": 393
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-001__baseline__20260923-221530",
+      "experiment_id": "a100-flux-klein-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.5.1+cu121",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 1240.5574479926145,
+        "text_encode_ms": 47.046159744262695,
+        "denoise_ms": 980.7820892333984,
+        "vae_decode_ms": 165.34886932373047
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "4651705d90ff87e6d48770321d02da6b2070174da752c3144a67bb0533984c48",
+          "bytes": 1189
+        },
+        "summary.json": {
+          "sha256": "c92477913577fd481ee24743997754b6f4a3f9982595c4b9c8bed27bce106cfb",
+          "bytes": 4372
+        },
+        "environment.json": {
+          "sha256": "946a41e3dbc5babba05ab213f39dbfff18335ad35e32fbaf2d8e4e3d2ad245e6",
+          "bytes": 1530
+        },
+        "status.json": {
+          "sha256": "aefa414e4111a5105c5561b0b03ddc24d91e690c9cc31a2395aeed29b904e062",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "e6ffdb49bf985180c4734796e9c4aaa130217c6b9426eaf71c5891a265e86f31",
+          "bytes": 5111
+        },
+        "stages.csv": {
+          "sha256": "881c1a64d1e5e9d78cd240c049d032774a6f4413275c5b5cf1279b72abb738ef",
+          "bytes": 13041
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-001__profile__20260923-221717",
+      "experiment_id": "a100-flux-klein-001",
+      "selected_stage_chart": false,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.5.1+cu121",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 1236.7545499873813,
+        "text_encode_ms": 45.83804702758789,
+        "denoise_ms": 981.1077117919922,
+        "vae_decode_ms": 166.04569244384766
+      },
+      "profile_files": [
+        {
+          "path": "results/runs/a100-flux-klein-001__profile__20260923-221717/profile/trace.json",
+          "bytes": 35228887
+        },
+        {
+          "path": "results/runs/a100-flux-klein-001__profile__20260923-221717/profile/denoise_kernels.json",
+          "bytes": 29665
+        },
+        {
+          "path": "results/runs/a100-flux-klein-001__profile__20260923-221717/profile/profiled_run.json",
+          "bytes": 4166
+        }
+      ],
+      "source_files": {
+        "config.json": {
+          "sha256": "4651705d90ff87e6d48770321d02da6b2070174da752c3144a67bb0533984c48",
+          "bytes": 1189
+        },
+        "summary.json": {
+          "sha256": "83b1a448deb82b387b8eaa3ab81a0082b9bc8b1cb2c1b639d6c6023e82012662",
+          "bytes": 4366
+        },
+        "environment.json": {
+          "sha256": "44245c60c2407d538664a5c5f3eafe7bcf0a5ee123332e0a5e8ca2291f6fef13",
+          "bytes": 1530
+        },
+        "status.json": {
+          "sha256": "c93bccd5edee2e8cfdd0a5a733abe7806189f85ce37dfb1b18ed832d335d396c",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "364010d6c92365b189263cd1d6953ca44ac954bf7d52bb0fde173454d1cdfd51",
+          "bytes": 5110
+        },
+        "stages.csv": {
+          "sha256": "d9ac91786d775ecb642e526fafdb19a8e6545bad4c361b784d445b99c958cc74",
+          "bytes": 13031
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-001__baseline__20261005-074425",
+      "experiment_id": "a100-flux-klein-base-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": "2.5.1+cu121",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 25147.678527006065,
+        "text_encode_ms": 94.79476928710938,
+        "denoise_ms": 24836.578353881836,
+        "vae_decode_ms": 167.76243591308594
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "bfd1c80270d62278527b9623110867d2e9b3d9c16437251a12e2a9e72cac186f",
+          "bytes": 1318
+        },
+        "summary.json": {
+          "sha256": "80b9a79fc0eee20e7aad5ffd460c48f07bdf6081dca5e618021bd0bd74b56e93",
+          "bytes": 16444
+        },
+        "environment.json": {
+          "sha256": "0184f838691bd18287ddc5cd363276540a03207930c09e59199e4a2871afa2a2",
+          "bytes": 1637
+        },
+        "status.json": {
+          "sha256": "ba1ed054c6ef88ae86e3c67506d9fb73eb7ef051d1829e9c33f276854c187bec",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "9718a44a0691c6df79a76ff588279dd0d9a4e78d6690eb3bec383a954086c8d7",
+          "bytes": 17647
+        },
+        "stages.csv": {
+          "sha256": "26be8c6df3328ea0138d8eec7acf65819c605d911f606d1c7cf248721c9345cf",
+          "bytes": 191799
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-001__profile__20261005-075123",
+      "experiment_id": "a100-flux-klein-base-001",
+      "selected_stage_chart": false,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": "2.5.1+cu121",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 25033.48273249867,
+        "text_encode_ms": 93.88433837890625,
+        "denoise_ms": 24730.657791137695,
+        "vae_decode_ms": 167.79417419433594
+      },
+      "profile_files": [
+        {
+          "path": "results/runs/a100-flux-klein-base-001__profile__20261005-075123/profile/trace.json",
+          "bytes": 651526550
+        },
+        {
+          "path": "results/runs/a100-flux-klein-base-001__profile__20261005-075123/profile/stage_kernels.json",
+          "bytes": 383283
+        },
+        {
+          "path": "results/runs/a100-flux-klein-base-001__profile__20261005-075123/profile/profiled_run.json",
+          "bytes": 57653
+        }
+      ],
+      "source_files": {
+        "config.json": {
+          "sha256": "bfd1c80270d62278527b9623110867d2e9b3d9c16437251a12e2a9e72cac186f",
+          "bytes": 1318
+        },
+        "summary.json": {
+          "sha256": "4d62723b7ac23c4b870fbcf43e80decf7c0c481efbd16701e0484c36185c804b",
+          "bytes": 16457
+        },
+        "environment.json": {
+          "sha256": "56bb9ce463edb6e870397a67cff32b59f2efd2cb552f6296b54d6fde373c3826",
+          "bytes": 1637
+        },
+        "status.json": {
+          "sha256": "93bd9c403d4eef0a96662ef2528aa617d163dca55fe3cd823edd0820604f6678",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "edd44cce27dfc499ee212359f19eab1d7b32f1623dec18b4c1fe6cbfc1aea33d",
+          "bytes": 17667
+        },
+        "stages.csv": {
+          "sha256": "afc308f5eac2789b77b9ec074a36180773ae6bbbfaa2d6cd397ea0ff7b43510a",
+          "bytes": 191727
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "experiment_id": "a100-flux-klein-base-torch28-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g009.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 26476.562472933438,
+        "text_encode_ms": 92.97431945800781,
+        "denoise_ms": 26171.380813598633,
+        "vae_decode_ms": 169.99884796142578
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "77f2e7307441e0e1d12c13f2627990eb60e6252d3b7ada537d733c7628b3f1b7",
+          "bytes": 1623
+        },
+        "summary.json": {
+          "sha256": "a319ab8cede98e5e13294eb51ab3466266a48f9f849a07feeb84940129017a4e",
+          "bytes": 16700
+        },
+        "environment.json": {
+          "sha256": "61408aa9dbc12656ffdf9a20f636e948947e9c954dc75f1af74d540c06493fb6",
+          "bytes": 1513
+        },
+        "status.json": {
+          "sha256": "21b77d31bf1bc455e0b69b78e09a492c6e5998feb41aa06a72f869261aa3617b",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "61b6a1c9faaa45e74ab53d844460849f8f973b487bf1da5076407619fc0585f1",
+          "bytes": 17363
+        },
+        "stages.csv": {
+          "sha256": "cc17d06eb945128dcf6564cff9721830d5ea9b4cab0cd7afae339c87122fece6",
+          "bytes": 189250
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "source-provenance.json": {
+          "sha256": "7438d47673f39defb34c5c0b084ddc871a75416a706c7d6eae1fb438a23f1d97",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-002__baseline__20261015-160117",
+      "experiment_id": "a100-flux-klein-base-torch28-002",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null,
+        "conditioning_reuse": true
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g009.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 26290.40476452792,
+        "text_encode_ms": 0.3805919960141182,
+        "denoise_ms": 26069.821479797363,
+        "vae_decode_ms": 169.71673583984375
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "485eb45649e52061c01ed8dc9698c7982287171857822ee171c451027637d075",
+          "bytes": 1614
+        },
+        "summary.json": {
+          "sha256": "7a4e06ab2605db3b8c85df1e90b5806e7206c4d450dceb436f71431acb0dbe61",
+          "bytes": 16722
+        },
+        "environment.json": {
+          "sha256": "a80b79045af12d46b952c9b8f7f776abf5437a3ee9973d7d3340734e94a322e0",
+          "bytes": 1513
+        },
+        "status.json": {
+          "sha256": "d48fb8b7d73b3d0ad3ecb3a39b7053825da16a0146aded7150ad16f2d2134833",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "b2e6a8c44d9d41d2bdc2ac0d9326f20ee34d210f74d373664f4a9f944a453463",
+          "bytes": 17324
+        },
+        "stages.csv": {
+          "sha256": "d2f2d915ad193b7d31f22b53c98a966527a0df8b2481f9801094cd5ae305a7c4",
+          "bytes": 189309
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "source-provenance.json": {
+          "sha256": "7438d47673f39defb34c5c0b084ddc871a75416a706c7d6eae1fb438a23f1d97",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+      "experiment_id": "a100-flux-klein-base-torch28-003",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null,
+        "step_cache": {
+          "method": "taylorseer",
+          "cache_interval": 5,
+          "disable_cache_before_step": 3,
+          "max_order": 1
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g009.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 9980.692410492338,
+        "text_encode_ms": 92.8310375213623,
+        "denoise_ms": 9672.442886352539,
+        "vae_decode_ms": 169.51500701904297
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "f165eb92615d94538d165fa4600bd2fc136173e890e3a5f2468674954fe00410",
+          "bytes": 1776
+        },
+        "summary.json": {
+          "sha256": "1df33a8f460b1badbe4b7dae1a03b73ed3b70a685158fe844929431393ad94ff",
+          "bytes": 16708
+        },
+        "environment.json": {
+          "sha256": "c54192d5a0a6bed283132e35f3c21d7cbf9524c52525595445e6cb0eff26f52c",
+          "bytes": 1513
+        },
+        "status.json": {
+          "sha256": "f1cfaf699218bde77ebbad5eab37930ea0c72a07645964e91e104b4bd179b166",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "419fc5dc8654e4e4c02b86e8315ae4d4e60a3fe943014e4d8cbff272ad1d7f28",
+          "bytes": 17356
+        },
+        "stages.csv": {
+          "sha256": "6470c2fe60ef00676da5dbdabbc8fbbf01475524c9b8fb1998392956ab2d0516",
+          "bytes": 193037
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "step-cache.json": {
+          "sha256": "438711740f5d6fab12f5dc37c29ed34c085f15a64d24959534340b1610bc3b2d",
+          "bytes": 327
+        },
+        "source-provenance.json": {
+          "sha256": "7438d47673f39defb34c5c0b084ddc871a75416a706c7d6eae1fb438a23f1d97",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "experiment_id": "a100-flux-klein-base-torch28-004",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": {
+          "name": "torch_compile",
+          "mode": "default"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g009.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 19525.410258036572,
+        "text_encode_ms": 94.5104808807373,
+        "denoise_ms": 19203.476989746094,
+        "vae_decode_ms": 172.3263931274414
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "26ea436816581d4a2d3a40243943517ec71555abf2a26cbfa824f845cb5c4aa6",
+          "bytes": 1644
+        },
+        "summary.json": {
+          "sha256": "3a0a6fcaa37c57109aaa280f65f63c4a8bd7aa2dd66befd1febebb3fc02cfa32",
+          "bytes": 16904
+        },
+        "environment.json": {
+          "sha256": "6668b0f703d1050d5436fe558f70962236cfda79714cf1ba54152e1de9879f73",
+          "bytes": 1513
+        },
+        "status.json": {
+          "sha256": "e95b259c181e878bfe0a79ebd5f0c24e1306c9c040bc0a3b3ae8bcc5662a4f65",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "9a34fc243dd997ec34c6582d09cd49147c3dd4d36d5d3c8a0347e7a488572ec2",
+          "bytes": 17707
+        },
+        "stages.csv": {
+          "sha256": "8eac6ed49c14a68e0d6d51926d69639d318c53af713858a6617d7d055d5d7e5f",
+          "bytes": 195732
+        },
+        "compiler.json": {
+          "sha256": "5960090bbac5fbe7ab3e69940f75986d06f98782ba2ea8933d04311149f70147",
+          "bytes": 106
+        },
+        "source-provenance.json": {
+          "sha256": "7438d47673f39defb34c5c0b084ddc871a75416a706c7d6eae1fb438a23f1d97",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "experiment_id": "a100-flux-klein-compile-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": {
+          "name": "torch_compile",
+          "mode": "default"
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 1021.8703410355374,
+        "text_encode_ms": 46.28759956359863,
+        "denoise_ms": 758.147575378418,
+        "vae_decode_ms": 171.6689910888672
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "ad65638355fbeda14e279e8c2f1593d6668d228affc5c74faf5d2c3f6785cf50",
+          "bytes": 1646
+        },
+        "summary.json": {
+          "sha256": "58349d959fea2bd03425742d1c9708034577ac05a3fdf2ff2da550583a613d03",
+          "bytes": 4619
+        },
+        "environment.json": {
+          "sha256": "3e7ca498909bcbad16086e12ebb89d5d2ddb2c5d95a6accebbd2761463a49aad",
+          "bytes": 1492
+        },
+        "status.json": {
+          "sha256": "eed7dab441e1172dc92b57cc55fe0dba51587cc2bd4ef822a3bce48510521a22",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "4e437d13e048cb45458bb49b31738e77888ba6439b6313c9b2ee471ab617630b",
+          "bytes": 5126
+        },
+        "stages.csv": {
+          "sha256": "b233813f8bdba5dfd1ef97625a6a44f0d4604dff1bed548f4edf5c7b612c0389",
+          "bytes": 13017
+        },
+        "compiler.json": {
+          "sha256": "5960090bbac5fbe7ab3e69940f75986d06f98782ba2ea8933d04311149f70147",
+          "bytes": 106
+        },
+        "source-provenance.json": {
+          "sha256": "e1e043240fedd691b74bbdd36c870998b0f7d8e6758cb51b5b0dc71f604a006e",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "experiment_id": "a100-flux-klein-torch28-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 1290.462295000907,
+        "text_encode_ms": 46.17527961730957,
+        "denoise_ms": 1037.7717819213867,
+        "vae_decode_ms": 168.19097900390625
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "e17040e658072d4af361db3af5e64d712b844cc07f76a777622ff4eaffbdc7d0",
+          "bytes": 1688
+        },
+        "summary.json": {
+          "sha256": "5cd22230d77941c76fc04d925065beaa528418b7a6c28adfbd9f7a9bfa11a72e",
+          "bytes": 4556
+        },
+        "environment.json": {
+          "sha256": "e07e6771814671a3cf5321b8e0c5877280f91e092ec45973c0c687b8ccfbd602",
+          "bytes": 1492
+        },
+        "status.json": {
+          "sha256": "cd44a2b4d550d92e2105922efdf1dce92768dfe51e16e4261e69a16df07ea2ff",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "6117c8383ef3e12d587cec6764e372587a4ab9f14d21cfab31ef57d6ad68d1ef",
+          "bytes": 5086
+        },
+        "stages.csv": {
+          "sha256": "a760283fd31babcc9897792900e9bfc4fcd8d967c2a6ffd5aa00c1d2324d007b",
+          "bytes": 12985
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "source-provenance.json": {
+          "sha256": "e1e043240fedd691b74bbdd36c870998b0f7d8e6758cb51b5b0dc71f604a006e",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-002__baseline__20261015-151840",
+      "experiment_id": "a100-flux-klein-torch28-002",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null,
+        "conditioning_reuse": true
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 1261.4673050120473,
+        "text_encode_ms": 0.1929759979248047,
+        "denoise_ms": 1041.7310791015625,
+        "vae_decode_ms": 169.333251953125
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "4b6eccb1a00628c852ba68521d79ee05c662eac5e562847d291819f2745a44bc",
+          "bytes": 1566
+        },
+        "summary.json": {
+          "sha256": "0267c960ce12d4ff2a3876a069b67a1a3f4b1b74e6fbcf31d9d9e2a4adf7a4ce",
+          "bytes": 4561
+        },
+        "environment.json": {
+          "sha256": "dc19211914a3e1fe5e242d9f803f73e7dbcf6eacc67615eeba8720257ae64533",
+          "bytes": 1492
+        },
+        "status.json": {
+          "sha256": "630c51cc3d5747c2c6cddad86231c3be3178bbfe6e5fbf7cbef8a0cf91752f6f",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "e0d244d6b8d9c4f863261b86bc394b6e5ddf8509570fe8b861dd68441d59d5d4",
+          "bytes": 5114
+        },
+        "stages.csv": {
+          "sha256": "129a48ac3a9dc086d794723701ffc40961cc2594e63ee2b2a08060bc95a94a87",
+          "bytes": 13011
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "source-provenance.json": {
+          "sha256": "e1e043240fedd691b74bbdd36c870998b0f7d8e6758cb51b5b0dc71f604a006e",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-flux-klein-torch28-004__baseline__20261015-151949",
+      "experiment_id": "a100-flux-klein-torch28-004",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {},
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false,
+        "compiler": null,
+        "step_cache": {
+          "method": "taylorseer",
+          "cache_interval": 2,
+          "disable_cache_before_step": 1,
+          "max_order": 1
+        }
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g008.rcac.purdue.edu",
+      "torch": "2.8.0+cu126",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 854.1769050061703,
+        "text_encode_ms": 46.405649185180664,
+        "denoise_ms": 592.8376235961914,
+        "vae_decode_ms": 168.07833862304688
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "50b1672c4ad92a677df28adfb847aa1a053cc790dc827df7f41ccf75fe0c690b",
+          "bytes": 1725
+        },
+        "summary.json": {
+          "sha256": "152053cb9206414eb0a1ad0a7143099be137f02160c6eb1d94196cca2b325818",
+          "bytes": 4542
+        },
+        "environment.json": {
+          "sha256": "3a4668d56e3da65b8b3ff5cd8b254de96ad3ba6ae26111c0fe65a7e0c7bfbb8e",
+          "bytes": 1492
+        },
+        "status.json": {
+          "sha256": "56ca8392c4135c163373b1277ff5d58eb5058379d4316f45b624a6334fa7d0d1",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "7befa86ae41b2b27b8d7864fc9787db3617a3a7e0b80d7abd0bf4e516b67ee2a",
+          "bytes": 5023
+        },
+        "stages.csv": {
+          "sha256": "b5960f8d9c03a7a476e243ea5d87897fbf30a8c5a82422e2ffef24d3303476f2",
+          "bytes": 12729
+        },
+        "compiler.json": {
+          "sha256": "bd504ae73c2f849c0ddde2fd105ae3a97ae9e32335b7e64c6bb1841928e4b333",
+          "bytes": 19
+        },
+        "step-cache.json": {
+          "sha256": "c0d98912cab3bbf1aa07d25253156890d4a5bb03f4150e35a4a0d6f3c6cde20f",
+          "bytes": 298
+        },
+        "source-provenance.json": {
+          "sha256": "e1e043240fedd691b74bbdd36c870998b0f7d8e6758cb51b5b0dc71f604a006e",
+          "bytes": 591
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "experiment_id": "a100-nunchaku-flux-klein-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "nunchaku",
+        "provider": "tonera/vitoom-nunchaku (community)",
+        "version": "1.3.0.dev20260622+cu12.8torch2.11",
+        "wheel": {
+          "repo_id": "tonera/vitoom-nunchaku",
+          "revision": "85bad5510d409570527b018387491fd0c81e4727",
+          "filename": "nunchaku-1.3.0.dev20260622+cu12.8torch2.11-cp311-cp311-linux_x86_64.whl",
+          "sha256": "bcdfe6fcc36cd37da34c1d0f1e0fa7c9b4201b2a70a89a3274d22420221afd2f"
+        }
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": {
+          "method": "svdquant",
+          "component": "transformer",
+          "weights_bits": 4,
+          "activations_bits": 4,
+          "low_rank": 32,
+          "format": "int4"
+        },
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "vae_slicing": false,
+        "torch_compile": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "node": "gilbreth-g009.rcac.purdue.edu",
+      "torch": "2.11.0+cu128",
+      "diffusers": "0.40.0",
+      "median_ms": {
+        "wall_ms": 897.8261720039882,
+        "text_encode_ms": 47.08196830749512,
+        "denoise_ms": 663.2227935791016,
+        "vae_decode_ms": 164.8225326538086
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "21dc7e89ad04b809676e4ced4551e822c2e0c0d2a230bf1d2838aff8e21e7211",
+          "bytes": 2273
+        },
+        "summary.json": {
+          "sha256": "ceb96e8b219819a1bf5c8e8b1a42e002acbb1d10c8ddbe7c9ec378bcfd16cc81",
+          "bytes": 4742
+        },
+        "environment.json": {
+          "sha256": "8e23d1089609751fe82da2219902b71e118680d77be7860f5426d23fa3c85e19",
+          "bytes": 3164
+        },
+        "status.json": {
+          "sha256": "07b49fa450d303d3cd9cfb9169983fb72c9dbcb24031f52f719b5c6eb2633434",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "fbf4b2f217dc2c3face92ada957f58dd34e13ee8700c8db4d04b0d4bb8644ff3",
+          "bytes": 5096
+        },
+        "stages.csv": {
+          "sha256": "52f19435b5960ce0c55d2c1e99a8d8bf5a7ede5d3a9f8235b87b50f122189b44",
+          "bytes": 13036
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+      "experiment_id": "a100-sdcpp-flux-klein-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2429.042500021751,
+        "text_encode_ms": 65.25550001242664,
+        "denoise_ms": 1725.5240000085905,
+        "vae_decode_ms": 605.722499996773
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "f0fe1889ddae97c4c58b5f595485d00f2ad7b58619750521b2305f24625d994c",
+          "bytes": 2368
+        },
+        "summary.json": {
+          "sha256": "c0bbbd48d54965c215b0cf799a0703bd84bd6098ba522c273aa61390e74515d1",
+          "bytes": 6271
+        },
+        "environment.json": {
+          "sha256": "ca385642ed110bc8d201621facd98e4b595ad49c81d63c612ba955a7c890bdcf",
+          "bytes": 3843
+        },
+        "status.json": {
+          "sha256": "c11826728eb23376592da6f7968d76108e00218b12f564e5fb8ad4c0eae610d9",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "d458252656daf96e812875db5bf746cc5264303ff30a173dd35eafa2633122f2",
+          "bytes": 3960
+        },
+        "stages.csv": {
+          "sha256": "252be309e2a74b2e6382bd23b7541ffd6d1ac2d18f9c17c9665e6784bca14df6",
+          "bytes": 5521
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__profile__20260925-124703",
+      "experiment_id": "a100-sdcpp-flux-klein-001",
+      "selected_stage_chart": false,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 590.48.01, GPU-d1cbefb4-6866-ab2b-36c6-9bd3516e93bb, 250.00 W",
+      "node": "gilbreth-g005.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2510.3080000262707,
+        "text_encode_ms": 66.41349999699742,
+        "denoise_ms": 1785.097499989206,
+        "vae_decode_ms": 629.2240000038873
+      },
+      "profile_files": [
+        {
+          "path": "results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/other_stages.json",
+          "bytes": 8821
+        },
+        {
+          "path": "results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/denoise_kernels.json",
+          "bytes": 17665
+        },
+        {
+          "path": "results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/trace.nsys-rep",
+          "bytes": 4675934
+        },
+        {
+          "path": "results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/trace.sqlite",
+          "bytes": 11386880
+        }
+      ],
+      "source_files": {
+        "config.json": {
+          "sha256": "229fca9f6feb5f4ac93e2b74d91eac37325738616cae5ead2e30bab084024a69",
+          "bytes": 2557
+        },
+        "summary.json": {
+          "sha256": "19c850982b4c4ff0258715804a3797d67bbe9280fc4990f2cdb68f01bbf0eed3",
+          "bytes": 5931
+        },
+        "environment.json": {
+          "sha256": "6d5a2f0952319bb5a9368f2e7d58904d26779d7520eede1d7a5441f53f6cac96",
+          "bytes": 4392
+        },
+        "status.json": {
+          "sha256": "9b9673fdaea4c9ec4200663d17f8053f1e162ef1585f8feabc46c9bad3aefd35",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "957a3e8ea73375f83b7b690fdc56810cbf6783dbcc5885c4d60921a3a5ed452a",
+          "bytes": 3959
+        },
+        "stages.csv": {
+          "sha256": "cf6b379f699a5c42f8fd0fca165f9071819a61cec6fa9cc67ec3ea99d30e6285",
+          "bytes": 5518
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-002__baseline__20261005-220636",
+      "experiment_id": "a100-sdcpp-flux-klein-002",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": {
+          "mode": "easycache",
+          "reuse_threshold": 0.2,
+          "start_percent": 0.15,
+          "end_percent": 0.95
+        },
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2435.7510000118054,
+        "text_encode_ms": 65.11650001630187,
+        "denoise_ms": 1734.357999986969,
+        "vae_decode_ms": 607.4340000050142
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "e5cced912a8075311a04ce0a72620386564e0ba7d6f45ec5d9ff81e50d777f08",
+          "bytes": 2610
+        },
+        "summary.json": {
+          "sha256": "63de400de9f9d988958395a2d3ac58a7121d05eb8b96ec9fa71fe0a7f02c3550",
+          "bytes": 6646
+        },
+        "environment.json": {
+          "sha256": "b56726ec46a7f926d7c9efd1e2652b8c520a2418a1f98cb0b6694e4d2cbd9cf9",
+          "bytes": 3843
+        },
+        "status.json": {
+          "sha256": "89a74dab70d984dd0f1d42a6be2828e0201eaeb7adcbc47c936ac5efd18cf684",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "287320e15e4c1f05617c2aad079efe918d249293367eefe178664e47e6e7a07e",
+          "bytes": 3956
+        },
+        "stages.csv": {
+          "sha256": "97902e51a7006d14094a97a53dc565a7b33ff9e2162561e23ebc3334a5d9e573",
+          "bytes": 5522
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-003__baseline__20261005-220737",
+      "experiment_id": "a100-sdcpp-flux-klein-003",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false,
+        "conditioning_cache_size": 1
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2389.444500004174,
+        "text_encode_ms": 13.175999993109144,
+        "denoise_ms": 1732.9624999983935,
+        "vae_decode_ms": 614.9545000080252
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "1e654f2434003be255ac006fa377982712d132e09aaef4344ba7f4c38df38df8",
+          "bytes": 2538
+        },
+        "summary.json": {
+          "sha256": "2fffb0da513255c01f9b76c74f277b120d7d8f9540f3e0b5f8d7a68fe0cd1d94",
+          "bytes": 6273
+        },
+        "environment.json": {
+          "sha256": "b9d06a3db63b65872026f0fab723d65d762271bdce41dbb588f328ec2ad07d28",
+          "bytes": 3843
+        },
+        "status.json": {
+          "sha256": "e85e650e6c8961f1e10e3a1793087c45b038e7bf8c16ff275f30b8ffd6dc409d",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "7e0503cb7b6a84960f6d03a9d857f13a441ed7604f44770f6167aec40db08ae4",
+          "bytes": 3979
+        },
+        "stages.csv": {
+          "sha256": "5a1d78ada466bce7162f37856b53e7943f7bc16f6fe07ed628877610b46e567e",
+          "bytes": 5501
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-004__baseline__20261005-220938",
+      "experiment_id": "a100-sdcpp-flux-klein-004",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false,
+        "prefetch": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2428.830000004382,
+        "text_encode_ms": 65.038500004448,
+        "denoise_ms": 1726.22599999886,
+        "vae_decode_ms": 607.1475000208011
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "9d43c4fee4e9fc4ef7aea4f2a41282066c92d43295591c6ac38cbc13d23b2d4f",
+          "bytes": 2519
+        },
+        "summary.json": {
+          "sha256": "97a948ed3c78cd23cc7c4041b3d52d6c993300bd5e0049117231848fd803f2bb",
+          "bytes": 6258
+        },
+        "environment.json": {
+          "sha256": "f239017ed4c4d5111a24c75e143822c9267b8c7819999dc7ede4757d3a88e644",
+          "bytes": 3843
+        },
+        "status.json": {
+          "sha256": "1436577431ddaf2f00e88aeecaa76c9ef1894e2b34ba2da550ee47ffa038ad15",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "1e64665f300ecebea400d128f7c5f663add5d7bd3f32e9786f486a3d0ba072cf",
+          "bytes": 3962
+        },
+        "stages.csv": {
+          "sha256": "6e52b4d21e62469d9a51ed98f96c6ee38ab385ba2714f9fea94c33601c114dec",
+          "bytes": 5522
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-005__baseline__20261005-221039",
+      "experiment_id": "a100-sdcpp-flux-klein-005",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false,
+        "mmap": true
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 2439.5424999966053,
+        "text_encode_ms": 65.08200000098441,
+        "denoise_ms": 1735.2840000094147,
+        "vae_decode_ms": 609.3200000032084
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "50aa2b481599de816cadd546328faf05c90edfa5562d72f2764cda855d55221a",
+          "bytes": 2507
+        },
+        "summary.json": {
+          "sha256": "b51d28c876496d40511df34bbca5c90cbd27a1a089ecf5602941bad8ea79d4d6",
+          "bytes": 6441
+        },
+        "environment.json": {
+          "sha256": "e9f4e0be9c900a099769b8bef8ff2ee94c743669dcbd6f0abba98b82dfd7d8bb",
+          "bytes": 3843
+        },
+        "status.json": {
+          "sha256": "7248ace39555ddd6b1d1b3a37c951aa30c513af61b021ddd02abc2ed61f29ec6",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "7a531424087f4459649d5ed04b60898750fc3e668203cd784ad5d913023e2474",
+          "bytes": 3954
+        },
+        "stages.csv": {
+          "sha256": "43d8876a771f2e1c5279279b3e656122dd9b2f6c64572d3dea362cfddf1d407d",
+          "bytes": 5522
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-base-001__baseline__20261005-080118",
+      "experiment_id": "a100-sdcpp-flux-klein-base-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-20261004"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-8bad8008-0310-578d-7c12-e4705e7e6e42, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 43686.405500004184,
+        "text_encode_ms": 119.12999999185558,
+        "denoise_ms": 42923.01199999929,
+        "vae_decode_ms": 612.246500008041
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "42f675c94e5a4309cc80fa10f62c11233717bf6723fa628b4f2cb56d012d69c1",
+          "bytes": 2414
+        },
+        "summary.json": {
+          "sha256": "e565d95e867d8d9363ffc082ff7fac03c0f20527f6c2794dce6b7d970f5d0b52",
+          "bytes": 17866
+        },
+        "environment.json": {
+          "sha256": "1952fddab6da07a4147962290d7a90adc875d8d77c26ba7f3d29d80432cdbc8d",
+          "bytes": 4047
+        },
+        "status.json": {
+          "sha256": "7a2323cf2b6aa90fa0c63abdcd21292fd357913d495213646989ccc766dabfc7",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "c15f89df0bb6a5354e4853dc0e5dc05d72f7cd20b66651bd5f5e959b74cfda1b",
+          "bytes": 16300
+        },
+        "stages.csv": {
+          "sha256": "2a9c6ff0a23297b47e806c20b9dc140420eff37998cfe99c5f0f3efa521a77f1",
+          "bytes": 48244
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-base-001__baseline__20261005-214624",
+      "experiment_id": "a100-sdcpp-flux-klein-base-001",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 43976.167000000714,
+        "text_encode_ms": 121.09550001332536,
+        "denoise_ms": 43209.511000008206,
+        "vae_decode_ms": 611.1494999931892
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "7718fe0cef4a949dbd5ec3667e0153f675d7d19e61b62b841205b0a32c1d9515",
+          "bytes": 2451
+        },
+        "summary.json": {
+          "sha256": "71ba25db24b763a468a6b974385f2eb7d3238a299d3e8f4aff6bc24b7b50ba75",
+          "bytes": 17934
+        },
+        "environment.json": {
+          "sha256": "84d2ce6b3a3854161c556f669dd3ac27157a00d70917896faec8e26761fe0a23",
+          "bytes": 4392
+        },
+        "status.json": {
+          "sha256": "2495c016f5ae7fb9d0cc6a1ddadeeac14555b4adac2b4271238d60137ad91e20",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "3bdfb50b2979233bcb2a21ea77f36e3323d5bd4df7325331708051077cb869b0",
+          "bytes": 16283
+        },
+        "stages.csv": {
+          "sha256": "9167a062120c7022e58cc907604c08543937c0e03e8ffb78225d07f4dfc3aa3e",
+          "bytes": 48239
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-base-002__baseline__20261005-215731",
+      "experiment_id": "a100-sdcpp-flux-klein-base-002",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": {
+          "mode": "easycache",
+          "reuse_threshold": 0.2,
+          "start_percent": 0.15,
+          "end_percent": 0.95
+        },
+        "auto_fit": false
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-690eaa5a-6bab-0c37-d625-556a9dfb5643, 250.00 W",
+      "node": "gilbreth-g007.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 24192.53000000026,
+        "text_encode_ms": 118.9790000062203,
+        "denoise_ms": 23432.649500013213,
+        "vae_decode_ms": 611.2995000148658
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "6c73fa404ac9a861c97ae2fd874fa1870cf90227c9f6f14c17f5097189dc865c",
+          "bytes": 2664
+        },
+        "summary.json": {
+          "sha256": "74477902f15a84b649e4373e337cb621e202e7bd56ca9969eb3ebf28c2283744",
+          "bytes": 18438
+        },
+        "environment.json": {
+          "sha256": "f23163c6a8583ab3c21f230b502018cbad13e3dc2dc86ccc1e203865c31be209",
+          "bytes": 4392
+        },
+        "status.json": {
+          "sha256": "9ddb9a275e7af1b029c568d32d815496d1a4853ff219e52847a695cf89beaeae",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "562a34f0fd2b185491a7535ca852a4c56cd0d92f1990b4bdf216a2c114cc700f",
+          "bytes": 16518
+        },
+        "stages.csv": {
+          "sha256": "0d123ae6c49f806e9016c601dd6f6e92db29219896abb93281f79b0cb46ae141",
+          "bytes": 43815
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-base-003__baseline__20261006-095509",
+      "experiment_id": "a100-sdcpp-flux-klein-base-003",
+      "selected_stage_chart": true,
+      "status": "complete",
+      "measured_runs": 10,
+      "engine": {
+        "name": "stable-diffusion.cpp",
+        "tag": "master-919-19bbbca",
+        "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+        "ggml_commit": "4bf5f6000653b7881d00963cd6ddb665ccd62a8d",
+        "source_dir": "~/tools/stable-diffusion.cpp",
+        "build_flags": "-DSD_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=80 -DCMAKE_BUILD_TYPE=Release",
+        "bench_build_dir": "~/tools/sd-bench-build-cache-20261005"
+      },
+      "precision": "bfloat16",
+      "workload": {
+        "seed": 0,
+        "batch_size": 1,
+        "height": 1024,
+        "width": 1024,
+        "num_inference_steps": 50,
+        "guidance_scale": 4.0,
+        "max_sequence_length": 512
+      },
+      "optimizations": {
+        "quantization": null,
+        "cpu_offload": false,
+        "vae_tiling": false,
+        "step_cache": null,
+        "auto_fit": false,
+        "conditioning_cache_size": 2
+      },
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-e4448b86-f07f-16f6-7dd5-325666c5aa40, 250.00 W",
+      "node": "gilbreth-g000.rcac.purdue.edu",
+      "torch": null,
+      "diffusers": null,
+      "median_ms": {
+        "wall_ms": 43767.16200000374,
+        "text_encode_ms": 15.111000000615604,
+        "denoise_ms": 43110.18799999147,
+        "vae_decode_ms": 613.0905000027269
+      },
+      "profile_files": [],
+      "source_files": {
+        "config.json": {
+          "sha256": "c05a8e38ffe70cf40203961f671070bcf545ce2045f25f85522ebf2a0347e425",
+          "bytes": 2523
+        },
+        "summary.json": {
+          "sha256": "4e674a1967c28371584fb0e27d2b411bc47a22d273f836840e5d7306b87fad0f",
+          "bytes": 18204
+        },
+        "environment.json": {
+          "sha256": "4815471dd24dfa2199853a258eadb2de4477d1168b4420eb579cad6a6ca4db59",
+          "bytes": 3797
+        },
+        "status.json": {
+          "sha256": "028e789f514d9776680e5efc961ead14d04c63239ba6555ca08d8d9cf86cc289",
+          "bytes": 110
+        },
+        "runs.csv": {
+          "sha256": "f391a8832aaa2ef40748c899f304c54880e8dd995f5dd57ea4f30608032289ff",
+          "bytes": 16320
+        },
+        "stages.csv": {
+          "sha256": "2d2e354be6bea5764b12f3c5bd87e22c9ebff68b756c4f2b5bdb68b10e5dc35d",
+          "bytes": 48193
+        }
+      },
+      "counter_status": "No local Nsight Compute report identified; analytic FLOPs are not instruction counters."
+    }
+  ],
+  "profiles": [
+    {
+      "run_dir": "a100-flux-klein-001__profile__20260923-221717",
+      "path": "results/runs/a100-flux-klein-001__profile__20260923-221717/profile/denoise_kernels.json",
+      "sha256": "ff634133ef3966bd0eea6e369f031f2ba7d783b49ce585580f02c911e7f4d036",
+      "stages": 4,
+      "kernel_events_summed": 5724,
+      "gemm_shape_entries": 60,
+      "attention_shape_entries": 4,
+      "gpu": "NVIDIA A100-PCIE-40GB"
+    },
+    {
+      "run_dir": "a100-flux-klein-base-001__profile__20261005-075123",
+      "path": "results/runs/a100-flux-klein-base-001__profile__20261005-075123/profile/stage_kernels.json",
+      "sha256": "43e728ded25f2a5ae3e9a5f9b19be98bc68e73ad6f19175018b3f8c8e87e7ae7",
+      "stages": 53,
+      "kernel_events_summed": 147929,
+      "gemm_shape_entries": 758,
+      "attention_shape_entries": 52,
+      "gpu": "NVIDIA A100-PCIE-40GB"
+    },
+    {
+      "run_dir": "a100-sdcpp-flux-klein-001__profile__20260925-124703",
+      "path": "results/runs/a100-sdcpp-flux-klein-001__profile__20260925-124703/profile/denoise_kernels.json",
+      "sha256": "6c54c55bf8e16f2fdcdad2b0ca84bcd6840e8b23f200dae33f4896a569314a08",
+      "stages": 4,
+      "kernel_events_summed": 4532,
+      "gemm_shape_entries": 0,
+      "attention_shape_entries": 0,
+      "gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 590.48.01, GPU-d1cbefb4-6866-ab2b-36c6-9bd3516e93bb, 250.00 W"
+    }
+  ],
+  "local_counter_file_candidates": []
+}

@@ -1,0 +1,18 @@
+{
+  "expected": {
+    "torch": "2.8.0+cu126",
+    "diffusers": "0.40.0",
+    "transformers": "5.16.1",
+    "gpu_name": "NVIDIA A100-PCIE-40GB",
+    "torch_cuda_runtime": "12.6",
+    "cudnn": 91002
+  },
+  "actual": {
+    "torch": "2.8.0+cu126",
+    "diffusers": "0.40.0",
+    "transformers": "5.16.1",
+    "gpu_name": "NVIDIA A100-PCIE-40GB",
+    "torch_cuda_runtime": "12.6",
+    "cudnn": 91002
+  }
+}
