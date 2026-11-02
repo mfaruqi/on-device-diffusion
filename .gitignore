@@ -84,6 +84,7 @@ results/runs/**/stdout.txt
 !/output/a100-roofline-prep/
 !/output/roofline-a100-20261021/
 !/output/roofline-a100-measured/
+!/output/roofline-jetson-measured/
 output/**/*.html
 output/**/*.png
 output/**/wandb/
