@@ -1,0 +1,54 @@
+{
+  "description": "Configurations scored on the GenEval 96-prompt calibration subset (4 seeds) with GenEval and the four prompt-image preference metrics, joined with end-to-end latency from their benchmark runs. Selection: per device and workload, the fastest completed configurations of each engine whose images exist, plus each engine's reference. Conditioning reuse is not a quality configuration (exact reuse; images unchanged) and is excluded from latency where a run without it exists; rows whose only benchmark used it are flagged. Variants are compared only with the reference of the same engine, workload and device class.",
+  "subset": "calibration_subset",
+  "groups": [
+    {
+      "device": "a100-pcie-40gb", "workload": "distilled 1024², 4 steps", "engine": "PyTorch (BF16)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {"label": "reference", "images": "a100-flux-klein-torch28-001__geneval-calibration_subset__20261024-192745", "bench": "a100-flux-klein-torch28-001__baseline__20261015-151548"},
+      "variants": [
+        {"label": "torch.compile", "images": "a100-flux-klein-compile-001__geneval-calibration_subset__20261024-194449", "bench": "a100-flux-klein-compile-001__baseline__20261015-151740"},
+        {"label": "TaylorSeer", "images": "a100-flux-klein-torch28-004__geneval-calibration_subset__20261024-195927", "bench": "a100-flux-klein-torch28-004__baseline__20261015-151949"}
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb", "workload": "Base 1024², 50 steps, CFG 4", "engine": "PyTorch (BF16)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {"label": "reference", "images": "a100-flux-klein-base-torch28-001__geneval-calibration_subset__20261024-205729", "bench": "a100-flux-klein-base-torch28-001__baseline__20261015-155338"},
+      "variants": [
+        {"label": "torch.compile", "images": "a100-flux-klein-base-torch28-004__geneval-calibration_subset__20261025-011144", "bench": "a100-flux-klein-base-torch28-004__baseline__20261015-161253"},
+        {"label": "TaylorSeer", "images": "a100-flux-klein-base-torch28-003__geneval-calibration_subset__20261024-235542", "bench": "a100-flux-klein-base-torch28-003__baseline__20261015-160821"}
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb", "workload": "Base 1024², 50 steps, CFG 4", "engine": "edge-dit.cpp (Q4_0)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {"label": "reference", "images": "a100-edgedit-flux-klein-base-001__geneval-calibration_subset__20261026-045452", "bench": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052"},
+      "variants": [
+        {"label": "MagCache", "images": "a100-edgedit-flux-klein-base-007__geneval-calibration_subset__20261026-200541", "bench": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238"},
+        {"label": "DiCache", "images": "a100-edgedit-flux-klein-base-008__geneval-calibration_subset__20261026-133147", "bench": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727"},
+        {"label": "TaylorSeer", "images": "a100-edgedit-flux-klein-base-005__geneval-calibration_subset__20261026-101028", "bench": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406"},
+        {"label": "EasyCache", "images": "a100-edgedit-flux-klein-base-002__geneval-calibration_subset__20261026-161831", "bench": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356"}
+      ]
+    },
+    {
+      "device": "jetson-orin-nano", "workload": "distilled 512², 4 steps", "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {"label": "reference", "images": "a100-geneval-torch-flux-klein-q4-nf4-512__geneval-calibration_subset__20261026-002058", "bench": "jetson-torch-flux-klein-001__baseline__20261014-171410"},
+      "variants": [
+        {"label": "torch.compile", "images": "a100-geneval-torch-flux-klein-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-002809", "bench": "jetson-torch-flux-klein-007__baseline__20261015-145234", "latency_flag": "benchmark used conditioning reuse (no run without it); latency excludes the text encoder and its weight swap"},
+        {"label": "TaylorSeer", "images": "a100-geneval-torch-flux-klein-q4-nf4-512-taylorseer__geneval-calibration_subset__20261026-003222", "bench": "jetson-torch-flux-klein-006__baseline__20261015-142456"},
+        {"label": "VAE tiling", "images": "a100-geneval-torch-flux-klein-q4-nf4-512-vaetile__geneval-calibration_subset__20261026-003715", "bench": "jetson-torch-flux-klein-003__baseline__20261014-180843"},
+        {"label": "SDPA math", "images": "a100-geneval-torch-flux-klein-q4-nf4-512-sdpa-math__geneval-calibration_subset__20261026-092207", "bench": "jetson-torch-flux-klein-002__baseline__20261014-174108"}
+      ]
+    },
+    {
+      "device": "jetson-orin-nano", "workload": "Base 512², 50 steps, CFG 4", "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {"label": "reference", "images": "a100-geneval-torch-flux-klein-base-q4-nf4-512__geneval-calibration_subset__20261026-005416", "bench": "jetson-torch-flux-klein-base-001__baseline__20261016-050136"},
+      "variants": [
+        {"label": "torch.compile", "images": "a100-geneval-torch-flux-klein-base-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-024726", "bench": "jetson-torch-flux-klein-base-004__baseline__20261016-033850", "latency_flag": "benchmark used conditioning reuse (no run without it); latency excludes the text encoder and its weight swap"}
+      ]
+    }
+  ]
+}

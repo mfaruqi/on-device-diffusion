@@ -663,6 +663,28 @@ The proposal's formal image-quality requirement is a maximum degradation on GenE
   two-sided McNemar test on discordant images. A variant is compared only with the reference configuration of
   the same engine, workload and device class.
 
+## Prompt-image preference scores
+
+Four learned scores reported next to GenEval, on the same GenEval images (no extra generation). They are
+diagnostics: GenEval stays the formal quality requirement. Each image is scored against its own prompt by
+[reward_score.py](../../scripts/reward_score.py) (FP32, one GPU; model revisions and checkpoint SHA256 pinned in
+`configs/quality/reward-models.resolved.json`, written by `--prepare-only`; scoring runs offline).
+
+| Metric | Model | Per-image value |
+|---|---|---|
+| CLIP score | `openai/clip-vit-large-patch14` | cosine similarity of the image and prompt embeddings (no ×100, no clipping at 0) |
+| PickScore | `yuvalkirstain/PickScore_v1`, processor `laion/CLIP-ViT-H-14-laion2B-s32B-b79K` | `logit_scale.exp()` × cosine similarity (≈ 20–23; some papers divide by 100) |
+| HPS v2.1 | `xswu/HPSv2` `HPS_v2.1_compressed.pt` on open_clip ViT-H-14 | cosine similarity of the image and prompt embeddings |
+| ImageReward | `THUDM/ImageReward` `ImageReward.pt` (BLIP, `image-reward` 1.5) | the model's normalized reward (`score()`), unbounded, ≈ 0 for an average image |
+
+- A configuration's value is the mean over its images (96 prompts × 4 seeds on the calibration subset). Prompts
+  longer than 77 CLIP tokens are truncated.
+- [quality_table.py](../../scripts/quality_table.py) pairs a variant with its engine's reference by (prompt, seed)
+  and reports the difference and a 95% bootstrap interval over prompts (10,000 draws, seed 0), the same
+  resampling as GenEval. Values from different generation devices or workloads are not compared.
+- Images of a device's configuration may be generated on another GPU from the same weights and settings
+  (the `generated_on` field of `configs/quality/selection-*.json`).
+
 ## Nsight Compute hardware counters (A100)
 
 The [counter controller](../../scripts/profile_a100_counters.py) uses the unchanged [reference config](../../configs/a100-flux-klein-torch28-ncu.json) and portable runner; [capture procedure](../../docs/a100-hardware-counters.md). The original first + warm-up + measured prefix runs attached to NCU with capture disabled. Its summary is labelled `profiler=nsight-compute`, `timing_scope=profiler-attached, capture-disabled prefix`; these timings are diagnostic, not a replacement baseline. One additional image is captured separately in `profile/captured-generation.json` and excluded from `runs.csv`/summary aggregates.

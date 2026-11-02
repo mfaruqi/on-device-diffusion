@@ -1,0 +1,745 @@
+{
+  "selection": "configs/quality/selection-20261102.json",
+  "subset": "calibration_subset",
+  "rows": [
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024\u00b2, 4 steps",
+      "engine": "PyTorch (BF16)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-torch28-001__geneval-calibration_subset__20261024-192745",
+      "bench": "a100-flux-klein-torch28-001__baseline__20261015-151548",
+      "latency_flag": "",
+      "latency_s": 1.290462295000907,
+      "latency_min_s": 1.283260232070461,
+      "latency_max_s": 1.2944270339794457,
+      "n": 10,
+      "memory_gib": 20.62054443359375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7994791666666666,
+      "clip": 0.2906988312800725,
+      "pickscore": 23.44275965789954,
+      "hps": 0.3011864797445014,
+      "imagereward": 1.163560011225248
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024\u00b2, 4 steps",
+      "engine": "PyTorch (BF16)",
+      "config": "torch.compile",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-compile-001__geneval-calibration_subset__20261024-194449",
+      "bench": "a100-flux-klein-compile-001__baseline__20261015-151740",
+      "latency_flag": "",
+      "latency_s": 1.0218703410355374,
+      "latency_min_s": 1.011271412950009,
+      "latency_max_s": 1.0238182869507,
+      "n": 10,
+      "memory_gib": 20.43695068359375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 1.2628434774740456,
+      "images_n": 384,
+      "geneval": 0.796875,
+      "geneval_delta": -0.0026041666666666297,
+      "geneval_ci95": [
+        -0.014285714285714346,
+        0.009247076023391698
+      ],
+      "clip": 0.29105518218905974,
+      "clip_delta": 0.0003563509089872241,
+      "clip_ci95": [
+        -0.00017195769275224482,
+        0.0008781596552580595
+      ],
+      "pickscore": 23.451465273896854,
+      "pickscore_delta": 0.008705615997314453,
+      "pickscore_ci95": [
+        -0.002051721016567143,
+        0.02000277241071302
+      ],
+      "hps": 0.3013920052132259,
+      "hps_delta": 0.00020552546872448785,
+      "hps_ci95": [
+        -7.46071261043535e-05,
+        0.0005008229830613109
+      ],
+      "imagereward": 1.1704180510481212,
+      "imagereward_delta": 0.006858039822873252,
+      "imagereward_ci95": [
+        7.919414201751351e-05,
+        0.014419406649418764
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024\u00b2, 4 steps",
+      "engine": "PyTorch (BF16)",
+      "config": "TaylorSeer",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-torch28-004__geneval-calibration_subset__20261024-195927",
+      "bench": "a100-flux-klein-torch28-004__baseline__20261015-151949",
+      "latency_flag": "",
+      "latency_s": 0.8541769050061703,
+      "latency_min_s": 0.8440769489388913,
+      "latency_max_s": 0.858987447922118,
+      "n": 10,
+      "memory_gib": 21.80999755859375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 1.5107670172744663,
+      "images_n": 384,
+      "geneval": 0.7760416666666666,
+      "geneval_delta": -0.0234375,
+      "geneval_ci95": [
+        -0.06947541186671635,
+        0.020150672448466578
+      ],
+      "clip": 0.2885190552721421,
+      "clip_delta": -0.0021797760079304007,
+      "clip_ci95": [
+        -0.0045813715162997815,
+        0.00018195838977891343
+      ],
+      "pickscore": 22.819121489922207,
+      "pickscore_delta": -0.6236381679773331,
+      "pickscore_ci95": [
+        -0.710535968343418,
+        -0.5403189063072205
+      ],
+      "hps": 0.2879358478433763,
+      "hps_delta": -0.013250631901125132,
+      "hps_ci95": [
+        -0.015423114411532879,
+        -0.011263561473848882
+      ],
+      "imagereward": 1.0643460888580496,
+      "imagereward_delta": -0.09921392236719839,
+      "imagereward_ci95": [
+        -0.16386196456248103,
+        -0.04044966585691623
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "PyTorch (BF16)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-base-torch28-001__geneval-calibration_subset__20261024-205729",
+      "bench": "a100-flux-klein-base-torch28-001__baseline__20261015-155338",
+      "latency_flag": "",
+      "latency_s": 26.476562472933438,
+      "latency_min_s": 26.38092245697044,
+      "latency_max_s": 26.596742474939674,
+      "n": 10,
+      "memory_gib": 20.62249755859375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7473958333333334,
+      "clip": 0.2921583024629702,
+      "pickscore": 23.162743245561916,
+      "hps": 0.29339229214626056,
+      "imagereward": 0.986608617414125
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "PyTorch (BF16)",
+      "config": "torch.compile",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-base-torch28-004__geneval-calibration_subset__20261025-011144",
+      "bench": "a100-flux-klein-base-torch28-004__baseline__20261015-161253",
+      "latency_flag": "",
+      "latency_s": 19.525410258036572,
+      "latency_min_s": 19.455853556049988,
+      "latency_max_s": 19.600205855094828,
+      "n": 10,
+      "memory_gib": 20.43695068359375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 1.3560054371731216,
+      "images_n": 384,
+      "geneval": 0.7421875,
+      "geneval_delta": -0.00520833333333337,
+      "geneval_ci95": [
+        -0.02377946127946129,
+        0.012896825396825351
+      ],
+      "clip": 0.29174957253659767,
+      "clip_delta": -0.0004087299263725308,
+      "clip_ci95": [
+        -0.0012123312723512636,
+        0.0003875093534588814
+      ],
+      "pickscore": 23.15397208929062,
+      "pickscore_delta": -0.008771156271297542,
+      "pickscore_ci95": [
+        -0.02839619417985162,
+        0.009669244289398193
+      ],
+      "hps": 0.29307321459054947,
+      "hps_delta": -0.0003190775557110892,
+      "hps_ci95": [
+        -0.0008005882458140268,
+        0.0001599663325274614
+      ],
+      "imagereward": 0.9779509284708183,
+      "imagereward_delta": -0.008657688943306652,
+      "imagereward_ci95": [
+        -0.026519332149291586,
+        0.007002249706905106
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "PyTorch (BF16)",
+      "config": "TaylorSeer",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-flux-klein-base-torch28-003__geneval-calibration_subset__20261024-235542",
+      "bench": "a100-flux-klein-base-torch28-003__baseline__20261015-160821",
+      "latency_flag": "",
+      "latency_s": 9.980692410492338,
+      "latency_min_s": 9.940086796996184,
+      "latency_max_s": 9.992910982109606,
+      "n": 10,
+      "memory_gib": 23.37054443359375,
+      "memory_kind": "GPU device-wide peak (NVML), median per generation",
+      "speedup": 2.6527781223975597,
+      "images_n": 384,
+      "geneval": 0.7317708333333334,
+      "geneval_delta": -0.015625,
+      "geneval_ci95": [
+        -0.04121886759754412,
+        0.008630952380952461
+      ],
+      "clip": 0.2899368084035814,
+      "clip_delta": -0.0022214940593888177,
+      "clip_ci95": [
+        -0.004127537754053889,
+        -0.00033607520163059235
+      ],
+      "pickscore": 23.018003876010578,
+      "pickscore_delta": -0.14473936955133837,
+      "pickscore_ci95": [
+        -0.1931849718093872,
+        -0.09783349434534472
+      ],
+      "hps": 0.29023679237191874,
+      "hps_delta": -0.003155499774341819,
+      "hps_ci95": [
+        -0.004226762956629215,
+        -0.002154066848258196
+      ],
+      "imagereward": 0.9252249981063869,
+      "imagereward_delta": -0.06138361930773806,
+      "imagereward_ci95": [
+        -0.11151412419849294,
+        -0.014180047180313182
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-base-001__geneval-calibration_subset__20261026-045452",
+      "bench": "a100-edgedit-flux-klein-base-001__baseline__20261015-165052",
+      "latency_flag": "",
+      "latency_s": 49.4285,
+      "latency_min_s": 49.408,
+      "latency_max_s": 49.444,
+      "n": 10,
+      "memory_gib": 11.73187255859375,
+      "memory_kind": "GPU device-wide peak (NVML), whole capture",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7317708333333334,
+      "clip": 0.28498399214974296,
+      "pickscore": 23.03798757493496,
+      "hps": 0.2869320770647998,
+      "imagereward": 0.8462234406324569
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "MagCache",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-base-007__geneval-calibration_subset__20261026-200541",
+      "bench": "a100-edgedit-flux-klein-base-007__baseline__20261015-175238",
+      "latency_flag": "",
+      "latency_s": 15.7075,
+      "latency_min_s": 15.538,
+      "latency_max_s": 15.843,
+      "n": 10,
+      "memory_gib": 12.01898193359375,
+      "memory_kind": "GPU device-wide peak (NVML), whole capture",
+      "speedup": 3.1468088492758235,
+      "images_n": 384,
+      "geneval": 0.7239583333333334,
+      "geneval_delta": -0.0078125,
+      "geneval_ci95": [
+        -0.0359862329434697,
+        0.01938540260908672
+      ],
+      "clip": 0.28560451437563944,
+      "clip_delta": 0.0006205222258964804,
+      "clip_ci95": [
+        -0.0009844915863747583,
+        0.002171782970738889
+      ],
+      "pickscore": 22.9290173749129,
+      "pickscore_delta": -0.10897020002206048,
+      "pickscore_ci95": [
+        -0.15124466021855554,
+        -0.0678587406873703
+      ],
+      "hps": 0.2810618724130715,
+      "hps_delta": -0.0058702046517282724,
+      "hps_ci95": [
+        -0.00717715329180163,
+        -0.004619842045940459
+      ],
+      "imagereward": 0.7960358310932255,
+      "imagereward_delta": -0.050187609539231404,
+      "imagereward_ci95": [
+        -0.09702032572143549,
+        -0.0063672655742266215
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "DiCache",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-base-008__geneval-calibration_subset__20261026-133147",
+      "bench": "a100-edgedit-flux-klein-base-008__baseline__20261015-175727",
+      "latency_flag": "",
+      "latency_s": 25.1545,
+      "latency_min_s": 25.023,
+      "latency_max_s": 25.462,
+      "n": 10,
+      "memory_gib": 12.63031005859375,
+      "memory_kind": "GPU device-wide peak (NVML), whole capture",
+      "speedup": 1.9649963227255562,
+      "images_n": 384,
+      "geneval": 0.7265625,
+      "geneval_delta": -0.00520833333333337,
+      "geneval_ci95": [
+        -0.020200742240215952,
+        0.009398148148148211
+      ],
+      "clip": 0.28593154457242537,
+      "clip_delta": 0.0009475524226824072,
+      "clip_ci95": [
+        8.669359764706952e-05,
+        0.0017142752185463905
+      ],
+      "pickscore": 23.024439106384914,
+      "pickscore_delta": -0.0135484685500451,
+      "pickscore_ci95": [
+        -0.03556426862875384,
+        0.007168774803478328
+      ],
+      "hps": 0.28563952748663723,
+      "hps_delta": -0.0012925495781625496,
+      "hps_ci95": [
+        -0.0018039742717519403,
+        -0.0007933075151716484
+      ],
+      "imagereward": 0.8328572263684085,
+      "imagereward_delta": -0.013366214264048382,
+      "imagereward_ci95": [
+        -0.028921890669153072,
+        0.001020582579561391
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "TaylorSeer",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-base-005__geneval-calibration_subset__20261026-101028",
+      "bench": "a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+      "latency_flag": "",
+      "latency_s": 31.128,
+      "latency_min_s": 31.049,
+      "latency_max_s": 31.372,
+      "n": 10,
+      "memory_gib": 12.20648193359375,
+      "memory_kind": "GPU device-wide peak (NVML), whole capture",
+      "speedup": 1.5879112053456694,
+      "images_n": 384,
+      "geneval": 0.7317708333333334,
+      "geneval_delta": 0.0,
+      "geneval_ci95": [
+        -0.014612661303837648,
+        0.01458333333333317
+      ],
+      "clip": 0.2847287773620337,
+      "clip_delta": -0.0002552147877092348,
+      "clip_ci95": [
+        -0.0008910148171707988,
+        0.00036635393432032926
+      ],
+      "pickscore": 23.039061024785042,
+      "pickscore_delta": 0.0010734498500823975,
+      "pickscore_ci95": [
+        -0.015989546974498836,
+        0.017790481448173523
+      ],
+      "hps": 0.2866248793822403,
+      "hps_delta": -0.0003071976825594902,
+      "hps_ci95": [
+        -0.0007362129399552941,
+        8.510809857398272e-05
+      ],
+      "imagereward": 0.8475776956174741,
+      "imagereward_delta": 0.0013542549850171781,
+      "imagereward_ci95": [
+        -0.008597255481618049,
+        0.011732338801569653
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "Base 1024\u00b2, 50 steps, CFG 4",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "EasyCache",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-base-002__geneval-calibration_subset__20261026-161831",
+      "bench": "a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+      "latency_flag": "",
+      "latency_s": 35.4355,
+      "latency_min_s": 35.426,
+      "latency_max_s": 35.453,
+      "n": 10,
+      "memory_gib": 11.73187255859375,
+      "memory_kind": "GPU device-wide peak (NVML), whole capture",
+      "speedup": 1.3948864838932709,
+      "images_n": 384,
+      "geneval": 0.7317708333333334,
+      "geneval_delta": 0.0,
+      "geneval_ci95": [
+        -0.03105936819172106,
+        0.03003323836657157
+      ],
+      "clip": 0.2873840103857219,
+      "clip_delta": 0.0024000182359789624,
+      "clip_ci95": [
+        0.0007101830172662749,
+        0.004081883778174755
+      ],
+      "pickscore": 22.90252696474393,
+      "pickscore_delta": -0.1354606101910285,
+      "pickscore_ci95": [
+        -0.18247672418753424,
+        -0.09165002405643463
+      ],
+      "hps": 0.2734879487737392,
+      "hps_delta": -0.013444128291060564,
+      "hps_ci95": [
+        -0.014990858656043826,
+        -0.011955806713861705
+      ],
+      "imagereward": 0.771709695603325,
+      "imagereward_delta": -0.07451374502913188,
+      "imagereward_ci95": [
+        -0.10571664553208393,
+        -0.04614061882117926
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-q4-nf4-512__geneval-calibration_subset__20261026-002058",
+      "bench": "jetson-torch-flux-klein-001__baseline__20261014-171410",
+      "latency_flag": "",
+      "latency_s": 80.31490273750387,
+      "latency_min_s": 78.16975025099237,
+      "latency_max_s": 82.5991944380221,
+      "n": 10,
+      "memory_gib": 6.1142578125,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7734375,
+      "clip": 0.29023932296937954,
+      "pickscore": 23.303928310672443,
+      "hps": 0.2975447280332446,
+      "imagereward": 1.1400601858137331
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "torch.compile",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-002809",
+      "bench": "jetson-torch-flux-klein-007__baseline__20261015-145234",
+      "latency_flag": "benchmark used conditioning reuse (no run without it); latency excludes the text encoder and its weight swap",
+      "latency_s": 7.783626020012889,
+      "latency_min_s": 7.7555487860227,
+      "latency_max_s": 7.796753465023357,
+      "n": 10,
+      "memory_gib": 6.5517578125,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 10.31844316916075,
+      "images_n": 384,
+      "geneval": 0.7708333333333334,
+      "geneval_delta": -0.0026041666666666297,
+      "geneval_ci95": [
+        -0.0189588189588189,
+        0.015038780663780504
+      ],
+      "clip": 0.29021523795866716,
+      "clip_delta": -2.408501071238245e-05,
+      "clip_ci95": [
+        -0.000628028026161076,
+        0.0005132549752792093
+      ],
+      "pickscore": 23.311609690388043,
+      "pickscore_delta": 0.007681379715599235,
+      "pickscore_ci95": [
+        -0.004769201080002006,
+        0.019080604116123112
+      ],
+      "hps": 0.29748044826555997,
+      "hps_delta": -6.42797676846385e-05,
+      "hps_ci95": [
+        -0.0003794309450313449,
+        0.00025423065138363565
+      ],
+      "imagereward": 1.1371472112708336,
+      "imagereward_delta": -0.0029129745428995157,
+      "imagereward_ci95": [
+        -0.02342662434966769,
+        0.014363196067279205
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "TaylorSeer",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-q4-nf4-512-taylorseer__geneval-calibration_subset__20261026-003222",
+      "bench": "jetson-torch-flux-klein-006__baseline__20261015-142456",
+      "latency_flag": "",
+      "latency_s": 77.64421062648762,
+      "latency_min_s": 74.82331082999008,
+      "latency_max_s": 79.46914054802619,
+      "n": 10,
+      "memory_gib": 6.5615234375,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.0343965388979712,
+      "images_n": 384,
+      "geneval": 0.7239583333333334,
+      "geneval_delta": -0.04947916666666663,
+      "geneval_ci95": [
+        -0.0950815422322775,
+        -0.004046574770259048
+      ],
+      "clip": 0.2902272273010264,
+      "clip_delta": -1.2095668353140354e-05,
+      "clip_ci95": [
+        -0.0028854598446438895,
+        0.002873001115707041
+      ],
+      "pickscore": 22.583014170328777,
+      "pickscore_delta": -0.7209141403436661,
+      "pickscore_ci95": [
+        -0.8064055790503808,
+        -0.6337854663530962
+      ],
+      "hps": 0.2834726374906798,
+      "hps_delta": -0.014072090542564808,
+      "hps_ci95": [
+        -0.016249167500063777,
+        -0.011833307022849737
+      ],
+      "imagereward": 0.9871039629106235,
+      "imagereward_delta": -0.15295622290310962,
+      "imagereward_ci95": [
+        -0.22279797442024563,
+        -0.0902271491371115
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "VAE tiling",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-q4-nf4-512-vaetile__geneval-calibration_subset__20261026-003715",
+      "bench": "jetson-torch-flux-klein-003__baseline__20261014-180843",
+      "latency_flag": "",
+      "latency_s": 82.99102029699134,
+      "latency_min_s": 81.45659919199534,
+      "latency_max_s": 86.35540026798844,
+      "n": 10,
+      "memory_gib": 5.6630859375,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 0.9677541311106825,
+      "images_n": 384,
+      "geneval": 0.7708333333333334,
+      "geneval_delta": -0.0026041666666666297,
+      "geneval_ci95": [
+        -0.017518939393939448,
+        0.012591575091575158
+      ],
+      "clip": 0.2921288289750616,
+      "clip_delta": 0.0018895060056820512,
+      "clip_ci95": [
+        0.0005667306249961257,
+        0.003197185151899873
+      ],
+      "pickscore": 23.080222249031067,
+      "pickscore_delta": -0.2237060616413764,
+      "pickscore_ci95": [
+        -0.24904692669709405,
+        -0.1987261325120926
+      ],
+      "hps": 0.2974566617437328,
+      "hps_delta": -8.806628951180118e-05,
+      "hps_ci95": [
+        -0.0010690747682626234,
+        0.0008658153237774968
+      ],
+      "imagereward": 1.145178048025021,
+      "imagereward_delta": 0.00511786221128796,
+      "imagereward_ci95": [
+        -0.00872001369134523,
+        0.0178166305898535
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "SDPA math",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-q4-nf4-512-sdpa-math__geneval-calibration_subset__20261026-092207",
+      "bench": "jetson-torch-flux-klein-002__baseline__20261014-174108",
+      "latency_flag": "",
+      "latency_s": 84.2214924970176,
+      "latency_min_s": 82.45763304299908,
+      "latency_max_s": 87.45328908402007,
+      "n": 10,
+      "memory_gib": 6.11328125,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 0.9536152869809085,
+      "images_n": 384,
+      "geneval": 0.7708333333333334,
+      "geneval_delta": -0.0026041666666666297,
+      "geneval_ci95": [
+        -0.02604166666666663,
+        0.021230158730158766
+      ],
+      "clip": 0.290028450700144,
+      "clip_delta": -0.00021087226923555136,
+      "clip_ci95": [
+        -0.0012085662844280032,
+        0.0007546180083106147
+      ],
+      "pickscore": 23.309040278196335,
+      "pickscore_delta": 0.005111967523891536,
+      "pickscore_ci95": [
+        -0.018096521496772766,
+        0.027814572056133358
+      ],
+      "hps": 0.2976276968450596,
+      "hps_delta": 8.296881181496518e-05,
+      "hps_ci95": [
+        -0.0005768719129264355,
+        0.0007579779097189321
+      ],
+      "imagereward": 1.1357957032693473,
+      "imagereward_delta": -0.004264482544385828,
+      "imagereward_ci95": [
+        -0.03163095473428257,
+        0.019870083492909085
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "Base 512\u00b2, 50 steps, CFG 4",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-base-q4-nf4-512__geneval-calibration_subset__20261026-005416",
+      "bench": "jetson-torch-flux-klein-base-001__baseline__20261016-050136",
+      "latency_flag": "",
+      "latency_s": 494.63442160899285,
+      "latency_min_s": 492.7073027699953,
+      "latency_max_s": 497.13367709098384,
+      "n": 10,
+      "memory_gib": 5.9658203125,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7369791666666666,
+      "clip": 0.28786166477948427,
+      "pickscore": 23.080951030055683,
+      "hps": 0.28910087953166413,
+      "imagereward": 0.9244198007072555
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "Base 512\u00b2, 50 steps, CFG 4",
+      "engine": "PyTorch (Q4_0 GGUF + NF4)",
+      "config": "torch.compile",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-geneval-torch-flux-klein-base-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-024726",
+      "bench": "jetson-torch-flux-klein-base-004__baseline__20261016-033850",
+      "latency_flag": "benchmark used conditioning reuse (no run without it); latency excludes the text encoder and its weight swap",
+      "latency_s": 183.92675815999974,
+      "latency_min_s": 183.87544607801829,
+      "latency_max_s": 183.977291201998,
+      "n": 10,
+      "memory_gib": 6.384765625,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 2.689301037855,
+      "images_n": 384,
+      "geneval": 0.7265625,
+      "geneval_delta": -0.01041666666666663,
+      "geneval_ci95": [
+        -0.0216374269005849,
+        -0.002083333333333326
+      ],
+      "clip": 0.2878299629859005,
+      "clip_delta": -3.170179358374936e-05,
+      "clip_ci95": [
+        -0.0009482029515008317,
+        0.0009136643881599293
+      ],
+      "pickscore": 23.068440586328506,
+      "pickscore_delta": -0.012510443727176579,
+      "pickscore_ci95": [
+        -0.029408738017082214,
+        0.0031877756118774414
+      ],
+      "hps": 0.2890022234835972,
+      "hps_delta": -9.865604806691408e-05,
+      "hps_ci95": [
+        -0.0005849861772730947,
+        0.0003435301672046198
+      ],
+      "imagereward": 0.9220069508446613,
+      "imagereward_delta": -0.0024128498625941575,
+      "imagereward_ci95": [
+        -0.02306469701579772,
+        0.018681316272704862
+      ]
+    }
+  ]
+}
