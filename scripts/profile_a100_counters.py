@@ -28,6 +28,23 @@ TENSOR = [f'sm__ops_path_tensor_src_{dtype}_dst_fp32_sparsity_off.sum'
 SCALAR = [f'smsp__sass_thread_inst_executed_op_{op}_pred_on.sum'
           for op in ('fadd', 'fmul', 'ffma')]
 METRICS = [DURATION, READ, WRITE, *TENSOR, *SCALAR]
+# Jetson Orin Nano (ga10b) has no dram__/fbpa__ counters; the GPU reaches LPDDR5 through L2. Reads are L2 read
+# misses to system memory (a 512 MiB streaming read counts 512.0 MiB) and writes are all L2 write sectors to
+# system memory (L2 is write-back, so a sector rewritten inside L2 counts again: an upper bound). Sectors are 32 B.
+# Validation: jetson_ncu_probe2.sh, wiki/methods/baseline-metrics.md.
+JETSON_READ = 'lts__t_sectors_aperture_sysmem_op_read_lookup_miss.sum'
+JETSON_WRITE = 'lts__t_sectors_aperture_sysmem_op_write.sum'
+BYTE_BASES = {  # counter set -> (read metric, write metric, unit, bytes per unit, FP32 instruction counts)
+    'dram': (READ, WRITE, {'byte'}, 1, True),
+    # SASS instruction counters patch every kernel; on the Jetson a PyTorch capture with them stalled at the 24th
+    # kernel for three hours, so only hardware counters are collected there (FP32 work is not counted).
+    'jetson-l2-sysmem': (JETSON_READ, JETSON_WRITE, {'sector'}, 32, False),
+}
+
+
+def metric_list(basis='dram', tensor=None):
+    read, write, _, _, scalar = BYTE_BASES[basis]
+    return [DURATION, read, write, *(TENSOR if tensor is None else tensor), *(SCALAR if scalar else [])]
 
 
 def digest(path):
@@ -58,8 +75,12 @@ def command(argv, log, timeout):
             raise subprocess.CalledProcessError(returncode, argv)
 
 
-def read_counters(path):
-    """Parse raw NCU CSV; fail on missing, unavailable, or nonfinite counters."""
+def read_counters(path, basis='dram', tensor=None):
+    """Parse raw NCU CSV; fail on missing, unavailable, or nonfinite counters. `tensor`: the Tensor Core
+    metrics collected (default all of TENSOR)."""
+    tensor = TENSOR if tensor is None else tensor
+    METRICS = metric_list(basis, tensor)
+    READ, WRITE, byte_units, scale, _ = BYTE_BASES[basis]
     lines = Path(path).read_text().splitlines()
     start = next(i for i, line in enumerate(lines) if line.startswith('"ID",'))
     reader = csv.DictReader(io.StringIO('\n'.join(lines[start:])))
@@ -93,7 +114,7 @@ def read_counters(path):
         if metric in group['metrics']:
             raise ValueError(f'Duplicate metric for kernel {key}: {metric}')
         unit = row['Metric Unit']
-        expected = {'ns', 'nsecond'} if metric == DURATION else {'byte'} if metric in (READ, WRITE) else None
+        expected = {'ns', 'nsecond'} if metric == DURATION else byte_units if metric in (READ, WRITE) else None
         if expected and unit not in expected:
             raise ValueError(f'Unexpected unit for {metric}: {unit}')
         group['metrics'][metric] = value
@@ -106,13 +127,13 @@ def read_counters(path):
         seconds = values[DURATION] * 1e-9
         if seconds <= 0:
             raise ValueError('Nonpositive kernel duration')
-        traffic = values[READ] + values[WRITE]
-        tensor = sum(values[name] for name in TENSOR)
-        fp32 = values[SCALAR[0]] + values[SCALAR[1]] + 2 * values[SCALAR[2]]
-        group.update(duration_s=seconds, hbm_bytes=traffic, tensor_ops=tensor,
-                     fp32_add_mul_fma_ops=fp32, counted_ops=tensor + fp32,
-                     counted_ops_per_byte=(tensor + fp32) / traffic if traffic else None,
-                     counted_tops=(tensor + fp32) / seconds / 1e12)
+        traffic = (values[READ] + values[WRITE]) * scale
+        tensor_ops = sum(values[name] for name in tensor)
+        fp32 = values.get(SCALAR[0], 0) + values.get(SCALAR[1], 0) + 2 * values.get(SCALAR[2], 0)
+        group.update(duration_s=seconds, hbm_bytes=traffic, tensor_ops=tensor_ops,
+                     fp32_add_mul_fma_ops=fp32, counted_ops=tensor_ops + fp32,
+                     counted_ops_per_byte=(tensor_ops + fp32) / traffic if traffic else None,
+                     counted_tops=(tensor_ops + fp32) / seconds / 1e12)
     return list(groups.values())
 
 

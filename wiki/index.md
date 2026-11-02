@@ -20,6 +20,7 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[Log](log.md)**: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
 - **[Log archive: September 2026](log-2026-09.md)** `archived`: Log archive for September 2026 (moved from log.md to keep it within budget).
 - **[October 2026 log](log-2026-10.md)**: October 2026 experiment recovery and analysis updates.
+- **[November 2026 log](log-2026-11.md)**: November 2026 experiment and analysis updates.
 
 ## Project
 

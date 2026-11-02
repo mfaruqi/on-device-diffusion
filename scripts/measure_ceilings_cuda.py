@@ -8,19 +8,23 @@ bytes counted as the minimum each kernel must move, decimal GB/s like the datash
 is 2*M*N*K per call through cuBLAS for each precision in the config, at square sizes and at the
 FLUX.2 klein shapes listed in the config. Each test: warm-up calls, then `trials` timed blocks of
 `iters` calls between CUDA events. A sustained block runs the BF16 GEMM for `sustained_seconds` to
-expose power/thermal clock reduction. Clocks are not locked (no root on shared nodes); nvidia-smi is
-sampled throughout so the observed SM/memory clocks, power and throttle reasons are recorded.
+expose power/thermal clock reduction. Clocks are not locked (no root on shared nodes). The config's
+`sampler` picks the device adapter that records clocks and power throughout: `nvidia-smi` (default;
+SM/memory clocks, power, throttle reasons) or `tegrastats` (Jetson: GPU devfreq clock, tegrastats power
+rails and temperatures; no root needed).
 
 Writes config.json, environment.json, status.json, measurements.csv (one row per timed block),
-gpu-samples.csv, summary.json (median and best per test, ratio to the datasheet ceiling) and
+gpu-samples.csv (+ tegrastats.log on Jetson), summary.json (median and best per test, ratio to the datasheet ceiling) and
 hardware-override.json (the measured ceilings in plot_roofline.py's --hardware-specs format).
 """
 import argparse
 import json
 import os
 import statistics
+import re
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 
@@ -142,21 +146,77 @@ def summarize(rows, cfg):
             'bytes_rule': 'minimum bytes each kernel must move; decimal GB (1e9) as in the datasheet'}
 
 
-def gpu_samples(path):
-    """Background nvidia-smi sampler; returns the process (stopped by the caller)."""
-    stream = path.open('w')
-    return subprocess.Popen(['nvidia-smi', f'--query-gpu={SMI_FIELDS}', '--format=csv,nounits', '-lms', '500'],
-                            stdout=stream, stderr=subprocess.STDOUT), stream
+class SmiSampler:
+    """nvidia-smi every 500 ms into gpu-samples.csv."""
+
+    def __init__(self, run_dir):
+        self.path = run_dir/'gpu-samples.csv'
+        self.stream = self.path.open('w')
+        self.proc = subprocess.Popen(['nvidia-smi', f'--query-gpu={SMI_FIELDS}', '--format=csv,nounits', '-lms', '500'],
+                                     stdout=self.stream, stderr=subprocess.STDOUT)
+
+    def stop(self):
+        self.proc.terminate()
+        self.proc.wait()
+        self.stream.close()
+
+    def summary(self):
+        lines = [l.split(', ') for l in self.path.read_text().splitlines()[1:] if l and l[0].isdigit()]
+        if not lines:
+            return None
+        sm, mem, power, temp = ([float(x[i]) for x in lines if x[i].replace('.', '').isdigit()] for i in (1, 2, 3, 4))
+        return {'samples': len(lines), 'sm_clock_mhz': {'min': min(sm), 'median': statistics.median(sm), 'max': max(sm)},
+                'mem_clock_mhz': {'min': min(mem), 'max': max(mem)}, 'power_w_max': max(power), 'temp_c_max': max(temp),
+                'throttle_reasons_seen': sorted({x[5].strip() for x in lines})}
+
+    @staticmethod
+    def environment():
+        return {}
 
 
-def sample_summary(path):
-    lines = [l.split(', ') for l in path.read_text().splitlines()[1:] if l and l[0].isdigit()]
-    if not lines:
-        return None
-    sm, mem, power, temp = ([float(x[i]) for x in lines if x[i].replace('.', '').isdigit()] for i in (1, 2, 3, 4))
-    return {'samples': len(lines), 'sm_clock_mhz': {'min': min(sm), 'median': statistics.median(sm), 'max': max(sm)},
-            'mem_clock_mhz': {'min': min(mem), 'max': max(mem)}, 'power_w_max': max(power), 'temp_c_max': max(temp),
-            'throttle_reasons_seen': sorted({x[5].strip() for x in lines})}
+class TegraSampler:
+    """Jetson: GPU devfreq clock every 500 ms into gpu-samples.csv, and `tegrastats` (power rails, temperatures,
+    GR3D load) into tegrastats.log. Without root, tegrastats reports no EMC (memory controller) clock."""
+    DEVFREQ = Path('/sys/class/devfreq/17000000.gpu')
+
+    def __init__(self, run_dir):
+        self.path, self.log = run_dir/'gpu-samples.csv', run_dir/'tegrastats.log'
+        self.stream = self.log.open('w')
+        self.proc = subprocess.Popen(['tegrastats', '--interval', '500'], stdout=self.stream, stderr=subprocess.STDOUT)
+        self.done = threading.Event()
+        self.thread = threading.Thread(target=self._poll, daemon=True)
+        self.thread.start()
+
+    def _poll(self):
+        with self.path.open('w') as out:
+            out.write('time_s,gpu_freq_mhz\n')
+            while not self.done.wait(0.5):
+                out.write(f"{time.time():.3f},{int((self.DEVFREQ/'cur_freq').read_text()) / 1e6:.1f}\n")
+
+    def stop(self):
+        self.done.set()
+        self.thread.join()
+        self.proc.terminate()
+        self.proc.wait()
+        self.stream.close()
+
+    def summary(self):
+        freq = [float(l.split(',')[1]) for l in self.path.read_text().splitlines()[1:] if l]
+        text = self.log.read_text()
+        power = [int(x) for x in re.findall(r'VDD_IN (\d+)mW/', text)]
+        temp = [float(x) for x in re.findall(r'gpu@([\d.]+)C', text)]
+        if not freq:
+            return None
+        return {'samples': len(freq), 'gpu_clock_mhz': {'min': min(freq), 'median': statistics.median(freq), 'max': max(freq)},
+                'vdd_in_w_max': max(power) / 1e3 if power else None, 'gpu_temp_c_max': max(temp) if temp else None}
+
+    @classmethod
+    def environment(cls):
+        mode = subprocess.run(['nvpmodel', '-q'], capture_output=True, text=True).stdout.strip()
+        return {'gpu_devfreq_max_mhz': int((cls.DEVFREQ/'max_freq').read_text()) / 1e6, 'nvpmodel': mode}
+
+
+SAMPLERS = {'nvidia-smi': SmiSampler, 'tegrastats': TegraSampler}
 
 
 def main():
@@ -169,28 +229,28 @@ def main():
     assert torch.cuda.is_available(), 'no CUDA device'
     name = torch.cuda.get_device_name(0)
     assert name == cfg['expected_gpu_name'], f'GPU is {name}, config expects {cfg["expected_gpu_name"]}'
+    Sampler = SAMPLERS[cfg.get('sampler', 'nvidia-smi')]
     run_dir = create_run_directory(cfg, args.out_root, 'ceilings')
     with run_status(run_dir) as status:
         write_json(run_dir/'environment.json', {**host_environment(), 'slurm_job_id': os.environ.get('SLURM_JOB_ID'),
                    'torch': torch.__version__,
                    'torch_cuda_runtime': torch.version.cuda, 'gpu_name': name,
                    'cublas_flags': {'allow_fp16_reduced_precision_reduction': torch.backends.cuda.matmul.allow_fp16_reduced_precision_reduction,
-                                    'allow_bf16_reduced_precision_reduction': torch.backends.cuda.matmul.allow_bf16_reduced_precision_reduction}})
-        sampler, stream = gpu_samples(run_dir/'gpu-samples.csv')
+                                    'allow_bf16_reduced_precision_reduction': torch.backends.cuda.matmul.allow_bf16_reduced_precision_reduction},
+                   **Sampler.environment()})
+        sampler = Sampler(run_dir)
         rows = []
         try:
             bandwidth(torch, rows, cfg)
             gemm(torch, rows, cfg)
             sustained(torch, rows, cfg)
         finally:
-            sampler.terminate()
-            sampler.wait()
-            stream.close()
+            sampler.stop()
             if rows:
                 fields = ['test', 'kernel', 'dtype', 'shape', 'trial', 'ms_per_call', 'throughput', 'unit', 'elapsed_s']
                 write_csv(run_dir/'measurements.csv', [{f: r.get(f) for f in fields} for r in rows])
         summary = summarize(rows, cfg)
-        summary['gpu_samples'] = sample_summary(run_dir/'gpu-samples.csv')
+        summary['gpu_samples'] = sampler.summary()
         write_json(run_dir/'summary.json', summary)
         c = summary['ceilings']
         write_json(run_dir/'hardware-override.json', {cfg['device_label']: {

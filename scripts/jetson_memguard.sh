@@ -17,6 +17,9 @@ mkdir -p "$OUT"
 
 meminfo_mb() { awk -v k="$1:" '$1==k {print int($2/1024)}' /proc/meminfo; }
 swap_used_mb() { echo $(( $(meminfo_mb SwapTotal) - $(meminfo_mb SwapFree) )); }
+# Every descendant, including children that started their own session (profile_engine_counters.py runs ncu that
+# way), which the process-group kill alone misses: on 2026-11-01 ncu and sd-bench outlived a guard kill.
+descendants() { local c; for c in $(pgrep -P "$1"); do echo "$c"; descendants "$c"; done; }
 
 SWAP0=$(swap_used_mb)
 AVAIL0=$(meminfo_mb MemAvailable)
@@ -31,7 +34,8 @@ while kill -0 "$PID" 2>/dev/null; do
   if (( A < MIN_AVAIL_MB )); then REASON="MemAvailable ${A} MB < ${MIN_AVAIL_MB} MB"; fi
   if (( S - SWAP0 > MAX_SWAP_GROWTH_MB )); then REASON="swap grew $((S - SWAP0)) MB > ${MAX_SWAP_GROWTH_MB} MB"; fi
   if [[ -n "$REASON" ]]; then
-    kill -KILL -- "-$PGID" 2>/dev/null
+    TREE=$(descendants "$PID")
+    kill -KILL -- "-$PGID" $TREE 2>/dev/null
     break
   fi
   sleep "$POLL_S"

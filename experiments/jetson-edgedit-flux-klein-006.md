@@ -4,8 +4,8 @@ id: jetson-edgedit-flux-klein-006
 status: complete
 device: jetson-orin-nano
 engine: edge-dit-cpp
-runs: [jetson-edgedit-flux-klein-006__attempt__20261014-165850, jetson-edgedit-flux-klein-006__baseline__20261014-170149]
-updated: 2026-10-14
+runs: [jetson-edgedit-flux-klein-006__attempt__20261014-165850, jetson-edgedit-flux-klein-006__baseline__20261014-170149, jetson-edgedit-flux-klein-006__counters__20261101-152631]
+updated: 2026-11-01
 ---
 
 # jetson-edgedit-flux-klein-006: edge-dit.cpp 1+3+10 baseline, Q8_0-embedding encoder, VAE tiling on, flash attention on
@@ -101,3 +101,24 @@ RAM trajectory aligned to phase markers (tegrastats timestamps have 1 s resoluti
 - Encoder-output comparison of the Q8_0-embedding encoder against the reference Q4_K_M file (still open from [005](jetson-edgedit-flux-klein-005.md#next-experiment)).
 - Step-cache variant: copy of `jetson-edgedit-flux-klein-q4-embq8-512-vaetile.json` with `step_cache` set as the single change.
 - Flash attention off: [007](jetson-edgedit-flux-klein-007.md).
+
+## Hardware-counter capture (2026-11-01): failed, does not fit in memory
+
+Measured LPDDR5 traffic of one steady denoising pass of this configuration, for the measured Jetson roofline ([metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-jetson), [comparison](compare-jetson-engine-roofline-measured-20261101.md)). [Counter plan](../configs/ncu/jetson-edgedit-flux-klein-006-counters.json), [controller](../scripts/profile_engine_counters.py), [queue](../scripts/jetson_counters_queue_20261101.sh), started by the board owner with `sudo` (Nsight Compute needs root on this board) after the desktop session was stopped. The template run [jetson-edgedit-flux-klein-006__baseline__20261014-170149](../results/runs/jetson-edgedit-flux-klein-006__baseline__20261014-170149/) is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. A sequence pass records every launch (kernel time only); the pass is the repeating kernel-name period with the most kernel time. The counter window (1.5 passes) is then captured once per counter, each run a single hardware pass with no device-memory save/restore, and the runs are merged per launch; the merge requires identical kernel-name sequences. FLOPs per pass stay analytic (10.17 T); counted Tensor Core work is the check. Replay kernel time is not latency; the benchmark time per pass comes from the template run.
+
+Run: [jetson-edgedit-flux-klein-006__counters__20261101-152631](../results/runs/jetson-edgedit-flux-klein-006__counters__20261101-152631/) ([status](../results/runs/jetson-edgedit-flux-klein-006__counters__20261101-152631/status.json), [memguard](../results/runs/jetson-edgedit-flux-klein-006__counters__20261101-152631/memguard.json)). Status **failed**.
+
+- The sequence pass completed: 25,402 launches, pass period 657 starting at launch 14966
+  (`profile/sequence.csv.gz`).
+- The first single-counter window run was stopped by the memory guard at the start of denoising in generation 1,
+  before any window kernel was profiled (`profile/window-0.log` ends at `[[phase]] stage=denoise event=begin`):
+  MemAvailable 6046 MB at start, minimum 243 MB against a 250 MB threshold; swap 300 → 305 MB. An earlier attempt with
+  the 400 MB threshold stopped at the same point at 355 MB.
+- No bytes per pass were measured.
+
+**Hypothesis:** this configuration keeps all weights resident (minimum MemAvailable 584 MB in the benchmark run,
+[Memory](#memory-whole-system-tegrastats-1171-samples-at-200-ms-whole-capture-including-load)), and the Nsight
+Compute process and its target-side buffers need several hundred MB more; swap barely grew, so the memory was
+not swappable. The capture is not retried with a lower guard threshold.

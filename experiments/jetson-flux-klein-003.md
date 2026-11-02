@@ -4,8 +4,8 @@ id: jetson-flux-klein-003
 status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-003__repeat__20261014-163411, jetson-flux-klein-003__baseline__20261005-105911, jetson-flux-klein-003__attempt__20261005-104044, jetson-flux-klein-003__profile__20260930-210728, jetson-flux-klein-003__profile__20260930-201956, jetson-flux-klein-003__baseline__20260930-193208, jetson-flux-klein-003__attempt__20260930-192732, jetson-flux-klein-003__profile__20260928-195625, jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418]
-updated: 2026-10-14
+runs: [jetson-flux-klein-003__repeat__20261014-163411, jetson-flux-klein-003__baseline__20261005-105911, jetson-flux-klein-003__attempt__20261005-104044, jetson-flux-klein-003__profile__20260930-210728, jetson-flux-klein-003__profile__20260930-201956, jetson-flux-klein-003__baseline__20260930-193208, jetson-flux-klein-003__attempt__20260930-192732, jetson-flux-klein-003__profile__20260928-195625, jetson-flux-klein-003__profile__20260928-194910, jetson-flux-klein-003__attempt__20260928-185009, jetson-flux-klein-003__profile__20260928-191418, jetson-flux-klein-003__counters__20261030-211513]
+updated: 2026-11-01
 ---
 
 # jetson-flux-klein-003: disk-backed quantized 512×512 baseline
@@ -554,3 +554,46 @@ disk-backed configuration move by several seconds between sessions while steady 
 not, so variant comparisons should report steady per-step time and decode alongside wall time.
 **Hypothesis:** the longer context creation reflects filesystem or storage state at load time; it is
 not measured.
+
+## Hardware-counter capture (2026-10-31/11-01)
+
+Measured LPDDR5 traffic of one steady denoising pass of this configuration, for the measured Jetson roofline ([metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-jetson), [comparison](compare-jetson-engine-roofline-measured-20261101.md)). [Counter plan](../configs/ncu/jetson-sdcpp-flux-klein-003-counters.json), [controller](../scripts/profile_engine_counters.py), [queue](../scripts/jetson_counters_queue_20261101.sh), started by the board owner with `sudo` (Nsight Compute needs root on this board) after the desktop session was stopped. The template run [jetson-flux-klein-003__repeat__20261014-163411](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/) is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. A sequence pass records every launch (kernel time only); the pass is the repeating kernel-name period with the most kernel time. The counter window (1.5 passes) is then captured once per counter, each run a single hardware pass with no device-memory save/restore, and the runs are merged per launch; the merge requires identical kernel-name sequences. FLOPs per pass stay analytic (10.17 T); counted Tensor Core work is the check. Replay kernel time is not latency; the benchmark time per pass comes from the template run.
+
+Run: [jetson-flux-klein-003__counters__20261030-211513](../results/runs/jetson-flux-klein-003__counters__20261030-211513/) ([status](../results/runs/jetson-flux-klein-003__counters__20261030-211513/status.json), [memguard](../results/runs/jetson-flux-klein-003__counters__20261030-211513/memguard.json), [counter-summary.json](../results/runs/jetson-flux-klein-003__counters__20261030-211513/profile/counter-summary.json), [pass-kernels.json](../results/runs/jetson-flux-klein-003__counters__20261030-211513/profile/pass-kernels.json)). The same run directory holds two earlier window attempts of this capture, kept as logs: application
+replay (`profile/window-application.log`) stopped launching after 20 kernels and was stopped; kernel replay with the
+three counters in one run (`profile/window-kernel-3pass.log`, three hardware passes per kernel with device-memory
+save/restore) profiled 483 kernels before the engine exited with error code 9 while MemAvailable fell to about
+290 MB. The reported window is the single-counter rerun (`window-0/1/2.csv.gz`, merged into `window.csv.gz`).
+
+| Quantity | Value |
+|---|---:|
+| Launches in the sequence pass / pass start / period | 11148 / 8689 / 1081 (window offset 0) |
+| Kernels per pass | 1081 |
+| L2 ↔ system-memory bytes per pass (read misses + writes) | 94.70 GB |
+| Counted FP16 Tensor Core operations per pass (ratio to analytic) | 0.36 T (0.036) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 107.4 FLOP/B |
+| Summed replay kernel time per pass | 2654.9 ms |
+| Benchmark time per pass (template run, mean of the step 1–3 medians) | 2713.3 ms |
+| Effective performance (analytic FLOPs / benchmark time per pass) | 3.75 TFLOP/s |
+| Average bandwidth over the pass (bytes / benchmark time per pass) | 34.9 GB/s |
+| Memory guard: MemAvailable start → minimum; swap start → maximum | 5956 → 898 MB; 227 → 677 MB |
+
+Kernel time and bytes by kernel class (kernel-name rules in [plot_roofline_jetson.py](../scripts/plot_roofline_jetson.py)): GEMM 89 kernels, 55 % of time, 48.8 GB (52 %); attention 25 kernels, 13 % of time, 3.2 GB (3 %); norm 101 kernels, 5 % of time, 3.0 GB (3 %); elementwise / reduction 866 kernels, 27 % of time, 39.6 GB (42 %).
+
+Observations:
+
+- `mul_mat_q` (Q4_0 weights × Q8_1-quantized activations, 80 launches) moves 48.3 GB in 1445.6 ms of replay time,
+  54 % of the pass's kernel time, at 33 GB/s.
+- Elementwise and reduction kernels (866 launches) move 39.6 GB, 42 % of the traffic; `k_bin_bcast` alone
+  (483 launches) moves 22.5 GB.
+- Counted FP16 Tensor Core work is 3.6 % of the analytic FLOPs: only flash attention runs on the counted FP16 path;
+  the quantized GEMMs use integer instructions that the metric list does not count.
+- Measured traffic is 13.7× the earlier analytic estimate for this run (6.91 GB per pass,
+  [roofline points](../output/roofline-a100-20261021/roofline-points.csv)); intensity 107 FLOP/B instead of 1472.
+- Summed replay kernel time is 98 % of the benchmark time per pass.
+
+Interpretation: the pass sits at the measured BF16 ridge (101 FLOP/B) but reaches 3.75 of 9.88 TFLOP/s and averages
+35 GB/s, so neither ceiling binds. **Hypothesis:** the quantized GEMM kernel's own efficiency at these shapes (33 GB/s
+and far below the INT8 roof) sets the pass time, followed by broadcast elementwise kernels.

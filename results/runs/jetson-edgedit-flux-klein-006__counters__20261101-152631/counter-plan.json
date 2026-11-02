@@ -1,0 +1,17 @@
+{
+  "id": "jetson-edgedit-flux-klein-006-counters",
+  "template_run": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+  "launcher": "edgedit-direct",
+  "python": "/usr/bin/python3",
+  "launcher_note": "Engine binary from the template command.json (one process, 2 generations).",
+  "device": "jetson",
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "timeout_s": 10800,
+  "analytic_flops_per_pass": 10172630040576.0,
+  "analytic_flops_source": "scripts/plot_roofline.py transformer_cost(512, 512): reference work, klein distilled 512\u00b2 (1024 image + 512 text tokens)",
+  "description": "Measured LPDDR5 bytes (L2 <-> system memory sectors) for one steady denoising pass of jetson-edgedit-flux-klein-006 (two-pass Nsight Compute capture, application replay; see scripts/profile_engine_counters.py).",
+  "tensor_dtypes": [
+    "fp16",
+    "bf16"
+  ]
+}

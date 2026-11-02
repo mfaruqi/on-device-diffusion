@@ -2,7 +2,7 @@
 type: project
 summary: Current project state, active campaign and blockers. Read first each session.
 status: active
-updated: 2026-10-29
+updated: 2026-11-01
 ---
 
 # Hot: current state
@@ -17,7 +17,7 @@ Schedule is optimistic with roll-over allowed ([milestones](project/milestones.m
 - Base workload (50 steps, guidance 4) on A100 and Jetson; engine option sweeps with no-cache controls ([registry](experiments.md)).
 - Jetson Base: EasyCache + exact conditioning reuse combined passes the campaign speed rule; no formal quality approval ([comparison](../experiments/compare-jetson-base-combined-reuse.md)).
 - Jetson distilled: exact conditioning reuse passes the speed rule; EasyCache, prefetch-off and mmap fail it ([conditioning](../experiments/compare-jetson-distilled-conditioning-reuse.md), [EasyCache](../experiments/compare-jetson-distilled-easycache.md)).
-- A100 measured roofline (Oct 29): Nsight DRAM bytes per denoising pass for five engines and measured ceilings; compile cuts traffic 2.4×, GGML engines move the most ([comparison](../experiments/compare-a100-engine-roofline-measured-20261029.md)). edge-dit full A100 baseline validated with stated limits ([record](../experiments/a100-edgedit-flux-klein-001.md)); Torch-TensorRT compile gate failed ([record](../experiments/a100-flux-klein-torchtrt-002.md)).
+- A100 measured roofline (Oct 29): Nsight DRAM bytes per denoising pass for five engines and measured ceilings; compile cuts traffic 2.4×, GGML engines move the most ([comparison](../experiments/compare-a100-engine-roofline-measured-20261029.md)). edge-dit full A100 baseline validated with stated limits ([record](../experiments/a100-edgedit-flux-klein-001.md)); Torch-TensorRT compile gate failed ([record](../experiments/a100-flux-klein-torchtrt-002.md)). Jetson measured roofline (Nov 1): measured ceilings (97.4 GB/s, BF16 9.88 TFLOP/s) and Nsight LPDDR5 bytes per pass for the fastest per-pass configuration per engine; compile sits at the ridge (101 GB, 5.62 TFLOP/s), no engine at a roof; edge-dit does not fit under Nsight ([comparison](../experiments/compare-jetson-engine-roofline-measured-20261101.md), [November log](log-2026-11.md)).
 
 ## Campaign records
 - Completed and failed runs are indexed in the [registry](experiments.md). Jetson reopened for engine coverage (PyTorch, edge-dit, untested sd.cpp options); A100 Base conditioning full protocol recovered; different-GPU comparison caveat ([record](../experiments/a100-sdcpp-flux-klein-base-003.md)).

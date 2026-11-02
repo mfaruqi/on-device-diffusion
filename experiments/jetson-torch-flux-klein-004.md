@@ -4,8 +4,8 @@ id: jetson-torch-flux-klein-004
 status: complete
 device: jetson-orin-nano
 engine: pytorch-diffusers
-runs: [jetson-torch-flux-klein-004__baseline__20261015-141028, jetson-torch-flux-klein-004__attempt__20261015-140608, jetson-torch-flux-klein-004__profile__20261017-215429, jetson-torch-flux-klein-004__profile__20261017-222734]
-updated: 2026-10-18
+runs: [jetson-torch-flux-klein-004__baseline__20261015-141028, jetson-torch-flux-klein-004__attempt__20261015-140608, jetson-torch-flux-klein-004__profile__20261017-215429, jetson-torch-flux-klein-004__profile__20261017-222734, jetson-torch-flux-klein-004__counters__20261031-002432, jetson-torch-flux-klein-004__counters__20261030-175508]
+updated: 2026-11-01
 ---
 
 # jetson-torch-flux-klein-004: exact conditioning reuse, PyTorch/diffusers klein Q4_0 + NF4, sequential residency, 512×512
@@ -195,3 +195,42 @@ By top-level op, `aten::to` (711.2 ms), `aten::mul` (652.6), `aten::__rshift__` 
 
 - `torch.compile` on top of this configuration: [jetson-torch-flux-klein-007](jetson-torch-flux-klein-007.md).
 - Rerun `jetson-torch-flux-klein-q4-nf4-512-condreuse.json` with `/proc/vmstat` swap counters, to test the swap hypothesis.
+
+## Hardware-counter capture (2026-10-31/11-01)
+
+Measured LPDDR5 traffic of one steady denoising pass of this configuration, for the measured Jetson roofline ([metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-jetson), [comparison](compare-jetson-engine-roofline-measured-20261101.md)). [Counter plan](../configs/ncu/jetson-torch-flux-klein-004-counters.json), [controller](../scripts/profile_engine_counters.py), [queue](../scripts/jetson_counters_queue_20261101.sh), started by the board owner with `sudo` (Nsight Compute needs root on this board) after the desktop session was stopped. The template run [jetson-torch-flux-klein-004__baseline__20261015-141028](../results/runs/jetson-torch-flux-klein-004__baseline__20261015-141028/) is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. A sequence pass records every launch (kernel time only); the pass is the repeating kernel-name period with the most kernel time. The counter window (1.5 passes) is then captured once per counter, each run a single hardware pass with no device-memory save/restore, and the runs are merged per launch; the merge requires identical kernel-name sequences. FLOPs per pass stay analytic (10.17 T); counted Tensor Core work is the check. Replay kernel time is not latency; the benchmark time per pass comes from the template run.
+
+Run: [jetson-torch-flux-klein-004__counters__20261031-002432](../results/runs/jetson-torch-flux-klein-004__counters__20261031-002432/) ([status](../results/runs/jetson-torch-flux-klein-004__counters__20261031-002432/status.json), [memguard](../results/runs/jetson-torch-flux-klein-004__counters__20261031-002432/memguard.json), [counter-summary.json](../results/runs/jetson-torch-flux-klein-004__counters__20261031-002432/profile/counter-summary.json), [pass-kernels.json](../results/runs/jetson-torch-flux-klein-004__counters__20261031-002432/profile/pass-kernels.json)). Earlier attempts: [jetson-torch-flux-klein-004__counters__20261030-175508](../results/runs/jetson-torch-flux-klein-004__counters__20261030-175508/status.json) completed its sequence pass but its
+application-replay window stalled (no counters); in the reported run directory, an application-replay window
+(`profile/window-application.log`) stopped launching after 24 kernels before the single-counter kernel-replay window
+was captured.
+
+| Quantity | Value |
+|---|---:|
+| Launches in the sequence pass / pass start / period | 20532 / 15841 / 2176 (window offset 0) |
+| Kernels per pass | 2176 |
+| L2 ↔ system-memory bytes per pass (read misses + writes) | 171.71 GB |
+| Counted BF16 Tensor Core operations per pass (ratio to analytic) | 10.19 T (1.002) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 59.2 FLOP/B |
+| Summed replay kernel time per pass | 3523.5 ms |
+| Benchmark time per pass (template run, mean of the step 1–3 medians) | 3593.1 ms |
+| Effective performance (analytic FLOPs / benchmark time per pass) | 2.83 TFLOP/s |
+| Average bandwidth over the pass (bytes / benchmark time per pass) | 47.8 GB/s |
+| Memory guard: MemAvailable start → minimum; swap start → maximum | 6026 → 1557 MB; 286 → 1213 MB |
+
+Kernel time and bytes by kernel class (kernel-name rules in [plot_roofline_jetson.py](../scripts/plot_roofline_jetson.py)): GEMM 109 kernels, 38 % of time, 79.4 GB (46 %); attention 25 kernels, 2 % of time, 1.0 GB (1 %); norm 41 kernels, 0 % of time, 0.6 GB (0 %); elementwise / reduction 2001 kernels, 60 % of time, 90.7 GB (53 %).
+
+Observations:
+
+- Elementwise and reduction kernels (2001 launches) take 60 % of the pass's kernel time and move 90.7 GB, 53 % of the
+  traffic. The largest are the Q4_0 weight-unpack chain and casts: direct copies 26.4 GB (349 launches), FP16 multiply
+  13.1 GB, `int8` add 7.4 GB, bitwise-and 7.4 GB, right shift 5.8 GB (100 launches each).
+- GEMMs (109 launches, BF16 Tensor Core) take 38 % of the time and move 79.4 GB.
+- Counted BF16 Tensor Core work matches the analytic FLOPs within 0.3 % (1.002).
+- Summed replay kernel time is 98 % of the benchmark time per pass.
+
+Interpretation: at 59 FLOP/B the eager pass is below the measured ridge (101 FLOP/B); its 171.7 GB, more than half
+from dequantizing Q4_0 weights in several full-size elementwise passes, puts it in the bandwidth-bound region, at
+47.8 GB/s average against a 97.4 GB/s ceiling.

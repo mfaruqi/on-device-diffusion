@@ -1,0 +1,14 @@
+{
+  "jetson-orin-nano": {
+    "bw_gbs": 97.40517896926784,
+    "ceilings": {
+      "bf16_tensor": 9.883336231052429,
+      "fp16_tensor": 9.282685705520542,
+      "tf32_tensor": 5.5014788417999885,
+      "fp32": 1.1727589574212751,
+      "int8_tensor_tops": 14.572952389742184
+    },
+    "source": "measured: jetson-ceilings-001__ceilings__20261029-105711",
+    "note": "Measured sustained ceilings (median of timed blocks); clocks not locked."
+  }
+}

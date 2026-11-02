@@ -1,0 +1,6 @@
+{"killed_by_guard": true,
+ "reason": "MemAvailable 243 MB < 250 MB",
+ "exit_code": 137,
+ "min_avail_mb_threshold": 250, "max_swap_growth_mb_threshold": 1536, "poll_s": 0.1,
+ "mem_available_start_mb": 6046, "mem_available_min_mb": 243,
+ "swap_used_start_mb": 300, "swap_used_max_mb": 305}

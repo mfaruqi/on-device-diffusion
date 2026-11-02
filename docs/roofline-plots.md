@@ -42,6 +42,14 @@ MPLCONFIGDIR=/tmp/odd-matplotlib python scripts/plot_roofline.py \
 
 The saved upload receipt resumes the existing roofline analysis. Images appear under `roofline_images/a100-stage` and `roofline_images/a100-kernel`; interactive panels remain under `roofline/*`. Upload validation compares the remote table and data JSON with local coordinates/provenance and verifies exported PNG/PDF artifact digests. No new GPU measurement is performed by this command. Actual HBM counter collection remains deferred; these are analytic estimates with measured timings.
 
+## Measured Jetson rooflines (November 1)
+
+[plot_roofline_jetson.py](../scripts/plot_roofline_jetson.py) builds the Jetson Orin Nano figures from measured inputs only: ceilings from [jetson-ceilings-001](../experiments/jetson-ceilings-001.md) and Nsight Compute LPDDR5 bytes per denoising pass from the engine counter captures ([definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-jetson)). It plots the fastest per-pass configuration of each engine plus the PyTorch eager reference; edge-dit, which has no capture, is drawn hollow at its bandwidth lower bound. Outputs in `output/roofline-jetson-measured/`: `jetson-engine-roofline-measured`, `jetson-kernel-bandwidth-measured`, `jetson-traffic-breakdown` (PNG + PDF) and `plot-data.json`. Results: [comparison](../experiments/compare-jetson-engine-roofline-measured-20261101.md).
+
+```sh
+python scripts/plot_roofline_jetson.py [--upload]
+```
+
 ## Select runs and override assumptions
 
 `--manifest` accepts a JSON object with `runs` selections and optional `hardware_specs` and `exclusions`. Each selection requires `run_dir`; optional fields are `label`, `weight_gib`, `activation_bytes`, and `ceiling`. Explicit selections fail on incomplete or unsupported runs. Selections must be direct children of `results/runs/`. `--hardware-specs` accepts just the device override dictionary. Overrides must be positive and are preserved in the dataset; control files and script are also hashed. `--data-json` cannot be combined with new selections or ceiling overrides.

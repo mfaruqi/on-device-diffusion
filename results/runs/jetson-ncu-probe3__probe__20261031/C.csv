@@ -1,0 +1,7 @@
+==WARNING== Note: Running with uncontrolled GPU caches. Profiling results may be inconsistent.
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 1206443 (/usr/bin/python3.10)
+==PROF== Trying to shutdown target application
+==ERROR== Failed to profile "vectorized_elementwise_kernel" in process 1206443
+==PROF== Trying to shutdown target application
+==ERROR== An error occurred while trying to profile.

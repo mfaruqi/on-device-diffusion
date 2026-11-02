@@ -4,8 +4,8 @@ id: jetson-torch-flux-klein-007
 status: complete
 device: jetson-orin-nano
 engine: pytorch-diffusers
-runs: [jetson-torch-flux-klein-007__baseline__20261015-145234, jetson-torch-flux-klein-007__attempt__20261015-144541, jetson-torch-flux-klein-007__profile__20261017-220257, jetson-torch-flux-klein-007__profile__20261017-223538]
-updated: 2026-10-18
+runs: [jetson-torch-flux-klein-007__baseline__20261015-145234, jetson-torch-flux-klein-007__attempt__20261015-144541, jetson-torch-flux-klein-007__profile__20261017-220257, jetson-torch-flux-klein-007__profile__20261017-223538, jetson-torch-flux-klein-007__counters__20261101-154131, jetson-torch-flux-klein-007__counters__20261101-145652]
+updated: 2026-11-01
 ---
 
 # jetson-torch-flux-klein-007: torch.compile (default mode) on the transformer, with conditioning reuse, PyTorch/diffusers klein Q4_0 + NF4, 512×512
@@ -194,3 +194,46 @@ GPU busy is 99–100% in both, so the saving is not launch overhead: Inductor fu
 
 - Copy of `jetson-torch-flux-klein-q4-nf4-512-condreuse-compile.json` with `mode: "max-autotune"` (separately labelled; first generation reported separately).
 - Runner: record the Triton version in `environment.json`.
+
+## Hardware-counter capture (2026-11-01)
+
+Measured LPDDR5 traffic of one steady denoising pass of this configuration, for the measured Jetson roofline ([metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-jetson), [comparison](compare-jetson-engine-roofline-measured-20261101.md)). [Counter plan](../configs/ncu/jetson-torch-flux-klein-007-counters.json), [controller](../scripts/profile_engine_counters.py), [queue](../scripts/jetson_counters_queue_20261101.sh), started by the board owner with `sudo` (Nsight Compute needs root on this board) after the desktop session was stopped. The template run [jetson-torch-flux-klein-007__baseline__20261015-145234](../results/runs/jetson-torch-flux-klein-007__baseline__20261015-145234/) is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. A sequence pass records every launch (kernel time only); the pass is the repeating kernel-name period with the most kernel time. The counter window (1.5 passes) is then captured once per counter, each run a single hardware pass with no device-memory save/restore, and the runs are merged per launch; the merge requires identical kernel-name sequences. FLOPs per pass stay analytic (10.17 T); counted Tensor Core work is the check. Replay kernel time is not latency; the benchmark time per pass comes from the template run.
+
+The plan sets `warm_run: true`: one unprofiled run of the same command fills the Inductor and Triton caches before
+the sequence pass, so the sequence and window runs replay the same compiled kernels.
+Run: [jetson-torch-flux-klein-007__counters__20261101-154131](../results/runs/jetson-torch-flux-klein-007__counters__20261101-154131/) ([status](../results/runs/jetson-torch-flux-klein-007__counters__20261101-154131/status.json), [memguard](../results/runs/jetson-torch-flux-klein-007__counters__20261101-154131/memguard.json), [counter-summary.json](../results/runs/jetson-torch-flux-klein-007__counters__20261101-154131/profile/counter-summary.json), [pass-kernels.json](../results/runs/jetson-torch-flux-klein-007__counters__20261101-154131/profile/pass-kernels.json)). The first attempt [jetson-torch-flux-klein-007__counters__20261101-145652](../results/runs/jetson-torch-flux-klein-007__counters__20261101-145652/status.json) failed in the merge: its counter runs
+captured different kernel sequences (the sequence pass had 7182 launches against 6468 here; compile caches were not yet
+in the same state for every run). A naming rule was also added: PyTorch picks vectorized or unrolled variants of the
+same elementwise kernel by pointer alignment, which can differ between processes, so the merge compares them as one
+name. The rerun found the pass at window offset −44.
+
+| Quantity | Value |
+|---|---:|
+| Launches in the sequence pass / pass start / period | 6468 / 5344 / 389 (window offset -44) |
+| Kernels per pass | 389 |
+| L2 ↔ system-memory bytes per pass (read misses + writes) | 101.23 GB |
+| Counted BF16 Tensor Core operations per pass (ratio to analytic) | 10.19 T (1.002) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 100.5 FLOP/B |
+| Summed replay kernel time per pass | 1829.3 ms |
+| Benchmark time per pass (template run, mean of the step 1–3 medians) | 1811.7 ms |
+| Effective performance (analytic FLOPs / benchmark time per pass) | 5.62 TFLOP/s |
+| Average bandwidth over the pass (bytes / benchmark time per pass) | 55.9 GB/s |
+| Memory guard: MemAvailable start → minimum; swap start → maximum | 5999 → 750 MB; 291 → 795 MB |
+
+Kernel time and bytes by kernel class (kernel-name rules in [plot_roofline_jetson.py](../scripts/plot_roofline_jetson.py)): GEMM 109 kernels, 75 % of time, 84.8 GB (84 %); attention 55 kernels, 6 % of time, 2.2 GB (2 %); norm 41 kernels, 1 % of time, 1.2 GB (1 %); elementwise / reduction 184 kernels, 18 % of time, 13.0 GB (13 %).
+
+Observations:
+
+- GEMMs (109 launches) take 75 % of kernel time and move 84.8 GB, 84 % of the traffic; their kernel set and
+  counted work are the same as in the eager capture of [004](jetson-torch-flux-klein-004.md#hardware-counter-capture-2026-10-3111-01).
+- The fused Triton Q4_0 unpack kernel (`triton_poi_fused___rshift____to_copy_bitwise_and_…`, 100 launches) moves
+  9.4 GB in 282.8 ms; the rest of the elementwise and reduction work moves 3.6 GB.
+- Launches per pass fall from 2176 (eager) to 389, traffic from 171.7 to 101.2 GB.
+- Counted BF16 Tensor Core work matches the analytic FLOPs within 0.3 % (1.002).
+- Summed replay kernel time is 101 % of the benchmark time per pass.
+
+Interpretation: the compiled pass sits at the measured ridge (100.5 vs 101 FLOP/B) and reaches 5.62 TFLOP/s, 57 % of
+the measured BF16 ceiling. Its time is now mostly BF16 GEMMs; the remaining lever is the GEMMs themselves (their
+traffic and efficiency), not the unpack.
