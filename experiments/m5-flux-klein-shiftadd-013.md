@@ -61,3 +61,13 @@ latency and energy remain unmeasured for these weights.
 
 ## Next experiment
 - Compare a three-plane K or V replacement against the paired four-plane Q/K/V image reference.
+
+## Quantized activation arithmetic verification
+
+The three-plane K/V artifacts passed 64 CPU arithmetic comparisons: both full
+matrices, 16 captured calls, and A4/A8 with group size 32. INT32 sign-plane sums
+rescaled into FP32 agree with multiplication using independently decoded weights
+and the same quantized inputs; maximum relative disagreement is
+9.1880645e-07.
+[Verification evidence](../results/runs/m5-flux-klein-shiftadd-013__attempt__20261102-kv-p3/integer-arithmetic-verification.json).
+This verifies arithmetic equivalence, not image quality or GPU throughput.
