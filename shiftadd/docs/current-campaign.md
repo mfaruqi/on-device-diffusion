@@ -31,6 +31,14 @@ This is not a full-transformer upstream conversion.
 | Upstream query projection | [query](../../experiments/a100-flux-klein-upstream-query-001.md): lower BF16 latent distance than the two single-projection controls |
 | Upstream fused projection | [fused](../../experiments/a100-flux-klein-upstream-fused-001.md): higher BF16 latent distance than both controls; all four images retain readable sign text |
 
+## Pending calibration follow-up
+
+Job `12135879` was submitted with a five-minute limit using
+`configs/a100-upstream-fused-calibration-001.json`: four existing calibration
+prompts and the same four single-fused-projection cases. Two prompts supplied
+fitting inputs and two are calibration-validation prompts. This is not the
+reserved held-out evaluation. Submission is a snapshot, not a live queue status.
+
 ## Execution preparation
 
 - Hash-checked chunked loaders and independent reconstruction checks.
