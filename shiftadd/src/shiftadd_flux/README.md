@@ -9,7 +9,7 @@ or set `PYTHONPATH=shiftadd/src` from the parent repository. CLI modules support
 | Weight-only fits | `format`, `radix`, `nonuniform`, `conventional` | Encoders, decoders and numerical fit routines |
 | Conversion | `convert`, `convert_uniform`, `refine`, `compact_radix` | Create labelled bundles and preserve provenance |
 | Calibration | `capture`, `capture_pipeline`, `evaluate_capture`, `upstream_probe` | Capture bounded inputs and fit with calibration data |
-| Loading | `loader`, `upstream_loader` | Verify artifact hashes/shapes and reconstruct dense parameters |
+| Loading | `loader`, `upstream_loader`, `package_upstream` | Verify artifact hashes/shapes and reconstruct dense parameters |
 | Activation arithmetic | `activation`, `activation_storage`, `integer_radix`, `scaled_plane_arithmetic` | Quantized activation codes, packed layouts and CPU arithmetic references |
 | Pipeline tests | `activation_hooks`, `pipeline_smoke`, `calibration_smoke`, `case_validation` | Scoped fake quantization and paired image diagnostics |
 | Verification | `verify_*`, `arithmetic_check`, `validate_control`, `audit_bundles` | Reload checks, arithmetic equivalence and evidence audits |

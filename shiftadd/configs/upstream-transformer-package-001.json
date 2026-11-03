@@ -1,0 +1,13 @@
+{
+  "id": "m5-flux-klein-shiftadd-020",
+  "artifacts": "shiftadd/artifacts/upstream-bcq-all-attention-001",
+  "output": "shiftadd/artifacts/upstream-bcq-transformer-package-001",
+  "source_sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "architecture_config": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/blobs/f21592ae2bc9f43052e78785bde7414f219ae369",
+  "architecture_config_sha256": "09733c74a3da6d17dd0a0472a091a8950c7c6935889c32c16cc800ede05029de",
+  "report": "shiftadd/runs/upstream-transformer-package-001/summary.json",
+  "description": "Package the existing 50-matrix upstream fit and unchanged BF16 remainder as complete transformer weights. No refitting or additional quantization.",
+  "optimizations": {
+    "storage": "upstream-bcq-with-bf16-remainder-v1"
+  }
+}

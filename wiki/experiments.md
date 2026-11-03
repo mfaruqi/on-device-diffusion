@@ -244,3 +244,5 @@ that every record and every run directory appears here.
 | compare-upstream-attention-storage | M5 CPU | pytorch-diffusers | Upstream subset storage and deployment estimate | complete; storage comparison | [record](../experiments/compare-upstream-attention-storage.md) | [run 1](../results/runs/m5-flux-klein-shiftadd-015__attempt__20261103-all-dual/), [run 2](../results/runs/m5-flux-klein-shiftadd-016__attempt__20261103-all-single/) | — |
 
 | m5-flux-klein-shiftadd-019 | M5 CPU | pytorch-diffusers | All-dual grouped activation diagnostic | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-019.md) | [run](../results/runs/m5-flux-klein-shiftadd-019__attempt__20261103-single-activation/) | — |
+
+| m5-flux-klein-shiftadd-020 | M5 CPU | pytorch-diffusers | Complete upstream/BF16 package | complete; storage and loading | [record](../experiments/m5-flux-klein-shiftadd-020.md) | [run](../results/runs/m5-flux-klein-shiftadd-020__attempt__20261103-package/) | — |

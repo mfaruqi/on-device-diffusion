@@ -68,3 +68,10 @@ loading transitions add further costs. No latency or energy advantage follows
 from this accounting. Full-transformer radix/INT4 bundles have different
 conversion coverage and quality behavior and are reported in the
 [separate storage comparison](compare-shiftadd-transformer-storage.md).
+
+## Subsequent saved package
+
+The estimate above is now complemented by a separate
+[complete-package record](m5-flux-klein-shiftadd-020.md), which measures actual
+saved files including the BF16 remainder and metadata and verifies source-independent
+loading. The original estimate remains labelled as such.

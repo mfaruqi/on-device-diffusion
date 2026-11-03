@@ -19,6 +19,11 @@ family. See the [slice](../../experiments/m5-flux-klein-shiftadd-008.md),
 Complete first-block K/V projections are also saved and independently verified
 ([K/V record](../../experiments/m5-flux-klein-shiftadd-011.md)). This is not a full-transformer upstream conversion.
 
+The [complete upstream/BF16 transformer package](../../experiments/m5-flux-klein-shiftadd-020.md)
+is saved locally and loads without the original checkpoint. It includes all
+169 tensors, with 50 packed and the remainder unchanged. See the
+[package guide](upstream-package.md); loading still reconstructs dense weights.
+
 ## Completed image diagnostics
 
 | Experiment | Evidence |

@@ -592,3 +592,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-016__attempt__20261103-all-single` | [record](../experiments/m5-flux-klein-shiftadd-016.md) | M5 CPU | all 20 fused upstream fits | — | — | — | complete; numerical diagnostic only |
 
 | `m5-flux-klein-shiftadd-019__attempt__20261103-single-activation` | [record](../experiments/m5-flux-klein-shiftadd-019.md) | M5 CPU | all-single A4/A8 activation errors | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-020__attempt__20261103-package` | [record](../experiments/m5-flux-klein-shiftadd-020.md) | M5 CPU | complete upstream/BF16 transformer package | — | — | — | complete; storage and loading verification |

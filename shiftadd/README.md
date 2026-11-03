@@ -62,8 +62,10 @@ bundles share hard links: treat all completed artifacts as immutable.
 
 The separate [upstream storage accounting](../experiments/compare-upstream-attention-storage.md)
 covers 50 matrices: about 1.00 GiB instead of 3.69 GiB for that subset. Keeping
-the remaining tensors in BF16 would imply about 4.53 GiB of transformer storage;
-that is an estimate, not a saved standalone checkpoint or runtime-memory result.
+the remaining tensors in BF16 gives the separately verified
+[complete weight package](../experiments/m5-flux-klein-shiftadd-020.md): about
+4.53 GiB including metadata. The [package loader](docs/upstream-package.md)
+works without the source checkpoint but still reconstructs dense BF16 weights.
 
 ## Install and run CPU checks
 

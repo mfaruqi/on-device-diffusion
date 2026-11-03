@@ -1,0 +1,1517 @@
+{
+  "format": "upstream-bcq-with-bf16-remainder-v1",
+  "source_sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "source_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "tensors": {
+    "context_embedder.weight": {
+      "shape": [
+        3072,
+        7680
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "double_stream_modulation_img.linear.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "double_stream_modulation_txt.linear.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "norm_out.linear.weight": {
+      "shape": [
+        6144,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "proj_out.weight": {
+      "shape": [
+        128,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_stream_modulation.linear.weight": {
+      "shape": [
+        9216,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.0.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.0.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.0.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.1.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.1.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.1.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.10.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.10.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.10.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.11.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.11.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.11.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.12.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.12.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.12.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.12.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.13.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.13.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.13.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.13.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.14.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.14.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.14.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.14.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.15.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.15.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.15.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.15.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.16.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.16.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.16.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.16.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.17.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.17.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.17.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.17.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.18.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.18.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.18.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.18.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.19.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.19.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.19.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.19.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.2.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.2.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.2.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.3.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.3.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.3.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.4.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.4.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.4.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.5.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.5.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.5.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.6.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.6.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.6.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.7.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.7.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.7.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.8.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.8.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.8.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "single_transformer_blocks.9.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.9.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.9.attn.to_out.weight": {
+      "shape": [
+        3072,
+        12288
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj.weight": {
+      "shape": [
+        27648,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "time_guidance_embed.timestep_embedder.linear_1.weight": {
+      "shape": [
+        3072,
+        256
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "time_guidance_embed.timestep_embedder.linear_2.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.add_k_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.attn.add_q_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.attn.add_v_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.attn.norm_added_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.norm_added_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.to_add_out.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.to_k.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.attn.to_out.0.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.attn.to_q.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.attn.to_v.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.0.ff.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.ff.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.ff_context.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.0.ff_context.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.add_k_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.attn.add_q_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.attn.add_v_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.attn.norm_added_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.norm_added_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.to_add_out.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.to_k.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.attn.to_out.0.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.attn.to_q.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.attn.to_v.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.1.ff.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.ff.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.ff_context.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.1.ff_context.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.add_k_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.attn.add_q_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.attn.add_v_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.attn.norm_added_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.norm_added_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.to_add_out.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.to_k.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.attn.to_out.0.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.attn.to_q.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.attn.to_v.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.2.ff.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.ff.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.ff_context.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.2.ff_context.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.add_k_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.attn.add_q_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.attn.add_v_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.attn.norm_added_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.norm_added_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.to_add_out.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.to_k.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.attn.to_out.0.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.attn.to_q.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.attn.to_v.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.3.ff.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.ff.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.ff_context.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.3.ff_context.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.add_k_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.attn.add_q_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.attn.add_v_proj.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.attn.norm_added_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.norm_added_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.norm_k.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.norm_q.weight": {
+      "shape": [
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.to_add_out.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.to_k.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.attn.to_out.0.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.attn.to_q.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.attn.to_v.weight": {
+      "shape": [
+        3072,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "upstream_bcq"
+    },
+    "transformer_blocks.4.ff.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.ff.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.ff_context.linear_in.weight": {
+      "shape": [
+        18432,
+        3072
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "transformer_blocks.4.ff_context.linear_out.weight": {
+      "shape": [
+        3072,
+        9216
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    },
+    "x_embedder.weight": {
+      "shape": [
+        3072,
+        128
+      ],
+      "source_dtype": "bfloat16",
+      "representation": "bf16"
+    }
+  },
+  "files": {
+    "config.json": {
+      "sha256": "263afd28c28383b301ac4be412e536ec495b61ad675b2049aa864e3e28ea48d7",
+      "bytes": 3240
+    },
+    "fallback.safetensors": {
+      "sha256": "b754d097139e29a8df2656454684b7f6fbb38e41b6ad3c5821262f9ecd18e4aa",
+      "bytes": 3787486128
+    },
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "a424596e6a04682598fbbcce16d1660725a48a1123934441585c5c71b1e028dc",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "a1e1aca0103758d804c556df08eb2ac78d4f0dbe98046f68fe054a10a150abfa",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.10.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "96e1441b54e654b5190abd87dee85535dec4cf4262d2a039d685b95afb6f5d40",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "3ef8edbd0e767e40a389771d24946cdf465efea2b3dd8ab77bf5d77e3f58c6a0",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.12.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "0f68b21fd95902ae855f1a44377e895819dc641e7a4cf19fe5e9df4eafa567aa",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.13.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "3df4da08f2b38c6ffe608d5e934ce3eebbb78ec51baee76d79cbf2cf34fee44a",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.14.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "c5261844ba9b60277627a35490842fc2f5242218a3e24ece362af13adbf9acd4",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.15.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "0307af3e104576e12fd1d6bc12afe09883dddb09184a840c445322f33f181a6b",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.16.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "fba197b640f3817580f19f9ddbfa422e738e84a167478adb3da01be4ad3540c3",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.17.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "c222a6a9ebcfce3a0f51b23b87df9cc892e6e7f6337e8716cf0ea91a49719c88",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.18.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "ed7d27b51f0c51fed7091cbc947469e4cc57b0b37584d7b35b041a8153747c78",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.19.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "05b72c70f11b837f69d3de2865d32253d55d92af544ecca649f64e141c01e654",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "ce5880f96b9894fbcffa6920762da0f1d90e5f205409fc644d289c4616eb19b0",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "a9f8b19504f46f4497db7422a8684a420f2bc69db51249b5022d0521ff9dcdf5",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "10d4bc26987bad438fbd968112b467c7f556d5c7adf4de6620eab242e6159c70",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "ba5bae221f6d7f49c7d228a76c39f95452bde18eaa18d0b58b14de34800e2e1b",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "0037f5f3c80f6d7240eee460fca8e1478d4574ba907585dce7e557b0d49ee5b9",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "317d9adb10e4f09586d34688ae368a20fd453c186405d5bd5dfa10c47b83b930",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "cb20de03fe18615c001533e7e746b251cffc532915ca6e79122b8806fba696b3",
+      "bytes": 46007324
+    },
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj.npz": {
+      "sha256": "6151620e924ad5855e69a99985180362bbc320c7ccddfc62842466bad9a88648",
+      "bytes": 46007324
+    },
+    "summary.json": {
+      "sha256": "867aad0122edc89707d7f934c1348f3d4cfe40e614e4adfe74e600bf1932c9e7",
+      "bytes": 155214
+    },
+    "transformer-config.json": {
+      "sha256": "09733c74a3da6d17dd0a0472a091a8950c7c6935889c32c16cc800ede05029de",
+      "bytes": 541
+    },
+    "transformer_blocks.0.attn.add_k_proj.npz": {
+      "sha256": "bae35a9b08f85372072a9628e48d7a93168c8e6f37284d93a558746ba0753485",
+      "bytes": 5112860
+    },
+    "transformer_blocks.0.attn.add_q_proj.npz": {
+      "sha256": "b0822bc258d348e5961b98abaaea716661966c8e947c6f79ebded60f7d409a2b",
+      "bytes": 5112860
+    },
+    "transformer_blocks.0.attn.add_v_proj.npz": {
+      "sha256": "2384d3baa23e1d9a8ee38c92e99535c0145d2930c0dc2fb6d73b4c9f85a9eba6",
+      "bytes": 5112860
+    },
+    "transformer_blocks.0.attn.to_k.npz": {
+      "sha256": "e9284146c074e25eed2f4fec4d2ed419daa1f7eb53bb5835894d7da7e57a7e1b",
+      "bytes": 5112860
+    },
+    "transformer_blocks.0.attn.to_q.npz": {
+      "sha256": "405bb7ad730fc5a45e29568fc195120eba6b75c57e8c7920230d5416efa0d022",
+      "bytes": 5112860
+    },
+    "transformer_blocks.0.attn.to_v.npz": {
+      "sha256": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.add_k_proj.npz": {
+      "sha256": "caccef48c4c159382b329c1f491ddd1e6ed97b1255dc2d45a961e9b22f7e0fda",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.add_q_proj.npz": {
+      "sha256": "742fa539a6a140e030ee4a57e8c3305840f408c243fcc63b7aa599e0d35471b2",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.add_v_proj.npz": {
+      "sha256": "dd6baedd5026c03827b6ba6afdd531750ce0a715c07d76568919aab4713f3d62",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.to_k.npz": {
+      "sha256": "2f5774e399ae44ea12f5fcc2aba93ce5aa03f131ec838da3b53a96cfd7df319b",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.to_q.npz": {
+      "sha256": "0829e17acd517711b581c82531336ba26fae2e26b99472aef1e760ef7f228066",
+      "bytes": 5112860
+    },
+    "transformer_blocks.1.attn.to_v.npz": {
+      "sha256": "5fe8da6c75f2b872246513b17c84e9f2d641135187d82e9dd1accc393c1dc249",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.add_k_proj.npz": {
+      "sha256": "f62537cb1461b539b609bf4a739fa3a2d755814aee0ef2b252cc2b0590997354",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.add_q_proj.npz": {
+      "sha256": "cdc0a284e8d7f772d253a00afa757e033ce2af8fbc5d1e112a61fa535f9638d0",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.add_v_proj.npz": {
+      "sha256": "eacfaee1dd9b44281ba8824671f96edb08c26faa3a75352dac42ae72274c2426",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.to_k.npz": {
+      "sha256": "f2837d47a3506e32f9beec2064f9a33ae3eb166dd1206e23fd811766f583e75f",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.to_q.npz": {
+      "sha256": "6939ec859961b7f736650da9b25e712d7acdcb53c92924f0de8283c03e37bd70",
+      "bytes": 5112860
+    },
+    "transformer_blocks.2.attn.to_v.npz": {
+      "sha256": "2f103b4da4814d9f77e0cb940a0a281a8253f86dc29ae3916e7086157c0f181a",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.add_k_proj.npz": {
+      "sha256": "8fd8d0798d905068bfb26eb6f93ff6b075238afa863c413fcf44f8f3437f9e57",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.add_q_proj.npz": {
+      "sha256": "e470050befc657472057f86b41ed012ca155bb7faf65c26030d37efe305aad23",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.add_v_proj.npz": {
+      "sha256": "442d8ea66d163a639d29e7b6c91d3c872ff5a14eea46c9dfd1fab25594b08943",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.to_k.npz": {
+      "sha256": "e5849a7ce4893540188e86d74f8eea9a49cde740e31ab7aee0d759a904899206",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.to_q.npz": {
+      "sha256": "0d779113c77adb879fa3a9dff324a7b57b81cf3110270a4cfdf86339edd2fd80",
+      "bytes": 5112860
+    },
+    "transformer_blocks.3.attn.to_v.npz": {
+      "sha256": "1c7df748b38b21e67fe4ce05d25ca0987f53e69a8fb35aeb1dbe975251b0be7a",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.add_k_proj.npz": {
+      "sha256": "4137638034ce6bc70c12b38965645b77d4df7cab52da037b791ca879b3ac46e7",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.add_q_proj.npz": {
+      "sha256": "ed2b0a7840f1c67cee5bcf7a7f66ec980574673fed229894a541ed1df98745b0",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.add_v_proj.npz": {
+      "sha256": "15acc9ce3c9de11a161119f1043fb5cf44073e713c4d736095e2d621eff0ffa0",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.to_k.npz": {
+      "sha256": "77ddc854cf1763854f3838114956d4ee895981dbf390d3a4d18f458a266ffd61",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.to_q.npz": {
+      "sha256": "71a9c7b2d22ed0392a6491c6c7d28d077178e289e4acc260270ab7424d44c0e9",
+      "bytes": 5112860
+    },
+    "transformer_blocks.4.attn.to_v.npz": {
+      "sha256": "6ebe1a9372ffd2dad24bf77cd09048f28359cfe618878dc0e5f7dce87f8b6c34",
+      "bytes": 5112860
+    }
+  }
+}
