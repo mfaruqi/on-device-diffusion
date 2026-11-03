@@ -576,3 +576,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `a100-flux-klein-upstream-qkv-a8-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-a8-001.md) | A100 SXM4 | upstream Q/K/V plus grouped A8 | — | — | — | complete; job 12139754; calibration diagnostic only |
 
 | `a100-flux-klein-upstream-qkv-mixed-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-mixed-001.md) | A100 SXM4 | K3/V3 mixed Q/K/V comparison | — | — | — | complete; job 12139916; calibration diagnostic only |
+
+| `a100-flux-klein-shiftadd-activation-capture-002__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-shiftadd-activation-capture-002.md) | A100 SXM4 | all-attention BF16 activation capture | — | — | — | complete; job 12140057; instrumentation invalidates timing |

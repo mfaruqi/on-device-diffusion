@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | a100-flux-klein-shiftadd-activation-capture-002: broader calibration capture
+
+Verified 800 finite sampled arrays and exact prior-input reproduction ([record](../experiments/a100-flux-klein-shiftadd-activation-capture-002.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-upstream-qkv-mixed-001: mixed-plane Q/K/V
 
 Verified 16 images and exact references; recorded equal-size K3/V3 candidates and prompt-specific differences ([record](../experiments/a100-flux-klein-upstream-qkv-mixed-001.md)).

@@ -59,12 +59,13 @@ none belongs to the reserved held-out evaluation.
 
 ## Prepared follow-ups
 
-The Q3 image configuration and the all-attention calibration capture configuration
-are submitted, not completed evidence. The latter selects 30 dual-stream image/text
-Q/K/V matrices and 20 single-stream fused QKV/MLP projections. CPU fitting configs
-for those two groups are prepared but have not run. Queue state can change;
-submission is not a result. Existing four-prompt calibration data remain separate
-from formal held-out evaluation.
+The Q3 image comparison remains submitted, not completed evidence. The
+[all-attention capture](../../experiments/a100-flux-klein-shiftadd-activation-capture-002.md)
+is complete: 800 finite arrays, with exact reproduction of the earlier 32 arrays.
+It covers 30 dual-stream image/text Q/K/V matrices and 20 single-stream fused
+QKV/MLP projections. Broader CPU fitting is in progress; no corresponding image
+quality or packed execution result exists yet. Existing four-prompt calibration
+data remain separate from formal held-out evaluation.
 
 ## Execution preparation
 
