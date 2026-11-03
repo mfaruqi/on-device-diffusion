@@ -1,5 +1,6 @@
 # Documentation map
 
+- [Complete upstream packages](upstream-package.md): saved weights, source-independent loading and storage accounting.
 - [Current campaign](current-campaign.md): completed evidence and remaining limits.
 - [Baseline plan](baseline-plan.md): controls and comparison gates.
 - [Execution plan](execution-plan.md): loaders, activation hooks and arithmetic paths.

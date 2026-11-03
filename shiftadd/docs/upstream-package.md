@@ -5,6 +5,25 @@ unconverted tensor from its pinned BF16 transformer. It does not refit weights
 or quantize the remainder. Packages stay under ignored `shiftadd/artifacts/`;
 do not commit or upload model weights publicly.
 
+## Saved Klein coverage
+
+The [verified package](../../experiments/m5-flux-klein-shiftadd-020.md)
+contains every transformer tensor, with these representations:
+
+| Weight group | Matrices | Representation |
+|---|---:|---|
+| Dual-stream image Q/K/V, five blocks | 15 | Four-plane upstream BCQ |
+| Dual-stream text Q/K/V, five blocks | 15 | Four-plane upstream BCQ |
+| Single-stream fused QKV/MLP, twenty blocks | 20 | Four-plane upstream BCQ |
+| Attention output projections | 30 | Original BF16 |
+| Dual-stream image/text feed-forward matrices | 20 | Original BF16 |
+| Embedding, modulation, timestep and final projections | 9 | Original BF16 |
+
+The other 60 non-matrix tensors are unchanged BF16. Thus all Q/K/V weights are
+included in the upstream conversion, but not every transformer matrix is
+converted. The twenty fused matrices also contain MLP rows. This coverage
+comes from the complete tensor inventory in the package record.
+
 ## Create
 
 From the repository root, with the subproject installed or its source on
