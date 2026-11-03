@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-014: three-plane query fitting
+
+Recorded the smaller full query artifact, projection errors and 16 reload checks ([record](../experiments/m5-flux-klein-shiftadd-014.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-upstream-qkv-calibration-001: first-block Q/K/V
 
 Verified 16 images, exact prior BF16 references and three-matrix replacements; recorded prompt-specific numerical and visual results ([record](../experiments/a100-flux-klein-upstream-qkv-calibration-001.md)).
