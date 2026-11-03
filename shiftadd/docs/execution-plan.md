@@ -227,3 +227,6 @@ and staged artifacts. Config `a100-upstream-fused-001.json` selects only
 `single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight`; job 12134626 was
 submitted after the query comparison passed validation. It is a ten-minute
 single-prompt diagnostic, not a performance benchmark.
+
+Job 12134626 completed successfully in 75 seconds and passed paired validation.
+See the [fused-projection record](../../experiments/a100-flux-klein-upstream-fused-001.md) for results and scope.

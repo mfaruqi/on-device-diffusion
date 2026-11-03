@@ -3,6 +3,7 @@
 import argparse
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 
@@ -116,11 +117,16 @@ def main():
     assert remote.state == "finished", remote.state
     for key, value in payload["summary"].items():
         if key.startswith("quality/"):
-            assert remote.summary.get(key) == value, (
-                key,
-                remote.summary.get(key),
-                value,
+            actual = remote.summary.get(key)
+            # JSON services may round the last binary64 decimal digit.
+            matches = (
+                isinstance(actual, (int, float))
+                and not isinstance(actual, bool)
+                and math.isclose(actual, value, rel_tol=1e-14, abs_tol=1e-15)
+                if isinstance(value, float)
+                else actual == value
             )
+            assert matches, (key, actual, value)
     artifacts = list(remote.logged_artifacts())
     assert artifacts, "Missing evidence artifact"
     assert remote.summary.get("images"), "Missing image media"

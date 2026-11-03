@@ -29,11 +29,7 @@ This is not a full-transformer upstream conversion.
 | Same-source conventional INT4 control | [uniform](../../experiments/a100-flux-klein-uniform-001.md): competitive with radix |
 | All-linear grouped A8/A4 | [006](../../experiments/a100-flux-klein-shiftadd-006.md): 109 modules, four calls each; recognizable one-prompt outputs |
 | Upstream query projection | [query](../../experiments/a100-flux-klein-upstream-query-001.md): lower BF16 latent distance than the two single-projection controls |
-
-The fused-projection follow-up is separately configured in
-`configs/a100-upstream-fused-001.json`; job 12134626 was submitted. Its result is
-not included in the completed evidence above. Submission status is a snapshot,
-not a live scheduler view.
+| Upstream fused projection | [fused](../../experiments/a100-flux-klein-upstream-fused-001.md): higher BF16 latent distance than both controls; all four images retain readable sign text |
 
 ## Execution preparation
 

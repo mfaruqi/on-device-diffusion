@@ -36,4 +36,4 @@ MFLUX M5: five full protocols validated and all twelve run records uploaded; [Kl
 - Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
 - New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).
 
-ShiftAdd initial campaign: saved compressed transformer weights and paired image diagnostics; [entry point](../shiftadd/README.md). Packed GPU speed and energy remain unmeasured.
+ShiftAdd initial campaign: saved compressed transformer weights and paired image diagnostics; [entry point](../shiftadd/README.md). The [fused-projection diagnostic](../experiments/a100-flux-klein-upstream-fused-001.md) is complete. Packed GPU speed and energy remain unmeasured.
