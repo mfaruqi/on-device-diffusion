@@ -566,3 +566,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-011__attempt__20261102-full-kv` | [record](../experiments/m5-flux-klein-shiftadd-011.md) | M5 CPU | upstream BCQ complete K/V projections | — | — | — | complete; numerical diagnostic only |
 
 | `m5-flux-klein-shiftadd-012__attempt__20261102-kv-activation` | [record](../experiments/m5-flux-klein-shiftadd-012.md) | M5 CPU | full K/V grouped A8/A4 error diagnostic | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-013__attempt__20261102-kv-p3` | [record](../experiments/m5-flux-klein-shiftadd-013.md) | M5 CPU | upstream BCQ three-plane K/V fits | — | — | — | complete; numerical diagnostic only |

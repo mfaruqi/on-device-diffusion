@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-02] experiment | m5-flux-klein-shiftadd-013: three-plane K/V fitting
+
+Recorded smaller full K/V artifacts, projection errors and 32 reload checks ([record](../experiments/m5-flux-klein-shiftadd-013.md)).
+
 ## [2026-11-02] experiment | m5-flux-klein-shiftadd-012: full K/V activation errors
 
 Recorded 192 BF16/upstream A4/A8 projection comparisons with prior weight-only reproduction checks ([record](../experiments/m5-flux-klein-shiftadd-012.md)).
