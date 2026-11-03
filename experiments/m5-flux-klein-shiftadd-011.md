@@ -55,3 +55,13 @@ Storage savings do not establish resident GPU memory, latency or energy savings.
 
 ## Next experiment
 - Compare the combined first-block Q/K/V replacements with paired BF16 and conventional controls.
+
+## Quantized activation arithmetic verification
+
+The complete K/V matrices passed 64 CPU arithmetic comparisons (two matrices,
+16 captured calls, A4/A8 with activation group size 32). INT32 sign-plane sums
+with the saved upstream scales agree with independently decoded-weight FP32
+multiplication; maximum relative disagreement is 9.28713e-7.
+[Verification evidence](../results/runs/m5-flux-klein-shiftadd-011__attempt__20261102-full-kv/integer-arithmetic-verification.json).
+This checks arithmetic equivalence against already quantized activations, not
+quality versus unquantized activations or GPU throughput.
