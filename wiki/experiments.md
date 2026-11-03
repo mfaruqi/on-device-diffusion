@@ -250,3 +250,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-all-dual-a8-001 | A100 SXM4 | pytorch-diffusers | First-block Q/K/V A8 diagnostic | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-a8-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-a8-001__attempt__20261103-calibration/) | — |
 
 | a100-flux-klein-upstream-all-dual-q3-001 | A100 SXM4 | pytorch-diffusers | All-dual mixed query planes | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration/) | — |
+
+| a100-flux-klein-upstream-all-attention-001 | A100 SXM4 | pytorch-diffusers | All dual-stream Q/K/V images | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-attention-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-attention-001__attempt__20261103-calibration/) | — |

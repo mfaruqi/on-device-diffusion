@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.6026805629953742,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30992046487517655,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.307747544022277,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3100996520370245,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3357126018963754,
+      "relative_latent_l2": 0.2667292058467865,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30706453090533614,
+      "relative_latent_l2": 0.49334716796875,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3074722879100591,
+      "relative_latent_l2": 0.477047324180603,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3066778751090169,
+      "relative_latent_l2": 0.564652681350708,
+      "finite": true
+    },
+    {
+      "case": "uniform-int4-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.34657876705750823,
+      "relative_latent_l2": 0.2970541715621948,
+      "finite": true
+    },
+    {
+      "case": "uniform-int4-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30653371498920023,
+      "relative_latent_l2": 0.4596096873283386,
+      "finite": true
+    },
+    {
+      "case": "uniform-int4-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30706622498109937,
+      "relative_latent_l2": 0.4785374701023102,
+      "finite": true
+    },
+    {
+      "case": "uniform-int4-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3067854179535061,
+      "relative_latent_l2": 0.42249834537506104,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.35159666603431106,
+      "relative_latent_l2": 0.19563718140125275,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30672237696126103,
+      "relative_latent_l2": 0.30915963649749756,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30704970099031925,
+      "relative_latent_l2": 0.33652833104133606,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.306873369961977,
+      "relative_latent_l2": 0.47916215658187866,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

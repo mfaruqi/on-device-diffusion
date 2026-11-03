@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | a100-flux-klein-upstream-all-attention-001: broader image controls
+
+Verified 16 images, exact BF16 references and all 50 intended replacements ([record](../experiments/a100-flux-klein-upstream-all-attention-001.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-upstream-all-dual-q3-001: broader mixed query planes
 
 Verified 12 images and exact reference reproduction for the five-query Q3 variant ([record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md)).
