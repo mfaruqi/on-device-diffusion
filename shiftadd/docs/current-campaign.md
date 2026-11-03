@@ -16,7 +16,8 @@ query/fused projections. Its u8/shared-FP16 scales differ from the restricted ra
 family. See the [slice](../../experiments/m5-flux-klein-shiftadd-008.md),
 [query](../../experiments/m5-flux-klein-shiftadd-009.md) and
 [fused](../../experiments/m5-flux-klein-shiftadd-010.md) fitting records.
-This is not a full-transformer upstream conversion.
+Complete first-block K/V projections are also saved and independently verified
+([K/V record](../../experiments/m5-flux-klein-shiftadd-011.md)). This is not a full-transformer upstream conversion.
 
 ## Completed image diagnostics
 
@@ -38,6 +39,15 @@ The [four-prompt record](../../experiments/a100-flux-klein-upstream-fused-calibr
 documents prompt-specific latent rankings and the lemon-count difference. Two
 prompts supplied fitting inputs and two are calibration-validation prompts;
 none belongs to the reserved held-out evaluation.
+
+## Pending first-block Q/K/V comparison
+
+Job `12138121` was submitted with a five-minute limit using
+`configs/a100-upstream-qkv-calibration-001.json`. Each candidate changes all three
+Q/K/V matrices in transformer block 0. Four existing calibration prompts compare
+BF16, radix, conventional INT4 and upstream BCQ. The upstream bundle assembles
+previously verified Q/K/V files without refitting; all three hashes passed transfer.
+Submission is a snapshot, not a live scheduler view.
 
 ## Execution preparation
 

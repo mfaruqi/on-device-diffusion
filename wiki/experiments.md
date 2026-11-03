@@ -210,3 +210,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-fused-001 | A100 SXM4 | pytorch-diffusers | Fused-projection upstream BCQ image diagnostic | complete; quality smoke | [record](../experiments/a100-flux-klein-upstream-fused-001.md) | [run](../results/runs/a100-flux-klein-upstream-fused-001__attempt__20261102-fused/) | — |
 
 | a100-flux-klein-upstream-fused-calibration-001 | A100 SXM4 | pytorch-diffusers | Four-prompt fused-projection comparison | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-fused-calibration-001.md) | [run](../results/runs/a100-flux-klein-upstream-fused-calibration-001__attempt__20261102-calibration/) | — |
+
+| m5-flux-klein-shiftadd-011 | M5 CPU | pytorch-diffusers | Complete K/V upstream BCQ fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-011.md) | [run](../results/runs/m5-flux-klein-shiftadd-011__attempt__20261102-full-kv/) | — |

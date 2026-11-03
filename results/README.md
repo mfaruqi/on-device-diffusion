@@ -562,3 +562,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `a100-flux-klein-upstream-fused-001__attempt__20261102-fused` | [record](../experiments/a100-flux-klein-upstream-fused-001.md) | A100 SXM4 | single-fused-projection upstream BCQ controls | — | — | — | complete; job 12134626; image diagnostic only |
 
 | `a100-flux-klein-upstream-fused-calibration-001__attempt__20261102-calibration` | [record](../experiments/a100-flux-klein-upstream-fused-calibration-001.md) | A100 SXM4 | four-prompt fused-projection BCQ controls | — | — | — | complete; job 12135879; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-011__attempt__20261102-full-kv` | [record](../experiments/m5-flux-klein-shiftadd-011.md) | M5 CPU | upstream BCQ complete K/V projections | — | — | — | complete; numerical diagnostic only |

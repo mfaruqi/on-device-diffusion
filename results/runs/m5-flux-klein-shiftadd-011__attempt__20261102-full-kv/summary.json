@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.001716125407256186
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.0014001901727169752
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.0028228708542883396
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.0047606416046619415
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.0015976227587088943
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.001284763216972351
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.002624818356707692
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.004533846862614155
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01909583806991577
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.018923576921224594
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.018810896202921867
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.022890277206897736
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01872842200100422
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01876198500394821
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01905013434588909
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.0237639881670475
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.002013256074860692
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.0017188150668516755
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.0041687688790261745
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.00913326721638441
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.0018966662464663386
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.001635814318433404
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.004026476759463549
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.00919337198138237
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.02982562966644764
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.029263531789183617
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03424760326743126
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.043179139494895935
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.02861044369637966
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.028590990230441093
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.034596577286720276
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.044634006917476654
+    }
+  ],
+  "storage": [
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "payload_bytes": 5087232,
+      "file_bytes": 5112860,
+      "artifact_sha256": "e9284146c074e25eed2f4fec4d2ed419daa1f7eb53bb5835894d7da7e57a7e1b",
+      "bits_per_weight": 4.3125,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 3072,
+      "relative_weight_l2": 0.20588418841362
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "payload_bytes": 5087232,
+      "file_bytes": 5112860,
+      "artifact_sha256": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a",
+      "bits_per_weight": 4.3125,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 3072,
+      "relative_weight_l2": 0.16592250764369965
+    }
+  ],
+  "scope": "configured output rows; upstream GPTQ/BCQ with calibration inputs, not full-model reproduction",
+  "upstream": {
+    "repository": "https://github.com/Purdue-EcoAI/ShiftAddQwen",
+    "commit": "12d995a51a514b3757e29213c5545004e2e0e347",
+    "files_sha256": {
+      "saq/bcq.py": "816b050071b363f3745b0e3b2f8e07810c87fe25bea50d209c3cd62bb13848df",
+      "saq/gptq_bcq.py": "0993f3583c6d09f937580c60e5d9a2e97b6fdeb190fb0ad6d3568e92bb87fdf9",
+      "LICENSE": "4ea6f3c1c432a8e118b76f49f1396d93f24825debf1a55309d8259fcaba2dad3"
+    },
+    "changes": "No algorithm edits; empty package initializer added. Text files may have an extra terminal newline."
+  }
+}
