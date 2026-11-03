@@ -32,8 +32,9 @@ The parent repository's [instructions](../AGENTS.md) and experiment protocols ap
 - **Conventional INT4:** same-source symmetric quantization control. It is competitive
   with radix; the experiments do not establish a radix quality advantage.
 - **Upstream GPTQ/BCQ:** pinned ShiftAddQwen fitter applied to sampled slices, the
-  first dual-stream block’s complete Q/K/V matrices and the first single-stream
-  fused QKV/MLP projection. Three-plane Q/K/V candidates are also saved. Its
+  complete image/text Q/K/V matrices in all five dual-stream blocks and the
+  first single-stream fused QKV/MLP projection. Broader fused fitting is running.
+  Three-plane query candidates across all five dual-stream blocks are also saved. Its
   u8/shared-FP16 scales differ from the restricted radix family. This is **not** a full-transformer ShiftAddQwen reproduction.
 - **Activations:** grouped A4/A8 arithmetic is numerically checked. All-linear
   fake-quantized image tests execute floating GEMMs; they are quality diagnostics.

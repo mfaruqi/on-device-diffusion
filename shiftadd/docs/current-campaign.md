@@ -61,6 +61,22 @@ none belongs to the reserved held-out evaluation.
 compares the completed matched runs; Q3 has the lowest latent distance among
 those three candidates on all four prompts, without formal quality admission.
 
+## Broader dual-stream results
+
+All 30 image/text Q/K/V matrices across the five dual-stream blocks are now
+[fitted and independently verified](../../experiments/m5-flux-klein-shiftadd-015.md).
+The [16-image comparison](../../experiments/a100-flux-klein-upstream-all-dual-001.md)
+changes the same 30 matrices for radix, INT4 and upstream BCQ. Upstream has lower
+BF16 latent distance on all four prompts, with different bit usage and no formal
+quality admission. This does not include the 20 single-stream fused projections.
+
+[Grouped A4/A8 projection checks](../../experiments/m5-flux-klein-shiftadd-017.md)
+cover all 30 matrices; A8 adds much less local error than A4. The
+[five image-query Q3 fits](../../experiments/m5-flux-klein-shiftadd-018.md) are
+saved and verified, offering 4.09% lower file storage when combined with the
+other 25 four-plane dual-stream matrices. Their combined image comparison and
+the all-dual A8 image follow-up are submitted, not completed evidence.
+
 ## Prepared follow-ups
 
 The [Q3 image comparison](../../experiments/a100-flux-klein-upstream-qkv-q3-001.md)
@@ -70,8 +86,9 @@ of four prompts than Q4/K4/V4. This is not formal quality superiority. The
 is complete: 800 finite arrays, with exact reproduction of the earlier 32 arrays.
 It covers 30 dual-stream image/text Q/K/V matrices and 20 single-stream fused
 QKV/MLP projections. The [30 dual-stream fits](../../experiments/m5-flux-klein-shiftadd-015.md) are complete
-and independently verified. Single-stream fitting continues; no corresponding
-combined image quality or packed execution result exists yet. Existing four-prompt calibration
+and independently verified. Single-stream fitting continues. No image comparison combining both the
+dual-stream and single-stream upstream bundles exists yet; packed execution
+remains unmeasured. Existing four-prompt calibration
 data remain separate from formal held-out evaluation.
 
 ## Execution preparation
