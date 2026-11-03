@@ -40,14 +40,31 @@ documents prompt-specific latent rankings and the lemon-count difference. Two
 prompts supplied fitting inputs and two are calibration-validation prompts;
 none belongs to the reserved held-out evaluation.
 
-## Pending first-block Q/K/V comparison
+## Completed first-block Q/K/V follow-ups
 
-Job `12138121` was submitted with a five-minute limit using
-`configs/a100-upstream-qkv-calibration-001.json`. Each candidate changes all three
-Q/K/V matrices in transformer block 0. Four existing calibration prompts compare
-BF16, radix, conventional INT4 and upstream BCQ. The upstream bundle assembles
-previously verified Q/K/V files without refitting; all three hashes passed transfer.
-Submission is a snapshot, not a live scheduler view.
+- [Four-plane controls](../../experiments/a100-flux-klein-upstream-qkv-calibration-001.md):
+  16 images compare BF16, radix, conventional INT4 and upstream BCQ across four
+  prompts. Upstream is closest to BF16 on each; this is not formal quality superiority.
+- [Grouped A8](../../experiments/a100-flux-klein-upstream-qkv-a8-001.md):
+  12 images and 48 verified hook calls. Two outputs move closer to BF16 and two
+  farther away. Only first-block Q/K/V inputs are quantized.
+- [Mixed planes](../../experiments/a100-flux-klein-upstream-qkv-mixed-001.md):
+  reducing K or V to three planes saves 8.17% of the three-matrix bundle’s file
+  size. K3 is the more promising candidate on the two calibration-validation
+  prompts; all lemon images still show two lemons rather than three.
+- Three-plane [K/V](../../experiments/m5-flux-klein-shiftadd-013.md) and
+  [Q](../../experiments/m5-flux-klein-shiftadd-014.md) artifacts have independent
+  reload and quantized-activation arithmetic checks. Their per-matrix files are
+  24.51% smaller than the four-plane versions.
+
+## Prepared follow-ups
+
+The Q3 image configuration and the all-attention calibration capture configuration
+are submitted, not completed evidence. The latter selects 30 dual-stream image/text
+Q/K/V matrices and 20 single-stream fused QKV/MLP projections. CPU fitting configs
+for those two groups are prepared but have not run. Queue state can change;
+submission is not a result. Existing four-prompt calibration data remain separate
+from formal held-out evaluation.
 
 ## Execution preparation
 

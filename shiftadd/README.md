@@ -31,9 +31,10 @@ The parent repository's [instructions](../AGENTS.md) and experiment protocols ap
   uses weight error, not a learned activation-sensitivity policy.
 - **Conventional INT4:** same-source symmetric quantization control. It is competitive
   with radix; the experiments do not establish a radix quality advantage.
-- **Upstream GPTQ/BCQ:** pinned ShiftAddQwen fitter applied to two slices and two
-  complete projections. Its u8/shared-FP16 scales differ from the restricted radix
-  family. This is **not** a full-transformer ShiftAddQwen reproduction.
+- **Upstream GPTQ/BCQ:** pinned ShiftAddQwen fitter applied to sampled slices, the
+  first dual-stream block’s complete Q/K/V matrices and the first single-stream
+  fused QKV/MLP projection. Three-plane Q/K/V candidates are also saved. Its
+  u8/shared-FP16 scales differ from the restricted radix family. This is **not** a full-transformer ShiftAddQwen reproduction.
 - **Activations:** grouped A4/A8 arithmetic is numerically checked. All-linear
   fake-quantized image tests execute floating GEMMs; they are quality diagnostics.
 
