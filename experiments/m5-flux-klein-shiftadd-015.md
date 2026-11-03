@@ -68,3 +68,24 @@ established by packed storage or CPU projection checks.
 
 ## Next experiment
 - Compare all 30 replacements against matched BF16, radix and conventional INT4 image controls.
+
+## Matched conventional projection controls
+
+Existing radix p4 and conventional symmetric INT4 artifacts were decoded for
+the same 30 matrices and evaluated on the exact same 16 captured calls each.
+Artifact hashes were checked before decoding. All 960 control comparisons are
+finite; [per-module evidence and aggregates](../results/runs/m5-flux-klein-shiftadd-015__attempt__20261103-all-dual/controls/)
+preserve configurations, hashes and errors. The table averages the per-call
+relative errors equally over this matrix subset.
+
+| Method | Mean fit output L2 | Mean calibration-validation output L2 |
+|---|---:|---:|
+| radix_p4 | 0.07319150 | 0.07276229 |
+| uniform_int4 | 0.06286863 | 0.06240021 |
+| upstream_u8 | 0.00315546 | 0.03889433 |
+
+Upstream BCQ has lower mean calibration-validation output error than uniform
+INT4 on each of the 30 matrices. This compares methods, not calibration alone:
+upstream has 4.3125 payload bits/weight and flexible u8 scales, versus 4.25 for
+the controls. Different scale families and fitting objectives are confounded.
+Local projection error does not establish combined image quality or performance.
