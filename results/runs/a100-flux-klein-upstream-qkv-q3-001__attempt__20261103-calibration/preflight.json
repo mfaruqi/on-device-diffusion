@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "case_sequence": {
+    "case_sequence_valid": true,
+    "rule": "every candidate overwrites all previously modified parameters",
+    "cases": [
+      {
+        "case": "bf16",
+        "selected_tensors": []
+      },
+      {
+        "case": "upstream-u8-qkv",
+        "selected_tensors": [
+          "transformer_blocks.0.attn.to_k.weight",
+          "transformer_blocks.0.attn.to_q.weight",
+          "transformer_blocks.0.attn.to_v.weight"
+        ]
+      },
+      {
+        "case": "upstream-q3-k4-v4",
+        "selected_tensors": [
+          "transformer_blocks.0.attn.to_k.weight",
+          "transformer_blocks.0.attn.to_q.weight",
+          "transformer_blocks.0.attn.to_v.weight"
+        ]
+      }
+    ]
+  },
+  "expected_images": 12,
+  "remote_hashes": {
+    "status.json": "0cb87b61f0afab118ac222a0af92bc06c579959aeea208461294d16becf11b39",
+    "transformer_blocks.0.attn.to_v.npz": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a",
+    "summary.json": "f9910eea533d4e9515d39f4c33949569be6b853f27257f77478c4acffbfa64d8",
+    "transformer_blocks.0.attn.to_q.npz": "0f8d559060130992ddfd4748a3627239f312024a875cf52228df2498acaeed7c",
+    "assembly-provenance.json": "dc69b6cf7e813d198120984ebeff8c5fb9e791226986321e3753bf7d9f178ec6",
+    "config.json": "ac684658da12fb4c28458041ceadbf7dd956e1f68a5ecf42a2853f3f85807b91",
+    "transformer_blocks.0.attn.to_k.npz": "e9284146c074e25eed2f4fec4d2ed419daa1f7eb53bb5835894d7da7e57a7e1b"
+  }
+}

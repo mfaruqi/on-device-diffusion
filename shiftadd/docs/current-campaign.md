@@ -59,7 +59,9 @@ none belongs to the reserved held-out evaluation.
 
 ## Prepared follow-ups
 
-The Q3 image comparison remains submitted, not completed evidence. The
+The [Q3 image comparison](../../experiments/a100-flux-klein-upstream-qkv-q3-001.md)
+is complete: all 12 images validated, with lower BF16 latent distance on three
+of four prompts than Q4/K4/V4. This is not formal quality superiority. The
 [all-attention capture](../../experiments/a100-flux-klein-shiftadd-activation-capture-002.md)
 is complete: 800 finite arrays, with exact reproduction of the earlier 32 arrays.
 It covers 30 dual-stream image/text Q/K/V matrices and 20 single-stream fused

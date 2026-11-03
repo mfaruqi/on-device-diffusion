@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | a100-flux-klein-upstream-qkv-q3-001: three-plane query images
+
+Verified 12 images and exact prior references for Q3/K4/V4 ([record](../experiments/a100-flux-klein-upstream-qkv-q3-001.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-shiftadd-activation-capture-002: broader calibration capture
 
 Verified 800 finite sampled arrays and exact prior-input reproduction ([record](../experiments/a100-flux-klein-shiftadd-activation-capture-002.md)).

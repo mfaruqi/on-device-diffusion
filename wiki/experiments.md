@@ -226,3 +226,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-qkv-mixed-001 | A100 SXM4 | pytorch-diffusers | First-block mixed-plane Q/K/V | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-qkv-mixed-001.md) | [run](../results/runs/a100-flux-klein-upstream-qkv-mixed-001__attempt__20261103-calibration/) | — |
 
 | a100-flux-klein-shiftadd-activation-capture-002 | A100 SXM4 | pytorch-diffusers | All-attention calibration inputs | complete; capture diagnostic | [record](../experiments/a100-flux-klein-shiftadd-activation-capture-002.md) | [run](../results/runs/a100-flux-klein-shiftadd-activation-capture-002__attempt__20261103-calibration/) | — |
+
+| a100-flux-klein-upstream-qkv-q3-001 | A100 SXM4 | pytorch-diffusers | First-block Q3/K4/V4 | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-qkv-q3-001.md) | [run](../results/runs/a100-flux-klein-upstream-qkv-q3-001__attempt__20261103-calibration/) | — |
