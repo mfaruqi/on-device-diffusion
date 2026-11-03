@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | compare-upstream-qkv-plane-allocation: equal-storage allocation
+
+Compared completed matched Q3/K3/V3 image runs with quality and performance limits ([record](../experiments/compare-upstream-qkv-plane-allocation.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-upstream-qkv-q3-001: three-plane query images
 
 Verified 12 images and exact prior references for Q3/K4/V4 ([record](../experiments/a100-flux-klein-upstream-qkv-q3-001.md)).

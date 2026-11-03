@@ -57,6 +57,10 @@ none belongs to the reserved held-out evaluation.
   reload and quantized-activation arithmetic checks. Their per-matrix files are
   24.51% smaller than the four-plane versions.
 
+[Equal-storage Q3/K3/V3 comparison](../../experiments/compare-upstream-qkv-plane-allocation.md)
+compares the completed matched runs; Q3 has the lowest latent distance among
+those three candidates on all four prompts, without formal quality admission.
+
 ## Prepared follow-ups
 
 The [Q3 image comparison](../../experiments/a100-flux-klein-upstream-qkv-q3-001.md)
