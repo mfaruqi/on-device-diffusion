@@ -582,3 +582,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `a100-flux-klein-upstream-qkv-q3-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-q3-001.md) | A100 SXM4 | Q3/K4/V4 image comparison | — | — | — | complete; job 12140128; calibration diagnostic only |
 
 | `m5-flux-klein-shiftadd-015__attempt__20261103-all-dual` | [record](../experiments/m5-flux-klein-shiftadd-015.md) | M5 CPU | all 30 dual-stream upstream fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-017__attempt__20261103-dual-activation` | [record](../experiments/m5-flux-klein-shiftadd-017.md) | M5 CPU | all-dual A4/A8 activation errors | — | — | — | complete; numerical diagnostic only |

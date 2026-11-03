@@ -232,3 +232,5 @@ that every record and every run directory appears here.
 | compare-upstream-qkv-plane-allocation | A100 SXM4 | pytorch-diffusers | Equal-storage Q3/K3/V3 allocation | complete; calibration comparison | [record](../experiments/compare-upstream-qkv-plane-allocation.md) | [run 1](../results/runs/a100-flux-klein-upstream-qkv-mixed-001__attempt__20261103-calibration/), [run 2](../results/runs/a100-flux-klein-upstream-qkv-q3-001__attempt__20261103-calibration/) | — |
 
 | m5-flux-klein-shiftadd-015 | M5 CPU | pytorch-diffusers | All dual-stream Q/K/V upstream fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-015.md) | [run](../results/runs/m5-flux-klein-shiftadd-015__attempt__20261103-all-dual/) | — |
+
+| m5-flux-klein-shiftadd-017 | M5 CPU | pytorch-diffusers | All-dual grouped activation diagnostic | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-017.md) | [run](../results/runs/m5-flux-klein-shiftadd-017__attempt__20261103-dual-activation/) | — |

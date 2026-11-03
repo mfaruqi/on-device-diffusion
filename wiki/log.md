@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-017: all-dual activation errors
+
+Recorded 2,880 A4/A8 projection comparisons with exact-zero and prior-error checks ([record](../experiments/m5-flux-klein-shiftadd-017.md)).
+
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-015: all dual-stream Q/K/V
 
 Saved 30 fitted matrices and reproduced 480 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-015.md)).
