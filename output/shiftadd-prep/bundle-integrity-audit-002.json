@@ -1,0 +1,55 @@
+{
+  "source_bytes": 7751109744,
+  "source_sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "scope": "logical deployment weight file sizes, not live inference memory or workspace disk usage",
+  "bundles": {
+    "transformer-p4-001": {
+      "matrices": 109,
+      "weight_file_bytes": 2058956988,
+      "gib": 1.917553123086691,
+      "reduction_vs_source": 0.7343661674260511,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    },
+    "transformer-radix-p4-001": {
+      "matrices": 109,
+      "weight_file_bytes": 2058956988,
+      "gib": 1.917553123086691,
+      "reduction_vs_source": 0.7343661674260511,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    },
+    "transformer-radix-mixed-001": {
+      "matrices": 109,
+      "weight_file_bytes": 2135621820,
+      "gib": 1.988952811807394,
+      "reduction_vs_source": 0.7244753473329225,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    },
+    "transformer-radix-compact-p4-001": {
+      "matrices": 109,
+      "weight_file_bytes": 1968125182,
+      "gib": 1.8329594116657972,
+      "reduction_vs_source": 0.7460847224459064,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    },
+    "transformer-radix-compact-mixed-001": {
+      "matrices": 109,
+      "weight_file_bytes": 2040280318,
+      "gib": 1.9001591186970472,
+      "reduction_vs_source": 0.7367757152994323,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    },
+    "transformer-uniform-int4-001": {
+      "matrices": 109,
+      "weight_file_bytes": 2058984238,
+      "gib": 1.9175785016268492,
+      "reduction_vs_source": 0.734362651800431,
+      "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+      "matrix_hashes_verified": true
+    }
+  }
+}

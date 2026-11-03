@@ -82,3 +82,8 @@ output/**/*.html
 
 # Empty personal Obsidian table
 /Untitled.base
+
+# Small verified ShiftAdd inventory; model payloads remain local.
+!/output/shiftadd-prep/
+/output/shiftadd-prep/*
+!/output/shiftadd-prep/bundle-integrity-audit-002.json

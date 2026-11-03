@@ -1,0 +1,701 @@
+{
+  "scope": "same-source 32 spread rows; FP32 products; weight-only scale selection",
+  "storage": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 101376,
+      "file_bytes": 102666,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.0074468255043029785
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 101376,
+      "file_bytes": 102666,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.0066970475018024445
+    }
+  ],
+  "results": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.002325713401660323
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.00959100667387247
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.05663866177201271
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.002292193938046694
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.009497848339378834
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.053546350449323654
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0017257356084883213
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.0062758661806583405
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.03963077813386917
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0014198704157024622
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.004790173377841711
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.03215351700782776
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.002378840232267976
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.009575283154845238
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.053947292268276215
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.002339789876714349
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.008635742589831352
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.04994623735547066
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0018119494197890162
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.006439107935875654
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.04010844975709915
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0014860267983749509
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.004718411713838577
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.032049961388111115
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.002397397765889764
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.00932236760854721
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.05378738418221474
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0023375481832772493
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.008883476257324219
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.05328960344195366
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.001747932517901063
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.006462183315306902
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.041466668248176575
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0013818265870213509
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.004516949411481619
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.029857072979211807
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.00237351655960083
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.00981219857931137
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.056385621428489685
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.002326469635590911
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.009079537354409695
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.050586242228746414
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0017839729553088546
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.00654057040810585
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.039843834936618805
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0014694153796881437
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.004790129605680704
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.03368976712226868
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0057576787658035755
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.015631819143891335
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1106603592634201
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005398152396082878
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.018458394333720207
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1066758930683136
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005360671319067478
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.019102485850453377
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09897759556770325
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005370617378503084
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.021129120141267776
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09336483478546143
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005921535659581423
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.016696715727448463
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.11392770707607269
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005711265839636326
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.01700497418642044
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10947251319885254
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005372774321585894
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.01935270056128502
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10451414436101913
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.005239148624241352
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.021242182701826096
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09224802255630493
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005573939997702837
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.016365552321076393
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.11196250468492508
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005667184479534626
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.018689991906285286
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10877133160829544
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005531304981559515
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.019314473494887352
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10050959885120392
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005873718298971653
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.020581431686878204
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10518156737089157
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005696809850633144
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.016060467809438705
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.11357314884662628
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005263271275907755
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.016139062121510506
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10162254422903061
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005454850848764181
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.018300095573067665
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.10494436323642731
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.005471391603350639
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.019550682976841927
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09869406372308731
+    }
+  ]
+}

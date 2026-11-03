@@ -1,0 +1,242 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.042757625225931406,
+    "min": 0.03733162581920624,
+    "max": 0.05331582948565483,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.043114740401506424,
+    "min": 0.037521135061979294,
+    "max": 0.05354822427034378,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.16678418312221766,
+    "min": 0.10562233626842499,
+    "max": 0.21244178712368011,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.042460623662918806,
+    "min": 0.0379878431558609,
+    "max": 0.05209997668862343,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.042784531600773335,
+    "min": 0.038119301199913025,
+    "max": 0.05205531790852547,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.17015787865966558,
+    "min": 0.11590687930583954,
+    "max": 0.21013610064983368,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.022461941465735435,
+    "min": 0.02053600363433361,
+    "max": 0.02679850347340107,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.022972987731918693,
+    "min": 0.02099466510117054,
+    "max": 0.027128802612423897,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.14701467659324408,
+    "min": 0.08640354871749878,
+    "max": 0.19413873553276062,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.02285578241571784,
+    "min": 0.021496277302503586,
+    "max": 0.02592732384800911,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.023263398557901382,
+    "min": 0.021937845274806023,
+    "max": 0.026024794206023216,
+    "calls": 8
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.1511772209778428,
+    "min": 0.09710615873336792,
+    "max": 0.1921924650669098,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.055319823790341616,
+    "min": 0.0517878420650959,
+    "max": 0.0589851438999176,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.055956256575882435,
+    "min": 0.053064387291669846,
+    "max": 0.05998353287577629,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "fit",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.15635580569505692,
+    "min": 0.13317514955997467,
+    "max": 0.1836826205253601,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.05593642918393016,
+    "min": 0.05107048526406288,
+    "max": 0.05828019604086876,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.056411609053611755,
+    "min": 0.05193127691745758,
+    "max": 0.058617185801267624,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "split": "calibration_validation",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.16042692586779594,
+    "min": 0.13638082146644592,
+    "max": 0.2029203623533249,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.04522134643048048,
+    "min": 0.04206551983952522,
+    "max": 0.04900828003883362,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.04593786783516407,
+    "min": 0.042922548949718475,
+    "max": 0.050357576459646225,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "fit",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.15039794519543648,
+    "min": 0.12625452876091003,
+    "max": 0.17863701283931732,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "None",
+    "mean_relative_output_l2": 0.045879770535975695,
+    "min": 0.04166670888662338,
+    "max": 0.050288405269384384,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "8",
+    "mean_relative_output_l2": 0.046432997565716505,
+    "min": 0.042361725121736526,
+    "max": 0.051032014191150665,
+    "calls": 8
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "split": "calibration_validation",
+    "activation_bits": "4",
+    "mean_relative_output_l2": 0.1551221702247858,
+    "min": 0.12869390845298767,
+    "max": 0.19730959832668304,
+    "calls": 8
+  }
+]

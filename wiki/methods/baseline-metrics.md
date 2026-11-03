@@ -639,3 +639,22 @@ so matching seeds across engines does not imply matching initial latents or imag
 TaylorSeer uses upstream attention-output prediction. Per-generation receipts count computed/predicted calls for each conditional/unconditional context, with caches reset inside generation timing. These counts are not denoising-step skips; the outer transformer and scheduler still run. Approximation quality is not established by protocol completion.
 
 [MFLUX option instrumentation](../../scripts/mflux_engine.py) caches the complete prompt-pair return within one resident model. Population stays in the first image, while lookup and synchronization stay in the text stage. Explicit VAE tiling uses 256-pixel tiles with 64-pixel overlap (eight latent pixels); actual decode shapes are audited. Tile-local normalization can change colors. Same-engine image diagnostics and execution receipts accompany the unchanged synchronized host timings. Whole-system memory pressure remains an uncontrolled performance confound.
+
+## ShiftAdd conversion diagnostics
+
+Weight-only conversion records distinguish storage and numerical diagnostics
+from inference metrics. `bf16_bytes` is two bytes per original matrix element;
+`packed_payload_bytes` sums sign-plane bytes and exponent bytes;
+`artifact_bytes` is the actual packed file size including headers.
+`replacement_bundle_weight_bytes` sums packed matrix files and unchanged tensor
+files, excluding reports and configs. Reduction is one minus replacement bytes
+ divided by the source transformer file size. These values do not measure live
+inference memory. `relative_l2` is the Frobenius norm of original minus decoded
+weights divided by the original norm, per matrix; zero original norms require
+separate handling. Conversion-and-verification seconds include fitting, writing,
+reloading, reconstruction and hashing. They are not inference latency.
+See the [conversion record](../../experiments/m5-flux-klein-shiftadd-001.md).
+
+For activation slice diagnostics, `relative_output_l2` is ||Xq Wqᵀ − X Wᵀ||F / ||X Wᵀ||F per captured call, with FP32 products of BF16-origin data. Aggregates average per-call ratios, rather than pooling norms. Ideal grouped activation storage is bits + 32/group_size bits per element for FP32 scales; this is not measured allocation. See the [grouped diagnostic](../../experiments/m5-flux-klein-shiftadd-003.md).
+
+ShiftAdd loader diagnostics use `process_peak_rss_gib` for whole child-process lifetime high-water RSS from `resource.ru_maxrss` (Darwin bytes, Linux KiB, converted to GiB). Imports, one BF16 parameter, packed input and reconstruction are included. First child is separate; subsequent fresh-child peaks have median/min/max. This is not a GPU metric, incremental allocation or per-generation measurement. See [loader diagnostic](../../experiments/m5-flux-klein-shiftadd-load-001.md).

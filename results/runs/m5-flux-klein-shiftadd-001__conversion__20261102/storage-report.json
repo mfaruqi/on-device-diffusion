@@ -1,0 +1,17 @@
+{
+  "converted_matrices": 109,
+  "converted_bf16_bytes": 7751073792,
+  "packed_matrix_files_bytes": 2058935220,
+  "unchanged_file_bytes": 21768,
+  "source_file_bytes": 7751109744,
+  "replacement_bundle_weight_bytes": 2058956988,
+  "weight_storage_reduction_fraction": 0.7343661674260511,
+  "runtime_memory_savings": "unmeasured; dense reconstruction retains BF16 parameter storage",
+  "source_sha256": "9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+  "matrix_relative_l2_min": 0.09635678678750992,
+  "matrix_relative_l2_max": 0.45246636867523193,
+  "matrix_relative_l2_median": 0.21463367342948914,
+  "element_weighted_relative_l2": 0.2267958918821569,
+  "element_weighted_relative_l2_definition": "sqrt(mean of per-matrix relative_l2 squared weighted by element count); not global norm ratio"
+}

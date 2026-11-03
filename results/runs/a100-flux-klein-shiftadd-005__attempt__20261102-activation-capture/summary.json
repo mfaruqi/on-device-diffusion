@@ -1,0 +1,50 @@
+{
+  "modules": {
+    "transformer_blocks.0.attn.to_q": {
+      "calls": 16,
+      "tokens_per_call": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "channels": 3072
+    },
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj": {
+      "calls": 16,
+      "tokens_per_call": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "channels": 3072
+    }
+  },
+  "scope": "BF16 calibration activation capture; CPU transfers invalidate timing",
+  "call_order": "sample order, then four denoising calls per sample"
+}

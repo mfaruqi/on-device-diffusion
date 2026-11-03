@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-02] experiment | ShiftAdd initial campaign
+
+Added labelled conversion, calibration, image and arithmetic diagnostics; see the [subproject](../shiftadd/README.md) and [registry](experiments.md). Storage savings do not establish packed execution performance.
+
 ## [2026-10-06] ingest | Campaign findings, planner design and prior art
 Five findings from the Jetson and campaign records ([step caching](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [reloading](findings/weight-reloading-dominates-disk-backed-jetson-generations.md), [overlap](findings/combined-reuse-savings-overlap-on-jetson-base.md), [auto-fit](findings/sdcpp-auto-fit-fails-first-text-encoding-on-jetson.md)); [levels concept](concepts/kernel-graph-plan-search.md); [RQ3](rq/rq3.md) draft hypothesis and planner design; [RQ2](rq/rq2.md) update; [D-011 proposed](project/decisions.md#d-011-build-the-compiled-pipeline-mlc-style-on-tvm-with-an-engine-level-planner-fallback-proposed); one [open question](open-questions.md); [reading list](papers/reading-list.md) additions.
 

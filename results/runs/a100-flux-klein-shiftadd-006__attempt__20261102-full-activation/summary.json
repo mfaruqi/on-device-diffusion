@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "generation_to_latent_s": 0.6076303910231218,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "radix-p4",
+      "generation_to_latent_s": 0.3595463780220598,
+      "relative_latent_l2": 0.7684926390647888,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-a8-g32",
+      "generation_to_latent_s": 0.5071827999781817,
+      "relative_latent_l2": 0.7619765996932983,
+      "finite": true
+    },
+    {
+      "case": "radix-p4-all-a4-g32",
+      "generation_to_latent_s": 0.5106721519259736,
+      "relative_latent_l2": 0.7915170192718506,
+      "finite": true
+    }
+  ],
+  "quality_scope": "one calibration prompt, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

@@ -1,0 +1,1640 @@
+{
+  "results": [
+    {
+      "tensor": "context_embedder.weight",
+      "shape": [
+        3072,
+        7680
+      ],
+      "planes": 4,
+      "bf16_bytes": 47185920,
+      "packed_payload_bytes": 12533760,
+      "artifact_bytes": 12534276,
+      "artifact_sha256": "0138eb89b690a74726558502501de7cc557b603d7256898f046a8cccd26e0292",
+      "relative_l2": 0.09635678678750992,
+      "max_absolute_error": 0.04443359375,
+      "conversion_and_verification_s": 0.5184947920497507
+    },
+    {
+      "tensor": "double_stream_modulation_img.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "6423de85a8813ff5b16eb42f33bebc941b858cfff2d0ef2c02b3734dde3f177a",
+      "relative_l2": 0.25132715702056885,
+      "max_absolute_error": 0.4140625,
+      "conversion_and_verification_s": 1.3704760000109673
+    },
+    {
+      "tensor": "double_stream_modulation_txt.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "7355eb62eae0f7a5c476b098d7f183310792586e952e571728d147c366ca334d",
+      "relative_l2": 0.20536735653877258,
+      "max_absolute_error": 0.2890625,
+      "conversion_and_verification_s": 0.717175749829039
+    },
+    {
+      "tensor": "norm_out.linear.weight",
+      "shape": [
+        6144,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 37748736,
+      "packed_payload_bytes": 10027008,
+      "artifact_bytes": 10027524,
+      "artifact_sha256": "e7daa21f7f3db06adcd407396cb6c4b916718c3cd689ebeecc821b0aa095ef83",
+      "relative_l2": 0.2338416427373886,
+      "max_absolute_error": 0.49609375,
+      "conversion_and_verification_s": 0.2979708749335259
+    },
+    {
+      "tensor": "proj_out.weight",
+      "shape": [
+        128,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 786432,
+      "packed_payload_bytes": 208896,
+      "artifact_bytes": 209412,
+      "artifact_sha256": "0e87e50996997f6dc837d4f992bdd1cd8f719d37ef5a1f97df3c53770531c9b2",
+      "relative_l2": 0.45246636867523193,
+      "max_absolute_error": 0.15234375,
+      "conversion_and_verification_s": 0.005308166146278381
+    },
+    {
+      "tensor": "single_stream_modulation.linear.weight",
+      "shape": [
+        9216,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "b533b6c8476cdc737a12bf2bae041f5670b0c14a0e3000e5b3e0903bb9b88730",
+      "relative_l2": 0.40970921516418457,
+      "max_absolute_error": 0.61328125,
+      "conversion_and_verification_s": 0.46194716705940664
+    },
+    {
+      "tensor": "single_transformer_blocks.0.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "4cdf4637c7ab191ad4a49e04b49b2b403eb835755f21df24e4b49452a133c149",
+      "relative_l2": 0.21718314290046692,
+      "max_absolute_error": 0.4453125,
+      "conversion_and_verification_s": 0.8680817920248955
+    },
+    {
+      "tensor": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "d56e607e6afcc1b3db3ed7c7e89227e8ad4858b1f4b891153d3da43899d8b913",
+      "relative_l2": 0.22443705797195435,
+      "max_absolute_error": 0.412109375,
+      "conversion_and_verification_s": 2.368865374941379
+    },
+    {
+      "tensor": "single_transformer_blocks.1.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "55424a4a7d239dff48bcfec14192b8a5e5327e051365a90d68f5f5ea21d42825",
+      "relative_l2": 0.21463367342948914,
+      "max_absolute_error": 0.2890625,
+      "conversion_and_verification_s": 0.7051087501458824
+    },
+    {
+      "tensor": "single_transformer_blocks.1.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "3e2c80496d85162b1f2362ef1e3a56ea34ebc51eb046cf49b8343917b8808dc5",
+      "relative_l2": 0.22225649654865265,
+      "max_absolute_error": 0.345703125,
+      "conversion_and_verification_s": 1.904885834082961
+    },
+    {
+      "tensor": "single_transformer_blocks.10.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "2a5eb783fee0da38f748c4861a34cf891305aed2a529a00489e762688dcfdcdc",
+      "relative_l2": 0.2130206674337387,
+      "max_absolute_error": 0.37109375,
+      "conversion_and_verification_s": 0.5145532090682536
+    },
+    {
+      "tensor": "single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "bfa84b94feea817f3edc39a6c111559387d9569ab1272bf982af456a005147d5",
+      "relative_l2": 0.22837670147418976,
+      "max_absolute_error": 0.283203125,
+      "conversion_and_verification_s": 1.515158792026341
+    },
+    {
+      "tensor": "single_transformer_blocks.11.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "d0fbcb32a12df9d0f4432c24c2e39ffa953d4105e2e9503b140364198a8113fe",
+      "relative_l2": 0.21218186616897583,
+      "max_absolute_error": 0.287109375,
+      "conversion_and_verification_s": 0.9543836249504238
+    },
+    {
+      "tensor": "single_transformer_blocks.11.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "1ea70dc814214cab110dd8e8e73343139b36df66185627c7d768717dfcc8aec2",
+      "relative_l2": 0.23219352960586548,
+      "max_absolute_error": 0.341796875,
+      "conversion_and_verification_s": 1.9995991250034422
+    },
+    {
+      "tensor": "single_transformer_blocks.12.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "091f5f1293a6cd128d16a95f63eab9757e64c40bb107bf312a911068d027f920",
+      "relative_l2": 0.21285536885261536,
+      "max_absolute_error": 0.228515625,
+      "conversion_and_verification_s": 0.7126033341046423
+    },
+    {
+      "tensor": "single_transformer_blocks.12.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "69d51d118bed3dafa86f0f79a7b9b20474b33e849f1bc9c7ba29e2319033564a",
+      "relative_l2": 0.22787025570869446,
+      "max_absolute_error": 0.44140625,
+      "conversion_and_verification_s": 1.9979398329742253
+    },
+    {
+      "tensor": "single_transformer_blocks.13.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "c2505fd0dcf5088d1fc31575a56271f8cb5cf805099b8e9e5cfeee1554df1716",
+      "relative_l2": 0.21359258890151978,
+      "max_absolute_error": 0.337890625,
+      "conversion_and_verification_s": 0.7669882909394801
+    },
+    {
+      "tensor": "single_transformer_blocks.13.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "1a3cf9ab9f399f85de6ed2a46edd922389cc244cf35624cf8f0e559fc5198af5",
+      "relative_l2": 0.22121241688728333,
+      "max_absolute_error": 0.3125,
+      "conversion_and_verification_s": 1.8885379161220044
+    },
+    {
+      "tensor": "single_transformer_blocks.14.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "bd2c3cc8cfaeb6a329435928f5165539f226e958fff303ab0c12e9d402a57609",
+      "relative_l2": 0.2175598442554474,
+      "max_absolute_error": 0.23046875,
+      "conversion_and_verification_s": 0.8407553748693317
+    },
+    {
+      "tensor": "single_transformer_blocks.14.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "7aa153bbc1573aa3aa5e64694c0e4c82f76e401da8652a33ddf5a2952196c99a",
+      "relative_l2": 0.22462919354438782,
+      "max_absolute_error": 0.333984375,
+      "conversion_and_verification_s": 1.1866398330312222
+    },
+    {
+      "tensor": "single_transformer_blocks.15.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "206418d380b9cc14f2aae155b74f0b6ddd78d208acc7c06c2730b1abb394c74e",
+      "relative_l2": 0.21565291285514832,
+      "max_absolute_error": 0.33984375,
+      "conversion_and_verification_s": 0.46270074998028576
+    },
+    {
+      "tensor": "single_transformer_blocks.15.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "75d6262797e9b14bda90a87aed8307e71539cf4a59cef7fb792d86636df4e754",
+      "relative_l2": 0.23197871446609497,
+      "max_absolute_error": 0.44140625,
+      "conversion_and_verification_s": 1.2401287911925465
+    },
+    {
+      "tensor": "single_transformer_blocks.16.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "9c7f89f98ca36022abab8421f713249cff178b813ad4a214d5255c4214a96bc0",
+      "relative_l2": 0.21932978928089142,
+      "max_absolute_error": 0.48828125,
+      "conversion_and_verification_s": 0.682898374972865
+    },
+    {
+      "tensor": "single_transformer_blocks.16.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "ab1185a6fc1a620413d079ce8061f81c60a9592d83a3fbb1afedfeae2204aa88",
+      "relative_l2": 0.23442956805229187,
+      "max_absolute_error": 0.375,
+      "conversion_and_verification_s": 2.2787840419914573
+    },
+    {
+      "tensor": "single_transformer_blocks.17.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "ef670ac8fab2569aab2b1799ba0b191a78e26ce6f838b6e5b2ccbf6aa951a46a",
+      "relative_l2": 0.2185823917388916,
+      "max_absolute_error": 0.578125,
+      "conversion_and_verification_s": 0.6474157499615103
+    },
+    {
+      "tensor": "single_transformer_blocks.17.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "69a997719b711036e978e6f419d70c53deb5ae91646cce3119a6e0243a65b548",
+      "relative_l2": 0.252109557390213,
+      "max_absolute_error": 0.359375,
+      "conversion_and_verification_s": 2.1112054160330445
+    },
+    {
+      "tensor": "single_transformer_blocks.18.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "b7e69ecbf069a0b5806b200ca0ddfb1f6683432ec64612ae921aa18ecfcdc9b1",
+      "relative_l2": 0.21758586168289185,
+      "max_absolute_error": 0.44921875,
+      "conversion_and_verification_s": 0.672752375015989
+    },
+    {
+      "tensor": "single_transformer_blocks.18.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "e2d54df1da6df22fc97c1bce5c068ca26843488b50eebe0afdd21459b4b28eec",
+      "relative_l2": 0.2665155529975891,
+      "max_absolute_error": 0.48828125,
+      "conversion_and_verification_s": 2.161840667016804
+    },
+    {
+      "tensor": "single_transformer_blocks.19.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "1efcabb6b41f5d71d3be07fac5591dbc3d779a6cfe6df3e0c7ffc206abb4e68d",
+      "relative_l2": 0.23247762024402618,
+      "max_absolute_error": 0.341796875,
+      "conversion_and_verification_s": 0.6884849579073489
+    },
+    {
+      "tensor": "single_transformer_blocks.19.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "35f1041d58d1d52ae84f66c62539a5a4db50b1d635e367ea61f9ab8caf4f53ec",
+      "relative_l2": 0.3599379360675812,
+      "max_absolute_error": 0.62109375,
+      "conversion_and_verification_s": 2.268436040962115
+    },
+    {
+      "tensor": "single_transformer_blocks.2.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "99d7c3d1f452f58f9d8f152159778b3caa6ce9be5f90217180df7dfeaa094835",
+      "relative_l2": 0.21395722031593323,
+      "max_absolute_error": 0.3203125,
+      "conversion_and_verification_s": 0.681955291191116
+    },
+    {
+      "tensor": "single_transformer_blocks.2.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "bcc0387ec88cda2461dbb93ed95f7fc38a2c14a9ab3b8f9a05f31bd54c78e822",
+      "relative_l2": 0.22191548347473145,
+      "max_absolute_error": 0.328125,
+      "conversion_and_verification_s": 1.9346365418750793
+    },
+    {
+      "tensor": "single_transformer_blocks.3.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "bf96a5d862b73ca02ceca9cba517e25ae9a60d648c16c6b6988fa89389c997a6",
+      "relative_l2": 0.2145603448152542,
+      "max_absolute_error": 0.431640625,
+      "conversion_and_verification_s": 0.694909666897729
+    },
+    {
+      "tensor": "single_transformer_blocks.3.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "e813550c366a9767c1322653318dde4b29b72646556f641372c9d6649778e4a2",
+      "relative_l2": 0.2210763841867447,
+      "max_absolute_error": 0.52734375,
+      "conversion_and_verification_s": 1.0728358749765903
+    },
+    {
+      "tensor": "single_transformer_blocks.4.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "0123ccf98b9bdd535a03a1cdb751ac7773a2ddd59055abf982b5c9cd7667ffda",
+      "relative_l2": 0.2203657627105713,
+      "max_absolute_error": 0.34765625,
+      "conversion_and_verification_s": 0.7223660829477012
+    },
+    {
+      "tensor": "single_transformer_blocks.4.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "3a0ac477e519e19b3b4fbb39f943b59d591c61c25587d990efe9fa3b908636cd",
+      "relative_l2": 0.21848303079605103,
+      "max_absolute_error": 0.361328125,
+      "conversion_and_verification_s": 2.5108138751238585
+    },
+    {
+      "tensor": "single_transformer_blocks.5.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "7ca50a5cc071710a0991a5da4d02ae96e47a902e4003d6ba4399c68fa525add4",
+      "relative_l2": 0.22704659402370453,
+      "max_absolute_error": 0.5390625,
+      "conversion_and_verification_s": 0.7480660830624402
+    },
+    {
+      "tensor": "single_transformer_blocks.5.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "8b17fbf3b3e36e06ec6ab144daacf4cd105d144699e416cec3c2428fe6660481",
+      "relative_l2": 0.22233806550502777,
+      "max_absolute_error": 0.45703125,
+      "conversion_and_verification_s": 2.043759666150436
+    },
+    {
+      "tensor": "single_transformer_blocks.6.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "d761c3ab8dea11c03b1b61f5d3aff43e2a89a4f37516b0aa7698e3d682595a09",
+      "relative_l2": 0.2011282593011856,
+      "max_absolute_error": 0.2421875,
+      "conversion_and_verification_s": 0.5182217499241233
+    },
+    {
+      "tensor": "single_transformer_blocks.6.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "8ec5389f6e94fd8e452cce8f5fd97e148cb8bb89a43237a36670a50e6b44b0eb",
+      "relative_l2": 0.2292187511920929,
+      "max_absolute_error": 0.37890625,
+      "conversion_and_verification_s": 1.5429599999915808
+    },
+    {
+      "tensor": "single_transformer_blocks.7.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "1001a972a605363c0a57f558d89384e95b5eb25d0fd05a33405b9a9cd5f41738",
+      "relative_l2": 0.20605963468551636,
+      "max_absolute_error": 0.29296875,
+      "conversion_and_verification_s": 0.49449325003661215
+    },
+    {
+      "tensor": "single_transformer_blocks.7.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "2a6b45523a2b3783dc56cb391830b4c75e9514d5ee140cc6c30a69770bf5f01f",
+      "relative_l2": 0.22976389527320862,
+      "max_absolute_error": 0.40625,
+      "conversion_and_verification_s": 1.0758299168664962
+    },
+    {
+      "tensor": "single_transformer_blocks.8.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "a7bde3464fa630ed1cb908f16708c8e5640fda8151d8dbe403ee3b82a7785f45",
+      "relative_l2": 0.21065030992031097,
+      "max_absolute_error": 0.275390625,
+      "conversion_and_verification_s": 0.554142750101164
+    },
+    {
+      "tensor": "single_transformer_blocks.8.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "1465fdfc5098bf7b5567e84ac850ff83daaa66e21f5a31b60ecab79f7b0005ee",
+      "relative_l2": 0.22742779552936554,
+      "max_absolute_error": 0.396484375,
+      "conversion_and_verification_s": 1.2181083338800818
+    },
+    {
+      "tensor": "single_transformer_blocks.9.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "planes": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054532,
+      "artifact_sha256": "bb265a4634a60484b601980db21407f11642a5dc30b255102d8c552ce32e831f",
+      "relative_l2": 0.21235167980194092,
+      "max_absolute_error": 0.87890625,
+      "conversion_and_verification_s": 0.4589250839781016
+    },
+    {
+      "tensor": "single_transformer_blocks.9.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122052,
+      "artifact_sha256": "67d66dae9d26ff9a4d6cd53ef854109c27fbf0c3805c8126f3495428df497522",
+      "relative_l2": 0.2303036004304886,
+      "max_absolute_error": 0.51171875,
+      "conversion_and_verification_s": 1.3556258748285472
+    },
+    {
+      "tensor": "time_guidance_embed.timestep_embedder.linear_1.weight",
+      "shape": [
+        3072,
+        256
+      ],
+      "planes": 4,
+      "bf16_bytes": 1572864,
+      "packed_payload_bytes": 417792,
+      "artifact_bytes": 418308,
+      "artifact_sha256": "cfdbe45eef5ac3d8e1bb9234bbbfd5f3e7faee5938cd825b52d80926f8e31a5f",
+      "relative_l2": 0.2742099463939667,
+      "max_absolute_error": 0.07373046875,
+      "conversion_and_verification_s": 0.009904833044856787
+    },
+    {
+      "tensor": "time_guidance_embed.timestep_embedder.linear_2.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "511c0a4bef92a47aa6e66b3091d1a4fd48a420ca7e77a6c1b0b4e8bf8e20bf81",
+      "relative_l2": 0.33584627509117126,
+      "max_absolute_error": 0.103515625,
+      "conversion_and_verification_s": 0.13275087485089898
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "de42d82983a48f1e9165a54b905984887308ff0139b9992c3e4c2a2b1482d0b5",
+      "relative_l2": 0.2055579274892807,
+      "max_absolute_error": 0.310546875,
+      "conversion_and_verification_s": 0.10263904090970755
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "ecfdad44b09b95ed3f577776effb9295e6c81052348de60a6a1914bcb6958189",
+      "relative_l2": 0.20137575268745422,
+      "max_absolute_error": 0.322265625,
+      "conversion_and_verification_s": 0.09925791691057384
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "874d4b9be6bde3db7e1d9c69c4c17f76de37e96e77d77fdb76939d98930436fb",
+      "relative_l2": 0.20520244538784027,
+      "max_absolute_error": 0.091796875,
+      "conversion_and_verification_s": 0.10183075000531971
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "4c30d5c4921a3ad1431635493752050b2322d7f6c79db7b25e1834968610dc20",
+      "relative_l2": 0.18734872341156006,
+      "max_absolute_error": 0.216796875,
+      "conversion_and_verification_s": 0.10223783296532929
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "f60d72517811d9b517bfe4dea5c822044726f47e2a546fc4ecddcc43d0f339eb",
+      "relative_l2": 0.2673467993736267,
+      "max_absolute_error": 0.380859375,
+      "conversion_and_verification_s": 0.10270779090933502
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "a7f7f7baebdc4332c10123d952af6cbdc8ba6e224800ae8ec920c51d772c06fc",
+      "relative_l2": 0.1993689239025116,
+      "max_absolute_error": 0.1484375,
+      "conversion_and_verification_s": 0.0992424578871578
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "bf09b45999755f5cec2411a8a36d276c7e3e9ba00be93bbf322bb3c02f733d1d",
+      "relative_l2": 0.23492297530174255,
+      "max_absolute_error": 0.287109375,
+      "conversion_and_verification_s": 0.09973099990747869
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "a310791f7653c1d1c6b427dc6f654ddc5027bf5bc01c071844f5a5a939535a72",
+      "relative_l2": 0.23866882920265198,
+      "max_absolute_error": 0.1298828125,
+      "conversion_and_verification_s": 0.13138091703876853
+    },
+    {
+      "tensor": "transformer_blocks.0.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "624957e705fc59a07602d8dc30bc22b376eba4bd77fa38cc66d16168855cc3e1",
+      "relative_l2": 0.2323402613401413,
+      "max_absolute_error": 0.251953125,
+      "conversion_and_verification_s": 0.7977200839668512
+    },
+    {
+      "tensor": "transformer_blocks.0.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "2bfa3e3b69460ea9408145afdfd9225c8ae8637cb7ff98322d08461efed8768e",
+      "relative_l2": 0.2759202718734741,
+      "max_absolute_error": 0.5546875,
+      "conversion_and_verification_s": 0.6147507089190185
+    },
+    {
+      "tensor": "transformer_blocks.0.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "39a7431e5a0b406690c57e940c0cdc128b438b573f97fe76a1086e4017eee959",
+      "relative_l2": 0.2076301872730255,
+      "max_absolute_error": 0.1474609375,
+      "conversion_and_verification_s": 0.8351691251154989
+    },
+    {
+      "tensor": "transformer_blocks.0.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "306942b196124d430e1a82b2e1c011f34e17601cedbc856ab1d3101e6cbfea56",
+      "relative_l2": 0.19878217577934265,
+      "max_absolute_error": 0.1708984375,
+      "conversion_and_verification_s": 0.380509041948244
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "13eb0b965dc66797d07f941e3b03252b56816de17c85f841945a89ad82b2b160",
+      "relative_l2": 0.19784308969974518,
+      "max_absolute_error": 0.1162109375,
+      "conversion_and_verification_s": 0.14443254214711487
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "b20e9a4441b27358dc7d4f23552bd8abceb2be25ad768d214e76b3c2bbf78350",
+      "relative_l2": 0.19713133573532104,
+      "max_absolute_error": 0.189453125,
+      "conversion_and_verification_s": 0.09938683290965855
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "515b5e9c8d97cc363d334ec8d00049bfb90811048f565b0657731ca6a499e006",
+      "relative_l2": 0.20801977813243866,
+      "max_absolute_error": 0.0927734375,
+      "conversion_and_verification_s": 0.10157091682776809
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "e1e8f6ea5f0d21d9fd914fffcbd10e3671adcc6e90abfe01143f140813772f3d",
+      "relative_l2": 0.15633872151374817,
+      "max_absolute_error": 0.1103515625,
+      "conversion_and_verification_s": 0.10204704198986292
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "dc1aea344c2bc62ddcb696387187cf2191d5a0432ad942df388bc1f096feec5a",
+      "relative_l2": 0.22219187021255493,
+      "max_absolute_error": 0.244140625,
+      "conversion_and_verification_s": 0.10025629214942455
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "4843f27e33463a1e1f741d07d8c50d5a55083b4b44a54c74c2aa63b90779b894",
+      "relative_l2": 0.1921752542257309,
+      "max_absolute_error": 0.146484375,
+      "conversion_and_verification_s": 0.09985829214565456
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "f85ec9c49f7bb0e83484028990ebbb6d4647b1695c6dbf4b70f63141d881e250",
+      "relative_l2": 0.22207796573638916,
+      "max_absolute_error": 0.44921875,
+      "conversion_and_verification_s": 0.09963137493468821
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "314c80d20ba1441d6c03a5eda4814aa4aaa3d28ca4d0fbff58d6068850fc66ef",
+      "relative_l2": 0.22251202166080475,
+      "max_absolute_error": 0.1416015625,
+      "conversion_and_verification_s": 0.10416641691699624
+    },
+    {
+      "tensor": "transformer_blocks.1.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "cfe70f56690d10ab40a6733adf19fddc83f31288cb099bd48743f9d4e0cb5e92",
+      "relative_l2": 0.2234518975019455,
+      "max_absolute_error": 0.34375,
+      "conversion_and_verification_s": 0.7513395419809967
+    },
+    {
+      "tensor": "transformer_blocks.1.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "26d213d6c13f436ed46fde2946a32c15bee996b7bd34b4d6ea7e73357f5c96eb",
+      "relative_l2": 0.2183019369840622,
+      "max_absolute_error": 0.34765625,
+      "conversion_and_verification_s": 0.3567774589173496
+    },
+    {
+      "tensor": "transformer_blocks.1.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "e515541dd38df45e51f9c23bb762af37f188a239e7c6b869750a1943c3504fa6",
+      "relative_l2": 0.20688535273075104,
+      "max_absolute_error": 0.205078125,
+      "conversion_and_verification_s": 0.6480076250154525
+    },
+    {
+      "tensor": "transformer_blocks.1.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "c8e674f782ce41d7ee8df991534803540107e84e781f46f255c3e81efebd0a67",
+      "relative_l2": 0.19929982721805573,
+      "max_absolute_error": 0.404296875,
+      "conversion_and_verification_s": 0.3530202500987798
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "cd6fa0d999f1e144a69451601f16a9e087ef5660ab46abcba8fe9cbcee1d47d7",
+      "relative_l2": 0.198722243309021,
+      "max_absolute_error": 0.166015625,
+      "conversion_and_verification_s": 0.10580841707997024
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "a77d3bba009f98b4babedfa272bd8e362a0eddd18e6501eecb148a7d4f86a77f",
+      "relative_l2": 0.1977202296257019,
+      "max_absolute_error": 0.1455078125,
+      "conversion_and_verification_s": 0.10054549993947148
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "6c334f3972b7d28ea8ab5841e802b6bb0363d091cd23c72c229da4772229ec06",
+      "relative_l2": 0.19334937632083893,
+      "max_absolute_error": 0.1015625,
+      "conversion_and_verification_s": 0.09939562506042421
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "229a6c9d82c02afb0aa821c928310e860e9911a35c743a206e4831eb5a71c2e3",
+      "relative_l2": 0.1580345183610916,
+      "max_absolute_error": 0.1083984375,
+      "conversion_and_verification_s": 0.09891470801085234
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "9ac8496301c9584386ce8af738b52e9e92121c2f90afc0d8a2cbb33e9e304cca",
+      "relative_l2": 0.2245463728904724,
+      "max_absolute_error": 0.388671875,
+      "conversion_and_verification_s": 0.09858900005929172
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "ebf4a6dca7db60fda78d0ff257c025201e57d2dafe2ab82d9c636fabe3a67a58",
+      "relative_l2": 0.18566067516803741,
+      "max_absolute_error": 0.1015625,
+      "conversion_and_verification_s": 0.10159208299592137
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "09fdf6e2a0f708f714c113e96a2011d05a7ff49432e9d7a4463333030389b265",
+      "relative_l2": 0.2142426073551178,
+      "max_absolute_error": 0.2109375,
+      "conversion_and_verification_s": 0.0989543329924345
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "0e2ac2e24c8994229e588f578318b94ceb0783baffab1a4ad9cbf3a8116d2189",
+      "relative_l2": 0.22169287502765656,
+      "max_absolute_error": 0.158203125,
+      "conversion_and_verification_s": 0.09925237484276295
+    },
+    {
+      "tensor": "transformer_blocks.2.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "3981ceea6af941346aadb75a241ed54e8b22f9a23d4d943062b923f6600306bd",
+      "relative_l2": 0.22071205079555511,
+      "max_absolute_error": 0.373046875,
+      "conversion_and_verification_s": 0.8192845419980586
+    },
+    {
+      "tensor": "transformer_blocks.2.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "6de1fc925d96c09080022c44837db0552a761e8db6c52d5e7735d1812b3bc5ea",
+      "relative_l2": 0.21673831343650818,
+      "max_absolute_error": 0.234375,
+      "conversion_and_verification_s": 0.37510166713036597
+    },
+    {
+      "tensor": "transformer_blocks.2.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "9b3d526f93345ed5a40f9072c306119f6e127422f227dc3173d59ba0ac7ec15e",
+      "relative_l2": 0.20576751232147217,
+      "max_absolute_error": 0.1669921875,
+      "conversion_and_verification_s": 0.634729125071317
+    },
+    {
+      "tensor": "transformer_blocks.2.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "7c5b777621a66f60af7021dddf220f917b7f933a12ae3a47facb99de28787fc9",
+      "relative_l2": 0.1995428204536438,
+      "max_absolute_error": 0.345703125,
+      "conversion_and_verification_s": 0.3233574170153588
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "536f18760243c315243e853a84c53c72bd369af2f49e90ab50bbd4e4d6fec242",
+      "relative_l2": 0.2028559148311615,
+      "max_absolute_error": 0.373046875,
+      "conversion_and_verification_s": 0.11253245896659791
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "f38b98edfe7a64527187a625681637a680a26596c691d097b7a47064754cb8fe",
+      "relative_l2": 0.1986762136220932,
+      "max_absolute_error": 0.21484375,
+      "conversion_and_verification_s": 0.10556145897135139
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "7024cf186df5e8981096aa8a3509501b331248d27ddf058a254558b4f82de1ca",
+      "relative_l2": 0.1851726472377777,
+      "max_absolute_error": 0.107421875,
+      "conversion_and_verification_s": 0.09940412500873208
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "5a6577a8b315a5e8bc580239503b026db561e7727e90e18f7ba4b92e227c18fa",
+      "relative_l2": 0.15671494603157043,
+      "max_absolute_error": 0.109375,
+      "conversion_and_verification_s": 0.09912958415225148
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "8c2757dcf27566efdb28d5b7b0914fcdb4da3c6ab1c22645560c92d58f555872",
+      "relative_l2": 0.22814884781837463,
+      "max_absolute_error": 0.328125,
+      "conversion_and_verification_s": 0.10182641702704132
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "a913207b01ce8af107feceda80218e4ee37f7451a05fb0e2cd6e7158ba9bafca",
+      "relative_l2": 0.176641047000885,
+      "max_absolute_error": 0.1162109375,
+      "conversion_and_verification_s": 0.10358816687949002
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "ddc0e959e3f2b951f884a7739b2849bea4dbf74e20b394510695f0ed03c022ec",
+      "relative_l2": 0.20999759435653687,
+      "max_absolute_error": 0.369140625,
+      "conversion_and_verification_s": 0.1010733749717474
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "99d680536684ceec0d55244b62a2d6a493aa665fbdd152a92fb99af00431e984",
+      "relative_l2": 0.23680418729782104,
+      "max_absolute_error": 0.244140625,
+      "conversion_and_verification_s": 0.09898558305576444
+    },
+    {
+      "tensor": "transformer_blocks.3.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "2424c22ed86202ca589f44650bbec85bb2dae73ce360cf602ff5fb4fa88472c2",
+      "relative_l2": 0.21908700466156006,
+      "max_absolute_error": 0.240234375,
+      "conversion_and_verification_s": 0.8411550000309944
+    },
+    {
+      "tensor": "transformer_blocks.3.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "3ebdcb33b4ffff764f45f6cc6a1f8981a448fcdc5c504a5acc527dfc33d3295f",
+      "relative_l2": 0.21340106427669525,
+      "max_absolute_error": 0.251953125,
+      "conversion_and_verification_s": 0.29954608296975493
+    },
+    {
+      "tensor": "transformer_blocks.3.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "0035eed326a009bbaf9cfe90c198f63041cb9a40b0315afd8caf12b32e227ba7",
+      "relative_l2": 0.20551364123821259,
+      "max_absolute_error": 0.205078125,
+      "conversion_and_verification_s": 0.644012332893908
+    },
+    {
+      "tensor": "transformer_blocks.3.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "16344c9bb4c66ce6300d9667c8dd6ad9c37d39c91adf018d3859a2010242cc1b",
+      "relative_l2": 0.19990189373493195,
+      "max_absolute_error": 0.28125,
+      "conversion_and_verification_s": 0.3155425419099629
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "a7c1355f090b52a6e3f98ad64aedc48628d27a9799cd469c22c0eee8e355ba98",
+      "relative_l2": 0.2046135514974594,
+      "max_absolute_error": 0.279296875,
+      "conversion_and_verification_s": 0.10287787509150803
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "537d7cc27f1376c51938da65b88091f53d1c433ea81ec868cc1f2013f5a332ee",
+      "relative_l2": 0.20031338930130005,
+      "max_absolute_error": 0.1708984375,
+      "conversion_and_verification_s": 0.10061837499961257
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "ffb329c5ac4d70c3f8b0e55202a3a0187dd1ef4c848e9bf166dec108ed03f292",
+      "relative_l2": 0.1802988350391388,
+      "max_absolute_error": 0.1396484375,
+      "conversion_and_verification_s": 0.10129699995741248
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "4def3d06f4c5a0b51e17d33dbb22fbfb198677b1d28be6cc6035196ab232761f",
+      "relative_l2": 0.16180185973644257,
+      "max_absolute_error": 0.1142578125,
+      "conversion_and_verification_s": 0.10174549999646842
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "d6a1180022aa1c210e9a79b2a24d6b853d9c265583efa2cd05400349a9abc32e",
+      "relative_l2": 0.22358442842960358,
+      "max_absolute_error": 0.30078125,
+      "conversion_and_verification_s": 0.09974008286371827
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "d5e6b3fc6a231aafd84d0a2e8c7989c81574b75a7911ed3b0f98d6a8b8eb7b38",
+      "relative_l2": 0.183898463845253,
+      "max_absolute_error": 0.166015625,
+      "conversion_and_verification_s": 0.09954337519593537
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "f5b4bd7f5a1379682fae51549b310de5f3cff2c9c6524ee692e04498b45ac903",
+      "relative_l2": 0.21261774003505707,
+      "max_absolute_error": 0.181640625,
+      "conversion_and_verification_s": 0.09860412497073412
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014020,
+      "artifact_sha256": "912a199b10ca120f1ef7c3581e18e8efb2a20d2f08dbc60b83c5821011d111cc",
+      "relative_l2": 0.2048540711402893,
+      "max_absolute_error": 0.220703125,
+      "conversion_and_verification_s": 0.10950395907275379
+    },
+    {
+      "tensor": "transformer_blocks.4.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "27a53f8f73c73b5b50232dce2d43ada66c114fac18d468c9d8c919c103a5c7e6",
+      "relative_l2": 0.21488429605960846,
+      "max_absolute_error": 0.2734375,
+      "conversion_and_verification_s": 1.1433301251381636
+    },
+    {
+      "tensor": "transformer_blocks.4.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "f6cb2a3f58cdee1271b13501bccecab6d4a2a25f8aa7028652a3734a5ecc21ea",
+      "relative_l2": 0.19764266908168793,
+      "max_absolute_error": 0.228515625,
+      "conversion_and_verification_s": 0.5164643749594688
+    },
+    {
+      "tensor": "transformer_blocks.4.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "planes": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081540,
+      "artifact_sha256": "5d549ab9715166b23880366c567eb04ed62d48e3f89f4b9b5e00f88b58594bff",
+      "relative_l2": 0.2044055461883545,
+      "max_absolute_error": 0.33984375,
+      "conversion_and_verification_s": 0.7065918750595301
+    },
+    {
+      "tensor": "transformer_blocks.4.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "planes": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041028,
+      "artifact_sha256": "1e6d1408d82bbc63af0403da83488c1e3c9603c393339089160a32ed74731873",
+      "relative_l2": 0.20002329349517822,
+      "max_absolute_error": 0.255859375,
+      "conversion_and_verification_s": 0.3240767498500645
+    },
+    {
+      "tensor": "x_embedder.weight",
+      "shape": [
+        3072,
+        128
+      ],
+      "planes": 4,
+      "bf16_bytes": 786432,
+      "packed_payload_bytes": 208896,
+      "artifact_bytes": 209412,
+      "artifact_sha256": "dc5d509cc8d1d49497689a3dfa629d912158ec8b074b3bbba21eb3ef4ae8a851",
+      "relative_l2": 0.16088494658470154,
+      "max_absolute_error": 0.265625,
+      "conversion_and_verification_s": 0.004824791802093387
+    }
+  ],
+  "scope": "weight reconstruction; no inference performance claim"
+}

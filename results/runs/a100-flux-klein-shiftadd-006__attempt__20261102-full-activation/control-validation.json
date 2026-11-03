@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "scope": "artifact and paired numerical validation; not quality admission",
+  "prior_bf16_exact_match": true,
+  "cases": [
+    {
+      "case": "bf16",
+      "replaced_matrices": 0,
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "20bb5bcfb277a12a807d187499dfb1846c3ca19de994a31e2d694b74cbddbfa7"
+    },
+    {
+      "case": "radix-p4",
+      "replaced_matrices": 109,
+      "relative_latent_l2": 0.7684928178787231,
+      "latent_sha256": "ef9f577598e8735e5a5aff9f294f628fdacdeeaaa9a6486a33c31ab95596ba82"
+    },
+    {
+      "case": "radix-p4-all-a8-g32",
+      "replaced_matrices": 109,
+      "relative_latent_l2": 0.761976957321167,
+      "latent_sha256": "04b00de3816a53dbd6143aaa9df122ff26d9afda6e486c1e756308bc04bccd81"
+    },
+    {
+      "case": "radix-p4-all-a4-g32",
+      "replaced_matrices": 109,
+      "relative_latent_l2": 0.7915171980857849,
+      "latent_sha256": "6612b5b6b657e04cb196d2dd9772d1ecbaca1940a802cb79205cb297e9acdfe3"
+    }
+  ],
+  "performance_comparison_eligible": false
+}

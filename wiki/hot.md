@@ -4,9 +4,7 @@ summary: Current project state, active campaign and blockers. Read first each se
 status: active
 updated: 2026-10-16
 ---
-
 # Hot: current state
-
 **Week 3** (Oct 12–16). **Scope changed** ([D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)):
 the thesis delivers (a) a TVM-compiled FLUX.2 klein pipeline on CUDA, Metal and WebGPU and (b) the joint reuse/precision/residency planner on top. Hypothesis and RQs unchanged ([overview](project/overview.md#scope-amendments)).
 Schedule is optimistic with roll-over allowed ([milestones](project/milestones.md#revised-schedule)).
@@ -37,3 +35,5 @@ MFLUX M5: five full protocols validated and all twelve run records uploaded; [Kl
 - Jetson Base (Oct 16): edge-dit caches cut 23–70% of passes (TaylorSeer −37% closest to reference, MagCache deforms text, DiCache and PyTorch TaylorSeer stopped by the memory guard); PyTorch reuse −27% bit-identical, + compile −63% vs sequential ([comparison](../experiments/compare-jetson-base-caches-reuse-compile.md)). Codex's 2026-10-15 M5 timings may overlap local chart/W&B work on the same Mac; check before comparing.
 - Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
 - New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).
+
+ShiftAdd initial campaign: saved compressed transformer weights and paired image diagnostics; [entry point](../shiftadd/README.md). Packed GPU speed and energy remain unmeasured.

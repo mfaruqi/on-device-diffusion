@@ -1,0 +1,74 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "activation_bits": "None",
+    "mean_output_relative_l2": 0.08163898345082998
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "activation_bits": "8",
+    "mean_output_relative_l2": 0.0821065241470933
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "weight_only",
+    "activation_bits": "4",
+    "mean_output_relative_l2": 0.24221919290721416
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "activation_bits": "None",
+    "mean_output_relative_l2": 0.04534468939527869
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "activation_bits": "8",
+    "mean_output_relative_l2": 0.04595984611660242
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "method": "diagonal_activation",
+    "activation_bits": "4",
+    "mean_output_relative_l2": 0.22239387966692448
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "activation_bits": "None",
+    "mean_output_relative_l2": 0.07955389469861984
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "activation_bits": "8",
+    "mean_output_relative_l2": 0.08121531829237938
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "weight_only",
+    "activation_bits": "4",
+    "mean_output_relative_l2": 0.31889378651976585
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "activation_bits": "None",
+    "mean_output_relative_l2": 0.0800512284040451
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "activation_bits": "8",
+    "mean_output_relative_l2": 0.0817804653197527
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "method": "diagonal_activation",
+    "activation_bits": "4",
+    "mean_output_relative_l2": 0.3200344406068325
+  }
+]

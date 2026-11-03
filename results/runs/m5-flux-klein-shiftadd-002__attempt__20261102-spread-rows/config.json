@@ -1,0 +1,16 @@
+{
+  "id": "m5-flux-klein-shiftadd-output-fit-spread-001",
+  "source": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/blobs/9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "source_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "capture": "shiftadd/runs/a100-activation-capture-001",
+  "modules": [
+    "transformer_blocks.0.attn.to_q",
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj"
+  ],
+  "fit_calls": 8,
+  "output_rows": 32,
+  "planes": 4,
+  "group_size": 128,
+  "output": "shiftadd/artifacts/activation-fit-spread-001",
+  "row_selection": "evenly_spaced"
+}
