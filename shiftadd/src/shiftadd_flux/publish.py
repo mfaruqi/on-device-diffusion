@@ -65,11 +65,11 @@ def main():
     ):
         payload.update(
             name="A100 SXM4 · Upstream BCQ projection control · quality smoke",
-            notes="Selected projection comparison: BF16, radix, conventional INT4 and upstream BCQ. All execute dense BF16; no packed performance claim. See saved configuration for exact tensor scope.",
+            notes="Selected projection comparison with upstream BCQ candidates. All execute dense BF16; no packed performance claim. See saved diagnostic_cases for exact weight formats, activation quantization and tensor scope.",
         )
         payload["tags"].append("upstream-bcq-control")
         payload["config"]["precision"] = (
-            "BF16 reference; radix, symmetric INT4 and upstream BCQ candidates; dense BF16 execution"
+            "BF16 reference and configured upstream BCQ projection controls; dense BF16 execution"
         )
     if payload["config"]["calibration_samples"]:
         payload["tags"] = [tag for tag in payload["tags"] if tag != "single-prompt"]
