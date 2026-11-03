@@ -33,7 +33,7 @@ The parent repository's [instructions](../AGENTS.md) and experiment protocols ap
   with radix; the experiments do not establish a radix quality advantage.
 - **Upstream GPTQ/BCQ:** pinned ShiftAddQwen fitter applied to sampled slices, the
   complete image/text Q/K/V matrices in all five dual-stream blocks and the
-  first single-stream fused QKV/MLP projection. Broader fused fitting is running.
+  20 single-stream fused QKV/MLP projections. All 50 are fitted and verified.
   Three-plane query candidates across all five dual-stream blocks are also saved. Its
   u8/shared-FP16 scales differ from the restricted radix family. This is **not** a full-transformer ShiftAddQwen reproduction.
 - **Activations:** grouped A4/A8 arithmetic is numerically checked. All-linear

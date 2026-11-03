@@ -238,3 +238,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-all-dual-001 | A100 SXM4 | pytorch-diffusers | All dual-stream Q/K/V images | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-001__attempt__20261103-calibration/) | — |
 
 | m5-flux-klein-shiftadd-018 | M5 CPU | pytorch-diffusers | Five image-query Q3 fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-018.md) | [run](../results/runs/m5-flux-klein-shiftadd-018__attempt__20261103-image-q-p3/) | — |
+
+| m5-flux-klein-shiftadd-016 | M5 CPU | pytorch-diffusers | All single-stream fused upstream fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-016.md) | [run](../results/runs/m5-flux-klein-shiftadd-016__attempt__20261103-all-single/) | — |

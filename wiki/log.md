@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-016: all fused projections
+
+Saved 20 complete fused matrices and reproduced 320 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-016.md)).
+
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-018: broader three-plane queries
 
 Saved five three-plane query matrices and reproduced 80 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-018.md)).

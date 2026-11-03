@@ -86,7 +86,7 @@ of four prompts than Q4/K4/V4. This is not formal quality superiority. The
 is complete: 800 finite arrays, with exact reproduction of the earlier 32 arrays.
 It covers 30 dual-stream image/text Q/K/V matrices and 20 single-stream fused
 QKV/MLP projections. The [30 dual-stream fits](../../experiments/m5-flux-klein-shiftadd-015.md) are complete
-and independently verified. Single-stream fitting continues. No image comparison combining both the
+and independently verified. [All 20 single-stream fits](../../experiments/m5-flux-klein-shiftadd-016.md) are complete and verified. No image comparison combining both the
 dual-stream and single-stream upstream bundles exists yet; packed execution
 remains unmeasured. Existing four-prompt calibration
 data remain separate from formal held-out evaluation.
