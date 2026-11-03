@@ -1,0 +1,12 @@
+{
+  "run": "jetson-edgedit-flux-klein-013__geneval-calibration_subset__20261102-133145",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.2625491947401315,
+    "pickscore": 20.850800573825836,
+    "hps": 0.20676433572468036,
+    "imagereward": -0.3850283858179561
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

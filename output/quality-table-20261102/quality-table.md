@@ -11,6 +11,8 @@
 | a100-pcie-40gb | Base 1024², 50 steps, CFG 4 | edge-dit.cpp (Q4_0) | DiCache | 25.15 (25.02–25.46) | 1.96× | 12.63 | 0.7266 (-0.0052; -0.0202…+0.0094) | 0.2859 (+0.0009; +0.0001…+0.0017) | 23.02 (-0.01; -0.04…+0.01) | 0.2856 (-0.0013; -0.0018…-0.0008) | 0.8329 (-0.0134; -0.0289…+0.0010) |
 | a100-pcie-40gb | Base 1024², 50 steps, CFG 4 | edge-dit.cpp (Q4_0) | TaylorSeer | 31.13 (31.05–31.37) | 1.59× | 12.21 | 0.7318 (+0.0000; -0.0146…+0.0146) | 0.2847 (-0.0003; -0.0009…+0.0004) | 23.04 (+0.00; -0.02…+0.02) | 0.2866 (-0.0003; -0.0007…+0.0001) | 0.8476 (+0.0014; -0.0086…+0.0117) |
 | a100-pcie-40gb | Base 1024², 50 steps, CFG 4 | edge-dit.cpp (Q4_0) | EasyCache | 35.44 (35.43–35.45) | 1.39× | 11.73 | 0.7318 (+0.0000; -0.0311…+0.0300) | 0.2874 (+0.0024; +0.0007…+0.0041) | 22.90 (-0.14; -0.18…-0.09) | 0.2735 (-0.0134; -0.0150…-0.0120) | 0.7717 (-0.0745; -0.1057…-0.0461) |
+| a100-pcie-40gb | distilled 1024², 4 steps | edge-dit.cpp (BF16) | reference | 1.64 (1.64–1.64) | 1.00× | – | 0.8151 | 0.2888 | 23.45 | 0.3006 | 1.1864 |
+| a100-pcie-40gb | distilled 1024², 4 steps | edge-dit.cpp (BF16) | MagCache | 0.83 (0.82–0.83) | 1.99× | – | 0.5182 (-0.2969; -0.3649…-0.2294) | 0.2683 (-0.0205; -0.0291…-0.0121) | 21.64 (-1.81; -2.02…-1.62) | 0.2331 (-0.0675; -0.0749…-0.0603) | 0.2730 (-0.9134; -1.0977…-0.7313) |
 | jetson-orin-nano | distilled 512², 4 steps | PyTorch (Q4_0 GGUF + NF4) | reference | 80.31 (78.17–82.60) | 1.00× | 6.11 | 0.7734 | 0.2902 | 23.30 | 0.2975 | 1.1401 |
 | jetson-orin-nano | distilled 512², 4 steps | PyTorch (Q4_0 GGUF + NF4) | torch.compile | 7.78 (7.76–7.80) † | 10.32× | 6.55 | 0.7708 (-0.0026; -0.0190…+0.0150) | 0.2902 (-0.0000; -0.0006…+0.0005) | 23.31 (+0.01; -0.00…+0.02) | 0.2975 (-0.0001; -0.0004…+0.0003) | 1.1371 (-0.0029; -0.0234…+0.0144) |
 | jetson-orin-nano | distilled 512², 4 steps | PyTorch (Q4_0 GGUF + NF4) | TaylorSeer | 77.64 (74.82–79.47) | 1.03× | 6.56 | 0.7240 (-0.0495; -0.0951…-0.0040) | 0.2902 (-0.0000; -0.0029…+0.0029) | 22.58 (-0.72; -0.81…-0.63) | 0.2835 (-0.0141; -0.0162…-0.0118) | 0.9871 (-0.1530; -0.2228…-0.0902) |
@@ -18,9 +20,12 @@
 | jetson-orin-nano | distilled 512², 4 steps | PyTorch (Q4_0 GGUF + NF4) | SDPA math | 84.22 (82.46–87.45) | 0.95× | 6.11 | 0.7708 (-0.0026; -0.0260…+0.0212) | 0.2900 (-0.0002; -0.0012…+0.0008) | 23.31 (+0.01; -0.02…+0.03) | 0.2976 (+0.0001; -0.0006…+0.0008) | 1.1358 (-0.0043; -0.0316…+0.0199) |
 | jetson-orin-nano | Base 512², 50 steps, CFG 4 | PyTorch (Q4_0 GGUF + NF4) | reference | 494.63 (492.71–497.13) | 1.00× | 5.97 | 0.7370 | 0.2879 | 23.08 | 0.2891 | 0.9244 |
 | jetson-orin-nano | Base 512², 50 steps, CFG 4 | PyTorch (Q4_0 GGUF + NF4) | torch.compile | 183.93 (183.88–183.98) † | 2.69× | 6.38 | 0.7266 (-0.0104; -0.0216…-0.0021) | 0.2878 (-0.0000; -0.0009…+0.0009) | 23.07 (-0.01; -0.03…+0.00) | 0.2890 (-0.0001; -0.0006…+0.0003) | 0.9220 (-0.0024; -0.0231…+0.0187) |
+| jetson-orin-nano | distilled 512², 4 steps | edge-dit.cpp (Q4_0) | reference | 11.96 (11.94–12.03) | 1.00× | 6.72 | 0.7786 | 0.2947 | 23.10 | 0.2967 | 1.1190 |
+| jetson-orin-nano | distilled 512², 4 steps | edge-dit.cpp (Q4_0) | MagCache | 5.10 (5.09–5.14) | 2.35× | 6.77 | 0.4375 (-0.3411; -0.4090…-0.2759) | 0.2625 (-0.0322; -0.0418…-0.0231) | 20.85 (-2.25; -2.48…-2.02) | 0.2068 (-0.0899; -0.0990…-0.0811) | -0.3850 (-1.5040; -1.7582…-1.2562) |
 
 Quality cells: value (difference from the engine reference; 95% bootstrap interval over prompts).
 † benchmark used conditioning reuse (no run without it); latency excludes the text encoder and its weight swap.
 Memory on a100-pcie-40gb: GPU device-wide peak (NVML), median per generation.
 Memory on a100-pcie-40gb: GPU device-wide peak (NVML), whole capture.
+Memory on a100-pcie-40gb: whole-system RAM peak (tegrastats), whole run incl. load.
 Memory on jetson-orin-nano: whole-system RAM peak (tegrastats), whole run incl. load.

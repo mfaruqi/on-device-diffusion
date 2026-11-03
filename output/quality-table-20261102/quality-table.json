@@ -46,7 +46,7 @@
       "geneval_delta": -0.0026041666666666297,
       "geneval_ci95": [
         -0.014285714285714346,
-        0.009247076023391698
+        0.00924707602339181
       ],
       "clip": 0.29105518218905974,
       "clip_delta": 0.0003563509089872241,
@@ -165,7 +165,7 @@
       "geneval_delta": -0.00520833333333337,
       "geneval_ci95": [
         -0.02377946127946129,
-        0.012896825396825351
+        0.012896825396825462
       ],
       "clip": 0.29174957253659767,
       "clip_delta": -0.0004087299263725308,
@@ -283,7 +283,7 @@
       "geneval": 0.7239583333333334,
       "geneval_delta": -0.0078125,
       "geneval_ci95": [
-        -0.0359862329434697,
+        -0.03598623294346992,
         0.01938540260908672
       ],
       "clip": 0.28560451437563944,
@@ -379,8 +379,8 @@
       "geneval": 0.7317708333333334,
       "geneval_delta": 0.0,
       "geneval_ci95": [
-        -0.014612661303837648,
-        0.01458333333333317
+        -0.01461266130383776,
+        0.014583333333333393
       ],
       "clip": 0.2847287773620337,
       "clip_delta": -0.0002552147877092348,
@@ -428,7 +428,7 @@
       "geneval_delta": 0.0,
       "geneval_ci95": [
         -0.03105936819172106,
-        0.03003323836657157
+        0.03003323836657179
       ],
       "clip": 0.2873840103857219,
       "clip_delta": 0.0024000182359789624,
@@ -453,6 +453,77 @@
       "imagereward_ci95": [
         -0.10571664553208393,
         -0.04614061882117926
+      ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024\u00b2, 4 steps",
+      "engine": "edge-dit.cpp (BF16)",
+      "config": "reference",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-001__geneval-calibration_subset__20261102-171119",
+      "bench": "a100-edgedit-flux-klein-001__baseline__20261005-233237",
+      "latency_flag": "",
+      "latency_s": 1.641,
+      "latency_min_s": 1.637,
+      "latency_max_s": 1.644,
+      "n": 10,
+      "memory_gib": null,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.8151041666666666,
+      "clip": 0.28881212840011966,
+      "pickscore": 23.4532005439202,
+      "hps": 0.30063068901654333,
+      "imagereward": 1.186428762665552
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024\u00b2, 4 steps",
+      "engine": "edge-dit.cpp (BF16)",
+      "config": "MagCache",
+      "generated_on": "a100-pcie-40gb",
+      "images": "a100-edgedit-flux-klein-007__geneval-calibration_subset__20261102-173157",
+      "bench": "a100-edgedit-flux-klein-007__baseline__20261015-152117",
+      "latency_flag": "",
+      "latency_s": 0.8255,
+      "latency_min_s": 0.821,
+      "latency_max_s": 0.833,
+      "n": 10,
+      "memory_gib": null,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.9878861296184132,
+      "images_n": 384,
+      "geneval": 0.5182291666666666,
+      "geneval_delta": -0.296875,
+      "geneval_ci95": [
+        -0.3648538961038961,
+        -0.22943088025808622
+      ],
+      "clip": 0.26831426739227027,
+      "clip_delta": -0.020497861007849394,
+      "clip_ci95": [
+        -0.02911525456390035,
+        -0.012124261702410877
+      ],
+      "pickscore": 21.638302167256672,
+      "pickscore_delta": -1.8148983766635283,
+      "pickscore_ci95": [
+        -2.0227582405010835,
+        -1.6156156460444109
+      ],
+      "hps": 0.23314437058676654,
+      "hps_delta": -0.06748631842977679,
+      "hps_ci95": [
+        -0.07490211176142719,
+        -0.06034233122287941
+      ],
+      "imagereward": 0.27300891595950816,
+      "imagereward_delta": -0.9134198467060439,
+      "imagereward_ci95": [
+        -1.0977317745697899,
+        -0.7312960576188441
       ]
     },
     {
@@ -498,8 +569,8 @@
       "geneval": 0.7708333333333334,
       "geneval_delta": -0.0026041666666666297,
       "geneval_ci95": [
-        -0.0189588189588189,
-        0.015038780663780504
+        -0.018958818958819013,
+        0.015038780663780726
       ],
       "clip": 0.29021523795866716,
       "clip_delta": -2.408501071238245e-05,
@@ -546,7 +617,7 @@
       "geneval": 0.7239583333333334,
       "geneval_delta": -0.04947916666666663,
       "geneval_ci95": [
-        -0.0950815422322775,
+        -0.09508154223227738,
         -0.004046574770259048
       ],
       "clip": 0.2902272273010264,
@@ -713,7 +784,7 @@
       "geneval": 0.7265625,
       "geneval_delta": -0.01041666666666663,
       "geneval_ci95": [
-        -0.0216374269005849,
+        -0.02163742690058479,
         -0.002083333333333326
       ],
       "clip": 0.2878299629859005,
@@ -739,6 +810,77 @@
       "imagereward_ci95": [
         -0.02306469701579772,
         0.018681316272704862
+      ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "reference",
+      "generated_on": "jetson-orin-nano",
+      "images": "jetson-edgedit-flux-klein-006__geneval-calibration_subset__20261102-140917",
+      "bench": "jetson-edgedit-flux-klein-006__baseline__20261014-170149",
+      "latency_flag": "",
+      "latency_s": 11.9625,
+      "latency_min_s": 11.943,
+      "latency_max_s": 12.026,
+      "n": 10,
+      "memory_gib": 6.7197265625,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 1.0,
+      "images_n": 384,
+      "geneval": 0.7786458333333334,
+      "clip": 0.29470551436922204,
+      "pickscore": 23.09676592548688,
+      "hps": 0.296702765316392,
+      "imagereward": 1.118974091779819
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512\u00b2, 4 steps",
+      "engine": "edge-dit.cpp (Q4_0)",
+      "config": "MagCache",
+      "generated_on": "jetson-orin-nano",
+      "images": "jetson-edgedit-flux-klein-013__geneval-calibration_subset__20261102-133145",
+      "bench": "jetson-edgedit-flux-klein-013__baseline__20261015-135118",
+      "latency_flag": "",
+      "latency_s": 5.0995,
+      "latency_min_s": 5.086,
+      "latency_max_s": 5.139,
+      "n": 10,
+      "memory_gib": 6.7705078125,
+      "memory_kind": "whole-system RAM peak (tegrastats), whole run incl. load",
+      "speedup": 2.3458182174723015,
+      "images_n": 384,
+      "geneval": 0.4375,
+      "geneval_delta": -0.34114583333333337,
+      "geneval_ci95": [
+        -0.4090277777777777,
+        -0.27594219505984213
+      ],
+      "clip": 0.2625491947401315,
+      "clip_delta": -0.032156319629090546,
+      "clip_ci95": [
+        -0.041786189035822985,
+        -0.02305597738207632
+      ],
+      "pickscore": 20.850800573825836,
+      "pickscore_delta": -2.245965351661045,
+      "pickscore_ci95": [
+        -2.483819375435509,
+        -2.015152658025425
+      ],
+      "hps": 0.20676433572468036,
+      "hps_delta": -0.08993842959171164,
+      "hps_ci95": [
+        -0.09900173865025863,
+        -0.081143149776229
+      ],
+      "imagereward": -0.3850283858179561,
+      "imagereward_delta": -1.5040024775977752,
+      "imagereward_ci95": [
+        -1.7582228735688354,
+        -1.2561733881981734
       ]
     }
   ]
