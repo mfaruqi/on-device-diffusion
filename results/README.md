@@ -604,3 +604,5 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-load-002__attempt__20261103-uncached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader uncached | — | — | — | complete; loader timing and process RSS diagnostic |
 
 | `m5-flux-klein-shiftadd-load-002__attempt__20261103-cached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader cached | — | — | — | complete; loader timing and process RSS diagnostic |
+
+| `a100-flux-klein-upstream-all-attention-activation-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) | A100 SXM4 | upstream attention A8/A4 inputs | — | — | — | complete; job 12141633; calibration diagnostic |

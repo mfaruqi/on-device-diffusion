@@ -105,6 +105,13 @@ INT4 on three. All candidates remain recognizable; this is not formal quality
 admission. Packed execution remains unmeasured. Existing four-prompt calibration
 data remain separate from formal held-out evaluation.
 
+## Complete 50-matrix activation follow-up
+
+[The A8/A4 image diagnostic](../../experiments/a100-flux-klein-upstream-all-attention-activation-001.md)
+passes 800 calls per activation mode and exact reference reproduction. Both
+remain recognizable; A8 is closer to BF16 on three prompts and A4 on one.
+These are floating fake-quantization tests, not packed inference-speed results.
+
 ## Execution preparation
 
 - Hash-checked chunked loaders and independent reconstruction checks.
