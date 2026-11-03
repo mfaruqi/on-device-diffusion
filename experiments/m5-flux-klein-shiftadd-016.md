@@ -77,3 +77,21 @@ GPU INT4 format. No GPU memory, latency or energy savings are measured here.
 
 ## Next experiment
 - Combine these 20 matrices with the verified 30 dual-stream matrices in a matched 50-matrix image comparison.
+
+## Matched conventional projection controls
+
+Existing radix p4 and symmetric INT4 files were hash-checked and decoded for
+the same 20 complete matrices. All 640 control comparisons on identical captured
+inputs are finite. [Raw controls](../results/runs/m5-flux-klein-shiftadd-016__attempt__20261103-all-single/controls/) preserve
+per-call errors, configs and artifact hashes. Means equally weight matrices and calls.
+
+| Method | Mean fit output L2 | Mean calibration-validation output L2 |
+|---|---:|---:|
+| radix_p4 | 0.08551937 | 0.08605991 |
+| uniform_int4 | 0.07677707 | 0.07727822 |
+| upstream_u8 | 0.00593220 | 0.06321579 |
+
+Upstream has lower mean calibration-validation error than INT4 for all 20
+matrices. The methods differ in scale freedom, fitting objective and payload
+size (4.3125 bits/weight upstream versus 4.25 for these controls). This is not
+an isolated calibration ablation or evidence of combined image quality.
