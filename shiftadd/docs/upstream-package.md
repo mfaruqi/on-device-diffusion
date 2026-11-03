@@ -92,3 +92,11 @@ metadata. Both are logical file sizes, not filesystem allocation or runtime
 memory. The source checkpoint and other experiment bundles are retained, so
 total workspace disk usage exceeds the deployment package size. The packaging
 operation itself temporarily needs memory for the unconverted tensor payload.
+
+## Optional packed-array cache
+
+`load_package(..., cache_packed_arrays=True)` caches the packed arrays once per
+matrix while keeping dense reconstruction chunked. The default is `False`,
+preserving earlier experiment behavior. A [CPU loading diagnostic](../../experiments/m5-flux-klein-shiftadd-load-002.md)
+measures this option on one fused matrix and verifies full-package numerical
+agreement. This is not an inference-speed result.

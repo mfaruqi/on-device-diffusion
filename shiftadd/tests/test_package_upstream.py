@@ -8,6 +8,7 @@ import torch
 from safetensors.torch import save_file
 
 from shiftadd_flux.package_upstream import digest, load_package, package, write_json
+from shiftadd_flux.upstream_loader import apply_upstream_artifacts
 
 
 class PackageTests(unittest.TestCase):
@@ -80,6 +81,11 @@ class PackageTests(unittest.TestCase):
         self.assertTrue(torch.equal(model.proj.weight, torch.ones_like(model.proj.weight)))
         self.assertTrue(torch.equal(model.proj.bias, torch.tensor([2, 3], dtype=torch.bfloat16)))
         before = model.proj.weight.detach().clone()
+        cached_audit = apply_upstream_artifacts(
+            model, bundle, chunk_rows=1, cache_packed_arrays=True
+        )
+        self.assertTrue(cached_audit["cache_packed_arrays"])
+        self.assertTrue(torch.equal(before, model.proj.weight))
         with (bundle / "proj.npz").open("ab") as stream:
             stream.write(b"corruption")
         with self.assertRaisesRegex(ValueError, "integrity"):

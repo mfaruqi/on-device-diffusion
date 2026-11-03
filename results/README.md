@@ -600,3 +600,7 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | A100 SXM4 | five image-query Q3 substitutions | — | — | — | complete; job 12140665; calibration diagnostic |
 
 | `a100-flux-klein-upstream-all-attention-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-attention-001.md) | A100 SXM4 | all 30 dual-stream Q/K/V image controls | — | — | — | complete; job 12140980; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-load-002__attempt__20261103-uncached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader uncached | — | — | — | complete; loader timing and process RSS diagnostic |
+
+| `m5-flux-klein-shiftadd-load-002__attempt__20261103-cached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader cached | — | — | — | complete; loader timing and process RSS diagnostic |

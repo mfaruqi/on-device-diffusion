@@ -1,0 +1,127 @@
+[
+  {
+    "process_peak_rss_gib": 0.4499969482421875,
+    "loader_wall_s": 0.29263504198752344,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "weight_format": "upstream_bcq",
+      "scale_format": "u8",
+      "decode_chunk_rows": 128,
+      "cache_packed_arrays": true,
+      "runtime_representation": "reconstructed dense parameters",
+      "packed_artifact_bytes": 46007324
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 0,
+    "phase": "first"
+  },
+  {
+    "process_peak_rss_gib": 0.4490814208984375,
+    "loader_wall_s": 0.2605633339844644,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "weight_format": "upstream_bcq",
+      "scale_format": "u8",
+      "decode_chunk_rows": 128,
+      "cache_packed_arrays": true,
+      "runtime_representation": "reconstructed dense parameters",
+      "packed_artifact_bytes": 46007324
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 1,
+    "phase": "warmup"
+  },
+  {
+    "process_peak_rss_gib": 0.45001220703125,
+    "loader_wall_s": 0.2763301250524819,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "weight_format": "upstream_bcq",
+      "scale_format": "u8",
+      "decode_chunk_rows": 128,
+      "cache_packed_arrays": true,
+      "runtime_representation": "reconstructed dense parameters",
+      "packed_artifact_bytes": 46007324
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 2,
+    "phase": "measured"
+  },
+  {
+    "process_peak_rss_gib": 0.449432373046875,
+    "loader_wall_s": 0.2574742080178112,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "weight_format": "upstream_bcq",
+      "scale_format": "u8",
+      "decode_chunk_rows": 128,
+      "cache_packed_arrays": true,
+      "runtime_representation": "reconstructed dense parameters",
+      "packed_artifact_bytes": 46007324
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 3,
+    "phase": "measured"
+  },
+  {
+    "process_peak_rss_gib": 0.449066162109375,
+    "loader_wall_s": 0.2557211248204112,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "weight_format": "upstream_bcq",
+      "scale_format": "u8",
+      "decode_chunk_rows": 128,
+      "cache_packed_arrays": true,
+      "runtime_representation": "reconstructed dense parameters",
+      "packed_artifact_bytes": 46007324
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 4,
+    "phase": "measured"
+  }
+]

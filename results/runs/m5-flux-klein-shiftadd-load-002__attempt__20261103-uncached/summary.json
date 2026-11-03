@@ -1,0 +1,23 @@
+{
+  "scope": "fresh CPU process lifetime high-water RSS including imports and one BF16 matrix; not GPU memory",
+  "first_process_peak_rss_gib": 0.4504547119140625,
+  "first_loader_wall_s": 1.0622689579613507,
+  "measured_loader_wall_s": {
+    "median": 1.0312870000489056,
+    "min": 1.031229207990691,
+    "max": 1.0315492078661919
+  },
+  "timing_scope": "apply_upstream_artifacts including file validation, packed array reads, reconstruction and parameter copies; excludes imports, model allocation and output hashing; filesystem cache uncontrolled",
+  "measured_process_peak_rss_gib": {
+    "median": 0.4494781494140625,
+    "min": 0.4493408203125,
+    "max": 0.449493408203125
+  },
+  "parameter_sha256": "1b2e3ebc551397fdbec78a78f32557b15160d7e1975c93518ab6dda23748e42a",
+  "parameter_bytes": 169869312,
+  "unavailable_metrics": [
+    "inference_latency",
+    "device_memory",
+    "energy"
+  ]
+}

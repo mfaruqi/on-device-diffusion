@@ -9,6 +9,7 @@ locations or output directories; never overwrite a completed run.
 | `transformer-*.json` | `convert`, `convert_uniform` or `compact_radix`, according to the declared format |
 | `activation-*.json`, grouped diagnostics | Captured-input fitting and arithmetic probes; inspect module `--help` |
 | `upstream-kv-activation-error-*.json` | `upstream_activation_probe --config ...`; fixed weights, grouped A4/A8 numerical errors |
+| `upstream-load-*.json` | `upstream_load_probe --config ...`; fresh-process CPU loading time and RSS |
 | `upstream-transformer-package-*.json` | `package_upstream --config ...`; complete saved weights with a BF16 remainder |
 | `upstream-bcq-*.json` | `upstream_probe --config ...`, followed by `verify_upstream --config ...` |
 | `a100-*.json` | Paired pipeline, calibration or activation-capture runners; the companion Slurm script names the module |

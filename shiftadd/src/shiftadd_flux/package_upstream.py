@@ -135,7 +135,7 @@ def package(config):
         raise
 
 
-def load_package(transformer, directory, chunk_rows=128):
+def load_package(transformer, directory, chunk_rows=128, cache_packed_arrays=False):
     """Load into an existing architecture without opening the original checkpoint."""
     root = Path(directory)
     if json.loads((root / "status.json").read_text())["status"] != "completed":
@@ -171,7 +171,13 @@ def load_package(transformer, directory, chunk_rows=128):
                 if tensor.dtype != params[name].dtype or tensor.shape != params[name].shape:
                     raise ValueError("Fallback tensor shape or dtype mismatch")
                 params[name].copy_(tensor)
-    audit = apply_upstream_artifacts(transformer, root, names=selected, chunk_rows=chunk_rows)
+    audit = apply_upstream_artifacts(
+        transformer,
+        root,
+        names=selected,
+        chunk_rows=chunk_rows,
+        cache_packed_arrays=cache_packed_arrays,
+    )
     return {
         **audit,
         "fallback_tensors": len(params) - len(selected),

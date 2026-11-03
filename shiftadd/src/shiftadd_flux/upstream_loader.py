@@ -36,9 +36,13 @@ def decode_rows(data, scale_format, start, stop):
     )
 
 
-def apply_upstream_artifacts(transformer, artifact_dir, names=None, chunk_rows=128):
+def apply_upstream_artifacts(
+    transformer, artifact_dir, names=None, chunk_rows=128, cache_packed_arrays=False
+):
     if type(chunk_rows) is not int or chunk_rows <= 0:
         raise ValueError("Invalid row chunk")
+    if type(cache_packed_arrays) is not bool:
+        raise ValueError("cache_packed_arrays must be a bool")
     root = Path(artifact_dir)
     config = json.loads((root / "config.json").read_text())
     if json.loads((root / "status.json").read_text())["status"] != "completed":
@@ -71,19 +75,28 @@ def apply_upstream_artifacts(transformer, artifact_dir, names=None, chunk_rows=1
         for row in rows:
             param = params[row["module"] + ".weight"]
             with np.load(root / (row["module"] + ".npz"), allow_pickle=False) as data:
+                # NpzFile reads a complete array on each lookup. Keeping only the
+                # packed arrays avoids repeating that work for every row chunk.
+                keys = ["planes", "superblock_scale"]
+                keys.append(
+                    "scale_codes" if config["scale_format"] == "u8" else "scale_exponent_nibbles"
+                )
+                decoded_data = {key: data[key] for key in keys} if cache_packed_arrays else data
                 for start in range(0, param.shape[0], chunk_rows):
                     stop = min(start + chunk_rows, param.shape[0])
-                    array = decode_rows(data, config["scale_format"], start, stop)
+                    array = decode_rows(decoded_data, config["scale_format"], start, stop)
                     if not np.isfinite(array).all():
                         raise ValueError("Nonfinite reconstructed weights")
                     param[start:stop].copy_(
                         torch.from_numpy(array).to(device=param.device, dtype=param.dtype)
                     )
+                del decoded_data
     return {
         "replaced_tensors": sorted(selected),
         "weight_format": "upstream_bcq",
         "scale_format": config["scale_format"],
         "decode_chunk_rows": chunk_rows,
+        "cache_packed_arrays": cache_packed_arrays,
         "runtime_representation": "reconstructed dense parameters",
         "packed_artifact_bytes": sum(r["file_bytes"] for r in rows),
     }

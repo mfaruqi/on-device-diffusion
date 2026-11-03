@@ -252,3 +252,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-all-dual-q3-001 | A100 SXM4 | pytorch-diffusers | All-dual mixed query planes | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration/) | — |
 
 | a100-flux-klein-upstream-all-attention-001 | A100 SXM4 | pytorch-diffusers | All dual-stream Q/K/V images | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-attention-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-attention-001__attempt__20261103-calibration/) | — |
+
+| m5-flux-klein-shiftadd-load-002 | M5 CPU | pytorch-diffusers | Upstream packed-array loader cache | complete; CPU loading diagnostic | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | [uncached](../results/runs/m5-flux-klein-shiftadd-load-002__attempt__20261103-uncached/), [cached](../results/runs/m5-flux-klein-shiftadd-load-002__attempt__20261103-cached/) | — |
