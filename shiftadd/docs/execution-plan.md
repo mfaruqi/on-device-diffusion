@@ -105,7 +105,9 @@ per-token A4, and grouped A4 on the same query projection and prompt.
 They have distinct output paths and have **not been submitted**.
 The batched BF16 hook test agrees exactly with the independent NumPy reference
 for A4/A8 and groups 32/128, and verifies hook removal and invalid-group rejection.
-GPU equivalence and image quality still require execution. This remains floating
+These two prepared configurations remain unsubmitted. A separate
+[full-transformer A4/A8 group-32 diagnostic](../../experiments/a100-flux-klein-shiftadd-006.md)
+has since completed with all 109 linear modules exercised. This remains floating
 GEMM with fake quantization; it cannot establish integer-kernel speed or energy.
 
 ## Activation storage layout
@@ -129,7 +131,10 @@ Both pipeline runners require explicit `weight_format: symmetric_uniform` for
 this bundle; unknown formats fail. Prepared config
 `a100-uniform-control-prepared-001.json` pairs BF16, radix p4 and conventional
 INT4 with the same source and image settings. The remote conventional bundle
-must be copied and verified before submission; the prepared config is not a run.
+was copied and verified before the
+[completed conventional INT4 comparison](../../experiments/a100-flux-klein-uniform-001.md).
+The prepared configuration is retained as preparation history; the experiment
+record links the actual executed configuration and validation evidence.
 
 ## Exact integer mapping for the restricted radix fit
 
