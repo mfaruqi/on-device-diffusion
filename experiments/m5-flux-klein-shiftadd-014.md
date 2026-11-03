@@ -58,3 +58,13 @@ remain unmeasured for this artifact.
 
 ## Next experiment
 - Test the three-plane query replacement against the four-plane Q/K/V image reference.
+
+## Quantized activation arithmetic verification
+
+The complete three-plane query artifact passed 32 CPU arithmetic comparisons:
+16 captured calls with both A4 and A8 inputs at group size 32. INT32 sign-plane
+sums with FP32 scaling agree with multiplication by independently decoded
+weights using the same quantized inputs. Maximum relative disagreement is
+8.1910594e-07.
+[Evidence](../results/runs/m5-flux-klein-shiftadd-014__attempt__20261103-q-p3/integer-arithmetic-verification.json).
+This verifies the arithmetic mapping, not GPU speed or activation quality.
