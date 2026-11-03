@@ -216,3 +216,5 @@ that every record and every run directory appears here.
 | m5-flux-klein-shiftadd-012 | M5 CPU | pytorch-diffusers | Full K/V activation-error diagnostic | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-012.md) | [run](../results/runs/m5-flux-klein-shiftadd-012__attempt__20261102-kv-activation/) | — |
 
 | m5-flux-klein-shiftadd-013 | M5 CPU | pytorch-diffusers | Three-plane K/V upstream fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-013.md) | [run](../results/runs/m5-flux-klein-shiftadd-013__attempt__20261102-kv-p3/) | — |
+
+| a100-flux-klein-upstream-qkv-calibration-001 | A100 SXM4 | pytorch-diffusers | First-block Q/K/V image comparison | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-qkv-calibration-001.md) | [run](../results/runs/a100-flux-klein-upstream-qkv-calibration-001__attempt__20261103-calibration/) | — |
