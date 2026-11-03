@@ -9,6 +9,14 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-022: fit-based plane selection
+
+Saved and hash-verified a mixed candidate selected using fitting calls only; image behavior remains untested ([record](../experiments/m5-flux-klein-shiftadd-022.md)).
+
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-021: three-plane fused projections
+
+Saved 20 complete fused matrices and reproduced 320 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-021.md)).
+
 ## [2026-11-03] experiment | a100-flux-klein-upstream-all-attention-activation-001: broader activation inputs
 
 Verified 16 images, exact reference reproduction and 800 calls per activation mode ([record](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md)).

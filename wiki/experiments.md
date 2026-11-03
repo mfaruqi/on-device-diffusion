@@ -256,3 +256,7 @@ that every record and every run directory appears here.
 | m5-flux-klein-shiftadd-load-002 | M5 CPU | pytorch-diffusers | Upstream packed-array loader cache | complete; CPU loading diagnostic | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | [uncached](../results/runs/m5-flux-klein-shiftadd-load-002__attempt__20261103-uncached/), [cached](../results/runs/m5-flux-klein-shiftadd-load-002__attempt__20261103-cached/) | — |
 
 | a100-flux-klein-upstream-all-attention-activation-001 | A100 SXM4 | pytorch-diffusers | All-attention grouped A8/A4 images | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-attention-activation-001__attempt__20261103-calibration/) | — |
+
+| m5-flux-klein-shiftadd-021 | M5 CPU | pytorch-diffusers | All fused three-plane upstream fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-021.md) | [run](../results/runs/m5-flux-klein-shiftadd-021__attempt__20261103-single-p3/) | — |
+
+| m5-flux-klein-shiftadd-022 | M5 CPU | pytorch-diffusers | Fit-selected mixed fused planes | complete; untested image candidate | [record](../experiments/m5-flux-klein-shiftadd-022.md) | [run](../results/runs/m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused/) | — |

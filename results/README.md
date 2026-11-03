@@ -606,3 +606,7 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-load-002__attempt__20261103-cached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader cached | — | — | — | complete; loader timing and process RSS diagnostic |
 
 | `a100-flux-klein-upstream-all-attention-activation-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) | A100 SXM4 | upstream attention A8/A4 inputs | — | — | — | complete; job 12141633; calibration diagnostic |
+
+| `m5-flux-klein-shiftadd-021__attempt__20261103-single-p3` | [record](../experiments/m5-flux-klein-shiftadd-021.md) | M5 CPU | all 20 fused three-plane upstream fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused` | [record](../experiments/m5-flux-klein-shiftadd-022.md) | M5 CPU | fit-selected mixed fused planes | — | — | — | complete; candidate assembly, no image evaluation |

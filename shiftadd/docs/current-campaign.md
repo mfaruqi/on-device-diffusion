@@ -112,6 +112,15 @@ passes 800 calls per activation mode and exact reference reproduction. Both
 remain recognizable; A8 is closer to BF16 on three prompts and A4 on one.
 These are floating fake-quantization tests, not packed inference-speed results.
 
+## Fused mixed-plane candidate
+
+[Three-plane fits for all 20 fused matrices](../../experiments/m5-flux-klein-shiftadd-021.md)
+are saved and independently verified. A [fit-selected mixed candidate](../../experiments/m5-flux-klein-shiftadd-022.md)
+uses three planes in ten fused matrices and four in the remaining forty selected
+matrices. It saves 10.5% of the 50-matrix file storage; image behavior is untested.
+Selection uses fitting-call error only. Its local projection-error curve is not
+an image-quality frontier or evidence of inference speed.
+
 ## Execution preparation
 
 - Hash-checked chunked loaders and independent reconstruction checks.
