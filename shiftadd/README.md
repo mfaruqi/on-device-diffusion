@@ -22,6 +22,27 @@ The parent repository's [instructions](../AGENTS.md) and experiment protocols ap
 | `artifacts/`, `runs/` | Local-only weights, images and working outputs; excluded from Git |
 | [Experiment registry](../wiki/experiments.md) | Durable records and small raw evidence in the parent repository |
 
+## Folder layout
+
+```text
+shiftadd/
+  src/shiftadd_flux/    Conversion, packing, calibration and loading
+    diagnostics/       Error probes, loading measurements, exploratory fits
+    validation/        Independent artifact and arithmetic checks
+    plots/             Figure-generation scripts
+    reporting/         W&B export and power-trace integration
+  tests/               Small CPU correctness tests
+  configs/             Labelled experiment settings and Slurm launchers
+  docs/                Methods, results guides and limitations
+  vendor/              Unmodified pinned ShiftAddQwen fitting code and license
+```
+
+For the current workflow, read [how conversion works](docs/conversion-walkthrough.md),
+then the [file-by-file code guide](src/shiftadd_flux/README.md). Supporting modules
+are separated by purpose, not discarded: they preserve controls and reproducibility.
+Historical raw records keep their original command names; the code guide explains
+the new module paths. Weights, captures and images remain local-only.
+
 ## Methods and what was learned
 
 - **Greedy sign planes:** initial weight-only baseline; full-transformer images fail.

@@ -30,7 +30,7 @@ calibration prompts. Neither split is the formal held-out evaluation.
 [Config](../shiftadd/configs/upstream-kv-activation-error-001.json),
 [raw outputs](../results/runs/m5-flux-klein-shiftadd-012__attempt__20261102-kv-activation/), and
 [metric definition](../wiki/methods/baseline-metrics.md).
-Reproduce with `PYTHONPATH=shiftadd/src python -m shiftadd_flux.upstream_activation_probe
+Reproduce with `PYTHONPATH=shiftadd/src python -m shiftadd_flux.diagnostics.upstream_activation_probe
 --config shiftadd/configs/upstream-kv-activation-error-001.json` from the repository root.
 
 ## Results

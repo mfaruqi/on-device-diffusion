@@ -1,6 +1,6 @@
 import unittest
 
-from shiftadd_flux.energy import integrate
+from shiftadd_flux.reporting.energy import integrate
 
 
 class EnergyTest(unittest.TestCase):

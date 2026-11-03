@@ -10,8 +10,8 @@ import torch
 from safetensors import safe_open
 from safetensors.torch import save_file
 
-from .activation import quantize_grouped, quantize_per_token
-from .format import decode
+from shiftadd_flux.activation import quantize_grouped, quantize_per_token
+from shiftadd_flux.format import decode
 
 
 def main():

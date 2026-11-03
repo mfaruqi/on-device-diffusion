@@ -14,7 +14,7 @@ def main():
     parser.add_argument("--images", required=True)
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
-    root = Path(__file__).resolve().parents[3]
+    root = Path(__file__).resolve().parents[4]
     spec = importlib.util.spec_from_file_location("parent_export", root / "scripts/export_wandb.py")
     exporter = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(exporter)

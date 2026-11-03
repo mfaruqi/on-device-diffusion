@@ -1,5 +1,7 @@
 # Documentation map
 
+- [Conversion walkthrough](conversion-walkthrough.md): the main file flow and exactly what is reused from ShiftAddQwen.
+
 - [Complete upstream packages](upstream-package.md): saved weights, source-independent loading and storage accounting.
 - [Current campaign](current-campaign.md): completed evidence and remaining limits.
 - [Baseline plan](baseline-plan.md): controls and comparison gates.

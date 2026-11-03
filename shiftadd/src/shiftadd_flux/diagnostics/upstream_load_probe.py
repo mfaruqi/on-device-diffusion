@@ -18,7 +18,7 @@ def child(config):
     os.environ["VECLIB_MAXIMUM_THREADS"] = str(config["cpu_threads"])
     import torch
 
-    from .upstream_loader import apply_upstream_artifacts
+    from shiftadd_flux.upstream_loader import apply_upstream_artifacts
 
     torch.set_num_threads(config["cpu_threads"])
 
@@ -93,7 +93,7 @@ def main():
                 [
                     sys.executable,
                     "-m",
-                    "shiftadd_flux.upstream_load_probe",
+                    "shiftadd_flux.diagnostics.upstream_load_probe",
                     "--config",
                     a.config,
                     "--child",

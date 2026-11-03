@@ -17,4 +17,4 @@ reported relative L2 values are identical. The nonuniform search takes more work
 This does not rule out other templates, learned scales or activation-aware
 objectives. It does not justify a full-model conversion of this candidate.
 
-Implementation: `src/shiftadd_flux/nonuniform.py`. Original artifacts are retained.
+Implementation: `src/shiftadd_flux/diagnostics/nonuniform.py`. Original artifacts are retained.

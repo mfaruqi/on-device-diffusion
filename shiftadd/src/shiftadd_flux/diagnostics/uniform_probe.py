@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 from safetensors import safe_open
 
-from .activation import quantize_grouped, quantize_per_token
-from .conventional import decode_uniform, encode_uniform
+from shiftadd_flux.activation import quantize_grouped, quantize_per_token
+from shiftadd_flux.conventional import decode_uniform, encode_uniform
 
 
 def main():

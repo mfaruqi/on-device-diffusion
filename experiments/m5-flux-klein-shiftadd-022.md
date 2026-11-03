@@ -69,7 +69,7 @@ not modeled. The fixed dual-stream subset is excluded from this error average.
 | All three-plane | 0.01185715 | 0.11046296 |
 
 `summary.json` preserves the full fixed-count diagnostic curve. The local figure
-can be reproduced with `python -m shiftadd_flux.plot_plane_tradeoff --run
+can be reproduced with `python -m shiftadd_flux.plots.plot_plane_tradeoff --run
 results/runs/m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused --output <new-path.png>` using the plots dependencies.
 
 ## Limits

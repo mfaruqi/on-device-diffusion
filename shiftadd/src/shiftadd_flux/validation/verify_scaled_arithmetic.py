@@ -7,9 +7,9 @@ from pathlib import Path
 
 import numpy as np
 
-from .activation import quantize_grouped
-from .scaled_plane_arithmetic import grouped_scaled_plane_matmul
-from .upstream_loader import decode_rows
+from shiftadd_flux.activation import quantize_grouped
+from shiftadd_flux.scaled_plane_arithmetic import grouped_scaled_plane_matmul
+from shiftadd_flux.upstream_loader import decode_rows
 
 
 def main():

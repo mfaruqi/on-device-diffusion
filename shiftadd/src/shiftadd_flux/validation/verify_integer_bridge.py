@@ -6,10 +6,10 @@ from pathlib import Path
 
 import numpy as np
 
-from .activation import quantize_grouped
-from .activation_storage import pack_codes, unpack_codes
-from .format import decode
-from .integer_radix import grouped_integer_matmul, to_integer_codes
+from shiftadd_flux.activation import quantize_grouped
+from shiftadd_flux.activation_storage import pack_codes, unpack_codes
+from shiftadd_flux.format import decode
+from shiftadd_flux.integer_radix import grouped_integer_matmul, to_integer_codes
 
 
 def main():

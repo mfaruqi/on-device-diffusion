@@ -8,9 +8,9 @@ from pathlib import Path
 
 import numpy as np
 
-from .activation import grouped_signed_plane_matmul, quantize_grouped
-from .activation_storage import pack_codes, unpack_codes
-from .format import decode
+from shiftadd_flux.activation import grouped_signed_plane_matmul, quantize_grouped
+from shiftadd_flux.activation_storage import pack_codes, unpack_codes
+from shiftadd_flux.format import decode
 
 
 def main():

@@ -96,7 +96,7 @@ in int8 containers; activation nibble packing is provided by `activation_storage
 implementation remains unimplemented. Weight signs are unpacked into an int32 reference array, so this
 is not a memory-efficient runtime.
 
-`python -m shiftadd_flux.verify_grouped --config
+`python -m shiftadd_flux.validation.verify_grouped --config
 shiftadd/configs/activation-group-g32-001.json --output <new-directory>` checks
 real saved inputs against independent dense reconstruction. Run as one command
 with `PYTHONPATH=shiftadd/src`. Group sizes 32, 128 and 3072 passed 384 total

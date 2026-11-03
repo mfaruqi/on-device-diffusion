@@ -11,8 +11,8 @@ from pathlib import Path
 import numpy as np
 from safetensors import safe_open
 
-from .activation import quantize_grouped
-from .upstream_loader import decode_rows
+from shiftadd_flux.activation import quantize_grouped
+from shiftadd_flux.upstream_loader import decode_rows
 
 
 def main():

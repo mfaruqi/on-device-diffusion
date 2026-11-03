@@ -8,7 +8,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-root = Path(__file__).resolve().parents[2]
+root = Path(__file__).resolve().parents[3]
 run = root / "runs/a100-calibration-001"
 config = json.loads((run / "config.json").read_text())
 fig, axes = plt.subplots(len(config["samples"]), len(config["cases"]), figsize=(10, 13))

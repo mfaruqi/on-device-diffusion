@@ -1,7 +1,7 @@
 # Energy measurement preparation
 
 No ShiftAdd energy result has been measured. The numerical utility
-`shiftadd_flux.energy` prepares reduction of a future timestamped power trace;
+`shiftadd_flux.reporting.energy` prepares reduction of a future timestamped power trace;
 it does not sample a device or turn diagnostic inference times into energy.
 
 ## Existing evidence limitation
@@ -42,7 +42,7 @@ mode, temperature, clocks, competing load, sensor name and sampling settings.
 Run from the repository root:
 
 ```bash
-PYTHONPATH=shiftadd/src python -m shiftadd_flux.energy \
+PYTHONPATH=shiftadd/src python -m shiftadd_flux.reporting.energy \
   --samples <power.csv> --window <window.json> --output <new-result.json>
 ```
 

@@ -9,8 +9,8 @@ from pathlib import Path
 import numpy as np
 from safetensors import safe_open
 
-from .conventional import decode_uniform
-from .format import decode
+from shiftadd_flux.conventional import decode_uniform
+from shiftadd_flux.format import decode
 
 
 def main():

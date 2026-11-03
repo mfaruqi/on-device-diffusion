@@ -8,7 +8,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-root = Path(__file__).resolve().parents[2]
+root = Path(__file__).resolve().parents[3]
 out = root / "runs/figures"
 out.mkdir(parents=True, exist_ok=True)
 store = json.loads((root / "artifacts/transformer-p4-001/storage-report.json").read_text())

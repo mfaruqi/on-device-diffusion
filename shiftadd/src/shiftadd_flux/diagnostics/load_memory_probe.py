@@ -14,7 +14,7 @@ from pathlib import Path
 def child(config):
     import torch
 
-    from .loader import apply_artifacts
+    from shiftadd_flux.loader import apply_artifacts
 
     if sys.platform not in ("darwin", "linux"):
         raise ValueError("Unspecified ru_maxrss units")
@@ -80,7 +80,7 @@ def main():
                 [
                     sys.executable,
                     "-m",
-                    "shiftadd_flux.load_memory_probe",
+                    "shiftadd_flux.diagnostics.load_memory_probe",
                     "--config",
                     a.config,
                     "--child",
