@@ -208,3 +208,5 @@ that every record and every run directory appears here.
 | a100-flux-klein-upstream-query-001 | A100 SXM4 | pytorch-diffusers | Single-query upstream BCQ image diagnostic | complete; quality smoke | [record](../experiments/a100-flux-klein-upstream-query-001.md) | [run](../results/runs/a100-flux-klein-upstream-query-001__attempt__20261102-query/) | — |
 
 | a100-flux-klein-upstream-fused-001 | A100 SXM4 | pytorch-diffusers | Fused-projection upstream BCQ image diagnostic | complete; quality smoke | [record](../experiments/a100-flux-klein-upstream-fused-001.md) | [run](../results/runs/a100-flux-klein-upstream-fused-001__attempt__20261102-fused/) | — |
+
+| a100-flux-klein-upstream-fused-calibration-001 | A100 SXM4 | pytorch-diffusers | Four-prompt fused-projection comparison | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-fused-calibration-001.md) | [run](../results/runs/a100-flux-klein-upstream-fused-calibration-001__attempt__20261102-calibration/) | — |

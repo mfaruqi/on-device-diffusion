@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-02] experiment | a100-flux-klein-upstream-fused-calibration-001: four-prompt fused check
+
+Verified all 16 outputs and exact prior BF16 references; documented prompt-specific rankings and lemon count differences ([record](../experiments/a100-flux-klein-upstream-fused-calibration-001.md)).
+
 ## [2026-11-02] experiment | a100-flux-klein-upstream-fused-001: fused projection image check
 
 Verified paired BF16 match, finite images and single-projection replacements; recorded latent metrics and visual observations ([record](../experiments/a100-flux-klein-upstream-fused-001.md)).

@@ -71,6 +71,10 @@ def main():
         payload["config"]["precision"] = (
             "BF16 reference; radix, symmetric INT4 and upstream BCQ candidates; dense BF16 execution"
         )
+    if payload["config"]["calibration_samples"]:
+        payload["tags"] = [tag for tag in payload["tags"] if tag != "single-prompt"]
+        payload["tags"].append("calibration-prompt-set")
+        payload["config"]["measurement_basis"] = "small calibration prompt-set diagnostic"
     payload["images"] = sorted(Path(args.images).glob("*.png"))
     rows = evidence["results"]
     columns = list(rows[0])
