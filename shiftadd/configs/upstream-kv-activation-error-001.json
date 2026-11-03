@@ -1,0 +1,15 @@
+{
+  "id": "m5-flux-klein-shiftadd-012",
+  "artifacts": "shiftadd/artifacts/upstream-bcq-full-kv-001",
+  "output": "shiftadd/runs/upstream-kv-activation-error-001",
+  "activation_bits": [
+    4,
+    8
+  ],
+  "activation_group_size": 32,
+  "expected_calls": 16,
+  "description": "Full K/V projection error with grouped A4/A8 versus original captured inputs, separately for BF16 and fixed upstream weights.",
+  "optimizations": {
+    "activation_quantization": "symmetric-grouped-round-dequantize"
+  }
+}

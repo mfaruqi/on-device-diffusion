@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-02] experiment | m5-flux-klein-shiftadd-012: full K/V activation errors
+
+Recorded 192 BF16/upstream A4/A8 projection comparisons with prior weight-only reproduction checks ([record](../experiments/m5-flux-klein-shiftadd-012.md)).
+
 ## [2026-11-02] experiment | m5-flux-klein-shiftadd-011: upstream K/V fitting
 
 Recorded first-block K/V artifacts, shared-input provenance, 32 independent reload checks and same-source radix/INT4 output-error controls ([record](../experiments/m5-flux-klein-shiftadd-011.md)).

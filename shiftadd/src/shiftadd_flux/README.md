@@ -13,7 +13,7 @@ or set `PYTHONPATH=shiftadd/src` from the parent repository. CLI modules support
 | Activation arithmetic | `activation`, `activation_storage`, `integer_radix`, `scaled_plane_arithmetic` | Quantized activation codes, packed layouts and CPU arithmetic references |
 | Pipeline tests | `activation_hooks`, `pipeline_smoke`, `calibration_smoke`, `case_validation` | Scoped fake quantization and paired image diagnostics |
 | Verification | `verify_*`, `arithmetic_check`, `validate_control`, `audit_bundles` | Reload checks, arithmetic equivalence and evidence audits |
-| Diagnostics | `residual_probe`, `uniform_probe`, `full_query_controls`, `load_memory_probe` | Low-rank, conventional and memory-loading controls |
+| Diagnostics | `residual_probe`, `uniform_probe`, `full_query_controls`, `upstream_activation_probe`, `load_memory_probe` | Low-rank, conventional and memory-loading controls |
 | Reporting | `plot_*`, `publish`, `energy` | Figures, parent W&B export and timestamped-power integration |
 
 `loader.apply_artifacts` handles sign-plane bundles; use
