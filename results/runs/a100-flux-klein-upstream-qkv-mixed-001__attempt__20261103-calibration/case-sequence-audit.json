@@ -1,0 +1,34 @@
+{
+  "case_sequence_valid": true,
+  "rule": "every candidate overwrites all previously modified parameters",
+  "cases": [
+    {
+      "case": "bf16",
+      "selected_tensors": []
+    },
+    {
+      "case": "upstream-u8-qkv",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight"
+      ]
+    },
+    {
+      "case": "upstream-q4-k3",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight"
+      ]
+    },
+    {
+      "case": "upstream-q4-v3",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight"
+      ]
+    }
+  ]
+}

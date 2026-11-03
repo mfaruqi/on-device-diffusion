@@ -1,0 +1,329 @@
+{
+  "scope": "Loader-only mixed-plane first-block Q/K/V bundle; no new fit",
+  "storage": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "payload_bytes": 5087232,
+      "file_bytes": 5112860,
+      "artifact_sha256": "405bb7ad730fc5a45e29568fc195120eba6b75c57e8c7920230d5416efa0d022",
+      "bits_per_weight": 4.3125,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 3072,
+      "relative_weight_l2": 0.18341416120529175
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "payload_bytes": 3833856,
+      "file_bytes": 3859484,
+      "artifact_sha256": "6e7baece272726d6aad7a78fc4265ce05419247beeaed9c59cbf4116073faeb9",
+      "bits_per_weight": 3.25,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 3072,
+      "relative_weight_l2": 0.3044779598712921
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "payload_bytes": 5087232,
+      "file_bytes": 5112860,
+      "artifact_sha256": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a",
+      "bits_per_weight": 4.3125,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 3072,
+      "relative_weight_l2": 0.16592250764369965
+    }
+  ],
+  "results": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.0015901819569990039
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.0012338603846728802
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.0025464394129812717
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.004036054480820894
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.0015022853622213006
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.00114728685002774
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.0023561236448585987
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.0037044642958790064
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01744367927312851
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.016695236787199974
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.016074800863862038
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.018026091158390045
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.017388813197612762
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.016772223636507988
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.01629815623164177
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.018412815406918526
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.0029589571058750153
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.002458014525473118
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.004779464099556208
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.00833568163216114
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.002696999115869403
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.002203351119533181
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.004434631671756506
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.007868317887187004
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03164296969771385
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.0313103087246418
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03022642806172371
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.0349363274872303
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.031006110832095146
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03103981539607048
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.030605275183916092
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03615288436412811
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.002013256074860692
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.0017188150668516755
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.0041687688790261745
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.00913326721638441
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.0018966662464663386
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.001635814318433404
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.004026476759463549
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.00919337198138237
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.02982562966644764
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.029263531789183617
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.03424760326743126
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.043179139494895935
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.02861044369637966
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.028590990230441093
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.034596577286720276
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.044634006917476654
+    }
+  ],
+  "total_file_bytes": 14085204
+}

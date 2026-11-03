@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "bundle": "shiftadd/artifacts/upstream-bcq-q4-k3-001",
+      "changed_vs_four_plane": [
+        "transformer_blocks.0.attn.to_k.weight"
+      ],
+      "all_reduced_weight_values_match_independent_bf16_decode": true,
+      "audit": {
+        "replaced_tensors": [
+          "transformer_blocks.0.attn.to_k.weight",
+          "transformer_blocks.0.attn.to_q.weight",
+          "transformer_blocks.0.attn.to_v.weight"
+        ],
+        "weight_format": "upstream_bcq",
+        "scale_format": "u8",
+        "decode_chunk_rows": 128,
+        "runtime_representation": "reconstructed dense parameters",
+        "packed_artifact_bytes": 14085204
+      }
+    },
+    {
+      "bundle": "shiftadd/artifacts/upstream-bcq-q4-v3-001",
+      "changed_vs_four_plane": [
+        "transformer_blocks.0.attn.to_v.weight"
+      ],
+      "all_reduced_weight_values_match_independent_bf16_decode": true,
+      "audit": {
+        "replaced_tensors": [
+          "transformer_blocks.0.attn.to_k.weight",
+          "transformer_blocks.0.attn.to_q.weight",
+          "transformer_blocks.0.attn.to_v.weight"
+        ],
+        "weight_format": "upstream_bcq",
+        "scale_format": "u8",
+        "decode_chunk_rows": 128,
+        "runtime_representation": "reconstructed dense parameters",
+        "packed_artifact_bytes": 14085204
+      }
+    }
+  ]
+}
