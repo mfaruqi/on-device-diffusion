@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | a100-flux-klein-upstream-all-dual-001: broader image controls
+
+Verified 16 images, exact BF16 references and all 30 intended replacements ([record](../experiments/a100-flux-klein-upstream-all-dual-001.md)).
+
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-017: all-dual activation errors
 
 Recorded 2,880 A4/A8 projection comparisons with exact-zero and prior-error checks ([record](../experiments/m5-flux-klein-shiftadd-017.md)).

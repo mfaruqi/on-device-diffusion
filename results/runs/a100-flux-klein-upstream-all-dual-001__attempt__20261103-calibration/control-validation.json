@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "scope": "paired numerical and image integrity; not quality admission",
+  "prior_bf16_exact_match": true,
+  "metric_rtol": 1e-05,
+  "metric_atol": 1e-08,
+  "metric_tolerance_reason": "FP32 norm reductions differ across CPU backends",
+  "images_checked": 16,
+  "replaced_matrices_per_candidate": 30,
+  "performance_comparison_eligible": false,
+  "results": [
+    {
+      "sample_id": "cal01",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "e547f9ffba7abe6dec8ff14d1b28d3759ab8f298323b4bf111330cfeb670a661"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "radix-p4-all-dual",
+      "relative_latent_l2": 0.2483014166355133,
+      "latent_sha256": "380a9cb174d620bde92e6e8fe64181dab4ab413e69212a5f1c452505ceab6727"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "uniform-int4-all-dual",
+      "relative_latent_l2": 0.2454211413860321,
+      "latent_sha256": "f7acc5fcc9af6c7632c5716b753ba1e9eb6541bdc5710ef4dafd0e21046c9777"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-u8-all-dual",
+      "relative_latent_l2": 0.12382277846336365,
+      "latent_sha256": "e26bd7dd581a3b21c613d823289fa1525339ca73248d88b2772d029edf98f8f6"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "d96fa351f5d09cb994fbee3473970e25894e98b0fae6ca4890eae559c5617621"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "radix-p4-all-dual",
+      "relative_latent_l2": 0.30834147334098816,
+      "latent_sha256": "2081fd0976fa1b6a2dd8a16a9aaee0afc1fdda82f4ce74dce218a6ae899dd08a"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "uniform-int4-all-dual",
+      "relative_latent_l2": 0.2931845486164093,
+      "latent_sha256": "e14c3c5e2b5311ce50a3a288d8db342e06dc2ccc8d47e5329d96a8836c707ea3"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-u8-all-dual",
+      "relative_latent_l2": 0.182768315076828,
+      "latent_sha256": "0bed623ea25e275aaff1a405b59342153f86faeb94febbc08b0c2e8223689f45"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "2b7425061babf23812b72cb0929607e4b92e260ec4933f0a2b0a7259bbd66287"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "radix-p4-all-dual",
+      "relative_latent_l2": 0.449124813079834,
+      "latent_sha256": "fdb29c6a964da183f19715a66207ce614535ac572970960dc5de6fe7d6972b02"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "uniform-int4-all-dual",
+      "relative_latent_l2": 0.39956724643707275,
+      "latent_sha256": "93f1cc551aea4ff17c5fb2e46cdf67ae0a8421d21074c3bd98437a359b2be9eb"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-u8-all-dual",
+      "relative_latent_l2": 0.37579581141471863,
+      "latent_sha256": "b81aabc1370d4c621956c320bb5168dd024a17685132bcd7d856fb6a2c131f36"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "1887a48e20c7592b75aef110356433ce3e6fbb099e593c14d05f988580c51196"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "radix-p4-all-dual",
+      "relative_latent_l2": 0.35540086030960083,
+      "latent_sha256": "3eba155ee0045ab71d75567fc1de7bb982a06694a6a975ce444ec9a1de972f1d"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "uniform-int4-all-dual",
+      "relative_latent_l2": 0.27585530281066895,
+      "latent_sha256": "6c59a4468d1808e3658d0d046dbae3f38ec20b9afa464aefcdc4e0b2b0096f3b"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-u8-all-dual",
+      "relative_latent_l2": 0.23936493694782257,
+      "latent_sha256": "c7cd441dd75e8a7c7135c5f5786b33ca6cb5e13288d6064b0852d7b00f4742ab"
+    }
+  ]
+}
