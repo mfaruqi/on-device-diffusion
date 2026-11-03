@@ -6,6 +6,7 @@ directory are git-ignored (kept locally, not in git).
 
 | Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
 |---|---|---|---|---|---|---|---|
+| `a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration` | [a100-flux-klein-upstream-mixed-fused-001](../experiments/a100-flux-klein-upstream-mixed-fused-001.md) | A100 SXM4 | mixed fused p3/p4 calibration | — | — | — | queued (job 12149223); diagnostic only |
 | `a100-nunchaku-flux-klein-001__attempt__20261011-123802` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 904.8 | 48.9 / 658.6 / 164.4 | 12.52 | complete (job 11929464): smoke; quality unassessed |
 | `a100-nunchaku-flux-klein-001__baseline__20261011-124123` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 897.8 | 47.1 / 663.2 / 164.8 | 12.52 | complete (job 11929464): full protocol; quality unassessed |
 | `a100-nunchaku-flux-klein-001__attempt__20261011-113031` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g005) | a100-nunchaku-flux-klein-int4-r32-smoke | – | – | – | failed (job 11929279): text-encoder dtype guard before generation |
