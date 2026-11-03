@@ -59,7 +59,7 @@ def latex(rows, device):
               '(96 prompts $\\times$ 4 seeds) and end-to-end latency (median). GenEval $\\times 100$; PickScore is '
               'the raw logit-scaled score; best value per group in bold; DPG not measured.'
               + (' $^\\dagger$Latency measured with conditioning reuse.' if any(r['latency_flag'] for r in rows if r['device'] == device) else '')
-              + (' $^\\ddagger$Images generated on the A100 from the identical weights and options; latency measured on this device.'
+              + (' $^\\ddagger$Images generated on the A100 from the identical weights and options; latency measured on this device. Nunchaku: community-wheel kernels instead of the Jetson sm\\_87 build.'
                  if any(r['generated_on'] != device for r in rows if r['device'] == device) else '')
               + '}', '\\end{table}']
     return '\n'.join(lines) + '\n'
@@ -116,7 +116,7 @@ def render(rows, device, stem):
         foot = y - 1.15
         if any(g[0]['generated_on'] != device for g in gs.values()):
             ax.text(0.0, foot, '‡ Images for quality scoring generated on the A100 from the identical weights and options; '
-                    'latency measured on this device.', ha='left', va='center', fontsize=8.5, color='#333333')
+                    'latency measured on this device. Nunchaku: community-wheel kernels instead of the Jetson sm_87 build.', ha='left', va='center', fontsize=8.5, color='#333333')
             foot -= 0.8
         if flagged:
             ax.text(0.0, foot, '† Latency measured with conditioning reuse (no run without it); excludes the '

@@ -1,5 +1,5 @@
 {
-  "description": "Configurations scored on the GenEval 96-prompt calibration subset (4 seeds) with GenEval and the four prompt-image preference metrics, joined with end-to-end latency from their benchmark runs. Selection: per device and workload, the fastest completed configurations of each engine whose images exist, plus each engine's reference. Conditioning reuse is not a quality configuration (exact reuse; images unchanged) and is excluded from latency where a run without it exists; rows whose only benchmark used it are flagged. Variants are compared only with the reference of the same engine, workload and device class.",
+  "description": "Configurations scored on the GenEval 96-prompt calibration subset (4 seeds) with GenEval and the four prompt-image preference metrics, joined with end-to-end latency from their benchmark runs. Selection: per device and workload, the fastest completed configurations of each engine whose images exist, plus each engine's reference. Conditioning reuse is not a quality configuration (exact reuse; images unchanged) and is excluded from latency where a run without it exists; rows whose only benchmark used it are flagged. Variants are compared only with the reference of the same engine, workload and device class. Compressed-checkpoint engines (Nunchaku SVDQuant) form their own groups; their speedup column is relative to themselves.",
   "subset": "calibration_subset",
   "groups": [
     {
@@ -24,6 +24,18 @@
           "bench": "a100-flux-klein-torch28-004__baseline__20261015-151949"
         }
       ]
+    },
+    {
+      "device": "a100-pcie-40gb",
+      "workload": "distilled 1024², 4 steps",
+      "engine": "Nunchaku SVDQuant (INT4 r32)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {
+        "label": "reference",
+        "images": "a100-nunchaku-flux-klein-001__geneval-calibration_subset__20261103-141714",
+        "bench": "a100-nunchaku-flux-klein-001__baseline__20261011-124123"
+      },
+      "variants": []
     },
     {
       "device": "a100-pcie-40gb",
@@ -132,6 +144,18 @@
           "bench": "jetson-torch-flux-klein-002__baseline__20261014-174108"
         }
       ]
+    },
+    {
+      "device": "jetson-orin-nano",
+      "workload": "distilled 512², 4 steps",
+      "engine": "Nunchaku SVDQuant (INT4 r32 + NF4)",
+      "generated_on": "a100-pcie-40gb",
+      "reference": {
+        "label": "reference",
+        "images": "a100-geneval-nunchaku-flux-klein-int4-r32-512__geneval-calibration_subset__20261103-143000",
+        "bench": "jetson-nunchaku-flux-klein-001__baseline__20261102-120036"
+      },
+      "variants": []
     },
     {
       "device": "jetson-orin-nano",

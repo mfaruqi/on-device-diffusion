@@ -10,6 +10,9 @@
 \quad torch.compile & 1.02 & 1.26$\times$ & \textbf{0.2911} & \textbf{23.45} & \textbf{0.3014} & \textbf{1.1704} & 79.69 & – \\
 \quad TaylorSeer & 0.85 & 1.51$\times$ & 0.2885 & 22.82 & 0.2879 & 1.0643 & 77.60 & – \\
 \midrule
+\multicolumn{9}{l}{\textit{Nunchaku SVDQuant (INT4 r32), distilled 1024$^2$, 4 steps}} \\
+\quad reference & 0.90 & 1.00$\times$ & 0.2927 & 23.40 & 0.2978 & 1.1341 & 79.43 & – \\
+\midrule
 \multicolumn{9}{l}{\textit{PyTorch (BF16), Base 1024$^2$, 50 steps, CFG 4}} \\
 \quad reference & 26.48 & 1.00$\times$ & \textbf{0.2922} & \textbf{23.16} & \textbf{0.2934} & \textbf{0.9866} & \textbf{74.74} & – \\
 \quad torch.compile & 19.53 & 1.36$\times$ & 0.2917 & 23.15 & 0.2931 & 0.9780 & 74.22 & – \\

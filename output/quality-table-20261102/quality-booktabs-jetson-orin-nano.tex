@@ -12,6 +12,9 @@
 \quad VAE tiling & 82.99 & 0.97$\times$ & \textbf{0.2921} & 23.08 & 0.2975 & \textbf{1.1452} & 77.08 & – \\
 \quad SDPA math & 84.22 & 0.95$\times$ & 0.2900 & 23.31 & \textbf{0.2976} & 1.1358 & 77.08 & – \\
 \midrule
+\multicolumn{9}{l}{\textit{Nunchaku SVDQuant (INT4 r32 + NF4), distilled 512$^2$, 4 steps}$^\ddagger$} \\
+\quad reference & 64.60 & 1.00$\times$ & 0.2899 & 23.36 & 0.2978 & 1.1147 & 77.86 & – \\
+\midrule
 \multicolumn{9}{l}{\textit{PyTorch (Q4_0 GGUF + NF4), Base 512$^2$, 50 steps, CFG 4}$^\ddagger$} \\
 \quad reference & 494.63 & 1.00$\times$ & \textbf{0.2879} & \textbf{23.08} & \textbf{0.2891} & \textbf{0.9244} & \textbf{73.70} & – \\
 \quad torch.compile & 183.93$^\dagger$ & 2.69$\times$ & 0.2878 & 23.07 & 0.2890 & 0.9220 & 72.66 & – \\
@@ -21,5 +24,5 @@
 \quad MagCache & 5.10 & 2.35$\times$ & 0.2625 & 20.85 & 0.2068 & -0.3850 & 43.75 & – \\
 \bottomrule
 \end{tabular}
-\caption{Jetson Orin Nano 8 GB: image quality on the GenEval calibration subset (96 prompts $\times$ 4 seeds) and end-to-end latency (median). GenEval $\times 100$; PickScore is the raw logit-scaled score; best value per group in bold; DPG not measured. $^\dagger$Latency measured with conditioning reuse. $^\ddagger$Images generated on the A100 from the identical weights and options; latency measured on this device.}
+\caption{Jetson Orin Nano 8 GB: image quality on the GenEval calibration subset (96 prompts $\times$ 4 seeds) and end-to-end latency (median). GenEval $\times 100$; PickScore is the raw logit-scaled score; best value per group in bold; DPG not measured. $^\dagger$Latency measured with conditioning reuse. $^\ddagger$Images generated on the A100 from the identical weights and options; latency measured on this device. Nunchaku: community-wheel kernels instead of the Jetson sm\_87 build.}
 \end{table}
