@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | compare-upstream-attention-storage: subset versus transformer storage
+
+Separated measured 50-matrix file sizes from a BF16-remainder deployment estimate ([record](../experiments/compare-upstream-attention-storage.md)).
+
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-016: all fused projections
 
 Saved 20 complete fused matrices and reproduced 320 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-016.md)).

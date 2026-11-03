@@ -60,6 +60,11 @@ or the total disk occupied by multiple saved candidates.
 Weights are not included in this repository or uploaded publicly. Some local
 bundles share hard links: treat all completed artifacts as immutable.
 
+The separate [upstream storage accounting](../experiments/compare-upstream-attention-storage.md)
+covers 50 matrices: about 1.00 GiB instead of 3.69 GiB for that subset. Keeping
+the remaining tensors in BF16 would imply about 4.53 GiB of transformer storage;
+that is an estimate, not a saved standalone checkpoint or runtime-memory result.
+
 ## Install and run CPU checks
 
 Run from the repository root. Use a Python 3.10+ environment compatible with your
