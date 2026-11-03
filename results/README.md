@@ -594,3 +594,7 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-019__attempt__20261103-single-activation` | [record](../experiments/m5-flux-klein-shiftadd-019.md) | M5 CPU | all-single A4/A8 activation errors | — | — | — | complete; numerical diagnostic only |
 
 | `m5-flux-klein-shiftadd-020__attempt__20261103-package` | [record](../experiments/m5-flux-klein-shiftadd-020.md) | M5 CPU | complete upstream/BF16 transformer package | — | — | — | complete; storage and loading verification |
+
+| `a100-flux-klein-upstream-all-dual-a8-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-a8-001.md) | A100 SXM4 | upstream Q/K/V plus grouped A8 | — | — | — | complete; job 12140559; calibration diagnostic only |
+
+| `a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | A100 SXM4 | five image-query Q3 substitutions | — | — | — | complete; job 12140665; calibration diagnostic |

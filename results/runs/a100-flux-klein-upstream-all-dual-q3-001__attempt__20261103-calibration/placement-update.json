@@ -1,0 +1,63 @@
+{
+  "updated_utc": "2026-11-03T07:34:56.261219+00:00",
+  "reason": "Allow any matching A100-SXM4 N node before the user-requested cutoff; preserve hardware family and all numerical settings.",
+  "jobs": [
+    {
+      "job_id": "12140559",
+      "name": "upstream-all-dual-a8",
+      "before": {
+        "returncode": 0,
+        "stdout": "JobId=12140559 JobName=upstream-all-dual-a8\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T01:47:11 EligibleTime=2026-11-03T01:47:11\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:45:55 EndTime=2026-11-03T05:50:55 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe03:130622\n   ReqNodeList=gilbreth-n012 ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-a8-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-a8-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-dual-a8-12140559.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "update": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "after": {
+        "returncode": 0,
+        "stdout": "JobId=12140559 JobName=upstream-all-dual-a8\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=None Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T01:47:11 EligibleTime=2026-11-03T01:47:11\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:45:55 EndTime=2026-11-03T05:50:55 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe03:130622\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=N DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-a8-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-a8-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-dual-a8-12140559.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      }
+    },
+    {
+      "job_id": "12140665",
+      "name": "upstream-all-dual-q3",
+      "before": {
+        "returncode": 0,
+        "stdout": "JobId=12140665 JobName=upstream-all-dual-q3\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T01:52:34 EligibleTime=2026-11-03T01:52:34\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:52:00 EndTime=2026-11-03T05:57:00 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe02:1393643\n   ReqNodeList=gilbreth-n012 ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-q3-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-q3-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-dual-q3-12140665.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "update": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "after": {
+        "returncode": 0,
+        "stdout": "JobId=12140665 JobName=upstream-all-dual-q3\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=None Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T01:52:34 EligibleTime=2026-11-03T01:52:34\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:52:00 EndTime=2026-11-03T05:57:00 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe02:1393643\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=N DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-q3-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-dual-q3-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-dual-q3-12140665.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      }
+    },
+    {
+      "job_id": "12140980",
+      "name": "upstream-all-attention",
+      "before": {
+        "returncode": 0,
+        "stdout": "JobId=12140980 JobName=upstream-all-attention\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T02:09:48 EligibleTime=2026-11-03T02:09:48\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:58:00 EndTime=2026-11-03T06:03:00 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe03:275651\n   ReqNodeList=gilbreth-n012 ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-attention-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-attention-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-attention-12140980.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "update": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      },
+      "after": {
+        "returncode": 0,
+        "stdout": "JobId=12140980 JobName=upstream-all-attention\n   UserId=mfaruqi(858596) GroupId=student(132) MCS_label=N/A\n   Priority=1264 Nice=0 Account=you139 QOS=normal\n   JobState=PENDING Reason=None Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=00:05:00 TimeMin=N/A\n   SubmitTime=2026-11-03T02:09:48 EligibleTime=2026-11-03T02:09:48\n   AccrueTime=Unknown\n   StartTime=2026-11-03T05:58:00 EndTime=2026-11-03T06:03:00 Deadline=2026-11-03T04:00:00\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-03T02:34:28 Scheduler=Main\n   Partition=a100-40gb AllocNode:Sid=gilbreth-fe03:275651\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList= SchedNodeList=gilbreth-n012\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=48G,node=1,billing=4,gres/gpu=1,gres/hp_a100-40gb=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=48G MinTmpDiskNode=0\n   Features=N DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-attention-001.slurm\n   SubmitLine=sbatch --deadline=2026-11-03T04:00:00 --parsable /scratch/gilbreth/mfaruqi/shiftadd-initial/configs/a100-upstream-all-attention-001.slurm\n   WorkDir=/home/mfaruqi\n   StdErr=\n   StdIn=/dev/null\n   StdOut=/scratch/gilbreth/mfaruqi/shiftadd-initial/upstream-all-attention-12140980.log\n   TresPerNode=gres/gpu:1,gres/hp_a100-40gb:1\n   TresPerTask=cpu=4\n\n",
+        "stderr": "\n************************************************************\n\n***** Use of Purdue BoilerKey or SSH keys is Required ******\n\n************************************************************\n\n"
+      }
+    }
+  ]
+}

@@ -79,8 +79,12 @@ quality admission. This does not include the 20 single-stream fused projections.
 cover all 30 matrices; A8 adds much less local error than A4. The
 [five image-query Q3 fits](../../experiments/m5-flux-klein-shiftadd-018.md) are
 saved and verified, offering 4.09% lower file storage when combined with the
-other 25 four-plane dual-stream matrices. Their combined image comparison and
-the all-dual A8 image follow-up are submitted, not completed evidence.
+other 25 four-plane dual-stream matrices. The
+[mixed-query image comparison](../../experiments/a100-flux-klein-upstream-all-dual-q3-001.md)
+and [all-dual A8 follow-up](../../experiments/a100-flux-klein-upstream-all-dual-a8-001.md)
+are complete and verified. Neither establishes a consistent quality advantage.
+The A8 lemon image satisfies the requested count despite greater BF16 latent
+distance, reinforcing the need for prompt-quality criteria.
 
 [All 20 fused-projection A4/A8 checks](../../experiments/m5-flux-klein-shiftadd-019.md)
 are also complete: the A8 error increase is small, while A4 is larger. These

@@ -1,0 +1,80 @@
+{
+  "case_sequence_valid": true,
+  "rule": "every candidate overwrites all previously modified parameters",
+  "cases": [
+    {
+      "case": "bf16",
+      "selected_tensors": []
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.add_k_proj.weight",
+        "transformer_blocks.0.attn.add_q_proj.weight",
+        "transformer_blocks.0.attn.add_v_proj.weight",
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight",
+        "transformer_blocks.1.attn.add_k_proj.weight",
+        "transformer_blocks.1.attn.add_q_proj.weight",
+        "transformer_blocks.1.attn.add_v_proj.weight",
+        "transformer_blocks.1.attn.to_k.weight",
+        "transformer_blocks.1.attn.to_q.weight",
+        "transformer_blocks.1.attn.to_v.weight",
+        "transformer_blocks.2.attn.add_k_proj.weight",
+        "transformer_blocks.2.attn.add_q_proj.weight",
+        "transformer_blocks.2.attn.add_v_proj.weight",
+        "transformer_blocks.2.attn.to_k.weight",
+        "transformer_blocks.2.attn.to_q.weight",
+        "transformer_blocks.2.attn.to_v.weight",
+        "transformer_blocks.3.attn.add_k_proj.weight",
+        "transformer_blocks.3.attn.add_q_proj.weight",
+        "transformer_blocks.3.attn.add_v_proj.weight",
+        "transformer_blocks.3.attn.to_k.weight",
+        "transformer_blocks.3.attn.to_q.weight",
+        "transformer_blocks.3.attn.to_v.weight",
+        "transformer_blocks.4.attn.add_k_proj.weight",
+        "transformer_blocks.4.attn.add_q_proj.weight",
+        "transformer_blocks.4.attn.add_v_proj.weight",
+        "transformer_blocks.4.attn.to_k.weight",
+        "transformer_blocks.4.attn.to_q.weight",
+        "transformer_blocks.4.attn.to_v.weight"
+      ]
+    },
+    {
+      "case": "upstream-u8-all-dual-a8-g32",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.add_k_proj.weight",
+        "transformer_blocks.0.attn.add_q_proj.weight",
+        "transformer_blocks.0.attn.add_v_proj.weight",
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight",
+        "transformer_blocks.1.attn.add_k_proj.weight",
+        "transformer_blocks.1.attn.add_q_proj.weight",
+        "transformer_blocks.1.attn.add_v_proj.weight",
+        "transformer_blocks.1.attn.to_k.weight",
+        "transformer_blocks.1.attn.to_q.weight",
+        "transformer_blocks.1.attn.to_v.weight",
+        "transformer_blocks.2.attn.add_k_proj.weight",
+        "transformer_blocks.2.attn.add_q_proj.weight",
+        "transformer_blocks.2.attn.add_v_proj.weight",
+        "transformer_blocks.2.attn.to_k.weight",
+        "transformer_blocks.2.attn.to_q.weight",
+        "transformer_blocks.2.attn.to_v.weight",
+        "transformer_blocks.3.attn.add_k_proj.weight",
+        "transformer_blocks.3.attn.add_q_proj.weight",
+        "transformer_blocks.3.attn.add_v_proj.weight",
+        "transformer_blocks.3.attn.to_k.weight",
+        "transformer_blocks.3.attn.to_q.weight",
+        "transformer_blocks.3.attn.to_v.weight",
+        "transformer_blocks.4.attn.add_k_proj.weight",
+        "transformer_blocks.4.attn.add_q_proj.weight",
+        "transformer_blocks.4.attn.add_v_proj.weight",
+        "transformer_blocks.4.attn.to_k.weight",
+        "transformer_blocks.4.attn.to_q.weight",
+        "transformer_blocks.4.attn.to_v.weight"
+      ]
+    }
+  ]
+}

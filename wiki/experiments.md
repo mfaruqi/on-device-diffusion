@@ -246,3 +246,7 @@ that every record and every run directory appears here.
 | m5-flux-klein-shiftadd-019 | M5 CPU | pytorch-diffusers | All-dual grouped activation diagnostic | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-019.md) | [run](../results/runs/m5-flux-klein-shiftadd-019__attempt__20261103-single-activation/) | — |
 
 | m5-flux-klein-shiftadd-020 | M5 CPU | pytorch-diffusers | Complete upstream/BF16 package | complete; storage and loading | [record](../experiments/m5-flux-klein-shiftadd-020.md) | [run](../results/runs/m5-flux-klein-shiftadd-020__attempt__20261103-package/) | — |
+
+| a100-flux-klein-upstream-all-dual-a8-001 | A100 SXM4 | pytorch-diffusers | First-block Q/K/V A8 diagnostic | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-a8-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-a8-001__attempt__20261103-calibration/) | — |
+
+| a100-flux-klein-upstream-all-dual-q3-001 | A100 SXM4 | pytorch-diffusers | All-dual mixed query planes | complete; calibration diagnostic | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | [run](../results/runs/a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration/) | — |
