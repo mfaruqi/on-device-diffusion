@@ -77,6 +77,14 @@ saved and verified, offering 4.09% lower file storage when combined with the
 other 25 four-plane dual-stream matrices. Their combined image comparison and
 the all-dual A8 image follow-up are submitted, not completed evidence.
 
+[All 20 fused-projection A4/A8 checks](../../experiments/m5-flux-klein-shiftadd-019.md)
+are also complete: the A8 error increase is small, while A4 is larger. These
+are captured-input numerical diagnostics, not combined-model quality evidence.
+
+[All 20 fused-projection A4/A8 checks](../../experiments/m5-flux-klein-shiftadd-019.md)
+are also complete: the A8 error increase is small, while A4 is larger. These
+are captured-input numerical diagnostics, not combined-model quality evidence.
+
 ## Prepared follow-ups
 
 The [Q3 image comparison](../../experiments/a100-flux-klein-upstream-qkv-q3-001.md)
