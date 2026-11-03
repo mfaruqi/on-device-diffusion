@@ -65,3 +65,28 @@ multiplication; maximum relative disagreement is 9.28713e-7.
 [Verification evidence](../results/runs/m5-flux-klein-shiftadd-011__attempt__20261102-full-kv/integer-arithmetic-verification.json).
 This checks arithmetic equivalence against already quantized activations, not
 quality versus unquantized activations or GPU throughput.
+
+## Same-source conventional controls
+
+The existing radix p4 and uniform INT4 artifacts were decoded and evaluated on
+all 3072 output rows, using the same captured inputs and split as the upstream
+fit. Artifact SHA-256 checks passed. Each control has 16 per-call measurements
+per matrix; all 64 errors are finite. Products use FP32 on the local CPU.
+
+| Projection | Fit | Payload bits/weight | Mean fitting-call L2 | Mean calibration-validation L2 |
+|---|---|---:|---:|---:|
+| K | radix_p4 | 4.2500 | 0.05882893 | 0.05828238 |
+| K | uniform_int4 | 4.2500 | 0.04914532 | 0.04868425 |
+| K | upstream BCQ u8 | 4.3125 | 0.00259261 | 0.02000314 |
+| V | radix_p4 | 4.2500 | 0.07973508 | 0.08090911 |
+| V | uniform_int4 | 4.2500 | 0.06841496 | 0.06931517 |
+| V | upstream BCQ u8 | 4.3125 | 0.00422330 | 0.03411849 |
+
+[Per-call K control evidence](../results/runs/m5-flux-klein-shiftadd-011__attempt__20261102-full-kv/k-controls.json)
+and [V control evidence](../results/runs/m5-flux-klein-shiftadd-011__attempt__20261102-full-kv/v-controls.json).
+The upstream fit has lower output error on both matrices in both splits, with
+a slightly larger payload. This comparison changes fitting method and scale
+freedom together; it does not isolate calibration awareness or establish an
+equal-storage advantage. The calibration-validation split contains only two
+prompts and is not the formal held-out evaluation. No image-quality, latency,
+resident-memory or energy claim follows from these projection errors.

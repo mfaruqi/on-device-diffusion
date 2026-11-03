@@ -11,7 +11,7 @@ Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-20
 
 ## [2026-11-02] experiment | m5-flux-klein-shiftadd-011: upstream K/V fitting
 
-Recorded first-block K/V artifacts, shared-input provenance and 32 independent reload checks ([record](../experiments/m5-flux-klein-shiftadd-011.md)).
+Recorded first-block K/V artifacts, shared-input provenance, 32 independent reload checks and same-source radix/INT4 output-error controls ([record](../experiments/m5-flux-klein-shiftadd-011.md)).
 
 ## [2026-11-02] experiment | a100-flux-klein-upstream-fused-calibration-001: four-prompt fused check
 
