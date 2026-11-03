@@ -24,6 +24,23 @@ included in the upstream conversion, but not every transformer matrix is
 converted. The twenty fused matrices also contain MLP rows. This coverage
 comes from the complete tensor inventory in the package record.
 
+## Assemble fitted subsets
+
+Before packaging, the two source fit bundles can be combined reproducibly:
+
+```bash
+PYTHONPATH=shiftadd/src python -m shiftadd_flux.assemble_upstream \
+  --config shiftadd/configs/upstream-assembly-all-attention-001.json
+```
+
+Each selection explicitly lists modules and their source artifact directory.
+The tool requires completed full-row fits and independent reload verification,
+checks shared calibration/checkpoint settings and every copied file hash, and
+rejects duplicate modules. Plane counts may differ by module; assembly does
+not change fitted values. Its output is a fresh loader bundle, not a new fit.
+The example writes a separate `upstream-bcq-all-attention-rebuilt-001` directory;
+point a copy of the packaging config at it to package that reproduction.
+
 ## Create
 
 From the repository root, with the subproject installed or its source on

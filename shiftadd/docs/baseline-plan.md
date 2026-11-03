@@ -16,6 +16,9 @@ execution variants and RQ1/RQ3; the proposal's precision family states:
 | Jetson Nunchaku W4A4/r32 | [record](../../experiments/jetson-nunchaku-flux-klein-001.md) | Completed native sm_87 pipeline | Different checkpoint/kernel; quality unassessed |
 | Jetson exact conditioning reuse controls | [existing comparison](../../experiments/compare-jetson-nunchaku-vs-gguf-pytorch.md) | Separate completed no-reuse/reuse configurations | Reuse assumes repeated identical conditioning; not interchangeable with fresh-prompt latency |
 | ShiftAdd-format greedy, radix and mixed weights | [initial comparison](../../experiments/compare-a100-shiftadd-initial.md), [calibration](../../experiments/a100-flux-klein-shiftadd-004.md) | Saved full-transformer weights and paired reconstructed-BF16 images | Storage and calibration diagnostics only; greedy full-transformer visual failure |
+| Same-source conventional INT4 | [all 109 matrices](../../experiments/a100-flux-klein-uniform-001.md), [50-matrix controls](../../experiments/a100-flux-klein-upstream-all-attention-001.md) | One-prompt full-transformer control and four-prompt matched-subset control | Floating reconstruction; upstream fitting uses a different calibration objective and slightly different bit budget |
+| Upstream BCQ with A8/A4 inputs | [50-matrix images](../../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) | Fixed weights, separate activation modes, exact reference reproduction and call-count audits | Fake quantization; neither executable integer W4A4 nor formal quality admission |
+| Mixed planes at equal subset storage | [first-block Q/K/V allocation](../../experiments/compare-upstream-qkv-plane-allocation.md) | Matched Q3/K3/V3 alternatives and exact reference reproduction | One block and four calibration prompts; not a general allocation policy |
 | Activation and correction diagnostics | [groups](../../experiments/m5-flux-klein-shiftadd-003.md), [residual](../../experiments/m5-flux-klein-shiftadd-004.md) | Slice error, actual activation payload, packed arithmetic, correction storage | Selected rows/modules; neither full-layer nor image-quality guarantees |
 
 The project registry does not establish a matched conventional W8A8 control for
@@ -24,19 +27,24 @@ low-bit execution baseline, but it is not a same-source quality control.
 
 ## Controls still needed
 
-1. **Same-source conventional weight fitting.** The [initial slice control](../../experiments/m5-flux-klein-shiftadd-005.md) is complete; full-transformer calibration remains. Fit symmetric INT4/INT8 to the
-   exact source tensors, with explicit group size and scale dtype. Compare
-   decoded output error and total payload including scales. The radix candidate
+1. **Expand and match conventional weight fitting.** The [initial slice control](../../experiments/m5-flux-klein-shiftadd-005.md), full-transformer one-prompt INT4 control and four-prompt 50-matrix control are complete.
+   Full-transformer INT4 calibration coverage and a same-source W8A8 execution
+   baseline remain gaps. To isolate the upstream fitter, also control the
+   calibration objective and scale format at matched storage. Compare decoded
+   output error and total payload including scales. The radix candidate
    is itself a restricted conventional-like quantizer; do not call an advantage
    over greedy fitting a ShiftAdd advantage over conventional quantization.
-2. **Same-pipeline activation ablation.** Hold the selected packed weights fixed;
-   test original activations, A8, per-token A4, then grouped A4. Prepared query-only
-   configs already exist for groups 32/128. Extend scope only with separately
-   labelled configs and call-count audits; query-only hooks are not model W4A4.
+2. **Turn activation diagnostics into executable controls.** Original inputs,
+   grouped A8 and grouped A4 are now compared across all 50 upstream attention
+   matrices. The other 59 matrix weights remain BF16. Extend scope only with
+   separately labelled configs and call-count audits, and select a supported
+   packed backend before claiming W4A4/W8A8 speed or memory results.
 3. **Mixed precision at matched storage.** Compare a fixed-format candidate and
    a mixed candidate under a common byte budget, including exponents, unchanged
-   tensors and correction factors. Current mixed p4/p5 intentionally costs more
-   than uniform p4, so its improvement does not isolate allocation quality.
+   tensors and correction factors. The equal-storage first-block Q3/K3/V3
+   comparison is complete; broader layer allocation remains a candidate.
+   Earlier mixed p4/p5 intentionally costs more than uniform p4, so its
+   improvement does not isolate allocation quality.
 4. **Correction ablation.** Include no correction and fixed ranks, counting both
    BF16 factors and the execution branch. The slice residual-SVD probe is not
    SVDQuant and must not borrow its kernel-efficiency claims.

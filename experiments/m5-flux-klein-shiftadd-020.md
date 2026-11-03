@@ -72,3 +72,12 @@ The package does not change the decoded weights relative to the source fits.
 
 ## Next experiment
 - Use the complete package in a separately labelled paired image-loading check.
+
+## Assembly reproduction
+
+The configuration-driven `assemble_upstream` tool reproduces all 50 packed
+files from the two independently verified source fits with identical hashes.
+Its [configuration](../shiftadd/configs/upstream-assembly-all-attention-001.json)
+and [verification receipt](../results/runs/m5-flux-klein-shiftadd-020__attempt__20261103-package/assembly-reproduction.json)
+also document rejection of existing output directories and duplicate selections.
+This follow-up changes no package weights or original measurements.

@@ -19,6 +19,18 @@ FLUX.2 Klein 4B revision e7b7dc27f91deacad38e78976d1f2b499d76a294.
    apply power-of-two exponents and activation scales. Compare against dense
    reconstructed multiplication. This establishes algebra, not performance.
 
+## Expanded upstream scope
+
+The initial steps above are retained as the original campaign sequence. Current
+upstream fitting covers all 30 dual-stream Q/K/V matrices and all 20 fused
+single-stream QKV/MLP matrices. The [combined image controls](../../experiments/a100-flux-klein-upstream-all-attention-001.md)
+and [A8/A4 follow-up](../../experiments/a100-flux-klein-upstream-all-attention-activation-001.md)
+are complete. The other 59 matrix weights remain BF16 in this upstream candidate.
+The [complete weight package](../../experiments/m5-flux-klein-shiftadd-020.md)
+loads without the original transformer checkpoint; it still reconstructs BF16.
+The optional [packed-array cache](../../experiments/m5-flux-klein-shiftadd-load-002.md)
+has CPU loading evidence, separate from denoising and GPU performance.
+
 ## Storage versus runtime
 
 Packed payload per weight is Q * (1 + 8/128) bits with int8 exponents.
