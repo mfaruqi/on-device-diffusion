@@ -89,3 +89,13 @@ INT4 on each of the 30 matrices. This compares methods, not calibration alone:
 upstream has 4.3125 payload bits/weight and flexible u8 scales, versus 4.25 for
 the controls. Different scale families and fitting objectives are confounded.
 Local projection error does not establish combined image quality or performance.
+
+## Quantized activation arithmetic verification
+
+All 30 fitted matrices passed 960 CPU comparisons: 16 captured calls per matrix
+with A4 and A8 inputs, group size 32. INT32 sign-plane sums with FP32 scaling
+agree with independently decoded weight multiplication on the same quantized
+inputs; maximum relative disagreement is 1.0277055e-06.
+Artifact hashes were checked.
+[Evidence](../results/runs/m5-flux-klein-shiftadd-015__attempt__20261103-all-dual/integer-arithmetic-verification.json).
+This verifies arithmetic equivalence, not image quality or GPU performance.
