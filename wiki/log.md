@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-03] experiment | m5-flux-klein-shiftadd-015: all dual-stream Q/K/V
+
+Saved 30 fitted matrices and reproduced 480 per-call errors ([record](../experiments/m5-flux-klein-shiftadd-015.md)).
+
 ## [2026-11-03] experiment | compare-upstream-qkv-plane-allocation: equal-storage allocation
 
 Compared completed matched Q3/K3/V3 image runs with quality and performance limits ([record](../experiments/compare-upstream-qkv-plane-allocation.md)).

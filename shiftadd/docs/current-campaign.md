@@ -69,8 +69,9 @@ of four prompts than Q4/K4/V4. This is not formal quality superiority. The
 [all-attention capture](../../experiments/a100-flux-klein-shiftadd-activation-capture-002.md)
 is complete: 800 finite arrays, with exact reproduction of the earlier 32 arrays.
 It covers 30 dual-stream image/text Q/K/V matrices and 20 single-stream fused
-QKV/MLP projections. Broader CPU fitting is in progress; no corresponding image
-quality or packed execution result exists yet. Existing four-prompt calibration
+QKV/MLP projections. The [30 dual-stream fits](../../experiments/m5-flux-klein-shiftadd-015.md) are complete
+and independently verified. Single-stream fitting continues; no corresponding
+combined image quality or packed execution result exists yet. Existing four-prompt calibration
 data remain separate from formal held-out evaluation.
 
 ## Execution preparation

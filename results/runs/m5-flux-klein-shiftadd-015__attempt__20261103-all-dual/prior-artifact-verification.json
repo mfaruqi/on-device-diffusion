@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "byte_identical_to_prior_qkv": [
+    "transformer_blocks.0.attn.to_q.npz",
+    "transformer_blocks.0.attn.to_k.npz",
+    "transformer_blocks.0.attn.to_v.npz"
+  ]
+}
