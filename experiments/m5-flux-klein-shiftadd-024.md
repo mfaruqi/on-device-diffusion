@@ -1,11 +1,11 @@
 ---
 type: experiment-record
 id: m5-flux-klein-shiftadd-024
-status: partial
+status: complete
 device: m5
 engine: pytorch-diffusers
 runs: [m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1]
-updated: 2026-11-03
+updated: 2026-11-04
 ---
 
 # m5-flux-klein-shiftadd-024: selected fused projections at 1 planes
@@ -27,7 +27,17 @@ CPU numerical fitting with four threads per process; no inference timing.
 
 ## Results
 
-Fitting in progress. No quality or storage result claimed until independent reload verification.
+All ten matrices were fitted and independently reloaded. All 160 per-call
+output-error comparisons reproduce, and all artifact hashes match.
+The ten files occupy 121,661,720 bytes.
+Assembly with the forty unchanged four-plane matrices occupies 735,120,760 bytes
+(0.684635 GiB), 31.52% less than
+all fifty four-plane files. This is subset file storage, not complete model
+storage or live memory. [Aggregates](../results/runs/m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1/aggregate.json).
+
+Mean relative output L2 over fitting calls: 0.08491021;
+over calibration-validation calls: 0.36852157.
+These local errors use BF16-prefix inputs and do not model error propagation.
 
 ## Next experiment
-- Assemble with forty existing four-plane matrices and run matched calibration images.
+- [Fixed-selection image diagnostic](a100-flux-klein-upstream-lowplane-fused-001.md).

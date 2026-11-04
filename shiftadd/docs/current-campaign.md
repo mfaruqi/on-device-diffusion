@@ -134,3 +134,11 @@ an image-quality frontier or evidence of inference speed.
 Images, weights and activation captures stay local; small evidence is preserved
 under the parent `results/runs/` directory. W&B publications contain diagnostic
 results/images, not model weights. See the experiment records for verified links.
+
+## Fixed-selection lower-plane follow-up
+
+The [one/two-plane image diagnostic](../../experiments/a100-flux-klein-upstream-lowplane-fused-001.md) is complete.
+Reducing the same ten matrices to two planes retains recognizable scenes on four
+calibration prompts; one plane causes severe semantic failures. All twenty outputs
+passed numerical/file validation and the prior controls reproduce exactly.
+This is dense BF16 reconstruction, with no packed performance claim.

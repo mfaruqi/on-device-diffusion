@@ -11,15 +11,15 @@ Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-20
 
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-023: 2-plane selected fused fits
 
-Started bounded refitting with the same ten-matrix selection and calibration settings ([record](../experiments/m5-flux-klein-shiftadd-023.md)).
+Completed ten fits and 160 independent per-call reload checks; assembled with forty existing four-plane matrices ([record](../experiments/m5-flux-klein-shiftadd-023.md)).
 
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-024: 1-plane selected fused fits
 
-Started bounded refitting with the same ten-matrix selection and calibration settings ([record](../experiments/m5-flux-klein-shiftadd-024.md)).
+Completed ten fits and 160 independent per-call reload checks; assembled with forty existing four-plane matrices ([record](../experiments/m5-flux-klein-shiftadd-024.md)).
 
 ## [2026-11-03] experiment | a100-flux-klein-upstream-lowplane-fused-001: low-plane image preparation
 
-Prepared the matched five-case diagnostic, dependent on verified one/two-plane fits ([record](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md)).
+Validated twenty images with exact control reproduction; two-plane scenes recognizable, one-plane semantic failures ([record](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md)).
 
 ## [2026-11-03] experiment | a100-flux-klein-upstream-mixed-fused-001: mixed-plane image diagnostic
 
