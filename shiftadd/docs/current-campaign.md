@@ -117,7 +117,7 @@ These are floating fake-quantization tests, not packed inference-speed results.
 [Three-plane fits for all 20 fused matrices](../../experiments/m5-flux-klein-shiftadd-021.md)
 are saved and independently verified. A [fit-selected mixed candidate](../../experiments/m5-flux-klein-shiftadd-022.md)
 uses three planes in ten fused matrices and four in the remaining forty selected
-matrices. It saves 10.5% of the 50-matrix file storage; image behavior is untested.
+matrices. It saves 10.5% of the 50-matrix file storage; its [image comparison](../../experiments/a100-flux-klein-upstream-mixed-fused-001.md) is complete, with greater BF16 latent distance on all four calibration prompts.
 Selection uses fitting-call error only. Its local projection-error curve is not
 an image-quality frontier or evidence of inference speed.
 

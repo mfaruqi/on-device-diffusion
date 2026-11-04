@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "prior_bf16_and_p4_exact": true,
+  "images_checked": 12,
+  "matrix_replacements_per_candidate": 50,
+  "mixed_planes": {
+    "three": 10,
+    "four": 40
+  },
+  "metric_rtol": 1e-05,
+  "metric_atol": 1e-08,
+  "results": [
+    {
+      "sample_id": "cal01",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "07fa0862810d07d771c6e020238303a057b311194170d5792ad9ff7c80079fed"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-p4-all-attention",
+      "relative_latent_l2": 0.1956372708082199,
+      "latent_sha256": "9e3fe2f6343744a977871c0e991bd612f0cf841dd500a7556a6bf9666811dec8"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-mixed-fused-p3p4",
+      "relative_latent_l2": 0.2772963047027588,
+      "latent_sha256": "f7f3494a9aaf50e543c1ab5b2fbe9c44271a934b574c8268cf56b0edebe7784d"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "03f4635c2b32d209780a4fd3bbdb51b49315c854e7add763ed103439b21f78e2"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-p4-all-attention",
+      "relative_latent_l2": 0.3091600835323334,
+      "latent_sha256": "b8ec84e149eb72f8e222f98ef7a9ee8049f42984315840682ac20b6f087b6931"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-mixed-fused-p3p4",
+      "relative_latent_l2": 0.3887152373790741,
+      "latent_sha256": "3bd44323d8eb267d8939bdcdd9b30a3189aa615ff0216e1a6670a50180988d8c"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "62a5d3cdf6a33ce84b5b590a1cbd847f2ff4cde70dfb6518bcd5668caf96c66c"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-p4-all-attention",
+      "relative_latent_l2": 0.3365287184715271,
+      "latent_sha256": "46e46541ab382e72c20fa1e46128c205df5bf62e6b0e4d00e3d2997333315028"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-mixed-fused-p3p4",
+      "relative_latent_l2": 0.4750837981700897,
+      "latent_sha256": "41746ce53121605876b0ca7f90ebdb1029ae15061a1045a9ea92a8d2d08e6902"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "4616290dcd9935b9162f58a0782dc9fb3a251cbcabf2ef6aa649ead5ea430d30"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-p4-all-attention",
+      "relative_latent_l2": 0.4791628420352936,
+      "latent_sha256": "7af2557a0b8694713ae6f85b08f8ac652af1fa7b98d1c4590caa9cebca474bd4"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-mixed-fused-p3p4",
+      "relative_latent_l2": 0.5953848958015442,
+      "latent_sha256": "e241a0612db6bfa6ce523a189676ba5a03e28cb4b5fad0cd475b2e06b1d862c8"
+    }
+  ],
+  "scope": "calibration diagnostic; not quality admission or packed performance"
+}

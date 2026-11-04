@@ -74,11 +74,11 @@ results/runs/m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused --output 
 
 ## Limits
 
-The candidate saves file storage while increasing the local error proxy. It has
+The candidate saves file storage while increasing the local error proxy. At assembly time it had
 not been tested in the image pipeline and is not quality-admitted. There is no
 measured inference speed, resident-memory or energy benefit. Selecting by local
 relative output error does not guarantee good global image behavior. The curve
 is not an image-quality Pareto frontier.
 
 ## Next experiment
-- Compare this mixed candidate with the all-four-plane reference on the same calibration prompts before broader quality testing.
+- Paired calibration image follow-up: [A100 mixed-fused comparison](a100-flux-klein-upstream-mixed-fused-001.md).

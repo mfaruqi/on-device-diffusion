@@ -1,7 +1,7 @@
 ---
 type: experiment-record
 id: a100-flux-klein-upstream-mixed-fused-001
-status: partial
+status: complete
 device: a100-sxm4-40gb
 engine: pytorch-diffusers
 runs: [a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration]
@@ -10,7 +10,8 @@ updated: 2026-11-03
 
 # a100-flux-klein-upstream-mixed-fused-001: mixed three/four-plane image diagnostic
 
-Status: **partial**, job 12149223 queued for an A100 SXM4 allocation.
+Status: **complete**, job 12149223, gilbreth-n008, exit 0:0.
+Allocation wall time was 355 seconds; this is not inference latency.
 
 ## Question
 
@@ -41,8 +42,43 @@ were verified on Gilbreth before submission.
 
 ## Results
 
-Pending allocation (`AssocGrpGRES`: the shared account GPU allowance is occupied);
-no images or new quality measurements claimed.
+Relative latent L2 against paired BF16 (lower means closer, not necessarily better prompt quality):
+
+| Prompt | Four-plane reference | Mixed three/four planes |
+|---|---:|---:|
+| Teapot | 0.1956372 | 0.2772961 |
+| Lighthouse | 0.3091596 | 0.3887144 |
+| Lemons | 0.3365283 | 0.4750833 |
+| Robot | 0.4791622 | 0.5953849 |
+
+All 12 latents are finite and all images are 512×512. Independent CPU norms agree
+with the recorded metrics within rtol 1e-5 and atol 1e-8. All eight reference
+latents and PNG files exactly reproduce the earlier BF16/four-plane controls.
+Each candidate replaces precisely the requested 50 matrices. See
+[validation](../results/runs/a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration/validation.json) and
+[summary](../results/runs/a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration/summary.json).
+
+## Observations
+
+All scenes remain recognizable. The mixed candidate changes teapot highlights
+and geometry, lighthouse/rock details, bottle and lemon shapes, and robot
+proportions. All three cases show two visible lemons although the prompt asks
+for three; all robot signs read ECO AI. This is visual inspection of four
+calibration prompts, not a blinded or held-out quality assessment.
+
+## Interpretation
+
+The mixed candidate has greater BF16 latent distance on all four prompts.
+The local fitting-error selection therefore does not preserve the four-plane
+reference's numerical fidelity at this allocation. The candidate remains
+visually coherent; no formal quality acceptance or rejection is established.
+Storage savings are documented in the source candidate record; this reconstructed
+BF16 experiment establishes no packed GPU speed, memory or energy advantage.
 
 ## Next experiment
-- Validate the generated images, exact reference reproduction and matrix-replacement audits when the allocation completes.
+- Evaluate fewer three-plane substitutions with a declared calibration quality criterion before choosing a deployment candidate.
+
+## Published evidence
+
+[Verified W&B run](https://forge.coreweave.com/wandb/mfaruqi-purdue-university/on-device-diffusion/runs/a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration) contains all 12 images, diagnostic metrics and
+the evidence artifact. [Verification receipt](../results/runs/a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration/wandb-verification.json).

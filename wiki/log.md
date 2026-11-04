@@ -11,7 +11,7 @@ Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-20
 
 ## [2026-11-03] experiment | a100-flux-klein-upstream-mixed-fused-001: mixed-plane image diagnostic
 
-Submitted the saved mixed candidate with BF16 and all-four-plane controls; queued job 12149223, no results yet ([record](../experiments/a100-flux-klein-upstream-mixed-fused-001.md)).
+Validated 12 images with exact BF16/four-plane reference reproduction; mixed candidate is farther from BF16 on all four calibration prompts ([record](../experiments/a100-flux-klein-upstream-mixed-fused-001.md)).
 
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-022: fit-based plane selection
 
