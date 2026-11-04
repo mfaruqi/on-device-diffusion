@@ -1,18 +1,19 @@
 ---
 type: experiment-record
 id: jetson-flux-klein-012
-status: failed
+status: complete
 device: jetson-orin-nano
 engine: stable-diffusion-cpp
-runs: [jetson-flux-klein-012__baseline__20261015-115718, jetson-flux-klein-012__attempt__20261015-115414]
-updated: 2026-10-15
+runs: [jetson-flux-klein-012__baseline__20261102-165643, jetson-flux-klein-012__attempt__20261102-164814, jetson-flux-klein-012__baseline__20261015-115718, jetson-flux-klein-012__attempt__20261015-115414]
+updated: 2026-11-02
 ---
 
 # jetson-flux-klein-012: all weights resident on CUDA0 with VAE tiling, quantized 512×512
 
-Status: **failed** (2026-10-15). The two-generation correctness attempt completed. The full
-1+3+10 protocol failed in generation index 4 (the first measured generation): the first
-generation and all three warm-ups completed, and no measured generation exists. No median is reported.
+Status: **complete** (2026-11-02 repeat). The repeated full 1+3+10 protocol completed all 14 generations:
+measured wall median 16.087 s. The 2026-10-15 full run of the same configuration failed in generation
+index 4 (the first measured generation) and is kept below; the two-generation correctness attempt of
+2026-10-15 and a six-generation check of 2026-11-02 both completed.
 
 ## Question
 
@@ -42,7 +43,11 @@ diagnostics? The reference is the disk-backed tiled configuration
   ([environment](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/environment.json)).
   Runner `scripts/run_jetson_sdcpp.py`, which accepts `parameter_storage` `disk` or `CUDA0`.
 - Protocol: one model context; full run 1 first + 3 discarded warm-ups + 10 measured; attempt
-  1 first + 1 measured. All weight files were SHA256-read before each run (warm filesystem cache, no
+  1 first + 1 measured; 2026-11-02 check 1 first + 1 discarded warm-up + 4 measured
+  ([check configuration](../configs/jetson-flux-klein-q4-512-resident-vaetile-check.json), identical to the full
+  configuration except `protocol` and `harness_arguments.runs`). The 2026-11-02 runs use the same binary SHA256
+  ([environment](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/environment.json)) and the
+  unchanged full configuration file. All weight files were SHA256-read before each run (warm filesystem cache, no
   flush; [command](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/engine/command.json)).
 - Memory guard (outside the config): kill if MemAvailable < 400 MB or swap growth > 768 MB, polled
   every 0.1 s.
@@ -55,6 +60,66 @@ diagnostics? The reference is the disk-backed tiled configuration
   (`wall` = `t_end − t_start`).
 
 ## Results
+
+### Full protocol, repeat (complete): jetson-flux-klein-012__baseline__20261102-165643
+
+[Run directory](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/),
+[status](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/status.json) complete,
+21:56:43–22:02:47 UTC, [summary](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/summary.json),
+[engine log](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/engine/sdcpp.log),
+[memguard](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/memguard.json). Power mode 25 W.
+Desktop session logged out; the board ran nothing else.
+
+| Stage | Median (ms) | Min–max (ms) | Share of wall |
+|---|---:|---:|---:|
+| wall | 16087.1 | 15941.5–16110.6 | 100% |
+| text_encode | 869.9 | 868.6–870.8 | 5.4% |
+| denoise (4 steps) | 11016.6 | 10852.8–11030.8 | 68.5% |
+| denoise_step_0 | 2892.0 | – | – |
+| denoise_step_1 / 2 / 3 | 2707.7 / 2707.9 / 2707.8 | – | – |
+| vae_decode | 4178.9 | 4170.9–4195.2 | 26.0% |
+| other | 27.9 | – | 0.2% |
+| First generation (wall) | 18063.4 | text 1964.7 / denoise 11571.6 / vae 4499.6 | – |
+| Context creation (load) | 68.03 s | – | – |
+
+- Memory: engine-printed parameters 4882.75 MB on CUDA0 once at load (text encoders 2375.91 MB, diffusion
+  model 2346.40 MB, VAE 160.43 MB); tegrastats RAM peak 6.399 GiB over the whole capture (294 samples);
+  memory guard not triggered, MemAvailable 6063 MB at start and 895 MB minimum, swap 327 → 334 MB.
+- Repeatability: `deterministic_output: true`; every image has SHA256 prefix `252b6cb0`, the same as the
+  2026-10-15 runs. Measured wall stdev 68.4 ms.
+- Tiling: 14 decodes, each logging `processing 25 tiles`.
+- Segmentation and free memory per generation, from the engine log (the probe value is the last
+  `get_available_uma_memory` reading before the generation's first `flux ... segment` line):
+
+| Generation | Phase | First transformer call | Flux compute buffer (MB) | Probe before transformer (MB) | Lowest probe (MB) |
+|---|---|---|---:|---:|---:|
+| 0 | first | 1 graph | 329.00 | 1198.36 | 1056.24 |
+| 1 | warm-up | 1 graph | 329.00 | 1041.53 | 1023.98 |
+| 2 | warm-up | 1 graph | 329.00 | 1015.08 | 1006.34 |
+| 3 | warm-up | 1 graph | 329.00 | 1001.65 | 983.15 |
+| 4 | measured | 1 graph | 329.00 | 980.40 | 980.40 |
+| 5 | measured | 1 graph | 329.00 | 990.63 | 974.09 |
+| 6 | measured | 1 graph | 329.00 | 970.50 | 957.11 |
+| 7 | measured | 27 segments | 343.58 | 967.48 | 950.93 |
+| 8 | measured | 27 segments | 343.58 | 963.06 | 941.95 |
+| 9 | measured | 27 segments | 343.58 | 942.02 | 939.04 |
+| 10 | measured | 27 segments | 343.58 | 955.34 | 940.82 |
+| 11 | measured | 27 segments | 343.58 | 936.86 | 935.29 |
+| 12 | measured | 27 segments | 343.58 | 933.56 | 918.79 |
+| 13 | measured | 27 segments | 343.58 | 917.39 | 895.53 |
+
+  Measured generations 4–6 (one graph) have wall 15941.5–15984.2 ms and step 0 2728.4–2736.9 ms; generations
+  7–13 (27 segments) have step 0 about 2.90 s ([runs.csv](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/runs.csv)).
+
+### Six-generation check (complete): jetson-flux-klein-012__attempt__20261102-164814
+
+[Run](../results/runs/jetson-flux-klein-012__attempt__20261102-164814/),
+[status](../results/runs/jetson-flux-klein-012__attempt__20261102-164814/status.json) complete,
+21:48:14–21:52:25 UTC, [summary](../results/runs/jetson-flux-klein-012__attempt__20261102-164814/summary.json).
+Measured wall median 15953.2 ms (15941.4–15964.2, n = 4); first generation 18057.9 ms; context creation
+72.74 s. All six generations ran the transformer as one graph (329.00 MB flux compute buffer). Memory guard
+MemAvailable minimum 972 MB; tegrastats RAM peak 6.346 GiB (171 samples). `deterministic_output: true`.
+Not a baseline (n = 4).
 
 ### Full protocol (failed): jetson-flux-klein-012__baseline__20261015-115718
 
@@ -185,7 +250,21 @@ completed: the first generation and warm-ups 1–3 (discarded in both protocols)
   tegrastats RAM peak is 0.47 GiB higher than 011's.
 - Output pixels are identical to 011 (same hash): the storage change does not alter numerics.
 
+- 2026-11-02 repeat: all 14 generations completed (measured wall median 16.087 s). The probe before the
+  first transformer call fell from 1198.36 MB (gen 0) to 917.39 MB (gen 13), and the first transformer
+  call switched to 27 segments from generation 7 onwards. The lowest probe of the run (895.53 MB, gen 13)
+  is above the 872.71 MB available when the 2026-10-15 run failed.
+- 2026-11-02 repeat: the 27-segment generations take about 0.17 s longer in step 0 than the one-graph
+  generations; the measured median mixes 3 one-graph and 7 segmented generations.
+
 ## Interpretation
+
+- The configuration can complete the 1+3+10 protocol: the 2026-10-15 failure is not deterministic.
+  In both full runs the free-memory probe fell across generations; the 2026-11-02 run started with about
+  90 MB more (1198.36 vs 1109.34 MB at generation 0) and ended 14 generations with about 23 MB above the
+  failure point of the first run. **Hypothesis:** whether a run completes depends on the starting margin
+  and the number of generations, so a longer run of this configuration would reach the failure point.
+  Not tested beyond 14 generations.
 
 - Removing per-stage reloads removes nearly all of 011's condition-time and first-step reload cost and
   about 1.2–1.5 s of decode time per warm-up generation; per-step transformer compute is unchanged. The
@@ -203,16 +282,19 @@ completed: the first generation and warm-ups 1–3 (discarded in both protocols)
   segment than the one-graph path needs, which turns a small margin into a failure. The smoke
   generation 1 ran as one graph with a probe of 923.60 MB while full-run generation 1 segmented with
   962.03 MB, so the switching rule is not a simple threshold on this probe value. Not tested.
-- Neither hypothesis is established by these data; the run shows only that the configuration is
-  infeasible for a 14-generation protocol under the recorded memory conditions.
+- Neither hypothesis is established by these data; the 2026-10-15 run shows only that the configuration
+  failed a 14-generation protocol under its recorded memory conditions, and the 2026-11-02 repeat that it can
+  complete one.
 
 ## Next experiment
 
-- Repeat `jetson-flux-klein-q4-512-resident-vaetile.json` with the engine's per-generation available
-  memory and segment decision recorded, to test whether the failure point is reproducible.
+- Long run (for example 50 generations) of `jetson-flux-klein-q4-512-resident-vaetile.json`, to test whether the
+  per-generation decline in available memory continues to a failure.
 - Labelled variant of `jetson-flux-klein-q4-512-resident-vaetile.json` with segmented compute disabled,
   to separate Hypothesis B from Hypothesis A.
 
-Both runs are uploaded to W&B (`mfaruqi-purdue-university/on-device-diffusion`):
+All four runs are uploaded to W&B (`mfaruqi-purdue-university/on-device-diffusion`):
+[2026-11-02 full](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-012__baseline__20261102-165643),
+[2026-11-02 check](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-012__attempt__20261102-164814),
 [full (failed)](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-012__baseline__20261015-115718),
 [attempt](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/jetson-flux-klein-012__attempt__20261015-115414).
