@@ -87,3 +87,10 @@ output/**/*.html
 !/output/shiftadd-prep/
 /output/shiftadd-prep/*
 !/output/shiftadd-prep/bundle-integrity-audit-002.json
+
+# Small reproducible plane-storage chart data; rendered images stay local.
+!/output/shiftadd-plane-storage-20261104/
+/output/shiftadd-plane-storage-20261104/*
+!/output/shiftadd-plane-storage-20261104/README.md
+!/output/shiftadd-plane-storage-20261104/data.json
+!/output/shiftadd-plane-storage-20261104/sizes.csv
