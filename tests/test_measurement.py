@@ -83,6 +83,11 @@ class SavedRunTests(unittest.TestCase):
         for directory in sorted((ROOT / "results/runs").glob("a100-flux-*")):
             if not (directory / "stages.csv").exists():
                 continue
+            if not (directory / "summary.json").exists():
+                # Failed captures retain partial rows but have no completed aggregate.
+                status = json.loads((directory / "status.json").read_text())
+                self.assertIn(status["status"], ("failed", "interrupted"), directory.name)
+                continue
             stages = read_rows(directory / "stages.csv")
             cfg = json.loads((directory / "config.json").read_text())
             for expected in read_rows(directory / "runs.csv"):

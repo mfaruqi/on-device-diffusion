@@ -1,10 +1,10 @@
 ---
 type: experiment-record
 id: m5-mflux-flux-klein-base-005
-status: failed
+status: complete
 device: macbook-air-m5
 engine: mflux
-runs: [m5-mflux-flux-klein-base-005__attempt__20261015-153625, m5-mflux-flux-klein-base-005__baseline__20261015-154117]
+runs: [m5-mflux-flux-klein-base-005__attempt__20261015-153625, m5-mflux-flux-klein-base-005__baseline__20261015-154117, m5-mflux-flux-klein-base-005__baseline__20261015-214940, m5-mflux-flux-klein-base-005__baseline__20261015-225903]
 updated: 2026-10-15
 ---
 
@@ -46,20 +46,48 @@ Whole-system available minimum: 2.633 GiB; whole-system swap start/peak: 10.226/
 
 [Status](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/status.json), [execution config](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/config.json). Status: failed.
 
-Execution or validation failed; the error and partial measurements are retained. No performance claim.
+Clamshell sleep invalidated this attempt: the recorded wall/monotonic gap was 1299.187 seconds. The runner was then interrupted; the exception below is a consequence, not the root cause. [Sleep evidence](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/sleep-interruption.json) and [external upload overlap observation](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/external-activity-observation.json) are retained. Timings are excluded.
 
 ```text
 StopImageGenerationException('Stopping image generation at step 27/50')
 ```
 
+### m5-mflux-flux-klein-base-005__baseline__20261015-214940
+
+[Status](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-214940/status.json), [execution config](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-214940/config.json). Status: failed.
+
+Stopped on request during the first image, before any completed timing sample. [Interruption receipt](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-214940/interruption.json). No engine failure or performance claim is inferred.
+
+```text
+StopImageGenerationException('Stopping image generation at step 17/50')
+```
+
+### m5-mflux-flux-klein-base-005__baseline__20261015-225903
+
+[Status](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/status.json), [execution config](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/config.json). Status: complete.
+
+[Summary](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/summary.json), [validation](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/validation.json).
+
+| Metric | Median (s) | Min–max (s) |
+|---|---:|---:|
+| End to end | 111.959 | 105.587–113.790 |
+| Text encoding | 0.410 | 0.383–0.457 |
+| Denoising | 110.409 | 104.050–112.219 |
+| VAE decoding | 1.134 | 1.119–1.207 |
+
+Measured generations: 10; first image: 89.815 s; cached load: 3.945 s.
+Output hash repeatability: True. This is not a quality assessment.
+
+Whole-system available minimum: 1.245 GiB; whole-system swap start/peak: 10.937/19.415 GiB. Harness/process peak RSS: 3.628 GiB. These must not be interpreted as GPU allocation peaks.
+
 ## Interpretation
 
-The smoke passed, but the full protocol is invalid: macOS entered clamshell sleep at 16:06:07 and woke at 16:30:59 local time. The sampler recorded a 1299.187-second wall/monotonic gap. The verified benchmark process was interrupted to preserve partial outputs; the recorded stop exception is a consequence, not the initiating cause ([power evidence](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/sleep-event-evidence.txt), [interruption receipt](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/sleep-interruption.json), [clock summary](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/system-memory-summary.json)). An external W&B update also overlapped this attempt ([observation](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-154117/external-activity-observation.json)). No latency comparison is valid for this partial full run.
+A completed full protocol establishes execution and repeated timing under the captured system state. User applications, system swap and background preparation were not isolated. CPU-side and GPU-side timing boundaries follow the linked metric definitions. No formal quality eligibility or controlled performance claim is established.
 
 ## Next experiment
 
-Recover only the unchanged full protocol on AC power with the lid open, reusing the valid smoke gate.
+Repeat this exact configuration under an isolated system state if a controlled performance comparison is required.
 
 ## Reference and option audit
 
-[Reference](../experiments/m5-mflux-flux-klein-base-003.md). Only VAE tiling changes: 256-pixel tiles with 64-pixel overlap; native MLX compilation and quantization stay fixed. Tile-local normalization can change pixels and colors; no formal quality approval.
+[Reference](../experiments/m5-mflux-flux-klein-base-003.md). Only VAE tiling changes: 256-pixel tiles with 64-pixel overlap; quantization and native MLX compilation stay fixed. The [execution audit](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/execution-audit.json) records nine tile decodes per image, 50 denoising steps and two CFG passes per step. Stage timings are synchronized host times. Tile-local normalization changes pixels; the reviewed measured image has incorrect sign text, and formal quality remains unapproved. The full run passed clock-continuity validation. Its [W&B upload](../results/runs/m5-mflux-flux-klein-base-005__baseline__20261015-225903/wandb-followup-verification.json) is verified; the validated recovery is included in the [Klein charts](../output/stage-breakdown-20261007/followup-upload-verification.json).

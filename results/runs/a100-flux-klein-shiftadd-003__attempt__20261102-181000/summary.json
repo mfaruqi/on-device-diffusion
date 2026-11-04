@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "generation_to_latent_s": 0.6192997379694134,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "mixed-p4-p5",
+      "generation_to_latent_s": 0.3528742390917614,
+      "relative_latent_l2": 0.5951301455497742,
+      "finite": true
+    }
+  ],
+  "quality_scope": "one calibration prompt, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

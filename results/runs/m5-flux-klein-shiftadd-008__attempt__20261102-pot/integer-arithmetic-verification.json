@@ -1,0 +1,397 @@
+{
+  "status": "passed",
+  "group_size": 32,
+  "scale_format": "pot",
+  "scope": "CPU arithmetic equivalence only; not quality or performance evidence",
+  "max_relative_l2_disagreement": 9.278178936256154e-07,
+  "artifact_hashes": {
+    "transformer_blocks.0.attn.to_q": "1c8fc2e41319c1ccb26fb307703bedf9f4d30dacc320a6195174a21d3f693481",
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj": "ac7bdee629f07e70f4ed9f31753ddc641735eefd30293d00d9924e79d618e65a"
+  },
+  "checks": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_000",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.926660264776729e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_000",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.733934239695373e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_001",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.64386766654934e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_001",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.46796445127984e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_002",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.420458251137461e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_002",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.363511258517974e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_003",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.856163056705554e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_003",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.180578904808499e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_004",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.060793680262577e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_004",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.620497513016744e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_005",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.712585675610171e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_005",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.248651965914178e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_006",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.660231181536801e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_006",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.22599850178085e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_007",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.058369308448164e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_007",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.083240234351251e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_008",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.60912269520486e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_008",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.070043691077444e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_009",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.921634738115245e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_009",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.80769312314078e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_010",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.852848516951781e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_010",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.507548502871941e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_011",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.625366270578525e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_011",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.371677952505706e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_012",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.705328476324212e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_012",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.248279416671721e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_013",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.055747121536115e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_013",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.788332823110977e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_014",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.51502751022781e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_014",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.305500275833765e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_015",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.657722113028285e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "capture": "transformer_blocks.0.attn.to_q.call_015",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.565101896034321e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_000",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.580612191304681e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_000",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.805247375676117e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_001",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.115720563888317e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_001",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.167551411337627e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_002",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.529700951636187e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_002",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.6897642859185e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_003",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.969732453399047e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_003",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.278178936256154e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_004",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.889438282087212e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_004",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.167678172161686e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_005",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.690329653087247e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_005",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.133252660831204e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_006",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 8.151886277119047e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_006",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.801221724752395e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_007",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.254150773405854e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_007",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.896519148038351e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_008",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 8.334482117788866e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_008",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.334033623214054e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_009",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.436504461111326e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_009",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.015030855152872e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_010",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 8.021368671506934e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_010",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.417437129537575e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_011",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.644292736586067e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_011",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.596355769441288e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_012",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.671815751564282e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_012",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.85005852321774e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_013",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.215478490252281e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_013",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.821640449241386e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_014",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 8.195299301405612e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_014",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.565953066863585e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_015",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.77949821895163e-07
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "capture": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.call_015",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.196347150464135e-07
+    }
+  ]
+}

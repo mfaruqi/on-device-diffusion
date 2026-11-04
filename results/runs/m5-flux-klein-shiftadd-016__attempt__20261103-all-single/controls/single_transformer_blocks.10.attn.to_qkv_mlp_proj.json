@@ -1,0 +1,242 @@
+{
+  "config": {
+    "id": "m5-flux-klein-shiftadd-016",
+    "source": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/blobs/9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+    "source_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "capture": "shiftadd/runs/a100-activation-capture-all-attention-001",
+    "modules": [
+      "single_transformer_blocks.10.attn.to_qkv_mlp_proj"
+    ],
+    "fit_calls": 8,
+    "planes": 4,
+    "group_size": 128,
+    "output": "shiftadd/artifacts/upstream-bcq-all-single-attention-001",
+    "scale_format": "u8",
+    "vendor": "shiftadd/vendor/shiftaddqwen",
+    "damping": 0.01,
+    "fit_iters": 15,
+    "optimizations": {
+      "fit": "upstream-gptq-bcq",
+      "scale_format": "u8"
+    },
+    "row_policy": "all",
+    "description": "Expand upstream four-plane fitting to all single-stream attention projections with the same BF16 calibration prompts and fitting settings."
+  },
+  "module": "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+  "evidence": {
+    "radix_p4": {
+      "artifact": "shiftadd/artifacts/transformer-radix-p4-001/single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight.p4.npz",
+      "sha256": "dc4c6ba08c5584e5d6b69aa42e1330e698327149ee86780cf6ce3ffa26590691",
+      "payload_bytes": 45121536
+    },
+    "uniform_int4": {
+      "artifact": "shiftadd/artifacts/transformer-uniform-int4-001/single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight.npz",
+      "sha256": "818909b4844791784cf4db54e232fb6f86bf353f9cafcc3005ba89687474646e",
+      "payload_bytes": 45121536
+    }
+  },
+  "aggregate": {
+    "radix_p4": {
+      "fit": 0.08546806499361992,
+      "calibration_validation": 0.08638314623385668
+    },
+    "uniform_int4": {
+      "fit": 0.07617794163525105,
+      "calibration_validation": 0.07709672581404448
+    }
+  },
+  "results": [
+    {
+      "control": "radix_p4",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.08484303951263428
+    },
+    {
+      "control": "uniform_int4",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.07572899013757706
+    },
+    {
+      "control": "radix_p4",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.08431363105773926
+    },
+    {
+      "control": "uniform_int4",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.07553005963563919
+    },
+    {
+      "control": "radix_p4",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.08144241571426392
+    },
+    {
+      "control": "uniform_int4",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.07272286713123322
+    },
+    {
+      "control": "radix_p4",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.08280342817306519
+    },
+    {
+      "control": "uniform_int4",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.07357912510633469
+    },
+    {
+      "control": "radix_p4",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.08937068283557892
+    },
+    {
+      "control": "uniform_int4",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.0798521563410759
+    },
+    {
+      "control": "radix_p4",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.08879140019416809
+    },
+    {
+      "control": "uniform_int4",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.07921160012483597
+    },
+    {
+      "control": "radix_p4",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.0861000344157219
+    },
+    {
+      "control": "uniform_int4",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.0766209289431572
+    },
+    {
+      "control": "radix_p4",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.08607988804578781
+    },
+    {
+      "control": "uniform_int4",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.07617780566215515
+    },
+    {
+      "control": "radix_p4",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.09017401188611984
+    },
+    {
+      "control": "uniform_int4",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08042540401220322
+    },
+    {
+      "control": "radix_p4",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08962549269199371
+    },
+    {
+      "control": "uniform_int4",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08024061471223831
+    },
+    {
+      "control": "radix_p4",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08648020029067993
+    },
+    {
+      "control": "uniform_int4",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.07733506709337234
+    },
+    {
+      "control": "radix_p4",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.087034672498703
+    },
+    {
+      "control": "uniform_int4",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.07740480452775955
+    },
+    {
+      "control": "radix_p4",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08648715168237686
+    },
+    {
+      "control": "uniform_int4",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.07708202302455902
+    },
+    {
+      "control": "radix_p4",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08547563850879669
+    },
+    {
+      "control": "uniform_int4",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.07629857957363129
+    },
+    {
+      "control": "radix_p4",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08298029750585556
+    },
+    {
+      "control": "uniform_int4",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.074177086353302
+    },
+    {
+      "control": "radix_p4",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.08280770480632782
+    },
+    {
+      "control": "uniform_int4",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.07381022721529007
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.7797560568433255,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30763499601744115,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3070689730811864,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.306314307032153,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.33671635086648166,
+      "relative_latent_l2": 0.19563718140125275,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3062441358342767,
+      "relative_latent_l2": 0.30915963649749756,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30620180699042976,
+      "relative_latent_l2": 0.33652833104133606,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30673157097771764,
+      "relative_latent_l2": 0.47916215658187866,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a8-g32",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.38015929399989545,
+      "relative_latent_l2": 0.1931256353855133,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a8-g32",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.34044045116752386,
+      "relative_latent_l2": 0.34346258640289307,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a8-g32",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.34058291907422245,
+      "relative_latent_l2": 0.36584800481796265,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a8-g32",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3394518659915775,
+      "relative_latent_l2": 0.5082830786705017,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a4-g32",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3733160300180316,
+      "relative_latent_l2": 0.22195982933044434,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a4-g32",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3396239059511572,
+      "relative_latent_l2": 0.3801785409450531,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a4-g32",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3401247749570757,
+      "relative_latent_l2": 0.45582324266433716,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-attention-a4-g32",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.34046689700335264,
+      "relative_latent_l2": 0.47429409623146057,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

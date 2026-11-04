@@ -1,0 +1,15 @@
+{
+  "id": "m5-flux-klein-shiftadd-load-002",
+  "bundle": "shiftadd/artifacts/upstream-bcq-all-single-attention-001",
+  "tensor": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+  "chunk_rows": 128,
+  "cache_packed_arrays": false,
+  "cpu_threads": 4,
+  "warmup_processes": 1,
+  "measured_processes": 3,
+  "output": "shiftadd/runs/upstream-load-uncached-001",
+  "description": "Fresh-process CPU loading of the same upstream fused matrix, with packed-array caching as the only variant.",
+  "optimizations": {
+    "cache_packed_arrays": false
+  }
+}

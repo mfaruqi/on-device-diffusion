@@ -1,0 +1,397 @@
+{
+  "status": "passed",
+  "group_size": 32,
+  "scale_format": "u8",
+  "scope": "CPU arithmetic equivalence only; not quality or performance evidence",
+  "max_relative_l2_disagreement": 9.188064495901926e-07,
+  "artifact_hashes": {
+    "transformer_blocks.0.attn.to_k": "6e7baece272726d6aad7a78fc4265ce05419247beeaed9c59cbf4116073faeb9",
+    "transformer_blocks.0.attn.to_v": "e3a2add3f0d0e39b409dfade36a4452abb82185735b494536d90c35fb44b8fa4"
+  },
+  "checks": [
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_000",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.064469744160306e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_000",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.151257588906446e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_001",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.048242084943922e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_001",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.205830113183765e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_002",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.95873814290826e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_002",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.724485726612329e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_003",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 5.979090929031372e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_003",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.417813776555704e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_004",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.057270525161584e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_004",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.198329624065082e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_005",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.215200869519322e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_005",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.274251399598143e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_006",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.12836345226242e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_006",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.810600095581322e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_007",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.069130904506892e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_007",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.495117415601271e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_008",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.091420914344781e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_008",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.188166589206958e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_009",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.163681405269017e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_009",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.197826559808163e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_010",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.044884912626003e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_010",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.747176482553186e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_011",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.07560025400744e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_011",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.544578011220437e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_012",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.156636231935408e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_012",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.315961395055638e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_013",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.178183866722975e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_013",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.324416853611183e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_014",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.048366572031227e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_014",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.705363600507553e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_015",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.028893153597892e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "capture": "transformer_blocks.0.attn.to_k.call_015",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 7.325093633880897e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_000",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.517478823298006e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_000",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.873562364897225e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_001",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.506110707960033e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_001",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.863333960107411e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_002",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.910834713380609e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_002",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.955898920248728e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_003",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.259711765073007e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_003",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.083618692784512e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_004",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.542330766023952e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_004",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.799603961051616e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_005",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.564667387465306e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_005",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.755641260904667e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_006",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.95560913754889e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_006",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.942530485001043e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_007",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.398636512334633e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_007",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.007571861729957e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_008",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.494990429928293e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_008",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.80219147347816e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_009",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.576339046659996e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_009",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.862716640578583e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_010",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.000308528404275e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_010",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.032528396346606e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_011",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.384645641650422e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_011",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 9.188064495901926e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_012",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.48904972422315e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_012",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.776883646532951e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_013",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.599894959435915e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_013",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.841799967740371e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_014",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 6.969728474359727e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_014",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.976685421657749e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_015",
+      "activation_bits": 4,
+      "relative_l2_disagreement": 7.326054856093833e-07
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "capture": "transformer_blocks.0.attn.to_v.call_015",
+      "activation_bits": 8,
+      "relative_l2_disagreement": 8.985462613964046e-07
+    }
+  ]
+}

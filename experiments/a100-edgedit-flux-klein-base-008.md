@@ -52,7 +52,7 @@ a quality requirement (RQ2).
 
 Full run [a100-edgedit-flux-klein-base-008__baseline__20261015-175727](../results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727/): [status.json](../results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727/status.json) `complete`.
 
-Cache receipt ([engine.log](../results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727/engine.log),
+Cache receipt (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727/engine.log`),
 [step-cache.json](../results/runs/a100-edgedit-flux-klein-base-008__baseline__20261015-175727/step-cache.json)): every pass logs `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4` and
 `DiCache reused 54/50 steps` (14 of 14 passes; smoke 2 of 2; source `dicache_policy.cpp`). `skipped_steps_per_generation` is 54 in all 14
 generations. The log does not say which passes were reused. The engine still

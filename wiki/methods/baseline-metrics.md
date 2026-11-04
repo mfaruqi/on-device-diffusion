@@ -718,3 +718,27 @@ Engine roofline y on the Jetson: analytic FLOPs per pass / the template run's me
 ## Measured ceilings (Jetson)
 
 Same script and rules as the [A100 ceilings](#measured-ceilings-a100) ([config](../../configs/jetson-ceilings.json)), with 0.5 GiB bandwidth buffers, square 2048/4096 and klein 512² GEMM shapes, and a 60 s BF16 4096³ sustained GEMM. With `sampler: tegrastats` the run records the GPU devfreq clock every 500 ms (`gpu-samples.csv`) and `tegrastats` power rails and temperatures (`tegrastats.log`); there are no throttle-reason codes.
+## ShiftAdd conversion diagnostics
+
+Weight-only conversion records distinguish storage and numerical diagnostics
+from inference metrics. `bf16_bytes` is two bytes per original matrix element;
+`packed_payload_bytes` sums sign-plane bytes and exponent bytes;
+`artifact_bytes` is the actual packed file size including headers.
+`replacement_bundle_weight_bytes` sums packed matrix files and unchanged tensor
+files, excluding reports and configs. Reduction is one minus replacement bytes
+ divided by the source transformer file size. These values do not measure live
+inference memory. `relative_l2` is the Frobenius norm of original minus decoded
+weights divided by the original norm, per matrix; zero original norms require
+separate handling. Conversion-and-verification seconds include fitting, writing,
+reloading, reconstruction and hashing. They are not inference latency.
+See the [conversion record](../../experiments/m5-flux-klein-shiftadd-001.md).
+
+For activation slice diagnostics, `relative_output_l2` is ||Xq Wqᵀ − X Wᵀ||F / ||X Wᵀ||F per captured call, with FP32 products of BF16-origin data. Aggregates average per-call ratios, rather than pooling norms. Ideal grouped activation storage is bits + 32/group_size bits per element for FP32 scales; this is not measured allocation. See the [grouped diagnostic](../../experiments/m5-flux-klein-shiftadd-003.md).
+
+ShiftAdd loader diagnostics use `process_peak_rss_gib` for whole child-process lifetime high-water RSS from `resource.ru_maxrss` (Darwin bytes, Linux KiB, converted to GiB). Imports, one BF16 parameter, packed input and reconstruction are included. First child is separate; subsequent fresh-child peaks have median/min/max. This is not a GPU metric, incremental allocation or per-generation measurement. See [loader diagnostic](../../experiments/m5-flux-klein-shiftadd-load-001.md).
+
+Upstream loader timing diagnostics report `loader_wall_s` from `perf_counter` around `apply_upstream_artifacts`: configuration reads, file hashing, shape checks, packed-array reads, reconstruction and CPU parameter copies are included; imports, destination-parameter allocation and output hashing are excluded. Each trial uses a fresh child process. The first is separate, configured warm-up children are discarded, and measured children use median/min/max. Filesystem cache and system pressure are uncontrolled, so fresh process does not mean cold disk. `process_peak_rss_gib` retains the whole-child high-water definition above. Caching packed arrays is explicit in each configuration; this is neither full-model load time nor inference latency.
+
+## Quantized transformer reload and compilation
+
+The portable runner supports verified GGUF and Nunchaku SVDQuant transformer loaders. With compilation and transformer reloads, Dynamo is reset and the newly loaded module is compiled again; these costs remain inside generation timing, and `compiler.json` counts applied compilations. Conditioning reuse avoids subsequent reloads when enabled; no-reuse configurations retain them ([runner](../../scripts/run_flux_portable.py), [Nunchaku baseline](../../experiments/jetson-nunchaku-flux-klein-001.md)).

@@ -39,7 +39,7 @@ and tiled VAE decode? Compressed-checkpoint workload, reported separately from e
 
 ## Results
 
-[Run directory](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/), [load](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/load.json), [memguard](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/memguard.json), [tegrastats](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/tegrastats.log).
+[Run directory](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/), [load](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/load.json), [memguard](../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/memguard.json), tegrastats (local-only artifact: `../results/runs/jetson-nunchaku-flux-klein-003__attempt__20261102-164525/tegrastats.log`).
 
 - `status.json` still reads `running`: the guard's SIGKILL (exit code 137) leaves no chance to write `failed`.
   `runs.csv` and `stages.csv` have headers only; no image was written.

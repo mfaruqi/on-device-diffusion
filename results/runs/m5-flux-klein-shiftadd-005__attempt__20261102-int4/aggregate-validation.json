@@ -1,0 +1,38 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "bits": 4,
+    "storage": {
+      "module": "transformer_blocks.0.attn.to_q",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 52224,
+      "file_bytes": 53514,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.12276586145162582
+    },
+    "original": 0.0708779888227582,
+    "a8_token": 0.07150623947381973,
+    "a4_g32": 0.08502126485109329
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "bits": 4,
+    "storage": {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 52224,
+      "file_bytes": 53514,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.10989506542682648
+    },
+    "original": 0.08158372715115547,
+    "a8_token": 0.08281423058360815,
+    "a4_g32": 0.13420074246823788
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "id": "m5-flux-klein-shiftadd-022",
+  "higher_fit": "shiftadd/artifacts/upstream-bcq-all-single-attention-001",
+  "lower_fit": "shiftadd/artifacts/upstream-bcq-all-single-p3-001",
+  "lower_count": 10,
+  "fixed_selections": [
+    {
+      "artifacts": "shiftadd/artifacts/upstream-bcq-all-dual-attention-001",
+      "modules": [
+        "transformer_blocks.0.attn.add_k_proj",
+        "transformer_blocks.0.attn.add_q_proj",
+        "transformer_blocks.0.attn.add_v_proj",
+        "transformer_blocks.0.attn.to_k",
+        "transformer_blocks.0.attn.to_q",
+        "transformer_blocks.0.attn.to_v",
+        "transformer_blocks.1.attn.add_k_proj",
+        "transformer_blocks.1.attn.add_q_proj",
+        "transformer_blocks.1.attn.add_v_proj",
+        "transformer_blocks.1.attn.to_k",
+        "transformer_blocks.1.attn.to_q",
+        "transformer_blocks.1.attn.to_v",
+        "transformer_blocks.2.attn.add_k_proj",
+        "transformer_blocks.2.attn.add_q_proj",
+        "transformer_blocks.2.attn.add_v_proj",
+        "transformer_blocks.2.attn.to_k",
+        "transformer_blocks.2.attn.to_q",
+        "transformer_blocks.2.attn.to_v",
+        "transformer_blocks.3.attn.add_k_proj",
+        "transformer_blocks.3.attn.add_q_proj",
+        "transformer_blocks.3.attn.add_v_proj",
+        "transformer_blocks.3.attn.to_k",
+        "transformer_blocks.3.attn.to_q",
+        "transformer_blocks.3.attn.to_v",
+        "transformer_blocks.4.attn.add_k_proj",
+        "transformer_blocks.4.attn.add_q_proj",
+        "transformer_blocks.4.attn.add_v_proj",
+        "transformer_blocks.4.attn.to_k",
+        "transformer_blocks.4.attn.to_q",
+        "transformer_blocks.4.attn.to_v"
+      ]
+    }
+  ],
+  "output": "shiftadd/runs/upstream-mixed-fused-selection-001",
+  "bundle_output": "shiftadd/artifacts/upstream-bcq-mixed-fused-p3p4-001",
+  "description": "Select ten of twenty fused projections for three planes using fitting-call local error only; keep the other ten and all thirty dual-stream matrices at four planes. Candidate only, without image validation.",
+  "optimizations": {
+    "precision_allocation": "fixed-count-lowest-fit-error-increase"
+  }
+}

@@ -28,7 +28,7 @@ Does edge-dit.cpp's `dbcache` step cache, at its default parameters, skip any of
 
 [Run](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/): [status.json](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/status.json) `complete`; [memguard.json](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/memguard.json) not killed, exit 0.
 
-- Cache receipt: the engine logged `cache enabled: mode=DBCache model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `DBCache skipped 0/4 steps, accum_diff=0.0000` once per pass, 2 of 2 passes ([engine.log](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/engine.log)); [step-cache.json](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The schedule (4 steps, same sigmas as 006) was unchanged.
+- Cache receipt: the engine logged `cache enabled: mode=DBCache model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `DBCache skipped 0/4 steps, accum_diff=0.0000` once per pass, 2 of 2 passes (engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/engine.log`)); [step-cache.json](../results/runs/jetson-edgedit-flux-klein-010__attempt__20261015-133240/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The schedule (4 steps, same sigmas as 006) was unchanged.
 
 | Quantity | First generation | Measured (n = 1) | 006 measured median |
 |---|---:|---:|---:|

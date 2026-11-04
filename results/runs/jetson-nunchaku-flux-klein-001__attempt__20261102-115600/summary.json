@@ -1,0 +1,191 @@
+{
+  "id": "jetson-nunchaku-flux-klein-001",
+  "device_label": "jetson-orin-nano-8gb",
+  "backend": "jetson",
+  "engine": "PyTorch/Diffusers",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 82211.96357603185,
+    "gpu_span_ms": 82121.8515625,
+    "text_encode_ms": 4675.67236328125,
+    "denoise_ms": 4006.4506225585938,
+    "denoise_step_0_ms": 1820.01513671875,
+    "denoise_step_1_ms": 728.2050170898438,
+    "denoise_step_2_ms": 728.1876831054688,
+    "denoise_step_3_ms": 730.0427856445312,
+    "vae_decode_ms": 3541.619873046875,
+    "postprocess_ms": 163.5773162841797,
+    "other_ms": 69734.5313873291,
+    "peak_alloc_gib": 3.119328498840332,
+    "peak_reserved_gib": 3.662109375,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 1.3044090270996094
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 73388.56162101729,
+      "min": 73388.56162101729,
+      "max": 73388.56162101729,
+      "mean": 73388.56162101729,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": {
+      "median": 73387.1953125,
+      "min": 73387.1953125,
+      "max": 73387.1953125,
+      "mean": 73387.1953125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "text_encode_ms": {
+      "median": 2165.662841796875,
+      "min": 2165.662841796875,
+      "max": 2165.662841796875,
+      "mean": 2165.662841796875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 3238.6694946289062,
+      "min": 3238.6694946289062,
+      "max": 3238.6694946289062,
+      "mean": 3238.6694946289062,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 1048.9998779296875,
+      "min": 1048.9998779296875,
+      "max": 1048.9998779296875,
+      "mean": 1048.9998779296875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 728.9573364257812,
+      "min": 728.9573364257812,
+      "max": 728.9573364257812,
+      "mean": 728.9573364257812,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 729.3072509765625,
+      "min": 729.3072509765625,
+      "max": 729.3072509765625,
+      "mean": 729.3072509765625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 731.405029296875,
+      "min": 731.405029296875,
+      "max": 731.405029296875,
+      "mean": 731.405029296875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 499.86993408203125,
+      "min": 499.86993408203125,
+      "max": 499.86993408203125,
+      "mean": 499.86993408203125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": {
+      "median": 91.12576293945312,
+      "min": 91.12576293945312,
+      "max": 91.12576293945312,
+      "mean": 91.12576293945312,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "other_ms": {
+      "median": 67391.86727905273,
+      "min": 67391.86727905273,
+      "max": 67391.86727905273,
+      "mean": 67391.86727905273,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": {
+      "median": 3.117985725402832,
+      "min": 3.117985725402832,
+      "max": 3.117985725402832,
+      "mean": 3.117985725402832,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_reserved_gib": {
+      "median": 3.662109375,
+      "min": 3.662109375,
+      "max": 3.662109375,
+      "mean": 3.662109375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 1.2453498840332031,
+      "min": 1.2453498840332031,
+      "max": 1.2453498840332031,
+      "mean": 1.2453498840332031,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 70.03282595501514,
+    "from_pretrained_s": 69.71911313896999,
+    "to_device_s": 0.3137128160451539
+  },
+  "weights_gib": {
+    "vae": 0.15654857270419598,
+    "transformer": 2.2797231674194336
+  },
+  "quantization": {
+    "transformer": {
+      "method": "nunchaku_svdq",
+      "file": "/home/mfaruqi/models/flux2-klein-nunchaku/svdq-int4_r32-FLUX.2-klein-4B-Nunchaku.safetensors",
+      "sha256": "8b0adf66f9945eafb67a53abd12a4dd6d1d0d35e408242ab0e036ae917b49311",
+      "source_dir": "/home/mfaruqi/tools/nunchaku-sm87-0c8379d",
+      "revision": "0c8379d10b4b9017928d02fd0fdb2c26b991a8b6",
+      "patch": "diff --git a/nunchaku/utils.py b/nunchaku/utils.py\nindex 6be37f4..ced049a 100644\n--- a/nunchaku/utils.py\n+++ b/nunchaku/utils.py\n@@ -308,7 +308,7 @@ def check_hardware_compatibility(quantization_config: dict, device: str | torch.\n     if sm in [\"120\", \"121\"]:  # you can only use the fp4 models\n         if quantization_config[\"weight\"][\"dtype\"] != \"fp4_e2m1_all\":\n             raise ValueError('Please use \"fp4\" quantization for Blackwell GPUs. ')\n-    elif sm in [\"75\", \"80\", \"86\", \"89\"]:\n+    elif sm in [\"75\", \"80\", \"86\", \"87\", \"89\"]:\n         if quantization_config[\"weight\"][\"dtype\"] != \"int4\":\n             raise ValueError('Please use \"int4\" quantization for Turing, Ampere and Ada GPUs. ')\n     else:\ndiff --git a/setup.py b/setup.py\nindex 337b11a..13cb18b 100644\n--- a/setup.py\n+++ b/setup.py\n@@ -51,7 +51,7 @@ def get_sm_targets() -> list[str]:\n                 sm = sm + \"a\"\n             if sm in [\"121\"] and support_sm121:\n                 sm = sm + \"a\"\n-            assert sm in [\"75\", \"80\", \"86\", \"89\", \"120a\", \"121a\"], f\"Unsupported SM {sm}\"\n+            assert sm in [\"75\", \"80\", \"86\", \"87\", \"89\", \"120a\", \"121a\"], f\"Unsupported SM {sm}\"\n             if sm not in ret:\n                 ret.append(sm)\n     else:",
+      "svdq_layers": 120
+    },
+    "text_encoder": {
+      "method": "bnb_nf4",
+      "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+      "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)",
+      "sha256_verified": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "resident": false
+    }
+  },
+  "compiler": {
+    "name": null
+  },
+  "first_run_note": "Includes lazy compilation when a compiler is configured.",
+  "system_memory": {
+    "samples": 1098,
+    "ram_peak_gib": 5.4951171875,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.271484375,
+    "swap_max_gib": 0.4033203125,
+    "gpu_temperature_max_c": 54.437,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "unavailable_metrics": {
+    "device_used_peak_gib": "NVML is unavailable on Jetson; whole-system RAM is in system_memory instead."
+  },
+  "host_peak_rss_gib": 3.496417999267578,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  },
+  "transformer_calls_per_step": 1
+}

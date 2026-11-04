@@ -28,7 +28,7 @@ Does edge-dit.cpp's fully automatic fitting (`--auto-fit`, no `--max-vram`) admi
 Error evidence:
 
 - No `exit_code.txt` or `end.txt` was written: the harness did not regain control.
-- [ed-cli.log](../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/ed-cli.log) holds one marker, `stage=encode event=begin t=1791700669.409536` (06:37:49.41 UTC); no encode end.
+- ed-cli.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/ed-cli.log`) holds one marker, `stage=encode event=begin t=1791700669.409536` (06:37:49.41 UTC); no encode end.
 - [previous-boot-kernel.txt](../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/previous-boot-kernel.txt) lists a single boot (index 0) ending 02:41:16 EDT; no previous-boot kernel log was available (status.json: journal not persistent).
 - Memory before launch ([free-before.txt](../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/free-before.txt), MiB): available 6826, swap used 312.
 
@@ -51,7 +51,7 @@ Placement and precision decisions from [ed-cli.stderr](../results/runs/jetson-ed
 
 The engine reported `EdgeDitEngine initialized successfully` before the encode marker.
 
-Memory ([tegrastats.log](../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/tegrastats.log), 355 samples, 02:36:31–02:37:50 local): RAM peak 7478/7620 MB (02:36:55, swap 1500 MB in that sample); swap peak 1529/3810 MB (02:36:55). Last sample: RAM 7430/7620 MB, swap 673 MB, one CPU core at 100%.
+Memory (tegrastats.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-002__attempt__20261011-autofit/tegrastats.log`), 355 samples, 02:36:31–02:37:50 local): RAM peak 7478/7620 MB (02:36:55, swap 1500 MB in that sample); swap peak 1529/3810 MB (02:36:55). Last sample: RAM 7430/7620 MB, swap 673 MB, one CPU core at 100%.
 
 ## Observations
 

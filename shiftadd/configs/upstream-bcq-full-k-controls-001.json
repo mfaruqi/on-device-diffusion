@@ -1,0 +1,26 @@
+{
+  "id": "m5-flux-klein-shiftadd-011",
+  "source": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/blobs/9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "source_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "capture": "shiftadd/runs/derived-kv-calibration-001",
+  "modules": [
+    "transformer_blocks.0.attn.to_k"
+  ],
+  "fit_calls": 8,
+  "output_rows": 3072,
+  "planes": 4,
+  "group_size": 128,
+  "output": "shiftadd/artifacts/upstream-bcq-full-kv-001",
+  "row_selection": "all",
+  "row_source": "shiftadd/artifacts/activation-fit-spread-001",
+  "scale_format": "u8",
+  "vendor": "shiftadd/vendor/shiftaddqwen",
+  "damping": 0.01,
+  "fit_iters": 15,
+  "optimizations": {
+    "fit": "upstream-gptq-bcq",
+    "scale_format": "u8"
+  },
+  "row_policy": "all",
+  "description": "Numerical controls for complete first-block K on shared calibration inputs."
+}

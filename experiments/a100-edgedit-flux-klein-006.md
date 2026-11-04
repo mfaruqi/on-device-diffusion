@@ -29,7 +29,7 @@ Does edge-dit.cpp's `cache-dit` step cache, at its default parameters, skip or r
 
 [Run](../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/): [status.json](../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/status.json) `complete`.
 
-- Cache receipt: the engine logged `cache enabled: mode=CacheDiT model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `CacheDiT skipped 0/4 steps, accum_diff=0.0000` once per pass, 2 of 2 passes ([engine.log](../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/engine.log)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
+- Cache receipt: the engine logged `cache enabled: mode=CacheDiT model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `CacheDiT skipped 0/4 steps, accum_diff=0.0000` once per pass, 2 of 2 passes (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/engine.log`)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-006__attempt__20261015-152101/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
 
 | Quantity | First generation | Measured (n = 1) | Reference measured median (min–max) |
 |---|---:|---:|---:|

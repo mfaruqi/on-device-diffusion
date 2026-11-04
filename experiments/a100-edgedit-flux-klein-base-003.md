@@ -53,7 +53,7 @@ a quality requirement (RQ2).
 
 Full run [a100-edgedit-flux-klein-base-003__baseline__20261015-171344](../results/runs/a100-edgedit-flux-klein-base-003__baseline__20261015-171344/): [status.json](../results/runs/a100-edgedit-flux-klein-base-003__baseline__20261015-171344/status.json) `complete`.
 
-Cache receipt ([engine.log](../results/runs/a100-edgedit-flux-klein-base-003__baseline__20261015-171344/engine.log),
+Cache receipt (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-base-003__baseline__20261015-171344/engine.log`),
 [step-cache.json](../results/runs/a100-edgedit-flux-klein-base-003__baseline__20261015-171344/step-cache.json)): every pass logs `cache enabled: mode=UCache model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and
 `UCache skipped 26/50 steps (2.08x estimated speedup)` (14 of 14 passes; smoke 2 of 2; source `ucache_policy.cpp`). `skipped_steps_per_generation` is 26 in all 14
 generations. The log does not say which passes were skipped. "(2.08x)" is the engine's own estimate (50 / (50 − k)), not a measured speed-up. The engine still

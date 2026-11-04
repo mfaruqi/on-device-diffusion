@@ -2,7 +2,7 @@
 type: method
 summary: Candidate Nunchaku SVDQuant timing on A100; pinned community Klein adapter and explicit Jetson/Metal blockers.
 status: active
-updated: 2026-10-11
+updated: 2026-11-02
 ---
 
 # SVDQuant / Nunchaku screening and candidate runner — 2026-10-11
@@ -14,7 +14,7 @@ Week 2 engine coverage, RQ1; potential precision candidate for the later planner
 | Target | Reviewed implementation status | Runner action |
 |---|---|---|
 | A100 40 GB, sm_80 | Community Klein 4B INT4/r32 checkpoint + x86 wheel exist; smoke and full protocol passed | Pinned distilled workload validated; quality unassessed |
-| Jetson Orin Nano, sm_87 | Not in the reviewed upstream or community wheel architecture list; Spark ARM64 is not proof of Orin support | Reject before model loading |
+| Jetson Orin Nano, sm_87 | Not in the reviewed upstream or community wheel architecture list. With "87" added to two allowlists (build targets, `check_hardware_compatibility`) the pinned source builds, matches the A100 layer outputs and runs the 512² pipeline ([record](../../experiments/jetson-nunchaku-flux-klein-001.md)) | `run_nunchaku.py` rejects it; the portable runner's `nunchaku_svdq` option runs it from the in-place build |
 | M5 Metal/MPS | Reviewed Nunchaku implementation requires CUDA, no Metal kernels | Reject before model loading |
 | Klein Base | Exact matching community checkpoint not screened | Reject; do not substitute distilled weights |
 
@@ -71,5 +71,17 @@ Before claiming speedup, repeat the BF16 reference with the compatible software 
 The pinned source's `get_sm_targets()` function was executed on the Orin without installation, compilation or model inference. It raises `AssertionError: Unsupported SM 87`; the device reports PyTorch 2.8.0/CUDA 12.6 ([receipt](../../output/nunchaku-prep/portability/jetson-build-preflight.txt), [pinned build logic](https://github.com/tonera/nunchaku/blob/0c8379d10b4b9017928d02fd0fdb2c26b991a8b6/setup.py)). This proves rejection by the default build path, not impossibility of an SM87 kernel port. No existing Jetson environment was modified.
 
 The resident A100 configuration is not a feasible physical-memory plan for Orin: the unchanged BF16 text encoder alone occupies 7.49 GiB ([component accounting](../../results/runs/m5-flux-klein-001__baseline__20261010-183446/load.json)), before the quantized transformer, VAE, activations and OS. CPU offload uses the same physical memory on Orin. A Jetson attempt needs separately labelled and validated text-encoder quantization or disk/stage residency in addition to a working kernel build; changing the GPU architecture allowlist alone does not solve this.
+
+### SM87 build probe (2026-11-02)
+
+[`jetson_build_nunchaku_sm87.sh`](../../scripts/jetson_build_nunchaku_sm87.sh) builds the same pinned source (`0c8379d`, submodules in [submodules.txt](../../results/runs/jetson-nunchaku-sm87-build-20261102-003235/submodules.txt)) on the Orin with one change: "87" added to the `get_sm_targets()` allowlist ([patch.diff](../../results/runs/jetson-nunchaku-sm87-build-20261102-003235/patch.diff)). `setup.py build_ext --inplace`, one compile job, under the memory guard; nothing installed into an existing environment.
+
+Result ([build.json](../../results/runs/jetson-nunchaku-sm87-build-20261102-003235/build.json)): all 36 compile steps succeeded in 7894 s with no swap growth and minimum MemAvailable 2313 MB. The extension loads on the Orin ([load test](../../results/runs/jetson-nunchaku-sm87-build-20261102-003235/load-test.txt)) and contains sm_87 code for every CUDA source, including the W4A4 INT4 and W8A8 GEMMs ([cuobjdump](../../results/runs/jetson-nunchaku-sm87-build-20261102-003235/cuobjdump-elf.txt)). The kernels' arch guards require only `__CUDA_ARCH__ >= 800`. This shows the code compiles and loads for sm_87; correctness, speed and the memory plan above remain untested. Next check: one W4A4 linear against a BF16 reference on random data.
+
+### Single-layer check (2026-11-02)
+
+[`nunchaku_layer_check.py`](../../scripts/nunchaku_layer_check.py) runs four layers of transformer block 0 of the community checkpoint (attn.to_qkv, attn.to_out.0, ff.linear_in, ff.linear_out) through each install's own `SVDQW4A4Linear`, on fixed N(0, 1) BF16 inputs at 1024 and 4096 tokens stored in the bundle, against the same layers of the pinned BF16 transformer. The inputs are synthetic, so the error vs BF16 checks the kernels, not the checkpoint's quality. The A100 run ([layer-check.json](../../results/runs/a100-nunchaku-layer-check-001__layer__20261102-153101/layer-check.json), A100 80GB PCIe, community wheel) is the reference for the Orin. The wheel and the pinned source are different builds with different op signatures, so agreement between them tests the shared arithmetic, not identical code.
+
+Loading a model on the Orin also needs a second allowlist line, in `nunchaku/utils.py` `check_hardware_compatibility()`, which otherwise raises "Unsupported GPU architecture 87". [Queue N](../../scripts/jetson_nunchaku_queue_20261102.sh) patches it, checks the two-line diff hash pinned in [the config](../../configs/jetson-nunchaku-flux-klein-int4-r32-512.json), runs the layer check (gate: finite, rel_l2 ≤ 1e-2 vs the A100 outputs), and only then the 512² pipeline smoke and full protocol. On the Orin ([layer-check.json](../../results/runs/jetson-nunchaku-layer-check-001__layer__20261102-165502/layer-check.json)) the gate passed: rel_l2 vs the A100 outputs is 3.5e-7 to 6.8e-5, and the pipeline then ran ([record](../../experiments/jetson-nunchaku-flux-klein-001.md)).
 
 The pinned build uses `CUDAExtension` and CUDA source files; no Metal target appears in its build path ([source](https://github.com/tonera/nunchaku/blob/0c8379d10b4b9017928d02fd0fdb2c26b991a8b6/setup.py)). M5 execution would require implementing the low-bit and low-rank operations on Metal and validating checkpoint packing and numerics. No M5 package installation or model run was attempted.

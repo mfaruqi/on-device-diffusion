@@ -24,7 +24,7 @@ Does edge-dit.cpp's SenCache step cache, at its default parameters, reuse any of
 
 ## Results
 
-[status.json](../results/runs/jetson-edgedit-flux-klein-015__attempt__20261015-140427/status.json): `failed`, `CalledProcessError(1, [ed-sample … --cache_method sencache …])`. First line of [engine.log](../results/runs/jetson-edgedit-flux-klein-015__attempt__20261015-140427/engine.log):
+[status.json](../results/runs/jetson-edgedit-flux-klein-015__attempt__20261015-140427/status.json): `failed`, `CalledProcessError(1, [ed-sample … --cache_method sencache …])`. First line of engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-015__attempt__20261015-140427/engine.log`):
 
 ```
 --cache sencache requires a calibrated profile: pass --cache-profile <path>, or produce one first with --cache-calibrate <path>

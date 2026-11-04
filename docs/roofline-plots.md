@@ -93,3 +93,126 @@ Executed passes are steps × CFG multiplicity (one at guidance ≤1, two at guid
 Jetson no-cache references get paired `denoise_step_0` and steady `denoise_step_1..3` points using the same baseline's measured `stages.csv`. Steady duration is the median of each generation's mean of steps 1–3. A dashed downward connector shows the observed rate difference including the first-step reload stall. Attribution to read/pread64 comes from the separately saved OSRT profiles ([distilled](../experiments/jetson-flux-klein-003.md), [Base](../experiments/jetson-flux-klein-base-001.md)); the connector alone cannot prove storage causality or distinguish storage from page-cache effects. No illustrative ~10× ratio or fixed latency from task prose is substituted for saved data.
 
 Normalization is `100*effective_tflops/min(ceiling, bw_gbs/1000*AI)`, using each point's stated reference ceiling. Nunchaku's mixed stage uses the BF16 reference denominator: neither pure INT4 nor pure BF16 utilization is inferred. Integer specifications remain labelled TOP/s in the metadata and are not drawn on the floating-point axes. Values over 100% remain visible as an analytic-model discrepancy. These percentages are not matched-quality comparisons or measured hardware utilization. Different workloads, precision, residency, engine timers and profile instrumentation limit cross-device interpretation ([metric definitions](../wiki/methods/baseline-metrics.md)).
+
+## Counter-based A100 eager and compiled views
+
+`plot_roofline_measured.py` renders the five-engine distilled 1024² overview plus matching eager and
+compiled kernel/bandwidth figures. It reads the eager NVTX-labelled `denoise_step_1` and the compiled
+capture's validated `profile/pass-kernels.json`, checking the compiled launch count, bytes and duration
+against `counter-summary.json`. It executes no models. Reproduce with:
+
+```sh
+MPLCONFIGDIR=/tmp/odd-matplotlib python3 scripts/plot_roofline_measured.py \
+  --ceilings results/runs/a100-ceilings-001__ceilings__20261029-042704 \
+  --output output/roofline-a100-measured
+```
+
+The new `a100-kernel-roofline-compiled.{png,pdf}` shares axes and units with
+`a100-kernel-roofline-measured.{png,pdf}` (eager). Kernel groups follow names, not exact operator
+attribution: Triton fusions remain in the elementwise/reduction group even when their names mention
+attention or normalization. Shares use summed replay kernel durations, never unprofiled generation
+latency. Missing counted instruction classes remain explicit. Measured microbenchmark ceilings are
+references, not universal bounds. The five-engine overview uses reference-model work for effective
+throughput; this is distinct from executed hardware operations, especially for mixed INT4/BF16.
+
+Methodology references: [Williams et al., CACM (2009)](https://doi.org/10.1145/1498765.1498785)
+for the roofline model; [Yang et al., hierarchical deep-learning analysis](https://arxiv.org/abs/2009.05257)
+for empirical machine characterization, per-kernel counters and framework comparison; and
+[Wang et al., time-based analysis](https://arxiv.org/abs/2009.04598) for retaining runtime alongside
+throughput when implementations perform different work. The latter two are proceedings papers,
+not journal articles. [Malenza et al., IEEE TPDS (2025)](https://doi.org/10.1109/TPDS.2025.3591452)
+provides a journal precedent for comparing GPU programming frameworks with kernel rooflines;
+its workload is an astrometric solver, not neural inference.
+
+
+## A100 three-panel preview
+
+`scripts/plot_a100_three_panel.py` produces roofline, warm generation latency and sampled device-wide
+GPU-memory panels for the five selected distilled 1024² configurations. It reads the counter-based
+roofline dataset and original baseline JSON/CSVs; no model execution or W&B upload is implemented.
+
+```sh
+MPLCONFIGDIR=/tmp/odd-matplotlib python3 scripts/plot_a100_three_panel.py
+```
+
+Outputs: `output/a100-three-panel/a100-three-panel.{png,pdf,svg}` and `figure-data.json` with source
+hashes, exact coordinates, first-image latency and measurement scopes. The roof uses the dense BF16
+specification (312 TFLOP/s, 1555 GB/s, ridge 200.6 FLOP/byte). Mixed-precision Nunchaku is hollow and
+labelled as a compressed replacement with unverified ancestry/quality, not BF16 hardware utilization.
+
+Latency totals are medians of ten measured wall times, with min–max whiskers. To preserve additivity,
+stack segments average the corresponding denoise and VAE durations of the two middle wall-time
+observations; remaining time is their wall-time residual. They are not independent stage medians.
+This grouping avoids relabelling edge-dit's combined encoding/setup time as pure text encoding.
+Memory uses median measured-generation NVML peaks for four engines; edge-dit has only a whole-child
+capture peak including loading and first/warm-up generations, explicitly hatched and footnoted.
+No allocator or host memory is substituted or added. These views reproduce existing measurements;
+they do not establish a matched-quality engine ranking.
+
+
+## Jetson three-panel preview
+
+`scripts/plot_jetson_three_panel.py` renders the three-panel layout for distilled Klein at 512² on
+Orin Nano with conditioning reuse disabled throughout. Four existing complete 1+3+10 runs are used:
+PyTorch eager (001), resident tiled sd.cpp (012 completed repeat), resident edge-dit with tiled VAE (006), and
+Nunchaku with sequential residency (001). PyTorch compiled is omitted because no completed
+no-conditioning-reuse baseline is available; its existing cache-hit result is not substituted.
+Different checkpoints, residency, software dates and tile policies prevent a controlled engine-only
+or matched-quality ranking. All runs use the fixed development prompt recomputed every image;
+this measures a no-cache request path rather than a varied-prompt quality/workload evaluation.
+
+```sh
+MPLCONFIGDIR=/tmp/odd-matplotlib python3 scripts/plot_jetson_three_panel.py
+```
+
+Outputs: `output/jetson-three-panel/jetson-three-panel.{png,pdf,svg}`, `figure-data.json` and README.
+No upload or model execution is performed. The original two-panel outputs remain unchanged.
+
+Roofline traffic is analytic, unlike the A100 counter-based preview. The common reference-op model
+uses four-byte intermediates for the C++ FP32-activation paths and two-byte intermediates for
+PyTorch (a BF16 reference for mixed Nunchaku). Those widths do not assert all tensors or kernels
+use one precision. Packed footprint uses recorded PyTorch/Nunchaku component sizes; C++ mixed-Q4
+uses the existing explicit 2.15 GiB estimate. Unpacking, low-rank, normalization and fusion-specific
+traffic are not modeled. All roofline markers are hollow to denote estimated traffic. The
+17 TFLOP/s, 102 GB/s roof is a specification reference, not a measured sustained limit or mixed
+INT4 utilization. C++ x coordinates differ from the older common two-byte approximation. The
+stage-rate numerator is reference work and the denominator includes sd.cpp's first-step reload;
+this application-level effective rate must not be interpreted as kernel hardware utilization.
+
+Latency totals are median wall times with min–max intervals and INCLUDE per-generation encoder
+and transformer reloads. Stack segments use corresponding two middle wall-time observations.
+The residual includes text encoding, setup and reloads outside engine denoise/VAE timers. One-time
+initial model load and the separately reported first generation are excluded from the warm-session
+bars; they remain in the data artifact. No cache-hit timing is used.
+
+Memory is whole-system tegrastats RAM peak across the entire capture, including loading, first
+image and warm-ups; it is never relabelled GPU allocations. Sampling differs (sd.cpp 1 s; others
+200 ms), and background activity is included. Swap extrema remain in figure-data.json.
+
+
+## Eager-normalized engine speedup previews
+
+[Local output and method](../output/engine-speedups/README.md) provides grouped bars for
+Klein Distilled and Klein Base, separately on A100 and Jetson. Each device has denoising-stage
+and end-to-end speedup figures. PyTorch eager is 1× independently per workload. Reproduce
+with `MPLCONFIGDIR=/tmp/odd-matplotlib python3 scripts/plot_engine_speedups.py`.
+The source manifest and absolute timings are retained in `figure-data.json` and `speedups.csv`.
+Missing no-reuse combinations are labelled N/M; precision/checkpoint and stage-boundary
+confounds are printed on the figures. These are local previews, not matched-quality rankings.
+
+
+## Jetson latency, memory and residency preview
+
+[Local figure and method](../output/jetson-residency/README.md) combines no-reuse end-to-end
+latency, whole-capture tegrastats RAM and a schematic stage residency policy for four engines.
+Reproduce using `scripts/plot_jetson_residency.py`; `--sdcpp-run` selects a completed full-run
+replacement. Memory elapsed time is nominal from the sampling interval, not aligned to
+individual generation stages. The sd.cpp source is the completed resident+tiled full repeat
+`jetson-flux-klein-012__baseline__20261102-165643`. No upload performed.
+
+### Jetson sd.cpp full-repeat refresh (2026-11-02)
+
+The current Jetson roofline/latency/memory, residency, engine speedup and detailed roofline
+previews use the [completed resident+tiled full repeat](../experiments/jetson-flux-klein-012.md#completed-full-repeat-2026-11-02)
+for Distilled sd.cpp. Base results retain their existing source. Charts are local; the existing
+W&B publication has not been updated. Historical campaign records retain their original runs.

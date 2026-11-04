@@ -1,0 +1,1601 @@
+{
+  "format": "symmetric_uniform",
+  "bits": 4,
+  "group_size": 128,
+  "results": [
+    {
+      "tensor": "context_embedder.weight",
+      "shape": [
+        3072,
+        7680
+      ],
+      "bits": 4,
+      "bf16_bytes": 47185920,
+      "packed_payload_bytes": 12533760,
+      "artifact_bytes": 12534526,
+      "artifact_sha256": "bebc36c8060833e74a35d9f2d5c719c0a29f20e2da7daf702cf88ea98773efb6",
+      "relative_l2": 0.07985179126262665,
+      "conversion_and_verification_s": 0.4940009170677513
+    },
+    {
+      "tensor": "double_stream_modulation_img.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "449a39207e36c63a4c6f8d9fe17f80158e6b19eac2850d70944bdb4f122db11c",
+      "relative_l2": 0.12383797764778137,
+      "conversion_and_verification_s": 1.3045989158563316
+    },
+    {
+      "tensor": "double_stream_modulation_txt.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "a72760dbe13781d9ae2fab2f2d97dda15c3c3c7e5837bb369ef849ee374738df",
+      "relative_l2": 0.10710540413856506,
+      "conversion_and_verification_s": 1.126066124998033
+    },
+    {
+      "tensor": "norm_out.linear.weight",
+      "shape": [
+        6144,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 37748736,
+      "packed_payload_bytes": 10027008,
+      "artifact_bytes": 10027774,
+      "artifact_sha256": "fa48ce359d3c72b587b42ffff3a2bb390d2faf2103e679a90ea850f12ea7fd41",
+      "relative_l2": 0.10872607678174973,
+      "conversion_and_verification_s": 0.3678390830755234
+    },
+    {
+      "tensor": "proj_out.weight",
+      "shape": [
+        128,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 786432,
+      "packed_payload_bytes": 208896,
+      "artifact_bytes": 209662,
+      "artifact_sha256": "1b1430f427dc6bb5aa5c6160eb9eaceed10bac3ce49fb078173d8bc893d30ba9",
+      "relative_l2": 0.1909731924533844,
+      "conversion_and_verification_s": 0.007270625093951821
+    },
+    {
+      "tensor": "single_stream_modulation.linear.weight",
+      "shape": [
+        9216,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "a61a6454cd911970d296df7e3266f401dc53d932b37555f80b26c08f98e2172e",
+      "relative_l2": 0.1397380530834198,
+      "conversion_and_verification_s": 0.5686173751018941
+    },
+    {
+      "tensor": "single_transformer_blocks.0.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "3bd60a30dea139bd798c927ffb27a6669cc5dfcc14ea96ffe0477115f2094ac0",
+      "relative_l2": 0.11012215167284012,
+      "conversion_and_verification_s": 0.7232495830394328
+    },
+    {
+      "tensor": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "1982ce95d64565766cd9ce70ff36858e10f21cb1878baabac360d51953001fc3",
+      "relative_l2": 0.11136661469936371,
+      "conversion_and_verification_s": 1.7804220421239734
+    },
+    {
+      "tensor": "single_transformer_blocks.1.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "264f2653db7e4a6290ef4a82fa5de6688a0e1250b24df95e7e5c82d8662b8134",
+      "relative_l2": 0.10911132395267487,
+      "conversion_and_verification_s": 0.6722900830209255
+    },
+    {
+      "tensor": "single_transformer_blocks.1.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "ab67b7186ce8cc1e83194b487d18138586db61cd78ed0965a60181394bf1de25",
+      "relative_l2": 0.11040011793375015,
+      "conversion_and_verification_s": 1.5718288330826908
+    },
+    {
+      "tensor": "single_transformer_blocks.10.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "b2ee64ba69d27984c2fc8d0ba28987f90956d6c4c030aa420dc21a9aad5b716b",
+      "relative_l2": 0.10960527509450912,
+      "conversion_and_verification_s": 0.7003476249519736
+    },
+    {
+      "tensor": "single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "818909b4844791784cf4db54e232fb6f86bf353f9cafcc3005ba89687474646e",
+      "relative_l2": 0.11355996876955032,
+      "conversion_and_verification_s": 1.5382674580905586
+    },
+    {
+      "tensor": "single_transformer_blocks.11.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "7ef5b305c25e977a1d8c719556b0ac5341983ef2554d3d50a0184e51d8c66f81",
+      "relative_l2": 0.10964741557836533,
+      "conversion_and_verification_s": 0.9468809578102082
+    },
+    {
+      "tensor": "single_transformer_blocks.11.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "b025a457c9f0e8512d970541bb259d5fd8e24d7a552e8c4c89bfee035ede4fe4",
+      "relative_l2": 0.11536978930234909,
+      "conversion_and_verification_s": 1.6145959999412298
+    },
+    {
+      "tensor": "single_transformer_blocks.12.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "ca8a6f5f64b75c3a15f8261c2b1f52089298ef1f0477ef600ac776c2abe52f20",
+      "relative_l2": 0.1096038669347763,
+      "conversion_and_verification_s": 0.7087301248684525
+    },
+    {
+      "tensor": "single_transformer_blocks.12.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "cc741a8e72ed5c2796afe15fa21cac1d0cda55e1c3c8c5728e51a1655a8dfbf8",
+      "relative_l2": 0.11408862471580505,
+      "conversion_and_verification_s": 1.603675042046234
+    },
+    {
+      "tensor": "single_transformer_blocks.13.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "d7ffb212a90497d887e4eaab3e3eda11c98be00b11be6fc2b9a24d809b4882de",
+      "relative_l2": 0.10984485596418381,
+      "conversion_and_verification_s": 0.7299414579756558
+    },
+    {
+      "tensor": "single_transformer_blocks.13.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "921610c8bce5d03818048e7e3a2315e722bd57ff7791342173f8bbb4fe348d7a",
+      "relative_l2": 0.11185452342033386,
+      "conversion_and_verification_s": 1.6386790410615504
+    },
+    {
+      "tensor": "single_transformer_blocks.14.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "8d558123d36bcc5084a248b966252ba6605630bae651558831f59e165661ed6b",
+      "relative_l2": 0.11072106659412384,
+      "conversion_and_verification_s": 0.6892840000800788
+    },
+    {
+      "tensor": "single_transformer_blocks.14.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "18e2ec6e5363bc84467fcd579dc0c22feeb42c5f39e772c51358c8f3498e6aa3",
+      "relative_l2": 0.11314067989587784,
+      "conversion_and_verification_s": 1.5638128751888871
+    },
+    {
+      "tensor": "single_transformer_blocks.15.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "ec7a10480609a415c6e6d71cf405b1b8ba8d7beae6cebfcfa55f514492fda213",
+      "relative_l2": 0.11067208647727966,
+      "conversion_and_verification_s": 0.6803615000098944
+    },
+    {
+      "tensor": "single_transformer_blocks.15.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "c1c9d5b11690e0acb99f2e4dfe04be3f950c1710e4998fc2c0e5de707e9bec75",
+      "relative_l2": 0.1161438599228859,
+      "conversion_and_verification_s": 1.5934888331685215
+    },
+    {
+      "tensor": "single_transformer_blocks.16.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "880123d4aa07c67572a2bb9cfbd3457ce54bf89aec73a3f3903a04a6a161af44",
+      "relative_l2": 0.11149362474679947,
+      "conversion_and_verification_s": 0.7201234160456806
+    },
+    {
+      "tensor": "single_transformer_blocks.16.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "464039d24285907490d91a66cbef24f22d0b4c3231fffce7050135fb73ad1117",
+      "relative_l2": 0.1172948107123375,
+      "conversion_and_verification_s": 1.7265932909213006
+    },
+    {
+      "tensor": "single_transformer_blocks.17.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "371a4b2f78dafc8e86a26f0f4d9306de99d29b703821bda1068870b03e1a471b",
+      "relative_l2": 0.11150017380714417,
+      "conversion_and_verification_s": 0.6892992078792304
+    },
+    {
+      "tensor": "single_transformer_blocks.17.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "179c75c998e87a3cf29c351edaa2f2e56ae54b4a6fbb6e865e45816ba2bc4532",
+      "relative_l2": 0.12434704601764679,
+      "conversion_and_verification_s": 1.6741632919292897
+    },
+    {
+      "tensor": "single_transformer_blocks.18.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "55221b271dbf3ba9d288318bfe11d85a3fac4dc694d3d89e33aa37093e65baec",
+      "relative_l2": 0.11202211678028107,
+      "conversion_and_verification_s": 0.7217209578957409
+    },
+    {
+      "tensor": "single_transformer_blocks.18.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "3d54e09290e642b8b6d9c5b6c549741f520ca38ab0d20042bac86b995a9c0637",
+      "relative_l2": 0.12991459667682648,
+      "conversion_and_verification_s": 1.6069400408305228
+    },
+    {
+      "tensor": "single_transformer_blocks.19.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "7aee0e7744f0eadc35ad90ded3fdb690754de41e51da0afec2bfd0e88900b276",
+      "relative_l2": 0.11489856988191605,
+      "conversion_and_verification_s": 0.7141372920013964
+    },
+    {
+      "tensor": "single_transformer_blocks.19.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "759717cef8487dc508120913cb1fe0f83c1274fd65e521cc1af7f63e38f4bbae",
+      "relative_l2": 0.16071052849292755,
+      "conversion_and_verification_s": 1.5937479168642312
+    },
+    {
+      "tensor": "single_transformer_blocks.2.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "94e8a166a9b4f6b003ea63dac359eda628d00cadc3b5eb7f44f0e3f89a0ac15c",
+      "relative_l2": 0.10944560170173645,
+      "conversion_and_verification_s": 0.9352323331404477
+    },
+    {
+      "tensor": "single_transformer_blocks.2.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "1a194077bcca447da1d901452a4872e8a75f82fe7dcf9587c3f4a168f1ec00d9",
+      "relative_l2": 0.11054618656635284,
+      "conversion_and_verification_s": 1.561017874861136
+    },
+    {
+      "tensor": "single_transformer_blocks.3.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "5abbb6faac4ce023ab934e21a362224689b7bc43e21f041248d8e849d55ff5e0",
+      "relative_l2": 0.10981202125549316,
+      "conversion_and_verification_s": 0.7604158341418952
+    },
+    {
+      "tensor": "single_transformer_blocks.3.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "2f5bdc06132e65a74687722010eb5ab6d0b180c63d2ff008c114a3275459e33a",
+      "relative_l2": 0.11114237457513809,
+      "conversion_and_verification_s": 1.5378983751870692
+    },
+    {
+      "tensor": "single_transformer_blocks.4.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "bd1e0a224a09a8153c5f1acb6199b8fe95ba0cba8c3173573c1a428bb1ed9e5e",
+      "relative_l2": 0.11044721305370331,
+      "conversion_and_verification_s": 0.7146977921947837
+    },
+    {
+      "tensor": "single_transformer_blocks.4.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "8ae8e7fa236f0bc0830888c5a33b0c83095dc172ef90dba51c00255e03644e59",
+      "relative_l2": 0.11086614429950714,
+      "conversion_and_verification_s": 1.6524811249691993
+    },
+    {
+      "tensor": "single_transformer_blocks.5.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "4d2c3227eb3dd95ca33e45bb997276a56c8ca4277229a7962ea5ca2294a5c5f3",
+      "relative_l2": 0.11194954812526703,
+      "conversion_and_verification_s": 0.71611262508668
+    },
+    {
+      "tensor": "single_transformer_blocks.5.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "3a88b6622d012dd227a3c1795781a6539e9dca392f375d396493235b07878b01",
+      "relative_l2": 0.1118217259645462,
+      "conversion_and_verification_s": 1.606704792007804
+    },
+    {
+      "tensor": "single_transformer_blocks.6.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "a4687f380160cd05bbdc150ee98fc2021a9b9727a8ec0c8818b35ba7199656ca",
+      "relative_l2": 0.10678337514400482,
+      "conversion_and_verification_s": 0.7106327498331666
+    },
+    {
+      "tensor": "single_transformer_blocks.6.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "b3fc41f70da1a826d257bc62b14dcb961151185276be2ac4f9c0502e01f19ffc",
+      "relative_l2": 0.11327537149190903,
+      "conversion_and_verification_s": 1.557933083968237
+    },
+    {
+      "tensor": "single_transformer_blocks.7.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "74b4d86961d7fb9fd91e53a2599c9756a06b05b23cc111d6f3f1eba94c73e244",
+      "relative_l2": 0.10787103325128555,
+      "conversion_and_verification_s": 0.6972019579261541
+    },
+    {
+      "tensor": "single_transformer_blocks.7.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "218d21ec91def00b7d9e3173af81cd1cfb0696485b712c885034818c55a0d93f",
+      "relative_l2": 0.11379744112491608,
+      "conversion_and_verification_s": 1.636840415885672
+    },
+    {
+      "tensor": "single_transformer_blocks.8.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "fd2ef367af659b3b35e9e39ac7a78fe9788fb754dcd43433d0795213a17a1898",
+      "relative_l2": 0.10881658643484116,
+      "conversion_and_verification_s": 0.7059565421659499
+    },
+    {
+      "tensor": "single_transformer_blocks.8.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "bb8af1f53a54488f06673a9cdaa497034a105a9760975773c1c3b4d48a0437c5",
+      "relative_l2": 0.11280917376279831,
+      "conversion_and_verification_s": 1.6242532078176737
+    },
+    {
+      "tensor": "single_transformer_blocks.9.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "bits": 4,
+      "bf16_bytes": 75497472,
+      "packed_payload_bytes": 20054016,
+      "artifact_bytes": 20054782,
+      "artifact_sha256": "312d575177dea8fcf14f212b43338d1e625242d996d730a77c7949bb0e09fdcd",
+      "relative_l2": 0.10969850420951843,
+      "conversion_and_verification_s": 0.7018148750066757
+    },
+    {
+      "tensor": "single_transformer_blocks.9.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 169869312,
+      "packed_payload_bytes": 45121536,
+      "artifact_bytes": 45122302,
+      "artifact_sha256": "bcbf0989dd1cd7fe88f1143e0fc6952d6ab9355cc09a041c75c9b8c9c02c1e96",
+      "relative_l2": 0.11406967788934708,
+      "conversion_and_verification_s": 1.5717222499661148
+    },
+    {
+      "tensor": "time_guidance_embed.timestep_embedder.linear_1.weight",
+      "shape": [
+        3072,
+        256
+      ],
+      "bits": 4,
+      "bf16_bytes": 1572864,
+      "packed_payload_bytes": 417792,
+      "artifact_bytes": 418558,
+      "artifact_sha256": "6e7fe05fd400a1729143ab84ac2f0afa2beb9de7fc6826e84e7b96b2ea3c0b29",
+      "relative_l2": 0.11924897134304047,
+      "conversion_and_verification_s": 0.015856374986469746
+    },
+    {
+      "tensor": "time_guidance_embed.timestep_embedder.linear_2.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "8fde3929ab41e269ec6da0bf29d433654d83be2f0059ec29cf93514bb09bb962",
+      "relative_l2": 0.15197956562042236,
+      "conversion_and_verification_s": 0.1654105419293046
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "c4e32fc958b087b19b4753768438f0b6c796bef07b869063f00277df01789766",
+      "relative_l2": 0.10719016194343567,
+      "conversion_and_verification_s": 0.17206766712479293
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "e0281c9583b6bed181bba9216109e4448b50b784844d4537c09faeddcd56ac04",
+      "relative_l2": 0.10580896586179733,
+      "conversion_and_verification_s": 0.17270645801909268
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "a029088c1c7d822ce52c2e1214040e801d400dba7c28bd386f1e347849a8c24e",
+      "relative_l2": 0.10499531775712967,
+      "conversion_and_verification_s": 0.17191124986857176
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "1eb719d94f8c1a071afb2b9f0c8f63032d1416f28908bf62ff617f38442196dc",
+      "relative_l2": 0.10004641115665436,
+      "conversion_and_verification_s": 0.1730198748409748
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "de04e4906e4cb6eb3696f67d643dc7bcdafff6917023d9fb5018fc450a73fc0b",
+      "relative_l2": 0.12554670870304108,
+      "conversion_and_verification_s": 0.17133254185318947
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "d86b6b52aacd12c126cf42f342c99abfef2559dca90efcb4932c330f6808347b",
+      "relative_l2": 0.10264957696199417,
+      "conversion_and_verification_s": 0.17366483295336366
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "8869e938ced5b2ed1995a9e3017c5b98bea3ad2cb714747a0cc7e7360026a86b",
+      "relative_l2": 0.11730575561523438,
+      "conversion_and_verification_s": 0.1722073331475258
+    },
+    {
+      "tensor": "transformer_blocks.0.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "7995226db8801a9d2ca6422a9cd4d2060d015d8275c7590a3dd61921ba6cf8f0",
+      "relative_l2": 0.12273833155632019,
+      "conversion_and_verification_s": 0.19607600010931492
+    },
+    {
+      "tensor": "transformer_blocks.0.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "dd9d5717abd94506f97169215e05ee64d03475e39feca8eb324481a297cb5697",
+      "relative_l2": 0.11455783247947693,
+      "conversion_and_verification_s": 1.040674583055079
+    },
+    {
+      "tensor": "transformer_blocks.0.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "c7e6ecdca6e43807067a4d305147fbd8786b6e10f04d0caf94527872fccde676",
+      "relative_l2": 0.1315806359052658,
+      "conversion_and_verification_s": 0.5382922501303256
+    },
+    {
+      "tensor": "transformer_blocks.0.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "77e530c10307e1740c9f19748e3bdffc99f2278d1c11e7c3c3ebfec10d3d71b6",
+      "relative_l2": 0.10558807104825974,
+      "conversion_and_verification_s": 1.0481659590732306
+    },
+    {
+      "tensor": "transformer_blocks.0.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "5db1678a70e153a61f2a6de42850921a2d6a612d687c72e8904e171fcaeb5e4a",
+      "relative_l2": 0.10462279617786407,
+      "conversion_and_verification_s": 0.5345884999260306
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "6c61ea4aa7971f3ad7ad14591ef194da46d40410037a86f57e8db74acfdddf30",
+      "relative_l2": 0.10527177900075912,
+      "conversion_and_verification_s": 0.1673264999408275
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "421efaf6b361cebf0dcd5ab3bec0e2df974af5c44453e15dd902c2a9c90a485a",
+      "relative_l2": 0.10564085841178894,
+      "conversion_and_verification_s": 0.1779078331310302
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "444974591ccfff89348fb541b417b8ef5ea8c450ff68c2b43fddfb1b1b75720e",
+      "relative_l2": 0.10509070754051208,
+      "conversion_and_verification_s": 0.16705870907753706
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "29b1ae21394f331c6f43aa97e705d22774b275f12ae97f1b1d1d415653acdbd5",
+      "relative_l2": 0.10122837871313095,
+      "conversion_and_verification_s": 0.17117537511512637
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "bf6157cb6bebee1fd306d53c137de000a9f185da08859c3bcc9018f5edd8d040",
+      "relative_l2": 0.11212825775146484,
+      "conversion_and_verification_s": 0.16917624999769032
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "b786590b48e5f47c5b5856d0b8ff45faa1fb468db62a05e8441b6415f39cf956",
+      "relative_l2": 0.10327278822660446,
+      "conversion_and_verification_s": 0.17040816717781126
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "e80dbb1f22c9b2a8475905e2e0d1d8ced536137037d32bd48101c20951ba8739",
+      "relative_l2": 0.11221518367528915,
+      "conversion_and_verification_s": 0.1676147081889212
+    },
+    {
+      "tensor": "transformer_blocks.1.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "cae71820c755dcac0beb14472d11f75e644238f825f268579ed313f532447003",
+      "relative_l2": 0.11154883354902267,
+      "conversion_and_verification_s": 0.17026929184794426
+    },
+    {
+      "tensor": "transformer_blocks.1.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "154a467b379bafe9eedcca08687dc017b422fa2db5496a21201384d8c3c31b34",
+      "relative_l2": 0.11022647470235825,
+      "conversion_and_verification_s": 1.0350996658671647
+    },
+    {
+      "tensor": "transformer_blocks.1.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "399583cd25e402999e6b9a94e43e263666a48127902acb57c4f1c09761d4136c",
+      "relative_l2": 0.11169611662626266,
+      "conversion_and_verification_s": 0.5664672919083387
+    },
+    {
+      "tensor": "transformer_blocks.1.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "7fc304fee13a206324892edcf33409e83e245f2c3492303a26cf8c56e8fe2260",
+      "relative_l2": 0.10571758449077606,
+      "conversion_and_verification_s": 1.0873175000306219
+    },
+    {
+      "tensor": "transformer_blocks.1.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "625a5ecfe379f8f05f0e6218612dec2dc58fa87278c65b690fc95165fb654786",
+      "relative_l2": 0.1051362082362175,
+      "conversion_and_verification_s": 0.5187929160892963
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "7e7cb58f23b078dfe7b0e546438ce5ff3a2bcba986c04f2a3711e324e3d36b20",
+      "relative_l2": 0.10584413260221481,
+      "conversion_and_verification_s": 0.1725930420216173
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "8a04577802690cb3dc1d19f4fc14e6a292011c48a364b6510c69bb99fb7ad042",
+      "relative_l2": 0.10570183396339417,
+      "conversion_and_verification_s": 0.16938579198904335
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "3afe5b9742f3267959a44664073fa1dd4cf2d085fb91d27708641c983aba6fe6",
+      "relative_l2": 0.10523618012666702,
+      "conversion_and_verification_s": 0.16885733301751316
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "ee6d69c2a4125149e16e423d6519ef60080d35c5801fd4924597e132a27b2c7b",
+      "relative_l2": 0.10242955386638641,
+      "conversion_and_verification_s": 0.16706087486818433
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "14ecc6a829c75117b86f6839ca05529224f38539694005197d4e2ab180f4d6f6",
+      "relative_l2": 0.11310015618801117,
+      "conversion_and_verification_s": 0.1668689160142094
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "b6cac3bffbc8eaef9639e4ddbaa883e54ec4d94f1bc702d2369d219f260c4171",
+      "relative_l2": 0.10401715338230133,
+      "conversion_and_verification_s": 0.169923541136086
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "b1bef9c6eaf5709049adebf2b81022efc413fc3e1bfe289f57e1f8f612566477",
+      "relative_l2": 0.1102849692106247,
+      "conversion_and_verification_s": 0.1709532500244677
+    },
+    {
+      "tensor": "transformer_blocks.2.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "ae080d6cfb2de9002759c8b82e77f5348d25c167ae336f200962e98c6ce9517a",
+      "relative_l2": 0.1133311539888382,
+      "conversion_and_verification_s": 0.1686025420203805
+    },
+    {
+      "tensor": "transformer_blocks.2.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "e69ded58da43a3e9bf6f56a0cf558baf33800ce8ed6853b81ed3388ff1b35769",
+      "relative_l2": 0.10997433215379715,
+      "conversion_and_verification_s": 1.0536601659841835
+    },
+    {
+      "tensor": "transformer_blocks.2.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "cb843489b913254e0267c431047b05f4cdd6f2146b6f565c4e3b00c04187fc4e",
+      "relative_l2": 0.11074855178594589,
+      "conversion_and_verification_s": 0.5386753329075873
+    },
+    {
+      "tensor": "transformer_blocks.2.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "b4255de5a986d2e72c3a4280951344009f5bf58cceb750e022a19a3241d8ceff",
+      "relative_l2": 0.1058296412229538,
+      "conversion_and_verification_s": 1.0865456250030547
+    },
+    {
+      "tensor": "transformer_blocks.2.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "82aacb29e19d0222877f1420996d7c3c8a717a716d2cbbf1ccad1ca20810cf6c",
+      "relative_l2": 0.10565803200006485,
+      "conversion_and_verification_s": 0.5131832498591393
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "e01d22a7518b47ebf1ec43de7e6a3bb87d589b63985bfc069a3912cb093894ca",
+      "relative_l2": 0.10693904012441635,
+      "conversion_and_verification_s": 0.17367045814171433
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "f68d7995d3d7f3f030f5dd51bd2649789633525dac6cc08631301246ced039cb",
+      "relative_l2": 0.10583577305078506,
+      "conversion_and_verification_s": 0.1676691249012947
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "b3c9ef44ea7b64e2d37ab54f227123503b8f8864699c7962732ffe7c8a048403",
+      "relative_l2": 0.10565053671598434,
+      "conversion_and_verification_s": 0.1689872918650508
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "7d3f5e5d5d3ca9338f46c223a0f2f1c0ce04d7ab86b2ab9ce83794cf39cf9f3c",
+      "relative_l2": 0.10255547612905502,
+      "conversion_and_verification_s": 0.17078520799987018
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "3b5726061517a7d619e394a58531497b25a091c699933f35299d5e64dd30f990",
+      "relative_l2": 0.1144087165594101,
+      "conversion_and_verification_s": 0.17124191601760685
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "1777714d26b308e239535e94105b5635780d533c6f8ff568fbdc52d461a62614",
+      "relative_l2": 0.10470099002122879,
+      "conversion_and_verification_s": 0.16915133292786777
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "6c918c0774996d7f3c0da42114d06ea7de834fd8b501abbe34e4717d30a33d1b",
+      "relative_l2": 0.1095496118068695,
+      "conversion_and_verification_s": 0.16869104118086398
+    },
+    {
+      "tensor": "transformer_blocks.3.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "8dd034eaf265b4d747dbbae83d0d4985acdb8225a1d62a66549fc99c988b4d53",
+      "relative_l2": 0.12010989338159561,
+      "conversion_and_verification_s": 0.16863054200075567
+    },
+    {
+      "tensor": "transformer_blocks.3.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "8c930daaf7731864ca7b46d6414b7020538f4487ac9cf5da627abde86ba3f6d9",
+      "relative_l2": 0.10998213291168213,
+      "conversion_and_verification_s": 1.1206779589410871
+    },
+    {
+      "tensor": "transformer_blocks.3.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "f7c1c4e1590c20bddb7e4f3487e2a7bd0a99831b6abc478f8ce28cee8d40897c",
+      "relative_l2": 0.11057861149311066,
+      "conversion_and_verification_s": 0.6053523749578744
+    },
+    {
+      "tensor": "transformer_blocks.3.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "c55a91f8b92ed87a138c5fbca7e8b497846583fb843786d7cf93963aef2471ac",
+      "relative_l2": 0.10591710358858109,
+      "conversion_and_verification_s": 1.0667657919693738
+    },
+    {
+      "tensor": "transformer_blocks.3.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "ff8cc169f19a092503b27a43a1f32eac4098607383ce1f9b7e39b75970c08202",
+      "relative_l2": 0.10601476579904556,
+      "conversion_and_verification_s": 0.5372951249592006
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "ca27c8666fb25ebd8a86813599f5188ec0f582bd6849037b3a8f17cfbecb7eb4",
+      "relative_l2": 0.10819686949253082,
+      "conversion_and_verification_s": 0.18303858302533627
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "0518d5a9c99e280ece4695a0a1358e900a7489bfe5b55bfd423a954b8230a252",
+      "relative_l2": 0.10640072822570801,
+      "conversion_and_verification_s": 0.16984587511979043
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "db61ac61bf02b38e7399ef4ac9d4288c96dae64561b88c3dd8624445299b6c21",
+      "relative_l2": 0.10684985667467117,
+      "conversion_and_verification_s": 0.1687389169819653
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "01d7330d8a38d0644afbf6c16e779c1ad898d9011fc89b0c16298a6cb162bc99",
+      "relative_l2": 0.10365170240402222,
+      "conversion_and_verification_s": 0.16867845808155835
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "f9452a1c760241e65c6bd08368868260af394bd8f72937764bd0c8a87b523cf0",
+      "relative_l2": 0.11488914489746094,
+      "conversion_and_verification_s": 0.17000237479805946
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "7868745990b89c5f13b134d3385ce073e7dfbea78976483da125ad754a6d177b",
+      "relative_l2": 0.10455905646085739,
+      "conversion_and_verification_s": 0.16995916585437953
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "ab10637675f2cfa7a92f898eade7aa2ce0b79043ae5bb35b01f58c2227971e50",
+      "relative_l2": 0.11066132038831711,
+      "conversion_and_verification_s": 0.16869050008244812
+    },
+    {
+      "tensor": "transformer_blocks.4.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 18874368,
+      "packed_payload_bytes": 5013504,
+      "artifact_bytes": 5014270,
+      "artifact_sha256": "cad83f1ccb34919f139eee97f3a6ae18c24019536a67cefe8fcc2248306c5141",
+      "relative_l2": 0.11461417376995087,
+      "conversion_and_verification_s": 0.16541124996729195
+    },
+    {
+      "tensor": "transformer_blocks.4.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "d47186a83592f2ee519ca337d06832fa7d51b1ea6257bd767ef2597998b65a57",
+      "relative_l2": 0.11023543030023575,
+      "conversion_and_verification_s": 1.179856332950294
+    },
+    {
+      "tensor": "transformer_blocks.4.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "41416cd905813fe79b821682cac6f2955bfbdcc3fac2779d0c4fe385056fff4d",
+      "relative_l2": 0.10919298976659775,
+      "conversion_and_verification_s": 0.63300179108046
+    },
+    {
+      "tensor": "transformer_blocks.4.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "bits": 4,
+      "bf16_bytes": 113246208,
+      "packed_payload_bytes": 30081024,
+      "artifact_bytes": 30081790,
+      "artifact_sha256": "b8e32349c47e0334bb7ad70a2d01c2e0116c721299b08697ef189acb91098389",
+      "relative_l2": 0.1066426932811737,
+      "conversion_and_verification_s": 1.0600170001853257
+    },
+    {
+      "tensor": "transformer_blocks.4.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "bits": 4,
+      "bf16_bytes": 56623104,
+      "packed_payload_bytes": 15040512,
+      "artifact_bytes": 15041278,
+      "artifact_sha256": "31aed5acc91133a75db26417f89315b36ebc38c8d65c1ea2579b51f1cba3f14f",
+      "relative_l2": 0.10657194256782532,
+      "conversion_and_verification_s": 0.5308263339102268
+    },
+    {
+      "tensor": "x_embedder.weight",
+      "shape": [
+        3072,
+        128
+      ],
+      "bits": 4,
+      "bf16_bytes": 786432,
+      "packed_payload_bytes": 208896,
+      "artifact_bytes": 209662,
+      "artifact_sha256": "dac06176e83dd4b6782201d841b0843909a26dbd51d268296cf5d3ecfee71e26",
+      "relative_l2": 0.08993782848119736,
+      "conversion_and_verification_s": 0.007711292011663318
+    }
+  ],
+  "unchanged_tensors": [
+    "single_transformer_blocks.0.attn.norm_k.weight",
+    "single_transformer_blocks.0.attn.norm_q.weight",
+    "single_transformer_blocks.1.attn.norm_k.weight",
+    "single_transformer_blocks.1.attn.norm_q.weight",
+    "single_transformer_blocks.10.attn.norm_k.weight",
+    "single_transformer_blocks.10.attn.norm_q.weight",
+    "single_transformer_blocks.11.attn.norm_k.weight",
+    "single_transformer_blocks.11.attn.norm_q.weight",
+    "single_transformer_blocks.12.attn.norm_k.weight",
+    "single_transformer_blocks.12.attn.norm_q.weight",
+    "single_transformer_blocks.13.attn.norm_k.weight",
+    "single_transformer_blocks.13.attn.norm_q.weight",
+    "single_transformer_blocks.14.attn.norm_k.weight",
+    "single_transformer_blocks.14.attn.norm_q.weight",
+    "single_transformer_blocks.15.attn.norm_k.weight",
+    "single_transformer_blocks.15.attn.norm_q.weight",
+    "single_transformer_blocks.16.attn.norm_k.weight",
+    "single_transformer_blocks.16.attn.norm_q.weight",
+    "single_transformer_blocks.17.attn.norm_k.weight",
+    "single_transformer_blocks.17.attn.norm_q.weight",
+    "single_transformer_blocks.18.attn.norm_k.weight",
+    "single_transformer_blocks.18.attn.norm_q.weight",
+    "single_transformer_blocks.19.attn.norm_k.weight",
+    "single_transformer_blocks.19.attn.norm_q.weight",
+    "single_transformer_blocks.2.attn.norm_k.weight",
+    "single_transformer_blocks.2.attn.norm_q.weight",
+    "single_transformer_blocks.3.attn.norm_k.weight",
+    "single_transformer_blocks.3.attn.norm_q.weight",
+    "single_transformer_blocks.4.attn.norm_k.weight",
+    "single_transformer_blocks.4.attn.norm_q.weight",
+    "single_transformer_blocks.5.attn.norm_k.weight",
+    "single_transformer_blocks.5.attn.norm_q.weight",
+    "single_transformer_blocks.6.attn.norm_k.weight",
+    "single_transformer_blocks.6.attn.norm_q.weight",
+    "single_transformer_blocks.7.attn.norm_k.weight",
+    "single_transformer_blocks.7.attn.norm_q.weight",
+    "single_transformer_blocks.8.attn.norm_k.weight",
+    "single_transformer_blocks.8.attn.norm_q.weight",
+    "single_transformer_blocks.9.attn.norm_k.weight",
+    "single_transformer_blocks.9.attn.norm_q.weight",
+    "transformer_blocks.0.attn.norm_added_k.weight",
+    "transformer_blocks.0.attn.norm_added_q.weight",
+    "transformer_blocks.0.attn.norm_k.weight",
+    "transformer_blocks.0.attn.norm_q.weight",
+    "transformer_blocks.1.attn.norm_added_k.weight",
+    "transformer_blocks.1.attn.norm_added_q.weight",
+    "transformer_blocks.1.attn.norm_k.weight",
+    "transformer_blocks.1.attn.norm_q.weight",
+    "transformer_blocks.2.attn.norm_added_k.weight",
+    "transformer_blocks.2.attn.norm_added_q.weight",
+    "transformer_blocks.2.attn.norm_k.weight",
+    "transformer_blocks.2.attn.norm_q.weight",
+    "transformer_blocks.3.attn.norm_added_k.weight",
+    "transformer_blocks.3.attn.norm_added_q.weight",
+    "transformer_blocks.3.attn.norm_k.weight",
+    "transformer_blocks.3.attn.norm_q.weight",
+    "transformer_blocks.4.attn.norm_added_k.weight",
+    "transformer_blocks.4.attn.norm_added_q.weight",
+    "transformer_blocks.4.attn.norm_k.weight",
+    "transformer_blocks.4.attn.norm_q.weight"
+  ],
+  "source_bytes": 7751109744,
+  "unchanged_bytes": 21768,
+  "unchanged_sha256": "6e57ecd7326ea5b30bbfd1f42a325bf07017f669a076107decc77e632fe40581",
+  "replacement_bundle_weight_bytes": 2058984238,
+  "storage_reduction": 0.734362651800431,
+  "scope": "weight file storage only; no compressed runtime or quality claim"
+}

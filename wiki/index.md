@@ -11,16 +11,22 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 
 ## Start here
 
-- **[Hot: current state](hot.md)**: Current project state, active campaign and blockers. Read first each session.
+- **[Hot: current state](hot.md)**: Semester focus is ShiftAdd allocation, existing-engine packed kernels and measured memory/latency/energy; Nunchaku feasibility remains open.
 - **[Wiki schema](SCHEMA.md)**: Rules for maintaining this wiki. Read before any wiki edit.
 - **[Project overview (condensed from the proposal)](project/overview.md)**: The research project as proposed — hypothesis, planner objective, components, workloads, targets, RQs, evaluation rules, milestones.
-- **[Milestones](project/milestones.md)**: Milestone status per week. Revised schedule per D-010 (compiled klein pipeline on CUDA/Metal/WebGPU + planner); optimistic, with roll-over allowed past Dec 11.
+- **[Milestones](project/milestones.md)**: Semester completion plan prioritizes ShiftAdd experiments and existing-engine kernels; prior TVM milestones remain historical.
 - **[Experiment registry](experiments.md)**: Registry of experiments — one row each, linking to the full record and the run directories. Details never live here.
 - **[Open questions](open-questions.md)**: Unresolved contradictions and open questions, each with both sides cited. Resolved items move to the Archive section.
-- **[Log](log.md)**: Chronological log of experiments, decisions, ingests and lint passes (newest first, one-liners).
-- **[Log archive: September 2026](log-2026-09.md)** `archived`: Log archive for September 2026 (moved from log.md to keep it within budget).
-- **[October 2026 log](log-2026-10.md)**: October 2026 experiment recovery and analysis updates.
-- **[November 2026 log](log-2026-11.md)**: November 2026 experiment and analysis updates.
+- **[Log](log.md)**: Research log index; dated entries are preserved in bounded monthly archives.
+- **[Log — 2026-09-part2](log-2026-09-part2.md)** `archived`: Archived research log for 2026-09-part2.
+- **[Log — 2026-09](log-2026-09.md)** `archived`: Archived research log for 2026-09.
+- **[Log — 2026-10-part2](log-2026-10-part2.md)** `archived`: Archived research log for 2026-10-part2.
+- **[Log — 2026-10-part3](log-2026-10-part3.md)** `archived`: Archived research log for 2026-10-part3.
+- **[Log — 2026-10-part4](log-2026-10-part4.md)** `archived`: Archived research log for 2026-10-part4.
+- **[Log — 2026-10](log-2026-10.md)** `archived`: Archived research log for 2026-10.
+- **[Log — 2026-11-part2](log-2026-11-part2.md)** `archived`: Archived research log for 2026-11-part2.
+- **[Log — 2026-11-part3](log-2026-11-part3.md)** `archived`: Archived research log for 2026-11-part3.
+- **[Log — 2026-11](log-2026-11.md)** `archived`: Archived research log for 2026-11.
 
 ## Project
 
@@ -85,6 +91,8 @@ Generated from each page's `summary` field; don't edit by hand. Rules: [SCHEMA.m
 - **[MLC: compiler and runtime precedent](papers/mlc-compiler-precedent.md)** `ingested`: MLC-LLM and Web Stable Diffusion documentation — compilation, tuning history and memory-planning precedents; the proposed joint diffusion planner remains an untested contribution.
 - **[Reading list](papers/reading-list.md)** `unread`: References from the proposal and related work to read. A paper gets its own page only when it is ingested.
 - **[SemanticDialect](papers/semanticdialect.md)** `ingested`: SemanticDialect — 4-bit mixed-format (per-block "dialect") PTQ for video DiTs with activation residual decomposition; speedups are projected, not measured, and need hardware support.
+- **[ShiftAddLLM](papers/shiftaddllm.md)** `ingested`: ShiftAddLLM — post-training reparameterization of LLM linear weights into binary planes with power-of-two scales, evaluated by LUT-based shift-and-add kernels; weight-only, activations stay FP16.
+- **[ShiftAddQwen](papers/shiftaddqwen.md)** `ingested`: ShiftAddQwen — ShiftAddLLM's binary-plane format refitted for Qwen3.5-9B with an output-aware GPTQ fit, measured mixed precision and scale distillation, run through a LUT-free patched llama.cpp (CUDA, CPU).
 - **[SnapGen++](papers/snapgen-plus-plus.md)** `ingested`: SnapGen++ — compact three-stage DiT with sparse attention and few-step distillation, exported via Core ML to iPhones; a phone-scale DiT reference, not a FLUX.2 klein optimization.
 - **[SVDQuant and Nunchaku](papers/svdquant.md)** `ingested`: SVDQuant — low-rank outlier handling enables low-bit diffusion, with Nunchaku kernel fusion needed to control overhead; target support requires verification.
 - **[TeaCache](papers/teacache.md)** `ingested`: TeaCache — adaptive residual reuse from timestep-modulated input differences; polynomial calibration and threshold selection are part of its integration cost.

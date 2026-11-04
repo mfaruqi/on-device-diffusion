@@ -1,0 +1,46 @@
+{
+  "verified_utc": "2026-10-12T02:39:15.970583+00:00",
+  "project": "mfaruqi-purdue-university/on-device-diffusion",
+  "checks": "Terminal state, Nunchaku identity and precision, metrics, generation history, images/tables and evidence artifact files",
+  "runs": [
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__attempt__20261011-113031",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-nunchaku-flux-klein-001__attempt__20261011-113031",
+      "wandb_id": "a100-nunchaku-flux-klein-001__attempt__20261011-113031",
+      "state": "failed",
+      "generation_rows": 0,
+      "image_count": 0,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-a100-nunchaku-flux-klein-001__attempt__20261011-113031:v0",
+      "source_sha256": {
+        "config.json": "b8afcde06d7ddfcbc0c5c996089f3e69a3a7ad275c356a40dcf8c3e414e42f73",
+        "status.json": "9c59a62f1a5ad6c4c2b8d17ef8c32b3d993c1568c7f8615743f84f9204513445"
+      }
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__attempt__20261011-123802",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-nunchaku-flux-klein-001__attempt__20261011-123802",
+      "wandb_id": "a100-nunchaku-flux-klein-001__attempt__20261011-123802",
+      "state": "finished",
+      "generation_rows": 2,
+      "image_count": 2,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-a100-nunchaku-flux-klein-001__attempt__20261011-123802:v0",
+      "source_sha256": {
+        "config.json": "b8afcde06d7ddfcbc0c5c996089f3e69a3a7ad275c356a40dcf8c3e414e42f73",
+        "status.json": "b8931f56ecddb68760e580cc0fea48826107e74cea2c18b86e1b0918b91636be"
+      }
+    },
+    {
+      "run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "wandb_id": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+      "state": "finished",
+      "generation_rows": 14,
+      "image_count": 2,
+      "artifact": "mfaruqi-purdue-university/on-device-diffusion/run-a100-nunchaku-flux-klein-001__baseline__20261011-124123:v0",
+      "source_sha256": {
+        "config.json": "21dc7e89ad04b809676e4ced4551e822c2e0c0d2a230bf1d2838aff8e21e7211",
+        "status.json": "07b49fa450d303d3cd9cfb9169983fb72c9dbcb24031f52f719b5c6eb2633434"
+      }
+    }
+  ]
+}

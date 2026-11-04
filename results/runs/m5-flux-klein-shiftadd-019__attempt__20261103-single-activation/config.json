@@ -1,0 +1,15 @@
+{
+  "id": "m5-flux-klein-shiftadd-019",
+  "artifacts": "shiftadd/artifacts/upstream-bcq-all-single-attention-001",
+  "output": "shiftadd/runs/upstream-all-single-activation-error-001",
+  "activation_bits": [
+    4,
+    8
+  ],
+  "activation_group_size": 32,
+  "expected_calls": 16,
+  "description": "All 20 single-stream fused projections with A4/A8 inputs versus original captured inputs, separately for BF16 and fixed upstream weights.",
+  "optimizations": {
+    "activation_quantization": "symmetric-grouped-round-dequantize"
+  }
+}

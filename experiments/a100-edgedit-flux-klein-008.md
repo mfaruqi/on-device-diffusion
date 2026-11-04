@@ -29,7 +29,7 @@ Does edge-dit.cpp's `dicache` step cache, at its default parameters, skip or reu
 
 [Run](../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/): [status.json](../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/status.json) `complete`.
 
-- Cache receipt: the engine logged `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4` and `DiCache reused 0/4 steps` once per pass, 2 of 2 passes ([engine.log](../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/engine.log)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
+- Cache receipt: the engine logged `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4` and `DiCache reused 0/4 steps` once per pass, 2 of 2 passes (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/engine.log`)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-008__attempt__20261015-152136/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
 
 | Quantity | First generation | Measured (n = 1) | Reference measured median (min–max) |
 |---|---:|---:|---:|

@@ -29,7 +29,7 @@ Does edge-dit.cpp's `taylorseer` step cache, at its default parameters, skip or 
 
 [Run](../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/): [status.json](../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/status.json) `complete`.
 
-- Cache receipt: the engine logged `cache enabled: mode=TaylorSeer model=flux2-klein granularity=feature matched_sites=1 variants=2 slots=1` and `TaylorSeer reused 0/4 steps` once per pass, 2 of 2 passes ([engine.log](../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/engine.log)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
+- Cache receipt: the engine logged `cache enabled: mode=TaylorSeer model=flux2-klein granularity=feature matched_sites=1 variants=2 slots=1` and `TaylorSeer reused 0/4 steps` once per pass, 2 of 2 passes (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/engine.log`)); [step-cache.json](../results/runs/a100-edgedit-flux-klein-005__attempt__20261015-152052/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The engine still printed 4 steps per pass.
 
 | Quantity | First generation | Measured (n = 1) | Reference measured median (min–max) |
 |---|---:|---:|---:|

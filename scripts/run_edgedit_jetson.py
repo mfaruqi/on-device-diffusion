@@ -236,7 +236,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', required=True, type=Path)
     parser.add_argument('--out-root', default=Path('results/runs'), type=Path)
-    parser.add_argument('--kind', choices=['attempt', 'baseline'], default='baseline')
+    parser.add_argument('--kind', choices=['attempt', 'baseline', 'profile'], default='baseline',
+                        help='profile: directory label only, for a run captured from outside (e.g. under nsys)')
     parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args()
     cfg = json.loads(args.config.read_text())

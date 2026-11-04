@@ -102,3 +102,45 @@ results/runs/**/profile/sequence.csv
 
 # Local W&B run cache (uploads are verified remotely; receipts live next to each output)
 /wandb/
+# Small verified ShiftAdd inventory; model payloads remain local.
+!/output/shiftadd-prep/
+/output/shiftadd-prep/*
+!/output/shiftadd-prep/bundle-integrity-audit-002.json
+
+# Small reproducible plane-storage chart data; rendered images stay local.
+!/output/shiftadd-plane-storage-20261104/
+/output/shiftadd-plane-storage-20261104/*
+!/output/shiftadd-plane-storage-20261104/README.md
+!/output/shiftadd-plane-storage-20261104/data.json
+!/output/shiftadd-plane-storage-20261104/sizes.csv
+!/output/shiftadd-plane-storage-20261104/wandb-verification.json
+
+# Small cited provenance receipts preserved for clean-checkout documentation.
+!/output/m5-followup-20261015/
+/output/m5-followup-20261015/*
+!/output/m5-followup-20261015/README.md
+!/output/m5-followup-20261015/final-tiling-review.json
+!/output/m5-followup-20261015/final-upload-verification.json
+!/output/m5-followup-20261015/review-20261015T1800.json
+!/output/m5-followup-20261015/review-20261015T1900.json
+!/output/mflux-prep/
+/output/mflux-prep/*
+!/output/mflux-prep/state.json
+!/output/mflux-prep/wandb-evidence-verification.json
+!/output/nunchaku-prep/
+/output/nunchaku-prep/*
+!/output/nunchaku-prep/portability/
+/output/nunchaku-prep/portability/*
+!/output/nunchaku-prep/portability/jetson-build-preflight.txt
+!/output/nunchaku-prep/state.json
+!/output/nunchaku-prep/wandb-verification.json
+!/output/roofline/
+/output/roofline/*
+!/output/roofline/wandb-verification.json
+
+**/wandb/
+
+# Local one-off queue launchers; reusable runners and Slurm templates remain tracked.
+/scripts/jetson_movement_queue_20261028.sh
+/scripts/jetson_nunchaku_condreuse_queue_20261102.sh
+/scripts/jetson_nunchaku_queue_20261102.sh

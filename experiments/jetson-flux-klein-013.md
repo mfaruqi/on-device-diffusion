@@ -48,7 +48,7 @@ workloads?” ([proposal overview](../wiki/project/overview.md)).
 
 [Run directory](../results/runs/jetson-flux-klein-013__attempt__20261015-120112/),
 [status](../results/runs/jetson-flux-klein-013__attempt__20261015-120112/status.json) failed,
-16:01:12–16:03:27 UTC, [engine log](../results/runs/jetson-flux-klein-013__attempt__20261015-120112/engine/sdcpp.log),
+16:01:12–16:03:27 UTC, engine log (local-only artifact: `../results/runs/jetson-flux-klein-013__attempt__20261015-120112/engine/sdcpp.log`),
 [callbacks](../results/runs/jetson-flux-klein-013__attempt__20261015-120112/engine/results.jsonl),
 [memguard](../results/runs/jetson-flux-klein-013__attempt__20261015-120112/memguard.json). Power mode 25 W; CUDA 12.6.
 

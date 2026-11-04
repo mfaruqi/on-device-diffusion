@@ -36,7 +36,7 @@ no-cache configuration [a100-edgedit-flux-klein-001](a100-edgedit-flux-klein-001
 
 [status.json](../results/runs/a100-edgedit-flux-klein-009__attempt__20261015-152145/status.json): `failed`,
 `CalledProcessError(1, [ed-sample … --cache_method sencache …])`. First line of
-[engine.log](../results/runs/a100-edgedit-flux-klein-009__attempt__20261015-152145/engine.log):
+engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-009__attempt__20261015-152145/engine.log`):
 
 ```
 --cache sencache requires a calibrated profile: pass --cache-profile <path>, or produce one first with --cache-calibrate <path>

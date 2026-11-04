@@ -35,7 +35,7 @@ encoder), labelled and reported separately from BF16 references. RQ1 baseline in
   - VAE `black-forest-labs/FLUX.2-klein-4B` @ `e7b7dc27f91deacad38e78976d1f2b499d76a294`,
     `vae/diffusion_pytorch_model.safetensors` (BF16; stat `bf16:248`).
   The engine log reports `flux activation dtype: f32` and VRAM parameter buffers of 2346.40 MB (flux), 3555.38 MB
-  (qwen3) and 94.72 MB (VAE) ([engine.log](../results/runs/a100-edgedit-flux-klein-base-001__baseline__20261015-165052/engine.log)).
+  (qwen3) and 94.72 MB (VAE) (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-base-001__baseline__20261015-165052/engine.log`)).
 - **Workload**: 1024×1024, 50 steps, Euler sampler, scheduler `auto` (engine log: `flux2_mu=2.023`), guidance 4.0,
   `cfg_scale` 4.0, seed 0, batch 1, prompt "A cat holding a sign that says hello world". Flash attention on (command-line
   flag only; the engine log does not report it), VAE tiling off, no step cache (`cache mode : original`), four threads.
@@ -110,7 +110,7 @@ complete (runner `153d3ea9…`). First 50024.0 ms (text 490 / denoise 48410 / va
 [`__attempt__20261015-161752`](../results/runs/a100-edgedit-flux-klein-base-001__attempt__20261015-161752/)
 (job 11959986, gilbreth-g009, 20:17:52–20:19:45 UTC, smoke config, runner sha256 `5e6d296a…`): `status.json` `failed`
 with `KeyError('denoise_step_4_ms')`, raised in `summarize_runs` (`scripts/measurement.py`) called from `benchmark()`.
-The engine itself completed both passes: [engine.log](../results/runs/a100-edgedit-flux-klein-base-001__attempt__20261015-161752/engine.log)
+The engine itself completed both passes: engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-base-001__attempt__20261015-161752/engine.log`)
 shows `pass 2/2` and both breakdown lines, and `runs.csv`, `stages.csv`, `load.json` and `output.png` were written
 before the failure (first pass wall 50811.0 ms, denoise 48820 ms; second 48873.0 ms, denoise 48180 ms; load 2.69 s;
 final image hash `dd6b02c1…`, the same as the later runs). No `summary.json` was written and the NVML samples were not

@@ -18,7 +18,7 @@ Can edge-dit.cpp load and run the quantized distilled klein workload with all th
 
 ## Setup
 
-- **Engine build** ([build evidence](../results/runs/jetson-edgedit-build-20261011/)): edge-dit.cpp `97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2`, ggml `f270346d688c7bec7c56bae2ae73343aba6817ad`, built on the device with [jetson_build_edgedit.sh](../scripts/jetson_build_edgedit.sh): Release, `performance` profile, CUDA architecture 87, CUDA compiler NVIDIA 12.6.68, GNU 11.4.0, cuDNN 9.3.0 with cuDNN SDPA, CUDA norm/RoPE/modulation and CUDA graphs ON, sage attention, MPI, NCCL and parallel OFF, benchmark markers ON ([build-config.txt](../results/runs/jetson-edgedit-build-20261011/build-config.txt), [binaries-and-flags.txt](../results/runs/jetson-edgedit-build-20261011/binaries-and-flags.txt)). The build job count was capped at 2 by a cmake wrapper. `ed-cli` SHA256 `271d8fa2…f995528`; the build log ends with `BUILD_OK` ([log](../results/runs/jetson-edgedit-build-20261011/edgedit-build-20261011.log)).
+- **Engine build** ([build evidence](../results/runs/jetson-edgedit-build-20261011/)): edge-dit.cpp `97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2`, ggml `f270346d688c7bec7c56bae2ae73343aba6817ad`, built on the device with [jetson_build_edgedit.sh](../scripts/jetson_build_edgedit.sh): Release, `performance` profile, CUDA architecture 87, CUDA compiler NVIDIA 12.6.68, GNU 11.4.0, cuDNN 9.3.0 with cuDNN SDPA, CUDA norm/RoPE/modulation and CUDA graphs ON, sage attention, MPI, NCCL and parallel OFF, benchmark markers ON ([build-config.txt](../results/runs/jetson-edgedit-build-20261011/build-config.txt), [binaries-and-flags.txt](../results/runs/jetson-edgedit-build-20261011/binaries-and-flags.txt)). The build job count was capped at 2 by a cmake wrapper. `ed-cli` SHA256 `271d8fa2…f995528`; the build log ends with `BUILD_OK` (log (local-only artifact: `../results/runs/jetson-edgedit-build-20261011/edgedit-build-20261011.log`)).
 - **Weights** ([model-sha256.txt](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/model-sha256.txt)): the Jetson GGUF files used with sd.cpp on this device: transformer `flux-2-klein-4b-Q4_0.gguf`, text encoder `Qwen3-4B-Q4_K_M.gguf`, VAE `flux2-vae.safetensors` (BF16). The engine log reports component tensor bytes 2346.39 MB (transformer: q4_0=80, bf16=69), 2375.91 MB (text encoder: f32=145, q4_K=216, q6_K=37) and 160.31 MB (VAE: bf16=250, i32=1).
 - **Workload**: 512×512, 4 steps, guidance 1.0, CFG 1.0, seed 0, prompt "A cat holding a sign that says hello world", batch 1.
 - **Options** ([run.sh](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/run.sh)): `--backend cuda --type preserve --vae-tiling off --flash-attention --cache off --threads 4`; no `--auto-fit`, `--auto-allocate` or offload flags. No `configs/*.json` exists for this run; the command line in `run.sh` is the configuration.
@@ -32,7 +32,7 @@ Error evidence:
 
 - [exit_code.txt](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/exit_code.txt): `137`.
 - [kernel-oom.txt](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/kernel-oom.txt): `packagekitd invoked oom-killer` (global OOM, `constraint=CONSTRAINT_NONE`); `Killed process 8501 (ed-cli) total-vm:11150884kB, anon-rss:0kB, file-rss:3872kB`. Kernel timestamps are local time (02:24:18–02:24:19 EDT).
-- [ed-cli.log](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/ed-cli.log) is empty: no phase marker was written, so no generation phase began.
+- ed-cli.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/ed-cli.log`) is empty: no phase marker was written, so no generation phase began.
 
 Partial observations from [ed-cli.stderr](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/ed-cli.stderr):
 
@@ -47,7 +47,7 @@ Partial observations from [ed-cli.stderr](../results/runs/jetson-edgedit-flux-kl
 | Param buffer: VAE | 94.72 MB (VRAM) |
 | Last tensor-loading progress line | 240/795 tensors, 2786.81 MB, 62.12 s |
 
-Memory ([tegrastats.log](../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/tegrastats.log), 297 samples): RAM peak 7424/7620 MB; swap peak 2346/3810 MB, both in the same sample (02:24:09 local). RAM at the first sample was 821 MB. No sample was recorded between 02:24:09 and 02:24:19, the time of the kill.
+Memory (tegrastats.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-001__attempt__20261011-062302/tegrastats.log`), 297 samples): RAM peak 7424/7620 MB; swap peak 2346/3810 MB, both in the same sample (02:24:09 local). RAM at the first sample was 821 MB. No sample was recorded between 02:24:09 and 02:24:19, the time of the kill.
 
 Status.json also records that a first launch failed before `ed-cli` ran because `/usr/bin/time` was not installed; the run was relaunched without it.
 

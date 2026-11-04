@@ -1,0 +1,307 @@
+{
+  "scope": "20 fused full projections; numerical controls, not image/performance comparison",
+  "control_comparisons": 640,
+  "upstream_comparisons": 320,
+  "module_results": [
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005217872210778296,
+        "calibration_validation": 0.0582508216612041
+      },
+      "radix_p4": {
+        "fit": 0.08591739647090435,
+        "calibration_validation": 0.08706398028880358
+      },
+      "uniform_int4": {
+        "fit": 0.07923194020986557,
+        "calibration_validation": 0.08040159661322832
+      }
+    },
+    {
+      "module": "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005374466709326953,
+        "calibration_validation": 0.059354844968765974
+      },
+      "radix_p4": {
+        "fit": 0.08307669777423143,
+        "calibration_validation": 0.08465609140694141
+      },
+      "uniform_int4": {
+        "fit": 0.07423092890530825,
+        "calibration_validation": 0.07579598482698202
+      }
+    },
+    {
+      "module": "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005999173445161432,
+        "calibration_validation": 0.06397153018042445
+      },
+      "radix_p4": {
+        "fit": 0.08546806499361992,
+        "calibration_validation": 0.08638314623385668
+      },
+      "uniform_int4": {
+        "fit": 0.07617794163525105,
+        "calibration_validation": 0.07709672581404448
+      }
+    },
+    {
+      "module": "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005854080314747989,
+        "calibration_validation": 0.06123952381312847
+      },
+      "radix_p4": {
+        "fit": 0.08364480920135975,
+        "calibration_validation": 0.08510033134371042
+      },
+      "uniform_int4": {
+        "fit": 0.0741456625983119,
+        "calibration_validation": 0.07545785699039698
+      }
+    },
+    {
+      "module": "single_transformer_blocks.12.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.006283836264628917,
+        "calibration_validation": 0.06428343895822763
+      },
+      "radix_p4": {
+        "fit": 0.08341115433722734,
+        "calibration_validation": 0.08458163123577833
+      },
+      "uniform_int4": {
+        "fit": 0.07480155862867832,
+        "calibration_validation": 0.07585052773356438
+      }
+    },
+    {
+      "module": "single_transformer_blocks.13.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.006799480004701763,
+        "calibration_validation": 0.06680988427251577
+      },
+      "radix_p4": {
+        "fit": 0.08398495614528656,
+        "calibration_validation": 0.08453921880573034
+      },
+      "uniform_int4": {
+        "fit": 0.07554126158356667,
+        "calibration_validation": 0.07589231058955193
+      }
+    },
+    {
+      "module": "single_transformer_blocks.14.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.006767081387806684,
+        "calibration_validation": 0.06401861924678087
+      },
+      "radix_p4": {
+        "fit": 0.08178191259503365,
+        "calibration_validation": 0.08207336813211441
+      },
+      "uniform_int4": {
+        "fit": 0.07371957413852215,
+        "calibration_validation": 0.07388586271554232
+      }
+    },
+    {
+      "module": "single_transformer_blocks.15.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.006776288675609976,
+        "calibration_validation": 0.0655922400765121
+      },
+      "radix_p4": {
+        "fit": 0.08330525923520327,
+        "calibration_validation": 0.08383502531796694
+      },
+      "uniform_int4": {
+        "fit": 0.07577954977750778,
+        "calibration_validation": 0.0760919451713562
+      }
+    },
+    {
+      "module": "single_transformer_blocks.16.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.007069817220326513,
+        "calibration_validation": 0.06846225261688232
+      },
+      "radix_p4": {
+        "fit": 0.08649159222841263,
+        "calibration_validation": 0.08643440064042807
+      },
+      "uniform_int4": {
+        "fit": 0.07890971191227436,
+        "calibration_validation": 0.07879157457500696
+      }
+    },
+    {
+      "module": "single_transformer_blocks.17.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.0069499018136411905,
+        "calibration_validation": 0.0685910927131772
+      },
+      "radix_p4": {
+        "fit": 0.08795550931245089,
+        "calibration_validation": 0.08797214087098837
+      },
+      "uniform_int4": {
+        "fit": 0.08067040797322989,
+        "calibration_validation": 0.08050823770463467
+      }
+    },
+    {
+      "module": "single_transformer_blocks.18.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.006919535459019244,
+        "calibration_validation": 0.07129996456205845
+      },
+      "radix_p4": {
+        "fit": 0.09279433265328407,
+        "calibration_validation": 0.09320422168821096
+      },
+      "uniform_int4": {
+        "fit": 0.08558968920260668,
+        "calibration_validation": 0.08594808913767338
+      }
+    },
+    {
+      "module": "single_transformer_blocks.19.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.008094261400401592,
+        "calibration_validation": 0.08417452964931726
+      },
+      "radix_p4": {
+        "fit": 0.1264996314421296,
+        "calibration_validation": 0.1266875322908163
+      },
+      "uniform_int4": {
+        "fit": 0.11788391880691051,
+        "calibration_validation": 0.11808383464813232
+      }
+    },
+    {
+      "module": "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.00519245263421908,
+        "calibration_validation": 0.057445809710770845
+      },
+      "radix_p4": {
+        "fit": 0.08152462262660265,
+        "calibration_validation": 0.08316874224692583
+      },
+      "uniform_int4": {
+        "fit": 0.0710145989432931,
+        "calibration_validation": 0.07278276793658733
+      }
+    },
+    {
+      "module": "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.004818431916646659,
+        "calibration_validation": 0.05538851488381624
+      },
+      "radix_p4": {
+        "fit": 0.07708973251283169,
+        "calibration_validation": 0.07876647263765335
+      },
+      "uniform_int4": {
+        "fit": 0.0665293512865901,
+        "calibration_validation": 0.06824206560850143
+      }
+    },
+    {
+      "module": "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.00412230278016068,
+        "calibration_validation": 0.04896447714418173
+      },
+      "radix_p4": {
+        "fit": 0.06737470999360085,
+        "calibration_validation": 0.06829221453517675
+      },
+      "uniform_int4": {
+        "fit": 0.05848659994080663,
+        "calibration_validation": 0.05952574871480465
+      }
+    },
+    {
+      "module": "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.0046846235054545105,
+        "calibration_validation": 0.05835145199671388
+      },
+      "radix_p4": {
+        "fit": 0.0819041021168232,
+        "calibration_validation": 0.08188205678015947
+      },
+      "uniform_int4": {
+        "fit": 0.07226259633898735,
+        "calibration_validation": 0.07226960640400648
+      }
+    },
+    {
+      "module": "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.0048611657111905515,
+        "calibration_validation": 0.06119784014299512
+      },
+      "radix_p4": {
+        "fit": 0.08010783791542053,
+        "calibration_validation": 0.07844440173357725
+      },
+      "uniform_int4": {
+        "fit": 0.07154263090342283,
+        "calibration_validation": 0.06986413151025772
+      }
+    },
+    {
+      "module": "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005269711255095899,
+        "calibration_validation": 0.06052588624879718
+      },
+      "radix_p4": {
+        "fit": 0.08438727911561728,
+        "calibration_validation": 0.08417165093123913
+      },
+      "uniform_int4": {
+        "fit": 0.07415362168103456,
+        "calibration_validation": 0.07397500053048134
+      }
+    },
+    {
+      "module": "single_transformer_blocks.8.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005701014189980924,
+        "calibration_validation": 0.06324971513822675
+      },
+      "radix_p4": {
+        "fit": 0.08568071108311415,
+        "calibration_validation": 0.08552843052893877
+      },
+      "uniform_int4": {
+        "fit": 0.07678962964564562,
+        "calibration_validation": 0.07670475449413061
+      }
+    },
+    {
+      "module": "single_transformer_blocks.9.attn.to_qkv_mlp_proj",
+      "upstream_u8": {
+        "fit": 0.005888562998734415,
+        "calibration_validation": 0.06314332177862525
+      },
+      "radix_p4": {
+        "fit": 0.0879870280623436,
+        "calibration_validation": 0.08841319382190704
+      },
+      "uniform_int4": {
+        "fit": 0.07808014564216137,
+        "calibration_validation": 0.07839569356292486
+      }
+    }
+  ]
+}

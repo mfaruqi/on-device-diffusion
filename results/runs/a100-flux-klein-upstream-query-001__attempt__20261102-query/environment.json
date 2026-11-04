@@ -1,0 +1,5 @@
+{
+  "torch": "2.5.1+cu121",
+  "device": "NVIDIA A100-SXM4-40GB",
+  "execution": "dense BF16 reconstruction; quality smoke only"
+}

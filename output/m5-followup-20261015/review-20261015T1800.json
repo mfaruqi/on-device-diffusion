@@ -1,0 +1,39 @@
+{
+  "completed": [
+    {
+      "id": "m5-flux-klein-005",
+      "full_run": "results/runs/m5-flux-klein-005__baseline__20261015-133226",
+      "protocol_checked": true,
+      "execution_audit_checked": true,
+      "median_arithmetic_checked": true,
+      "publishing": "pending: local WANDB_DIR repaired; retry only outside timed inference"
+    },
+    {
+      "id": "m5-mflux-flux-klein-004",
+      "full_run": "results/runs/m5-mflux-flux-klein-004__baseline__20261015-134636",
+      "protocol_checked": true,
+      "execution_audit_checked": true,
+      "median_arithmetic_checked": true,
+      "publishing": "pending: local WANDB_DIR repaired; retry only outside timed inference"
+    },
+    {
+      "id": "m5-mflux-flux-klein-005",
+      "full_run": "results/runs/m5-mflux-flux-klein-005__baseline__20261015-134829",
+      "protocol_checked": true,
+      "execution_audit_checked": true,
+      "median_arithmetic_checked": true,
+      "publishing": "pending: local WANDB_DIR repaired; retry only outside timed inference"
+    },
+    {
+      "id": "m5-mflux-flux-klein-006",
+      "full_run": "results/runs/m5-mflux-flux-klein-006__baseline__20261015-135054",
+      "protocol_checked": true,
+      "execution_audit_checked": true,
+      "median_arithmetic_checked": true,
+      "publishing": "pending: local WANDB_DIR repaired; retry only outside timed inference"
+    }
+  ],
+  "active": "m5-flux-klein-base-004",
+  "upload_repair": "publish.py now sets local WANDB_DIR and WANDB_CACHE_DIR; preserved old script and failure logs; no inference repeated",
+  "next": "Allow active sequential queue to finish; retry prior eight failed uploads and render/publish updated stage panels outside measurement"
+}

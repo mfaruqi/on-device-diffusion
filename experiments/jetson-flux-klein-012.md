@@ -66,7 +66,7 @@ diagnostics? The reference is the disk-backed tiled configuration
 [Run directory](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/),
 [status](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/status.json) complete,
 21:56:43–22:02:47 UTC, [summary](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/summary.json),
-[engine log](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/engine/sdcpp.log),
+engine log (local-only artifact: `../results/runs/jetson-flux-klein-012__baseline__20261102-165643/engine/sdcpp.log`),
 [memguard](../results/runs/jetson-flux-klein-012__baseline__20261102-165643/memguard.json). Power mode 25 W.
 Desktop session logged out; the board ran nothing else.
 
@@ -125,7 +125,7 @@ Not a baseline (n = 4).
 
 [Run directory](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/),
 [status](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/status.json) failed,
-15:57:18–16:00:41 UTC, [engine log](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/engine/sdcpp.log),
+15:57:18–16:00:41 UTC, engine log (local-only artifact: `../results/runs/jetson-flux-klein-012__baseline__20261015-115718/engine/sdcpp.log`),
 [memguard](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/memguard.json). Power mode 25 W; CUDA 12.6.
 
 **Error.** Generation index 4 failed during its first transformer call. The engine log reports, in order:
@@ -156,7 +156,7 @@ Remainder = wall − condition − first-step interval − steps 1–3 − decod
 between stages; corresponds to `other_ms`). Model context creation (load event) took 65.045 s; the engine
 reports tensor loading 61.61 s (read 59.15 s, copy to backend 1.07 s).
 
-**Engine-printed buffers** ([engine log](../results/runs/jetson-flux-klein-012__baseline__20261015-115718/engine/sdcpp.log)):
+**Engine-printed buffers** (engine log (local-only artifact: `../results/runs/jetson-flux-klein-012__baseline__20261015-115718/engine/sdcpp.log`)):
 
 - Parameters: `prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on CUDA0`
   once at load; `total params memory size = 4882.75MB (VRAM 4882.75MB, RAM 0.00MB)`: text encoders
@@ -190,7 +190,7 @@ reports tensor loading 61.61 s (read 59.15 s, copy to backend 1.07 s).
 [Run](../results/runs/jetson-flux-klein-012__attempt__20261015-115414/),
 [status](../results/runs/jetson-flux-klein-012__attempt__20261015-115414/status.json) complete,
 15:54:14–15:56:47 UTC, [summary](../results/runs/jetson-flux-klein-012__attempt__20261015-115414/summary.json),
-[engine log](../results/runs/jetson-flux-klein-012__attempt__20261015-115414/engine/sdcpp.log).
+engine log (local-only artifact: `../results/runs/jetson-flux-klein-012__attempt__20261015-115414/engine/sdcpp.log`).
 
 | Generation | wall | condition | first-step interval | steps 1 / 2 / 3 | steady per-step | decode | other |
 |---|---:|---:|---:|---:|---:|---:|---:|

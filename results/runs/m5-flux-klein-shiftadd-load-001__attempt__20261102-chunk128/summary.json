@@ -1,0 +1,16 @@
+{
+  "scope": "fresh CPU process lifetime high-water RSS including imports and one BF16 matrix; not GPU memory",
+  "first_process_peak_rss_gib": 0.4047393798828125,
+  "measured_process_peak_rss_gib": {
+    "median": 0.4047698974609375,
+    "min": 0.404693603515625,
+    "max": 0.4049072265625
+  },
+  "parameter_sha256": "a139d96d8184d086b1fd107f8a33038510725bbb16b0c75012f7f7886e79dd18",
+  "parameter_bytes": 169869312,
+  "unavailable_metrics": [
+    "inference_latency",
+    "device_memory",
+    "energy"
+  ]
+}

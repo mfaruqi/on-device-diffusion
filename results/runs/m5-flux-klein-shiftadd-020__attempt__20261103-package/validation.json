@@ -1,0 +1,1534 @@
+{
+  "status": "passed",
+  "scope": "full transformer load into CPU BF16 parameters, no image or performance measurement",
+  "source_independent_load": true,
+  "files_opened_as_safetensors_during_load": [
+    "shiftadd/artifacts/upstream-bcq-transformer-package-001/fallback.safetensors"
+  ],
+  "audit": {
+    "replaced_tensors": [
+      "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.1.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.11.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.12.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.13.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.14.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.15.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.16.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.17.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.18.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.19.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.2.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.3.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.4.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.5.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.6.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.7.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.8.attn.to_qkv_mlp_proj.weight",
+      "single_transformer_blocks.9.attn.to_qkv_mlp_proj.weight",
+      "transformer_blocks.0.attn.add_k_proj.weight",
+      "transformer_blocks.0.attn.add_q_proj.weight",
+      "transformer_blocks.0.attn.add_v_proj.weight",
+      "transformer_blocks.0.attn.to_k.weight",
+      "transformer_blocks.0.attn.to_q.weight",
+      "transformer_blocks.0.attn.to_v.weight",
+      "transformer_blocks.1.attn.add_k_proj.weight",
+      "transformer_blocks.1.attn.add_q_proj.weight",
+      "transformer_blocks.1.attn.add_v_proj.weight",
+      "transformer_blocks.1.attn.to_k.weight",
+      "transformer_blocks.1.attn.to_q.weight",
+      "transformer_blocks.1.attn.to_v.weight",
+      "transformer_blocks.2.attn.add_k_proj.weight",
+      "transformer_blocks.2.attn.add_q_proj.weight",
+      "transformer_blocks.2.attn.add_v_proj.weight",
+      "transformer_blocks.2.attn.to_k.weight",
+      "transformer_blocks.2.attn.to_q.weight",
+      "transformer_blocks.2.attn.to_v.weight",
+      "transformer_blocks.3.attn.add_k_proj.weight",
+      "transformer_blocks.3.attn.add_q_proj.weight",
+      "transformer_blocks.3.attn.add_v_proj.weight",
+      "transformer_blocks.3.attn.to_k.weight",
+      "transformer_blocks.3.attn.to_q.weight",
+      "transformer_blocks.3.attn.to_v.weight",
+      "transformer_blocks.4.attn.add_k_proj.weight",
+      "transformer_blocks.4.attn.add_q_proj.weight",
+      "transformer_blocks.4.attn.add_v_proj.weight",
+      "transformer_blocks.4.attn.to_k.weight",
+      "transformer_blocks.4.attn.to_q.weight",
+      "transformer_blocks.4.attn.to_v.weight"
+    ],
+    "weight_format": "upstream_bcq",
+    "scale_format": "u8",
+    "decode_chunk_rows": 128,
+    "runtime_representation": "reconstructed dense parameters",
+    "packed_artifact_bytes": 1073532280,
+    "fallback_tensors": 119,
+    "original_checkpoint_used": false
+  },
+  "parameters_checked": 169,
+  "checks": [
+    {
+      "name": "time_guidance_embed.timestep_embedder.linear_1.weight",
+      "shape": [
+        3072,
+        256
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "time_guidance_embed.timestep_embedder.linear_2.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "double_stream_modulation_img.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "double_stream_modulation_txt.linear.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_stream_modulation.linear.weight",
+      "shape": [
+        9216,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "x_embedder.weight",
+      "shape": [
+        3072,
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "context_embedder.weight",
+      "shape": [
+        3072,
+        7680
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.norm_added_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.norm_added_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.0.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.norm_added_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.norm_added_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.1.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.norm_added_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.norm_added_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.2.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.norm_added_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.norm_added_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.3.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.to_q.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.to_k.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.to_v.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.to_out.0.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.norm_added_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.norm_added_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.add_q_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.add_k_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.add_v_proj.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.attn.to_add_out.weight",
+      "shape": [
+        3072,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.ff.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.ff.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.ff_context.linear_in.weight",
+      "shape": [
+        18432,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "transformer_blocks.4.ff_context.linear_out.weight",
+      "shape": [
+        3072,
+        9216
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.0.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.0.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.0.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.1.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.1.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.1.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.1.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.2.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.2.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.2.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.2.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.3.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.3.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.3.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.3.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.4.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.4.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.4.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.4.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.5.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.5.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.5.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.5.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.6.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.6.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.6.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.6.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.7.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.7.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.7.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.7.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.8.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.8.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.8.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.8.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.9.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.9.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.9.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.9.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.10.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.10.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.10.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.10.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.11.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.11.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.11.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.11.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.12.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.12.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.12.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.12.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.13.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.13.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.13.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.13.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.14.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.14.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.14.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.14.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.15.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.15.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.15.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.15.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.16.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.16.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.16.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.16.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.17.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.17.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.17.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.17.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.18.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.18.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.18.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.18.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.19.attn.to_qkv_mlp_proj.weight",
+      "shape": [
+        27648,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.19.attn.norm_q.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.19.attn.norm_k.weight",
+      "shape": [
+        128
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "single_transformer_blocks.19.attn.to_out.weight",
+      "shape": [
+        3072,
+        12288
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "norm_out.linear.weight",
+      "shape": [
+        6144,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    },
+    {
+      "name": "proj_out.weight",
+      "shape": [
+        128,
+        3072
+      ],
+      "finite": true,
+      "exact_expected_values": true
+    }
+  ],
+  "manifest_sha256": "a29709464b3ae2ba62b43db665a7b24c59a6fe4786b1fab548aa9a2f06f29412"
+}

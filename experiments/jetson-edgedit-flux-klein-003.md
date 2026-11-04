@@ -29,7 +29,7 @@ Error evidence:
 
 - [memguard.json](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/memguard.json): `killed_by_guard: true`, reason `MemAvailable 399 MB < 400 MB`; MemAvailable 6419 MB at start, minimum 399 MB; swap used 0 MB at start, maximum 39 MB.
 - [exit_code.txt](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/exit_code.txt): `137`. [kernel-oom.txt](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/kernel-oom.txt) is empty (no kernel OOM kill).
-- [ed-cli.log](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/ed-cli.log) is empty: no generation phase began. The last loading line in [ed-cli.stderr](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/ed-cli.stderr) is 152/795 tensors, 2346.39 MB, 31.00 s, followed by the guard's `Killed`.
+- ed-cli.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/ed-cli.log`) is empty: no generation phase began. The last loading line in [ed-cli.stderr](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/ed-cli.stderr) is 152/795 tensors, 2346.39 MB, 31.00 s, followed by the guard's `Killed`.
 - Memory before launch ([free-before.txt](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/free-before.txt), MiB): available 6421, free 92, buff/cache 6582, swap used 0.
 
 Placement decisions from the engine log:
@@ -42,7 +42,7 @@ Placement decisions from the engine log:
 
 Segment budget: 4.19 GB (effective 6.19 GB − resident 0.00 GB − 2.00 GB staging slack). Available UMA memory at start: 6493528 kB. Activation dtype f32 (bf16_tensors=69/149); transformer spec missing=0, shape_mismatch=0, unexpected=0.
 
-Memory ([tegrastats.log](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/tegrastats.log), 176 samples; [peak-ram.txt](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/peak-ram.txt)): RAM peak 6975/7620 MB, swap peak 39/3810 MB. RAM rose from 1118 MB to about 6960 MB within the first 5 s (by 10:44:30 local) and stayed between 6957 and 6975 MB until the kill.
+Memory (tegrastats.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/tegrastats.log`), 176 samples; [peak-ram.txt](../results/runs/jetson-edgedit-flux-klein-003__attempt__20261011-autoalloc/peak-ram.txt)): RAM peak 6975/7620 MB, swap peak 39/3810 MB. RAM rose from 1118 MB to about 6960 MB within the first 5 s (by 10:44:30 local) and stayed between 6957 and 6975 MB until the kill.
 
 ## Observations
 

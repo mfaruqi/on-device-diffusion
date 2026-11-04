@@ -30,7 +30,7 @@ Does edge-dit.cpp's TaylorSeer step cache, at its default parameters, reuse any 
 
 Full run [jetson-edgedit-flux-klein-011__baseline__20261015-133915](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/): [status.json](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/status.json) `complete`; [memguard.json](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/memguard.json) not killed, exit 0.
 
-Cache receipt ([engine.log](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/engine.log)): every pass logs `cache enabled: mode=TaylorSeer model=flux2-klein granularity=feature matched_sites=1 variants=2 slots=1` and `TaylorSeer reused 0/4 steps` (14 of 14 passes; smoke 2 of 2).
+Cache receipt (engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/engine.log`)): every pass logs `cache enabled: mode=TaylorSeer model=flux2-klein granularity=feature matched_sites=1 variants=2 slots=1` and `TaylorSeer reused 0/4 steps` (14 of 14 passes; smoke 2 of 2).
 
 ### Latency (measured n = 10; [summary.json](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/summary.json), [runs.csv](../results/runs/jetson-edgedit-flux-klein-011__baseline__20261015-133915/runs.csv))
 

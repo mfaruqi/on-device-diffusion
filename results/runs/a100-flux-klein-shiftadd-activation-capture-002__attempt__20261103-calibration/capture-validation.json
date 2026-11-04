@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "modules": 50,
+  "arrays": 800,
+  "shape_per_array": [
+    32,
+    3072
+  ],
+  "all_finite": true,
+  "prior_arrays_exact": 32,
+  "all_dual_stream_qkv_inputs_equal": true,
+  "activation_file_bytes": 314835542,
+  "activation_sha256": "4b9b585c7c6d1caf2c1fdeedb3e0d0aa4cab149e5b522922594a945a76d6d22b",
+  "scope": "BF16 calibration capture; not performance measurement"
+}

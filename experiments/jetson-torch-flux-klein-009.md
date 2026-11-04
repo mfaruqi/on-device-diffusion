@@ -38,7 +38,7 @@ Memory-residency lever under a memory budget (RQ3).
 
 ## Results
 
-[Run directory](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/), [load](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/load.json), [memguard](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/memguard.json), [tegrastats](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/tegrastats.log).
+[Run directory](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/), [load](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/load.json), [memguard](../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/memguard.json), tegrastats (local-only artifact: `../results/runs/jetson-torch-flux-klein-009__attempt__20261102-164203/tegrastats.log`).
 
 - `status.json` still reads `running`: the guard's SIGKILL (exit code 137) leaves no chance to write `failed`.
   `runs.csv` and `stages.csv` have headers only; no image was written.

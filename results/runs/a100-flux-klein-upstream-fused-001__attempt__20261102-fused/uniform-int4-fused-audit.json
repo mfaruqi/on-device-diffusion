@@ -1,0 +1,9 @@
+{
+  "replaced_tensors": [
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+  ],
+  "weight_format": "symmetric_uniform",
+  "runtime_representation": "reconstructed dense parameters",
+  "decode_chunk_rows": 128,
+  "packed_artifact_bytes": 45122302
+}

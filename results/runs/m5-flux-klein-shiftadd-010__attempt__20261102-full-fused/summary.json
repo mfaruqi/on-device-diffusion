@@ -1,0 +1,124 @@
+{
+  "results": [
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "relative_output_l2": 0.005111745558679104
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "relative_output_l2": 0.0047900076024234295
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "relative_output_l2": 0.005148306488990784
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "relative_output_l2": 0.005791143514215946
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "relative_output_l2": 0.004951657261699438
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "relative_output_l2": 0.004893582779914141
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "relative_output_l2": 0.005351328290998936
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "relative_output_l2": 0.00570520618930459
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.0559200718998909
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.06348778307437897
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.06711771339178085
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.0670190379023552
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.04398498311638832
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.05292459949851036
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.05791125074028969
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "relative_output_l2": 0.05764113366603851
+    }
+  ],
+  "storage": [
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "payload_bytes": 45785088,
+      "file_bytes": 46007324,
+      "artifact_sha256": "a424596e6a04682598fbbcce16d1660725a48a1123934441585c5c71b1e028dc",
+      "bits_per_weight": 4.3125,
+      "fit_samples": 256,
+      "channels": 3072,
+      "output_rows": 27648,
+      "relative_weight_l2": 0.13889259099960327
+    }
+  ],
+  "scope": "configured output rows; upstream GPTQ/BCQ with calibration inputs, not full-model reproduction",
+  "upstream": {
+    "repository": "https://github.com/Purdue-EcoAI/ShiftAddQwen",
+    "commit": "12d995a51a514b3757e29213c5545004e2e0e347",
+    "files_sha256": {
+      "saq/bcq.py": "816b050071b363f3745b0e3b2f8e07810c87fe25bea50d209c3cd62bb13848df",
+      "saq/gptq_bcq.py": "0993f3583c6d09f937580c60e5d9a2e97b6fdeb190fb0ad6d3568e92bb87fdf9",
+      "LICENSE": "4ea6f3c1c432a8e118b76f49f1396d93f24825debf1a55309d8259fcaba2dad3"
+    },
+    "changes": "No algorithm edits; empty package initializer added. Text files may have an extra terminal newline."
+  }
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "rank": 4,
+    "original": 0.05040296260267496,
+    "a8_token": 0.05095541337504983,
+    "a4_g32": 0.06905826833099127,
+    "storage": {
+      "module": "transformer_blocks.0.attn.to_q",
+      "shape": [
+        32,
+        3072
+      ],
+      "packed_weight_payload_bytes": 52224,
+      "packed_weight_file_bytes": 53264,
+      "bf16_slice_bytes": 196608,
+      "correction_payload_bytes": 24832,
+      "correction_file_bytes": 24976
+    }
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "rank": 4,
+    "original": 0.07037581875920296,
+    "a8_token": 0.07249279785901308,
+    "a4_g32": 0.1263405755162239,
+    "storage": {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "shape": [
+        32,
+        3072
+      ],
+      "packed_weight_payload_bytes": 52224,
+      "packed_weight_file_bytes": 53264,
+      "bf16_slice_bytes": 196608,
+      "correction_payload_bytes": 24832,
+      "correction_file_bytes": 24976
+    }
+  }
+]

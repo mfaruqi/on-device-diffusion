@@ -28,7 +28,7 @@ Does edge-dit.cpp's `ucache` step cache, at its default parameters, skip any of 
 
 [Run](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/): [status.json](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/status.json) `complete`; [memguard.json](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/memguard.json) not killed, exit 0.
 
-- Cache receipt: the engine logged `cache enabled: mode=UCache model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `UCache skipped 0/4 steps` once per pass, 2 of 2 passes ([engine.log](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/engine.log)); [step-cache.json](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The schedule (4 steps, same sigmas as 006) was unchanged.
+- Cache receipt: the engine logged `cache enabled: mode=UCache model=flux2-klein granularity=output matched_sites=1 variants=2 slots=1` and `UCache skipped 0/4 steps` once per pass, 2 of 2 passes (engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/engine.log`)); [step-cache.json](../results/runs/jetson-edgedit-flux-klein-009__attempt__20261015-132923/step-cache.json) `skipped_steps_per_generation: [0, 0]`. The schedule (4 steps, same sigmas as 006) was unchanged.
 
 | Quantity | First generation | Measured (n = 1) | 006 measured median |
 |---|---:|---:|---:|

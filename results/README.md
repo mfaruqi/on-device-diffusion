@@ -6,6 +6,7 @@ directory are git-ignored (kept locally, not in git).
 
 | Run directory | Experiment note | Device | Config | End-to-end (ms) | Text / Denoise / VAE (ms) | Peak alloc (GiB) | Status |
 |---|---|---|---|---|---|---|---|
+| `a100-flux-klein-upstream-mixed-fused-001__attempt__20261103-calibration` | [a100-flux-klein-upstream-mixed-fused-001](../experiments/a100-flux-klein-upstream-mixed-fused-001.md) | A100 SXM4 | mixed fused p3/p4 calibration | — | — | — | complete (job 12149223); 12-image calibration diagnostic |
 | `a100-nunchaku-flux-klein-001__attempt__20261011-123802` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 904.8 | 48.9 / 658.6 / 164.4 | 12.52 | complete (job 11929464): smoke; quality unassessed |
 | `a100-nunchaku-flux-klein-001__baseline__20261011-124123` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g009) | a100-nunchaku-flux-klein-int4-r32 | 897.8 | 47.1 / 663.2 / 164.8 | 12.52 | complete (job 11929464): full protocol; quality unassessed |
 | `a100-nunchaku-flux-klein-001__attempt__20261011-113031` | [a100-nunchaku-flux-klein-001](../experiments/a100-nunchaku-flux-klein-001.md) | gilbreth-a100-40gb (PCIe, g005) | a100-nunchaku-flux-klein-int4-r32-smoke | – | – | – | failed (job 11929279): text-encoder dtype guard before generation |
@@ -567,3 +568,100 @@ Nsight Compute captures (no new baseline timings) and roofline ceiling microbenc
 | `jetson-torch-flux-klein-007__counters__20261101-145652` | [jetson-torch-flux-klein-007](../experiments/jetson-torch-flux-klein-007.md) | jetson-orin-nano (mfaruqi-desktop, 25 W) | jetson-torch-flux-klein-007-counters | – | – | – | failed; counter runs captured different kernel sequences (compile cache state), merge refused |
 | `jetson-torch-flux-klein-007__counters__20261101-154131` | [jetson-torch-flux-klein-007](../experiments/jetson-torch-flux-klein-007.md) | jetson-orin-nano (mfaruqi-desktop, 25 W) | jetson-torch-flux-klein-007-counters | – | – | – | complete (window offset −44); 389 kernels/pass, 101.23 GB, 100.5 FLOP/B |
 | `jetson-edgedit-flux-klein-006__counters__20261101-152631` | [jetson-edgedit-flux-klein-006](../experiments/jetson-edgedit-flux-klein-006.md) | jetson-orin-nano (mfaruqi-desktop, 25 W) | jetson-edgedit-flux-klein-006-counters | – | – | – | failed; memory guard (MemAvailable 243 MB < 250 MB) at denoise start, no window kernels; sequence pass kept |
+| `m5-flux-klein-shiftadd-001__conversion__20261102` | [conversion](../experiments/m5-flux-klein-shiftadd-001.md) | M5 CPU conversion | shiftadd transformer-p4-001 | — | — | — | complete: weight conversion only; no inference claim |
+| `a100-flux-klein-shiftadd-001__smoke__20261102` | [greedy ShiftAdd smoke](../experiments/a100-flux-klein-shiftadd-001.md) | A100 SXM4, n012 | shiftadd a100-paired-smoke-001 | — | — | — | complete (12133572); whole-model visual failure; no timing claim |
+| `a100-flux-klein-shiftadd-002__attempt__20261102-180000` | [radix activation smoke](../experiments/a100-flux-klein-shiftadd-002.md) | A100 SXM4, n012 | a100-radix-activation-smoke-001 | — | — | — | complete (12133607); one-prompt diagnostic |
+| `a100-flux-klein-shiftadd-003__attempt__20261102-181000` | [mixed smoke](../experiments/a100-flux-klein-shiftadd-003.md) | A100 SXM4, n012 | a100-mixed-smoke-001 | — | — | — | complete (12133710); one-prompt diagnostic |
+| `a100-flux-klein-shiftadd-004__attempt__20261102-182000` | [calibration smoke](../experiments/a100-flux-klein-shiftadd-004.md) | A100 SXM4, n012 | a100-calibration-smoke-001 | — | — | — | complete (12133739); four calibration prompts, no timing claim |
+| `a100-flux-klein-shiftadd-005__attempt__20261102-activation-capture` | [record](../experiments/a100-flux-klein-shiftadd-005.md) | A100 SXM4 | See run config | — | — | — | complete; numerical diagnostic, no timing claim |
+| `m5-flux-klein-shiftadd-002__attempt__20261102-first-rows` | [record](../experiments/m5-flux-klein-shiftadd-002.md) | M5 CPU | See run config | — | — | — | complete; numerical diagnostic, no timing claim |
+| `m5-flux-klein-shiftadd-002__attempt__20261102-spread-rows` | [record](../experiments/m5-flux-klein-shiftadd-002.md) | M5 CPU | See run config | — | — | — | complete; numerical diagnostic, no timing claim |
+| `m5-flux-klein-shiftadd-003__attempt__20261102-g3072` | [record](../experiments/m5-flux-klein-shiftadd-003.md) | M5 CPU | activation group 3072 | — | — | — | complete; numerical diagnostic only |
+| `m5-flux-klein-shiftadd-003__attempt__20261102-g128` | [record](../experiments/m5-flux-klein-shiftadd-003.md) | M5 CPU | activation group 128 | — | — | — | complete; numerical diagnostic only |
+| `m5-flux-klein-shiftadd-003__attempt__20261102-g32` | [record](../experiments/m5-flux-klein-shiftadd-003.md) | M5 CPU | activation group 32 | — | — | — | complete; numerical diagnostic only |
+| `m5-flux-klein-shiftadd-004__attempt__20261102-r0` | [record](../experiments/m5-flux-klein-shiftadd-004.md) | M5 CPU | residual rank 0 | — | — | — | complete; slice diagnostic only |
+| `m5-flux-klein-shiftadd-004__attempt__20261102-r4` | [record](../experiments/m5-flux-klein-shiftadd-004.md) | M5 CPU | residual rank 4 | — | — | — | complete; slice diagnostic only |
+| `m5-flux-klein-shiftadd-004__attempt__20261102-r8` | [record](../experiments/m5-flux-klein-shiftadd-004.md) | M5 CPU | residual rank 8 | — | — | — | complete; slice diagnostic only |
+| `m5-flux-klein-shiftadd-005__attempt__20261102-int4` | [record](../experiments/m5-flux-klein-shiftadd-005.md) | M5 CPU | same-source INT4 slice | — | — | — | complete; numerical diagnostic |
+| `m5-flux-klein-shiftadd-005__attempt__20261102-int8` | [record](../experiments/m5-flux-klein-shiftadd-005.md) | M5 CPU | same-source INT8 slice | — | — | — | complete; numerical diagnostic |
+| `m5-flux-klein-uniform-001__conversion__20261102` | [record](../experiments/m5-flux-klein-uniform-001.md) | M5 CPU | conventional INT4 conversion | — | — | — | complete; storage only |
+| `m5-flux-klein-shiftadd-006__conversion__20261102` | [record](../experiments/m5-flux-klein-shiftadd-006.md) | M5 CPU | lossless radix metadata compaction | — | — | — | complete; identical decoded weights |
+| `a100-flux-klein-uniform-001__attempt__20261102-control` | [record](../experiments/a100-flux-klein-uniform-001.md) | A100 SXM4, n012 | same-source radix/INT4 image control | — | — | — | complete (12133926); one calibration prompt |
+| `m5-flux-klein-shiftadd-007__conversion__20261102` | [record](../experiments/m5-flux-klein-shiftadd-007.md) | M5 CPU | mixed-radix lossless compaction | — | — | — | complete; identical decoded weights |
+| `m5-flux-klein-shiftadd-load-001__attempt__20261102-whole` | [record](../experiments/m5-flux-klein-shiftadd-load-001.md) | M5 CPU | whole single-matrix loading | — | — | — | complete; host RSS diagnostic only |
+| `m5-flux-klein-shiftadd-load-001__attempt__20261102-chunk128` | [record](../experiments/m5-flux-klein-shiftadd-load-001.md) | M5 CPU | chunk128 single-matrix loading | — | — | — | complete; host RSS diagnostic only |
+| `jetson-flux-klein-shiftadd-001__attempt__20261102-integer-bridge` | [record](../experiments/jetson-flux-klein-shiftadd-001.md) | Jetson CPU | exact integer bridge | — | — | — | complete; numerical verification only |
+| `m5-flux-klein-shiftadd-008__attempt__20261102-u8` | [record](../experiments/m5-flux-klein-shiftadd-008.md) | M5 CPU | upstream BCQ u8 slice fit | — | — | — | complete; numerical diagnostic |
+| `m5-flux-klein-shiftadd-008__attempt__20261102-pot` | [record](../experiments/m5-flux-klein-shiftadd-008.md) | M5 CPU | upstream BCQ pot slice fit | — | — | — | complete; numerical diagnostic |
+| `m5-flux-klein-shiftadd-009__attempt__20261102-full-query` | [record](../experiments/m5-flux-klein-shiftadd-009.md) | M5 CPU | upstream BCQ complete query projection | — | — | — | complete; numerical diagnostic only |
+| `m5-flux-klein-shiftadd-010__attempt__20261102-full-fused` | [record](../experiments/m5-flux-klein-shiftadd-010.md) | M5 CPU | upstream BCQ complete fused projection | — | — | — | complete; numerical diagnostic only |
+| `a100-flux-klein-shiftadd-006__attempt__20261102-full-activation` | [record](../experiments/a100-flux-klein-shiftadd-006.md) | A100 SXM4 | radix p4 + all-linear grouped A8/A4 | — | — | — | complete; job 12133980; image diagnostic only |
+| `a100-flux-klein-upstream-query-001__attempt__20261102-query` | [record](../experiments/a100-flux-klein-upstream-query-001.md) | A100 SXM4 | single-query upstream BCQ controls | — | — | — | complete; job 12134140; image diagnostic only |
+
+| `a100-flux-klein-upstream-fused-001__attempt__20261102-fused` | [record](../experiments/a100-flux-klein-upstream-fused-001.md) | A100 SXM4 | single-fused-projection upstream BCQ controls | — | — | — | complete; job 12134626; image diagnostic only |
+
+| `a100-flux-klein-upstream-fused-calibration-001__attempt__20261102-calibration` | [record](../experiments/a100-flux-klein-upstream-fused-calibration-001.md) | A100 SXM4 | four-prompt fused-projection BCQ controls | — | — | — | complete; job 12135879; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-011__attempt__20261102-full-kv` | [record](../experiments/m5-flux-klein-shiftadd-011.md) | M5 CPU | upstream BCQ complete K/V projections | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-012__attempt__20261102-kv-activation` | [record](../experiments/m5-flux-klein-shiftadd-012.md) | M5 CPU | full K/V grouped A8/A4 error diagnostic | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-013__attempt__20261102-kv-p3` | [record](../experiments/m5-flux-klein-shiftadd-013.md) | M5 CPU | upstream BCQ three-plane K/V fits | — | — | — | complete; numerical diagnostic only |
+
+| `a100-flux-klein-upstream-qkv-calibration-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-calibration-001.md) | A100 SXM4 | four-prompt Q/K/V BCQ controls | — | — | — | complete; job 12138121; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-014__attempt__20261103-q-p3` | [record](../experiments/m5-flux-klein-shiftadd-014.md) | M5 CPU | upstream BCQ three-plane Q fit | — | — | — | complete; numerical diagnostic only |
+
+| `a100-flux-klein-upstream-qkv-a8-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-a8-001.md) | A100 SXM4 | upstream Q/K/V plus grouped A8 | — | — | — | complete; job 12139754; calibration diagnostic only |
+
+| `a100-flux-klein-upstream-qkv-mixed-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-mixed-001.md) | A100 SXM4 | K3/V3 mixed Q/K/V comparison | — | — | — | complete; job 12139916; calibration diagnostic only |
+
+| `a100-flux-klein-shiftadd-activation-capture-002__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-shiftadd-activation-capture-002.md) | A100 SXM4 | all-attention BF16 activation capture | — | — | — | complete; job 12140057; instrumentation invalidates timing |
+
+| `a100-flux-klein-upstream-qkv-q3-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-qkv-q3-001.md) | A100 SXM4 | Q3/K4/V4 image comparison | — | — | — | complete; job 12140128; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-015__attempt__20261103-all-dual` | [record](../experiments/m5-flux-klein-shiftadd-015.md) | M5 CPU | all 30 dual-stream upstream fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-017__attempt__20261103-dual-activation` | [record](../experiments/m5-flux-klein-shiftadd-017.md) | M5 CPU | all-dual A4/A8 activation errors | — | — | — | complete; numerical diagnostic only |
+
+| `a100-flux-klein-upstream-all-dual-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-001.md) | A100 SXM4 | all 30 dual-stream Q/K/V image controls | — | — | — | complete; job 12140419; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-018__attempt__20261103-image-q-p3` | [record](../experiments/m5-flux-klein-shiftadd-018.md) | M5 CPU | five image-query three-plane fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-016__attempt__20261103-all-single` | [record](../experiments/m5-flux-klein-shiftadd-016.md) | M5 CPU | all 20 fused upstream fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-019__attempt__20261103-single-activation` | [record](../experiments/m5-flux-klein-shiftadd-019.md) | M5 CPU | all-single A4/A8 activation errors | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-020__attempt__20261103-package` | [record](../experiments/m5-flux-klein-shiftadd-020.md) | M5 CPU | complete upstream/BF16 transformer package | — | — | — | complete; storage and loading verification |
+
+| `a100-flux-klein-upstream-all-dual-a8-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-a8-001.md) | A100 SXM4 | upstream Q/K/V plus grouped A8 | — | — | — | complete; job 12140559; calibration diagnostic only |
+
+| `a100-flux-klein-upstream-all-dual-q3-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-dual-q3-001.md) | A100 SXM4 | five image-query Q3 substitutions | — | — | — | complete; job 12140665; calibration diagnostic |
+
+| `a100-flux-klein-upstream-all-attention-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-attention-001.md) | A100 SXM4 | all 30 dual-stream Q/K/V image controls | — | — | — | complete; job 12140980; calibration diagnostic only |
+
+| `m5-flux-klein-shiftadd-load-002__attempt__20261103-uncached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader uncached | — | — | — | complete; loader timing and process RSS diagnostic |
+
+| `m5-flux-klein-shiftadd-load-002__attempt__20261103-cached` | [record](../experiments/m5-flux-klein-shiftadd-load-002.md) | M5 CPU | upstream loader cached | — | — | — | complete; loader timing and process RSS diagnostic |
+
+| `a100-flux-klein-upstream-all-attention-activation-001__attempt__20261103-calibration` | [record](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) | A100 SXM4 | upstream attention A8/A4 inputs | — | — | — | complete; job 12141633; calibration diagnostic |
+
+| `m5-flux-klein-shiftadd-021__attempt__20261103-single-p3` | [record](../experiments/m5-flux-klein-shiftadd-021.md) | M5 CPU | all 20 fused three-plane upstream fits | — | — | — | complete; numerical diagnostic only |
+
+| `m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused` | [record](../experiments/m5-flux-klein-shiftadd-022.md) | M5 CPU | fit-selected mixed fused planes | — | — | — | complete; candidate assembly, no image evaluation |
+
+| `m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2` | [m5-flux-klein-shiftadd-023](../experiments/m5-flux-klein-shiftadd-023.md) | M5 CPU | selected fused p2 fit | — | — | — | complete; verified numerical fit |
+| `m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1` | [m5-flux-klein-shiftadd-024](../experiments/m5-flux-klein-shiftadd-024.md) | M5 CPU | selected fused p1 fit | — | — | — | complete; verified numerical fit |
+| `a100-flux-klein-upstream-lowplane-fused-001__attempt__20261103-calibration` | [a100-flux-klein-upstream-lowplane-fused-001](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md) | A100 SXM4 | fixed-selection low-plane diagnostic | — | — | — | complete (job 12163596); 20-image diagnostic |
+
+| `jetson-nunchaku-sm87-build-20261102-003235` | [nunchaku-howto](../wiki/methods/nunchaku-howto.md#sm87-build-probe-2026-11-02) | Jetson Orin Nano | Nunchaku 0c8379d, sm_87 added to build allowlist (jetson_build_nunchaku_sm87.sh) | – | – | – | complete; build and load evidence only, no inference |
+| `a100-nunchaku-layer-check-001__layer__20261102-153101` | [nunchaku-howto](../wiki/methods/nunchaku-howto.md#single-layer-check-2026-11-02) | gilbreth-a100-80gb (PCIe, k041) | nunchaku_layer_check.py: 4 W4A4 layers vs BF16, community wheel | – | – | – | complete; layer outputs and timings only, reference for the Jetson check |
+| `jetson-nunchaku-layer-check-001__layer__20261102-165502` | [jetson-nunchaku-flux-klein-001](../experiments/jetson-nunchaku-flux-klein-001.md#kernel-check-gate) | Jetson Orin Nano | nunchaku_layer_check.py: 4 W4A4 layers vs BF16 and vs A100, sm_87 source build | – | – | – | complete; gate passed (rel_l2 vs A100 ≤ 6.8e-5) |
+| `jetson-nunchaku-flux-klein-001__attempt__20261102-115600` | [jetson-nunchaku-flux-klein-001](../experiments/jetson-nunchaku-flux-klein-001.md) | Jetson Orin Nano | jetson-nunchaku-flux-klein-int4-r32-512-smoke | 73388.6 | 2165.7 / 3238.7 / 499.9 | 3.12 | complete (smoke, 1 measured) |
+| `jetson-nunchaku-flux-klein-001__baseline__20261102-120036` | [jetson-nunchaku-flux-klein-001](../experiments/jetson-nunchaku-flux-klein-001.md) | Jetson Orin Nano | jetson-nunchaku-flux-klein-int4-r32-512 | 64598.3 | 1104.1 / 2953.5 / 486.6 | 3.12 | complete; fixed-seed output not bitwise deterministic |
+| `jetson-nunchaku-flux-klein-002__attempt__20261102-122834` | [jetson-nunchaku-flux-klein-002](../experiments/jetson-nunchaku-flux-klein-002.md) | Jetson Orin Nano | jetson-nunchaku-flux-klein-int4-r32-512-condreuse-smoke | 3431.3 | 0.5 / 2914.3 / 484.8 | 3.12 | complete (smoke, 1 measured) |
+| `jetson-nunchaku-flux-klein-002__baseline__20261102-123151` | [jetson-nunchaku-flux-klein-002](../experiments/jetson-nunchaku-flux-klein-002.md) | Jetson Orin Nano | jetson-nunchaku-flux-klein-int4-r32-512-condreuse | 3444.6 | 0.5 / 2927.7 / 486.1 | 3.12 | complete; reuse hits 13/14; not bitwise deterministic |
+| `m5-mflux-flux-klein-base-005__baseline__20261015-214940` | [m5-mflux-flux-klein-base-005](../experiments/m5-mflux-flux-klein-base-005.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-vae-tiled256.resolved | — | — | — | Interrupted on request during first image; no timing result |
+| `m5-mflux-flux-klein-base-005__baseline__20261015-225903` | [m5-mflux-flux-klein-base-005](../experiments/m5-mflux-flux-klein-base-005.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q4-512-vae-tiled256.resolved | 111959.1 | 410.3 / 110408.8 / 1134.3 | — | Complete; 1+3+10 validated; W&B verified; quality unapproved |
+| `m5-mflux-flux-klein-base-006__attempt__20261015-232458` | [m5-mflux-flux-klein-base-006](../experiments/m5-mflux-flux-klein-base-006.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q8-512-vae-tiled256.resolved | 139789.9 | 749.4 / 137665.6 / 1367.9 | — | Complete; 1 measured; validation passed; quality unapproved |
+| `m5-mflux-flux-klein-base-006__baseline__20261015-232911` | [m5-mflux-flux-klein-base-006](../experiments/m5-mflux-flux-klein-base-006.md) | MacBook Air M5 | m5-mflux-flux-klein-base-q8-512-vae-tiled256.resolved | 128975.8 | 558.9 / 127246.3 / 1239.4 | — | Complete; 10 measured; validation passed; quality unapproved |

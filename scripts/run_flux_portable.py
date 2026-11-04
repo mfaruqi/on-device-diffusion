@@ -5,6 +5,10 @@ Same protocol, stage accounting and run files as run_flux.py; what differs per d
 torch_backends.py. Every change from the BF16 reference is one labelled entry in `optimizations`:
 
   quantization.transformer   {"method": "gguf", "file": path, "sha256": hex}  (diffusers GGUF loader, BF16 compute)
+                             or {"method": "nunchaku_svdq", "file": path, "sha256": hex, "source_dir": dir,
+                                 "revision": git hash, "patch_sha256": hex}: SVDQuant W4A4 checkpoint loaded by
+                             NunchakuFlux2Transformer2DModel from an in-place source build (no installed wheel); the
+                             tree must be at `revision` and its `git diff` must hash to `patch_sha256` (CUDA only)
   quantization.text_encoder  {"method": "bnb_nf4"} or {"method": "torchao_int4", "group_size": 128}
                              (quantized while loading, so the BF16 encoder never has to fit in memory)
                              A pre-quantized encoder saved by save_quantized_text_encoder.py is given as
@@ -35,6 +39,9 @@ torch_backends.py. Every change from the BF16 reference is one labelled entry in
                                 "min_block_size": int}
                              Applied to the transformer forward only; compilation happens lazily in the
                              first generation, which is reported separately. TensorRT is CUDA-only.
+                             With transformer reloads and no conditioning reuse, every reloaded module is
+                             compiled again (torch_compile resets Dynamo first), inside that generation's
+                             denoise_step_0; compiler.json counts the compilations.
 
 Usage:
   python scripts/run_flux_portable.py --config configs/<id>.json [--kind attempt|baseline] [--profile]
@@ -58,6 +65,7 @@ from measurement import create_run_directory, phase_sequence, run_status, sampli
 from torch_backends import check_backend, make_device
 
 TE_METHODS = ("bnb_nf4", "torchao_int4")
+TRANSFORMER_METHODS = ("gguf", "nunchaku_svdq")
 NEW_KEYS = ("compiler", "stage_residency", "attention_backend", "conditioning_reuse", "step_cache")
 SDPA_BACKENDS = (None, "math", "flash", "efficient")
 
@@ -72,7 +80,12 @@ def check_config(cfg):
     assert set(q) <= {"transformer", "text_encoder"}, f"unknown quantization targets: {sorted(q)}"
     if "transformer" in q:
         t = q["transformer"]
-        assert t["method"] == "gguf" and t["file"] and len(t["sha256"]) == 64, "GGUF transformer needs file and sha256"
+        assert t["method"] in TRANSFORMER_METHODS and t["file"] and len(t["sha256"]) == 64, (
+            f"transformer method must be one of {TRANSFORMER_METHODS}, with file and sha256")
+        if t["method"] == "nunchaku_svdq":
+            assert set(t) == {"method", "file", "sha256", "source_dir", "revision", "patch_sha256"}, (
+                "nunchaku_svdq needs exactly file, sha256, source_dir, revision, patch_sha256")
+            assert cfg["backend"] in ("cuda", "jetson"), "Nunchaku kernels are CUDA-only"
     if "text_encoder" in q:
         assert q["text_encoder"]["method"] in TE_METHODS, f"text encoder method must be one of {TE_METHODS}"
         if "path" in q["text_encoder"]:
@@ -83,9 +96,7 @@ def check_config(cfg):
                              {"text_encoder": "release_after_encode", "transformer": "release_during_encode"}), (
             f"unsupported stage_residency: {residency}")
         if "transformer" in residency:
-            assert "transformer" in q, "transformer release/reload is wired for the GGUF transformer only"
-            assert not opt.get("compiler") or opt.get("conditioning_reuse"), (
-                "with transformer reloads, compile only together with conditioning_reuse (one reload, then recompiled once)")
+            assert "transformer" in q, "transformer release/reload is wired for a quantized transformer file only"
         assert "path" in q.get("text_encoder", {}), "release_after_encode reloads a pre-quantized encoder; give its path"
     tiling = opt.get("vae_tiling", False)
     assert type(tiling) is bool or (type(tiling) is dict and set(tiling) == {"tile_sample_px", "overlap"}
@@ -142,7 +153,36 @@ def load_pipeline(cfg, device, run_dir):
     kwargs, receipt = {}, {}
 
     loaders = {}
-    if "transformer" in q:
+    if q.get("transformer", {}).get("method") == "nunchaku_svdq":
+        t = q["transformer"]
+        digest = sha256_file(t["file"])
+        assert digest == t["sha256"], f"Nunchaku checkpoint sha256 mismatch: {digest}"
+        src = Path(t["source_dir"]).expanduser()
+        rev = sh(["git", "-C", str(src), "rev-parse", "HEAD"]).strip()
+        patch = sh(["git", "-C", str(src), "diff"])
+        assert rev == t["revision"], f"Nunchaku source at {rev}, config pins {t['revision']}"
+        assert hashlib.sha256(patch.encode()).hexdigest() == t["patch_sha256"], "Nunchaku source patch differs"
+        import sys
+        sys.path.insert(0, str(src))
+        import nunchaku
+        from nunchaku import NunchakuFlux2Transformer2DModel
+        from nunchaku.models.linear import SVDQW4A4Linear
+        assert Path(nunchaku.__file__).resolve().is_relative_to(src.resolve()), f"imported {nunchaku.__file__}"
+
+        def transformer_loader():
+            # pin_memory=False: a pinned copy of the state dict would be a third copy in the Orin's shared memory.
+            m = NunchakuFlux2Transformer2DModel.from_pretrained(t["file"], device=dev, torch_dtype=torch.bfloat16,
+                                                                offload=False, pin_memory=False)
+            layers = [x for x in m.modules() if isinstance(x, SVDQW4A4Linear)]
+            assert layers and all(x.precision == "int4" and x.rank == 32 for x in layers), "not an INT4/r32 SVDQuant model"
+            return m
+
+        loaders["transformer"] = transformer_loader
+        kwargs["transformer"] = transformer_loader()
+        receipt["transformer"] = {"method": "nunchaku_svdq", "file": t["file"], "sha256": digest,
+                                  "source_dir": str(src), "revision": rev, "patch": patch,
+                                  "svdq_layers": sum(isinstance(x, SVDQW4A4Linear) for x in kwargs["transformer"].modules())}
+    elif "transformer" in q:
         t = q["transformer"]
         digest = sha256_file(t["file"])  # hashed once here; reloads read the same verified file
         assert digest == t["sha256"], f"GGUF sha256 mismatch: {digest}"
@@ -420,6 +460,11 @@ def benchmark(cfg, run_dir, profile=False):
 
             def on_reload(new):
                 if opt.get("compiler"):
+                    if opt["compiler"]["name"] == "torch_compile":
+                        # Each reload is a new module; without a reset, Dynamo's per-code cache fills with entries
+                        # guarded on released modules and falls back to eager at its recompile limit.
+                        import torch
+                        torch._dynamo.reset()
                     apply_compiler(pipe, opt["compiler"], new)
                     compiles.append(1)
                 apply_step_cache(new, opt.get("step_cache"))

@@ -1,0 +1,3 @@
+
+# Preserve the pinned upstream files byte-for-byte, including terminal newlines.
+shiftadd/vendor/** whitespace=-blank-at-eof

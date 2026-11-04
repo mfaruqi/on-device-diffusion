@@ -1,0 +1,701 @@
+{
+  "scope": "same-source 32 spread rows; FP32 products; weight-only scale selection",
+  "storage": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 52224,
+      "file_bytes": 53514,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.12276586145162582
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "shape": [
+        32,
+        3072
+      ],
+      "payload_bytes": 52224,
+      "file_bytes": 53514,
+      "bf16_bytes": 196608,
+      "relative_weight_l2": 0.10989506542682648
+    }
+  ],
+  "results": [
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07024619728326797
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.0714264065027237
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 0,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09038594365119934
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0747690349817276
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07528406381607056
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 1,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09504975378513336
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.06970835477113724
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07024993002414703
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 2,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.08512954413890839
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.06956204771995544
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.06976817548274994
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 3,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.07905837148427963
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07096299529075623
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07101025432348251
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 4,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09052028506994247
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07452113181352615
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07553286105394363
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 5,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09223746508359909
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.06830041855573654
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.06911054253578186
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 6,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.08019127696752548
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.06855692714452744
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.06854820996522903
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 7,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.07809330523014069
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.06957541406154633
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07049251347780228
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.08652273565530777
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07275636494159698
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07419995218515396
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09199127554893494
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.06589319556951523
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.06664536148309708
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.07851952314376831
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.06407270580530167
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.06453179568052292
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.07107631117105484
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07377416640520096
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07435238361358643
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.09014028310775757
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07767597585916519
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07835423201322556
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.0952153354883194
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07121503353118896
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07126936316490173
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.08329591900110245
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07206105440855026
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07220431417226791
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.08340873569250107
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07919181883335114
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07998751103878021
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 0,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13692665100097656
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07883766293525696
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08251527696847916
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 1,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13687832653522491
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.08192615956068039
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08332403004169464
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 2,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13129498064517975
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.08024021983146667
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.0827404111623764
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 3,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.12703126668930054
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.08177056163549423
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.0824689120054245
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 4,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1382213979959488
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.08100900799036026
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08266835659742355
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 5,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1442507952451706
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.0794450119137764
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08085080981254578
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 6,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1357136219739914
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "original",
+      "relative_output_l2": 0.07638543099164963
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07871908694505692
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 7,
+      "split": "fit",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.11730633676052094
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0749187096953392
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07526353001594543
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 8,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13351942598819733
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.08292075991630554
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.0851578563451767
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 9,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.14118210971355438
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.08408161997795105
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08496318012475967
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 10,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13147057592868805
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0913153812289238
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.09307873249053955
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 11,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1397743821144104
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07934913039207458
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07972711324691772
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 12,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.13601437211036682
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.07448598742485046
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.07656650990247726
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 13,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1258031576871872
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.0813576728105545
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08286828547716141
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 14,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.1399717926979065
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "original",
+      "relative_output_l2": 0.08424055576324463
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a8_token",
+      "relative_output_l2": 0.08488863706588745
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "call": 15,
+      "split": "calibration_validation",
+      "activation": "a4_g32",
+      "relative_output_l2": 0.12587012350559235
+    }
+  ]
+}

@@ -34,7 +34,7 @@ How does turning flash attention off change latency and whole-system memory for 
 
 - [memguard.json](../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/memguard.json): `killed_by_guard: true`, reason `MemAvailable 399 MB < 400 MB`, exit code 137; MemAvailable 5996 MB at start, minimum 399 MB; swap 301 MB at start, maximum 302 MB.
 - [status.json](../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/status.json) still reads `running`: SIGKILL to the process group stopped the runner before it could write a final status. `summary.json`, `runs.csv`, `stages.csv`, `load.json`, `free-after.txt`, `engine/timing.json` and `output.png` were never written.
-- [engine.log](../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/engine.log) ends with `[[phase]] stage=denoise event=begin` for generation index 2 (21:13:38.558 UTC by the marker), with no `flux step` line after it; the last tegrastats sample is 17:13:40 local (21:13:40 UTC).
+- engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/engine.log`) ends with `[[phase]] stage=denoise event=begin` for generation index 2 (21:13:38.558 UTC by the marker), with no `flux step` line after it; the last tegrastats sample is 17:13:40 local (21:13:40 UTC).
 
 Partial measurements, from the engine log (no `runs.csv` exists; values are the engine's printed numbers):
 
@@ -46,7 +46,7 @@ Partial measurements, from the engine log (no `runs.csv` exists; values are the 
 
 Model load 62.607 s (`model load` line; `loading tensor data completed in 59.32s`). Raw marker intervals: pass 0 encode_setup 2290.4 / denoise 13830.8 / vae_decode 4239.5 ms; pass 1 1022.6 / 12677.9 / 1735.0 ms; pass 2 encode_setup 1006.2 ms.
 
-Whole-system tegrastats ([tegrastats.log](../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/tegrastats.log), 493 samples; summarized here because the runner did not reach its summary step): RAM peak 6996 / 7620 MB = 6.83 GiB at the last sample; swap 300–302 MB. Trajectory aligned to phase markers (1 s timestamp resolution): load maximum 6268 MB; pass 0 up to about 6720 MB; a step from 6607 to 6850 MB at the start of pass 1; 6871–6873 MB to the end of pass 1 and through pass 2 encode; a step from 6871 to 6994 MB at the start of pass 2 denoising; 6996 MB when killed.
+Whole-system tegrastats (tegrastats.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-007__baseline__20261014-171051/tegrastats.log`), 493 samples; summarized here because the runner did not reach its summary step): RAM peak 6996 / 7620 MB = 6.83 GiB at the last sample; swap 300–302 MB. Trajectory aligned to phase markers (1 s timestamp resolution): load maximum 6268 MB; pass 0 up to about 6720 MB; a step from 6607 to 6850 MB at the start of pass 1; 6871–6873 MB to the end of pass 1 and through pass 2 encode; a step from 6871 to 6994 MB at the start of pass 2 denoising; 6996 MB when killed.
 
 ### Smoke run (complete; first + one measured)
 

@@ -271,7 +271,7 @@ sign text reads "HOLLO WORLD" rather than "hello world". This is functional evid
   and SDPA (flash, efficient, math) checks, but the wheel lacks `torch._C._distributed_c10d`, so
   importing the diffusers Flux2 pipeline, GGUF support and torchao failed; transformers disabled PyTorch
   because it parsed `2.5.0a0` as < 2.5; the bitsandbytes NF4 check exited with CUDA
-  "named symbol not found" ([probe.log](../results/runs/jetson-torch-env-t0__attempt__20261011/probe.log)).
+  "named symbol not found" (probe.log (local-only artifact: `../results/runs/jetson-torch-env-t0__attempt__20261011/probe.log`)).
 - [Jetson AI Lab stack](../results/runs/jetson-torch-env-t0__attempt__20261011-ailab/status.json):
   **complete**. torch 2.8.0; all checks passed: `Flux2KleinPipeline`, `Flux2Transformer2DModel`,
   `GGUFQuantizationConfig`, `AutoencoderKLFlux2` import; GGUF utilities present; torchao int4 and

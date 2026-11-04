@@ -1,8 +1,8 @@
-# Klein stage breakdowns — updated 2026-10-16
+# Klein stage breakdowns — updated 2026-10-21
 
 [Open the twenty-eight interactive charts in W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833).
 
-Week 2–3 engine and option analysis, RQ1. Ninety-six completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
+Week 2–3 engine and option analysis, RQ1. Ninety-eight completed, unprofiled runs; one first generation and three warm-ups excluded, ten measured generations per run. Source selection and labels: [manifest.json](manifest.json). Numeric data, source-file SHA256 hashes and full configurations: [chart-data.json](chart-data.json). Latest MFLUX chart verification: [mflux-upload-verification.json](mflux-upload-verification.json); prior verification remains [wandb-verification.json](wandb-verification.json).
 
 | Panel | Sources |
 |---|---|
@@ -25,19 +25,21 @@ Week 2–3 engine and option analysis, RQ1. Ninety-six completed, unprofiled run
 | A100 distilled PyTorch, torch 2.8 | torch 2.8 BF16 reference, torch.compile, conditioning reuse, TaylorSeer (output changed) |
 | A100 edge-dit step caches | No-reuse reference (2026-10-05), MagCache (3/4 reused; output degraded; different node) |
 
-## Gap-campaign additions (2026-10-15)
-
-The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-15 with the seven panels above, from 18 additional full protocols on Jetson Orin Nano and A100. Smoke tests, failed configuration attempts, the memory-guard-stopped edge-dit flash-off run, the contaminated PyTorch run 161717 and launch errors are excluded and uploaded separately ([manifest exclusions](manifest.json)). Visual checks only, no quality metric: TaylorSeer and MagCache visibly change the output; torch.compile is near-identical but not bit-identical; conditioning reuse is bit-identical. Text encoders, residency and initial noise differ across Jetson engines, so the engine panel is a descriptive configuration comparison ([comparison record](../../experiments/compare-jetson-engines-matched-options.md)).
-
 | A100 Base PyTorch torch 2.8 options | Reference, conditioning reuse, TaylorSeer, torch.compile (50 steps, CFG 4) |
 | A100 Base edge-dit caches | GGUF Q4 reference and seven engine step caches (50 steps, CFG 4) |
 | Jetson Base edge-dit caches | Resident + VAE tiling Q4 reference and six engine step caches (50 steps, CFG 4; DiCache stopped by the memory guard; MagCache deforms the text) |
 | Jetson Base PyTorch reuse and compile | Sequential-residency reference (two weight swaps per image), conditioning reuse (bit-identical), conditioning reuse + torch.compile (TaylorSeer stopped by the memory guard) |
-| M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; distilled also 4-bit and 8-bit VAE tiling |
+| M5 distilled / Base MFLUX options (two panels) | Same-bit references versus exact conditioning reuse; both workloads include 4-bit and 8-bit VAE tiling |
+
+## Gap-campaign additions (2026-10-15)
+
+The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-15 with the seven panels above, from 18 additional full protocols on Jetson Orin Nano and A100. Smoke tests, failed configuration attempts, the memory-guard-stopped edge-dit flash-off run, the contaminated PyTorch run 161717 and launch errors are excluded and uploaded separately ([manifest exclusions](manifest.json)). Visual checks only, no quality metric: TaylorSeer and MagCache visibly change the output; torch.compile is near-identical but not bit-identical; conditioning reuse is bit-identical. Text encoders, residency and initial noise differ across Jetson engines, so the engine panel is a descriptive configuration comparison ([comparison record](../../experiments/compare-jetson-engines-matched-options.md)).
+
+
 
 ## October 15 additions
 
-Seven validated full protocols were added, preserving all 49 earlier sources and 15 panels. [Remote verification](followup-upload-verification.json) checks the latest four modified/new option panels, all plot/image paths and the analysis artifact manifest. Distilled compilation failed its numerical gate; Base 4-bit tiling was interrupted by clamshell sleep and Base 8-bit tiling stopped at AC-power preflight. These attempts are excluded pending recovery.
+Nine validated full protocols are included from the M5 follow-up batch. Both Base tiling recoveries completed; sleep-invalid, requested-interruption and AC-preflight attempts remain excluded. Distilled compilation failed its numerical gate. Historical verification receipts retain their original batch scope; the reconciliation receipt records the consolidated manifest.
 
 TaylorSeer predicts attention outputs with separate CFG histories; it is approximate and has no formal quality approval. Compile smoke uses an extra identical-input eager check; only the subsequent full protocol appears here. System swap, thermals and background load were uncontrolled; differences are descriptive, not isolated optimization speedups. Exact conditioning reuse applies only to repeated identical prompt pairs. Tiling changes pixels through local normalization.
 
@@ -88,3 +90,9 @@ The output directory retains an upload ID so repeat uploads resume the same anal
 ## Jetson Base additions (2026-10-16)
 
 The W&B analysis run `c6af35f4845e4833` was updated on 2026-10-16 with the two Jetson Base panels above, from 10 additional full protocols (queues `scripts/jetson_gap_queue_20261016f.sh` and `-g.sh`). Smoke tests, failed attempts and the memory-guard-stopped DiCache and TaylorSeer runs are not charted; their records are in the [registry](../../wiki/experiments.md).
+
+## Reconciliation — 2026-10-21
+
+The canonical manifest combines the committed gap campaign (`cf48eb96f09695d34ff388356aa0621bf6a0cce9`) and the final local M5 recoveries: **98 unique full runs, 28 panels**. All source statuses and ten-measurement CSV/summary arithmetic passed the existing collector. All previous panel keys remain. [Remote verification](reconciliation-verification.json) confirms step **14**, the source-run configuration, all panel/image summary entries and 86 artifact-file digests; the downloaded manifest/data match local files.
+
+This checkout's `manifest.json` is the canonical publishing input. Other worktrees should contribute selections to this manifest before publishing to the shared analysis ID; do not upload a stale branch copy. Historical receipts describe their own batch and are not current source counts. Profile JSON/log evidence referenced by the imported records was copied locally from the peer checkout when absent; ignored raw traces/logs remain uncommitted. No benchmark was repeated. Local midterm draft files were retained unchanged.

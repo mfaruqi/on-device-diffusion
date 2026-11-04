@@ -483,7 +483,7 @@ Run: [`jetson-flux-klein-003__repeat__20261014-163411`](../results/runs/jetson-f
 [config](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/config.json),
 [environment](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/environment.json),
 [callbacks](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/engine/results.jsonl),
-[engine log](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/engine/sdcpp.log),
+engine log (local-only artifact: `../results/runs/jetson-flux-klein-003__repeat__20261014-163411/engine/sdcpp.log`),
 [memguard](../results/runs/jetson-flux-klein-003__repeat__20261014-163411/memguard.json).
 
 Setup: [configs/jetson-flux-klein-q4-512-disk-baseline.json](../configs/jetson-flux-klein-q4-512-disk-baseline.json),

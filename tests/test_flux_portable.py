@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from run_flux_portable import check_config
 
 CONFIG = ROOT / "configs" / "jetson-torch-flux-klein-q4-nf4-512.json"
+NUNCHAKU = ROOT / "configs" / "jetson-nunchaku-flux-klein-int4-r32-512.json"
 
 
 def config(**changes):
@@ -82,9 +83,8 @@ class PortableConfigTest(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "unsupported stage_residency"):
             check_config(config(stage_residency={"transformer": "release_after_denoise"}))
 
-    def test_compiler_refused_with_transformer_reload(self):
-        with self.assertRaisesRegex(AssertionError, "compile only together with conditioning_reuse"):
-            check_config(config(compiler={"name": "torch_compile", "mode": "default"}))
+    def test_compiler_allowed_with_transformer_reload(self):
+        check_config(config(compiler={"name": "torch_compile", "mode": "default"}))
 
     def test_compiler_allowed_with_conditioning_reuse(self):
         cfg = config(compiler={"name": "torch_compile", "mode": "default"})
@@ -116,6 +116,21 @@ class PortableConfigTest(unittest.TestCase):
         check_config(cfg)
         cfg["optimizations"]["attention_backend"] = "cudnn"
         with self.assertRaisesRegex(AssertionError, "attention_backend must be one of"):
+            check_config(cfg)
+
+    def test_nunchaku_config_is_valid(self):
+        check_config(json.loads(NUNCHAKU.read_text()))
+
+    def test_nunchaku_needs_pinned_source_patch(self):
+        cfg = json.loads(NUNCHAKU.read_text())
+        del cfg["optimizations"]["quantization"]["transformer"]["patch_sha256"]
+        with self.assertRaisesRegex(AssertionError, "nunchaku_svdq needs exactly"):
+            check_config(cfg)
+
+    def test_nunchaku_refused_on_mps(self):
+        cfg = json.loads(NUNCHAKU.read_text())
+        cfg["backend"] = "mps"
+        with self.assertRaises(AssertionError):
             check_config(cfg)
 
 

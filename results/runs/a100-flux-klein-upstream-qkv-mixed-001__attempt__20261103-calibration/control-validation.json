@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "scope": "paired numerical and image integrity; not quality admission",
+  "prior_bf16_exact_match": true,
+  "metric_rtol": 1e-05,
+  "metric_atol": 1e-08,
+  "metric_tolerance_reason": "FP32 norm reductions differ across CPU backends",
+  "images_checked": 16,
+  "replaced_matrices_per_candidate": 3,
+  "performance_comparison_eligible": false,
+  "results": [
+    {
+      "sample_id": "cal01",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "e547f9ffba7abe6dec8ff14d1b28d3759ab8f298323b4bf111330cfeb670a661"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-u8-qkv",
+      "relative_latent_l2": 0.0354432575404644,
+      "latent_sha256": "f1a3d4312ad53076112c705778aca776759e6077140ddbed4cd70e9b02c0eb86"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-q4-k3",
+      "relative_latent_l2": 0.08019173890352249,
+      "latent_sha256": "d5470501cd22ab48b900e63fad174b28b5e3ca10b0d6cd1ec452c0e8bd85a862"
+    },
+    {
+      "sample_id": "cal01",
+      "case": "upstream-q4-v3",
+      "relative_latent_l2": 0.06691280752420425,
+      "latent_sha256": "591555bd86a01d8dec9d2c4affebed62d72a9e84b1864a58cd7245e73f364648"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "d96fa351f5d09cb994fbee3473970e25894e98b0fae6ca4890eae559c5617621"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-u8-qkv",
+      "relative_latent_l2": 0.0898965448141098,
+      "latent_sha256": "bac357c8baceec1b3cdf348a8578397f9af64dc3f16317020bd2e2015d6e554d"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-q4-k3",
+      "relative_latent_l2": 0.09217658638954163,
+      "latent_sha256": "aa7193a17557a33136683545ed80478036b6b8e3c3c486e9edf668553109f7f4"
+    },
+    {
+      "sample_id": "cal02",
+      "case": "upstream-q4-v3",
+      "relative_latent_l2": 0.17506858706474304,
+      "latent_sha256": "bcf25fe43ee50eb66021e202db9b9736b223e075fdfe913daf924726fe8162b7"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "2b7425061babf23812b72cb0929607e4b92e260ec4933f0a2b0a7259bbd66287"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-u8-qkv",
+      "relative_latent_l2": 0.14604732394218445,
+      "latent_sha256": "cc982742289fb01faa4fb5e14ac864c23d0eca6d9c0f9a62963be3f3350b0568"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-q4-k3",
+      "relative_latent_l2": 0.1474768966436386,
+      "latent_sha256": "b550d8b614444e3facf0248f76c8ccb3cb35296a7dc036bf37cda5699b64e545"
+    },
+    {
+      "sample_id": "cal03",
+      "case": "upstream-q4-v3",
+      "relative_latent_l2": 0.2248295247554779,
+      "latent_sha256": "1df6f896166c629b0d3cd93be945ce083faa6c12abbd933c6cf01181d1074aae"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "bf16",
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "1887a48e20c7592b75aef110356433ce3e6fbb099e593c14d05f988580c51196"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-u8-qkv",
+      "relative_latent_l2": 0.14231336116790771,
+      "latent_sha256": "245b0d2c4d0ab3d8aea720e4708ff1a0b7aaa969f821917a5de46812c556705f"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-q4-k3",
+      "relative_latent_l2": 0.1139242947101593,
+      "latent_sha256": "86d7f4ba0f208646eefbb9c8d843a64595799f5be219d23d5b1e579f960707a4"
+    },
+    {
+      "sample_id": "cal04",
+      "case": "upstream-q4-v3",
+      "relative_latent_l2": 0.3000046908855438,
+      "latent_sha256": "6408cf57d5844b02473d2a4f565d9faff4d31b463c79c69732c204489f3d199b"
+    }
+  ]
+}

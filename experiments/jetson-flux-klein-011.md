@@ -61,7 +61,7 @@ run with the same harness binary.
 22:56:39–23:14:20 UTC, [summary](../results/runs/jetson-flux-klein-011__baseline__20261014-185639/summary.json),
 [config](../results/runs/jetson-flux-klein-011__baseline__20261014-185639/config.json),
 [callbacks](../results/runs/jetson-flux-klein-011__baseline__20261014-185639/engine/results.jsonl),
-[engine log](../results/runs/jetson-flux-klein-011__baseline__20261014-185639/engine/sdcpp.log). Power mode 25 W;
+engine log (local-only artifact: `../results/runs/jetson-flux-klein-011__baseline__20261014-185639/engine/sdcpp.log`). Power mode 25 W;
 CUDA 12.6; sd.cpp `19bbbca`.
 
 | Metric | Median (ms) | Min–max (ms) |
@@ -98,7 +98,7 @@ measure physical storage I/O.
 ### Tiling evidence from the engine log
 
 Each of the 14 decodes in the baseline logs the same sequence
-([engine log](../results/runs/jetson-flux-klein-011__baseline__20261014-185639/engine/sdcpp.log)):
+(engine log (local-only artifact: `../results/runs/jetson-flux-klein-011__baseline__20261014-185639/engine/sdcpp.log`)):
 
 - `VAE decode tile size: 128x128 pixels (8x8 latent)`
 - `num tiles : 5, 5`

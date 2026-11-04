@@ -30,7 +30,7 @@ Does edge-dit.cpp's DiCache step cache, at its default parameters, reuse any of 
 
 Full run [jetson-edgedit-flux-klein-014__baseline__20261015-135841](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/): [status.json](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/status.json) `complete`; [memguard.json](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/memguard.json) not killed, exit 0.
 
-Cache receipt ([engine.log](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/engine.log)): every pass logs `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4` and `DiCache reused 0/4 steps` (14 of 14 passes; smoke 2 of 2).
+Cache receipt (engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/engine.log`)): every pass logs `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4` and `DiCache reused 0/4 steps` (14 of 14 passes; smoke 2 of 2).
 
 ### Latency (measured n = 10; [summary.json](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/summary.json), [runs.csv](../results/runs/jetson-edgedit-flux-klein-014__baseline__20261015-135841/runs.csv))
 

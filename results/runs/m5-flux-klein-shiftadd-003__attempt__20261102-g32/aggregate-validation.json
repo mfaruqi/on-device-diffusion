@@ -1,0 +1,38 @@
+{
+  "activation_group_size": 32,
+  "ideal_activation_bits_with_fp32_scales": 5.0,
+  "results": [
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "method": "weight_only",
+      "mean": 0.13376490585505962,
+      "minimum": 0.12601198256015778,
+      "maximum": 0.14504876732826233,
+      "calls": 8
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "method": "diagonal_activation",
+      "mean": 0.133694875985384,
+      "minimum": 0.1250286102294922,
+      "maximum": 0.14443068206310272,
+      "calls": 8
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "method": "weight_only",
+      "mean": 0.09592833835631609,
+      "minimum": 0.08988849818706512,
+      "maximum": 0.10179831832647324,
+      "calls": 8
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "method": "diagonal_activation",
+      "mean": 0.06777615612372756,
+      "minimum": 0.053609367460012436,
+      "maximum": 0.07755650579929352,
+      "calls": 8
+    }
+  ]
+}

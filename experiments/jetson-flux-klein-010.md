@@ -71,7 +71,7 @@ from weight reloading in this disk-backed configuration. A definition is propose
 22:35:01–22:52:05 UTC, [summary](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/summary.json),
 [config](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/config.json),
 [callbacks](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/engine/results.jsonl),
-[engine log](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/engine/sdcpp.log). Power mode 25 W;
+engine log (local-only artifact: `../results/runs/jetson-flux-klein-010__baseline__20261014-183501/engine/sdcpp.log`). Power mode 25 W;
 CUDA 12.6; sd.cpp `19bbbca`.
 
 | Metric | Median (ms) | Min–max (ms) |
@@ -114,7 +114,7 @@ diagnostics that overlap stage time; they do not measure physical storage I/O.
 - Memory guard: not triggered. MemAvailable minimum 1268 MB; swap use 326 → 334 MB
   ([memguard](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/memguard.json)).
 - Engine-printed compute buffers: flux 491.00 MB (≈0.479 GiB), qwen3 65.00 MB, vae 1664.50 MB
-  (≈1.625 GiB), each on CUDA0, once per generation ([engine log](../results/runs/jetson-flux-klein-010__baseline__20261014-183501/engine/sdcpp.log);
+  (≈1.625 GiB), each on CUDA0, once per generation (engine log (local-only artifact: `../results/runs/jetson-flux-klein-010__baseline__20261014-183501/engine/sdcpp.log`);
   printed MB treated as MiB).
 
 ### Repeatability and output

@@ -52,7 +52,7 @@ a quality requirement (RQ2).
 
 Full run [a100-edgedit-flux-klein-base-007__baseline__20261015-175238](../results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238/): [status.json](../results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238/status.json) `complete`.
 
-Cache receipt ([engine.log](../results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238/engine.log),
+Cache receipt (engine.log (local-only artifact: `../results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238/engine.log`),
 [step-cache.json](../results/runs/a100-edgedit-flux-klein-base-007__baseline__20261015-175238/step-cache.json)): every pass logs `cache enabled: mode=MagCache model=flux2-klein granularity=feature matched_sites=1 variants=2 slots=1` and
 `MagCache reused 70/50 steps` (14 of 14 passes; smoke 2 of 2; source `magcache_policy.cpp`). `skipped_steps_per_generation` is 70 in all 14
 generations. The log does not say which passes were reused. The engine still

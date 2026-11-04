@@ -1,0 +1,41 @@
+{
+  "id": "a100-flux-klein-upstream-query-001",
+  "model_path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "output": "/scratch/gilbreth/mfaruqi/shiftadd-initial/runs/upstream-query-001",
+  "seed": 0,
+  "prompt": "A cat holding a sign that says hello world",
+  "height": 512,
+  "width": 512,
+  "cases": [
+    {
+      "name": "bf16",
+      "artifacts": null
+    },
+    {
+      "name": "radix-p4-query",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-radix-p4-001",
+      "planes": 4,
+      "tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    },
+    {
+      "name": "uniform-int4-query",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-uniform-int4-001",
+      "weight_format": "symmetric_uniform",
+      "tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    },
+    {
+      "name": "upstream-u8-query",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/upstream-bcq-full-query-001",
+      "weight_format": "upstream_bcq",
+      "tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    }
+  ],
+  "decode_chunk_rows": 128,
+  "description": "Prepared single-query projection image diagnostic: BF16, radix, conventional INT4 and upstream BCQ; dense BF16 execution. Not submitted."
+}

@@ -30,7 +30,7 @@ Does edge-dit.cpp's `dicache` step cache, at its default parameters, skip or reu
 | [20261016-011113](../results/runs/jetson-edgedit-flux-klein-base-008__attempt__20261016-011113/) | `MemAvailable 371 MB < 400 MB`, exit 137 | 5982 → 371 MB | 315 MB, no growth | 1 (first) |
 | [20261015-164533](../results/runs/jetson-edgedit-flux-klein-base-008__attempt__20261015-164533/) | `MemAvailable 390 MB < 400 MB`, exit 137 | 5995 → 390 MB | 320 MB, no growth | 1 (first) |
 
-Partial measurements from [engine.log](../results/runs/jetson-edgedit-flux-klein-base-008__attempt__20261016-011113/engine.log) (first generation only, not a baseline):
+Partial measurements from engine.log (local-only artifact: `../results/runs/jetson-edgedit-flux-klein-base-008__attempt__20261016-011113/engine.log`) (first generation only, not a baseline):
 
 - Cache receipt: `cache enabled: mode=DiCache model=flux2-klein granularity=probe matched_sites=2 variants=3 slots=4`; `DiCache reused 54/50 steps` (k counts transformer passes out of 100).
 - First generation breakdown: total 121.60 s (text_encode 1.77 / sampling 114.10 / vae_decode 4.65 / other 1.07 s); the 2026-10-15 attempt: 121.35 s (1.71 / 114.25 / 4.31 / 1.07 s). Reference first generation: 238.765 s (sampling 231.28 s).

@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.6310376429464668,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30911851301789284,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.31139297084882855,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3096085211727768,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3168177690822631,
+      "relative_latent_l2": 0.03544331714510918,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3092442268971354,
+      "relative_latent_l2": 0.08989657461643219,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3141214679926634,
+      "relative_latent_l2": 0.14604732394218445,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3079521590843797,
+      "relative_latent_l2": 0.14231336116790771,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv-a8-g32",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3192239471245557,
+      "relative_latent_l2": 0.03484749048948288,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv-a8-g32",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30977998091839254,
+      "relative_latent_l2": 0.10380226373672485,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv-a8-g32",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3089304300956428,
+      "relative_latent_l2": 0.10482160747051239,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-qkv-a8-g32",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3107254260685295,
+      "relative_latent_l2": 0.17720232903957367,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}
