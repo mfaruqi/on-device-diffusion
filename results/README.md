@@ -611,3 +611,7 @@ Distilled klein 512², configs of jetson-torch-flux-klein-004 / -007 run with `r
 | `m5-flux-klein-shiftadd-021__attempt__20261103-single-p3` | [record](../experiments/m5-flux-klein-shiftadd-021.md) | M5 CPU | all 20 fused three-plane upstream fits | — | — | — | complete; numerical diagnostic only |
 
 | `m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused` | [record](../experiments/m5-flux-klein-shiftadd-022.md) | M5 CPU | fit-selected mixed fused planes | — | — | — | complete; candidate assembly, no image evaluation |
+
+| `m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2` | [m5-flux-klein-shiftadd-023](../experiments/m5-flux-klein-shiftadd-023.md) | M5 CPU | selected fused p2 fit | — | — | — | running; numerical fit |
+| `m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1` | [m5-flux-klein-shiftadd-024](../experiments/m5-flux-klein-shiftadd-024.md) | M5 CPU | selected fused p1 fit | — | — | — | running; numerical fit |
+| `a100-flux-klein-upstream-lowplane-fused-001__attempt__20261103-calibration` | [a100-flux-klein-upstream-lowplane-fused-001](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md) | A100 SXM4 | fixed-selection low-plane diagnostic | — | — | — | awaiting verified fits; no images yet |

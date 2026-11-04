@@ -261,3 +261,7 @@ that every record and every run directory appears here.
 | m5-flux-klein-shiftadd-021 | M5 CPU | pytorch-diffusers | All fused three-plane upstream fits | complete; numerical diagnostic | [record](../experiments/m5-flux-klein-shiftadd-021.md) | [run](../results/runs/m5-flux-klein-shiftadd-021__attempt__20261103-single-p3/) | — |
 
 | m5-flux-klein-shiftadd-022 | M5 CPU | pytorch-diffusers | Fit-selected mixed fused planes | complete; untested image candidate | [record](../experiments/m5-flux-klein-shiftadd-022.md) | [run](../results/runs/m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused/) | — |
+
+| m5-flux-klein-shiftadd-023 | M5 CPU | pytorch-diffusers | Ten selected fused matrices at 2 planes | partial; fitting | [record](../experiments/m5-flux-klein-shiftadd-023.md) | [evidence](../results/runs/m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2/) | — |
+| m5-flux-klein-shiftadd-024 | M5 CPU | pytorch-diffusers | Ten selected fused matrices at 1 planes | partial; fitting | [record](../experiments/m5-flux-klein-shiftadd-024.md) | [evidence](../results/runs/m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1/) | — |
+| a100-flux-klein-upstream-lowplane-fused-001 | A100 SXM4 | pytorch-diffusers | Fixed-selection one-to-four-plane images | partial; awaiting fits | [record](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md) | [evidence](../results/runs/a100-flux-klein-upstream-lowplane-fused-001__attempt__20261103-calibration/) | — |

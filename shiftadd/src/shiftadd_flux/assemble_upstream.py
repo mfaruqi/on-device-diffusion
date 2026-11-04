@@ -41,7 +41,7 @@ def assemble(config):
             if not verified["all_artifact_hashes_match"] or fit["row_policy"] != "all":
                 raise ValueError("Require verified full-row artifacts")
             if (
-                fit["planes"] not in (3, 4, 5)
+                fit["planes"] not in (1, 2, 3, 4, 5)
                 or fit["group_size"] != 128
                 or fit["scale_format"] not in ("u8", "pot")
             ):

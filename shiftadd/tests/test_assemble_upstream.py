@@ -13,7 +13,7 @@ class AssemblyTests(unittest.TestCase):
     def test_mixed_planes_and_fit_mismatch_guard(self):
         root = Path(tempfile.mkdtemp(prefix="shiftadd-assembly-test-"))
         selections = []
-        for module, planes in [("a", 3), ("b", 4)]:
+        for module, planes in [("a", 1), ("b", 2), ("c", 3), ("d", 4)]:
             directory = root / module
             directory.mkdir()
             path = directory / (module + ".npz")
@@ -68,11 +68,11 @@ class AssemblyTests(unittest.TestCase):
             selections=selections,
         )
         result = assemble(config)
-        self.assertEqual(result["modules"], 2)
+        self.assertEqual(result["modules"], 4)
         saved = json.loads((root / "assembled/config.json").read_text())
-        self.assertEqual(saved["planes_by_module"], {"a": 3, "b": 4})
+        self.assertEqual(saved["planes_by_module"], {"a": 1, "b": 2, "c": 3, "d": 4})
         self.assertIsNone(saved["planes"])
-        for module in ["a", "b"]:
+        for module in ["a", "b", "c", "d"]:
             self.assertEqual(
                 (root / "assembled" / (module + ".npz")).read_bytes(),
                 (root / module / (module + ".npz")).read_bytes(),
