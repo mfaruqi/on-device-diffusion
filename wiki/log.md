@@ -11,7 +11,7 @@ Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-20
 
 ## [2026-11-04] experiment | compare-shiftadd-plane-storage: storage versus runtime representation
 
-Compared recorded allocation sizes and calculated dense BF16 weight payload; peak GPU memory remains unmeasured ([record](../experiments/compare-shiftadd-plane-storage.md)).
+Compared recorded allocation sizes, including a same-scope symmetric INT4 control, and calculated dense BF16 weight payload; peak GPU memory remains unmeasured ([record](../experiments/compare-shiftadd-plane-storage.md)).
 
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-023: 2-plane selected fused fits
 

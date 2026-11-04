@@ -2,16 +2,18 @@
   "url": "https://forge.coreweave.com/wandb/mfaruqi-purdue-university/on-device-diffusion/runs/shiftadd-plane-storage-charts-20261104",
   "state": "finished",
   "image_count": 2,
+  "allocation_count": 6,
+  "includes_symmetric_int4": true,
   "summary_metrics_verified": true,
   "scope_labels_verified": true,
   "downloaded_artifact_sha256": {
-    "data.json": "098991d4450d6f499c2be2f388ba205cfce7b16b95fdbf41a111e412fd9f4e4a",
-    "sizes.csv": "ce966464f384278a7040bbaa6785b140a085559906e4a4201b38f0dc9832c9aa",
-    "README.md": "b4956b2381d1af2067f3f687de0040108e6f521538b868277e3d78a8d8cf3c7a",
-    "stored-weight-sizes.png": "eec0fb3191e62cc3152d6008a99e3758366ba531e78e4fe5f5943b5b6955b801",
-    "dense-runtime-weight-footprint.png": "77b6ef502488076d30d19fd051a3632f63901d78bbd42eda553dbb793f8fe699"
+    "data.json": "2494244c9746546fc53cc99796a60ee1582ccbe77a78b396e0189c85f6140dfe",
+    "sizes.csv": "f6232a9c8a851cb924339ec71c701f4be74f6ca0a8a3f21272ce737ffd8792a9",
+    "README.md": "eb8da1aa4f9704e87404906e809838046e43b0525495cfca75719ce9d6495078",
+    "stored-weight-sizes.png": "cb95bcaf99f4b49b8ed6437d2d00c5685e0b4e4ee41989ba31de3774cb3a2c10",
+    "dense-runtime-weight-footprint.png": "d5a3e73f1a8795b46f8563c627ae93a32d101af81dc84591c957881d1986e4dc"
   },
-  "artifact": "run-shiftadd-plane-storage-charts-20261104:v0",
+  "artifact": "run-shiftadd-plane-storage-charts-20261104:latest",
   "separate_chart_panels_verified": [
     "charts/stored_weight_sizes",
     "charts/dense_weight_payload_not_peak_memory"

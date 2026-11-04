@@ -16,3 +16,7 @@ PYTHONPATH=shiftadd/src python -m shiftadd_flux.plots.plot_plane_storage --outpu
 
 [Comparison record](../../experiments/compare-shiftadd-plane-storage.md).
 Generated figures remain local; the script and small source-derived data are versioned.
+
+The symmetric INT4 baseline covers the same fifty matrices, uses FP32 scales
+per 128 weights, and is reconstructed to BF16 by the current image runner.
+It is distinct from GGUF Q4 variants and the SVDQuant/Nunchaku execution backend.

@@ -4,7 +4,7 @@ id: compare-shiftadd-plane-storage
 status: complete
 device: m5
 engine: pytorch-diffusers
-runs: [m5-flux-klein-shiftadd-015__attempt__20261103-all-dual, m5-flux-klein-shiftadd-016__attempt__20261103-all-single, m5-flux-klein-shiftadd-020__attempt__20261103-package, m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused, m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2, m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1]
+runs: [m5-flux-klein-uniform-001__conversion__20261102, m5-flux-klein-shiftadd-015__attempt__20261103-all-dual, m5-flux-klein-shiftadd-016__attempt__20261103-all-single, m5-flux-klein-shiftadd-020__attempt__20261103-package, m5-flux-klein-shiftadd-022__attempt__20261103-mixed-fused, m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2, m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1]
 updated: 2026-11-04
 ---
 
@@ -18,6 +18,8 @@ the current image runner?
 
 ## Runs and matching
 
+- [m5-flux-klein-uniform-001__conversion__20261102](../results/runs/m5-flux-klein-uniform-001__conversion__20261102/).
+
 - [m5-flux-klein-shiftadd-015__attempt__20261103-all-dual](../results/runs/m5-flux-klein-shiftadd-015__attempt__20261103-all-dual/).
 - [m5-flux-klein-shiftadd-016__attempt__20261103-all-single](../results/runs/m5-flux-klein-shiftadd-016__attempt__20261103-all-single/).
 - [m5-flux-klein-shiftadd-020__attempt__20261103-package](../results/runs/m5-flux-klein-shiftadd-020__attempt__20261103-package/).
@@ -25,9 +27,14 @@ the current image runner?
 - [m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2](../results/runs/m5-flux-klein-shiftadd-023__attempt__20261103-selected-p2/).
 - [m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1](../results/runs/m5-flux-klein-shiftadd-024__attempt__20261103-selected-p1/).
 
-All fit candidates share the pinned Klein checkpoint, group 128, u8/shared-FP16
+All ShiftAdd fit candidates share the pinned Klein checkpoint, group 128, u8/shared-FP16
 scale format and selected fifty matrices. The mixed cases change only the plane
 count of the same ten fused matrices (single-stream blocks 0–8 and 11).
+The conventional control uses symmetric INT4 with FP32 scales and group 128,
+selected from the same original checkpoint and restricted to the same fifty
+matrices. The fitting method and scale representation differ from upstream BCQ;
+this is a matched-scope storage comparison, not an isolated fitting-method test
+or a matched-quality claim. This INT4 control is not SVDQuant/Nunchaku or GGUF Q4.
 The BF16 row is an uncompressed reference. The other 119 tensors remain BF16.
 The chart compares logical file/payload bytes, not timing or peak memory.
 
@@ -36,6 +43,7 @@ The chart compares logical file/payload bytes, not timing or peak memory.
 | Allocation | Selected stored GiB | Transformer accounting GiB | Dense BF16 parameter GiB |
 |---|---:|---:|---:|
 | BF16 | 3.691406 | 7.218764 | 7.218764 |
+| symmetric_INT4 | 0.980565 | 4.507924 | 7.218764 |
 | p4 | 0.999805 | 4.527163 | 7.218764 |
 | p3p4 | 0.894748 | 4.422106 | 7.218764 |
 | p2p4 | 0.789691 | 4.317049 | 7.218764 |
