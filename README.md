@@ -24,12 +24,18 @@ they are not yet a ready-to-use inference engine.
 
 | Area | Status |
 |---|---|
-| FLUX.2 klein, distilled and Base | A100 and Jetson Orin Nano benchmarks and profiling |
-| Existing engines | PyTorch + Diffusers, stable-diffusion.cpp, and edge-dit.cpp comparisons; coverage varies by device |
-| Compilation and planning | Planned TVM pipeline targeting CUDA, Metal, and WebGPU |
-| Broader workloads and devices | Wan video models and mobile targets are future work |
+| FLUX.2 klein, distilled and Base | A100 and Jetson Orin Nano benchmarks, profiling and image-quality evaluation; coverage varies by configuration |
+| Existing engines | PyTorch + Diffusers, stable-diffusion.cpp, edge-dit.cpp and Nunchaku/SVDQuant comparisons |
+| ShiftAdd and mixed precision | Transformer weight conversion, calibration, mixed-plane image diagnostics and storage comparisons completed; broader allocation experiments are next |
+| Packed-weight kernels | Planned integration into an existing engine, investigating Nunchaku first; runtime memory, latency and energy benefits remain to be measured |
+| Longer-term compilation and planning | TVM pipeline and joint precision/reuse/residency planner remain longer-term goals; Wan and mobile targets are deferred |
 
-Experiments cover stage timing, memory use, caching, and weight loading. See the
+The current semester goal is to complete the ShiftAdd study and an engine-integrated packed-weight
+kernel prototype. Next steps include component memory accounting, calibration-based 2–6-plane
+allocation, and measured energy per image. See the [weekly plan](wiki/project/milestones.md).
+
+Current ShiftAdd image tests reconstruct weights to BF16 before GPU execution: smaller stored
+weights do not yet demonstrate lower GPU memory use or faster inference. See the
 [experiment registry](wiki/experiments.md) for configurations, results, failures, and comparison limits.
 
 ## Explore the repository
