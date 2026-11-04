@@ -68,3 +68,10 @@ Lower-plane files do not by themselves establish useful quality or speed.
 The [image diagnostic](a100-flux-klein-upstream-lowplane-fused-001.md) records
 recognizable two-plane scenes and severe one-plane semantic failures for this
 fixed selection. No matched-quality claim or packed execution advantage is made.
+
+## Published charts
+
+[W&B charts](https://forge.coreweave.com/wandb/mfaruqi-purdue-university/on-device-diffusion/runs/shiftadd-plane-storage-charts-20261104) contain separate stored-size and calculated dense-weight
+panels, the exact-byte table and a downloadable source artifact. Run completion,
+labels, metrics and both panels were verified; downloaded source files and charts
+match local SHA256 hashes. [Receipt](../output/shiftadd-plane-storage-20261104/wandb-verification.json).

@@ -1,0 +1,19 @@
+{
+  "url": "https://forge.coreweave.com/wandb/mfaruqi-purdue-university/on-device-diffusion/runs/shiftadd-plane-storage-charts-20261104",
+  "state": "finished",
+  "image_count": 2,
+  "summary_metrics_verified": true,
+  "scope_labels_verified": true,
+  "downloaded_artifact_sha256": {
+    "data.json": "098991d4450d6f499c2be2f388ba205cfce7b16b95fdbf41a111e412fd9f4e4a",
+    "sizes.csv": "ce966464f384278a7040bbaa6785b140a085559906e4a4201b38f0dc9832c9aa",
+    "README.md": "b4956b2381d1af2067f3f687de0040108e6f521538b868277e3d78a8d8cf3c7a",
+    "stored-weight-sizes.png": "eec0fb3191e62cc3152d6008a99e3758366ba531e78e4fe5f5943b5b6955b801",
+    "dense-runtime-weight-footprint.png": "77b6ef502488076d30d19fd051a3632f63901d78bbd42eda553dbb793f8fe699"
+  },
+  "artifact": "run-shiftadd-plane-storage-charts-20261104:v0",
+  "separate_chart_panels_verified": [
+    "charts/stored_weight_sizes",
+    "charts/dense_weight_payload_not_peak_memory"
+  ]
+}
