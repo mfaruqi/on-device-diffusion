@@ -9,6 +9,10 @@ updated: 2026-10-06
 
 Monthly entries: [October 2026 updates](log-2026-10.md); [September 2026](log-2026-09.md).
 
+## [2026-11-04] experiment | compare-shiftadd-plane-storage: storage versus runtime representation
+
+Compared recorded allocation sizes and calculated dense BF16 weight payload; peak GPU memory remains unmeasured ([record](../experiments/compare-shiftadd-plane-storage.md)).
+
 ## [2026-11-03] experiment | m5-flux-klein-shiftadd-023: 2-plane selected fused fits
 
 Completed ten fits and 160 independent per-call reload checks; assembled with forty existing four-plane matrices ([record](../experiments/m5-flux-klein-shiftadd-023.md)).

@@ -52,6 +52,7 @@ Paths below are relative to this directory. `__init__.py` files mark Python pack
 | [plots/plot_calibration.py](plots/plot_calibration.py) | Render all available calibration image cases without altering the images. |
 | [plots/plot_initial.py](plots/plot_initial.py) | Static evidence figure from saved images and weight-file reports. |
 | [plots/plot_plane_tradeoff.py](plots/plot_plane_tradeoff.py) | Plot a saved mixed-plane selection diagnostic, not image-quality scores. |
+| [plots/plot_plane_storage.py](plots/plot_plane_storage.py) | Compare recorded plane-allocation storage with calculated dense BF16 weight payload. |
 | [plots/plot_storage.py](plots/plot_storage.py) | Standalone storage figure from a verified bundle inventory. |
 
 ### Diagnostics
