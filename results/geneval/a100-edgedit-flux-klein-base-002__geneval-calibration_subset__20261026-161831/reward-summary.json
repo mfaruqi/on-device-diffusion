@@ -1,0 +1,12 @@
+{
+  "run": "a100-edgedit-flux-klein-base-002__geneval-calibration_subset__20261026-161831",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.2873840103857219,
+    "pickscore": 22.90252696474393,
+    "hps": 0.2734879487737392,
+    "imagereward": 0.771709695603325
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

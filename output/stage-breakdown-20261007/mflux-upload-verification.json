@@ -1,0 +1,103 @@
+{
+  "verified_utc": "2026-10-12T22:18:28Z",
+  "source_run_count": 49,
+  "chart_count": 15,
+  "mflux_completed_fulls": 5,
+  "analysis_run": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833",
+  "runs": [
+    {
+      "run_dir": "m5-mflux-flux-klein-001__attempt__20261012-153912",
+      "id": "m5-mflux-flux-klein-001__attempt__20261012-153912",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-001__attempt__20261012-153912",
+      "state": "failed",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-001__attempt__20261012-154009",
+      "id": "m5-mflux-flux-klein-001__attempt__20261012-154009",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-001__attempt__20261012-154009",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "id": "m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-001__baseline__20261012-154228",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-002__attempt__20261012-155918",
+      "id": "m5-mflux-flux-klein-002__attempt__20261012-155918",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-002__attempt__20261012-155918",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "id": "m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-002__baseline__20261012-160000",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-003__attempt__20261012-161526",
+      "id": "m5-mflux-flux-klein-003__attempt__20261012-161526",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-003__attempt__20261012-161526",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "id": "m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-003__baseline__20261012-161546",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-001__attempt__20261012-161808",
+      "id": "m5-mflux-flux-klein-base-001__attempt__20261012-161808",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-base-001__attempt__20261012-161808",
+      "state": "failed",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-002__attempt__20261012-161817",
+      "id": "m5-mflux-flux-klein-base-002__attempt__20261012-161817",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-base-002__attempt__20261012-161817",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "id": "m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-base-002__baseline__20261012-162447",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-003__attempt__20261012-171421",
+      "id": "m5-mflux-flux-klein-base-003__attempt__20261012-171421",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-base-003__attempt__20261012-171421",
+      "state": "finished",
+      "verified": true
+    },
+    {
+      "run_dir": "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "id": "m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/m5-mflux-flux-klein-base-003__baseline__20261012-171934",
+      "state": "finished",
+      "verified": true
+    }
+  ],
+  "image_panels_verified": [
+    "m5-distilled-engines",
+    "m5-base-engines",
+    "m5-distilled-mflux-quantization",
+    "m5-base-mflux-quantization"
+  ],
+  "manifest_artifact_verified": true,
+  "local_visual_review": "All four MFLUX-containing panels reviewed: readable titles, labels, ranges and methodology notes.",
+  "prior_sources_preserved": 44,
+  "prior_panels_preserved": 13
+}

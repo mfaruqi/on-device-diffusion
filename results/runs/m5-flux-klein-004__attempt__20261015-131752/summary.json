@@ -1,0 +1,229 @@
+{
+  "id": "m5-flux-klein-004",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "PyTorch/Diffusers MPS",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 95695.66512503661,
+    "gpu_span_ms": 95694.829417,
+    "text_encode_ms": 53901.75475,
+    "denoise_ms": 38682.784042,
+    "denoise_step_0_ms": 30868.203374999997,
+    "denoise_step_1_ms": 5559.833375,
+    "denoise_step_2_ms": 1411.402625,
+    "denoise_step_3_ms": 843.344667,
+    "vae_decode_ms": 3015.9077079999997,
+    "postprocess_ms": 13.620083,
+    "other_ms": 80.76283399999375,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 0.09979248046875
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 57882.32558290474,
+      "min": 57882.32558290474,
+      "max": 57882.32558290474,
+      "mean": 57882.32558290474,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": {
+      "median": 57880.139958,
+      "min": 57880.139958,
+      "max": 57880.139958,
+      "mean": 57880.139958,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "text_encode_ms": {
+      "median": 28350.932624999998,
+      "min": 28350.932624999998,
+      "max": 28350.932624999998,
+      "mean": 28350.932624999998,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 27548.35725,
+      "min": 27548.35725,
+      "max": 27548.35725,
+      "mean": 27548.35725,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 20434.505708,
+      "min": 20434.505708,
+      "max": 20434.505708,
+      "mean": 20434.505708,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 4392.214292,
+      "min": 4392.214292,
+      "max": 4392.214292,
+      "mean": 4392.214292,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 1878.0054579999999,
+      "min": 1878.0054579999999,
+      "max": 1878.0054579999999,
+      "mean": 1878.0054579999999,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 843.631792,
+      "min": 843.631792,
+      "max": 843.631792,
+      "mean": 843.631792,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 1882.036459,
+      "min": 1882.036459,
+      "max": 1882.036459,
+      "mean": 1882.036459,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": {
+      "median": 25.895291999999998,
+      "min": 25.895291999999998,
+      "max": 25.895291999999998,
+      "mean": 25.895291999999998,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "other_ms": {
+      "median": 72.91833199999382,
+      "min": 72.91833199999382,
+      "max": 72.91833199999382,
+      "mean": 72.91833199999382,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 0.1033782958984375,
+      "min": 0.1033782958984375,
+      "max": 0.1033782958984375,
+      "mean": 0.1033782958984375,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 39.99716675002128,
+    "from_pretrained_s": 0.7950565000064671,
+    "to_mps_s": 39.20211025001481,
+    "allocated_after_load_gib": 14.97126054763794,
+    "driver_allocated_after_load_gib": 15.75042724609375,
+    "is_distilled": true,
+    "components": {
+      "vae": {
+        "weights_gib": 0.15654808841645718,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "text_encoder": {
+        "weights_gib": 7.492430686950684,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "transformer": {
+        "weights_gib": 7.218764305114746,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      }
+    },
+    "note": "Cached load and placement; not a cold-storage measurement."
+  },
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": -0.0015284356195479631,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 0.0230712890625,
+    "system_total_minus_available_peak_gib": 23.9769287109375,
+    "system_swap_used_start_gib": 6.12420654296875,
+    "system_swap_used_peak_gib": 24.38397216796875,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "host_peak_rss_gib": 0.5388031005859375,
+  "clock_continuity_pass": true,
+  "timing_method": "MPS events at stage boundaries; host wall includes final synchronization; no per-stage sync",
+  "rng": "CPU generator; initial noise not matched to sd.cpp",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "peak_alloc_gib/peak_reserved_gib": "No equivalent MPS peak counters recorded.",
+    "device_used_peak_gib": "Whole-system memory is separate, not device-wide GPU usage."
+  },
+  "conditioning_cache": null,
+  "compiler": {
+    "counters": {
+      "unimplemented": {},
+      "stats": {
+        "calls_captured": 2172,
+        "unique_graphs": 1
+      },
+      "aot_autograd": {
+        "total": 1,
+        "autograd_cache_miss": 1,
+        "autograd_cache_saved": 1,
+        "ok": 1
+      },
+      "inductor": {
+        "pattern_matcher_count": 483,
+        "pattern_matcher_nodes": 513,
+        "fxgraph_cache_miss": 1,
+        "extern_calls": 159
+      },
+      "graph_break": {},
+      "aten_mm_info": {
+        "aten.mm_1_3072_256": 1,
+        "aten.mm_1_3072_3072": 1,
+        "aten.mm_1_18432_3072": 2,
+        "aten.mm_1024_3072_128": 1,
+        "aten.mm_512_3072_7680": 1,
+        "aten.mm_512_3072_3072": 20,
+        "aten.mm_1024_3072_3072": 20,
+        "aten.mm_1024_18432_3072": 5,
+        "aten.mm_1024_3072_9216": 5,
+        "aten.mm_512_18432_3072": 5,
+        "aten.mm_512_3072_9216": 5,
+        "aten.mm_1_9216_3072": 1,
+        "aten.mm_1536_27648_3072": 20,
+        "aten.mm_1536_3072_12288": 20,
+        "aten.mm_1_6144_3072": 1,
+        "aten.mm_1024_128_3072": 1
+      }
+    },
+    "generated_kernel_count": 144,
+    "fallback_allowed": false,
+    "first_image_includes_lazy_compilation": true
+  },
+  "step_cache": null,
+  "vae_tiling": {
+    "parameters": false,
+    "tiled_decodes": 0
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB"
+  }
+}

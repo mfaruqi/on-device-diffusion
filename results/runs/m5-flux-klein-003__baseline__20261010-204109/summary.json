@@ -1,0 +1,188 @@
+{
+  "id": "m5-flux-klein-003",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "PyTorch/Diffusers MPS",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 13034.12420800305,
+    "gpu_span_ms": 13033.403708,
+    "text_encode_ms": 8577.601042,
+    "denoise_ms": 3997.6142919999998,
+    "denoise_step_0_ms": 1024.236042,
+    "denoise_step_1_ms": 990.826208,
+    "denoise_step_2_ms": 990.8282919999999,
+    "denoise_step_3_ms": 991.72375,
+    "vae_decode_ms": 438.632791,
+    "postprocess_ms": 5.794290999999999,
+    "other_ms": 13.76129199999923,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 0.2892608642578125
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 5029.940499996883,
+      "min": 4928.563916997518,
+      "max": 5224.1335840080865,
+      "mean": 5036.612350097857,
+      "stdev": 87.43940130456751,
+      "n": 10
+    },
+    "gpu_span_ms": {
+      "median": 5029.899771,
+      "min": 4928.521667,
+      "max": 5224.091375,
+      "mean": 5036.5704958999995,
+      "stdev": 87.43999354521549,
+      "n": 10
+    },
+    "text_encode_ms": {
+      "median": 461.053625,
+      "min": 451.94737499999997,
+      "max": 477.978459,
+      "mean": 461.20876269999997,
+      "stdev": 7.22396829140834,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 4125.225915999999,
+      "min": 4028.904209,
+      "max": 4296.506665999999,
+      "mean": 4129.544337199999,
+      "stdev": 80.21626134301839,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 1027.427187,
+      "min": 1002.3874169999999,
+      "max": 1046.143666,
+      "mean": 1025.2678329999999,
+      "stdev": 12.588230876918175,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 1031.157,
+      "min": 1006.017333,
+      "max": 1084.027875,
+      "mean": 1031.8160916,
+      "stdev": 21.490011615539014,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 1031.3983125,
+      "min": 1007.302417,
+      "max": 1108.738375,
+      "mean": 1037.6964917,
+      "stdev": 30.26510829289686,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 1031.3478539999999,
+      "min": 1013.197042,
+      "max": 1096.875417,
+      "mean": 1034.7639209,
+      "stdev": 24.092873428971906,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 440.60806249999996,
+      "min": 438.687458,
+      "max": 444.13983299999995,
+      "mean": 440.67630399999996,
+      "stdev": 1.7218340068228848,
+      "n": 10
+    },
+    "postprocess_ms": {
+      "median": 1.2423959999999998,
+      "min": 1.210958,
+      "max": 1.331291,
+      "mean": 1.251004,
+      "stdev": 0.038908963500287004,
+      "n": 10
+    },
+    "other_ms": {
+      "median": 3.848667000000205,
+      "min": 3.716208999999253,
+      "max": 4.1351260000001275,
+      "mean": 3.8900880000001052,
+      "stdev": 0.12573792108738724,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 0.30008697509765625,
+      "min": 0.2994232177734375,
+      "max": 0.300567626953125,
+      "mean": 0.30001678466796877,
+      "stdev": 0.000396366443226689,
+      "n": 10
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 17.214780041977065,
+    "from_pretrained_s": 0.6804855839873198,
+    "to_mps_s": 16.534294457989745,
+    "allocated_after_load_gib": 14.97126054763794,
+    "driver_allocated_after_load_gib": 15.75042724609375,
+    "is_distilled": true,
+    "components": {
+      "vae": {
+        "weights_gib": 0.15654808841645718,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "text_encoder": {
+        "weights_gib": 7.492430686950684,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "transformer": {
+        "weights_gib": 7.218764305114746,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      }
+    },
+    "note": "Cached load and placement; not a cold-storage measurement."
+  },
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": 0.0006078354199416935,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 0.029571533203125,
+    "system_total_minus_available_peak_gib": 23.970428466796875,
+    "system_swap_used_start_gib": 6.00421142578125,
+    "system_swap_used_peak_gib": 10.88623046875,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "host_peak_rss_gib": 0.496124267578125,
+  "clock_continuity_pass": true,
+  "timing_method": "MPS events at stage boundaries; host wall includes final synchronization; no per-stage sync",
+  "rng": "CPU generator; initial noise not matched to sd.cpp",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "peak_alloc_gib/peak_reserved_gib": "No equivalent MPS peak counters recorded.",
+    "device_used_peak_gib": "Whole-system memory is separate, not device-wide GPU usage."
+  },
+  "conditioning_cache": null,
+  "vae_tiling": {
+    "parameters": {
+      "tile_sample_size": 256,
+      "overlap_factor": 0.25
+    },
+    "tiled_decodes": 14
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "m5-edgedit-flux-klein-base-001",
+  "description": "M5 edge-dit Metal BF16 Base reference; 512x512, no cache, explicit placement and no automatic fitting. Native BFL transformer file at the same checkpoint revision; required by the pinned loader.",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": {
+    "name": "edge-dit.cpp",
+    "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+    "binary": "output/m5-prep/edge-dit-source/build-metal/bin/ed-sample",
+    "binary_sha256": "e466fedfb6d94306943643c635d83c0257499ec8a86fa2901696b883046a4ebf"
+  },
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "path": "output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "native_transformer": {
+      "file": "flux-2-klein-base-4b.safetensors",
+      "sha256": "9c5fed22b76baea749d88fc2abe3ad53245e7b21a0d353a762665eea00043b92"
+    }
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "steps": 50,
+    "guidance": 1.0,
+    "cfg_scale": 4.0,
+    "seed": 0,
+    "batch_size": 1,
+    "sampler": "euler",
+    "scheduler": "auto"
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 100,
+    "prevent_idle_sleep": true
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "auto_fit": false,
+    "auto_allocate": false,
+    "step_cache": null
+  },
+  "cli_arguments": [
+    "--backend",
+    "metal",
+    "--type",
+    "bf16",
+    "--cache_method",
+    "off",
+    "--vae-tiling",
+    "off",
+    "--flash-attention",
+    "--threads",
+    "4"
+  ],
+  "reference_config": "configs/m5-flux-klein-base-bf16-512.json",
+  "precision_note": "BF16 weights; existing functional gate reports FP32 transformer activations",
+  "backend": "metal",
+  "device_requirements": {
+    "chip": "Apple M5",
+    "memory_gib": 24
+  }
+}

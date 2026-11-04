@@ -1,0 +1,19 @@
+{
+  "verified_utc": "2026-10-15T20:39:28.087683+00:00",
+  "verified": true,
+  "analysis_run": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833",
+  "source_run_count": 56,
+  "chart_count": 17,
+  "prior_sources_preserved": 49,
+  "prior_panels_preserved": 15,
+  "updated_plot_payloads_verified": [
+    "m5-distilled-pytorch-options",
+    "m5-base-pytorch-options",
+    "m5-distilled-mflux-options",
+    "m5-base-mflux-options"
+  ],
+  "all_plot_and_image_paths_present": true,
+  "manifest_artifact_verified": "klein-stage-breakdown-20261007:v8",
+  "local_visual_review": "Base PyTorch and distilled MFLUX option PNGs reviewed; labels, titles and caveats readable.",
+  "step": 8
+}

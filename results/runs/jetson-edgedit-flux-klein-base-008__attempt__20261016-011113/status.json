@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-16T05:11:13Z",
+  "error": "killed by scripts/jetson_memguard.sh: MemAvailable 371 MB < 400 MB (exit 137)",
+  "status_corrected_utc": "2026-10-16",
+  "status_correction": "status.json was left at 'running' because the process was SIGKILLed; outcome taken from memguard.json"
+}

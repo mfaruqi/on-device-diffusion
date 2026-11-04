@@ -84,6 +84,11 @@ Naming: experiment id `<device>-<model>-<NNN>` (e.g. `a100-flux-klein-001`); con
 - The user is new to Slurm/HPC: explain concepts briefly when they come up.
 - Other devices get their own how-to file (`wiki/methods/<device>-howto.md`) when first used.
 
+## W&B result publishing
+
+- Standing authorization (2026-10-11): after each completed benchmark is validated and documented, upload it to `mfaruqi-purdue-university/on-device-diffusion` with `scripts/export_wandb.py`, without asking again. Upload outside timed measurement; preserve local raw results as the source of truth.
+- Check for an existing upload first, avoid duplicates or deletion/recreation, and verify the remote status, metrics, images and evidence artifact. Preserve smoke/full distinctions, precision labels and quality caveats. Report authentication or upload failures; never mark an unverified upload successful.
+
 ## Git
 
 - Work on a branch, never `main`. No global identity is set on Gilbreth; commit with

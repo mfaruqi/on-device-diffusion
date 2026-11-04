@@ -1,0 +1,73 @@
+{
+  "id": "jetson-edgedit-flux-klein-base-008",
+  "description": "Smoke (first + one measured) for jetson-edgedit-flux-klein-base-008",
+  "device_label": "jetson-orin-nano",
+  "engine": {
+    "name": "edge-dit.cpp",
+    "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+    "binary": "~/tools/edge-dit-20261010/build-cuda-performance/bin/ed-sample",
+    "binary_sha256": "5936674c22f1cc0054b84e6f3a7fac7617f88ab9dc88486bf8f3b915ea358992",
+    "build_evidence": "results/runs/jetson-edgedit-build-20261011/"
+  },
+  "model": {
+    "diffusion_model": {
+      "repo_id": "leejet/FLUX.2-klein-base-4B-GGUF",
+      "revision": "d12671125306ca6b5f6db1b33ed4c80c8511a53f",
+      "sha256": "c3a2854510677b7aa37dd7547d908c54889a76c6d6aa3ffe902fcaa092d1328b",
+      "expected_weight_type_stat": "q4_0:80|bf16:69",
+      "path": "~/models/flux2-klein/flux-2-klein-base-4b-Q4_0.gguf"
+    },
+    "llm": {
+      "path": "~/models/flux2-klein-edgedit/Qwen3-4B-Q4_K_M-embq8_0.gguf",
+      "sha256": "d83c059b12c01cde9b2a10ffaad1731b7cc018a5a866673a2895dbd68f867686",
+      "derived_from": {
+        "repo_id": "unsloth/Qwen3-4B-GGUF",
+        "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+        "file": "Qwen3-4B-Q4_K_M.gguf",
+        "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a"
+      },
+      "conversion": "token_embd.weight Q6_K -> Q8_0 only (results/runs/jetson-edgedit-convert-20261011/requant.log)",
+      "expected_weight_type_stat": "f32:145|q8_0:1|q4_K:216|q6_K:36"
+    },
+    "vae": {
+      "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+      "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "path": "~/models/flux2-klein/flux2-vae.safetensors",
+      "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04"
+    }
+  },
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "steps": 50,
+    "guidance": 4.0,
+    "cfg_scale": 4.0,
+    "seed": 0,
+    "batch_size": 1,
+    "sampler": "euler",
+    "scheduler": "auto"
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "tegrastats_interval_ms": 200
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": "Q4_0",
+      "text_encoder": "Q4_K_M with Q8_0 token embedding (separately labelled checkpoint)"
+    },
+    "cpu_offload": false,
+    "vae_tiling": true,
+    "flash_attention": true,
+    "auto_fit": false,
+    "auto_allocate": false,
+    "step_cache": {
+      "method": "dicache"
+    }
+  },
+  "reference_config": "configs/jetson-edgedit-flux-klein-base-q4-embq8-512-vaetile.json",
+  "required_power_mode": "25W"
+}

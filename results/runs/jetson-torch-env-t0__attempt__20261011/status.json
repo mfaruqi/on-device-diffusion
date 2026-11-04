@@ -1,0 +1,23 @@
+{
+ "status": "failed",
+ "stage": "gate T0 (PyTorch environment on Jetson)",
+ "stack": {
+  "torch": "2.5.0a0+872d972e41.nv24.08 (NVIDIA JetPack 6.1 redist wheel)",
+  "diffusers": "0.40.0",
+  "transformers": "5.16.1",
+  "torchao": "0.7.0",
+  "bitsandbytes": "0.50.2",
+  "gguf": "0.19.0"
+ },
+ "passed": {
+  "cuda": "Orin cc 8.7, CUDA 12.6, cuDNN 9.3.0, bf16 supported",
+  "matmul_bf16_2048": "4.75 ms (3.61 TFLOPS)",
+  "sdpa": "flash, efficient, math all run"
+ },
+ "failed": {
+  "diffusers_flux2 / gguf / torchao": "No module named 'torch._C._distributed_c10d' (wheel built without torch.distributed)",
+  "transformers": "disables PyTorch: version 2.5.0a0 parsed as < 2.5",
+  "bitsandbytes_nf4": "process exit 1 with CUDA 'named symbol not found' (first-attempt/probe.log)"
+ },
+ "files": "check-*.json, probe.log, pip-freeze.txt; first-attempt/ holds the run where bitsandbytes aborted all checks"
+}

@@ -1,0 +1,43 @@
+{
+  "reference": "a100-geneval-torch-flux-klein-base-q4-nf4-512__geneval-calibration_subset__20261026-005416",
+  "variants": [
+    {
+      "variant": "a100-geneval-torch-flux-klein-base-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-024726",
+      "geneval": 0.7265625,
+      "delta": -0.01041666666666663,
+      "delta_ci95": [
+        -0.0216374269005849,
+        -0.002083333333333326
+      ],
+      "tasks": {
+        "single_object": 1.0,
+        "two_object": 0.890625,
+        "counting": 0.71875,
+        "colors": 0.8125,
+        "position": 0.4375,
+        "color_attr": 0.5
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": 0.0,
+        "counting": -0.03125,
+        "colors": -0.015625,
+        "position": 0.0,
+        "color_attr": -0.015625
+      },
+      "ref_only_correct": 5,
+      "variant_only_correct": 1,
+      "mcnemar_p": 0.21875,
+      "pairs": 384
+    }
+  ],
+  "reference_geneval": 0.7369791666666666,
+  "reference_tasks": {
+    "two_object": 0.890625,
+    "colors": 0.828125,
+    "counting": 0.75,
+    "color_attr": 0.515625,
+    "single_object": 1.0,
+    "position": 0.4375
+  }
+}

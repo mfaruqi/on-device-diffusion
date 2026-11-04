@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-21T15:55:45Z",
+  "finished_utc": "2026-10-21T15:58:17Z",
+  "error": "ValueError('No captured kernels in NCU export')",
+  "traceback": "Traceback (most recent call last):\n  File \"/scratch/gilbreth/mfaruqi/a100-ncu-20261021/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/scratch/gilbreth/mfaruqi/a100-ncu-20261021/scripts/profile_a100_counters.py\", line 235, in orchestrate\n    probe_rows = read_counters(profile / 'probe.csv')\n  File \"/scratch/gilbreth/mfaruqi/a100-ncu-20261021/scripts/profile_a100_counters.py\", line 82, in read_counters\n    raise ValueError('No captured kernels in NCU export')\nValueError: No captured kernels in NCU export\n"
+}

@@ -1,0 +1,68 @@
+{
+  "id": "a100-nunchaku-flux-klein-001",
+  "description": "Candidate community SVDQuant INT4 W4A4/r32 distilled transformer against a100-flux-klein-001; unchanged BF16 text encoder and VAE. Quantized replacement checkpoint plus fused kernels; ancestry to the exact BF16 transformer revision unproven. A100 smoke gate required; not yet executed.",
+  "device_label": "gilbreth-a100-40gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+    "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "vae/*",
+      "transformer/config.json"
+    ],
+    "requested_revision": "main",
+    "resolved_at_utc": "2026-09-24T02:14:37Z"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 4,
+    "guidance_scale": 1.0,
+    "max_sequence_length": 512
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": {
+      "method": "svdquant",
+      "component": "transformer",
+      "weights_bits": 4,
+      "activations_bits": 4,
+      "low_rank": 32,
+      "format": "int4"
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false
+  },
+  "engine": {
+    "name": "nunchaku",
+    "provider": "tonera/vitoom-nunchaku (community)",
+    "version": "1.3.0.dev20260622+cu12.8torch2.11",
+    "wheel": {
+      "repo_id": "tonera/vitoom-nunchaku",
+      "revision": "85bad5510d409570527b018387491fd0c81e4727",
+      "filename": "nunchaku-1.3.0.dev20260622+cu12.8torch2.11-cp311-cp311-linux_x86_64.whl",
+      "sha256": "bcdfe6fcc36cd37da34c1d0f1e0fa7c9b4201b2a70a89a3274d22420221afd2f"
+    }
+  },
+  "quantized_transformer": {
+    "repo_id": "tonera/FLUX.2-klein-4B-Nunchaku",
+    "revision": "8aa64445d8e45edc2ea431743b67ac7e2ca5f739",
+    "filename": "svdq-int4_r32-FLUX.2-klein-4B-Nunchaku.safetensors",
+    "sha256": "8b0adf66f9945eafb67a53abd12a4dd6d1d0d35e408242ab0e036ae917b49311"
+  }
+}

@@ -1,0 +1,46 @@
+{
+ "device": "jetson-orin-nano-8gb",
+ "power_mode": "25W",
+ "jetpack": "R36.4.4",
+ "engine": {
+  "name": "edge-dit.cpp",
+  "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+  "ggml": "f270346d688c7bec7c56bae2ae73343aba6817ad",
+  "build": "../jetson-edgedit-build-20261011/build-config.txt",
+  "ed_cli_sha256": "271d8fa2ceca1c05401feecc09d286720e4a8019ad132ddd05a65282afb050b3"
+ },
+ "weights": "model-sha256.txt (the sd.cpp Jetson GGUF files: Q4_0 transformer, Qwen3-4B Q4_K_M, BF16 VAE)",
+ "workload": {
+  "width": 512,
+  "height": 512,
+  "steps": 4,
+  "guidance": 1.0,
+  "cfg_scale": 1.0,
+  "seed": 0,
+  "prompt": "A cat holding a sign that says hello world"
+ },
+ "fixed_options": [
+  "--backend cuda",
+  "--type preserve",
+  "--vae-tiling off",
+  "--flash-attention",
+  "--cache off",
+  "--threads 4"
+ ],
+ "status": "failed",
+ "stage": "gate E2 rung 3 (--auto-allocate, stored precision kept)",
+ "change": "--auto-allocate",
+ "result": {
+  "exit_code": 137,
+  "failure": "killed by jetson_memguard.sh at MemAvailable 399 MB (memguard.json); board stayed up",
+  "placement_from_log": "transformer, text encoder and VAE all OFFLOAD+segment (param buffers in RAM: 2346.40 + 3555.38 + 94.72 MB)",
+  "segment_budget_from_log": "4.19 GB (effective 6.19 GB - resident 0 - 2.00 GB staging slack)",
+  "peak_ram_MB": "6975/7620 (tegrastats, 200 ms)",
+  "mem_available_min_mb": 399
+ },
+ "notes": [
+  "On the Jetson, CPU and GPU share the same RAM, so offloading weights does not reduce the total footprint.",
+  "The log reads \"'model.diffusion_model' 2.29 GB > 6.19 GB budget left -> OFFLOAD+segment\"; the comparison as printed is false, so the decision rule needs checking in model_runtime.cpp.",
+  "At this commit, releasing components by phase exists only for MiniMax-H3 (--minimax-h3-stage-lifecycle); there is no memory-mapped weight option."
+ ]
+}

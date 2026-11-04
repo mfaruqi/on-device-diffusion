@@ -1,0 +1,8 @@
+{
+ "stage": "gate T1 smoke (jetson-torch-flux-klein-q4-nf4-512-smoke.json)",
+ "status": "failed",
+ "result": {
+  "failure": "killed by jetson_memguard.sh during loading (MemAvailable 396 MB)",
+  "cause": "runner bug: the GGUF transformer stayed on the CPU while the encoder loaded, then was copied to the GPU; both copies coexisted (~2.4 GB). Fixed in run_flux_portable.py by moving the transformer immediately after loading."
+ }
+}

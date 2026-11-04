@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-15T20:31:30Z",
+  "finished_utc": "2026-10-15T20:39:48Z",
+  "error": "KeyError('denoise_step_4_ms')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_edgedit_jetson.py\", line 248, in main\n    benchmark(cfg, out)\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/run_edgedit_jetson.py\", line 213, in benchmark\n    summary = summarize_runs(rows)\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 56, in summarize_runs\n    \"measured\": {key: summarize([row[key] for row in measured]) for key in metrics},\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 56, in <dictcomp>\n    \"measured\": {key: summarize([row[key] for row in measured]) for key in metrics},\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 56, in <listcomp>\n    \"measured\": {key: summarize([row[key] for row in measured]) for key in metrics},\nKeyError: 'denoise_step_4_ms'\n"
+}

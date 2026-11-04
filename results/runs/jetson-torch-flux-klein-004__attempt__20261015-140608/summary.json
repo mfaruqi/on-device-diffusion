@@ -1,0 +1,250 @@
+{
+  "id": "jetson-torch-flux-klein-004",
+  "device_label": "jetson-orin-nano-8gb",
+  "backend": "jetson",
+  "engine": "PyTorch/Diffusers",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 95831.80951303802,
+    "gpu_span_ms": 95801.6953125,
+    "text_encode_ms": 74193.046875,
+    "denoise_ms": 15806.619384765625,
+    "denoise_step_0_ms": 5014.17822265625,
+    "denoise_step_1_ms": 3601.009521484375,
+    "denoise_step_2_ms": 3593.74267578125,
+    "denoise_step_3_ms": 3597.68896484375,
+    "vae_decode_ms": 4502.30908203125,
+    "postprocess_ms": 188.27247619628906,
+    "other_ms": 1111.447494506836,
+    "peak_alloc_gib": 3.0826616287231445,
+    "peak_reserved_gib": 3.42578125,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 1.90301513671875
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 15003.531159949489,
+      "min": 15003.531159949489,
+      "max": 15003.531159949489,
+      "mean": 15003.531159949489,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": {
+      "median": 15002.1884765625,
+      "min": 15002.1884765625,
+      "max": 15002.1884765625,
+      "mean": 15002.1884765625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "text_encode_ms": {
+      "median": 0.6004480123519897,
+      "min": 0.6004480123519897,
+      "max": 0.6004480123519897,
+      "mean": 0.6004480123519897,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 14475.450927734375,
+      "min": 14475.450927734375,
+      "max": 14475.450927734375,
+      "mean": 14475.450927734375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 3694.410400390625,
+      "min": 3694.410400390625,
+      "max": 3694.410400390625,
+      "mean": 3694.410400390625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 3591.49658203125,
+      "min": 3591.49658203125,
+      "max": 3591.49658203125,
+      "mean": 3591.49658203125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 3596.83203125,
+      "min": 3596.83203125,
+      "max": 3596.83203125,
+      "mean": 3596.83203125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 3592.7119140625,
+      "min": 3592.7119140625,
+      "max": 3592.7119140625,
+      "mean": 3592.7119140625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 484.9389343261719,
+      "min": 484.9389343261719,
+      "max": 484.9389343261719,
+      "mean": 484.9389343261719,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": {
+      "median": 18.0,
+      "min": 18.0,
+      "max": 18.0,
+      "mean": 18.0,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "other_ms": {
+      "median": 23.198166489601135,
+      "min": 23.198166489601135,
+      "max": 23.198166489601135,
+      "mean": 23.198166489601135,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": {
+      "median": 3.0826616287231445,
+      "min": 3.0826616287231445,
+      "max": 3.0826616287231445,
+      "mean": 3.0826616287231445,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_reserved_gib": {
+      "median": 3.42578125,
+      "min": 3.42578125,
+      "max": 3.42578125,
+      "mean": 3.42578125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 1.8600082397460938,
+      "min": 1.8600082397460938,
+      "max": 1.8600082397460938,
+      "mean": 1.8600082397460938,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 82.07678646303248,
+    "from_pretrained_s": 81.52705545100616,
+    "to_device_s": 0.5497310120263137
+  },
+  "weights_gib": {
+    "vae": 0.15654857270419598,
+    "transformer": 2.291396141052246
+  },
+  "quantization": {
+    "transformer": {
+      "method": "gguf",
+      "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+      "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+      "compute_dtype": "bfloat16",
+      "decoded_non_linear_bf16_tensors": [
+        "transformer_blocks.0.attn.norm_q.weight",
+        "transformer_blocks.0.attn.norm_k.weight",
+        "transformer_blocks.0.attn.norm_added_q.weight",
+        "transformer_blocks.0.attn.norm_added_k.weight",
+        "transformer_blocks.1.attn.norm_q.weight",
+        "transformer_blocks.1.attn.norm_k.weight",
+        "transformer_blocks.1.attn.norm_added_q.weight",
+        "transformer_blocks.1.attn.norm_added_k.weight",
+        "transformer_blocks.2.attn.norm_q.weight",
+        "transformer_blocks.2.attn.norm_k.weight",
+        "transformer_blocks.2.attn.norm_added_q.weight",
+        "transformer_blocks.2.attn.norm_added_k.weight",
+        "transformer_blocks.3.attn.norm_q.weight",
+        "transformer_blocks.3.attn.norm_k.weight",
+        "transformer_blocks.3.attn.norm_added_q.weight",
+        "transformer_blocks.3.attn.norm_added_k.weight",
+        "transformer_blocks.4.attn.norm_q.weight",
+        "transformer_blocks.4.attn.norm_k.weight",
+        "transformer_blocks.4.attn.norm_added_q.weight",
+        "transformer_blocks.4.attn.norm_added_k.weight",
+        "single_transformer_blocks.0.attn.norm_q.weight",
+        "single_transformer_blocks.0.attn.norm_k.weight",
+        "single_transformer_blocks.1.attn.norm_q.weight",
+        "single_transformer_blocks.1.attn.norm_k.weight",
+        "single_transformer_blocks.2.attn.norm_q.weight",
+        "single_transformer_blocks.2.attn.norm_k.weight",
+        "single_transformer_blocks.3.attn.norm_q.weight",
+        "single_transformer_blocks.3.attn.norm_k.weight",
+        "single_transformer_blocks.4.attn.norm_q.weight",
+        "single_transformer_blocks.4.attn.norm_k.weight",
+        "single_transformer_blocks.5.attn.norm_q.weight",
+        "single_transformer_blocks.5.attn.norm_k.weight",
+        "single_transformer_blocks.6.attn.norm_q.weight",
+        "single_transformer_blocks.6.attn.norm_k.weight",
+        "single_transformer_blocks.7.attn.norm_q.weight",
+        "single_transformer_blocks.7.attn.norm_k.weight",
+        "single_transformer_blocks.8.attn.norm_q.weight",
+        "single_transformer_blocks.8.attn.norm_k.weight",
+        "single_transformer_blocks.9.attn.norm_q.weight",
+        "single_transformer_blocks.9.attn.norm_k.weight",
+        "single_transformer_blocks.10.attn.norm_q.weight",
+        "single_transformer_blocks.10.attn.norm_k.weight",
+        "single_transformer_blocks.11.attn.norm_q.weight",
+        "single_transformer_blocks.11.attn.norm_k.weight",
+        "single_transformer_blocks.12.attn.norm_q.weight",
+        "single_transformer_blocks.12.attn.norm_k.weight",
+        "single_transformer_blocks.13.attn.norm_q.weight",
+        "single_transformer_blocks.13.attn.norm_k.weight",
+        "single_transformer_blocks.14.attn.norm_q.weight",
+        "single_transformer_blocks.14.attn.norm_k.weight",
+        "single_transformer_blocks.15.attn.norm_q.weight",
+        "single_transformer_blocks.15.attn.norm_k.weight",
+        "single_transformer_blocks.16.attn.norm_q.weight",
+        "single_transformer_blocks.16.attn.norm_k.weight",
+        "single_transformer_blocks.17.attn.norm_q.weight",
+        "single_transformer_blocks.17.attn.norm_k.weight",
+        "single_transformer_blocks.18.attn.norm_q.weight",
+        "single_transformer_blocks.18.attn.norm_k.weight",
+        "single_transformer_blocks.19.attn.norm_q.weight",
+        "single_transformer_blocks.19.attn.norm_k.weight"
+      ],
+      "note": "BF16 tensors outside GGUFLinear decoded to BF16 parameters (lossless); diffusers 0.40.0 leaves them as raw bytes"
+    },
+    "text_encoder": {
+      "method": "bnb_nf4",
+      "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+      "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)",
+      "sha256_verified": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+      "resident": false
+    }
+  },
+  "compiler": {
+    "name": null
+  },
+  "first_run_note": "Includes lazy compilation when a compiler is configured.",
+  "system_memory": {
+    "samples": 927,
+    "ram_peak_gib": 6.056640625,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.30859375,
+    "swap_max_gib": 0.6494140625,
+    "gpu_temperature_max_c": 56.531,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "unavailable_metrics": {
+    "device_used_peak_gib": "NVML is unavailable on Jetson; whole-system RAM is in system_memory instead."
+  },
+  "host_peak_rss_gib": 5.497528076171875,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

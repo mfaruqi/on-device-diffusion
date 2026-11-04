@@ -1,0 +1,12 @@
+{
+  "run": "a100-geneval-torch-flux-klein-q4-nf4-512-vaetile__geneval-calibration_subset__20261026-003715",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.2921288289750616,
+    "pickscore": 23.080222249031067,
+    "hps": 0.2974566617437328,
+    "imagereward": 1.145178048025021
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

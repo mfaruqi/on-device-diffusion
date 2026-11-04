@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-10-29T08:27:04Z",
+  "hostname": "gilbreth-g011.rcac.purdue.edu",
+  "platform": "Linux-5.14.0-687.49.1.el9_8.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "python_executable": "/scratch/gilbreth/mfaruqi/envs/torch28-trt/bin/python",
+  "nvidia_smi_gpu": "NVIDIA A100-PCIE-40GB, 40960 MiB, 595.91.07, GPU-3578561a-2cf1-7ba6-6b9c-3ff8bf7254f8, 250.00 W",
+  "nvidia_driver": "595.91.07",
+  "git_commit": "",
+  "git_dirty_files": [],
+  "env_vars": {
+    "SLURM_JOB_ID": "12044905",
+    "SLURM_JOB_PARTITION": "a100-40gb",
+    "SLURM_JOB_ACCOUNT": "you139",
+    "SLURM_JOB_NODELIST": "gilbreth-g011",
+    "SLURM_CPUS_PER_TASK": "4",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "HF_HOME": null,
+    "HF_HUB_OFFLINE": "1"
+  },
+  "torch": "2.8.0+cu126",
+  "torch_cuda_runtime": "12.6",
+  "gpu_name": "NVIDIA A100-PCIE-40GB",
+  "cublas_flags": {
+    "allow_fp16_reduced_precision_reduction": true,
+    "allow_bf16_reduced_precision_reduction": true
+  }
+}

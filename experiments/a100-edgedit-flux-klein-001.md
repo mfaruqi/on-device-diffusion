@@ -4,8 +4,8 @@ id: a100-edgedit-flux-klein-001
 status: complete
 device: a100-pcie-40gb
 engine: edge-dit-cpp
-runs: [a100-edgedit-flux-klein-001__attempt__20261005-073914, a100-edgedit-flux-klein-001__attempt__20261005-191822, a100-edgedit-flux-klein-001__attempt__20261005-221339, a100-edgedit-flux-klein-001__baseline__20261005-233237]
-updated: 2026-10-06
+runs: [a100-edgedit-flux-klein-001__attempt__20261005-073914, a100-edgedit-flux-klein-001__attempt__20261005-191822, a100-edgedit-flux-klein-001__attempt__20261005-221339, a100-edgedit-flux-klein-001__baseline__20261005-233237, a100-edgedit-flux-klein-001__counters__20261028-210044, a100-edgedit-flux-klein-001__counters__20261029-033447]
+updated: 2026-10-29
 ---
 
 # A100 edge-dit: distilled klein no-cache baseline
@@ -75,3 +75,40 @@ Wall timing is upstream steady-clock output rounded to 1ms; phase intervals use 
 Independent raw-log/CSV/summary/event/phase/schedule/image validation passed for all14 generations. The final retained image matches the previously inspected coherent cat/sign output. Earlier images are overwritten upstream, so cross-repeat determinism remains unknown. No formal quality acceptance or causal cross-engine speed claim follows from this baseline.
 
 [W&B](https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-edgedit-flux-klein-001__baseline__20261005-233237).
+
+## Hardware-counter capture (2026-10-28/29)
+
+Measured DRAM traffic of one steady denoising pass of this configuration, for the measured A100 roofline
+([procedure](../docs/a100-hardware-counters.md#engine-counter-captures), [metric definitions](../wiki/methods/baseline-metrics.md#nsight-compute-engine-counter-captures-a100)). [Counter plan](../configs/ncu/a100-edgedit-flux-klein-001-counters.json),
+[controller](../scripts/profile_engine_counters.py). The template run [a100-edgedit-flux-klein-001__baseline__20261005-233237](../results/runs/a100-edgedit-flux-klein-001__baseline__20261005-233237/)
+is reused unchanged except the protocol (1 first + 0 warm-up + 1 measured generation). The engine binary runs under Nsight directly from the template's `command.json` (2 repeats, new output paths), because the runner's NVML and `nvidia-smi` setup hung under `--target-processes all`: the first attempt, [20261028-210044](../results/runs/a100-edgedit-flux-klein-001__counters__20261028-210044/status.json) (job 12038729, gilbreth-g008), timed out after 90 minutes before the engine started. Capture: job 12044294 on gilbreth-g009.
+Run: [a100-edgedit-flux-klein-001__counters__20261029-033447](../results/runs/a100-edgedit-flux-klein-001__counters__20261029-033447/) ([status](../results/runs/a100-edgedit-flux-klein-001__counters__20261029-033447/status.json), [counter-summary.json](../results/runs/a100-edgedit-flux-klein-001__counters__20261029-033447/profile/counter-summary.json),
+[pass-kernels.json](../results/runs/a100-edgedit-flux-klein-001__counters__20261029-033447/profile/pass-kernels.json)).
+
+Scope: Nsight Compute kernel replay, no cache flush, clocks not locked. The pass is the last full denoising
+pass of the measured generation, found as the repeating kernel-name period with the most kernel time. FLOPs
+per pass stay analytic (34.82 T); counted Tensor Core + FP32 work is the check. Replay kernel time is not
+latency; the benchmark time per pass comes from the template run.
+
+| Quantity | Value |
+|---|---:|
+| Kernels per pass | 787 |
+| DRAM read + write per pass | 154.11 GB |
+| Counted operations per pass (ratio to analytic) | 34.92 T (1.003) |
+| Arithmetic intensity (analytic FLOPs / measured bytes) | 225.9 FLOP/B |
+| Summed replay kernel time per pass | 241.6 ms |
+| Benchmark denoise time per pass (template run) | 274.0 ms |
+| Analytic bytes per pass (earlier roofline estimate) | 35.34 GB (4.4× measured / analytic) |
+
+Kernel time and DRAM bytes by kernel class (kernel-name rules in
+[plot_roofline_measured.py](../scripts/plot_roofline_measured.py)): elementwise/reduction 578 kernels, 51 % of time, 101.8 GB; GEMM 83, 45 %, 40.8 GB; norm 101, 3 %, 9.2 GB; attention 25, 1 %, 2.3 GB.
+
+Observations:
+
+- Counted operations match the analytic FLOPs within 0.3 %.
+- Elementwise and reduction kernels (including FP32↔BF16 conversions) take 51 % of kernel time and move 101.8 GB, 66 % of the traffic.
+- Measured traffic is 4.4× the analytic estimate; intensity 226 FLOP/B.
+- The counter window matched the sequence pass at an offset of +92 launches (fewer one-time setup kernels before the window in the second process); the order was otherwise identical.
+- Summed replay kernel time is 88 % of the benchmark time per pass.
+
+Interpretation: about half of this pass's kernel time is memory-bound elementwise work on FP32 activations around BF16 GEMMs; fusing or narrowing those conversions is the main lever indicated for this configuration.

@@ -1,0 +1,28 @@
+{
+  "configuration": {
+    "backend": "inductor",
+    "mode": "default",
+    "fullgraph": true,
+    "dynamic": false,
+    "target": "transformer.forward"
+  },
+  "counters": {
+    "unimplemented": {},
+    "stats": {
+      "calls_captured": 2172,
+      "unique_graphs": 1
+    },
+    "aot_autograd": {
+      "total": 1,
+      "autograd_cache_hit": 1,
+      "ok": 1
+    },
+    "inductor": {
+      "extern_calls": 159,
+      "fxgraph_cache_hit": 1
+    }
+  },
+  "generated_kernel_count": 144,
+  "fallback_allowed": false,
+  "first_image_includes_lazy_compilation": true
+}

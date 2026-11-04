@@ -1,0 +1,169 @@
+{
+  "id": "a100-flux-klein-torch28-001",
+  "device_label": "gilbreth-a100-40gb",
+  "backend": "cuda",
+  "engine": "PyTorch/Diffusers",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 29970.080372993834,
+    "gpu_span_ms": 29969.810546875,
+    "text_encode_ms": 12771.38671875,
+    "denoise_ms": 3767.3114624023438,
+    "denoise_step_0_ms": 2997.072998046875,
+    "denoise_step_1_ms": 259.39764404296875,
+    "denoise_step_2_ms": 256.00408935546875,
+    "denoise_step_3_ms": 254.83673095703125,
+    "vae_decode_ms": 12455.646484375,
+    "postprocess_ms": 192.01878356933594,
+    "other_ms": 783.4470977783203,
+    "peak_alloc_gib": 17.323493003845215,
+    "peak_reserved_gib": 19.607421875,
+    "device_used_peak_gib": 20.62054443359375,
+    "host_rss_gib": 1.6737632751464844
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 1337.4342799652368,
+      "min": 1337.4342799652368,
+      "max": 1337.4342799652368,
+      "mean": 1337.4342799652368,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": {
+      "median": 1337.357421875,
+      "min": 1337.357421875,
+      "max": 1337.357421875,
+      "mean": 1337.357421875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "text_encode_ms": {
+      "median": 72.43631744384766,
+      "min": 72.43631744384766,
+      "max": 72.43631744384766,
+      "mean": 72.43631744384766,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 1054.2919616699219,
+      "min": 1054.2919616699219,
+      "max": 1054.2919616699219,
+      "mean": 1054.2919616699219,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 281.91845703125,
+      "min": 281.91845703125,
+      "max": 281.91845703125,
+      "mean": 281.91845703125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 258.5620422363281,
+      "min": 258.5620422363281,
+      "max": 258.5620422363281,
+      "mean": 258.5620422363281,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 256.03277587890625,
+      "min": 256.03277587890625,
+      "max": 256.03277587890625,
+      "mean": 256.03277587890625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 257.7786865234375,
+      "min": 257.7786865234375,
+      "max": 257.7786865234375,
+      "mean": 257.7786865234375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 169.36038208007812,
+      "min": 169.36038208007812,
+      "max": 169.36038208007812,
+      "mean": 169.36038208007812,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": {
+      "median": 33.796512603759766,
+      "min": 33.796512603759766,
+      "max": 33.796512603759766,
+      "mean": 33.796512603759766,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "other_ms": {
+      "median": 7.472248077392578,
+      "min": 7.472248077392578,
+      "max": 7.472248077392578,
+      "mean": 7.472248077392578,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": {
+      "median": 17.323493003845215,
+      "min": 17.323493003845215,
+      "max": 17.323493003845215,
+      "mean": 17.323493003845215,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_reserved_gib": {
+      "median": 19.607421875,
+      "min": 19.607421875,
+      "max": 19.607421875,
+      "mean": 19.607421875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "device_used_peak_gib": {
+      "median": 20.62054443359375,
+      "min": 20.62054443359375,
+      "max": 20.62054443359375,
+      "mean": 20.62054443359375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "host_rss_gib": {
+      "median": 1.6485519409179688,
+      "min": 1.6485519409179688,
+      "max": 1.6485519409179688,
+      "mean": 1.6485519409179688,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 39.172878911020234,
+    "from_pretrained_s": 18.11893771600444,
+    "to_device_s": 21.053941195015796
+  },
+  "weights_gib": {
+    "vae": 0.15654857270419598,
+    "text_encoder": 7.492431163787842,
+    "transformer": 7.218764305114746
+  },
+  "quantization": {},
+  "compiler": {
+    "name": null
+  },
+  "first_run_note": "Includes lazy compilation when a compiler is configured.",
+  "system_memory": null,
+  "unavailable_metrics": {},
+  "host_peak_rss_gib": 8.067058563232422,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

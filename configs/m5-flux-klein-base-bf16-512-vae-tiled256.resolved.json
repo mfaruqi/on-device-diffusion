@@ -1,0 +1,54 @@
+{
+  "id": "m5-flux-klein-base-003",
+  "description": "M5 BF16 MPS flux-klein-base: VAE tiling only against m5-flux-klein-base-001; 256-pixel tiles and 25 percent overlap. Same checkpoint and sampling; tiled decode may change image pixels.",
+  "device_label": "macbook-air-m5-24gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ],
+    "requested_revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d",
+    "resolved_at_utc": "2026-10-10T20:09:13Z"
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 100,
+    "prevent_idle_sleep": true
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": {
+      "tile_sample_size": 256,
+      "overlap_factor": 0.25
+    },
+    "vae_slicing": false,
+    "torch_compile": false
+  },
+  "backend": "mps",
+  "device_requirements": {
+    "chip": "Apple M5",
+    "memory_gib": 24
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "status": "validated",
+  "template_run": "jetson-torch-flux-klein-004__baseline__20261015-141028",
+  "metrics": [
+    "gpu__time_duration.sum",
+    "lts__t_sectors_aperture_sysmem_op_read_lookup_miss.sum",
+    "lts__t_sectors_aperture_sysmem_op_write.sum",
+    "sm__ops_path_tensor_src_bf16_dst_fp32_sparsity_off.sum"
+  ],
+  "bytes_per_pass": 171709664064.0,
+  "bytes_basis": "one steady denoising pass (2176 launches, last generation), Nsight Compute L2 read misses + L2 write sectors to system memory (32 B sectors; writes are an upper bound)",
+  "device": "jetson",
+  "replay_mode": "kernel",
+  "pass_kernels": 2176,
+  "pass_replay_kernel_s": 3.523540703999993,
+  "counted_ops_per_pass": 10194398478336.0,
+  "analytic_flops_per_pass": 10172630040576.0,
+  "counted_over_analytic": 1.0021399026282458,
+  "analytic_ai": 59.24320041057465,
+  "counted_ai": 59.36997509083893,
+  "sequence_launches": 20532,
+  "steps": 4,
+  "window_offset": 0,
+  "scope": "Kernel replay, no cache flush, clocks not locked; memcpy and CPU work excluded. One ncu run per counter, merged per launch; durations from the first run.",
+  "limitations": "Counted BF16 Tensor Core ops only (FP32 instruction counters not collected); INT4/INT8 Tensor Core, scalar FP16/BF16 and SFU work are not counted."
+}

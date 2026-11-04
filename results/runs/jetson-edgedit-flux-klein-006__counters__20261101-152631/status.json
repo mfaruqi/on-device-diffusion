@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-01T21:10:02Z",
+  "error": "Stopped by jetson_memguard.sh: MemAvailable 243 MB < 250 MB threshold at the start of denoising in generation 1 (window-0.log ends at \"[[phase]] stage=denoise event=begin\"); no counter-window kernel was profiled. A first window attempt with the 400 MB threshold was stopped at 355 MB at the same point (its memguard.json was overwritten by the retry). The sequence pass completed (25,402 launches, pass period 657 at launch 14966).",
+  "sequence": {
+    "launches": 25402,
+    "pass_start": 14966,
+    "period": 657
+  }
+}

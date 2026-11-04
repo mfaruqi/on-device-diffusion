@@ -1,0 +1,606 @@
+{
+  "id": "m5-flux-klein-base-002",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "PyTorch/Diffusers MPS",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 122132.30662501883,
+    "gpu_span_ms": 122131.607542,
+    "text_encode_ms": 10336.150542,
+    "denoise_ms": 110944.31374499999,
+    "denoise_step_0_ms": 2035.2589169999999,
+    "denoise_step_1_ms": 1988.5414589999998,
+    "denoise_step_2_ms": 2014.241958,
+    "denoise_step_3_ms": 2001.129332,
+    "denoise_step_4_ms": 2031.0963339999998,
+    "denoise_step_5_ms": 2059.486,
+    "denoise_step_6_ms": 2048.5693739999997,
+    "denoise_step_7_ms": 2051.095418,
+    "denoise_step_8_ms": 2059.507417,
+    "denoise_step_9_ms": 2070.9885409999997,
+    "denoise_step_10_ms": 2080.95475,
+    "denoise_step_11_ms": 2103.2695830000002,
+    "denoise_step_12_ms": 2097.0082089999996,
+    "denoise_step_13_ms": 2106.167625,
+    "denoise_step_14_ms": 2116.0630419999998,
+    "denoise_step_15_ms": 2117.0102079999997,
+    "denoise_step_16_ms": 2124.169667,
+    "denoise_step_17_ms": 2126.2458319999996,
+    "denoise_step_18_ms": 2132.249708,
+    "denoise_step_19_ms": 2147.3852909999996,
+    "denoise_step_20_ms": 2140.469541,
+    "denoise_step_21_ms": 2144.374,
+    "denoise_step_22_ms": 2148.489875,
+    "denoise_step_23_ms": 2241.5139579999995,
+    "denoise_step_24_ms": 2144.2382909999997,
+    "denoise_step_25_ms": 2170.5964569999996,
+    "denoise_step_26_ms": 2199.429542,
+    "denoise_step_27_ms": 2254.731375,
+    "denoise_step_28_ms": 2277.685208,
+    "denoise_step_29_ms": 2263.274584,
+    "denoise_step_30_ms": 2289.909375,
+    "denoise_step_31_ms": 2302.410583,
+    "denoise_step_32_ms": 2338.851125,
+    "denoise_step_33_ms": 2254.2865,
+    "denoise_step_34_ms": 2332.893834,
+    "denoise_step_35_ms": 2413.832708,
+    "denoise_step_36_ms": 2334.110874,
+    "denoise_step_37_ms": 2321.7755829999996,
+    "denoise_step_38_ms": 2397.890875,
+    "denoise_step_39_ms": 2286.845792,
+    "denoise_step_40_ms": 2392.921083,
+    "denoise_step_41_ms": 2374.20025,
+    "denoise_step_42_ms": 2377.510209,
+    "denoise_step_43_ms": 2426.771125,
+    "denoise_step_44_ms": 2368.686667,
+    "denoise_step_45_ms": 2439.993875,
+    "denoise_step_46_ms": 2419.0625419999997,
+    "denoise_step_47_ms": 2427.094291,
+    "denoise_step_48_ms": 2454.607333,
+    "denoise_step_49_ms": 2495.417625,
+    "vae_decode_ms": 794.973834,
+    "postprocess_ms": 31.6375,
+    "other_ms": 24.531921000001603,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 0.0976104736328125
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 136075.49202098744,
+      "min": 129359.2748340161,
+      "max": 164207.05674999044,
+      "mean": 141267.06254159217,
+      "stdev": 13612.11300595669,
+      "n": 10
+    },
+    "gpu_span_ms": {
+      "median": 136075.446979,
+      "min": 129359.229167,
+      "max": 164207.012166,
+      "mean": 141267.0025667,
+      "stdev": 13612.100095427175,
+      "n": 10
+    },
+    "text_encode_ms": {
+      "median": 0.061312,
+      "min": 0.040207999999999994,
+      "max": 0.47320899999999994,
+      "mean": 0.1433958,
+      "stdev": 0.17204607812043324,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 135653.714041,
+      "min": 128959.073208,
+      "max": 163704.820084,
+      "mean": 140831.2079959,
+      "stdev": 13557.214347211782,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 2873.751062,
+      "min": 2632.323208,
+      "max": 3280.7822499999997,
+      "mean": 2923.2549831999995,
+      "stdev": 272.50776776355576,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 2598.4870835,
+      "min": 2502.729792,
+      "max": 3282.1827909999997,
+      "mean": 2728.9695542,
+      "stdev": 253.864861307657,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 2690.828146,
+      "min": 2536.657833,
+      "max": 3178.99525,
+      "mean": 2747.4771542,
+      "stdev": 212.03045246371008,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 2740.3527084999996,
+      "min": 2544.3974179999996,
+      "max": 3302.0675,
+      "mean": 2813.3030668,
+      "stdev": 249.77400042824772,
+      "n": 10
+    },
+    "denoise_step_4_ms": {
+      "median": 2716.1760415,
+      "min": 2552.2229159999997,
+      "max": 3083.613999,
+      "mean": 2753.3315245999997,
+      "stdev": 190.68379056045896,
+      "n": 10
+    },
+    "denoise_step_5_ms": {
+      "median": 2574.9218335,
+      "min": 2524.349417,
+      "max": 3307.577125,
+      "mean": 2753.1149206,
+      "stdev": 287.386079110617,
+      "n": 10
+    },
+    "denoise_step_6_ms": {
+      "median": 2619.8914164999997,
+      "min": 2560.217084,
+      "max": 3092.573708,
+      "mean": 2710.2430625,
+      "stdev": 181.9577833514422,
+      "n": 10
+    },
+    "denoise_step_7_ms": {
+      "median": 2693.7954999999997,
+      "min": 2553.198333,
+      "max": 2931.76675,
+      "mean": 2710.8084126999997,
+      "stdev": 151.46051281698232,
+      "n": 10
+    },
+    "denoise_step_8_ms": {
+      "median": 2592.7148740000002,
+      "min": 2519.2119169999996,
+      "max": 3127.0904579999997,
+      "mean": 2705.3663083,
+      "stdev": 210.49068916914035,
+      "n": 10
+    },
+    "denoise_step_9_ms": {
+      "median": 2597.399562,
+      "min": 2535.3053330000002,
+      "max": 2946.69175,
+      "mean": 2705.328529,
+      "stdev": 175.74462310949517,
+      "n": 10
+    },
+    "denoise_step_10_ms": {
+      "median": 2650.164709,
+      "min": 2540.958208,
+      "max": 2937.6398329999997,
+      "mean": 2702.6089751,
+      "stdev": 158.62782441849097,
+      "n": 10
+    },
+    "denoise_step_11_ms": {
+      "median": 2682.7132494999996,
+      "min": 2536.071708,
+      "max": 4437.676416,
+      "mean": 2872.6309334,
+      "stdev": 572.6751178364369,
+      "n": 10
+    },
+    "denoise_step_12_ms": {
+      "median": 2712.1418965000003,
+      "min": 2511.783249,
+      "max": 4205.9547919999995,
+      "mean": 2950.0352627,
+      "stdev": 548.1671248096972,
+      "n": 10
+    },
+    "denoise_step_13_ms": {
+      "median": 2711.0123539999995,
+      "min": 2536.522541,
+      "max": 3140.0981249999995,
+      "mean": 2755.5776123,
+      "stdev": 220.77566081685393,
+      "n": 10
+    },
+    "denoise_step_14_ms": {
+      "median": 2683.7503955,
+      "min": 2557.791626,
+      "max": 3014.586666,
+      "mean": 2727.5338374,
+      "stdev": 171.96941731410018,
+      "n": 10
+    },
+    "denoise_step_15_ms": {
+      "median": 2908.409479,
+      "min": 2526.387833,
+      "max": 3045.400041,
+      "mean": 2803.6659749,
+      "stdev": 215.1789051835197,
+      "n": 10
+    },
+    "denoise_step_16_ms": {
+      "median": 2692.00475,
+      "min": 2530.6437499999997,
+      "max": 3414.2873739999995,
+      "mean": 2804.8497873,
+      "stdev": 299.7322702581115,
+      "n": 10
+    },
+    "denoise_step_17_ms": {
+      "median": 2690.975813,
+      "min": 2544.5974579999997,
+      "max": 4690.3595000000005,
+      "mean": 2925.2192335,
+      "stdev": 652.536530342712,
+      "n": 10
+    },
+    "denoise_step_18_ms": {
+      "median": 2672.8423755,
+      "min": 2535.789042,
+      "max": 4278.75225,
+      "mean": 2840.2639253999996,
+      "stdev": 522.5152278652413,
+      "n": 10
+    },
+    "denoise_step_19_ms": {
+      "median": 2685.969479,
+      "min": 2509.261791,
+      "max": 4104.167416,
+      "mean": 2831.3973084,
+      "stdev": 473.1179189699029,
+      "n": 10
+    },
+    "denoise_step_20_ms": {
+      "median": 2739.6107085,
+      "min": 2544.615041,
+      "max": 3342.9809999999998,
+      "mean": 2782.9565918,
+      "stdev": 249.14331223414453,
+      "n": 10
+    },
+    "denoise_step_21_ms": {
+      "median": 2653.3938955,
+      "min": 2556.206209,
+      "max": 3563.9634589999996,
+      "mean": 2787.2390541,
+      "stdev": 316.3081248902981,
+      "n": 10
+    },
+    "denoise_step_22_ms": {
+      "median": 2725.469333,
+      "min": 2519.150416,
+      "max": 3747.205167,
+      "mean": 2856.9618624,
+      "stdev": 407.63176094459163,
+      "n": 10
+    },
+    "denoise_step_23_ms": {
+      "median": 2649.1314374999997,
+      "min": 2556.723459,
+      "max": 4023.646791,
+      "mean": 2916.6349252,
+      "stdev": 500.59664656208923,
+      "n": 10
+    },
+    "denoise_step_24_ms": {
+      "median": 2712.275562,
+      "min": 2523.923541,
+      "max": 3963.3970419999996,
+      "mean": 2881.8722872,
+      "stdev": 467.9315032975611,
+      "n": 10
+    },
+    "denoise_step_25_ms": {
+      "median": 2705.5112915,
+      "min": 2541.897583,
+      "max": 3519.105083,
+      "mean": 2829.7312792,
+      "stdev": 333.0854372764659,
+      "n": 10
+    },
+    "denoise_step_26_ms": {
+      "median": 2698.630417,
+      "min": 2531.4464159999998,
+      "max": 3013.432417,
+      "mean": 2734.2349041999996,
+      "stdev": 189.2131210424434,
+      "n": 10
+    },
+    "denoise_step_27_ms": {
+      "median": 2862.4927495,
+      "min": 2545.71875,
+      "max": 3307.732666,
+      "mean": 2849.7153291,
+      "stdev": 268.54852999848447,
+      "n": 10
+    },
+    "denoise_step_28_ms": {
+      "median": 2683.9870835,
+      "min": 2536.39925,
+      "max": 3948.782375,
+      "mean": 2821.5611126,
+      "stdev": 424.4085968193404,
+      "n": 10
+    },
+    "denoise_step_29_ms": {
+      "median": 2704.4458965,
+      "min": 2548.4960419999998,
+      "max": 3439.807625,
+      "mean": 2847.5396419999997,
+      "stdev": 332.563679260403,
+      "n": 10
+    },
+    "denoise_step_30_ms": {
+      "median": 2771.2386665,
+      "min": 2535.824166,
+      "max": 3517.955333,
+      "mean": 2838.5455997,
+      "stdev": 318.22882752202946,
+      "n": 10
+    },
+    "denoise_step_31_ms": {
+      "median": 2738.1821245,
+      "min": 2526.647125,
+      "max": 4655.2657500000005,
+      "mean": 2960.7835998,
+      "stdev": 637.4579130780206,
+      "n": 10
+    },
+    "denoise_step_32_ms": {
+      "median": 2696.7451465,
+      "min": 2519.21625,
+      "max": 4068.762291,
+      "mean": 2882.7770874999997,
+      "stdev": 480.15550179026513,
+      "n": 10
+    },
+    "denoise_step_33_ms": {
+      "median": 2741.6668119999995,
+      "min": 2533.9693749999997,
+      "max": 3581.403082,
+      "mean": 2852.410904,
+      "stdev": 373.51253837170674,
+      "n": 10
+    },
+    "denoise_step_34_ms": {
+      "median": 2908.1370424999996,
+      "min": 2542.300584,
+      "max": 3827.7614589999994,
+      "mean": 2935.6592794999997,
+      "stdev": 412.6316355790458,
+      "n": 10
+    },
+    "denoise_step_35_ms": {
+      "median": 2758.0824165,
+      "min": 2539.5219589999997,
+      "max": 3445.308208,
+      "mean": 2839.0196624,
+      "stdev": 323.90205902064514,
+      "n": 10
+    },
+    "denoise_step_36_ms": {
+      "median": 2701.892938,
+      "min": 2558.2436669999997,
+      "max": 3829.572666,
+      "mean": 2823.1658541999996,
+      "stdev": 384.23848792939503,
+      "n": 10
+    },
+    "denoise_step_37_ms": {
+      "median": 2721.0286454999996,
+      "min": 2528.572918,
+      "max": 3481.035458,
+      "mean": 2848.0682540999996,
+      "stdev": 354.5089794400665,
+      "n": 10
+    },
+    "denoise_step_38_ms": {
+      "median": 2802.6552915,
+      "min": 2560.269084,
+      "max": 3916.3190829999994,
+      "mean": 2895.6675084,
+      "stdev": 421.39585032546677,
+      "n": 10
+    },
+    "denoise_step_39_ms": {
+      "median": 2688.3696035000003,
+      "min": 2536.5797089999996,
+      "max": 3333.4569579999998,
+      "mean": 2797.1297082,
+      "stdev": 290.9073889862171,
+      "n": 10
+    },
+    "denoise_step_40_ms": {
+      "median": 2668.933521,
+      "min": 2537.226667,
+      "max": 3239.395834,
+      "mean": 2777.6944625,
+      "stdev": 269.78461933086106,
+      "n": 10
+    },
+    "denoise_step_41_ms": {
+      "median": 2721.8651250000003,
+      "min": 2530.552375,
+      "max": 3389.904166,
+      "mean": 2825.8789415,
+      "stdev": 324.57382466941056,
+      "n": 10
+    },
+    "denoise_step_42_ms": {
+      "median": 2816.80752,
+      "min": 2535.671959,
+      "max": 3450.887291,
+      "mean": 2867.7579456,
+      "stdev": 336.4103619413959,
+      "n": 10
+    },
+    "denoise_step_43_ms": {
+      "median": 2660.1607295,
+      "min": 2520.966958,
+      "max": 3913.912167,
+      "mean": 2873.9764545999997,
+      "stdev": 452.3218528946462,
+      "n": 10
+    },
+    "denoise_step_44_ms": {
+      "median": 2687.417396,
+      "min": 2529.230458,
+      "max": 3444.4680829999998,
+      "mean": 2821.1005333000003,
+      "stdev": 322.97583368584617,
+      "n": 10
+    },
+    "denoise_step_45_ms": {
+      "median": 2641.637146,
+      "min": 2520.4183329999996,
+      "max": 3220.0824999999995,
+      "mean": 2787.7087208999997,
+      "stdev": 292.0260218568859,
+      "n": 10
+    },
+    "denoise_step_46_ms": {
+      "median": 2715.8630835,
+      "min": 2531.108042,
+      "max": 3315.089584,
+      "mean": 2774.9863668999997,
+      "stdev": 257.35692854016366,
+      "n": 10
+    },
+    "denoise_step_47_ms": {
+      "median": 2663.9096455,
+      "min": 2510.9717920000003,
+      "max": 3058.590209,
+      "mean": 2751.026117,
+      "stdev": 232.55707244968363,
+      "n": 10
+    },
+    "denoise_step_48_ms": {
+      "median": 2690.4861039999996,
+      "min": 2508.545875,
+      "max": 3456.4780419999997,
+      "mean": 2808.2594166,
+      "stdev": 318.01923197317655,
+      "n": 10
+    },
+    "denoise_step_49_ms": {
+      "median": 2677.283375,
+      "min": 2530.5066659999998,
+      "max": 3243.9055829999998,
+      "mean": 2796.1642248999997,
+      "stdev": 285.7552365666647,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 407.757833,
+      "min": 341.942292,
+      "max": 482.15016699999995,
+      "mean": 412.7166999,
+      "stdev": 49.676229186194305,
+      "n": 10
+    },
+    "postprocess_ms": {
+      "median": 4.1391875,
+      "min": 2.192084,
+      "max": 22.446334,
+      "mean": 7.0040126,
+      "stdev": 7.142412912621837,
+      "n": 10
+    },
+    "other_ms": {
+      "median": 12.958167999997386,
+      "min": 10.980710000003455,
+      "max": 23.43320999998832,
+      "mean": 15.93046249999461,
+      "stdev": 5.01492449280082,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 0.0884857177734375,
+      "min": 0.061676025390625,
+      "max": 0.10845947265625,
+      "mean": 0.08460540771484375,
+      "stdev": 0.017586144116382322,
+      "n": 10
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 17.644736958987778,
+    "from_pretrained_s": 0.6978252499829978,
+    "to_mps_s": 16.94691170900478,
+    "allocated_after_load_gib": 14.97126054763794,
+    "driver_allocated_after_load_gib": 15.75042724609375,
+    "is_distilled": false,
+    "components": {
+      "vae": {
+        "weights_gib": 0.15654808841645718,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "text_encoder": {
+        "weights_gib": 7.492430686950684,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      },
+      "transformer": {
+        "weights_gib": 7.218764305114746,
+        "dtypes": [
+          "torch.bfloat16"
+        ],
+        "device": "mps"
+      }
+    },
+    "note": "Cached load and placement; not a cold-storage measurement."
+  },
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": 0.005401149537647143,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 0.0206451416015625,
+    "system_total_minus_available_peak_gib": 23.979354858398438,
+    "system_swap_used_start_gib": 6.76483154296875,
+    "system_swap_used_peak_gib": 11.5943603515625,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "host_peak_rss_gib": 0.4964599609375,
+  "clock_continuity_pass": true,
+  "timing_method": "MPS events at stage boundaries; host wall includes final synchronization; no per-stage sync",
+  "rng": "CPU generator; initial noise not matched to sd.cpp",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "peak_alloc_gib/peak_reserved_gib": "No equivalent MPS peak counters recorded.",
+    "device_used_peak_gib": "Whole-system memory is separate, not device-wide GPU usage."
+  },
+  "conditioning_cache": {
+    "policy": "exact_prompt_encoding",
+    "hits": 26,
+    "misses": 2,
+    "entries": 2,
+    "capacity": 2,
+    "scope": "One loaded pipeline; identical encoding arguments; positive and CFG negative prompts separate"
+  },
+  "vae_tiling": {
+    "parameters": false,
+    "tiled_decodes": 0
+  },
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB"
+  }
+}

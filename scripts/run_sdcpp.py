@@ -19,12 +19,12 @@ from the PyTorch runner's CUDA-event times: wiki/methods/baseline-metrics.md.
 import argparse
 import hashlib
 import json
-import resource
 import re
 import subprocess
 from pathlib import Path
 
-from benchlib import GIB, REPO_ROOT, DeviceMemorySampler, host_environment, sh, visible_gpu_uuid, write_json
+from benchlib import REPO_ROOT, sh, write_json
+from sdcpp_device import SdcppDevice, child_peak_rss_gib
 from measurement import create_run_directory, phase_sequence, run_status, sampling, summarize_runs, write_csv
 from measurement_events import export_events
 from sdcpp_engine import (
@@ -43,26 +43,24 @@ def benchmark(cfg, run_dir, nsys):
     binary = build / ("sd-bench-nvtx" if nsys else "sd-bench")
     assert binary.exists(), f"{binary} missing: build engines/sdcpp (wiki/methods/sdcpp-howto.md)"
 
-    uuid = visible_gpu_uuid()
-    sampler = DeviceMemorySampler(cfg["protocol"]["device_memory_sample_ms"], uuid)
-    env = collect_environment(cfg, run_dir, sampler, engine_git, binary, snap)
-    eng_dir, load, gens, child_peak_rss = run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys)
+    device = SdcppDevice(cfg, run_dir, nsys)
+    sampler = device.sampler
+    env = collect_environment(cfg, run_dir, device, engine_git, binary, snap)
+    eng_dir, load, gens, child_peak_rss = run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys, device)
     save_images(run_dir, eng_dir, gens, phases)
     rows, stage_rows = rows_from_results(gens, phases, cfg["workload"]["num_inference_steps"], sampler,
                                         expected_conditioning_hits=conditioning_hits(cfg, len(gens)))
     write_csv(run_dir / "runs.csv", rows)
     write_csv(run_dir / "stages.csv", stage_rows)
-    save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss)
+    save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss, device)
 
 
-def collect_environment(cfg, run_dir, sampler, engine_git, binary, snap):
-    env = host_environment(extra_env_vars=["GGML_CUDA_CUBLAS_COMPUTE_TYPE", "LD_LIBRARY_PATH"])
+def collect_environment(cfg, run_dir, device, engine_git, binary, snap):
+    env = device.environment(binary)
     env.update({
-        "device_memory_sampler": sampler.note,
+        "device_memory_sampler": device.sampler.note,
         "engine": {**cfg["engine"], **engine_git, "binary": str(binary),
                    "binary_sha256": hashlib.sha256(binary.read_bytes()).hexdigest()},
-        "nvcc": sh(["nvcc", "--version"]).splitlines()[-1:],
-        "ldd": sh(["ldd", str(binary)]).splitlines(),
         "snapshot_dir": str(snap),
     })
     write_json(run_dir / "environment.json", env)
@@ -70,7 +68,7 @@ def collect_environment(cfg, run_dir, sampler, engine_git, binary, snap):
     return env
 
 
-def run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys):
+def run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys, device):
     """One child process loads the model once and performs the entire protocol."""
     eng_dir = run_dir / "engine"
     eng_dir.mkdir()
@@ -79,13 +77,14 @@ def run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys):
         (run_dir / "profile").mkdir()
         cmd = ["nsys", "profile", "--trace=cuda,nvtx", "--sample=none", "--cpuctxsw=none",
                "--force-overwrite=true", "-o", str(run_dir / "profile" / "trace"), *cmd]
+    cmd = device.wrap_command(cmd)
     write_json(eng_dir / "command.json", cmd)
     print("Running:", " ".join(cmd), flush=True)
 
     with sampling(sampler):
         with open(eng_dir / "stdout.txt", "w") as out:
             proc = subprocess.run(cmd, stdout=out, stderr=subprocess.STDOUT)
-    child_peak_rss = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss * 1024 / GIB
+    child_peak_rss = child_peak_rss_gib()
 
     # A loader failure can happen before the harness creates any result files.
     # Report the child error first, rather than hiding it behind FileNotFoundError.
@@ -104,7 +103,7 @@ def run_harness(cfg, run_dir, binary, snap, phases, sampler, nsys):
     return eng_dir, load, gens, child_peak_rss
 
 
-def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss):
+def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_peak_rss, device):
     load_rec = {
         "load_total_s": load["t_end"] - load["t_start"],
         "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
@@ -113,7 +112,8 @@ def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_pe
         "model_version": load.get("model_version"),
     }
     write_json(run_dir / "load.json", load_rec)
-    (run_dir / "nvidia-smi.txt").write_text(sh(["nvidia-smi"]) + "\n")
+    if not device.metal:
+        (run_dir / "nvidia-smi.txt").write_text(sh(["nvidia-smi"]) + "\n")
 
     log = (eng_dir / "sdcpp.log").read_text(errors="replace")
     hits = conditioning_hits(cfg, len(gens))
@@ -131,13 +131,14 @@ def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_pe
         "id": cfg["id"],
         "device_label": cfg["device_label"],
         "engine": f"stable-diffusion.cpp {cfg['engine']['tag']}",
-        "gpu": env["nvidia_smi_gpu"],
+        "gpu": env["device_description"],
+        **device.summary_fields(),
         **summarize_runs(rows),
         "load": load_rec,
         "host_peak_rss_gib": child_peak_rss,
         "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
         "unavailable_metrics": {
-            "gpu_span_ms": "no CUDA events inside sd.cpp; wall_ms is the end-to-end time",
+            "gpu_span_ms": "no device events inside sd.cpp; wall_ms is the end-to-end time",
             "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
             "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
             "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak",
@@ -147,8 +148,11 @@ def save_summary(cfg, run_dir, env, eng_dir, load, gens, rows, sampler, child_pe
         "conditioning_cache_hits_per_generation": hits,
         "units": {"time": "ms (load in s)", "memory": "GiB (2^30 bytes)"},
     }
+    if device.metal:
+        summary["unavailable_metrics"]["device_used_peak_gib"] = "No device-wide Metal allocation counter; whole-system unified memory reported separately"
     write_json(run_dir / "summary.json", summary)
     assert not audit["problems"], f"engine audit failed: {audit['problems']}"
+    assert summary.get("clock_continuity_pass", True), "Timing rejected: host clocks diverged; inspect system sleep/clock changes"
 
     print(json.dumps(summary["measured"]["wall_ms"], indent=2))
 

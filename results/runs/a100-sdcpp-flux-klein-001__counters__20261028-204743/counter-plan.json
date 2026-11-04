@@ -1,0 +1,11 @@
+{
+  "id": "a100-sdcpp-flux-klein-001-counters",
+  "template_run": "a100-sdcpp-flux-klein-001__baseline__20261005-220435",
+  "launcher": "sdcpp",
+  "python": "/home/mfaruqi/.conda/envs/2025.06-py313/flux_env/bin/python",
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "timeout_s": 5400,
+  "analytic_flops_per_pass": 34819836739584.0,
+  "analytic_flops_source": "scripts/plot_roofline.py reference work, klein distilled 1024\u00b2 (matches counted Tensor Core work of the eager BF16 capture within 0.4 %)",
+  "description": "Measured HBM bytes for one steady denoising pass of a100-sdcpp-flux-klein-001 (two-pass Nsight Compute capture; see scripts/profile_engine_counters.py)."
+}

@@ -1,0 +1,164 @@
+{
+  "id": "m5-mflux-flux-klein-002",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "MFLUX / MLX",
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 12571.247457992285,
+    "gpu_span_ms": null,
+    "text_encode_ms": 864.0060420148075,
+    "denoise_ms": 10059.710668050684,
+    "denoise_step_0_ms": 3299.127667036373,
+    "denoise_step_1_ms": 2792.6855420228094,
+    "denoise_step_2_ms": 1925.0119589851238,
+    "denoise_step_3_ms": 2042.8855000063777,
+    "vae_decode_ms": 1612.3006250127219,
+    "postprocess_ms": null,
+    "other_ms": 35.230122914072126,
+    "peak_alloc_gib": 10.094777524471283,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": 0.0549163818359375
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 21434.071083029266,
+      "min": 21434.071083029266,
+      "max": 21434.071083029266,
+      "mean": 21434.071083029266,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 5369.486249983311,
+      "min": 5369.486249983311,
+      "max": 5369.486249983311,
+      "mean": 5369.486249983311,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 9495.532208995428,
+      "min": 9495.532208995428,
+      "max": 9495.532208995428,
+      "mean": 9495.532208995428,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 1708.1684159929864,
+      "min": 1708.1684159929864,
+      "max": 1708.1684159929864,
+      "mean": 1708.1684159929864,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 3698.772292002104,
+      "min": 3698.772292002104,
+      "max": 3698.772292002104,
+      "mean": 3698.772292002104,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 2072.577583952807,
+      "min": 2072.577583952807,
+      "max": 2072.577583952807,
+      "mean": 2072.577583952807,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 2016.0139170475304,
+      "min": 2016.0139170475304,
+      "max": 2016.0139170475304,
+      "mean": 2016.0139170475304,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 6559.641958971042,
+      "min": 6559.641958971042,
+      "max": 6559.641958971042,
+      "mean": 6559.641958971042,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 9.410665079485625,
+      "min": 9.410665079485625,
+      "max": 9.410665079485625,
+      "mean": 9.410665079485625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": {
+      "median": 10.351489501073956,
+      "min": 10.351489501073956,
+      "max": 10.351489501073956,
+      "mean": 10.351489501073956,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": {
+      "median": 0.0847320556640625,
+      "min": 0.0847320556640625,
+      "max": 0.0847320556640625,
+      "mean": 0.0847320556640625,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 5.336217958014458,
+    "allocated_after_load_gib": 7.971885038539767,
+    "mlx_cache_after_load_gib": 5.024544134736061,
+    "components": {
+      "text_encoder": {
+        "weights_gib": 3.980525255203247,
+        "quantized_layer_count": 253
+      },
+      "transformer": {
+        "weights_gib": 3.834975242614746,
+        "quantized_layer_count": 109
+      },
+      "vae": {
+        "weights_gib": 0.15471751056611538,
+        "quantized_layer_count": 8
+      }
+    },
+    "note": "Cached checkpoint load, on-load quantization and materialization; not cold-storage time."
+  },
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": -0.0002604495966807008,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 1.97607421875,
+    "system_total_minus_available_peak_gib": 22.02392578125,
+    "system_swap_used_start_gib": 13.1710205078125,
+    "system_swap_used_peak_gib": 18.676513671875,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "timing_method": "Synchronized host stage timing (not GPU events): prompt pair, each denoise step including CFG and scheduler, VAE decode. MLX lazy outputs are evaluated at boundaries. Native predict compilation retained; synchronization overhead is included.",
+  "memory_scope": "MLX active allocator and separate whole-system unified memory",
+  "clock_continuity_pass": true,
+  "host_peak_rss_gib": 4.86578369140625,
+  "unavailable_metrics": {
+    "gpu_span_ms": "No MLX GPU-event timestamps recorded",
+    "peak_reserved_gib": "MLX cache is not PyTorch reserved memory",
+    "device_used_peak_gib": "Unified system memory recorded separately",
+    "postprocess_ms": "Image conversion and remaining setup are included in other_ms"
+  },
+  "rng": "Native MLX; same seed does not match initial noise across engines",
+  "formal_quality_eligible": false,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB"
+  }
+}

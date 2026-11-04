@@ -1,0 +1,15 @@
+{
+  "id": "jetson-torch-flux-klein-004-counters",
+  "template_run": "jetson-torch-flux-klein-004__baseline__20261015-141028",
+  "launcher": "portable",
+  "python": "/home/mfaruqi/venvs/torch-jp6-ailab/bin/python",
+  "device": "jetson",
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "timeout_s": 10800,
+  "analytic_flops_per_pass": 10172630040576.0,
+  "analytic_flops_source": "scripts/plot_roofline.py transformer_cost(512, 512): reference work, klein distilled 512\u00b2 (1024 image + 512 text tokens)",
+  "description": "Measured LPDDR5 bytes (L2 <-> system memory sectors) for one steady denoising pass of jetson-torch-flux-klein-004 (Nsight Compute kernel replay: a sequence pass, then one single-hardware-pass run per counter over the window, merged per launch; see scripts/profile_engine_counters.py).",
+  "tensor_dtypes": [
+    "bf16"
+  ]
+}

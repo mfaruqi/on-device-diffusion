@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "started_utc": "2026-10-31T23:55:38Z",
+  "analysis_resumed_utc": "2026-11-01T19:25:17Z",
+  "slurm_jobs": [],
+  "history": [
+    {
+      "status": "running"
+    }
+  ],
+  "hosts": [
+    {
+      "host": "mfaruqi-desktop",
+      "utc": "2026-11-01T19:25:17Z"
+    }
+  ],
+  "sequence": {
+    "launches": 11148,
+    "pass_start": 8689,
+    "period": 1081,
+    "window": [
+      8419,
+      1621
+    ]
+  },
+  "window_offset": 0,
+  "bytes_per_pass_gb": 94.7,
+  "finished_utc": "2026-11-01T19:42:16Z"
+}

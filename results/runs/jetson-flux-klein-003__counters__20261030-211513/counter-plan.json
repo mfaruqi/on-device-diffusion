@@ -1,0 +1,17 @@
+{
+  "id": "jetson-sdcpp-flux-klein-003-counters",
+  "template_run": "jetson-flux-klein-003__repeat__20261014-163411",
+  "launcher": "jetson-sdcpp",
+  "python": "/usr/bin/python3",
+  "runner_args": [
+    "--binary",
+    "/home/mfaruqi/tools/sd-bench-build-tiling-20261014/sd-bench"
+  ],
+  "launcher_note": "Binary sha256 f9ed5788\u2026 matches the template environment.json.",
+  "device": "jetson",
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "timeout_s": 10800,
+  "analytic_flops_per_pass": 10172630040576.0,
+  "analytic_flops_source": "scripts/plot_roofline.py transformer_cost(512, 512): reference work, klein distilled 512\u00b2 (1024 image + 512 text tokens)",
+  "description": "Measured LPDDR5 bytes (L2 <-> system memory sectors) for one steady denoising pass of jetson-flux-klein-003 (two-pass Nsight Compute capture, application replay; see scripts/profile_engine_counters.py)."
+}

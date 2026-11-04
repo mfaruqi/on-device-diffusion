@@ -1,0 +1,79 @@
+{
+  "engine": "edge-dit.cpp",
+  "template_run": "results/runs/a100-edgedit-flux-klein-base-005__baseline__20261015-173406",
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seed_rule": "engine seed = 4 * position + sample (ed-sample base 0 + image index)",
+  "rows": [
+    {
+      "index": 9,
+      "sample": 0,
+      "engine_seed": 0,
+      "latency_s": 30.425403,
+      "png_sha256": "38041adedd2ccc63c6b0760ce28be098b6ba2975659275d53a38614cc997f19f"
+    },
+    {
+      "index": 9,
+      "sample": 1,
+      "engine_seed": 1,
+      "latency_s": 30.252743,
+      "png_sha256": "b25c7484eae04ae7a5954498e996e4eaf94bc256369c265a567cbe9bcccbe0ae"
+    },
+    {
+      "index": 9,
+      "sample": 2,
+      "engine_seed": 2,
+      "latency_s": 30.329089,
+      "png_sha256": "bae95be06052bf0ecf7320a6f32b08d4495b23237b0f678e7572b10fffbdae41"
+    },
+    {
+      "index": 9,
+      "sample": 3,
+      "engine_seed": 3,
+      "latency_s": 30.353489,
+      "png_sha256": "b6c576bd484efe28388f4cc5d0a19bd827f4ab9d17669627cbf3c2ade884477d"
+    },
+    {
+      "index": 12,
+      "sample": 0,
+      "engine_seed": 4,
+      "latency_s": 30.386,
+      "png_sha256": "a62234c12f16ce6a51335bc0967a49a721aa782c146c1fe65fc18330e177b5b7"
+    },
+    {
+      "index": 12,
+      "sample": 1,
+      "engine_seed": 5,
+      "latency_s": 30.398984,
+      "png_sha256": "9e72249f682c342f986e262d35bb072a0f8b20ad180002cd7db3d6aca4058569"
+    },
+    {
+      "index": 12,
+      "sample": 2,
+      "engine_seed": 6,
+      "latency_s": 30.401223,
+      "png_sha256": "de25c4a0bf185eed50ac5eae809e5294450e33cb4ffc6fcd159ea960d9ccdf0f"
+    },
+    {
+      "index": 12,
+      "sample": 3,
+      "engine_seed": 7,
+      "latency_s": 30.406124,
+      "png_sha256": "a4665d50eb19e784c1d8507691e26e18440d9170adf7628fd73f38e1bd3f0470"
+    }
+  ],
+  "cache_lines": [
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/taylorseer_policy.cpp:167 [info] TaylorSeer reused 38/50 steps (4.17x)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/taylorseer_policy.cpp:167 [info] TaylorSeer reused 38/50 steps (4.17x)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/taylorseer_policy.cpp:167 [info] TaylorSeer reused 38/50 steps (4.17x)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/taylorseer_policy.cpp:167 [info] TaylorSeer reused 38/50 steps (4.17x)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/taylorseer_policy.cpp:167 [info] TaylorSeer reused 38/50 steps (4.17x)"
+  ],
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "template_command_sha256": "58a2cf6e7abb8c8a429b28b0509b81a9d8845c46f726dfb621965612c6a359b2",
+  "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725",
+  "script_sha256": "e4edc251e867c8f46a6d01707ba5ede8889c07712f05f743657fd296cae5ae6b"
+}

@@ -13,6 +13,7 @@ huggingface/
 
 # Environments
 .venv/
+.venv-*/
 venv/
 env/
 __pycache__/
@@ -65,6 +66,7 @@ explainers/
 
 # Campaign scratch media, raw logs and profiler captures remain on the originating host.
 output/**/*.png
+output/**/*.pdf
 output/**/*.jpg
 output/**/*.rgb
 output/**/*.log
@@ -77,7 +79,26 @@ results/runs/**/stdout.txt
 /output/*
 !/output/stage-breakdown/
 !/output/stage-breakdown-20261007/
+!/output/speedups-20261028/
+!/output/best-configs-20261028/
+!/output/a100-roofline-prep/
+!/output/roofline-a100-20261021/
+!/output/roofline-a100-measured/
+!/output/roofline-jetson-measured/
+!/output/quality-table-20261102/
 output/**/*.html
+output/**/*.png
+output/**/wandb/
+output/**/wandb-cache/
+/output/roofline-a100-20261021/input-data.json
+/output/roofline-a100-20261021/verification/
 
 # Empty personal Obsidian table
 /Untitled.base
+
+# Nsight Compute: binary reports stay local; the kernel-sequence export is committed gzipped (sequence.csv.gz).
+*.ncu-rep
+results/runs/**/profile/sequence.csv
+
+# Local W&B run cache (uploads are verified remotely; receipts live next to each output)
+/wandb/

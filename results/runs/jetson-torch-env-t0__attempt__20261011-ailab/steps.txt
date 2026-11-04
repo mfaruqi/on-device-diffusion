@@ -1,0 +1,13 @@
+install_torch ok
+install_cusparselt ok
+install_diffusers ok
+install_torchao ok
+install_bitsandbytes ok
+check versions exit=0
+check cuda exit=0
+check matmul_bf16 exit=0
+check sdpa_backends exit=0
+check diffusers_flux2 exit=0
+check gguf exit=0
+check torchao_int4_cuda exit=0
+check bitsandbytes_nf4_cuda exit=0

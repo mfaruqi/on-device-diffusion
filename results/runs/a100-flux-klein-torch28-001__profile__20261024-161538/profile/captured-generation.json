@@ -1,0 +1,97 @@
+{
+  "row": {
+    "run_index": 14,
+    "phase": "counter_capture",
+    "wall_ms": 10938849.689591996,
+    "gpu_span_ms": 10938716.0,
+    "text_encode_ms": 2679585.25,
+    "denoise_ms": 7766861.625,
+    "denoise_step_0_ms": 1928621.875,
+    "denoise_step_1_ms": 1945916.5,
+    "denoise_step_2_ms": 1936754.875,
+    "denoise_step_3_ms": 1955568.375,
+    "vae_decode_ms": 431914.96875,
+    "postprocess_ms": 5202.05029296875,
+    "other_ms": 55152.10595703125,
+    "peak_alloc_gib": 17.323493003845215,
+    "peak_reserved_gib": 19.607421875,
+    "device_used_peak_gib": 39.76702880859375,
+    "host_rss_gib": 2.1749000549316406,
+    "image_sha256": "f11220f630cce576da295977e5f575a1c1b391c8d117dc5db263cf5ab04624dd"
+  },
+  "stages": [
+    {
+      "stage": "text_encode",
+      "gpu_ms": 2679585.25,
+      "host_ms": 2679601.914802013,
+      "alloc_start_gib": 14.935171127319336,
+      "alloc_end_gib": 14.942510604858398,
+      "peak_alloc_gib": 15.185056686401367,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "denoise_step_0",
+      "gpu_ms": 1928621.875,
+      "host_ms": 1928401.192411984,
+      "alloc_start_gib": 14.943610191345215,
+      "alloc_end_gib": 14.944586753845215,
+      "peak_alloc_gib": 15.510596752166748,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "denoise_step_1",
+      "gpu_ms": 1945916.5,
+      "host_ms": 1945767.8346479952,
+      "alloc_start_gib": 14.944586753845215,
+      "alloc_end_gib": 14.945563316345215,
+      "peak_alloc_gib": 15.511573314666748,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "denoise_step_2",
+      "gpu_ms": 1936754.875,
+      "host_ms": 1936475.946571998,
+      "alloc_start_gib": 14.944586753845215,
+      "alloc_end_gib": 14.945563316345215,
+      "peak_alloc_gib": 15.511573314666748,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "denoise_step_3",
+      "gpu_ms": 1955568.375,
+      "host_ms": 1955200.6070469797,
+      "alloc_start_gib": 14.944586753845215,
+      "alloc_end_gib": 14.945563316345215,
+      "peak_alloc_gib": 15.511573314666748,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "vae_decode",
+      "gpu_ms": 431914.96875,
+      "host_ms": 431731.9533859845,
+      "alloc_start_gib": 14.945563316345215,
+      "alloc_end_gib": 14.951422691345215,
+      "peak_alloc_gib": 17.323493003845215,
+      "peak_reserved_gib": 19.607421875
+    },
+    {
+      "stage": "postprocess",
+      "gpu_ms": 5202.05029296875,
+      "host_ms": 5010.765187005745,
+      "alloc_start_gib": 14.951422691345215,
+      "alloc_end_gib": 14.951422691345215,
+      "peak_alloc_gib": 14.963141441345215,
+      "peak_reserved_gib": 19.607421875
+    }
+  ],
+  "nvtx_stages": [
+    "text_encode",
+    "denoise_step_0",
+    "denoise_step_1",
+    "denoise_step_2",
+    "denoise_step_3",
+    "vae_decode",
+    "postprocess"
+  ],
+  "timing_scope": "NCU replay instrumented; excluded from benchmark statistics"
+}

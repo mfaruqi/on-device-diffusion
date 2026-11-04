@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "started_utc": "2026-10-29T05:18:15Z",
+  "ceilings": {
+    "bw_gbs": 1550.3,
+    "bf16_tensor": 215.1,
+    "fp16_tensor": 207.5,
+    "tf32_tensor": 99.8,
+    "fp32": 18.1,
+    "int8_tensor_tops": 70.5
+  },
+  "finished_utc": "2026-10-29T05:20:18Z"
+}

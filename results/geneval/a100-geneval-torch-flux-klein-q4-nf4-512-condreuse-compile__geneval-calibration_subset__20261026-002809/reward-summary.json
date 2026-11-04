@@ -1,0 +1,12 @@
+{
+  "run": "a100-geneval-torch-flux-klein-q4-nf4-512-condreuse-compile__geneval-calibration_subset__20261026-002809",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.29021523795866716,
+    "pickscore": 23.311609690388043,
+    "hps": 0.29748044826555997,
+    "imagereward": 1.1371472112708336
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

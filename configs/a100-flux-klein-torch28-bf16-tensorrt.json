@@ -1,0 +1,56 @@
+{
+  "id": "a100-flux-klein-torchtrt-003",
+  "description": "Torch-TensorRT 2.8.0 compile of the transformer forward (BF16, mixed partition allowed: unsupported ops stay in PyTorch, min_block_size 5). Retries the torchtrt-002 conversion failure on a newer compiler stack; one change versus a100-flux-klein-torch28-001.",
+  "device_label": "gilbreth-a100-40gb",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+    "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "transformer/*",
+      "vae/*"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 1024,
+    "width": 1024,
+    "num_inference_steps": 4,
+    "guidance_scale": 1.0,
+    "max_sequence_length": 512
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "device_memory_sample_ms": 20
+  },
+  "optimizations": {
+    "quantization": null,
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": {
+      "name": "tensorrt",
+      "precision": "bfloat16",
+      "require_full_compilation": false,
+      "min_block_size": 5
+    }
+  },
+  "backend": "cuda",
+  "environment": {
+    "venv": "/scratch/gilbreth/mfaruqi/envs/torch28-trt",
+    "stack": "torch 2.8.0+cu126 and torch_tensorrt 2.8.0 (download.pytorch.org/whl/cu126); diffusers 0.40.0, transformers 5.16.1",
+    "setup": "scripts/gilbreth_setup_torch28.sh",
+    "venv_note": "/depot/you139/mfaruqi is not writable (2026-10-15); scratch is purged after 60 days without use"
+  },
+  "reference_config": "configs/a100-flux-klein-bf16.resolved.json"
+}

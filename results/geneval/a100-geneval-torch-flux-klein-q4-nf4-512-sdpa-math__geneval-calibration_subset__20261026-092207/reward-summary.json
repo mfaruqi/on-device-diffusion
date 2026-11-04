@@ -1,0 +1,12 @@
+{
+  "run": "a100-geneval-torch-flux-klein-q4-nf4-512-sdpa-math__geneval-calibration_subset__20261026-092207",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.290028450700144,
+    "pickscore": 23.309040278196335,
+    "hps": 0.2976276968450596,
+    "imagereward": 1.1357957032693473
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

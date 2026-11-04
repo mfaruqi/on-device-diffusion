@@ -1,0 +1,53 @@
+{
+  "id": "m5-mflux-flux-klein-base-001",
+  "description": "M5 MFLUX Klein Base, BF16 unquantized reference, 512x512, no reuse/offload.",
+  "device_label": "macbook-air-m5-24gb",
+  "backend": "mlx-metal",
+  "precision": "bfloat16",
+  "engine": {
+    "name": "mflux",
+    "version": "0.22.0",
+    "commit": "f0bf9cf0506a2ae15115af1c72e3dc0093e41597",
+    "source_dir": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/mflux-source"
+  },
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-base-4B",
+    "revision": "a3b4f4849157f664bdbc776fd7453c2783562f4d"
+  },
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 50,
+    "guidance_scale": 4.0,
+    "max_sequence_length": 512,
+    "negative_prompt": ""
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 100,
+    "prevent_idle_sleep": true
+  },
+  "device_requirements": {
+    "chip": "Apple M5",
+    "memory_gib": 24
+  },
+  "optimizations": {
+    "quantization": null,
+    "conditioning_reuse": false,
+    "vae_tiling": false,
+    "offload": false
+  },
+  "engine_settings": {
+    "quantization_scope": "all_eligible_layers",
+    "group_size": 64,
+    "scheduler": "flow_match_euler_discrete",
+    "native_predict_compile": true,
+    "negative_prompt_override": "",
+    "timing": "synchronized_host"
+  }
+}

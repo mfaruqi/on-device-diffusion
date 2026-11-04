@@ -1,0 +1,69 @@
+ed-sample: single-run text-to-image benchmark generator.
+
+Usage:
+  build-cuda-performance/bin/ed-sample --model <diffusers-dir> --prompt_file <txt> --output_dir <dir> [options]
+
+Required:
+  --model <path>            Diffusers model directory (or component flags:
+                            --diffusion-model/--vae/--clip_l/[--clip_g]/(--t5xxl|--no-t5),
+                            or video --diffusion-model/--vae/[--audio-vae]/--llm)
+  --prompt_file <path>      Text file, one prompt per line
+  --output_dir <path>       Output run directory (created)
+
+Sampling:
+  --cache_method <mode>     off|original|easycache|ucache|dbcache|taylorseer|cache-dit|magcache|dicache|sencache
+  --width <int>             Default 1024
+  --height <int>            Default 1024
+  --num_steps <int>         Default 20
+  --seed <int>              Base seed; per-image seed = seed + image_index. Default -1
+  --guidance_scale <float>  Flux distilled guidance. Default 3.5
+  --cfg_scale <float>       Classifier-free guidance scale. Default 1.0
+  --flow_shift <float>      Flow scheduler shift. Default model default
+  --sampler <name>          Sampling method: auto, euler, res_multistep
+  --scheduler <name>        Sigma scheduler: auto, discrete, simple, ltx2
+  --negative_prompt <text>  Negative prompt (used when cfg_scale != 1). Default empty
+  --image <path>            Input image or MiniMax-H3/LTX-2.3 first frame
+  --end-img <path>          MiniMax-H3/LTX-2.3 last frame
+  --embeddings-connectors <path>  LTX-2.3 text connector weights
+  --latent-upscaler <path>  LTX-2.3 spatial latent x2 upscaler weights
+  --hires                   Run LTX-2.3 x2 latent upscale and refine pass
+  --hires-upscalers-dir <dir>  Directory used with --hires-upscaler
+  --hires-upscaler <name>  LTX upscaler name/path
+  --hires-steps <int>       LTX hires refine steps. Default 4
+  --hires-denoising-strength <float>  LTX hires strength. Default 0.7
+  --hires-sigmas <csv>      Explicit LTX hires sigma schedule
+  --ref-image <path>        MiniMax-H3 Ref2VA image; repeatable
+  --ref-image-size <mode>   max or match
+  --ref-video <dir>         Ref2VA numbered frame directory; repeatable
+  --ref-video-audio <wav>   WAV paired by position with --ref-video
+  --ref-audio <wav>         Extra Ref2VA audio; repeatable
+  --video, -M vid_gen       Generate video frames (calls ed_generate_video; writes .avi)
+  --frames, --video-frames <int>  Video frame count (with --video). Default 1
+  --video-duration <seconds>  MiniMax-H3 duration; aligns to >=22 frames satisfying 17k+5
+  --fps <int>               Video fps (MiniMax-H3 is forced to 24). Default 16
+  --start_index <int>       First prompt index (inclusive). Default 0
+  --end_index <int>         Last prompt index (exclusive). Default all
+  --threads <int>           CPU thread count. Default auto
+  --backend <name>          auto|cpu|cuda|vulkan|metal|gpu. Default auto
+  --type <dtype>            Global weight policy. Default preserve ('auto' is an alias)
+  --no-flash-attention      Disable flash attention
+
+Memory / offload:
+  --offload-to-cpu          Full offload: all weights on CPU, staged to GPU per compute
+  --dit-offload             DiT weights on CPU, staged to GPU per step (compute on GPU)
+  --text-encoder-offload    Text-encoder weights on CPU, staged to GPU per encode
+  --minimax-h3-stage-lifecycle  MiniMax-H3: stage Qwen/VAE by phase and release them during DiT
+  --vae-offload             VAE weights on CPU, staged to GPU per decode
+  --max-vram <GB>           Compute-graph budget; with --auto-fit on single-device CUDA, also a guarded ceiling
+  --auto-allocate           Auto per-component placement under a VRAM planning budget
+  --auto-fit                Replan TE/DiT quant + placement; --type still controls VAE precision
+  --vae-tiling <on|off|auto>  VAE tiled decode (reduces VRAM)
+
+Timing:
+  --warmup <int>            Untimed warm-up generations (images still written). Default 1
+  --repeat <int>            Timed passes over the whole prompt slice. Default 1
+
+Cache tuning (optional; sensible per-method defaults otherwise):
+  --cache-taylor-order <int>   --cache-taylor-skip <int>
+  --cache-threshold <float>    --cache-start <float>   --cache-end <float>
+  --cache-calibrate <path>     --cache-profile <path>

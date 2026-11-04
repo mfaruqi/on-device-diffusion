@@ -1,0 +1,7 @@
+run_index,phase,stage,host_ms,gpu_ms
+0,first,encode_setup,353.09314727783203,
+0,first,denoise,1373.9700317382812,
+0,first,vae_decode,369.2049980163574,
+1,measured,encode_setup,256.93798065185547,
+1,measured,denoise,1121.5918064117432,
+1,measured,vae_decode,274.19090270996094,

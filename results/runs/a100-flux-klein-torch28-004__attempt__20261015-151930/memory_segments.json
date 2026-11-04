@@ -1,0 +1,164 @@
+[
+  {
+    "run_index": 0,
+    "phase": "first",
+    "segments": [
+      {
+        "name": "between:start->text_encode",
+        "peak_alloc": 14.92723560333252,
+        "peak_reserved": 14.9296875
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.18505573272705,
+        "peak_reserved": 15.21875
+      },
+      {
+        "name": "between:text_encode->denoise_step_0",
+        "peak_alloc": 14.943610191345215,
+        "peak_reserved": 15.21875
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 16.145362377166748,
+        "peak_reserved": 16.4453125
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_1",
+        "peak_alloc": 15.611090660095215,
+        "peak_reserved": 16.4453125
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 16.022315502166748,
+        "peak_reserved": 16.4453125
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_2",
+        "peak_alloc": 15.611090660095215,
+        "peak_reserved": 16.4453125
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 16.805518627166748,
+        "peak_reserved": 17.158203125
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_3",
+        "peak_alloc": 16.269293785095215,
+        "peak_reserved": 17.158203125
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 16.682960033416748,
+        "peak_reserved": 17.158203125
+      },
+      {
+        "name": "between:denoise_step_3->vae_decode",
+        "peak_alloc": 16.269293785095215,
+        "peak_reserved": 17.158203125
+      },
+      {
+        "name": "vae_decode",
+        "peak_alloc": 18.642828941345215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:vae_decode->postprocess",
+        "peak_alloc": 16.270758628845215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "postprocess",
+        "peak_alloc": 16.282477378845215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:postprocess->end",
+        "peak_alloc": 16.270758628845215,
+        "peak_reserved": 20.796875
+      }
+    ]
+  },
+  {
+    "run_index": 1,
+    "phase": "measured",
+    "segments": [
+      {
+        "name": "between:start->text_encode",
+        "peak_alloc": 14.935171127319336,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "text_encode",
+        "peak_alloc": 15.185056686401367,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:text_encode->denoise_step_0",
+        "peak_alloc": 14.943611145019531,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "denoise_step_0",
+        "peak_alloc": 16.145362377166748,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:denoise_step_0->denoise_step_1",
+        "peak_alloc": 15.610114097595215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "denoise_step_1",
+        "peak_alloc": 16.022315502166748,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:denoise_step_1->denoise_step_2",
+        "peak_alloc": 15.610114097595215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "denoise_step_2",
+        "peak_alloc": 16.804542064666748,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:denoise_step_2->denoise_step_3",
+        "peak_alloc": 16.269293785095215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "denoise_step_3",
+        "peak_alloc": 16.682227611541748,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:denoise_step_3->vae_decode",
+        "peak_alloc": 16.269293785095215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "vae_decode",
+        "peak_alloc": 18.642828941345215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:vae_decode->postprocess",
+        "peak_alloc": 16.271735191345215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "postprocess",
+        "peak_alloc": 16.283453941345215,
+        "peak_reserved": 20.796875
+      },
+      {
+        "name": "between:postprocess->end",
+        "peak_alloc": 16.271735191345215,
+        "peak_reserved": 20.796875
+      }
+    ]
+  }
+]

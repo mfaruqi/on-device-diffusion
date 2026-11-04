@@ -1,0 +1,32 @@
+{
+  "completed_generations": 14,
+  "denoising_steps_per_generation": 50,
+  "guidance_passes_per_step": 2,
+  "prompt_shapes": [
+    [
+      1,
+      512,
+      7680
+    ],
+    [
+      1,
+      512,
+      4
+    ],
+    [
+      1,
+      0,
+      7680
+    ],
+    [
+      1,
+      0,
+      4
+    ]
+  ],
+  "negative_prompt": "",
+  "prompt_reuse": false,
+  "tiling": false,
+  "default_device": "Device(gpu, 0)",
+  "native_predict_compile": true
+}
