@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "started_utc": "2026-11-01T19:56:52Z",
+  "hosts": [
+    {
+      "host": "mfaruqi-desktop",
+      "utc": "2026-11-01T19:56:52Z"
+    }
+  ],
+  "sequence": {
+    "launches": 7182,
+    "pass_start": 6058,
+    "period": 389,
+    "window": [
+      5961,
+      583
+    ]
+  },
+  "finished_utc": "2026-11-01T20:26:00Z",
+  "error": "ValueError('window-1.csv captured a different kernel sequence than window-0.csv')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/profile_engine_counters.py\", line 247, in main\n    merge_windows(parts, profile / 'window.csv')\n  File \"/home/mfaruqi/on-device-diffusion-gap/scripts/profile_engine_counters.py\", line 129, in merge_windows\n    raise ValueError(f'{path.name} captured a different kernel sequence than {parts[0].name}')\nValueError: window-1.csv captured a different kernel sequence than window-0.csv\n"
+}

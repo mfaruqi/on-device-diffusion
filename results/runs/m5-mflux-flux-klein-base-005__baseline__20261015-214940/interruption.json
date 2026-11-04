@@ -1,0 +1,7 @@
+{
+  "reason": "User-requested pause during first image; coordinator terminated before child SIGINT to prevent next configuration starting.",
+  "status": "interrupted_user",
+  "resume_requires": "User-specified time or explicit ready message",
+  "stopped_at": "first image denoising step 17/50",
+  "timing_eligible": false
+}

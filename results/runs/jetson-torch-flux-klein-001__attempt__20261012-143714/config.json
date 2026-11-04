@@ -1,0 +1,65 @@
+{
+  "id": "jetson-torch-flux-klein-001",
+  "description": "Smoke gate for jetson-torch-flux-klein-q4-nf4-512: one first and one measured generation.",
+  "device_label": "jetson-orin-nano-8gb",
+  "backend": "jetson",
+  "model": {
+    "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+    "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+    "pipeline_class": "Flux2KleinPipeline",
+    "allow_patterns": [
+      "model_index.json",
+      "scheduler/*",
+      "text_encoder/*",
+      "tokenizer/*",
+      "vae/*",
+      "transformer/config.json"
+    ]
+  },
+  "precision": "bfloat16",
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "seed": 0,
+    "batch_size": 1,
+    "height": 512,
+    "width": 512,
+    "num_inference_steps": 4,
+    "guidance_scale": 1.0,
+    "max_sequence_length": 512
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 0,
+    "measured_runs": 1,
+    "device_memory_sample_ms": 20,
+    "tegrastats_interval_ms": 200
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": {
+        "method": "gguf",
+        "file": "/home/mfaruqi/models/flux2-klein/flux-2-klein-4b-Q4_0.gguf",
+        "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4"
+      },
+      "text_encoder": {
+        "method": "bnb_nf4",
+        "path": "/home/mfaruqi/models/flux2-klein-torch/text_encoder-nf4",
+        "sha256": "eaa2048d95dbe273fc7361a0016261757928314b82e046ee90c900be7dc65883",
+        "source": "klein revision e7b7dc27 text_encoder, quantized once by scripts/save_quantized_text_encoder.py (receipt in the same directory)"
+      }
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "vae_slicing": false,
+    "torch_compile": false,
+    "compiler": null,
+    "stage_residency": {
+      "text_encoder": "release_after_encode"
+    }
+  },
+  "environment": {
+    "venv": "~/venvs/torch-jp6-ailab",
+    "stack": "Jetson AI Lab jp6/cu126: torch 2.8.0, bitsandbytes 0.48.0.dev0+ff389db, torchao 0.13.0; diffusers 0.40.0, transformers 5.16.1"
+  },
+  "reference_config": "configs/a100-flux-klein-bf16.resolved.json"
+}

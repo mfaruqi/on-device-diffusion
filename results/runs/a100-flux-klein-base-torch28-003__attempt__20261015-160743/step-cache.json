@@ -1,0 +1,13 @@
+{
+  "config": {
+    "method": "taylorseer",
+    "cache_interval": 5,
+    "disable_cache_before_step": 3,
+    "max_order": 1
+  },
+  "steps": 50,
+  "full_transformer_computations_per_generation": [
+    100,
+    100
+  ]
+}

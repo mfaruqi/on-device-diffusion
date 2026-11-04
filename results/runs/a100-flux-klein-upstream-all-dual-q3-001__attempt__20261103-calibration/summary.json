@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.618381479056552,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30849935580044985,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.307229972910136,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30772649496793747,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.33995470800437033,
+      "relative_latent_l2": 0.123822882771492,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3076828729826957,
+      "relative_latent_l2": 0.18276818096637726,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30764389014802873,
+      "relative_latent_l2": 0.37579530477523804,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3073200818616897,
+      "relative_latent_l2": 0.23936469852924347,
+      "finite": true
+    },
+    {
+      "case": "upstream-all-dual-image-q3",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.33701650984585285,
+      "relative_latent_l2": 0.08364889770746231,
+      "finite": true
+    },
+    {
+      "case": "upstream-all-dual-image-q3",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3069360200315714,
+      "relative_latent_l2": 0.18512879312038422,
+      "finite": true
+    },
+    {
+      "case": "upstream-all-dual-image-q3",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3068606990855187,
+      "relative_latent_l2": 0.4311583340167999,
+      "finite": true
+    },
+    {
+      "case": "upstream-all-dual-image-q3",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30703433509916067,
+      "relative_latent_l2": 0.249613955616951,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

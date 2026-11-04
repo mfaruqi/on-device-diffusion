@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "scope": "independent grouped scalar-scale reconstruction versus chunked decoder",
+  "checks": [
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/single_transformer_blocks.0.attn.to_qkv_mlp_proj.npz",
+      "format": "u8",
+      "chunk_rows": 1,
+      "values_checked": 98304,
+      "exact_match": true
+    },
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/single_transformer_blocks.0.attn.to_qkv_mlp_proj.npz",
+      "format": "u8",
+      "chunk_rows": 7,
+      "values_checked": 98304,
+      "exact_match": true
+    },
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/single_transformer_blocks.0.attn.to_qkv_mlp_proj.npz",
+      "format": "u8",
+      "chunk_rows": 32,
+      "values_checked": 98304,
+      "exact_match": true
+    },
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/transformer_blocks.0.attn.to_q.npz",
+      "format": "u8",
+      "chunk_rows": 1,
+      "values_checked": 98304,
+      "exact_match": true
+    },
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/transformer_blocks.0.attn.to_q.npz",
+      "format": "u8",
+      "chunk_rows": 7,
+      "values_checked": 98304,
+      "exact_match": true
+    },
+    {
+      "artifact": "shiftadd/artifacts/upstream-bcq-u8-001/transformer_blocks.0.attn.to_q.npz",
+      "format": "u8",
+      "chunk_rows": 32,
+      "values_checked": 98304,
+      "exact_match": true
+    }
+  ],
+  "total_values_checked": 589824
+}

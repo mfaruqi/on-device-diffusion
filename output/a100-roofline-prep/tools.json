@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-21",
+  "reference": {
+    "repository": "https://github.com/ranery/ShiftAddQwen",
+    "revision": "5bf17676f28b0a5411781f1a61798f87cb3e7e05",
+    "path": "tools/plot.py",
+    "sha256": "aba97e084bd916c44e146ea251254ad0389d629fb62f848fc8bbbf9424d983eb",
+    "library": "matplotlib"
+  },
+  "remote_check": {
+    "host": "gilbreth-fe02.rcac.purdue.edu",
+    "mode": "read-only CLI discovery; no GPU execution",
+    "nsys": "2026.3.2.476",
+    "ncu": "2026.1.1.0",
+    "ncu_path": "/usr/local/cuda/bin/ncu",
+    "tensor_roofline_section": "SpeedOfLight_HierarchicalTensorRooflineChart",
+    "counter_permissions": "not tested",
+    "existing_python": "/scratch/gilbreth/mfaruqi/envs/torch28-trt/bin/python"
+  },
+  "local_environment": "/private/tmp/odd-charts-20261021",
+  "new_roofline_generated": true,
+  "local_packages": {
+    "matplotlib": "3.11.2",
+    "plotly": "7.1.0",
+    "wandb": "0.31.0",
+    "pillow": "13.0.0",
+    "kaleido": "1.5.0"
+  },
+  "new_hardware_counters_collected": false,
+  "rendered_outputs": "output/roofline-a100-20261021"
+}

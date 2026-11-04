@@ -1,0 +1,43 @@
+{
+  "reference": "a100-flux-klein-base-torch28-001__geneval-calibration_subset__20261024-205729,a100-flux-klein-base-torch28-001__geneval-calibration_rest__20261025-184809",
+  "variants": [
+    {
+      "variant": "a100-flux-klein-base-torch28-003__geneval-calibration_subset__20261024-235542,a100-flux-klein-base-torch28-003__geneval-calibration_rest__20261025-163150",
+      "geneval": 0.7650088652482269,
+      "delta": -0.020208333333333495,
+      "delta_ci95": [
+        -0.0358993677095093,
+        -0.004812504805088436
+      ],
+      "tasks": {
+        "single_object": 0.9875,
+        "two_object": 0.875,
+        "counting": 0.8,
+        "colors": 0.7925531914893617,
+        "position": 0.52,
+        "color_attr": 0.615
+      },
+      "task_delta": {
+        "single_object": 0.0,
+        "two_object": -0.010000000000000009,
+        "counting": -0.03125,
+        "colors": 0.0,
+        "position": -0.015000000000000013,
+        "color_attr": -0.06500000000000006
+      },
+      "ref_only_correct": 57,
+      "variant_only_correct": 34,
+      "mcnemar_p": 0.020584209038374265,
+      "pairs": 1108
+    }
+  ],
+  "reference_geneval": 0.7852171985815604,
+  "reference_tasks": {
+    "single_object": 0.9875,
+    "color_attr": 0.68,
+    "counting": 0.83125,
+    "colors": 0.7925531914893617,
+    "two_object": 0.885,
+    "position": 0.535
+  }
+}

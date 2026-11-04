@@ -1,0 +1,18 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "format": "u8",
+    "bits_per_weight": 4.3125,
+    "payload_bytes": 52992,
+    "fit": 0.0023423868406098336,
+    "calibration_validation": 0.017344994586892426
+  },
+  {
+    "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "format": "u8",
+    "bits_per_weight": 4.3125,
+    "payload_bytes": 52992,
+    "fit": 0.006078848440665752,
+    "calibration_validation": 0.06760514015331864
+  }
+]

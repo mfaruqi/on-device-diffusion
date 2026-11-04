@@ -1,0 +1,34 @@
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{lrrrrrrrr}
+\toprule
+\textbf{Configuration} & \textbf{Latency (s)} & \textbf{Speedup} & \textbf{CLIP $\uparrow$} & \textbf{PickScore $\uparrow$} & \textbf{HPS $\uparrow$} & \textbf{ImageReward $\uparrow$} & \textbf{GenEval $\uparrow$} & \textbf{DPG $\uparrow$} \\
+\midrule
+\multicolumn{9}{l}{\textit{PyTorch (BF16), distilled 1024$^2$, 4 steps}} \\
+\quad reference & 1.29 & 1.00$\times$ & 0.2907 & 23.44 & 0.3012 & 1.1636 & \textbf{79.95} & – \\
+\quad torch.compile & 1.02 & 1.26$\times$ & \textbf{0.2911} & \textbf{23.45} & \textbf{0.3014} & \textbf{1.1704} & 79.69 & – \\
+\quad TaylorSeer & 0.85 & 1.51$\times$ & 0.2885 & 22.82 & 0.2879 & 1.0643 & 77.60 & – \\
+\midrule
+\multicolumn{9}{l}{\textit{Nunchaku SVDQuant (INT4 r32), distilled 1024$^2$, 4 steps}} \\
+\quad reference & 0.90 & 1.00$\times$ & 0.2927 & 23.40 & 0.2978 & 1.1341 & 79.43 & – \\
+\midrule
+\multicolumn{9}{l}{\textit{PyTorch (BF16), Base 1024$^2$, 50 steps, CFG 4}} \\
+\quad reference & 26.48 & 1.00$\times$ & \textbf{0.2922} & \textbf{23.16} & \textbf{0.2934} & \textbf{0.9866} & \textbf{74.74} & – \\
+\quad torch.compile & 19.53 & 1.36$\times$ & 0.2917 & 23.15 & 0.2931 & 0.9780 & 74.22 & – \\
+\quad TaylorSeer & 9.98 & 2.65$\times$ & 0.2899 & 23.02 & 0.2902 & 0.9252 & 73.18 & – \\
+\midrule
+\multicolumn{9}{l}{\textit{edge-dit.cpp (Q4_0), Base 1024$^2$, 50 steps, CFG 4}} \\
+\quad reference & 49.43 & 1.00$\times$ & 0.2850 & 23.04 & \textbf{0.2869} & 0.8462 & \textbf{73.18} & – \\
+\quad MagCache & 15.71 & 3.15$\times$ & 0.2856 & 22.93 & 0.2811 & 0.7960 & 72.40 & – \\
+\quad DiCache & 25.15 & 1.96$\times$ & 0.2859 & 23.02 & 0.2856 & 0.8329 & 72.66 & – \\
+\quad TaylorSeer & 31.13 & 1.59$\times$ & 0.2847 & \textbf{23.04} & 0.2866 & \textbf{0.8476} & \textbf{73.18} & – \\
+\quad EasyCache & 35.44 & 1.39$\times$ & \textbf{0.2874} & 22.90 & 0.2735 & 0.7717 & \textbf{73.18} & – \\
+\midrule
+\multicolumn{9}{l}{\textit{edge-dit.cpp (BF16), distilled 1024$^2$, 4 steps}} \\
+\quad reference & 1.64 & 1.00$\times$ & \textbf{0.2888} & \textbf{23.45} & \textbf{0.3006} & \textbf{1.1864} & \textbf{81.51} & – \\
+\quad MagCache & 0.83 & 1.99$\times$ & 0.2683 & 21.64 & 0.2331 & 0.2730 & 51.82 & – \\
+\bottomrule
+\end{tabular}
+\caption{NVIDIA A100-PCIe-40GB: image quality on the GenEval calibration subset (96 prompts $\times$ 4 seeds) and end-to-end latency (median). GenEval $\times 100$; PickScore is the raw logit-scaled score; best value per group in bold; DPG not measured.}
+\end{table}

@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-15T20:33:59Z",
+  "finished_utc": "2026-10-15T20:34:00Z",
+  "error": "AssertionError('AC power required')",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/measurement.py\", line 85, in run_status\n    yield status\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/run_mflux.py\", line 132, in main\n    benchmark(cfg,out)\n  File \"/Users/mfaruqi/Documents/Projects/on-device-diffusion/scripts/run_mflux.py\", line 30, in benchmark\n    assert 'AC Power' in sh(['pmset','-g','batt']), 'AC power required'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: AC power required\n"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "module": "transformer_blocks.0.attn.to_q",
+    "source": "shiftadd/artifacts/upstream-bcq-first-qkv-001",
+    "summary_sha256": "9e5e3a85b5ec692c0eb7098aec32494095f549d31eee8c26e76e37eacac0597b",
+    "artifact_sha256": "405bb7ad730fc5a45e29568fc195120eba6b75c57e8c7920230d5416efa0d022"
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_k",
+    "source": "shiftadd/artifacts/upstream-bcq-full-kv-p3-001",
+    "summary_sha256": "0ed6fbc0fc8de464f38ac81ccf581f598811f3defab12478802b4bfedf32e749",
+    "artifact_sha256": "6e7baece272726d6aad7a78fc4265ce05419247beeaed9c59cbf4116073faeb9"
+  },
+  {
+    "module": "transformer_blocks.0.attn.to_v",
+    "source": "shiftadd/artifacts/upstream-bcq-first-qkv-001",
+    "summary_sha256": "9e5e3a85b5ec692c0eb7098aec32494095f549d31eee8c26e76e37eacac0597b",
+    "artifact_sha256": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a"
+  }
+]

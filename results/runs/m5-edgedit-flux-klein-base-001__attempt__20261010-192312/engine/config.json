@@ -1,0 +1,15 @@
+{
+  "model_path": "output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-base-4B/snapshots/a3b4f4849157f664bdbc776fd7453c2783562f4d",
+  "cache_method": "original",
+  "backend": "metal",
+  "width": 512,
+  "height": 512,
+  "num_steps": 50,
+  "seed": 0,
+  "guidance_scale": 1.000000,
+  "cfg_scale": 4.000000,
+  "warmup": 0,
+  "repeat": 2,
+  "start_index": 0,
+  "end_index": 1
+}

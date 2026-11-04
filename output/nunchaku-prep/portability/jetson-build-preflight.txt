@@ -1,0 +1,15 @@
+Found nvcc version: 12.6.68
+{
+  "status": "blocked",
+  "error_type": "AssertionError",
+  "error": "Unsupported SM 87",
+  "source_revision": "0c8379d10b4b9017928d02fd0fdb2c26b991a8b6",
+  "scope": "Build target selection only; no installation, compilation, model loading or inference",
+  "torch": "2.8.0",
+  "cuda_runtime": "12.6",
+  "sm": [
+    8,
+    7
+  ],
+  "total_memory_bytes": 7990112256
+}

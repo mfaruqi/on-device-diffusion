@@ -1,0 +1,11 @@
+{
+  "config": {
+    "method": "dbcache"
+  },
+  "steps": 50,
+  "skipped_steps_per_generation": [
+    24,
+    24
+  ],
+  "note": "engine-reported \"<method> skipped|reused k/4 steps\" lines (steps not fully computed); null if not printed"
+}

@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "outputs": [
+    {
+      "relative_rmse": 0.02090165950357914,
+      "max_abs_error": 0.8515625,
+      "finite": true
+    }
+  ],
+  "relative_rmse_limit": 0.01,
+  "scope": "First transformer call, identical inputs; engineering numerical gate, not final-image quality approval.",
+  "first_image_includes_extra_eager_forward": true
+}

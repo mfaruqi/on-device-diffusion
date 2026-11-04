@@ -1,0 +1,48 @@
+{
+ "device": "jetson-orin-nano-8gb",
+ "power_mode": "25W",
+ "jetpack": "R36.4.4",
+ "engine": {
+  "name": "edge-dit.cpp",
+  "commit": "97cc585d9dbd9ac5e30b78ef2e2c4a0d8bfbe9f2",
+  "ggml": "f270346d688c7bec7c56bae2ae73343aba6817ad",
+  "build": "../jetson-edgedit-build-20261011/build-config.txt",
+  "ed_cli_sha256": "271d8fa2ceca1c05401feecc09d286720e4a8019ad132ddd05a65282afb050b3"
+ },
+ "weights": "model-sha256.txt (the sd.cpp Jetson GGUF files: Q4_0 transformer, Qwen3-4B Q4_K_M, BF16 VAE)",
+ "workload": {
+  "width": 512,
+  "height": 512,
+  "steps": 4,
+  "guidance": 1.0,
+  "cfg_scale": 1.0,
+  "seed": 0,
+  "prompt": "A cat holding a sign that says hello world"
+ },
+ "fixed_options": [
+  "--backend cuda",
+  "--type preserve",
+  "--vae-tiling off",
+  "--flash-attention",
+  "--cache off",
+  "--threads 4"
+ ],
+ "status": "failed",
+ "stage": "gate E2 rung 2 (--auto-fit, no --max-vram)",
+ "change": "--auto-fit",
+ "result": {
+  "exit_code": null,
+  "failure": "board stopped responding during text encoding and rebooted; no exit code, no kernel log (journal not persistent)",
+  "placement_from_log": {
+   "transformer": "resident on GPU, requantized to q8_0 per auto-fit log (2.17 GB)",
+   "text_encoder": "OFFLOAD+segment (q8_0 target, source Q4_K kept per log 2.32 GB -> 2.32 GB)",
+   "vae": "OFFLOAD+segment"
+  },
+  "graph_cut": "qwen3 graph cut max_vram=2454.01 MB merged 29 segments -> 12 segments",
+  "measured_dit_compute_buffer_GB": 1.04,
+  "last_tegrastats": "02:37:50 local, RAM 7430/7620 MB; peak RAM 7478 MB, peak swap 1500 MB"
+ },
+ "notes": [
+  "The log line 'DiT quant set to q8_0' with a Q4_0 source needs checking against the documented rule that auto-fit never raises an already lower precision."
+ ]
+}

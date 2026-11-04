@@ -1,0 +1,2725 @@
+[
+  {
+    "kernel": "triton_poi_fused__to_copy_cat_1",
+    "duration_s": 5.088e-06,
+    "hbm_bytes": 5152.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_2",
+    "duration_s": 5.8496000000000004e-05,
+    "hbm_bytes": 3149088.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_64x1_tn_align8>(T1::Params)",
+    "duration_s": 2.608e-05,
+    "hbm_bytes": 1592032.0,
+    "tensor_ops": 25165824.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_silu_3",
+    "duration_s": 4.736e-06,
+    "hbm_bytes": 15936.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_4",
+    "duration_s": 0.000396384,
+    "hbm_bytes": 37752352.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x64_ldg8_f2f_stages_32x6_tn",
+    "duration_s": 0.000219232,
+    "hbm_bytes": 18923648.0,
+    "tensor_ops": 1207959552.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_silu_5",
+    "duration_s": 4.768e-06,
+    "hbm_bytes": 22560.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_6",
+    "duration_s": 0.0023723200000000002,
+    "hbm_bytes": 226496032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x5_tn",
+    "duration_s": 0.001337632,
+    "hbm_bytes": 113403008.0,
+    "tensor_ops": 7247757312.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_6",
+    "duration_s": 0.00234816,
+    "hbm_bytes": 226492960.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x5_tn",
+    "duration_s": 0.0013699200000000002,
+    "hbm_bytes": 113394048.0,
+    "tensor_ops": 7247757312.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_7",
+    "duration_s": 2.1280000000000003e-05,
+    "hbm_bytes": 1576480.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_64x64_ldg8_f2f_tt",
+    "duration_s": 0.000192832,
+    "hbm_bytes": 7499552.0,
+    "tensor_ops": 805306368.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_8",
+    "duration_s": 0.00028672,
+    "hbm_bytes": 12605216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_9",
+    "duration_s": 0.0010090560000000001,
+    "hbm_bytes": 94375456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0032512960000000003,
+    "hbm_bytes": 159868032.0,
+    "tensor_ops": 24159191040.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_10",
+    "duration_s": 0.00014659200000000002,
+    "hbm_bytes": 6313760.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007289600000000001,
+    "hbm_bytes": 24192032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009724480000000001,
+    "hbm_bytes": 60979584.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8784e-05,
+    "hbm_bytes": 3199520.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000729088,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.001968512,
+    "hbm_bytes": 113761152.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.337600000000001e-05,
+    "hbm_bytes": 6394400.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.00039212800000000005,
+    "hbm_bytes": 19031552.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728896,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009486080000000001,
+    "hbm_bytes": 59607680.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8304000000000005e-05,
+    "hbm_bytes": 3195424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000729088,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002079744,
+    "hbm_bytes": 109617792.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2224e-05,
+    "hbm_bytes": 6390304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.00039123200000000004,
+    "hbm_bytes": 19024128.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_arange_cat_clone_cos_div_expand_mul_pow_reciprocal_select_sin_unsqueeze_view_15",
+    "duration_s": 0.002652288,
+    "hbm_bytes": 2674848.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_arange_cat_clone_cos_div_expand_mul_pow_reciprocal_select_sin_unsqueeze_view_16",
+    "duration_s": 0.005308640000000001,
+    "hbm_bytes": 5314848.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007288640000000001,
+    "hbm_bytes": 24185120.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000938336,
+    "hbm_bytes": 58451840.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728992,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.00207728,
+    "hbm_bytes": 110552448.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_17",
+    "duration_s": 0.000425952,
+    "hbm_bytes": 39329536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_18",
+    "duration_s": 0.000197696,
+    "hbm_bytes": 18878240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031336000000000003,
+    "hbm_bytes": 44868384.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.00072864,
+    "hbm_bytes": 24183584.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0021033280000000002,
+    "hbm_bytes": 111513856.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_19",
+    "duration_s": 0.000249152,
+    "hbm_bytes": 18905888.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728992,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009406400000000001,
+    "hbm_bytes": 58498560.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_20",
+    "duration_s": 0.00018214400000000002,
+    "hbm_bytes": 15249696.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004348416,
+    "hbm_bytes": 145105952.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.014351104000000002,
+    "hbm_bytes": 1163109280.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_22",
+    "duration_s": 0.000590848,
+    "hbm_bytes": 56628768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177856,
+    "hbm_bytes": 72557600.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.009178848,
+    "hbm_bytes": 396637952.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_24",
+    "duration_s": 0.00033958400000000003,
+    "hbm_bytes": 31495712.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.0043486720000000005,
+    "hbm_bytes": 145107360.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.006072448,
+    "hbm_bytes": 342918784.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_25",
+    "duration_s": 0.00029584,
+    "hbm_bytes": 28317216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002176288,
+    "hbm_bytes": 72550432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.004607008,
+    "hbm_bytes": 190417024.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_26",
+    "duration_s": 0.00020713600000000002,
+    "hbm_bytes": 15765280.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007299520000000001,
+    "hbm_bytes": 24192032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009353920000000001,
+    "hbm_bytes": 57000704.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.952e-05,
+    "hbm_bytes": 3199520.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000729376,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0020919040000000003,
+    "hbm_bytes": 111491200.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.260800000000001e-05,
+    "hbm_bytes": 6394400.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.00039113600000000004,
+    "hbm_bytes": 19031296.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728928,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000951648,
+    "hbm_bytes": 59167488.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8784e-05,
+    "hbm_bytes": 3195424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.00072928,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002094496,
+    "hbm_bytes": 108766848.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2064e-05,
+    "hbm_bytes": 6390304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.000391488,
+    "hbm_bytes": 19024128.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007287680000000001,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009607680000000001,
+    "hbm_bytes": 59790336.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007292160000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002097088,
+    "hbm_bytes": 111201792.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_17",
+    "duration_s": 0.000417696,
+    "hbm_bytes": 39329536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_18",
+    "duration_s": 0.00019724800000000002,
+    "hbm_bytes": 18878240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003131776,
+    "hbm_bytes": 43378336.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728544,
+    "hbm_bytes": 24184096.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0019332800000000001,
+    "hbm_bytes": 109693056.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_19",
+    "duration_s": 0.000247008,
+    "hbm_bytes": 18905888.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.00072928,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009746560000000001,
+    "hbm_bytes": 60634496.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_20",
+    "duration_s": 0.00017904000000000002,
+    "hbm_bytes": 15255712.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.00434848,
+    "hbm_bytes": 145108896.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.01408464,
+    "hbm_bytes": 1130010912.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_22",
+    "duration_s": 0.000587808,
+    "hbm_bytes": 56628768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177248,
+    "hbm_bytes": 72557600.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0091832,
+    "hbm_bytes": 415859840.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_24",
+    "duration_s": 0.00033740800000000003,
+    "hbm_bytes": 31495712.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004349120000000001,
+    "hbm_bytes": 145104928.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.006052288,
+    "hbm_bytes": 324455680.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_25",
+    "duration_s": 0.00029584,
+    "hbm_bytes": 28317216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002176384,
+    "hbm_bytes": 72550432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.004602656,
+    "hbm_bytes": 189209344.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_26",
+    "duration_s": 0.00020892800000000002,
+    "hbm_bytes": 15765280.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000730336,
+    "hbm_bytes": 24192032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009412800000000001,
+    "hbm_bytes": 57744512.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.9328e-05,
+    "hbm_bytes": 3199520.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007288640000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0018924800000000002,
+    "hbm_bytes": 124339712.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2512e-05,
+    "hbm_bytes": 6394400.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.00039152,
+    "hbm_bytes": 19030912.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007286080000000001,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009560320000000001,
+    "hbm_bytes": 59871104.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8784e-05,
+    "hbm_bytes": 3195424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728736,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002073152,
+    "hbm_bytes": 107270400.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.209600000000001e-05,
+    "hbm_bytes": 6392352.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.000391264,
+    "hbm_bytes": 19024512.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728928,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000970496,
+    "hbm_bytes": 60790528.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000729376,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0018415360000000002,
+    "hbm_bytes": 108238592.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_17",
+    "duration_s": 0.000419008,
+    "hbm_bytes": 39329536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_18",
+    "duration_s": 0.00019779200000000002,
+    "hbm_bytes": 18878240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003136736,
+    "hbm_bytes": 44937632.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728896,
+    "hbm_bytes": 24184096.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002118112,
+    "hbm_bytes": 115255168.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_19",
+    "duration_s": 0.00024880000000000003,
+    "hbm_bytes": 18912288.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007285760000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009453440000000001,
+    "hbm_bytes": 58742784.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_20",
+    "duration_s": 0.00017974400000000002,
+    "hbm_bytes": 15237536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.0043495040000000006,
+    "hbm_bytes": 145104672.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.014173376000000001,
+    "hbm_bytes": 1142555936.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_22",
+    "duration_s": 0.000587808,
+    "hbm_bytes": 56628768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177056,
+    "hbm_bytes": 72557600.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0091792,
+    "hbm_bytes": 409112064.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_24",
+    "duration_s": 0.00033968000000000003,
+    "hbm_bytes": 31495712.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004348960000000001,
+    "hbm_bytes": 145104928.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.006005728,
+    "hbm_bytes": 375216256.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_25",
+    "duration_s": 0.000295648,
+    "hbm_bytes": 28317216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177088,
+    "hbm_bytes": 72550432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.004611072,
+    "hbm_bytes": 189078912.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_26",
+    "duration_s": 0.00020633600000000002,
+    "hbm_bytes": 15765280.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007304960000000001,
+    "hbm_bytes": 24192032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009441600000000001,
+    "hbm_bytes": 57542912.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.9008e-05,
+    "hbm_bytes": 3199520.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728832,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.00212304,
+    "hbm_bytes": 112575104.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2864e-05,
+    "hbm_bytes": 6394400.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.000391168,
+    "hbm_bytes": 19031040.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728832,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000954112,
+    "hbm_bytes": 59556224.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8976e-05,
+    "hbm_bytes": 3195424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007288,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002104,
+    "hbm_bytes": 110429184.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2128e-05,
+    "hbm_bytes": 6390304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.00039113600000000004,
+    "hbm_bytes": 19024384.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007291200000000001,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.00095264,
+    "hbm_bytes": 59398784.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007292160000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002056352,
+    "hbm_bytes": 111510528.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_17",
+    "duration_s": 0.00041785600000000003,
+    "hbm_bytes": 39329536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_18",
+    "duration_s": 0.00019827200000000002,
+    "hbm_bytes": 18878240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031387520000000003,
+    "hbm_bytes": 43403680.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.00072928,
+    "hbm_bytes": 24184096.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.002091584,
+    "hbm_bytes": 109188608.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_19",
+    "duration_s": 0.00024707200000000004,
+    "hbm_bytes": 18905888.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007290560000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0009578560000000001,
+    "hbm_bytes": 59857024.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_20",
+    "duration_s": 0.000177984,
+    "hbm_bytes": 15256096.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004349088,
+    "hbm_bytes": 145104672.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.014283008000000002,
+    "hbm_bytes": 1153150880.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_22",
+    "duration_s": 0.000585952,
+    "hbm_bytes": 56628768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177632,
+    "hbm_bytes": 72557600.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.00919344,
+    "hbm_bytes": 447618560.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_24",
+    "duration_s": 0.00033888,
+    "hbm_bytes": 31495712.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004349152,
+    "hbm_bytes": 145104928.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.005698656000000001,
+    "hbm_bytes": 333385344.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_25",
+    "duration_s": 0.00029609600000000003,
+    "hbm_bytes": 28317216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.00217696,
+    "hbm_bytes": 72550432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.004614592000000001,
+    "hbm_bytes": 191764352.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_26",
+    "duration_s": 0.00020736000000000002,
+    "hbm_bytes": 15765280.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007301440000000001,
+    "hbm_bytes": 24192032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000932768,
+    "hbm_bytes": 56925184.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.9424e-05,
+    "hbm_bytes": 3199520.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007287680000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0019929920000000003,
+    "hbm_bytes": 110672000.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2672e-05,
+    "hbm_bytes": 6394400.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.000391072,
+    "hbm_bytes": 19031296.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728896,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000943936,
+    "hbm_bytes": 58686592.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_12",
+    "duration_s": 3.8304000000000005e-05,
+    "hbm_bytes": 3195424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007293120000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0021023360000000002,
+    "hbm_bytes": 109492864.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_per_fused__to_copy_mean_pow_13",
+    "duration_s": 7.2064e-05,
+    "hbm_bytes": 6390304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_add_cat_mean_mul_pow_rsqrt_14",
+    "duration_s": 0.000391392,
+    "hbm_bytes": 19024640.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007291520000000001,
+    "hbm_bytes": 24183840.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000952544,
+    "hbm_bytes": 59417088.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.0007291200000000001,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0019237120000000002,
+    "hbm_bytes": 115061504.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_17",
+    "duration_s": 0.00041731200000000003,
+    "hbm_bytes": 39329536.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__scaled_dot_product_flash_attention__to_copy_add_cat_mul_neg_permute_stack_unbind_view_18",
+    "duration_s": 0.000198464,
+    "hbm_bytes": 18878240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031369920000000003,
+    "hbm_bytes": 44945056.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000729728,
+    "hbm_bytes": 24184096.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.0020147520000000003,
+    "hbm_bytes": 109211648.0,
+    "tensor_ops": 19327352832.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_19",
+    "duration_s": 0.00024739200000000003,
+    "hbm_bytes": 18911136.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_11",
+    "duration_s": 0.000728896,
+    "hbm_bytes": 24183328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000949472,
+    "hbm_bytes": 59160064.0,
+    "tensor_ops": 9663676416.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_20",
+    "duration_s": 0.000179232,
+    "hbm_bytes": 15253408.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_silu_27",
+    "duration_s": 5.4080000000000006e-06,
+    "hbm_bytes": 15904.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_28",
+    "duration_s": 0.0011835840000000001,
+    "hbm_bytes": 113249824.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x5_tn",
+    "duration_s": 0.000667968,
+    "hbm_bytes": 56712320.0,
+    "tensor_ops": 3623878656.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.0043495040000000006,
+    "hbm_bytes": 145105696.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.00583104,
+    "hbm_bytes": 320406912.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_25",
+    "duration_s": 0.00029478400000000003,
+    "hbm_bytes": 28317216.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002177184,
+    "hbm_bytes": 72557344.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.004611072,
+    "hbm_bytes": 192214016.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_21",
+    "duration_s": 0.004348096,
+    "hbm_bytes": 145097760.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.014127424000000001,
+    "hbm_bytes": 1135016096.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_mul_silu_22",
+    "duration_s": 0.000586176,
+    "hbm_bytes": 56628768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_23",
+    "duration_s": 0.002176992,
+    "hbm_bytes": 72551456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.009180896000000001,
+    "hbm_bytes": 401193984.0,
+    "tensor_ops": 57982058496.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_cat_mul_native_layer_norm_29",
+    "duration_s": 0.0005244480000000001,
+    "hbm_bytes": 47240672.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.00652096,
+    "hbm_bytes": 217658528.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033796480000000004,
+    "hbm_bytes": 2764691104.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010816320000000001,
+    "hbm_bytes": 39330432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003171104,
+    "hbm_bytes": 45985056.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010824,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901152,
+    "hbm_bytes": 96740384.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023681312000000003,
+    "hbm_bytes": 780383488.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.00035916800000000004,
+    "hbm_bytes": 28345120.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006520224000000001,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.03287872,
+    "hbm_bytes": 2690091552.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001082656,
+    "hbm_bytes": 39330432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003170304,
+    "hbm_bytes": 46016032.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010822400000000002,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901088,
+    "hbm_bytes": 96737824.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023697536,
+    "hbm_bytes": 895799936.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.000446208,
+    "hbm_bytes": 37798688.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519392000000001,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.0332048,
+    "hbm_bytes": 2727695136.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001082784,
+    "hbm_bytes": 39329664.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.00317168,
+    "hbm_bytes": 46281760.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001081184,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901344,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023653248,
+    "hbm_bytes": 780137984.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.00063248,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065208,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033503424000000004,
+    "hbm_bytes": 2709605664.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.00108336,
+    "hbm_bytes": 39329024.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.00317344,
+    "hbm_bytes": 46635936.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010797760000000002,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002902112,
+    "hbm_bytes": 96734752.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023662368000000003,
+    "hbm_bytes": 844996480.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.00036768,
+    "hbm_bytes": 28347424.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065209280000000005,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.0332416,
+    "hbm_bytes": 2713852192.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001088032,
+    "hbm_bytes": 39330304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031662720000000004,
+    "hbm_bytes": 46223008.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010799680000000002,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901856,
+    "hbm_bytes": 96740256.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023673024,
+    "hbm_bytes": 807867520.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.00044060800000000005,
+    "hbm_bytes": 37789472.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006520576,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033173056,
+    "hbm_bytes": 2637947680.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010852160000000002,
+    "hbm_bytes": 39330048.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031625280000000004,
+    "hbm_bytes": 46920608.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001088224,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901536,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023665792,
+    "hbm_bytes": 760774912.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.000620256,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006521824000000001,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033434304000000005,
+    "hbm_bytes": 2618602400.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001084192,
+    "hbm_bytes": 39329024.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031757440000000003,
+    "hbm_bytes": 46441120.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001080416,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029016000000000003,
+    "hbm_bytes": 96734752.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023643328,
+    "hbm_bytes": 744314240.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.0003592,
+    "hbm_bytes": 28350240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065205440000000005,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.034256928,
+    "hbm_bytes": 2764317984.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001084352,
+    "hbm_bytes": 39329920.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031694080000000003,
+    "hbm_bytes": 46752800.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001079488,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.00290176,
+    "hbm_bytes": 96736032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023652128,
+    "hbm_bytes": 805421696.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.00044233600000000004,
+    "hbm_bytes": 37792544.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065201600000000005,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033186848000000005,
+    "hbm_bytes": 2649842720.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001082016,
+    "hbm_bytes": 39330048.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031672640000000004,
+    "hbm_bytes": 45472288.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001080608,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029006080000000003,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023649408,
+    "hbm_bytes": 853536256.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.0006159360000000001,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065191680000000005,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033788608000000005,
+    "hbm_bytes": 2685372320.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010838080000000001,
+    "hbm_bytes": 39330432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003163552,
+    "hbm_bytes": 46076064.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001081984,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029008000000000003,
+    "hbm_bytes": 96734752.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.02368976,
+    "hbm_bytes": 739174272.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.00036144000000000004,
+    "hbm_bytes": 28343584.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519488,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.03335984,
+    "hbm_bytes": 2658443808.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010850880000000001,
+    "hbm_bytes": 39330432.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031714240000000004,
+    "hbm_bytes": 46564768.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001081024,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029012480000000004,
+    "hbm_bytes": 96736032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023654048,
+    "hbm_bytes": 849186432.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.000451648,
+    "hbm_bytes": 37788960.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.0065201600000000005,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033845632,
+    "hbm_bytes": 2699506848.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010816,
+    "hbm_bytes": 39330816.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031686400000000003,
+    "hbm_bytes": 46296736.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.00108416,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029012160000000003,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023658624000000003,
+    "hbm_bytes": 802817408.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.00063216,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519104,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033538688000000004,
+    "hbm_bytes": 2734616608.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.00108464,
+    "hbm_bytes": 39328512.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031674560000000004,
+    "hbm_bytes": 46670496.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001083072,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029002560000000004,
+    "hbm_bytes": 96736928.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.02366816,
+    "hbm_bytes": 866060032.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.00036537600000000005,
+    "hbm_bytes": 28353056.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519712,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033165696,
+    "hbm_bytes": 2671775136.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001081984,
+    "hbm_bytes": 39330688.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031704000000000003,
+    "hbm_bytes": 46204064.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001080192,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029009920000000002,
+    "hbm_bytes": 96736032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023654848000000003,
+    "hbm_bytes": 861919744.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.000439328,
+    "hbm_bytes": 37788448.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519008000000001,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033728512,
+    "hbm_bytes": 2727608864.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010873920000000002,
+    "hbm_bytes": 39329792.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031599040000000003,
+    "hbm_bytes": 46854176.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001079712,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002900896,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023662336000000003,
+    "hbm_bytes": 864429312.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.0006287360000000001,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006521344,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033753536,
+    "hbm_bytes": 2651333536.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001085472,
+    "hbm_bytes": 39328384.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031747840000000004,
+    "hbm_bytes": 46485920.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010808640000000002,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002900736,
+    "hbm_bytes": 96734752.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023683616,
+    "hbm_bytes": 907054592.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.00036656000000000004,
+    "hbm_bytes": 28346144.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519808,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033569376000000005,
+    "hbm_bytes": 2721690912.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001083488,
+    "hbm_bytes": 39329792.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003163744,
+    "hbm_bytes": 46722720.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001080704,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029008320000000003,
+    "hbm_bytes": 96736032.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023654144000000002,
+    "hbm_bytes": 809388544.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_35",
+    "duration_s": 0.00044102400000000004,
+    "hbm_bytes": 37793568.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.00651872,
+    "hbm_bytes": 217658528.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.032987008000000005,
+    "hbm_bytes": 2622787872.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.0010864960000000002,
+    "hbm_bytes": 39331328.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.003168288,
+    "hbm_bytes": 45447328.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001102176,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002901152,
+    "hbm_bytes": 96735776.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023627456,
+    "hbm_bytes": 742942208.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_36",
+    "duration_s": 0.000625056,
+    "hbm_bytes": 56655872.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.00651888,
+    "hbm_bytes": 217654304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.033816032,
+    "hbm_bytes": 2788741536.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001083776,
+    "hbm_bytes": 39328768.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.00316576,
+    "hbm_bytes": 46112672.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.0010824,
+    "hbm_bytes": 103817504.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.002900768,
+    "hbm_bytes": 96734752.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023669568000000002,
+    "hbm_bytes": 903029760.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_34",
+    "duration_s": 0.000364672,
+    "hbm_bytes": 28343072.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_30",
+    "duration_s": 0.006519008000000001,
+    "hbm_bytes": 217656480.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_32x5_tn_align8>(T1::Params)",
+    "duration_s": 0.034152064,
+    "hbm_bytes": 2737636256.0,
+    "tensor_ops": 260919263232.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused__scaled_dot_product_flash_attention__to_copy_add_mean_mul_neg_permute_pow_rsqrt_stack_unbind_view_31",
+    "duration_s": 0.001084288,
+    "hbm_bytes": 39330176.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void pytorch_flash::flash_fwd_kernel<Flash_fwd_kernel_traits<128, 128, 32, 4, 0, 0, cutlass::bfloat16_t, Flash_kernel_traits<128, 128, 32, 4, cutlass::bfloat16_t>>, 0, 0, 0, 0, 1, 1, 0, 0>(pytorch_flash::Flash_fwd_params)",
+    "duration_s": 0.0031768,
+    "hbm_bytes": 46556960.0,
+    "tensor_ops": 28991029248.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_silu_3",
+    "duration_s": 6.048e-06,
+    "hbm_bytes": 15936.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_37",
+    "duration_s": 0.000794112,
+    "hbm_bytes": 75501088.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_64x64_sliced1x2_ldg8_f2f_stages_64x5_tn",
+    "duration_s": 0.00043385600000000004,
+    "hbm_bytes": 37813376.0,
+    "tensor_ops": 2415919104.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused_cat_mul_silu_32",
+    "duration_s": 0.001076064,
+    "hbm_bytes": 103815456.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___rshift____to_copy_bitwise_and_lift_fresh_mul_sub_view_33",
+    "duration_s": 0.0029008000000000003,
+    "hbm_bytes": 96740384.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.023659232000000002,
+    "hbm_bytes": 812136448.0,
+    "tensor_ops": 115964116992.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_red_fused_add_mul_native_layer_norm_slice_unsqueeze_38",
+    "duration_s": 0.000299968,
+    "hbm_bytes": 25205760.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused___lshift____to_copy_view_7",
+    "duration_s": 2.1568e-05,
+    "hbm_bytes": 1576480.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "ampere_bf16_s16816gemm_bf16_128x128_ldg8_f2f_stages_32x5_tn",
+    "duration_s": 0.000128416,
+    "hbm_bytes": 8211712.0,
+    "tensor_ops": 805306368.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::unrolled_elementwise_kernel<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithCast<1>, memory::StoreWithCast<1>>(int, T1, T2, T4, T5, T6, T7)",
+    "duration_s": 2.4736e-05,
+    "hbm_bytes": 819232.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::unrolled_elementwise_kernel<at::CUDAFunctor_add<float>, std::array<char *, 3>, 4, TrivialOffsetCalculator<2, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithoutCast, memory::StoreWithoutCast>(int, T1, T2, T4, T5, T6, T7)",
+    "duration_s": 4.800000000000001e-06,
+    "hbm_bytes": 4448.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::elementwise_kernel<128, 4, void at::gpu_kernel_impl<at::BinaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, binary_internal::MulFunctor<float>>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+    "duration_s": 2.464e-05,
+    "hbm_bytes": 590304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::elementwise_kernel<128, 4, void at::gpu_kernel_impl<at::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+    "duration_s": 2.9984000000000003e-05,
+    "hbm_bytes": 1373376.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::vectorized_elementwise_kernel<4, at::bfloat16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3)",
+    "duration_s": 1.2448e-05,
+    "hbm_bytes": 792128.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::unrolled_elementwise_kernel<at::bfloat16_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda(float) (instance 1)], std::array<char *, 2>, 4, TrivialOffsetCalculator<1, unsigned int>, TrivialOffsetCalculator<1, unsigned int>, memory::LoadWithoutCast, memory::StoreWithoutCast>(int, T1, T2, T4, T5, T6, T7)",
+    "duration_s": 4.0320000000000005e-06,
+    "hbm_bytes": 4480.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "void at::vectorized_elementwise_kernel<4, at::BUnaryFunctor<c10::BFloat16, c10::BFloat16, c10::BFloat16, binary_internal::MulFunctor<float>>, std::array<char *, 2>>(int, T2, T3)",
+    "duration_s": 4.928e-06,
+    "hbm_bytes": 6240.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  },
+  {
+    "kernel": "triton_poi_fused__to_copy_arange_cat_cos_div_exp_mul_sin_unsqueeze_0",
+    "duration_s": 4.800000000000001e-06,
+    "hbm_bytes": 10304.0,
+    "tensor_ops": 0.0,
+    "fp32_add_mul_fma_ops": 0
+  }
+]

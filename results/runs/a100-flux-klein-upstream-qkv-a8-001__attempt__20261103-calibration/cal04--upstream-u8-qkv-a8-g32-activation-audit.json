@@ -1,0 +1,16 @@
+{
+  "bits": 8,
+  "modules": [
+    "transformer_blocks.0.attn.to_q",
+    "transformer_blocks.0.attn.to_k",
+    "transformer_blocks.0.attn.to_v"
+  ],
+  "calls": 12,
+  "calls_by_module": {
+    "transformer_blocks.0.attn.to_q": 4,
+    "transformer_blocks.0.attn.to_k": 4,
+    "transformer_blocks.0.attn.to_v": 4
+  },
+  "group_size": 32,
+  "execution": "fake quantization with floating GEMMs"
+}

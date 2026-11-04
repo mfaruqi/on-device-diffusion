@@ -1,0 +1,457 @@
+{
+  "scope": "30 full dual-stream projections; paired output errors, not images or performance",
+  "control_comparisons": 960,
+  "upstream_comparisons": 480,
+  "module_results": [
+    {
+      "module": "transformer_blocks.0.attn.add_k_proj",
+      "upstream_u8": {
+        "fit": 0.0010370365343987942,
+        "calibration_validation": 0.01777041074819863
+      },
+      "radix_p4": {
+        "fit": 0.04890981689095497,
+        "calibration_validation": 0.04946377361193299
+      },
+      "uniform_int4": {
+        "fit": 0.04122623708099127,
+        "calibration_validation": 0.04176415782421827
+      }
+    },
+    {
+      "module": "transformer_blocks.0.attn.add_q_proj",
+      "upstream_u8": {
+        "fit": 0.0010340755470679142,
+        "calibration_validation": 0.017493404680863023
+      },
+      "radix_p4": {
+        "fit": 0.04334415448829532,
+        "calibration_validation": 0.043124455492943525
+      },
+      "uniform_int4": {
+        "fit": 0.036232493817806244,
+        "calibration_validation": 0.03615959547460079
+      }
+    },
+    {
+      "module": "transformer_blocks.0.attn.add_v_proj",
+      "upstream_u8": {
+        "fit": 0.0017396612238371745,
+        "calibration_validation": 0.03220062446780503
+      },
+      "radix_p4": {
+        "fit": 0.057128689251840115,
+        "calibration_validation": 0.05902994982898235
+      },
+      "uniform_int4": {
+        "fit": 0.053317051380872726,
+        "calibration_validation": 0.055459937546402216
+      }
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "upstream_u8": {
+        "fit": 0.002592609904240817,
+        "calibration_validation": 0.020003139739856124
+      },
+      "radix_p4": {
+        "fit": 0.058828933630138636,
+        "calibration_validation": 0.05828237859532237
+      },
+      "uniform_int4": {
+        "fit": 0.04914532136172056,
+        "calibration_validation": 0.048684250097721815
+      }
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "upstream_u8": {
+        "fit": 0.002264587048557587,
+        "calibration_validation": 0.0171389770694077
+      },
+      "radix_p4": {
+        "fit": 0.06765500595793128,
+        "calibration_validation": 0.06668347120285034
+      },
+      "uniform_int4": {
+        "fit": 0.04897928284481168,
+        "calibration_validation": 0.04844769136980176
+      }
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "upstream_u8": {
+        "fit": 0.004223304567858577,
+        "calibration_validation": 0.03411849029362202
+      },
+      "radix_p4": {
+        "fit": 0.07973508257418871,
+        "calibration_validation": 0.0809091068804264
+      },
+      "uniform_int4": {
+        "fit": 0.06841496285051107,
+        "calibration_validation": 0.06931517273187637
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_k_proj",
+      "upstream_u8": {
+        "fit": 0.0015663229423807934,
+        "calibration_validation": 0.016873820684850216
+      },
+      "radix_p4": {
+        "fit": 0.05974027328193188,
+        "calibration_validation": 0.055001650005578995
+      },
+      "uniform_int4": {
+        "fit": 0.04956042440608144,
+        "calibration_validation": 0.04539610259234905
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_q_proj",
+      "upstream_u8": {
+        "fit": 0.0016911244601942599,
+        "calibration_validation": 0.019519198685884476
+      },
+      "radix_p4": {
+        "fit": 0.05472228117287159,
+        "calibration_validation": 0.053590746596455574
+      },
+      "uniform_int4": {
+        "fit": 0.04679143615067005,
+        "calibration_validation": 0.04568643495440483
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_v_proj",
+      "upstream_u8": {
+        "fit": 0.0028707990131806582,
+        "calibration_validation": 0.0314606421161443
+      },
+      "radix_p4": {
+        "fit": 0.0780378021299839,
+        "calibration_validation": 0.07146850880235434
+      },
+      "uniform_int4": {
+        "fit": 0.0758785791695118,
+        "calibration_validation": 0.06890800129622221
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_k",
+      "upstream_u8": {
+        "fit": 0.0033725907851476222,
+        "calibration_validation": 0.03399234637618065
+      },
+      "radix_p4": {
+        "fit": 0.06702410243451595,
+        "calibration_validation": 0.06768842041492462
+      },
+      "uniform_int4": {
+        "fit": 0.056282779201865196,
+        "calibration_validation": 0.05703071365132928
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_q",
+      "upstream_u8": {
+        "fit": 0.0032377875468228012,
+        "calibration_validation": 0.03316741902381182
+      },
+      "radix_p4": {
+        "fit": 0.07707507349550724,
+        "calibration_validation": 0.07722101826220751
+      },
+      "uniform_int4": {
+        "fit": 0.06475446466356516,
+        "calibration_validation": 0.06466237083077431
+      }
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_v",
+      "upstream_u8": {
+        "fit": 0.004797592118848115,
+        "calibration_validation": 0.05131877493113279
+      },
+      "radix_p4": {
+        "fit": 0.07980690617114305,
+        "calibration_validation": 0.08117515873163939
+      },
+      "uniform_int4": {
+        "fit": 0.07072194293141365,
+        "calibration_validation": 0.07197764096781611
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_k_proj",
+      "upstream_u8": {
+        "fit": 0.0022273973299888894,
+        "calibration_validation": 0.03244380000978708
+      },
+      "radix_p4": {
+        "fit": 0.0720033897086978,
+        "calibration_validation": 0.07209099363535643
+      },
+      "uniform_int4": {
+        "fit": 0.06018785899505019,
+        "calibration_validation": 0.06007669819518924
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_q_proj",
+      "upstream_u8": {
+        "fit": 0.0022341701114783064,
+        "calibration_validation": 0.0336571647785604
+      },
+      "radix_p4": {
+        "fit": 0.06742068380117416,
+        "calibration_validation": 0.06783310975879431
+      },
+      "uniform_int4": {
+        "fit": 0.055237649008631706,
+        "calibration_validation": 0.055824554059654474
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_v_proj",
+      "upstream_u8": {
+        "fit": 0.0036961040168534964,
+        "calibration_validation": 0.05513181257992983
+      },
+      "radix_p4": {
+        "fit": 0.08927598223090172,
+        "calibration_validation": 0.09014063142240047
+      },
+      "uniform_int4": {
+        "fit": 0.08143664989620447,
+        "calibration_validation": 0.0824156142771244
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_k",
+      "upstream_u8": {
+        "fit": 0.002780629351036623,
+        "calibration_validation": 0.029562820214778185
+      },
+      "radix_p4": {
+        "fit": 0.07304574176669121,
+        "calibration_validation": 0.07329428568482399
+      },
+      "uniform_int4": {
+        "fit": 0.062445273622870445,
+        "calibration_validation": 0.06141258869320154
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_q",
+      "upstream_u8": {
+        "fit": 0.0033069078053813428,
+        "calibration_validation": 0.0357307530939579
+      },
+      "radix_p4": {
+        "fit": 0.06766699906438589,
+        "calibration_validation": 0.0681216511875391
+      },
+      "uniform_int4": {
+        "fit": 0.05854231910780072,
+        "calibration_validation": 0.05884410021826625
+      }
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_v",
+      "upstream_u8": {
+        "fit": 0.006155611015856266,
+        "calibration_validation": 0.06742476439103484
+      },
+      "radix_p4": {
+        "fit": 0.10132819321006536,
+        "calibration_validation": 0.10256119165569544
+      },
+      "uniform_int4": {
+        "fit": 0.0884807649999857,
+        "calibration_validation": 0.08926022611558437
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_k_proj",
+      "upstream_u8": {
+        "fit": 0.00234058202477172,
+        "calibration_validation": 0.04032556200399995
+      },
+      "radix_p4": {
+        "fit": 0.08233733288943768,
+        "calibration_validation": 0.08075729291886091
+      },
+      "uniform_int4": {
+        "fit": 0.0681514535099268,
+        "calibration_validation": 0.06645366549491882
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_q_proj",
+      "upstream_u8": {
+        "fit": 0.002508729579858482,
+        "calibration_validation": 0.0445437585003674
+      },
+      "radix_p4": {
+        "fit": 0.07146945223212242,
+        "calibration_validation": 0.0712545607239008
+      },
+      "uniform_int4": {
+        "fit": 0.06035478273406625,
+        "calibration_validation": 0.060374289751052856
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_v_proj",
+      "upstream_u8": {
+        "fit": 0.0036725724348798394,
+        "calibration_validation": 0.0641790577210486
+      },
+      "radix_p4": {
+        "fit": 0.090026811696589,
+        "calibration_validation": 0.08962918631732464
+      },
+      "uniform_int4": {
+        "fit": 0.07869736757129431,
+        "calibration_validation": 0.07813476584851742
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_k",
+      "upstream_u8": {
+        "fit": 0.0030479033885058016,
+        "calibration_validation": 0.03277692897245288
+      },
+      "radix_p4": {
+        "fit": 0.0691336328163743,
+        "calibration_validation": 0.06857441924512386
+      },
+      "uniform_int4": {
+        "fit": 0.05962467705830932,
+        "calibration_validation": 0.05924303084611893
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_q",
+      "upstream_u8": {
+        "fit": 0.0036167023063171655,
+        "calibration_validation": 0.03908317512832582
+      },
+      "radix_p4": {
+        "fit": 0.06212586769834161,
+        "calibration_validation": 0.06205686368048191
+      },
+      "uniform_int4": {
+        "fit": 0.054754933807998896,
+        "calibration_validation": 0.054358295165002346
+      }
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_v",
+      "upstream_u8": {
+        "fit": 0.007311329653020948,
+        "calibration_validation": 0.08034042920917273
+      },
+      "radix_p4": {
+        "fit": 0.11657277215272188,
+        "calibration_validation": 0.11875278409570456
+      },
+      "uniform_int4": {
+        "fit": 0.10320449247956276,
+        "calibration_validation": 0.10451107285916805
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_k_proj",
+      "upstream_u8": {
+        "fit": 0.0022735403472324833,
+        "calibration_validation": 0.03928049886599183
+      },
+      "radix_p4": {
+        "fit": 0.07482618372887373,
+        "calibration_validation": 0.07152941264212132
+      },
+      "uniform_int4": {
+        "fit": 0.06468454468995333,
+        "calibration_validation": 0.06148094777017832
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_q_proj",
+      "upstream_u8": {
+        "fit": 0.0025159709621220827,
+        "calibration_validation": 0.046278097201138735
+      },
+      "radix_p4": {
+        "fit": 0.07211537938565016,
+        "calibration_validation": 0.07141019403934479
+      },
+      "uniform_int4": {
+        "fit": 0.05978309875354171,
+        "calibration_validation": 0.05959396017715335
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_v_proj",
+      "upstream_u8": {
+        "fit": 0.0034178316418547183,
+        "calibration_validation": 0.06083706161007285
+      },
+      "radix_p4": {
+        "fit": 0.08360565267503262,
+        "calibration_validation": 0.08192177675664425
+      },
+      "uniform_int4": {
+        "fit": 0.07016588374972343,
+        "calibration_validation": 0.06875990983098745
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_k",
+      "upstream_u8": {
+        "fit": 0.0033756516058929265,
+        "calibration_validation": 0.036633916199207306
+      },
+      "radix_p4": {
+        "fit": 0.06847828067839146,
+        "calibration_validation": 0.06849719677120447
+      },
+      "uniform_int4": {
+        "fit": 0.058675847481936216,
+        "calibration_validation": 0.058656193781644106
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_q",
+      "upstream_u8": {
+        "fit": 0.003574073110939935,
+        "calibration_validation": 0.0391638046130538
+      },
+      "radix_p4": {
+        "fit": 0.06309157889336348,
+        "calibration_validation": 0.06345509318634868
+      },
+      "uniform_int4": {
+        "fit": 0.055123633705079556,
+        "calibration_validation": 0.055704889353364706
+      }
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_v",
+      "upstream_u8": {
+        "fit": 0.006180493102874607,
+        "calibration_validation": 0.06437912629917264
+      },
+      "radix_p4": {
+        "fit": 0.0992128849029541,
+        "calibration_validation": 0.09734935779124498
+      },
+      "uniform_int4": {
+        "fit": 0.08520260080695152,
+        "calibration_validation": 0.08340955432504416
+      }
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "id": "a100-flux-klein-torch28-001",
+  "device_label": "gilbreth-a100-40gb",
+  "backend": "cuda",
+  "engine": "PyTorch/Diffusers",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 29069.343670998933,
+    "gpu_span_ms": 29069.025390625,
+    "text_encode_ms": 6552.68359375,
+    "denoise_ms": 3138.7257690429688,
+    "denoise_step_0_ms": 2208.450439453125,
+    "denoise_step_1_ms": 322.84161376953125,
+    "denoise_step_2_ms": 321.607666015625,
+    "denoise_step_3_ms": 285.8260498046875,
+    "vae_decode_ms": 18531.3828125,
+    "postprocess_ms": 139.59951782226562,
+    "other_ms": 706.6336975097656,
+    "peak_alloc_gib": 17.323493003845215,
+    "peak_reserved_gib": 19.607421875,
+    "device_used_peak_gib": 20.66156005859375,
+    "host_rss_gib": 2.0416717529296875
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 1963.3196829963708,
+      "min": 1892.0347079983912,
+      "max": 1977.3367089801468,
+      "mean": 1956.841214094311,
+      "stdev": 23.6155579684446,
+      "n": 10
+    },
+    "gpu_span_ms": {
+      "median": 1963.20849609375,
+      "min": 1891.907958984375,
+      "max": 1977.2056884765625,
+      "mean": 1956.7210205078125,
+      "stdev": 23.614788187409157,
+      "n": 10
+    },
+    "text_encode_ms": {
+      "median": 443.91285705566406,
+      "min": 441.0919189453125,
+      "max": 447.54132080078125,
+      "mean": 443.85207214355466,
+      "stdev": 1.8394910146820591,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 1274.5175018310547,
+      "min": 1201.6046447753906,
+      "max": 1277.4184875488281,
+      "mean": 1267.281820678711,
+      "stdev": 23.173640860416345,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 323.48313903808594,
+      "min": 321.8052978515625,
+      "max": 325.8951721191406,
+      "mean": 323.42272033691404,
+      "stdev": 1.3302413511530196,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 318.1045684814453,
+      "min": 296.7910461425781,
+      "max": 321.1704406738281,
+      "mean": 316.3020294189453,
+      "stdev": 7.052087793180502,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 317.3381042480469,
+      "min": 266.9885559082031,
+      "max": 320.679931640625,
+      "mean": 312.393115234375,
+      "stdev": 16.012273400457254,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 315.1994934082031,
+      "min": 313.0900573730469,
+      "max": 316.8675842285156,
+      "mean": 315.16395568847656,
+      "stdev": 1.256830068165517,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 167.49005126953125,
+      "min": 166.3057861328125,
+      "max": 169.17811584472656,
+      "mean": 167.5641876220703,
+      "stdev": 1.046838320141723,
+      "n": 10
+    },
+    "postprocess_ms": {
+      "median": 67.73428726196289,
+      "min": 64.61433410644531,
+      "max": 75.46697235107422,
+      "mean": 67.98200225830078,
+      "stdev": 3.1153384775560093,
+      "n": 10
+    },
+    "other_ms": {
+      "median": 9.75347900390625,
+      "min": 9.079421997070312,
+      "max": 12.057167053222656,
+      "mean": 10.040937805175782,
+      "stdev": 0.9205251618629231,
+      "n": 10
+    },
+    "peak_alloc_gib": {
+      "median": 17.323493003845215,
+      "min": 17.323493003845215,
+      "max": 17.323493003845215,
+      "mean": 17.323493003845215,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "peak_reserved_gib": {
+      "median": 19.607421875,
+      "min": 19.607421875,
+      "max": 19.607421875,
+      "mean": 19.607421875,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "device_used_peak_gib": {
+      "median": 20.66156005859375,
+      "min": 20.66156005859375,
+      "max": 20.66156005859375,
+      "mean": 20.66156005859375,
+      "stdev": 0.0,
+      "n": 10
+    },
+    "host_rss_gib": {
+      "median": 2.038848876953125,
+      "min": 2.0183982849121094,
+      "max": 2.0592994689941406,
+      "mean": 2.038849639892578,
+      "stdev": 0.02155279594891373,
+      "n": 10
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 40.62565965400427,
+    "from_pretrained_s": 23.47037742100656,
+    "to_device_s": 17.155282232997706
+  },
+  "weights_gib": {
+    "vae": 0.15654857270419598,
+    "text_encoder": 7.492431163787842,
+    "transformer": 7.218764305114746
+  },
+  "quantization": {},
+  "compiler": {
+    "name": null
+  },
+  "first_run_note": "Includes lazy compilation when a compiler is configured.",
+  "system_memory": null,
+  "unavailable_metrics": {},
+  "host_peak_rss_gib": 8.209400177001953,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  },
+  "transformer_calls_per_step": 1,
+  "profiler": "nsight-compute",
+  "timing_scope": "profiler-attached, capture-disabled prefix; not a new unprofiled baseline",
+  "counter_capture": "profile/captured-generation.json"
+}

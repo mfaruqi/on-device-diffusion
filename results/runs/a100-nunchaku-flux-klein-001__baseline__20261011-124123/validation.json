@@ -1,0 +1,35 @@
+{
+  "validated_utc": "2026-10-11T17:32:40.144866+00:00",
+  "checks": {
+    "complete_status": true,
+    "expected_phase_order_and_count": true,
+    "consecutive_generation_indices": true,
+    "expected_stage_counts_per_generation": true,
+    "finite_nonnegative_stage_times": true,
+    "stage_sum_plus_other_matches_gpu_span": true,
+    "host_gpu_span_difference_under_5ms": true,
+    "summary_medians_recomputed_from_csv": true,
+    "cuda_tensor_placement": true,
+    "bf16_weights_and_only_declared_fp32_rope_buffers": true,
+    "pinned_checkpoint_sha_and_int4_rank32_audit": true,
+    "saved_images_1024_nonflat_and_match_csv_pixel_hash": true
+  },
+  "phase_counts": {
+    "first": 1,
+    "warmup": 3,
+    "measured": 10
+  },
+  "quantized_modules": 120,
+  "measured_unique_image_hashes": 10,
+  "fp32_text_buffers": [
+    "model.rotary_emb.inv_freq",
+    "model.rotary_emb.original_inv_freq"
+  ],
+  "saved_first_vs_measured_mean_absolute_pixel_difference_0_255": 14.481080373128256,
+  "formal_quality_eligible": false,
+  "limitations": [
+    "Only first and measured-0 PNGs saved; other generations have pixel hashes.",
+    "Repeated fixed-seed output is not bitwise deterministic.",
+    "No matched-environment BF16 comparison or formal quality evaluation."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "functional_pass": true,
+  "protocol_pass": true,
+  "timing_continuity_pass": true,
+  "measured_generations": 10,
+  "total_generations": 14,
+  "formal_quality_eligible": false,
+  "controlled_performance_eligible": false,
+  "limitations": [
+    "System already used substantial swap.",
+    "Model downloads, dependency installation and source checkout overlapped this capture; no second GPU inference process ran.",
+    "No frequency or continuous thermal tracing; drift cannot be assigned to a cause."
+  ]
+}

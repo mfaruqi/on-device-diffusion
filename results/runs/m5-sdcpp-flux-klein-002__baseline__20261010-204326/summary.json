@@ -1,0 +1,223 @@
+{
+  "id": "m5-sdcpp-flux-klein-002",
+  "device_label": "macbook-air-m5-24gb",
+  "engine": "stable-diffusion.cpp master-919-19bbbca",
+  "gpu": [
+    {
+      "sppci_model": "Apple M5",
+      "sppci_cores": "10",
+      "spdisplays_metal": null
+    }
+  ],
+  "system_memory": {
+    "sample_interval_ms": 100.0,
+    "wall_minus_monotonic_elapsed_s": 0.0009582829661667347,
+    "system_total_gib": 24.0,
+    "system_available_min_gib": 9.388137817382812,
+    "system_total_minus_available_peak_gib": 14.611862182617188,
+    "system_swap_used_start_gib": 5.73681640625,
+    "system_swap_used_peak_gib": 5.73681640625,
+    "scope": "Whole system across model load and all generations; includes other applications."
+  },
+  "memory_scope": "psutil system unified memory; GPU allocation/peak unavailable",
+  "clock_continuity_pass": true,
+  "clock_continuity_note": "Wall/monotonic divergence >=5 s rejects timing; investigate sleep or clock changes.",
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 15357.210000045598,
+    "gpu_span_ms": null,
+    "text_encode_ms": 454.97300004353747,
+    "denoise_ms": 12690.794000052847,
+    "denoise_step_0_ms": 3176.3360000331886,
+    "denoise_step_1_ms": 3175.195000017993,
+    "denoise_step_2_ms": 3143.1400000001304,
+    "denoise_step_3_ms": 3196.123000001535,
+    "vae_decode_ms": 2206.730999983847,
+    "postprocess_ms": null,
+    "other_ms": 4.711999965365976,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 15807.438500021817,
+      "min": 15558.422000030987,
+      "max": 15869.624999992084,
+      "mean": 15755.899600009434,
+      "stdev": 106.1054414020753,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 441.7175000126008,
+      "min": 440.2640000334941,
+      "max": 447.4000000045635,
+      "mean": 442.2911000030581,
+      "stdev": 2.2939878145556647,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 13098.44250002061,
+      "min": 12881.17800001055,
+      "max": 13157.171999977436,
+      "mean": 13056.550000002608,
+      "stdev": 97.01272254767282,
+      "n": 10
+    },
+    "denoise_step_0_ms": {
+      "median": 3276.4399999869056,
+      "min": 3209.2650000122376,
+      "max": 3286.1339999944903,
+      "mean": 3264.7271999972872,
+      "stdev": 25.065202343163378,
+      "n": 10
+    },
+    "denoise_step_1_ms": {
+      "median": 3254.0030000091065,
+      "min": 3200.419000000693,
+      "max": 3280.419000016991,
+      "mean": 3251.280200004112,
+      "stdev": 25.52063314897582,
+      "n": 10
+    },
+    "denoise_step_2_ms": {
+      "median": 3275.98149998812,
+      "min": 3205.366000009235,
+      "max": 3323.0579999508336,
+      "mean": 3269.211499992525,
+      "stdev": 32.16172366122623,
+      "n": 10
+    },
+    "denoise_step_3_ms": {
+      "median": 3277.1765000070445,
+      "min": 3228.3799999859184,
+      "max": 3294.3920000107028,
+      "mean": 3271.3311000086833,
+      "stdev": 22.79074805281335,
+      "n": 10
+    },
+    "vae_decode_ms": {
+      "median": 2260.822999989614,
+      "min": 2227.8670000378042,
+      "max": 2275.0680000171997,
+      "mean": 2255.02840000554,
+      "stdev": 16.23741631308532,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 2.0530000037979335,
+      "min": 1.955999992787838,
+      "max": 2.0960000110790133,
+      "mean": 2.030099998228252,
+      "stdev": 0.05207570300816049,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 1.246581999992486,
+    "note": "new_sd_ctx with eager load: file read + placement on the GPU. Page cache may hold the files; not a cold read.",
+    "device_used_after_load_gib": null,
+    "device_used_peak_during_load_gib": null,
+    "model_version": "Flux.2 klein"
+  },
+  "host_peak_rss_gib": 5.748809814453125,
+  "timing_method": "host steady_clock at sd.cpp log/progress callbacks (ggml graph compute is synchronous)",
+  "unavailable_metrics": {
+    "gpu_span_ms": "no device events inside sd.cpp; wall_ms is the end-to-end time",
+    "postprocess_ms": "sd.cpp returns uint8 RGB from decode; no separate postprocess stage",
+    "peak_alloc_gib/peak_reserved_gib": "PyTorch allocator counters; ggml has no equivalent",
+    "host_rss_gib": "per-run RSS not sampled; host_peak_rss_gib is the harness process peak",
+    "device_used_peak_gib": "No device-wide Metal allocation counter; whole-system unified memory reported separately"
+  },
+  "engine_audit": {
+    "weight_type_stats": [
+      "diffusion_engine.cpp:1511 - Weight type stat:                      f32: 145  |    q4_0: 80   |    q4_K: 216  |    q6_K: 37   |     i32: 1    |    bf16: 319  ",
+      "diffusion_engine.cpp:1512 - Conditioner weight type stat:          f32: 145  |    q4_K: 216  |    q6_K: 37   ",
+      "diffusion_engine.cpp:1513 - Diffusion model weight type stat:     q4_0: 80   |    bf16: 69   ",
+      "diffusion_engine.cpp:1514 - VAE weight type stat:                  i32: 1    |    bf16: 250  "
+    ],
+    "flash_attention": [
+      "diffusion_engine.cpp:1201 - Using flash attention in the diffusion model"
+    ],
+    "params_placement": [
+      "model_manager.cpp:494  - model manager prepared params backend buffers (4882.75 MB, 795 tensors, 5 blocks, VRAM) on MTL0"
+    ],
+    "max_graph_segments": 1,
+    "sampler_lines": [
+      "sample_params: (txt_cfg: 1.00, img_cfg: 1.00, distilled_guidance: 3.50, slg.layer_count: 0, slg.layer_start: 0.01, slg.layer_end: 0.20, slg.scale: 0.00, scheduler: NONE, sample_method: NONE, sample_steps: 4, eta: inf, shifted_timestep: 0, flow_shift: inf, extra_sample_args: )",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=1024, steps=4, mu=2.031",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=1024, steps=4, mu=2.031",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=1024, steps=4, mu=2.031",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler",
+      "denoiser.hpp:882  - Flux2 scheduler: image_seq_len=1024, steps=4, mu=2.031",
+      "denoiser.hpp:1186 - get_sigmas with Flux2 scheduler"
+    ],
+    "version_lines": [
+      "diffusion_engine.cpp:994  - Version: Flux.2 klein "
+    ],
+    "forbidden": {},
+    "conditioning_cache_hits": 0,
+    "problems": [],
+    "mmap_io": {
+      "requested": false,
+      "confirmed_files": []
+    }
+  },
+  "cache_audit": {
+    "requested": {
+      "mode": "easycache",
+      "reuse_threshold": 0.2,
+      "start_percent": 0.15,
+      "end_percent": 0.95
+    },
+    "enabled_generations": 14,
+    "steps_skipped": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "quality_scope": "Approximate execution; image diagnostics required, no quality eligibility implied."
+  },
+  "conditioning_cache_hits_per_generation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  }
+}

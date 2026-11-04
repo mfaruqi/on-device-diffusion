@@ -1,0 +1,9 @@
+{
+  "replaced_tensors": [
+    "transformer_blocks.0.attn.to_q.weight"
+  ],
+  "weight_format": "symmetric_uniform",
+  "runtime_representation": "reconstructed dense parameters",
+  "decode_chunk_rows": 128,
+  "packed_artifact_bytes": 5014270
+}

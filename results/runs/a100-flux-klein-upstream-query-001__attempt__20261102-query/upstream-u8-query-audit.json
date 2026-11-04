@@ -1,0 +1,10 @@
+{
+  "replaced_tensors": [
+    "transformer_blocks.0.attn.to_q.weight"
+  ],
+  "weight_format": "upstream_bcq",
+  "scale_format": "u8",
+  "decode_chunk_rows": 128,
+  "runtime_representation": "reconstructed dense parameters",
+  "packed_artifact_bytes": 5112860
+}

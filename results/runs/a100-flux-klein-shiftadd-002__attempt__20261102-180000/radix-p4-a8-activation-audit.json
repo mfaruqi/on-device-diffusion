@@ -1,0 +1,8 @@
+{
+  "bits": 8,
+  "modules": [
+    "transformer_blocks.0.attn.to_q"
+  ],
+  "calls": 4,
+  "execution": "fake quantization with floating GEMMs"
+}

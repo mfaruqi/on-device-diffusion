@@ -1,0 +1,446 @@
+{
+  "measured_runs": 10,
+  "first_run": {
+    "wall_ms": 179553.0,
+    "gpu_span_ms": null,
+    "text_encode_ms": 2730.0,
+    "denoise_ms": 171420.0,
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "denoise_step_4_ms": null,
+    "denoise_step_5_ms": null,
+    "denoise_step_6_ms": null,
+    "denoise_step_7_ms": null,
+    "denoise_step_8_ms": null,
+    "denoise_step_9_ms": null,
+    "denoise_step_10_ms": null,
+    "denoise_step_11_ms": null,
+    "denoise_step_12_ms": null,
+    "denoise_step_13_ms": null,
+    "denoise_step_14_ms": null,
+    "denoise_step_15_ms": null,
+    "denoise_step_16_ms": null,
+    "denoise_step_17_ms": null,
+    "denoise_step_18_ms": null,
+    "denoise_step_19_ms": null,
+    "denoise_step_20_ms": null,
+    "denoise_step_21_ms": null,
+    "denoise_step_22_ms": null,
+    "denoise_step_23_ms": null,
+    "denoise_step_24_ms": null,
+    "denoise_step_25_ms": null,
+    "denoise_step_26_ms": null,
+    "denoise_step_27_ms": null,
+    "denoise_step_28_ms": null,
+    "denoise_step_29_ms": null,
+    "denoise_step_30_ms": null,
+    "denoise_step_31_ms": null,
+    "denoise_step_32_ms": null,
+    "denoise_step_33_ms": null,
+    "denoise_step_34_ms": null,
+    "denoise_step_35_ms": null,
+    "denoise_step_36_ms": null,
+    "denoise_step_37_ms": null,
+    "denoise_step_38_ms": null,
+    "denoise_step_39_ms": null,
+    "denoise_step_40_ms": null,
+    "denoise_step_41_ms": null,
+    "denoise_step_42_ms": null,
+    "denoise_step_43_ms": null,
+    "denoise_step_44_ms": null,
+    "denoise_step_45_ms": null,
+    "denoise_step_46_ms": null,
+    "denoise_step_47_ms": null,
+    "denoise_step_48_ms": null,
+    "denoise_step_49_ms": null,
+    "vae_decode_ms": 4300.0,
+    "postprocess_ms": null,
+    "other_ms": 1100.0,
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 173627.0,
+      "min": 173262.0,
+      "max": 174007.0,
+      "mean": 173609.7,
+      "stdev": 267.1558221962107,
+      "n": 10
+    },
+    "gpu_span_ms": null,
+    "text_encode_ms": {
+      "median": 925.0,
+      "min": 920.0,
+      "max": 930.0,
+      "mean": 925.0,
+      "stdev": 5.270462766947299,
+      "n": 10
+    },
+    "denoise_ms": {
+      "median": 169910.0,
+      "min": 169570.0,
+      "max": 170310.0,
+      "mean": 169903.0,
+      "stdev": 264.0728014098469,
+      "n": 10
+    },
+    "denoise_step_0_ms": null,
+    "denoise_step_1_ms": null,
+    "denoise_step_2_ms": null,
+    "denoise_step_3_ms": null,
+    "denoise_step_4_ms": null,
+    "denoise_step_5_ms": null,
+    "denoise_step_6_ms": null,
+    "denoise_step_7_ms": null,
+    "denoise_step_8_ms": null,
+    "denoise_step_9_ms": null,
+    "denoise_step_10_ms": null,
+    "denoise_step_11_ms": null,
+    "denoise_step_12_ms": null,
+    "denoise_step_13_ms": null,
+    "denoise_step_14_ms": null,
+    "denoise_step_15_ms": null,
+    "denoise_step_16_ms": null,
+    "denoise_step_17_ms": null,
+    "denoise_step_18_ms": null,
+    "denoise_step_19_ms": null,
+    "denoise_step_20_ms": null,
+    "denoise_step_21_ms": null,
+    "denoise_step_22_ms": null,
+    "denoise_step_23_ms": null,
+    "denoise_step_24_ms": null,
+    "denoise_step_25_ms": null,
+    "denoise_step_26_ms": null,
+    "denoise_step_27_ms": null,
+    "denoise_step_28_ms": null,
+    "denoise_step_29_ms": null,
+    "denoise_step_30_ms": null,
+    "denoise_step_31_ms": null,
+    "denoise_step_32_ms": null,
+    "denoise_step_33_ms": null,
+    "denoise_step_34_ms": null,
+    "denoise_step_35_ms": null,
+    "denoise_step_36_ms": null,
+    "denoise_step_37_ms": null,
+    "denoise_step_38_ms": null,
+    "denoise_step_39_ms": null,
+    "denoise_step_40_ms": null,
+    "denoise_step_41_ms": null,
+    "denoise_step_42_ms": null,
+    "denoise_step_43_ms": null,
+    "denoise_step_44_ms": null,
+    "denoise_step_45_ms": null,
+    "denoise_step_46_ms": null,
+    "denoise_step_47_ms": null,
+    "denoise_step_48_ms": null,
+    "denoise_step_49_ms": null,
+    "vae_decode_ms": {
+      "median": 1740.0,
+      "min": 1730.0,
+      "max": 1750.0,
+      "mean": 1740.0,
+      "stdev": 8.16496580927726,
+      "n": 10
+    },
+    "postprocess_ms": null,
+    "other_ms": {
+      "median": 1040.0,
+      "min": 1030.0,
+      "max": 1050.0,
+      "mean": 1041.0,
+      "stdev": 5.676462121975467,
+      "n": 10
+    },
+    "peak_alloc_gib": null,
+    "peak_reserved_gib": null,
+    "device_used_peak_gib": null,
+    "host_rss_gib": null
+  },
+  "deterministic_output": null,
+  "id": "jetson-edgedit-flux-klein-base-003",
+  "device_label": "jetson-orin-nano",
+  "engine": "edge-dit.cpp",
+  "load": {
+    "load_total_s": 63.45216,
+    "note": "Upstream steady_clock around one context creation; files were hashed just before launch, so the page cache is warm for this load."
+  },
+  "schedule_sigmas": [
+    [
+      "1",
+      "1.000000",
+      "0.996293"
+    ],
+    [
+      "2",
+      "0.996293",
+      "0.992460"
+    ],
+    [
+      "3",
+      "0.992460",
+      "0.988496"
+    ],
+    [
+      "4",
+      "0.988496",
+      "0.984393"
+    ],
+    [
+      "5",
+      "0.984393",
+      "0.980144"
+    ],
+    [
+      "6",
+      "0.980144",
+      "0.975740"
+    ],
+    [
+      "7",
+      "0.975740",
+      "0.971174"
+    ],
+    [
+      "8",
+      "0.971174",
+      "0.966437"
+    ],
+    [
+      "9",
+      "0.966437",
+      "0.961517"
+    ],
+    [
+      "10",
+      "0.961517",
+      "0.956405"
+    ],
+    [
+      "11",
+      "0.956405",
+      "0.951090"
+    ],
+    [
+      "12",
+      "0.951090",
+      "0.945558"
+    ],
+    [
+      "13",
+      "0.945558",
+      "0.939796"
+    ],
+    [
+      "14",
+      "0.939796",
+      "0.933790"
+    ],
+    [
+      "15",
+      "0.933790",
+      "0.927523"
+    ],
+    [
+      "16",
+      "0.927523",
+      "0.920979"
+    ],
+    [
+      "17",
+      "0.920979",
+      "0.914139"
+    ],
+    [
+      "18",
+      "0.914139",
+      "0.906981"
+    ],
+    [
+      "19",
+      "0.906981",
+      "0.899484"
+    ],
+    [
+      "20",
+      "0.899484",
+      "0.891622"
+    ],
+    [
+      "21",
+      "0.891622",
+      "0.883369"
+    ],
+    [
+      "22",
+      "0.883369",
+      "0.874694"
+    ],
+    [
+      "23",
+      "0.874694",
+      "0.865565"
+    ],
+    [
+      "24",
+      "0.865565",
+      "0.855944"
+    ],
+    [
+      "25",
+      "0.855944",
+      "0.845790"
+    ],
+    [
+      "26",
+      "0.845790",
+      "0.835059"
+    ],
+    [
+      "27",
+      "0.835059",
+      "0.823699"
+    ],
+    [
+      "28",
+      "0.823699",
+      "0.811654"
+    ],
+    [
+      "29",
+      "0.811654",
+      "0.798860"
+    ],
+    [
+      "30",
+      "0.798860",
+      "0.785244"
+    ],
+    [
+      "31",
+      "0.785244",
+      "0.770725"
+    ],
+    [
+      "32",
+      "0.770725",
+      "0.755209"
+    ],
+    [
+      "33",
+      "0.755209",
+      "0.738592"
+    ],
+    [
+      "34",
+      "0.738592",
+      "0.720750"
+    ],
+    [
+      "35",
+      "0.720750",
+      "0.701543"
+    ],
+    [
+      "36",
+      "0.701543",
+      "0.680809"
+    ],
+    [
+      "37",
+      "0.680809",
+      "0.658358"
+    ],
+    [
+      "38",
+      "0.658358",
+      "0.633968"
+    ],
+    [
+      "39",
+      "0.633968",
+      "0.607375"
+    ],
+    [
+      "40",
+      "0.607375",
+      "0.578267"
+    ],
+    [
+      "41",
+      "0.578267",
+      "0.546269"
+    ],
+    [
+      "42",
+      "0.546269",
+      "0.510930"
+    ],
+    [
+      "43",
+      "0.510930",
+      "0.471697"
+    ],
+    [
+      "44",
+      "0.471697",
+      "0.427888"
+    ],
+    [
+      "45",
+      "0.427888",
+      "0.378653"
+    ],
+    [
+      "46",
+      "0.378653",
+      "0.322919"
+    ],
+    [
+      "47",
+      "0.322919",
+      "0.259306"
+    ],
+    [
+      "48",
+      "0.259306",
+      "0.186018"
+    ],
+    [
+      "49",
+      "0.186018",
+      "0.100664"
+    ],
+    [
+      "50",
+      "0.100664",
+      "0.000000"
+    ]
+  ],
+  "system_memory": {
+    "samples": 12172,
+    "ram_peak_gib": 6.724609375,
+    "ram_total_gib": 7.44140625,
+    "swap_min_gib": 0.30859375,
+    "swap_max_gib": 0.318359375,
+    "gpu_temperature_max_c": 64.968,
+    "scope": "whole harness capture including load; not per-generation or per-stage",
+    "unit_convention": "Printed MB treated as MiB; divide by 1024 for approximate GiB"
+  },
+  "device_used_peak_gib": null,
+  "residency": "all weights resident; one load, 14 passes",
+  "timing_method": "ed-sample steady_clock per-pass stdout (1 ms rounding); stages from the engine \"flux generate breakdown\" line (10 ms rounding)",
+  "precision_note": "GGUF Q4_0 transformer, Q4_K_M encoder (see model), BF16 VAE; FP32 activations",
+  "flash_attention_evidence": "command-line flag only; the engine log does not report it",
+  "formal_quality_eligible": false,
+  "unavailable_metrics": {
+    "denoise_step_i_ms": "Engine prints completed steps without individual timestamps.",
+    "gpu_span_ms": "No GPU event timing.",
+    "peak_alloc_gib/peak_reserved_gib/device_used_peak_gib/host_rss_gib": "No per-generation allocator observations; whole-system tegrastats only.",
+    "deterministic_output": "Only final repeat image retained; earlier image hashes unavailable."
+  }
+}

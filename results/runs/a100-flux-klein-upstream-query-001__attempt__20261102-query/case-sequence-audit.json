@@ -1,0 +1,28 @@
+{
+  "case_sequence_valid": true,
+  "rule": "every candidate overwrites all previously modified parameters",
+  "cases": [
+    {
+      "case": "bf16",
+      "selected_tensors": []
+    },
+    {
+      "case": "radix-p4-query",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    },
+    {
+      "case": "uniform-int4-query",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    },
+    {
+      "case": "upstream-u8-query",
+      "selected_tensors": [
+        "transformer_blocks.0.attn.to_q.weight"
+      ]
+    }
+  ]
+}

@@ -1,38 +1,32 @@
 ---
 type: project
-summary: Current project state, active campaign and blockers. Read first each session.
+summary: Semester focus is ShiftAdd allocation, existing-engine packed kernels and measured memory/latency/energy; Nunchaku feasibility remains open.
 status: active
-updated: 2026-10-10
+updated: 2026-11-04
 ---
 
 # Hot: current state
 
-**Week 2** (Oct 5–9). **Scope changed** ([D-010](project/decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top)):
-the thesis delivers (a) a TVM-compiled FLUX.2 klein pipeline on CUDA, Metal and WebGPU and (b) the joint
-reuse/precision/residency planner on top. Hypothesis and RQs unchanged ([overview](project/overview.md#scope-amendments)).
-Schedule is optimistic with roll-over allowed ([milestones](project/milestones.md#revised-schedule)).
+**Week 6 (Nov 2–6).** [D-012](project/decisions.md#d-012-prioritize-shiftadd-experiments-and-an-existing-engine-kernel-prototype-this-semester) prioritizes completing ShiftAdd experiments and an existing-engine packed kernel prototype by semester end; Nunchaku is the first candidate to audit. The broader TVM/planner delivery is deferred from semester acceptance, not completed. Proposal hypothesis and RQs remain unchanged ([overview](project/overview.md)); advisor confirmation of broader thesis scope remains open.
+See the [meeting memo](../raw/meetings/2026-11-04.md) and [weekly gates](project/milestones.md#semester-completion-plan--2026-11-04).
 
-## Established evidence
-- A100 distilled klein baselines (PyTorch, sd.cpp) and comparison; Jetson disk-backed Q4 512² baseline and profiles ([registry](experiments.md)).
-- Base workload (50 steps, guidance 4) on A100 and Jetson; engine option sweeps with no-cache controls ([registry](experiments.md)).
-- Jetson Base: EasyCache + exact conditioning reuse combined passes the campaign speed rule; no formal quality approval ([comparison](../experiments/compare-jetson-base-combined-reuse.md)).
-- Jetson distilled: exact conditioning reuse passes the speed rule; EasyCache, prefetch-off and mmap fail it ([conditioning](../experiments/compare-jetson-distilled-conditioning-reuse.md), [EasyCache](../experiments/compare-jetson-distilled-easycache.md)).
-- Jetson auto-fit chose CPU/GPU placement but failed first text encoding ([004](../experiments/jetson-flux-klein-004.md)).
-- edge-dit full A100 baseline validated with stated limits ([record](../experiments/a100-edgedit-flux-klein-001.md)); Torch-TensorRT compile gate failed ([record](../experiments/a100-flux-klein-torchtrt-002.md)).
+## Consolidated evidence
+- Claude's committed A100/Jetson campaign and local M5 recovery records now share this checkout; source commit `cf48eb9` and reconciliation scope are recorded in the [stage-chart documentation](../output/stage-breakdown-20261007/README.md).
+- The canonical [stage manifest](../output/stage-breakdown-20261007/manifest.json) contains 98 full runs and 28 panels; [W&B step 14 verified](../output/stage-breakdown-20261007/reconciliation-verification.json). Failed, interrupted, smoke and profiled captures are separate evidence in the [registry](experiments.md).
+- Jetson PyTorch eager/compiled CUDA kernel traces are available; compilation chiefly reduces GGUF unpack/rescale/cast work ([eager](../experiments/jetson-torch-flux-klein-004.md#kernel-profile-2026-10-1718), [compiled](../experiments/jetson-torch-flux-klein-007.md#kernel-profile-2026-10-1718)).
+- A100 and Jetson Base engine/cache/compile results are documented ([A100 compile](../experiments/a100-flux-klein-base-torch28-004.md), [Jetson](../experiments/compare-jetson-base-caches-reuse-compile.md)). Approximate output changes are not formal quality approval.
+- M5 follow-up: nine validated full configurations, distilled compile numerical gate blocked, final tiling recoveries complete; no active queue ([campaign](../output/m5-followup-20261015/README.md)). Pressure confounds remain ([review](../experiments/compare-accelerator-optimization-review-20261016.md)).
+- MFLUX initial Base BF16 failed native Metal execution; M5 edge-dit baseline remains blocked ([MFLUX](../experiments/m5-mflux-flux-klein-base-001.md), [M5 procedure](methods/m5-howto.md)).
+- Nunchaku runs on the Jetson from an sm_87 source build (two allowlist lines patched); the layer check matches the A100, and denoise is 5.0× faster than the GGUF Q4_0 transformer; with conditioning reuse an image takes 3.44 s, 4.3× faster than GGUF with reuse ([record](../experiments/jetson-nunchaku-flux-klein-001.md), [reuse](../experiments/jetson-nunchaku-flux-klein-002.md), [compare](../experiments/compare-jetson-nunchaku-vs-gguf-pytorch.md)). M5 Metal remains unsupported ([procedure](methods/nunchaku-howto.md)).
 
-## Campaign records
-- Completed and failed runs are indexed in the [registry](experiments.md). Jetson scope closed; A100 Base conditioning full protocol recovered; different-GPU comparison caveat ([record](../experiments/a100-sdcpp-flux-klein-base-003.md)).
-- Stage charts: [27 completed runs, seven panels](../output/stage-breakdown-20261007/README.md); means stacked, total medians/ranges shown ([October log](log-2026-10.md)).
-- Base engine comparison keeps RNG/timer confounds ([comparison](../experiments/compare-a100-base-pytorch-vs-sdcpp.md)).
+- ShiftAdd: the [complete upstream/BF16 package](../experiments/m5-flux-klein-shiftadd-020.md) covers all 50 attention/fused matrices, with the other 59 matrix weights retained in BF16. [Image controls](../experiments/a100-flux-klein-upstream-all-attention-001.md) and [A8/A4 diagnostics](../experiments/a100-flux-klein-upstream-all-attention-activation-001.md) are verified. A [fit-selected mixed candidate](../experiments/m5-flux-klein-shiftadd-022.md) has a completed [image comparison](../experiments/a100-flux-klein-upstream-mixed-fused-001.md): coherent scenes but greater BF16 latent distance on all four calibration prompts. [CPU loading-cache measurements](../experiments/m5-flux-klein-shiftadd-load-002.md) are separate from inference; no packed GPU latency, runtime-memory or energy advantage is established. A [one/two-plane follow-up](../experiments/a100-flux-klein-upstream-lowplane-fused-001.md) is complete: two-plane scenes remain recognizable; one plane causes semantic failures. [Size charts](../experiments/compare-shiftadd-plane-storage.md) separate stored weights from dense runtime payload. See the [campaign guide](../shiftadd/docs/current-campaign.md) and [conversion walkthrough](../shiftadd/docs/conversion-walkthrough.md); support modules are grouped into diagnostics, validation, plots and reporting.
 
-## Next (Week 2 → 3)
-1. TVM sandbox: import a small randomly initialized FLUX-style transformer on CPU; inspect the IR, fusion and memory planning.
-2. Week 3 gate: import klein's transformer step into TVM Relax and match PyTorch numerics on CUDA ([milestones](project/milestones.md#revised-schedule)).
-3. MacBook Air M5 setup: sd.cpp Metal smoke ([system](systems/macbook-air-m5.md)).
-4. Review the draft planning hypothesis and three candidate contributions ([RQ3](rq/rq3.md)); review CacheQuant and Q&C before any novelty claim ([reading list](papers/reading-list.md)).
-5. Approve or revise the TVM approach and engine-level planner fallback ([D-011, proposed](project/decisions.md#d-011-build-the-compiled-pipeline-mlc-style-on-tvm-with-an-engine-level-planner-fallback-proposed)).
-6. Shared initial noise for engine comparisons remains proposed ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)).
+## Next
+1. Build transformer/text-encoder/VAE memory accounting: stored and resident weights, activations, workspaces, metadata, correction branches, caches and loading transitions; compare declared BF16/INT4/SVDQuant controls ([memo](../raw/meetings/2026-11-04.md)).
+2. Audit Nunchaku layouts and architecture support; implement and validate one packed projection before expanding scope ([kernel gates](../raw/meetings/2026-11-04.md)).
+3. Validate 2/3/4/5/6-plane support and re-fit allocation sensitivity on calibration data; freeze before Week 10 held-out evaluation ([quality plan](../raw/meetings/2026-11-04.md)).
+4. Locate `shiftaddllm_energy.py`; separate analytical estimates from timestamped Jetson power integration and measured joules/image ([energy plan](../raw/meetings/2026-11-04.md)).
 
 ## Open
-- Next target after WebGPU; whether Jetson reload time is storage- or page-cache-bound; four earlier questions ([open questions](open-questions.md)).
-- New Jetson findings: [step caching vs schedule length](findings/step-caching-helps-at-50-steps-but-not-at-4-on-jetson.md), [conditioning reuse](findings/exact-conditioning-reuse-removes-most-jetson-reload-time.md), [overlapping savings](findings/combined-reuse-savings-overlap-on-jetson-base.md); framing in [kernel, graph and plan search](concepts/kernel-graph-plan-search.md).
+- Formal matched-quality and cross-device transfer conclusions remain limited by checkpoint, RNG, residency and timing differences ([RQ1](rq/rq1.md), [evaluation rules](project/overview.md#evaluation-rules)).
+- Shared initial noise remains proposed ([D-006](project/decisions.md#d-006-shared-initial-noise-from-sdcpps-philox-rng-proposed)); unresolved questions remain in [open questions](open-questions.md).

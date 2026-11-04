@@ -1,0 +1,80 @@
+{
+  "id": "jetson-ceilings-001",
+  "description": "Measured roofline ceilings on the Jetson Orin Nano 8GB (25W power mode): STREAM-style bandwidth over shared LPDDR5 and dense cuBLAS GEMM throughput per precision, square and FLUX.2 klein 512\u00b2 single-block shapes, plus a 60 s sustained BF16 GEMM. No model loaded; clocks not locked; run under jetson_memguard.sh.",
+  "device_label": "jetson-orin-nano",
+  "expected_gpu_name": "Orin",
+  "sampler": "tegrastats",
+  "protocol": {
+    "warmup_iters": 5,
+    "iters": 20,
+    "trials": 10
+  },
+  "bandwidth": {
+    "buffer_gib": 0.5,
+    "kernels": [
+      "copy",
+      "read",
+      "write",
+      "triad"
+    ]
+  },
+  "gemm": {
+    "dtypes": [
+      "bf16",
+      "fp16",
+      "tf32",
+      "fp32",
+      "int8"
+    ],
+    "square_sizes": [
+      2048,
+      4096
+    ],
+    "model_shapes": [
+      {
+        "label": "klein 512\u00b2 single-block in (seq 1536, 9D)",
+        "mnk": [
+          1536,
+          27648,
+          3072
+        ]
+      },
+      {
+        "label": "klein 512\u00b2 single-block out (seq 1536, 4D)",
+        "mnk": [
+          1536,
+          3072,
+          12288
+        ]
+      }
+    ]
+  },
+  "sustained": {
+    "dtype": "bf16",
+    "mnk": [
+      4096,
+      4096,
+      4096
+    ],
+    "seconds": 60
+  },
+  "datasheet": {
+    "source": "https://developer.nvidia.com/blog/nvidia-jetpack-6-2-brings-super-mode-to-nvidia-jetson-orin-nano-and-jetson-orin-nx-modules/",
+    "note": "Super-mode figures (GPU 1020 MHz). 102 GB/s and 67 sparse INT8 TOPS are published; FP16/BF16 17 and dense INT8 33 follow the dense = sparse / 2 convention used in plot_roofline.py; TF32 (half the FP16 rate) and FP32 (1024 CUDA cores x 2 FLOP x 1.02 GHz) are derived, not published.",
+    "bw_gbs": 102.0,
+    "ceilings": {
+      "bf16_tensor": 17.0,
+      "fp16_tensor": 17.0,
+      "tf32_tensor": 8.5,
+      "fp32": 2.09,
+      "int8_tensor_tops": 33.0
+    },
+    "ceiling_keys": {
+      "bf16": "bf16_tensor",
+      "fp16": "fp16_tensor",
+      "tf32": "tf32_tensor",
+      "fp32": "fp32",
+      "int8": "int8_tensor_tops"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scalar_spot_checks": 35,
+  "partial_slice_rejected_before_mutation": true,
+  "audit": {
+    "replaced_tensors": [
+      "transformer_blocks.0.attn.to_q.weight"
+    ],
+    "weight_format": "upstream_bcq",
+    "scale_format": "u8",
+    "decode_chunk_rows": 128,
+    "runtime_representation": "reconstructed dense parameters",
+    "packed_artifact_bytes": 5112860
+  }
+}

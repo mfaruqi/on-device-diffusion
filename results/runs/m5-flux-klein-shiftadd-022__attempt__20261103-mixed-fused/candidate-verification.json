@@ -1,0 +1,314 @@
+{
+  "status": "passed",
+  "fit_only_ranking_independently_reproduced": true,
+  "matrices": 50,
+  "three_plane_matrices": 10,
+  "four_plane_matrices": 40,
+  "all_selected_file_hashes_match": true,
+  "all_rows_complete_and_ordered": true,
+  "packed_file_bytes": 960728440,
+  "image_tested": false,
+  "packed_performance_measured": false,
+  "files": [
+    {
+      "module": "transformer_blocks.0.attn.add_k_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "bae35a9b08f85372072a9628e48d7a93168c8e6f37284d93a558746ba0753485"
+    },
+    {
+      "module": "transformer_blocks.0.attn.add_q_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "b0822bc258d348e5961b98abaaea716661966c8e947c6f79ebded60f7d409a2b"
+    },
+    {
+      "module": "transformer_blocks.0.attn.add_v_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "2384d3baa23e1d9a8ee38c92e99535c0145d2930c0dc2fb6d73b4c9f85a9eba6"
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_k",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "e9284146c074e25eed2f4fec4d2ed419daa1f7eb53bb5835894d7da7e57a7e1b"
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_q",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "405bb7ad730fc5a45e29568fc195120eba6b75c57e8c7920230d5416efa0d022"
+    },
+    {
+      "module": "transformer_blocks.0.attn.to_v",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "f93e80d40d22ccfe0487b564e2cdf37f558ba87b3fabecafe5b7bae83354427a"
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_k_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "caccef48c4c159382b329c1f491ddd1e6ed97b1255dc2d45a961e9b22f7e0fda"
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_q_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "742fa539a6a140e030ee4a57e8c3305840f408c243fcc63b7aa599e0d35471b2"
+    },
+    {
+      "module": "transformer_blocks.1.attn.add_v_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "dd6baedd5026c03827b6ba6afdd531750ce0a715c07d76568919aab4713f3d62"
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_k",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "2f5774e399ae44ea12f5fcc2aba93ce5aa03f131ec838da3b53a96cfd7df319b"
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_q",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "0829e17acd517711b581c82531336ba26fae2e26b99472aef1e760ef7f228066"
+    },
+    {
+      "module": "transformer_blocks.1.attn.to_v",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "5fe8da6c75f2b872246513b17c84e9f2d641135187d82e9dd1accc393c1dc249"
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_k_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "f62537cb1461b539b609bf4a739fa3a2d755814aee0ef2b252cc2b0590997354"
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_q_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "cdc0a284e8d7f772d253a00afa757e033ce2af8fbc5d1e112a61fa535f9638d0"
+    },
+    {
+      "module": "transformer_blocks.2.attn.add_v_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "eacfaee1dd9b44281ba8824671f96edb08c26faa3a75352dac42ae72274c2426"
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_k",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "f2837d47a3506e32f9beec2064f9a33ae3eb166dd1206e23fd811766f583e75f"
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_q",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "6939ec859961b7f736650da9b25e712d7acdcb53c92924f0de8283c03e37bd70"
+    },
+    {
+      "module": "transformer_blocks.2.attn.to_v",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "2f103b4da4814d9f77e0cb940a0a281a8253f86dc29ae3916e7086157c0f181a"
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_k_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "8fd8d0798d905068bfb26eb6f93ff6b075238afa863c413fcf44f8f3437f9e57"
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_q_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "e470050befc657472057f86b41ed012ca155bb7faf65c26030d37efe305aad23"
+    },
+    {
+      "module": "transformer_blocks.3.attn.add_v_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "442d8ea66d163a639d29e7b6c91d3c872ff5a14eea46c9dfd1fab25594b08943"
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_k",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "e5849a7ce4893540188e86d74f8eea9a49cde740e31ab7aee0d759a904899206"
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_q",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "0d779113c77adb879fa3a9dff324a7b57b81cf3110270a4cfdf86339edd2fd80"
+    },
+    {
+      "module": "transformer_blocks.3.attn.to_v",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "1c7df748b38b21e67fe4ce05d25ca0987f53e69a8fb35aeb1dbe975251b0be7a"
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_k_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "4137638034ce6bc70c12b38965645b77d4df7cab52da037b791ca879b3ac46e7"
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_q_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "ed2b0a7840f1c67cee5bcf7a7f66ec980574673fed229894a541ed1df98745b0"
+    },
+    {
+      "module": "transformer_blocks.4.attn.add_v_proj",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "15acc9ce3c9de11a161119f1043fb5cf44073e713c4d736095e2d621eff0ffa0"
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_k",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "77ddc854cf1763854f3838114956d4ee895981dbf390d3a4d18f458a266ffd61"
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_q",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "71a9c7b2d22ed0392a6491c6c7d28d077178e289e4acc260270ab7424d44c0e9"
+    },
+    {
+      "module": "transformer_blocks.4.attn.to_v",
+      "planes": 4,
+      "file_bytes": 5112860,
+      "sha256": "6ebe1a9372ffd2dad24bf77cd09048f28359cfe618878dc0e5f7dce87f8b6c34"
+    },
+    {
+      "module": "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "04bb3f5a31ba39cac72c96e28345e89469385b7511c850d070242497553ef772"
+    },
+    {
+      "module": "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "7c756a8ec89b3aa7abd793479d3879962d69ea31865daa47eb4992bf596ad887"
+    },
+    {
+      "module": "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "4702ed9e7a77cfb26908145f35dcb6e72aec2d9e47a0a541d4d75b84f42c136b"
+    },
+    {
+      "module": "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "80bbae0144c94873121fd5760817ccaa7ef20edc8ad3839230bc103457b59e87"
+    },
+    {
+      "module": "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "b13b9a0ee03439e96296f631e85e7c67efc264d30e32b0c365c9bfe11e1397dd"
+    },
+    {
+      "module": "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "147a1d82b71968b3fa8327782935b59ffdc3aad280e86bdbcbbf91bf9f146852"
+    },
+    {
+      "module": "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "65e5afc4cf7dcbb0cb1788abf4de434a2b94e85648c01abac63b19d745b2ce1d"
+    },
+    {
+      "module": "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "609764e3ecfb4f81ab34c12727e2b4241c72261f5fc8d9165eaa1385862f4cb6"
+    },
+    {
+      "module": "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "df8f32358113de9931d7ea967b135217e3acbfa7533ec325fe42fd03e151a133"
+    },
+    {
+      "module": "single_transformer_blocks.8.attn.to_qkv_mlp_proj",
+      "planes": 3,
+      "file_bytes": 34726940,
+      "sha256": "5ff0ebca43c4f9408d57c57ad3905d229d23221eee2b21527d40a1e61ff519f4"
+    },
+    {
+      "module": "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "96e1441b54e654b5190abd87dee85535dec4cf4262d2a039d685b95afb6f5d40"
+    },
+    {
+      "module": "single_transformer_blocks.12.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "0f68b21fd95902ae855f1a44377e895819dc641e7a4cf19fe5e9df4eafa567aa"
+    },
+    {
+      "module": "single_transformer_blocks.13.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "3df4da08f2b38c6ffe608d5e934ce3eebbb78ec51baee76d79cbf2cf34fee44a"
+    },
+    {
+      "module": "single_transformer_blocks.14.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "c5261844ba9b60277627a35490842fc2f5242218a3e24ece362af13adbf9acd4"
+    },
+    {
+      "module": "single_transformer_blocks.15.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "0307af3e104576e12fd1d6bc12afe09883dddb09184a840c445322f33f181a6b"
+    },
+    {
+      "module": "single_transformer_blocks.16.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "fba197b640f3817580f19f9ddbfa422e738e84a167478adb3da01be4ad3540c3"
+    },
+    {
+      "module": "single_transformer_blocks.17.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "c222a6a9ebcfce3a0f51b23b87df9cc892e6e7f6337e8716cf0ea91a49719c88"
+    },
+    {
+      "module": "single_transformer_blocks.18.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "ed7d27b51f0c51fed7091cbc947469e4cc57b0b37584d7b35b041a8153747c78"
+    },
+    {
+      "module": "single_transformer_blocks.19.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "05b72c70f11b837f69d3de2865d32253d55d92af544ecca649f64e141c01e654"
+    },
+    {
+      "module": "single_transformer_blocks.9.attn.to_qkv_mlp_proj",
+      "planes": 4,
+      "file_bytes": 46007324,
+      "sha256": "6151620e924ad5855e69a99985180362bbc320c7ccddfc62842466bad9a88648"
+    }
+  ]
+}

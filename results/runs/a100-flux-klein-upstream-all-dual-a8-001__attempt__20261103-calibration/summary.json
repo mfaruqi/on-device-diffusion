@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.7812360811512917,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30749987810850143,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3070973518770188,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30633185408078134,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.33310039108619094,
+      "relative_latent_l2": 0.123822882771492,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3078657139558345,
+      "relative_latent_l2": 0.18276818096637726,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3069761539809406,
+      "relative_latent_l2": 0.37579530477523804,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30712002399377525,
+      "relative_latent_l2": 0.23936469852924347,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual-a8-g32",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.36277496512047946,
+      "relative_latent_l2": 0.12863947451114655,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual-a8-g32",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.32151357317343354,
+      "relative_latent_l2": 0.1854916214942932,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual-a8-g32",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.32132474798709154,
+      "relative_latent_l2": 0.5501183271408081,
+      "finite": true
+    },
+    {
+      "case": "upstream-u8-all-dual-a8-g32",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3219944459851831,
+      "relative_latent_l2": 0.21572044491767883,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

@@ -1,0 +1,6 @@
+baseline MemAvailable before the toy: 6010 MB
+duration rc=0 kernels=122 passes: 122 1 pass  min_avail_mb=4010 metrics=gpu__time_duration.sum
+read rc=0 kernels=122 passes: 122 1 pass  min_avail_mb=4018 metrics=gpu__time_duration.sum,lts__t_sectors_aperture_sysmem_op_read_lookup_miss.sum
+write rc=0 kernels=122 passes: 122 1 pass  min_avail_mb=4025 metrics=gpu__time_duration.sum,lts__t_sectors_aperture_sysmem_op_write.sum
+bytes rc=0 kernels=122 passes: 122 3 passes  min_avail_mb=865 metrics=gpu__time_duration.sum,lts__t_sectors_aperture_sysmem_op_read_lookup_miss.sum,lts__t_sectors_aperture_sysmem_op_write.sum
+bf16 rc=0 kernels=122 passes: 122 1 pass  min_avail_mb=4003 metrics=gpu__time_duration.sum,sm__ops_path_tensor_src_bf16_dst_fp32_sparsity_off.sum

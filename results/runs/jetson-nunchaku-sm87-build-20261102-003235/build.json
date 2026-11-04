@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "detail": "built and loaded; sm_87 code present",
+  "source": "https://github.com/tonera/nunchaku",
+  "revision": "0c8379d10b4b9017928d02fd0fdb2c26b991a8b6",
+  "source_dir": "/home/mfaruqi/tools/nunchaku-sm87-0c8379d",
+  "change": "setup.py get_sm_targets(): \"87\" added to the SM allowlist (patch.diff)",
+  "build": "python setup.py build_ext --inplace, MAX_JOBS=1, NUNCHAKU_INSTALL_MODE=FAST",
+  "memguard": {
+    "killed_by_guard": false,
+    "reason": "",
+    "exit_code": 0,
+    "min_avail_mb_threshold": 400,
+    "max_swap_growth_mb_threshold": 1536,
+    "poll_s": 0.1,
+    "mem_available_start_mb": 6019,
+    "mem_available_min_mb": 2313,
+    "swap_used_start_mb": 296,
+    "swap_used_max_mb": 296
+  }
+}

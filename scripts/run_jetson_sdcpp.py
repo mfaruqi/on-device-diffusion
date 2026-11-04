@@ -38,11 +38,23 @@ def check_config(config):
     automatic = config['optimizations'].get('auto_fit', False)
     if type(automatic) is not bool:
         raise ValueError('auto_fit must be a boolean')
-    expected = {'backend': 'CUDA0', 'params-backend': 'unset' if automatic else 'disk', 'auto-fit': int(automatic),
+    storage = config['optimizations'].get('parameter_storage', 'disk')
+    if not automatic and storage not in ('disk', 'CUDA0'):
+        raise ValueError('parameter_storage must be disk (reloaded per stage) or CUDA0 (resident)')
+    expected = {'backend': 'CUDA0', 'params-backend': 'unset' if automatic else storage, 'auto-fit': int(automatic),
                 'disable-segmented-compute': 0, 'eager-load': int(config['optimizations'].get('eager_loading', True)),
                 'conditioning-cache-size': config['optimizations'].get('conditioning_cache_size', 0),
                 'mmap': int(config['optimizations'].get('mmap', False)), 'fa': 0,
-                'diffusion-fa': 1, 'disable-prefetch': int(not config['optimizations'].get('prefetch', True))}
+                'diffusion-fa': int(config['optimizations'].get('diffusion_flash_attention', True)),
+                'disable-prefetch': int(not config['optimizations'].get('prefetch', True))}
+    tiling = config['optimizations'].get('vae_tiling', False)
+    if type(tiling) is not bool:
+        raise ValueError('vae_tiling must be a boolean')
+    if tiling or 'vae-tiling' in arguments:
+        expected['vae-tiling'] = int(tiling)  # absent means the untiled decode of every earlier config
+    if tiling:
+        expected['vae-tile-size'] = config['engine_settings']['vae_tile_size']
+        expected['vae-tile-overlap'] = config['engine_settings']['vae_tile_overlap']
     for key, value in expected.items():
         if arguments[key] != value:
             raise ValueError(f'Unsupported Jetson baseline setting: {key}={arguments[key]}')
@@ -94,6 +106,10 @@ def read_generations(run_dir, config, phases):
     return load, generations
 
 
+# One verbose tiling line per tiled decode (tiling.cpp:203, sd.cpp 19bbbca).
+TILED_DECODE_PATTERN = r'tiling\.cpp:\d+\s+- processing \d+ tiles'
+
+
 def audit_execution(log, config):
     """Keep requested context settings separate from engine-reported placement."""
     arguments = config['harness_arguments']
@@ -116,8 +132,11 @@ def audit_execution(log, config):
     expected_hits = sum(expected_conditioning_hits(config, i) for i in range(arguments['runs']))
     if hits != expected_hits:
         raise RuntimeError(f'Unexpected conditioning reuse: expected {expected_hits} hits, saw {hits}')
-    if 'Using flash attention in the diffusion model' not in log:
-        raise RuntimeError('Diffusion flash attention was not confirmed')
+    if ('Using flash attention in the diffusion model' in log) != bool(arguments['diffusion-fa']):
+        raise RuntimeError('Engine-reported diffusion flash attention differs from request')
+    tiled = len(re.findall(TILED_DECODE_PATTERN, log))
+    if tiled != (arguments['runs'] if arguments.get('vae-tiling') else 0):
+        raise RuntimeError(f'Engine-reported tiled VAE decodes ({tiled}) differ from request')
     mapped_files = sorted({Path(path).name for path in re.findall(r"using mmap for '([^']+)'", log)})
     expected_files = sorted(c['local_file'] for c in config['model']['components']) if arguments['mmap'] else []
     if mapped_files != expected_files or re.search(r'failed to memory-map|mmap: (?:failed|.*cannot map)', log):
@@ -132,6 +151,8 @@ def audit_execution(log, config):
             'conditioning_cache_hits': hits,
             'mmap_io': {'requested': bool(arguments['mmap']), 'confirmed_files': mapped_files,
                         'scope': 'Engine-reported file mappings, not continuous parameter residency or physical I/O'},
+            'vae_tiling': {'requested': bool(arguments.get('vae-tiling', 0)), 'tiled_decodes_reported': tiled},
+            'diffusion_flash_attention': bool(arguments['diffusion-fa']),
             'parameter_storage': arguments['params-backend'], 'segmented_compute_allowed': True,
             'requested': dict(config['engine_settings']),
             'reported_parameter_placement': placement,
@@ -147,6 +168,11 @@ def benchmark(config, run_dir, engine, binary, models):
             [str(binary), '--capabilities', '1'], text=True, timeout=10))
         if capabilities.get('easycache') is not True:
             raise RuntimeError('Rebuild a separate EasyCache-capable harness before this run')
+    if config['optimizations'].get('vae_tiling'):
+        capabilities = json.loads(subprocess.check_output(
+            [str(binary), '--capabilities', '1'], text=True, timeout=10))
+        if capabilities.get('vae_tiling') is not True:
+            raise RuntimeError('This harness hard-codes untiled VAE decode; use the tiling-capable build')
     # Check image-output dependency before spending time loading or generating.
     from PIL import Image  # noqa: F401
     collect_environment(config, engine, binary, run_dir, profile=bool(profile))

@@ -1,0 +1,11 @@
+{
+  "scope": "saved transformer weight package; no runtime memory or latency claim",
+  "tensor_count": 169,
+  "packed_tensor_count": 50,
+  "bf16_tensor_count": 119,
+  "weight_file_bytes": 4861018408,
+  "package_total_bytes": 4861217420,
+  "source_file_bytes": 7751109744,
+  "manifest_sha256": "a29709464b3ae2ba62b43db665a7b24c59a6fe4786b1fab548aa9a2f06f29412",
+  "fallback_exact_source_match": true
+}

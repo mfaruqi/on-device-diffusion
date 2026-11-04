@@ -1,0 +1,17 @@
+{
+  "path": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/.venv-m5-torch/lib/python3.12/site-packages/diffusers/hooks/taylorseer_cache.py",
+  "sha256": "7014eed6db7651d82fe9d8f85d5781651b8d1fda439d96316612ce92d51c0e74",
+  "parameters": {
+    "method": "taylorseer",
+    "cache_interval": 5,
+    "disable_cache_before_step": 3,
+    "disable_cache_after_step": null,
+    "max_order": 1,
+    "taylor_factors_dtype": "bfloat16",
+    "use_lite_mode": false,
+    "cache_identifiers": [
+      "^transformer_blocks.*attn",
+      "^single_transformer_blocks.*attn"
+    ]
+  }
+}

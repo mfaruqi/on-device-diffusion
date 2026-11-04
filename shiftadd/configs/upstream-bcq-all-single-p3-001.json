@@ -1,0 +1,42 @@
+{
+  "id": "m5-flux-klein-shiftadd-021",
+  "source": "/Users/mfaruqi/Documents/Projects/on-device-diffusion/output/m5-prep/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/blobs/9f29f9edcfdae452a653ffb51a534ca4decd389952c225724ff3b94042612a6e",
+  "source_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "capture": "shiftadd/runs/a100-activation-capture-all-attention-001",
+  "modules": [
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.12.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.13.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.14.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.15.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.16.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.17.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.18.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.19.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj"
+  ],
+  "fit_calls": 8,
+  "planes": 3,
+  "group_size": 128,
+  "output": "shiftadd/artifacts/upstream-bcq-all-single-p3-001",
+  "scale_format": "u8",
+  "vendor": "shiftadd/vendor/shiftaddqwen",
+  "damping": 0.01,
+  "fit_iters": 15,
+  "optimizations": {
+    "fit": "upstream-gptq-bcq",
+    "scale_format": "u8"
+  },
+  "row_policy": "all",
+  "description": "Same 20 full single-stream fused matrices and calibration capture as four-plane reference; reduce only plane count to three."
+}

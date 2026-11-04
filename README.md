@@ -34,6 +34,7 @@ Experiments cover stage timing, memory use, caching, and weight loading. See the
 
 ## Explore the repository
 
+- [ShiftAdd FLUX experiments](shiftadd/README.md) — compressed weights, calibration and image diagnostics.
 - [Runners and profiling tools](scripts/README.md) — how the measurements are collected.
 - [Configurations](configs/) and [results](results/README.md) — labelled experiments and saved measurements.
 - [Research wiki](wiki/index.md) — findings, methods, design decisions, and open questions.

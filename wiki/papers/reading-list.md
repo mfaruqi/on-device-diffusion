@@ -4,7 +4,7 @@ summary: References from the proposal and related work to read. A paper gets its
 status: unread
 ref: proposal references [1]–[25]
 source: ../../proposal/OnDeviceDiffusionProposal.pdf
-updated: 2026-10-06
+updated: 2026-10-15
 ---
 
 # Reading list
@@ -19,6 +19,7 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 
 | Group | Reference | Why it matters | Status |
 |---|---|---|---|
+| Heterogeneous scheduling | HeteroMosaic (Jun et al., 2026), arXiv 2607.12839v1 | causal LLM micro-batching, shared-bandwidth roofline and trace-guided critical-interval tuning; diffusion transfer unverified | [source review ingested](heteromosaic.md) |
 | Phone workload | DreamLite (Feng et al., 2026), arXiv 2603.28713; DreamLite mobile deployment guide | iPhone/Core ML/MLX reference; cached-prompt Android timing versus fresh-prompt protocol | [source review ingested](dreamlite.md); export/device validation pending, further work temporarily deferred |
 | Reuse policies | TeaCache (Liu et al., 2024), arXiv 2411.19108 | approximate cross-step reuse; polynomial calibration and threshold cost | [source review ingested](teacache.md); target integration unverified |
 | Reuse policies | DiCache (Bu et al., 2025), arXiv 2508.17356 | online probe and trajectory alignment; second policy | [source review ingested](dicache.md); target integration unverified |
@@ -32,6 +33,9 @@ not selected baselines or verified FLUX.2 klein/A100/Jetson integrations.
 | Engine options | [sd.cpp caching documentation](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/caching.md) | audit EasyCache, DBCache, TaylorSeer, cache-dit and Spectrum against the pinned engine/model; measure speed, cache memory and quality | planned option audit ([memo](../../raw/meetings/2026-10-01.md#to-do)); no new measurements |
 | Engines | FastVideo; Wan reference implementation | video baselines | unread; FastVideo temporarily deferred ([decision](../project/decisions.md#d-009-prioritize-image-engine-baselines-and-profiling)) |
 | Engines | ExecuTorch (Nachin et al., MLSys 2026), official OpenVINO diffusion example | existing diffusion recipes; candidate infrastructure, automatic joint selection unverified | [ingested](executorch-mlsys2026.md) |
+| Phone workload | SnapGen++ (Hu et al., 2026), arXiv 2601.08303 | compact three-stage DiT with sparse attention, Core ML export to iPhone; phone-scale DiT reference | [source review ingested](snapgen-plus-plus.md); weights/export unverified |
+| Precision | SemanticDialect (Jang and Tambe, 2026), arXiv 2603.02883 | 4-bit mixed-format block PTQ for video DiTs; selective residual decomposition of sensitive layers | [source review ingested](semanticdialect.md); no edge kernels |
+| Survey | [Diffusion Models on the Edge](https://arxiv.org/abs/2504.15298) (Zheng, 2025) | general edge-ML survey (sampling, quantization, fusion, memory scheduling); no experiments, no DiT/FLUX coverage | screened; no page (background only) |
 | Joint optimization | [CacheQuant](https://arxiv.org/abs/2503.01323) (Liu et al., CVPR 2025) | caching/quantization coupling, cache scheduling and error correction; audit novelty overlap | screened; full review pending |
 | Joint optimization | [QuantCache](https://arxiv.org/abs/2503.06545) (Wu et al., 2025) | hierarchical caching, quantization and pruning for video diffusion | abstract screened; full review pending |
 | Joint optimization | [Q&C](https://arxiv.org/abs/2503.02508) (ICLR 2026) | interaction of quantization and caching errors; audit overlap with error-budget allocation ([RQ3](../rq/rq3.md)) | screened; full review pending |

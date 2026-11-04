@@ -1,0 +1,183 @@
+{
+  "scope": "mixed-plane candidate; local projection-error proxy only, no pipeline quality or performance measurement",
+  "selection_split": "fit",
+  "evaluation_split": "calibration_validation",
+  "selection_rule": "choose fixed count with smallest increase in mean fitting-call relative output L2; ties by module name; equal byte savings required",
+  "lower_modules": [
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj"
+  ],
+  "ranked_modules": [
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.12.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.18.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.14.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.15.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.13.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.17.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.16.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.19.attn.to_qkv_mlp_proj"
+  ],
+  "bytes_saved_per_lower_matrix": 11280384,
+  "candidate_proxy": {
+    "lower_count": 10,
+    "file_bytes_for_variable_matrices": 807342640,
+    "fit_mean_projection_error_proxy": 0.008477368269814179,
+    "calibration_validation_mean_projection_error_proxy": 0.08518846796359866
+  },
+  "allocation_curve": [
+    {
+      "lower_count": 0,
+      "file_bytes_for_variable_matrices": 920146480,
+      "fit_mean_projection_error_proxy": 0.005932202994881663,
+      "calibration_validation_mean_projection_error_proxy": 0.06321578798815608
+    },
+    {
+      "lower_count": 1,
+      "file_bytes_for_variable_matrices": 908866096,
+      "fit_mean_projection_error_proxy": 0.006136576418066397,
+      "calibration_validation_mean_projection_error_proxy": 0.06509255631826819
+    },
+    {
+      "lower_count": 2,
+      "file_bytes_for_variable_matrices": 897585712,
+      "fit_mean_projection_error_proxy": 0.006366665530367755,
+      "calibration_validation_mean_projection_error_proxy": 0.06733261307235808
+    },
+    {
+      "lower_count": 3,
+      "file_bytes_for_variable_matrices": 886305328,
+      "fit_mean_projection_error_proxy": 0.006605127319926396,
+      "calibration_validation_mean_projection_error_proxy": 0.0696177314966917
+    },
+    {
+      "lower_count": 4,
+      "file_bytes_for_variable_matrices": 875024944,
+      "fit_mean_projection_error_proxy": 0.006845178961521014,
+      "calibration_validation_mean_projection_error_proxy": 0.07172375908121467
+    },
+    {
+      "lower_count": 5,
+      "file_bytes_for_variable_matrices": 863744560,
+      "fit_mean_projection_error_proxy": 0.007102803816087544,
+      "calibration_validation_mean_projection_error_proxy": 0.07386432776693255
+    },
+    {
+      "lower_count": 6,
+      "file_bytes_for_variable_matrices": 852464176,
+      "fit_mean_projection_error_proxy": 0.0073626110824989155,
+      "calibration_validation_mean_projection_error_proxy": 0.07602749620564282
+    },
+    {
+      "lower_count": 7,
+      "file_bytes_for_variable_matrices": 841183792,
+      "fit_mean_projection_error_proxy": 0.007625676089082845,
+      "calibration_validation_mean_projection_error_proxy": 0.07829952465835958
+    },
+    {
+      "lower_count": 8,
+      "file_bytes_for_variable_matrices": 829903408,
+      "fit_mean_projection_error_proxy": 0.007893626060103997,
+      "calibration_validation_mean_projection_error_proxy": 0.08050147672183812
+    },
+    {
+      "lower_count": 9,
+      "file_bytes_for_variable_matrices": 818623024,
+      "fit_mean_projection_error_proxy": 0.00818046095664613,
+      "calibration_validation_mean_projection_error_proxy": 0.08287324530538172
+    },
+    {
+      "lower_count": 10,
+      "file_bytes_for_variable_matrices": 807342640,
+      "fit_mean_projection_error_proxy": 0.008477368269814179,
+      "calibration_validation_mean_projection_error_proxy": 0.08518846796359866
+    },
+    {
+      "lower_count": 11,
+      "file_bytes_for_variable_matrices": 796062256,
+      "fit_mean_projection_error_proxy": 0.008774763403926045,
+      "calibration_validation_mean_projection_error_proxy": 0.08756785946898163
+    },
+    {
+      "lower_count": 12,
+      "file_bytes_for_variable_matrices": 784781872,
+      "fit_mean_projection_error_proxy": 0.009078918318846264,
+      "calibration_validation_mean_projection_error_proxy": 0.08997171430382878
+    },
+    {
+      "lower_count": 13,
+      "file_bytes_for_variable_matrices": 773501488,
+      "fit_mean_projection_error_proxy": 0.009400854608975351,
+      "calibration_validation_mean_projection_error_proxy": 0.09240291786845774
+    },
+    {
+      "lower_count": 14,
+      "file_bytes_for_variable_matrices": 762221104,
+      "fit_mean_projection_error_proxy": 0.009738286992069333,
+      "calibration_validation_mean_projection_error_proxy": 0.09500874562654645
+    },
+    {
+      "lower_count": 15,
+      "file_bytes_for_variable_matrices": 750940720,
+      "fit_mean_projection_error_proxy": 0.010078340975451284,
+      "calibration_validation_mean_projection_error_proxy": 0.09744904709514231
+    },
+    {
+      "lower_count": 16,
+      "file_bytes_for_variable_matrices": 739660336,
+      "fit_mean_projection_error_proxy": 0.010422061319695785,
+      "calibration_validation_mean_projection_error_proxy": 0.09993548993952572
+    },
+    {
+      "lower_count": 17,
+      "file_bytes_for_variable_matrices": 728379952,
+      "fit_mean_projection_error_proxy": 0.010768457016092725,
+      "calibration_validation_mean_projection_error_proxy": 0.10248262598179281
+    },
+    {
+      "lower_count": 18,
+      "file_bytes_for_variable_matrices": 717099568,
+      "fit_mean_projection_error_proxy": 0.011116523717646487,
+      "calibration_validation_mean_projection_error_proxy": 0.10501248193904758
+    },
+    {
+      "lower_count": 19,
+      "file_bytes_for_variable_matrices": 705819184,
+      "fit_mean_projection_error_proxy": 0.011474266328150406,
+      "calibration_validation_mean_projection_error_proxy": 0.10759409968741238
+    },
+    {
+      "lower_count": 20,
+      "file_bytes_for_variable_matrices": 694538800,
+      "fit_mean_projection_error_proxy": 0.011857151956064627,
+      "calibration_validation_mean_projection_error_proxy": 0.11046295911073685
+    }
+  ],
+  "assembly": {
+    "modules": 50,
+    "packed_file_bytes": 960728440
+  },
+  "source_summary_sha256": {
+    "higher": "fef2c2d453aa2ad78bd16177d68fdb2f7cc428baeb915c11bd4f784e9923c0d8",
+    "lower": "057b815dc0f3580aa9807d1fa6c278ee27adc3ee6539ae05f377f2d3034649ba"
+  }
+}

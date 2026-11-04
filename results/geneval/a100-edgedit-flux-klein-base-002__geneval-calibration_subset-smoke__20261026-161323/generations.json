@@ -1,0 +1,79 @@
+{
+  "engine": "edge-dit.cpp",
+  "template_run": "results/runs/a100-edgedit-flux-klein-base-002__baseline__20261015-170356",
+  "subset": "calibration_subset",
+  "indices": [
+    9,
+    12
+  ],
+  "seed_rule": "engine seed = 4 * position + sample (ed-sample base 0 + image index)",
+  "rows": [
+    {
+      "index": 9,
+      "sample": 0,
+      "engine_seed": 0,
+      "latency_s": 34.108502,
+      "png_sha256": "2cf71499f5504c47cf7b56fd7d69cbe0cca83090452c4a1ba13e665ad4d29bfe"
+    },
+    {
+      "index": 9,
+      "sample": 1,
+      "engine_seed": 1,
+      "latency_s": 34.455856,
+      "png_sha256": "01bb6a07168935b7a17176d132eb4c2c71e1855396aebd0a5f46c912123a3b7c"
+    },
+    {
+      "index": 9,
+      "sample": 2,
+      "engine_seed": 2,
+      "latency_s": 34.569793,
+      "png_sha256": "63e71a0ffb72744c7d82a0e243b26d836fe365d5e05005e7eda323e7488b67ac"
+    },
+    {
+      "index": 9,
+      "sample": 3,
+      "engine_seed": 3,
+      "latency_s": 33.649891,
+      "png_sha256": "e64f2c5229ec95d8c5d159967c662f24bfde7420e4d8b4cce1bb7dc9c49b63c5"
+    },
+    {
+      "index": 12,
+      "sample": 0,
+      "engine_seed": 4,
+      "latency_s": 37.22855,
+      "png_sha256": "2d92298ac1556b8eb70fe5f6f819c2de1a23a84048fc35dd7d09c44274bfcb86"
+    },
+    {
+      "index": 12,
+      "sample": 1,
+      "engine_seed": 5,
+      "latency_s": 42.182923,
+      "png_sha256": "35530ef2a6f4e00cd20e80d5d87b6fc37b3b7b5a0738da16b4c32215d746d147"
+    },
+    {
+      "index": 12,
+      "sample": 2,
+      "engine_seed": 6,
+      "latency_s": 35.945154,
+      "png_sha256": "a8cbd47e2f7ddf2750746c6247be12df1a0407adbf48ec30517d6715527feb5c"
+    },
+    {
+      "index": 12,
+      "sample": 3,
+      "engine_seed": 7,
+      "latency_s": 35.097143,
+      "png_sha256": "2f9a6bb235c00f4be12f04ab89dd3044d77f85d4cfd82bd66ff62a45c3beb511"
+    }
+  ],
+  "cache_lines": [
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/easycache_policy.cpp:229 [info] EasyCache skipped 30/50 steps (2.50x estimated speedup)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/easycache_policy.cpp:229 [info] EasyCache skipped 29/50 steps (2.38x estimated speedup)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/easycache_policy.cpp:229 [info] EasyCache skipped 29/50 steps (2.38x estimated speedup)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/easycache_policy.cpp:229 [info] EasyCache skipped 31/50 steps (2.63x estimated speedup)",
+    "/home/mfaruqi/tools/edge-dit-campaign-20261004/src/core/optimization/cache/policy/policies/easycache_policy.cpp:229 [info] EasyCache skipped 28/50 steps (2.27x estimated speedup)"
+  ],
+  "split_sha256": "ee8ce9fc3f99fa475b2fdb2a9ffbfe32ecf5eeebe85ec3f991f232770c76eecf",
+  "template_command_sha256": "d8735cc5138b9c888e2649d1b3daaf791f69b449bcc37739181116e80d08f335",
+  "binary_sha256": "fc6b14a7cf424b01937981ce47afb6a65bbfdd649dc52baf2ead54c81906c725",
+  "script_sha256": "e4edc251e867c8f46a6d01707ba5ede8889c07712f05f743657fd296cae5ae6b"
+}

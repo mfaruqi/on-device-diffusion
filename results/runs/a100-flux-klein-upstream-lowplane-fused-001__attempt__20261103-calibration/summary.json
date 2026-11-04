@@ -1,0 +1,150 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 2.835532885044813,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3612722350517288,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30998567992355675,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30859334499109536,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3735500330803916,
+      "relative_latent_l2": 0.19563718140125275,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3074274379760027,
+      "relative_latent_l2": 0.30915963649749756,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30800384003669024,
+      "relative_latent_l2": 0.33652833104133606,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3072869930183515,
+      "relative_latent_l2": 0.47916215658187866,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3581404659198597,
+      "relative_latent_l2": 0.2772960960865021,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30840844893828034,
+      "relative_latent_l2": 0.38871437311172485,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30935394391417503,
+      "relative_latent_l2": 0.4750833213329315,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3070500490721315,
+      "relative_latent_l2": 0.5953848958015442,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p2p4",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3481471370905638,
+      "relative_latent_l2": 0.45293912291526794,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p2p4",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3089902010979131,
+      "relative_latent_l2": 0.54327791929245,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p2p4",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.31002047401852906,
+      "relative_latent_l2": 0.6945074796676636,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p2p4",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30791027401573956,
+      "relative_latent_l2": 0.8158534169197083,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p1p4",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3634925540536642,
+      "relative_latent_l2": 0.7189091444015503,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p1p4",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.307055348996073,
+      "relative_latent_l2": 0.830738365650177,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p1p4",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3057519420981407,
+      "relative_latent_l2": 0.9773436188697815,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p1p4",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30611028405837715,
+      "relative_latent_l2": 1.103068232536316,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

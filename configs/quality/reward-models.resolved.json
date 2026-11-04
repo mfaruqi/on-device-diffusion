@@ -1,0 +1,41 @@
+{
+  "models": {
+    "clip": {
+      "repo": "openai/clip-vit-large-patch14"
+    },
+    "pickscore": {
+      "repo": "yuvalkirstain/PickScore_v1",
+      "processor": "laion/CLIP-ViT-H-14-laion2B-s32B-b79K"
+    },
+    "hps": {
+      "repo": "xswu/HPSv2",
+      "file": "HPS_v2.1_compressed.pt",
+      "arch": "ViT-H-14"
+    },
+    "imagereward": {
+      "repo": "THUDM/ImageReward",
+      "file": "ImageReward.pt",
+      "med_config": "med_config.json",
+      "tokenizer": "bert-base-uncased"
+    }
+  },
+  "revisions": {
+    "THUDM/ImageReward": "5736be03b2652728fb87788c9797b0570450ab72",
+    "bert-base-uncased": "86b5e0934494bd15c9632b12f734a8a67f723594",
+    "laion/CLIP-ViT-H-14-laion2B-s32B-b79K": "1c2b8495b28150b8a4922ee1c8edee224c284c0c",
+    "openai/clip-vit-large-patch14": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+    "xswu/HPSv2": "697403c78157020a1ae59d23f111aa58ced35b0a",
+    "yuvalkirstain/PickScore_v1": "a4e4367c6dfa7288a00c550414478f865b875800"
+  },
+  "sha256": {
+    "xswu/HPSv2/HPS_v2.1_compressed.pt": "c57a38fb4a2f7e7c15bf00da2ea377cdf165448b4dd1052a484c215a998c9837",
+    "THUDM/ImageReward/ImageReward.pt": "d71dc8d4912bc633c06ab8ef1ef6a81e8199d4369f14b47b29baf1d19de561f6",
+    "THUDM/ImageReward/med_config.json": "d8b5029cc3c0124313d17009d043f0701bbe497f3721fa4ceb818720fe665326"
+  },
+  "packages": {
+    "torch": "2.8.0+cu126",
+    "transformers": "4.46.3",
+    "open_clip": "2.32.0",
+    "image-reward": "unknown"
+  }
+}

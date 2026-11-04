@@ -1,0 +1,5 @@
+{
+  "status": "invalid",
+  "reason": "geneval_generate.py did not apply optimizations.attention_backend (math) at the time of this run; all 384 images are pixel-identical to the q4-nf4-512 reference run. Superseded by a regenerated run with the fixed generator.",
+  "detected": "2026-10-26"
+}

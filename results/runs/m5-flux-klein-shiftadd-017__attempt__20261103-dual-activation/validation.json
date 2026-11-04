@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "comparisons": 2880,
+  "prior_weight_only_comparisons_reproduced": 480,
+  "bf16_original_zero_checks": 480,
+  "all_finite": true,
+  "metric_rtol": 1e-05,
+  "metric_atol": 1e-08
+}

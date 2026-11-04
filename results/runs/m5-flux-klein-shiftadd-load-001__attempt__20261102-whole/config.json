@@ -1,0 +1,11 @@
+{
+  "id": "m5-flux-klein-shiftadd-load-001-whole",
+  "bundle": "shiftadd/artifacts/transformer-radix-compact-p4-001",
+  "tensor": "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight",
+  "chunk_rows": null,
+  "fresh_processes": 4,
+  "output": "shiftadd/runs/load-memory-whole-001",
+  "optimizations": {
+    "decode_chunk_rows": null
+  }
+}

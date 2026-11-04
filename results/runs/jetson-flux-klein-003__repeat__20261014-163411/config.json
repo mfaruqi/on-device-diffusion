@@ -1,0 +1,99 @@
+{
+  "id": "jetson-flux-klein-003",
+  "record_kind": "repeated unprofiled baseline",
+  "provenance": "Derived from the Jetson 003 stage-profile config; component revision/SHA256 pins retained. Engine commit, power mode and model hashes must be verified again on the target before measurement.",
+  "description": "Jetson 003 unchanged quantized disk-backed 512x512 workload; repeated unprofiled baseline",
+  "device_label": "jetson-orin-nano",
+  "engine": {
+    "name": "stable-diffusion.cpp",
+    "commit": "19bbbca1c736bbb9538679fc0ae690cb2b46b492",
+    "cuda_architecture": 87
+  },
+  "model": {
+    "components": [
+      {
+        "repo_id": "leejet/FLUX.2-klein-4B-GGUF",
+        "revision": "3b1f5a9dc3abb32238b053aeb3d823c30afdacbd",
+        "file": "flux-2-klein-4b-Q4_0.gguf",
+        "sha256": "d1023499ef3f2f82ff7c50e6778495195c1b6cc34835741778868428111f9ff4",
+        "local_file": "flux-2-klein-4b-Q4_0.gguf"
+      },
+      {
+        "repo_id": "unsloth/Qwen3-4B-GGUF",
+        "revision": "22c9fc8a8c7700b76a1789366280a6a5a1ad1120",
+        "file": "Qwen3-4B-Q4_K_M.gguf",
+        "sha256": "f6f851777709861056efcdad3af01da38b31223a3ba26e61a4f8bf3a2195813a",
+        "local_file": "Qwen3-4B-Q4_K_M.gguf"
+      },
+      {
+        "repo_id": "black-forest-labs/FLUX.2-klein-4B",
+        "revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+        "file": "vae/diffusion_pytorch_model.safetensors",
+        "sha256": "ca70d2202afe6415bdbcb8793ba8cd99fd159cfe6192381504d6c4d3036e0f04",
+        "local_file": "flux2-vae.safetensors"
+      }
+    ]
+  },
+  "workload": {
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "steps": 4,
+    "cfg_scale": 1.0,
+    "seed": 0,
+    "batch_count": 1,
+    "sampling_method": "euler",
+    "scheduler": "flux2"
+  },
+  "protocol": {
+    "first_runs": 1,
+    "warmup_runs": 3,
+    "measured_runs": 10,
+    "tegrastats_interval_ms": 1000
+  },
+  "engine_settings": {
+    "backend": "CUDA0",
+    "params_backend": "disk",
+    "auto_fit": false,
+    "disable_segmented_compute": false,
+    "eager_load": true,
+    "conditioning_cache_size": 0,
+    "diffusion_fa": true,
+    "threads": 4
+  },
+  "optimizations": {
+    "quantization": {
+      "transformer": "Q4_0",
+      "text_encoder": "Q4_K_M"
+    },
+    "cpu_offload": false,
+    "vae_tiling": false,
+    "step_cache": null,
+    "graph_segmentation": true,
+    "parameter_storage": "disk"
+  },
+  "reference_config": "configs/jetson-flux-klein-stage-profile.json",
+  "required_power_mode": "25W",
+  "harness_arguments": {
+    "runs": 14,
+    "steps": 4,
+    "backend": "CUDA0",
+    "params-backend": "disk",
+    "threads": 4,
+    "mmap": 0,
+    "fa": 0,
+    "diffusion-fa": 1,
+    "auto-fit": 0,
+    "eager-load": 1,
+    "disable-segmented-compute": 0,
+    "disable-prefetch": 0,
+    "conditioning-cache-size": 0,
+    "prompt": "A cat holding a sign that says hello world",
+    "width": 512,
+    "height": 512,
+    "seed": 0,
+    "cfg-scale": 1,
+    "sampling-method": "euler",
+    "scheduler": "flux2"
+  }
+}

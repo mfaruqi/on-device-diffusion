@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Pinned ed-sample baseline adapter; one child context and no upstream changes.
 
-Only the validated four-step no-cache A100 workload is supported. Per-generation
+The A100 entry point supports its validated four-step no-cache workload. The
+shared parser also validates explicit Metal protocols. Per-generation
 wall time comes from rounded steady-clock stdout; raw system-clock stage markers
 have different semantics and are preserved explicitly. See baseline-metrics.md.
 """
@@ -27,12 +28,25 @@ CLI = ['--backend', 'cuda', '--type', 'bf16', '--cache_method', 'off',
        '--vae-tiling', 'off', '--flash-attention', '--threads', '4']
 
 
+CACHE_METHODS = ('easycache', 'ucache', 'dbcache', 'taylorseer', 'cache-dit', 'magcache', 'dicache', 'sencache')
+
+
+def expected_cli(cfg):
+    """The validated flags; a step_cache config changes only the --cache_method value."""
+    cache = cfg['optimizations'].get('step_cache')
+    return [cache['method'] if cache and a == 'off' and i and CLI[i-1] == '--cache_method' else a
+            for i, a in enumerate(CLI)]
+
+
 def check_config(cfg):
     check_optimizations(cfg, {'quantization', 'cpu_offload', 'vae_tiling',
-                              'auto_fit', 'auto_allocate', 'step_cache'})
+                              'auto_fit', 'auto_allocate', 'step_cache'}, enabled_keys={'step_cache'})
+    cache = cfg['optimizations'].get('step_cache')
+    assert cache is None or (set(cache) == {'method'} and cache['method'] in CACHE_METHODS), (
+        f'step_cache must be null or {{"method": one of {CACHE_METHODS}}} (engine default parameters)')
     assert cfg['engine']['commit'] == COMMIT and cfg['model']['revision'] == REVISION
     assert cfg['model']['repo_id'] == 'black-forest-labs/FLUX.2-klein-4B'
-    assert cfg['precision'] == 'bfloat16' and cfg['cli_arguments'] == CLI
+    assert cfg['precision'] == 'bfloat16' and cfg['cli_arguments'] == expected_cli(cfg)
     w = cfg['workload']
     expected = {'width': 1024, 'height': 1024, 'steps': 4, 'guidance': 1.0,
                 'cfg_scale': 1.0, 'seed': 0, 'batch_size': 1, 'sampler': 'euler', 'scheduler': 'auto'}
@@ -56,21 +70,37 @@ def parse_log(log, cfg, phases, timing):
     names = [('encode','begin'),('encode','end'),('denoise','begin'),
              ('denoise','end'),('decode','begin'),('decode','end')]
     assert [(a,b) for a,b,_ in markers] == names*n
-    schedule = re.findall(r'flux step (\d+)/4 sigma=([\d.]+) next=([\d.]+)', log)
+    w = cfg['workload']
+    steps = w['steps']
+    schedule = re.findall(r'flux step (\d+)/' + str(steps) + r' sigma=([\d.]+) next=([\d.]+)', log)
     expected = [('1','1.000000','0.967384'),('2','0.967384','0.908144'),
                 ('3','0.908144','0.767200'),('4','0.767200','0.000000')]
-    assert schedule == expected*n, 'Changed or incomplete four-step schedule'
-    assert log.count('1024x1024 latent=64x64 image_seq_len=4096 steps=4 flux2_mu=2.291 guidance=1.00 cfg=1.00 seed=0') == n
-    for line in ['default backend: CUDA0', 'flux activation dtype: f32 (bf16_tensors=149/149)',
+    if w['width'] == 1024 and steps == 4:
+        assert schedule == expected*n, 'Changed or incomplete four-step schedule'
+    else:
+        assert [int(s[0]) for s in schedule] == list(range(1, steps+1))*n
+        for i in range(n):
+            seq = schedule[i*steps:(i+1)*steps]
+            assert float(seq[0][1]) == 1.0 and float(seq[-1][2]) == 0.0
+            assert all(float(a[1]) >= float(a[2]) and a[2] == b[1] for a,b in zip(seq,seq[1:]))
+        assert all(schedule[i*steps:(i+1)*steps] == schedule[:steps] for i in range(n))
+    generation = rf"flux txt2img: {w['width']}x{w['height']} .* steps={steps} flux2_mu=[0-9.]+ guidance={w['guidance']:.2f} cfg={w['cfg_scale']:.2f} seed=0"
+    if cfg.get('backend') == 'metal':
+        assert len(re.findall(generation, log)) == n
+    else:
+        assert log.count('1024x1024 latent=64x64 image_seq_len=4096 steps=4 flux2_mu=2.291 guidance=1.00 cfg=1.00 seed=0') == n
+    backend = 'MTL0' if cfg.get('backend') == 'metal' else 'CUDA0'
+    for line in ['default backend: ' + backend, 'flux activation dtype: f32 (bf16_tensors=149/149)',
                  'Conditioner weight type stat: bf16:398', 'Diffusion model weight type stat: bf16:149',
-                 'VAE weight type stat: bf16:248', 'cache mode   : original']:
+                 'VAE weight type stat: bf16:248',
+                 'cache mode   : ' + ((cfg['optimizations'].get('step_cache') or {}).get('method') or 'original')]:
         assert line in log, 'Missing engine confirmation: '+line
     rows, stages, events = [], [], []
     for i, phase in enumerate(phases):
         ts = [float(m[2]) for m in markers[i*6:i*6+6]]
         assert ts == sorted(ts) and all(math.isfinite(t) for t in ts)
         assert (ts[-1]-ts[0])*1000 <= wall[i]+0.501, 'Stage clock/span inconsistent with generation'
-        row = dict.fromkeys(run_fields(4))
+        row = dict.fromkeys(run_fields(steps))
         row.update(run_index=i, phase=phase, wall_ms=wall[i],
                    denoise_ms=(ts[3]-ts[2])*1000, vae_decode_ms=(ts[5]-ts[4])*1000)
         rows.append(row)
@@ -115,7 +145,14 @@ def benchmark(cfg, out):
     write_json(out/'device-memory.json',{'clock':'python_perf_counter','interval_ms':cfg['protocol']['device_memory_sample_ms'],
                                        'samples':sampler.samples,'scope':'Whole child process; not aligned to system-clock phases'})
     timing=json.loads((out/'engine/timing.json').read_text())
-    rows,stages,events=parse_log((out/'engine.log').read_text(),cfg,phases,timing)
+    log=(out/'engine.log').read_text()
+    rows,stages,events=parse_log(log,cfg,phases,timing)
+    if cfg['optimizations'].get('step_cache'):
+        assert log.count('cache enabled: mode=')==len(phases),'Cache not enabled for every generation'
+        found=re.findall(r'(\S+) (?:skipped|reused) (\d+)/(\d+) steps',log)
+        write_json(out/'step-cache.json',{'config':cfg['optimizations']['step_cache'],'steps':cfg['workload']['steps'],
+            'skipped_steps_per_generation':[int(k) for _,k,_ in found] if len(found)==len(phases) else None,
+            'note':'engine-reported "<method> skipped|reused k/N steps" lines (steps not fully computed); null if not printed'})
     from PIL import Image
     image=out/'engine/imgs/img_000000.png'
     with Image.open(image) as im:

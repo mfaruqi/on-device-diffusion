@@ -2,7 +2,7 @@
 type: method
 summary: Definition of every reported metric (latency, memory, repeatability, profiling), for the PyTorch and stable-diffusion.cpp runners.
 status: active
-updated: 2026-10-04
+updated: 2026-10-15
 ---
 
 # Baseline metrics: what we measure and how
@@ -227,6 +227,17 @@ Profiling: `--nsys` runs the harness build with NVTX ranges (`text_encode`, `den
 contains its GPU start time and groups ggml kernels by name (see `categorize_ggml`). There is no
 launching-op table for ggml.
 
+### Derived per-generation quantities
+
+Records may report these values, computed per measured generation and summarized as median and
+min–max. They are derived from `runs.csv` or sd.cpp `engine/results.jsonl`, not `summary.json` fields.
+
+| Quantity | Definition | Notes |
+|---|---|---|
+| steady per-step time | mean of `denoise_step_1..n−1_ms` (sd.cpp: `(t_step_end[n−1] − t_step_end[0]) / (n−1)`) | excludes step 0 and therefore any weight reload or lazy compilation inside it; isolates an option's per-step compute when wall time carries reload drift. With a step cache it mixes computed and predicted steps; report per-step medians alongside it |
+| sd.cpp condition / first-step / decode | `t_cond − t_start`, `t_step_end[0] − t_sampling_start`, `t_decode_end − t_sampling_end` | identical to `text_encode_ms`, `denoise_step_0_ms`, `vae_decode_ms`; with disk-backed parameters the first two include encoder and transformer weight reload |
+| sd.cpp engine-reported loading per generation | sum of `loading tensors completed, taking X s` durations logged within `[t_start, t_end]` | rounded engine diagnostic; overlaps stage time, not additive, not physical storage I/O. Check that none falls inside the steady-step window |
+
 ## Derived event records
 
 [measurement_events.py](../../scripts/measurement_events.py) derives `events.jsonl`
@@ -412,7 +423,7 @@ Record package versions and both backbone/calibration weight hashes. A same-imag
 check must be approximately zero. These conventions follow the [official LPIPS implementation](https://github.com/richzhang/PerceptualSimilarity).
 Lower LPIPS indicates greater perceptual similarity; neither LPIPS nor PSNR establishes
 prompt alignment or the proposal's formal quality requirement. A single development prompt
-is not a held-out test. Missing evaluators produce an explicit unavailable value, never zero.
+is not a held-out test. Missing evaluators produce an explicit unavailable value, never zero. Implementation for any engine: [quality_diagnostics.py](../../scripts/quality_diagnostics.py) (fixed pair list; never overwrites an existing file).
 
 ### Exact sd.cpp conditioning reuse
 
@@ -440,6 +451,43 @@ audit, not a memory or latency metric; stage boundaries and sampled system-memor
 remain unchanged. File mapping does not prove zero-copy GPU access, continuous residency,
 or reduced physical disk traffic. See [audit implementation](../../scripts/run_jetson_sdcpp.py)
 and [pinned source excerpt](../../raw/engine-evidence/mmap-source-evidence.txt).
+
+## Portable PyTorch runner options
+
+[`run_flux_portable.py`](../../scripts/run_flux_portable.py) keeps the CUDA-event stage boundaries
+of the [latency table](#latency). Each option below is a labelled change with its own receipt file.
+
+- `stage_residency` (`text_encoder: release_after_encode`, optional `transformer: release_during_encode`):
+  encoder load and transformer release/reload run between timed stages, so they fall in `wall_ms`
+  and `other_ms`, not `text_encode_ms`. Per-generation load/free durations go to
+  `stage-residency.json`, written after the last generation.
+- `attention_backend` (`null` | `math` | `flash` | `efficient`): the whole generation runs inside
+  `torch.nn.attention.sdpa_kernel([backend])`; SDPA calls are counted per generation in
+  `attention.json → sdpa_calls_per_generation`, and zero calls fail the run. `null` leaves selection
+  to PyTorch and writes nothing.
+- `vae_tiling` may be `{"tile_sample_px": int, "overlap": float}`: after `enable_tiling()` the runner
+  sets the sample/latent tile sizes and `tile_overlap_factor`, and fails unless `vae.tiled_decode` ran
+  once per generation (no receipt file; `complete` status is the receipt). `vae_decode_ms` keeps its
+  boundary and contains the whole tiled decode.
+- `conditioning_reuse: true`: `encode_prompt` is wrapped, innermost first, by the residency swaps,
+  the exact `ConditioningCache` ([source](../../scripts/mps_conditioning.py); key = full bound
+  arguments; capacity 1 without CFG, 2 with) and the stage recorder. On hits `text_encode_ms` is
+  conditioning **retrieval** and no swap occurs; on the single miss (first generation) it
+  **includes** the residency swap (without reuse, swaps count in `other_ms`). The run fails
+  unless misses = capacity and hits = (generations − 1) × capacity; receipts in
+  `conditioning-cache.json` and `stage-residency.json`.
+- `step_cache` (`first_block_cache` {threshold} | `taylorseer` {cache_interval,
+  disable_cache_before_step, max_order}): `transformer.enable_cache(...)` after load and on every
+  reloaded transformer. `step-cache.json → full_transformer_computations_per_generation` counts
+  pre-hook calls on the last single-stream block: it detects whole-step skips (First-Block Cache)
+  but **not** TaylorSeer, which predicts sub-module outputs inside blocks that still run. For
+  TaylorSeer the counter is uninformative; identify predicted steps from `denoise_step_i_ms`.
+- `compiler: {"name": "torch_compile", "mode": ...}` wraps `transformer.forward` only (stage hooks
+  stay outside). Compilation is lazy and falls in the first generation, reported separately.
+  `compiler.json → compilations_applied` counts **wrappings**, including re-wrapping of reloaded
+  modules, not executed compilations. A compiler with `transformer: release_during_encode` is
+  allowed only together with `conditioning_reuse`. `TORCHINDUCTOR_COMPILE_THREADS` is recorded in
+  `environment.json → env_vars`; the Triton version is not recorded.
 
 ## edge-dit ed-sample adapter
 
@@ -477,3 +525,220 @@ introduced. PNG saving occurs between repetitions, outside generation timing.
   observations requested by this adapter, so it is not the measured median.
 
 Source semantics and functional evidence: [edge-dit record](../../experiments/a100-edgedit-flux-klein-001.md).
+
+### Jetson edge-dit runner
+
+[`run_edgedit_jetson.py`](../../scripts/run_edgedit_jetson.py) keeps the per-pass `wall_ms` above
+but fills `text_encode_ms`, `denoise_ms` (engine `sampling`), `vae_decode_ms` and `other_ms` from
+the engine's `flux generate breakdown` line, printed in seconds to two decimals (10 ms rounding).
+Raw `[[phase]]` intervals stay in `stages.csv` (`host_marker_ms`, `engine_breakdown_total`).
+Memory is whole-system tegrastats only, as in [Jetson repeated baseline memory](#jetson-repeated-baseline-memory).
+The `summary.json` `residency` string reads "one load, 14 passes" even for two-pass smokes.
+
+`optimizations.step_cache: {"method": ...}` maps to `--cache_method <method>` with engine defaults
+(not logged). `step-cache.json → skipped_steps_per_generation` is parsed from the per-pass
+`<Method> skipped|reused k/4 steps` line (steps not fully computed); null if the line count does
+not match the pass count. Runner versions before 2026-10-15 matched only "skipped", so TaylorSeer,
+MagCache and DiCache runs from then read null; take their counts from `engine.log`. The engine
+reports no per-step times, so a step cache shows only in `denoise_ms`.
+
+## macOS Metal sd.cpp
+
+Build and execution procedure: [M5 how-to](m5-howto.md).
+
+The [Metal adapter](../../scripts/sdcpp_device.py) reuses sd.cpp host log/progress timestamp
+intervals and the existing first/warm-up/measured protocol. `gpu_ms` and `gpu_span_ms` remain
+empty: host completion intervals are not Metal device-event timings. The pinned ggml scheduler
+uses synchronous graph completion. No Python/C++ clock-epoch alignment is assumed on macOS.
+
+`system-memory.csv` samples psutil whole-system memory every configured interval, across loading
+and all generations. `system-memory-summary.json` reports total physical memory, minimum available,
+peak `total - available`, initial swap used and peak swap used, all in GiB. These values include
+other applications and OS activity; `total - available` is an availability-pressure measure,
+not GPU allocations or physical pages owned by the model. Unified CPU/GPU memory is never added
+together. `device_used_peak_gib`, `peak_alloc_gib` and `peak_reserved_gib` remain unavailable.
+
+`host_peak_rss_gib` converts macOS `RUSAGE_CHILDREN.ru_maxrss` bytes to GiB (Linux reports KiB).
+The runner has only one inference child; the counter also includes earlier short-lived probes.
+It is a process-residency diagnostic, not a complete Metal or whole-system memory budget.
+`thermal.json` captures `pmset -g therm` before and after execution. No warning is not proof of
+absence of throttling; continuous temperature, GPU utilization and power remain unmeasured.
+The first-generation time may include lazy Metal shader/pipeline setup; model loading is separate.
+These new Mac fields do not change the meaning of prior CUDA/Jetson results.
+
+The Metal protocol can set `prevent_idle_sleep: true`; the recorded child command uses
+`caffeinate -is` for its lifetime (system-sleep prevention requires AC). The memory sampler also
+records Unix wall time alongside Python monotonic time. A wall/monotonic elapsed-time divergence
+of 5 seconds or more fails the run's timing gate, preserving its outputs. Investigate sleep or
+clock adjustments rather than subtracting a pause from reported latency. The initial M5 attempt
+predates this guard; its separate validation record disqualifies its sleep-interrupted timings.
+
+### PyTorch MPS
+
+The [MPS runner](../../scripts/run_flux_mps.py) uses the same pipeline hooks and CFG call-count
+validation as CUDA. [MPS events](https://docs.pytorch.org/docs/stable/generated/torch.mps.event.Event.html)
+mark each stage without a stage-level synchronization; one synchronization at generation end
+precedes reading event durations. Host wall time includes final synchronization. Host stage intervals
+include enqueue work and are not substituted for GPU event intervals. MPS allocator snapshots are
+recorded at stage boundaries; CUDA-equivalent allocation/reservation peaks are unavailable and blank.
+Driver allocations after loading and whole-system memory are separate fields and must not be added.
+CPU-seeded initial noise is transferred by Diffusers because MPS lacks its own Generator; this is
+recorded and does not establish matched initial noise with CUDA or sd.cpp. Model parameters remain
+BF16 on MPS, and unsupported operators fail with CPU fallback disabled. Sleep prevention and
+wall/monotonic clock checks follow the sd.cpp Metal procedure above.
+
+### edge-dit Metal
+
+The [Metal adapter](../../scripts/run_edgedit_metal.py) preserves upstream `ed-sample`'s timing
+semantics used by the A100 adapter: steady-clock generation durations rounded to 1 ms, and separate
+system-clock encode/denoise/decode markers. `encode_setup` includes latent and schedule setup and
+is not relabelled as text encoding. Protocol phase labels exclude the three warm-ups. Only the last
+image survives upstream repeats, so repeatability remains unknown. Whole-system unified memory and
+Darwin child RSS use the same definitions as sd.cpp Metal; CUDA allocator/device counters stay empty.
+Placement, weight types, schedule completion, cache mode and clock continuity are audited; no
+automatic quantization, CPU offload or fitting is requested. A working Metal build alone does not
+establish a completed or supported full-model run.
+
+### M5 individual option audits
+
+The MPS `conditioning_reuse` variant wraps `encode_prompt` within one loaded pipeline, caching its returned embeddings and text IDs by the complete encoding arguments. Positive and empty CFG negative prompts have separate entries. Cache population occurs inside the first generation; subsequent lookups remain inside the timed text-encoding stage. `conditioning-cache.json` records hits/misses, with assertions for every generation. Reuse does not evict or offload the text encoder.
+
+The MPS VAE-tiling variant explicitly uses 256-pixel tiles and 25% overlap; `vae-tiling.json` confirms one tiled decode per generation. It may change pixels and is not described as exact. Stage timing boundaries remain unchanged. Same-engine `reference-image-check.json` reports pixel identity and per-channel mean absolute pixel differences for one development prompt/seed; this is not formal quality evaluation.
+
+## MFLUX / MLX on M5
+
+The [MFLUX runner](../../scripts/run_mflux.py) records synchronized host stage durations;
+these are not CUDA/MPS event times. The adapter evaluates lazy arrays and synchronizes at
+prompt-pair, denoising-iteration and VAE boundaries. `text_encode_ms` includes both conditional
+and unconditional encoding for Base. `denoise_step_<i>_ms` includes prediction, CFG, scheduler
+update and loop overhead; the compiled native prediction function is retained. Per-stage
+`gpu_ms` and generation `gpu_span_ms` are unavailable. Generation `wall_ms` includes final
+synchronization and PIL conversion; `other_ms` is wall minus text, denoising and VAE.
+`postprocess_ms` is unavailable rather than assigned a fabricated split. These synchronization
+boundaries can affect latency; cross-engine stage comparisons must retain that caveat.
+
+`peak_alloc_gib` is MLX `get_peak_memory()` after `reset_peak_memory()` before each generation,
+including resident model allocations. It excludes cached allocator buffers; cache bytes after
+load are separately reported. `peak_reserved_gib` and device-wide GPU usage are unavailable.
+The existing macOS whole-system sampler separately records available RAM, swap and clock
+continuity. Never add MLX allocations, process RSS and whole-system usage together.
+
+Loading includes on-load quantization and explicit parameter evaluation. The engine's normal
+prediction compilation remains enabled; first-use compile cost stays in the first generation.
+All configurations use the same pinned BF16 source checkpoints; the 8/4-bit options quantize
+eligible layers at load time with affine group size 64. Component/layer inventories are saved
+in `quantization-audit.json`. The Base negative prompt is explicitly empty to match the study,
+overriding MFLUX's built-in single space without editing library source. RNG is native MLX,
+so matching seeds across engines does not imply matching initial latents or image equality.
+
+
+### M5 follow-up compile, step-cache and MFLUX options
+
+[The bounded follow-up protocol](../../output/m5-followup-20261015/README.md) retains the existing timer boundaries. [MPS compiler instrumentation](../../scripts/mps_options.py) compiles only transformer.forward with Inductor, fullgraph and eager error fallback disabled; lazy compilation stays in the first generation. The diagnostic smoke's first transformer call also runs eager on identical inputs, so its first-image latency includes extra work. A relative-RMSE engineering gate is separate from final-image quality. Full protocols omit the diagnostic; compiler counters and numerical receipts remain evidence.
+
+TaylorSeer uses upstream attention-output prediction. Per-generation receipts count computed/predicted calls for each conditional/unconditional context, with caches reset inside generation timing. These counts are not denoising-step skips; the outer transformer and scheduler still run. Approximation quality is not established by protocol completion.
+
+[MFLUX option instrumentation](../../scripts/mflux_engine.py) caches the complete prompt-pair return within one resident model. Population stays in the first image, while lookup and synchronization stay in the text stage. Explicit VAE tiling uses 256-pixel tiles with 64-pixel overlap (eight latent pixels); actual decode shapes are audited. Tile-local normalization can change colors. Same-engine image diagnostics and execution receipts accompany the unchanged synchronized host timings. Whole-system memory pressure remains an uncontrolled performance confound.
+
+## GenEval (formal image-quality metric)
+
+The proposal's formal image-quality requirement is a maximum degradation on GenEval
+([overview](../project/overview.md#evaluation-rules)); paired PSNR/LPIPS stay diagnostics.
+
+- **Prompts and split.** GenEval's 553 prompts ([djghosh13/geneval `af4902f`](https://github.com/djghosh13/geneval/blob/af4902f24d3ca90ebbb446dd9891a59e0f82725f/prompts/evaluation_metadata.jsonl),
+  six tasks), frozen by [geneval_split.py](../../scripts/geneval_split.py) into
+  [split-20261024.json](../../configs/geneval/split-20261024.json): 50/50 stratified by task, seed 20261024; 277
+  calibration, 276 held-out (sealed until 2026-11-30; the generator refuses them before then). Working set: a
+  96-prompt calibration subset, 16 per task. Four images per prompt, seeds 0–3.
+- **Generation.** [geneval_generate.py](../../scripts/geneval_generate.py) loads a benchmark configuration through
+  the portable runner's own code (quantization, VAE tiling, compiler, step cache) and changes only prompt and
+  seed; one CUDA generator per image. Conditioning reuse and stage residency are not used. Per-image wall time
+  is bookkeeping, not a latency measurement.
+- **Scoring.** The official evaluator (Mask2Former Swin-S COCO detector, sha256 `743b7d99…`; CLIP ViT-L/14 colour
+  classifier; mmdetection 2.28.2, mmcv-full 1.7.1, torch 1.12.1, open-clip 2.20.0) via
+  [gilbreth-geneval-score.slurm](../../scripts/gilbreth-geneval-score.slurm), default thresholds.
+  **GenEval score** = mean over the six tasks of the fraction of correct images (official `summary_scores.py`).
+- **Comparison.** [geneval_compare.py](../../scripts/geneval_compare.py) pairs variant and reference images by
+  (prompt, seed): score difference, 95% bootstrap interval over prompts (10,000 draws, seed 0), and an exact
+  two-sided McNemar test on discordant images. A variant is compared only with the reference configuration of
+  the same engine, workload and device class.
+
+## Prompt-image preference scores
+
+Four learned scores reported next to GenEval, on the same GenEval images (no extra generation). They are
+diagnostics: GenEval stays the formal quality requirement. Each image is scored against its own prompt by
+[reward_score.py](../../scripts/reward_score.py) (FP32, one GPU; model revisions and checkpoint SHA256 pinned in
+`configs/quality/reward-models.resolved.json`, written by `--prepare-only`; scoring runs offline).
+
+| Metric | Model | Per-image value |
+|---|---|---|
+| CLIP score | `openai/clip-vit-large-patch14` | cosine similarity of the image and prompt embeddings (no ×100, no clipping at 0) |
+| PickScore | `yuvalkirstain/PickScore_v1`, processor `laion/CLIP-ViT-H-14-laion2B-s32B-b79K` | `logit_scale.exp()` × cosine similarity (≈ 20–23; some papers divide by 100) |
+| HPS v2.1 | `xswu/HPSv2` `HPS_v2.1_compressed.pt` on open_clip ViT-H-14 | cosine similarity of the image and prompt embeddings |
+| ImageReward | `THUDM/ImageReward` `ImageReward.pt` (BLIP, `image-reward` 1.5) | the model's normalized reward (`score()`), unbounded, ≈ 0 for an average image |
+
+- A configuration's value is the mean over its images (96 prompts × 4 seeds on the calibration subset). Prompts
+  longer than 77 CLIP tokens are truncated.
+- [quality_table.py](../../scripts/quality_table.py) pairs a variant with its engine's reference by (prompt, seed)
+  and reports the difference and a 95% bootstrap interval over prompts (10,000 draws, seed 0), the same
+  resampling as GenEval. Values from different generation devices or workloads are not compared.
+- Images of a device's configuration may be generated on another GPU from the same weights and settings
+  (the `generated_on` field of `configs/quality/selection-*.json`).
+
+## Nsight Compute hardware counters (A100)
+
+The [counter controller](../../scripts/profile_a100_counters.py) uses the unchanged [reference config](../../configs/a100-flux-klein-torch28-ncu.json) and portable runner; [capture procedure](../../docs/a100-hardware-counters.md). The original first + warm-up + measured prefix runs attached to NCU with capture disabled. Its summary is labelled `profiler=nsight-compute`, `timing_scope=profiler-attached, capture-disabled prefix`; these timings are diagnostic, not a replacement baseline. One additional image is captured separately in `profile/captured-generation.json` and excluded from `runs.csv`/summary aggregates.
+
+`profile/counter-kernels.json.gz` reports per-launch `duration_s` (`gpu__time_duration.sum` nanoseconds / 1e9), `hbm_bytes` (DRAM read + write bytes), `tensor_ops` (dense BF16/FP16/TF32 Tensor Core operations with FP32 accumulation), and `fp32_add_mul_fma_ops` (predicated FP32 thread add + multiply + 2×FMA instructions). `counted_ops` sums these covered families only; it excludes scalar FP16, FP64, SFU, integer and CPU work. `counted_ops_per_byte` is null for zero traffic, otherwise counted ops / HBM bytes; `counted_tops` divides counted ops by measured kernel seconds and 1e12. Raw metric names/values and kernel identities remain in CSV/JSON and the NCU report. These are not shape-estimated FLOPs or complete algorithmic work.
+
+## Nsight Compute engine counter captures (A100)
+
+[profile_engine_counters.py](../../scripts/profile_engine_counters.py) measures one steady denoising pass of any A100 engine from a completed template run ([procedure](../../docs/a100-hardware-counters.md#engine-counter-captures)). The template config is reused with protocol 1 + 0 + 1; the same metric list as above is used. Two passes of the same command run under `ncu --replay-mode kernel --cache-control none --clock-control none`: a sequence pass (kernel time only) and a counter pass over a window of 1.5 L launches.
+
+- **Pass**: the repeating kernel-name period L (repeated at least steps − 2 times, up to max(3, L/200) differing names per repeat) whose last full repeat has the most kernel time. Kernel names are compared without namespace qualifiers.
+- **Alignment**: the counter window must equal a slice of the sequence pass exactly, at one offset within ±L/4; the offset is recorded (`window_offset`).
+- `bytes_per_pass`: summed `dram__bytes_read.sum + dram__bytes_write.sum` over the pass's L launches (decimal GB in records).
+- `analytic_ai` = analytic FLOPs per pass (plan; 34.82 T for klein distilled 1024²) / `bytes_per_pass`. This is the roofline x for engines. `counted_ai` uses counted operations instead and is reported as a check (INT4/INT8 Tensor Core work is not counted).
+- `pass_replay_kernel_s`: summed replay kernel durations; not latency. Engine roofline y stays analytic FLOPs / the template run's measured denoise time per pass.
+
+## Measured ceilings (A100)
+
+[measure_ceilings_cuda.py](../../scripts/measure_ceilings_cuda.py) ([config](../../configs/a100-ceilings.json)). Bandwidth kernels (copy, read, write, triad over 2 GiB FP32 buffers) count the minimum bytes moved, in decimal GB/s. GEMMs use cuBLAS in the `nn.Linear` layout with work 2·M·N·K. Each test: 5 warm-up calls, then 10 timed blocks of 20 calls (CUDA events); the test value is the median block; a **ceiling** is the highest test median for that precision (bandwidth: highest kernel). Clocks are not locked; `gpu-samples.csv` records clocks, power and throttle reasons. A sustained 60 s BF16 GEMM reports the change between its first- and last-quarter medians. Ceilings are written to `hardware-override.json` for the roofline scripts.
+
+## Nsight Compute engine counter captures (Jetson)
+
+Same controller, pass detection, alignment and summary fields as the [A100 engine captures](#nsight-compute-engine-counter-captures-a100), with three differences on the Jetson Orin Nano (ga10b, CC 8.7). Plans: `configs/ncu/jetson-*-counters.json`. Nsight Compute needs root on this board; captures are started by the board owner with `sudo` under `jetson_memguard.sh`.
+
+- **Bytes**: the GPU has no `dram__` counters. `bytes_per_pass` = 32 B × (`lts__t_sectors_aperture_sysmem_op_read_lookup_miss.sum` + `lts__t_sectors_aperture_sysmem_op_write.sum`) summed over the pass: L2 read misses and L2 writes whose aperture is system memory (the shared LPDDR5). Writes are counted at L2 and are an **upper bound** on bytes written to LPDDR5. Traffic that bypasses the GPU L2 (CPU, copy engines) is not included.
+- **Collection**: kernel replay. Application replay does not work on this board for these metrics ([probe 3](../../results/runs/jetson-ncu-probe3__probe__20261031/summary.txt): no kernel profiled within 300 s). Collecting the byte counters together takes three hardware passes per kernel with a device-memory save/restore, which a loaded model does not leave room for in 8 GB. Each counter together with `gpu__time_duration.sum` fits in one hardware pass with no save/restore ([probe 4](../../results/runs/jetson-ncu-probe4__probe__20261101/summary.txt): minimum MemAvailable 4003–4025 MB for single counters vs 865 MB for both byte counters). So the window is captured once per counter (`window-<i>.csv.gz`) and merged per launch. The merge requires identical kernel-name sequences after removing namespace qualifiers and treating PyTorch's vectorized and unrolled variants of one elementwise kernel as one name; kernel durations come from the first run.
+- **Counted work**: only the Tensor Core data types listed in the plan's `tensor_dtypes` (BF16 for PyTorch, FP16 for sd.cpp); FP32 instruction counters are not collected. `analytic_ai` uses the analytic FLOPs per pass (10.17 T for klein distilled 512²).
+
+Engine roofline y on the Jetson: analytic FLOPs per pass / the template run's mean of the `denoise_step_1..3_ms` medians (denoising median / 4 when per-step times are not recorded). An engine without a capture is drawn at a lower bound on x: bytes ≤ datasheet bandwidth × time per pass ([plot_roofline_jetson.py](../../scripts/plot_roofline_jetson.py)).
+
+## Measured ceilings (Jetson)
+
+Same script and rules as the [A100 ceilings](#measured-ceilings-a100) ([config](../../configs/jetson-ceilings.json)), with 0.5 GiB bandwidth buffers, square 2048/4096 and klein 512² GEMM shapes, and a 60 s BF16 4096³ sustained GEMM. With `sampler: tegrastats` the run records the GPU devfreq clock every 500 ms (`gpu-samples.csv`) and `tegrastats` power rails and temperatures (`tegrastats.log`); there are no throttle-reason codes.
+## ShiftAdd conversion diagnostics
+
+Weight-only conversion records distinguish storage and numerical diagnostics
+from inference metrics. `bf16_bytes` is two bytes per original matrix element;
+`packed_payload_bytes` sums sign-plane bytes and exponent bytes;
+`artifact_bytes` is the actual packed file size including headers.
+`replacement_bundle_weight_bytes` sums packed matrix files and unchanged tensor
+files, excluding reports and configs. Reduction is one minus replacement bytes
+ divided by the source transformer file size. These values do not measure live
+inference memory. `relative_l2` is the Frobenius norm of original minus decoded
+weights divided by the original norm, per matrix; zero original norms require
+separate handling. Conversion-and-verification seconds include fitting, writing,
+reloading, reconstruction and hashing. They are not inference latency.
+See the [conversion record](../../experiments/m5-flux-klein-shiftadd-001.md).
+
+For activation slice diagnostics, `relative_output_l2` is ||Xq Wqᵀ − X Wᵀ||F / ||X Wᵀ||F per captured call, with FP32 products of BF16-origin data. Aggregates average per-call ratios, rather than pooling norms. Ideal grouped activation storage is bits + 32/group_size bits per element for FP32 scales; this is not measured allocation. See the [grouped diagnostic](../../experiments/m5-flux-klein-shiftadd-003.md).
+
+ShiftAdd loader diagnostics use `process_peak_rss_gib` for whole child-process lifetime high-water RSS from `resource.ru_maxrss` (Darwin bytes, Linux KiB, converted to GiB). Imports, one BF16 parameter, packed input and reconstruction are included. First child is separate; subsequent fresh-child peaks have median/min/max. This is not a GPU metric, incremental allocation or per-generation measurement. See [loader diagnostic](../../experiments/m5-flux-klein-shiftadd-load-001.md).
+
+Upstream loader timing diagnostics report `loader_wall_s` from `perf_counter` around `apply_upstream_artifacts`: configuration reads, file hashing, shape checks, packed-array reads, reconstruction and CPU parameter copies are included; imports, destination-parameter allocation and output hashing are excluded. Each trial uses a fresh child process. The first is separate, configured warm-up children are discarded, and measured children use median/min/max. Filesystem cache and system pressure are uncontrolled, so fresh process does not mean cold disk. `process_peak_rss_gib` retains the whole-child high-water definition above. Caching packed arrays is explicit in each configuration; this is neither full-model load time nor inference latency.
+
+## Quantized transformer reload and compilation
+
+The portable runner supports verified GGUF and Nunchaku SVDQuant transformer loaders. With compilation and transformer reloads, Dynamo is reset and the newly loaded module is compiled again; these costs remain inside generation timing, and `compiler.json` counts applied compilations. Conditioning reuse avoids subsequent reloads when enabled; no-reuse configurations retain them ([runner](../../scripts/run_flux_portable.py), [Nunchaku baseline](../../experiments/jetson-nunchaku-flux-klein-001.md)).

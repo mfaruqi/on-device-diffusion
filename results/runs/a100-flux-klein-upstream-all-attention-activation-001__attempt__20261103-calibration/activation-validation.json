@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "bits": 8,
+      "total_calls": 800,
+      "modules": 50,
+      "group_size": 32
+    },
+    {
+      "bits": 4,
+      "total_calls": 800,
+      "modules": 50,
+      "group_size": 32
+    }
+  ],
+  "prior_weight_only_latents_exact_match": true,
+  "prior_reference_pngs_byte_identical": true
+}

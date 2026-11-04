@@ -1,8 +1,8 @@
 ---
 type: project
-summary: Milestone status per week. Revised schedule per D-010 (compiled klein pipeline on CUDA/Metal/WebGPU + planner); optimistic, with roll-over allowed past Dec 11.
+summary: Semester completion plan prioritizes ShiftAdd experiments and existing-engine kernels; prior TVM milestones remain historical.
 status: active
-updated: 2026-10-06
+updated: 2026-11-04
 ---
 
 # Milestones
@@ -12,12 +12,30 @@ optimistic: a goal that slips rolls over to the next week, and work may continue
 Status is one of: done, partial, not started. Evidence links point to records or pages, never to chat.
 Gates are go/no-go checks; a failed gate is recorded and triggers the "Revisit if" of D-010.
 
+## Semester completion plan — 2026-11-04
+
+[D-012](decisions.md#d-012-prioritize-shiftadd-experiments-and-an-existing-engine-kernel-prototype-this-semester) supersedes the remaining semester sequencing below, following the [meeting direction](../../raw/meetings/2026-11-04.md). Target: FLUX.2 Klein transformer precision and packed execution on A100/Jetson, with text encoder and VAE accounted for but initially unchanged. Nunchaku is the first engine candidate; integration is not yet established. The broader proposal and its hypothesis are preserved; this bounded study does not complete the original planner deliverable.
+
+| Week | Dates | Goal | Gate / deliverable | Status |
+|---|---|---|---|---|
+| 6 | Nov 2–6 | Consolidate current plane results, component memory inventory and engine feasibility | Reproducible BF16/INT4/ShiftAdd controls; identify Nunchaku layout, activation, low-rank and sm_87 constraints; locate energy-model source | partial: [image diagnostics](../../experiments/a100-flux-klein-upstream-lowplane-fused-001.md), [storage accounting](../../experiments/compare-shiftadd-plane-storage.md); runtime breakdown and kernel audit remain |
+| 7 | Nov 9–13 | Calibration-aware allocation across 2/3/4/5/6 planes; first packed GPU operator | Validate supported plane counts; re-fit sensitivity per candidate; compare output to CPU reconstruction; choose engine path after audit | not started |
+| 8 | Nov 16–20 | Integrate operator and measure real costs | Engine image test; packed residency and peak memory verified; end-to-end timing includes decode/bridge/correction overhead; first synchronized Jetson power capture | not started |
+| 9 | Nov 23–27 | Bounded quality–memory–latency–energy comparisons | BF16, INT4, SVDQuant and fixed/mixed ShiftAdd with declared checkpoint/coverage differences; freeze allocations, configs and quality criteria before held-out access | not started |
+| 10 | Nov 30–Dec 4 | Frozen evaluation and repeatability | Held-out quality, repeated latency and joules/image; analytical predictions versus measured energy with uncertainty and scope stated | not started |
+| 11 | Dec 7–11 | Reproduce and package | Final report, code/kernel documentation, reproducible manifests and verified W&B evidence; report negative results and remaining limitations | not started |
+
+Weeks 6–10 primarily address RQ1 precision/kernel transfer; cost and allocation records prepare RQ2/RQ3 rather than claiming their full evaluation. No new benchmark jobs are launched by this planning update. The [meeting memo](../../raw/meetings/2026-11-04.md) defines measurement and quality gates.
+
 ## Revised schedule
+
+Historical D-010 schedule; remaining deliverables are deferred by D-012, not marked complete.
+
 
 | Week | Dates | Goal | Gate / deliverable | Status | Evidence / what's left |
 |---|---|---|---|---|---|
 | 1 | Sep 28–Oct 2 | A100 and Jetson image baselines; review DreamLite | Baselines and scope | **partial** | [PyTorch](../../experiments/a100-flux-klein-001.md), [sd.cpp](../../experiments/a100-sdcpp-flux-klein-001.md), [Jetson](../../experiments/jetson-flux-klein-003.md); [DreamLite review](../papers/dreamlite.md). Left: written planning hypothesis. |
-| 2 | Oct 5–9 | Base workload, engine baselines and option sweeps; scope decision; TVM environment; Apple laptop setup | Klein import sandbox runs on CPU; sd.cpp Metal smoke on the M5 Air | **partial** | Base and option campaign in the [registry](../experiments.md); [scope](decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top). Left: TVM sandbox, M5 Air setup. |
+| 2 | Oct 5–9 | Base workload, engine baselines and option sweeps; scope decision; TVM environment; Apple laptop setup | Klein import sandbox runs on CPU; sd.cpp Metal smoke on the M5 Air | **partial** | Base and option campaign in the [registry](../experiments.md); [scope](decisions.md#d-010-deliver-a-tvm-compiled-klein-pipeline-with-the-planner-on-top). M5 execution complete ([campaign](../../output/m5-followup-20261015/README.md)); left: TVM sandbox. |
 | 3 | Oct 12–16 | Import klein's transformer (one denoising step) into TVM Relax; check numerics against PyTorch on CUDA | **Gate:** transformer imports and matches; unsupported ops listed | not started | – |
 | 4 | Oct 19–23 | End-to-end compiled klein on A100: text encoder (MLC Qwen3 path if it matches), transformer loop, VAE; static memory plan | Compiled pipeline vs PyTorch/sd.cpp baselines | not started | – |
 | 5 | Oct 26–30 | Same pipeline on Jetson (CUDA) and M5 Air (Metal); 4-bit group-quantized variant with fused dequantize | Two edge targets run the compiled pipeline | not started | – |

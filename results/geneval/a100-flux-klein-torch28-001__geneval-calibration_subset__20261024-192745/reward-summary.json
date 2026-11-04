@@ -1,0 +1,12 @@
+{
+  "run": "a100-flux-klein-torch28-001__geneval-calibration_subset__20261024-192745",
+  "images": 384,
+  "prompts": 96,
+  "mean": {
+    "clip": 0.2906988312800725,
+    "pickscore": 23.44275965789954,
+    "hps": 0.3011864797445014,
+    "imagereward": 1.163560011225248
+  },
+  "models_resolved_sha256": "8e4a5a4a6c5d4dbabbd470c0fffa11f31f2e77d678b19a08eafe656c58ed5243"
+}

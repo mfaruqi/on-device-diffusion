@@ -1,0 +1,92 @@
+{
+  "policy": {
+    "text_encoder": "release_after_encode",
+    "transformer": "release_during_encode"
+  },
+  "per_generation": [
+    {
+      "transformer_free_s": 0.44315923302201554,
+      "text_encoder_load_s": 30.182516499015037,
+      "text_encoder_free_s": 0.47729522903682664,
+      "transformer_load_s": 33.965518816024996
+    },
+    {
+      "transformer_free_s": 0.5430084500112571,
+      "text_encoder_load_s": 36.095284039969556,
+      "text_encoder_free_s": 0.4691483569913544,
+      "transformer_load_s": 28.60750806494616
+    },
+    {
+      "transformer_free_s": 0.5477525540045463,
+      "text_encoder_load_s": 36.06432872102596,
+      "text_encoder_free_s": 0.46875942003680393,
+      "transformer_load_s": 28.623096048017032
+    },
+    {
+      "transformer_free_s": 0.5414925130316988,
+      "text_encoder_load_s": 36.10178712400375,
+      "text_encoder_free_s": 0.47460692998720333,
+      "transformer_load_s": 28.137150047987234
+    },
+    {
+      "transformer_free_s": 0.5424130270257592,
+      "text_encoder_load_s": 36.05961373297032,
+      "text_encoder_free_s": 0.4779265640536323,
+      "transformer_load_s": 29.68123523599934
+    },
+    {
+      "transformer_free_s": 0.5492045850260183,
+      "text_encoder_load_s": 33.058584928978235,
+      "text_encoder_free_s": 0.46763649897184223,
+      "transformer_load_s": 27.778870162030216
+    },
+    {
+      "transformer_free_s": 0.5242134929867461,
+      "text_encoder_load_s": 33.973681005008984,
+      "text_encoder_free_s": 0.47123114101123065,
+      "transformer_load_s": 27.977626719977707
+    },
+    {
+      "transformer_free_s": 0.5350359989679419,
+      "text_encoder_load_s": 33.98430980095873,
+      "text_encoder_free_s": 0.4684510340448469,
+      "transformer_load_s": 25.33915896801045
+    },
+    {
+      "transformer_free_s": 0.5388411799794994,
+      "text_encoder_load_s": 30.439921187004074,
+      "text_encoder_free_s": 0.471728514006827,
+      "transformer_load_s": 23.94494339596713
+    },
+    {
+      "transformer_free_s": 0.5323147589806467,
+      "text_encoder_load_s": 32.1046599340043,
+      "text_encoder_free_s": 0.4697347719920799,
+      "transformer_load_s": 25.381736286974046
+    },
+    {
+      "transformer_free_s": 0.535241829988081,
+      "text_encoder_load_s": 33.16501443303423,
+      "text_encoder_free_s": 0.46563357301056385,
+      "transformer_load_s": 26.377096240990795
+    },
+    {
+      "transformer_free_s": 0.5353258890099823,
+      "text_encoder_load_s": 31.292965217027813,
+      "text_encoder_free_s": 0.4649108310113661,
+      "transformer_load_s": 27.137918827997055
+    },
+    {
+      "transformer_free_s": 0.5310252350172959,
+      "text_encoder_load_s": 27.953813069034368,
+      "text_encoder_free_s": 0.4730411900090985,
+      "transformer_load_s": 24.930991241999436
+    },
+    {
+      "transformer_free_s": 0.5283083269605413,
+      "text_encoder_load_s": 28.12491469597444,
+      "text_encoder_free_s": 0.46528342698002234,
+      "transformer_load_s": 28.13908548600739
+    }
+  ]
+}

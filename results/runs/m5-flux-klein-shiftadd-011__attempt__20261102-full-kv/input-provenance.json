@@ -1,0 +1,174 @@
+{
+  "source": "shiftadd/runs/a100-activation-capture-001/activations.npz",
+  "source_sha256": "ea51d1f20356e013396dfb541fde49846a9d0137e30a13aec369b9b08fa314e7",
+  "mapping": {
+    "transformer_blocks.0.attn.to_k": "transformer_blocks.0.attn.to_q",
+    "transformer_blocks.0.attn.to_v": "transformer_blocks.0.attn.to_q"
+  },
+  "reason": "_get_projections passes identical hidden_states to to_q, to_k and to_v; confirmed in local and A100 installed source",
+  "local_same_object_probe_passed": true,
+  "arrays": [
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_000",
+      "source_key": "transformer_blocks.0.attn.to_q.call_000",
+      "sha256": "2ebea9f126a2770136e7c600655d73ae9113c580b63d81d655b6dc3ff8bc9d03"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_001",
+      "source_key": "transformer_blocks.0.attn.to_q.call_001",
+      "sha256": "c83fa9b787304b1a8bc7755e52cc023cf9219cb5d730aea4ea638d468e986f7c"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_002",
+      "source_key": "transformer_blocks.0.attn.to_q.call_002",
+      "sha256": "c9dcbc46f8fb5a302a4bed1e63341500b1f3f3efc56c02c8019ffd778527bb57"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_003",
+      "source_key": "transformer_blocks.0.attn.to_q.call_003",
+      "sha256": "531a8258818628ca64f29cadc61afd9cb9c706032a9d0020556d62fc6e6cf457"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_004",
+      "source_key": "transformer_blocks.0.attn.to_q.call_004",
+      "sha256": "13eca078c83dd23d9c25de438a073d912c8d734795aa97efd296e9442bd0eac3"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_005",
+      "source_key": "transformer_blocks.0.attn.to_q.call_005",
+      "sha256": "4f60f26fe642b4138ffefb9614decc4640baaf8af5e881c46c11865080110fe4"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_006",
+      "source_key": "transformer_blocks.0.attn.to_q.call_006",
+      "sha256": "8643680a3546a37eed5fbd64a01b30b951454810b7b56288f6821607bd9b9ce5"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_007",
+      "source_key": "transformer_blocks.0.attn.to_q.call_007",
+      "sha256": "0fcaf0274670fa9c0f02e5fc1798fa75f51446dea7094d6603388a3d8f93522d"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_008",
+      "source_key": "transformer_blocks.0.attn.to_q.call_008",
+      "sha256": "976eb97eb6715bd84ba2d31e37caae4821b1a3b0960033ae9f570e3e59200a29"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_009",
+      "source_key": "transformer_blocks.0.attn.to_q.call_009",
+      "sha256": "a80d8d6bfa7ef6234703bcf530c18d285cdd054e5a0e00adeebb785c060bff5b"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_010",
+      "source_key": "transformer_blocks.0.attn.to_q.call_010",
+      "sha256": "72b132646fb86ea1e9811fe7333d614f857adf7a437302141f6fec75d39411bf"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_011",
+      "source_key": "transformer_blocks.0.attn.to_q.call_011",
+      "sha256": "12f7aa8de16759edf10725ac510e5e88ff03b63119745c8b05f78ead27f31eb4"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_012",
+      "source_key": "transformer_blocks.0.attn.to_q.call_012",
+      "sha256": "ca971d9c42eb56f0d2a0891a69a0ca4374d9bc266bdc50e2e542ce43ff776eca"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_013",
+      "source_key": "transformer_blocks.0.attn.to_q.call_013",
+      "sha256": "038f050524effe09905563d4fd11451bf11fe970e93b53bb0fd102a7105a5a42"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_014",
+      "source_key": "transformer_blocks.0.attn.to_q.call_014",
+      "sha256": "b8c15d0465c8237c72eaf54ab4948a5e0c3f98830a2132c72a797442706ac72b"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_k.call_015",
+      "source_key": "transformer_blocks.0.attn.to_q.call_015",
+      "sha256": "c3c60ee5089c73f33af95e7b0b38fae29cd29ca56ffef1470b7241c5ce3fa790"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_000",
+      "source_key": "transformer_blocks.0.attn.to_q.call_000",
+      "sha256": "2ebea9f126a2770136e7c600655d73ae9113c580b63d81d655b6dc3ff8bc9d03"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_001",
+      "source_key": "transformer_blocks.0.attn.to_q.call_001",
+      "sha256": "c83fa9b787304b1a8bc7755e52cc023cf9219cb5d730aea4ea638d468e986f7c"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_002",
+      "source_key": "transformer_blocks.0.attn.to_q.call_002",
+      "sha256": "c9dcbc46f8fb5a302a4bed1e63341500b1f3f3efc56c02c8019ffd778527bb57"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_003",
+      "source_key": "transformer_blocks.0.attn.to_q.call_003",
+      "sha256": "531a8258818628ca64f29cadc61afd9cb9c706032a9d0020556d62fc6e6cf457"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_004",
+      "source_key": "transformer_blocks.0.attn.to_q.call_004",
+      "sha256": "13eca078c83dd23d9c25de438a073d912c8d734795aa97efd296e9442bd0eac3"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_005",
+      "source_key": "transformer_blocks.0.attn.to_q.call_005",
+      "sha256": "4f60f26fe642b4138ffefb9614decc4640baaf8af5e881c46c11865080110fe4"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_006",
+      "source_key": "transformer_blocks.0.attn.to_q.call_006",
+      "sha256": "8643680a3546a37eed5fbd64a01b30b951454810b7b56288f6821607bd9b9ce5"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_007",
+      "source_key": "transformer_blocks.0.attn.to_q.call_007",
+      "sha256": "0fcaf0274670fa9c0f02e5fc1798fa75f51446dea7094d6603388a3d8f93522d"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_008",
+      "source_key": "transformer_blocks.0.attn.to_q.call_008",
+      "sha256": "976eb97eb6715bd84ba2d31e37caae4821b1a3b0960033ae9f570e3e59200a29"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_009",
+      "source_key": "transformer_blocks.0.attn.to_q.call_009",
+      "sha256": "a80d8d6bfa7ef6234703bcf530c18d285cdd054e5a0e00adeebb785c060bff5b"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_010",
+      "source_key": "transformer_blocks.0.attn.to_q.call_010",
+      "sha256": "72b132646fb86ea1e9811fe7333d614f857adf7a437302141f6fec75d39411bf"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_011",
+      "source_key": "transformer_blocks.0.attn.to_q.call_011",
+      "sha256": "12f7aa8de16759edf10725ac510e5e88ff03b63119745c8b05f78ead27f31eb4"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_012",
+      "source_key": "transformer_blocks.0.attn.to_q.call_012",
+      "sha256": "ca971d9c42eb56f0d2a0891a69a0ca4374d9bc266bdc50e2e542ce43ff776eca"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_013",
+      "source_key": "transformer_blocks.0.attn.to_q.call_013",
+      "sha256": "038f050524effe09905563d4fd11451bf11fe970e93b53bb0fd102a7105a5a42"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_014",
+      "source_key": "transformer_blocks.0.attn.to_q.call_014",
+      "sha256": "b8c15d0465c8237c72eaf54ab4948a5e0c3f98830a2132c72a797442706ac72b"
+    },
+    {
+      "key": "transformer_blocks.0.attn.to_v.call_015",
+      "source_key": "transformer_blocks.0.attn.to_q.call_015",
+      "sha256": "c3c60ee5089c73f33af95e7b0b38fae29cd29ca56ffef1470b7241c5ce3fa790"
+    }
+  ],
+  "derived_sha256": "5db6ec5159bd25f019a319fe14efa82cd1f422adbf75b7c14383125f0a0adb05",
+  "scope": "BF16 first-block input reuse only; no additional captured samples"
+}

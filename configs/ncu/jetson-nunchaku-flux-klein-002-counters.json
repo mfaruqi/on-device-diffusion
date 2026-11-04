@@ -1,0 +1,15 @@
+{
+  "id": "jetson-nunchaku-flux-klein-002-counters",
+  "template_run": "jetson-nunchaku-flux-klein-002__baseline__20261102-123151",
+  "launcher": "portable",
+  "python": "/home/mfaruqi/venvs/torch-jp6-ailab/bin/python",
+  "device": "jetson",
+  "ncu": "/usr/local/cuda/bin/ncu",
+  "timeout_s": 10800,
+  "analytic_flops_per_pass": 10172630040576.0,
+  "analytic_flops_source": "scripts/plot_roofline.py transformer_cost(512, 512): reference work, klein distilled 512² (1024 image + 512 text tokens)",
+  "description": "Measured LPDDR5 bytes (L2 <-> system memory sectors) for one steady denoising pass of jetson-nunchaku-flux-klein-002 (Nunchaku SVDQuant W4A4/r32, conditioning reuse; Nsight Compute kernel replay: a sequence pass, then one single-hardware-pass run per counter over the window, merged per launch; see scripts/profile_engine_counters.py). INT4 Tensor Core work has no counter in this set; only the BF16 parts are counted.",
+  "tensor_dtypes": [
+    "bf16"
+  ]
+}

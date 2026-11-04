@@ -1,0 +1,41 @@
+{
+  "new_completed": [
+    {
+      "id": "m5-flux-klein-base-004",
+      "full_run": "results/runs/m5-flux-klein-base-004__baseline__20261015-135837",
+      "protocol_and_execution_reviewed": true,
+      "median_arithmetic_reviewed": true,
+      "median_seconds": 143.87694822897902,
+      "publishing": [
+        {
+          "run": "results/runs/m5-flux-klein-base-004__attempt__20261015-135305",
+          "verified": true
+        },
+        {
+          "run": "results/runs/m5-flux-klein-base-004__baseline__20261015-135837",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "id": "m5-flux-klein-base-005",
+      "full_run": "results/runs/m5-flux-klein-base-005__baseline__20261015-143814",
+      "protocol_and_execution_reviewed": true,
+      "median_arithmetic_reviewed": true,
+      "median_seconds": 92.47379404207459,
+      "publishing": [
+        {
+          "run": "results/runs/m5-flux-klein-base-005__attempt__20261015-143525",
+          "verified": true
+        },
+        {
+          "run": "results/runs/m5-flux-klein-base-005__baseline__20261015-143814",
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "pending_backlog_uploads": 8,
+  "remaining_configurations": 3,
+  "note": "Previous upload-path repair works. Retain uncontrolled memory-pressure and quality limitations. No concurrent exports started by monitor."
+}

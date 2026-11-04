@@ -1,0 +1,167 @@
+{
+  "id": "a100-nunchaku-flux-klein-001",
+  "device_label": "gilbreth-a100-40gb",
+  "gpu_name": "NVIDIA A100-PCIE-40GB",
+  "guidance_scale": 1.0,
+  "transformer_calls_per_step": 1,
+  "measured_runs": 1,
+  "first_run": {
+    "wall_ms": 3656.4971779007465,
+    "gpu_span_ms": 3655.62255859375,
+    "text_encode_ms": 1333.6309814453125,
+    "denoise_ms": 1103.9713134765625,
+    "denoise_step_0_ms": 528.1873779296875,
+    "denoise_step_1_ms": 199.82745361328125,
+    "denoise_step_2_ms": 198.90687561035156,
+    "denoise_step_3_ms": 177.0496063232422,
+    "vae_decode_ms": 781.4779052734375,
+    "postprocess_ms": 54.27248001098633,
+    "other_ms": 382.2698783874512,
+    "peak_alloc_gib": 12.519705772399902,
+    "peak_reserved_gib": 14.5546875,
+    "device_used_peak_gib": 15.61663818359375,
+    "host_rss_gib": 2.394054412841797
+  },
+  "measured": {
+    "wall_ms": {
+      "median": 773374.4041469181,
+      "min": 773374.4041469181,
+      "max": 773374.4041469181,
+      "mean": 773374.4041469181,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "gpu_span_ms": {
+      "median": 773343.625,
+      "min": 773343.625,
+      "max": 773343.625,
+      "mean": 773343.625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "text_encode_ms": {
+      "median": 513.578125,
+      "min": 513.578125,
+      "max": 513.578125,
+      "mean": 513.578125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_ms": {
+      "median": 761873.0056610107,
+      "min": 761873.0056610107,
+      "max": 761873.0056610107,
+      "mean": 761873.0056610107,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_0_ms": {
+      "median": 213.0759735107422,
+      "min": 213.0759735107422,
+      "max": 213.0759735107422,
+      "mean": 213.0759735107422,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_1_ms": {
+      "median": 122740.8203125,
+      "min": 122740.8203125,
+      "max": 122740.8203125,
+      "mean": 122740.8203125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_2_ms": {
+      "median": 510482.65625,
+      "min": 510482.65625,
+      "max": 510482.65625,
+      "mean": 510482.65625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "denoise_step_3_ms": {
+      "median": 128436.453125,
+      "min": 128436.453125,
+      "max": 128436.453125,
+      "mean": 128436.453125,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "vae_decode_ms": {
+      "median": 590.8797607421875,
+      "min": 590.8797607421875,
+      "max": 590.8797607421875,
+      "mean": 590.8797607421875,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "postprocess_ms": {
+      "median": 146.6465301513672,
+      "min": 146.6465301513672,
+      "max": 146.6465301513672,
+      "mean": 146.6465301513672,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "other_ms": {
+      "median": 10219.514923095703,
+      "min": 10219.514923095703,
+      "max": 10219.514923095703,
+      "mean": 10219.514923095703,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_alloc_gib": {
+      "median": 12.519705772399902,
+      "min": 12.519705772399902,
+      "max": 12.519705772399902,
+      "mean": 12.519705772399902,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "peak_reserved_gib": {
+      "median": 14.556640625,
+      "min": 14.556640625,
+      "max": 14.556640625,
+      "mean": 14.556640625,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "device_used_peak_gib": {
+      "median": 30.41156005859375,
+      "min": 30.41156005859375,
+      "max": 30.41156005859375,
+      "mean": 30.41156005859375,
+      "stdev": 0.0,
+      "n": 1
+    },
+    "host_rss_gib": {
+      "median": 2.509387969970703,
+      "min": 2.509387969970703,
+      "max": 2.509387969970703,
+      "mean": 2.509387969970703,
+      "stdev": 0.0,
+      "n": 1
+    }
+  },
+  "deterministic_output": true,
+  "load": {
+    "load_total_s": 7.673934735939838,
+    "allocated_after_load_gib": 10.122471809387207,
+    "peak_alloc_during_load_gib": 10.122471809387207
+  },
+  "weights_gib": {
+    "transformer": 2.2797231674194336,
+    "text_encoder": 7.492431163787842,
+    "vae": 0.15654857270419598
+  },
+  "host_peak_rss_gib": 5.595333099365234,
+  "units": {
+    "time": "ms (load in s)",
+    "memory": "GiB (2^30 bytes)"
+  },
+  "engine": "nunchaku-community",
+  "timing_method": "CUDA events at pipeline stage boundaries; synchronized host total",
+  "formal_quality_eligible": false,
+  "memory_scope": "PyTorch allocator peaks exclude allocations outside its allocator; NVML device-wide samples include context and other GPU processes."
+}

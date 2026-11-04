@@ -1,0 +1,404 @@
+{
+  "tests": [
+    {
+      "test": "bandwidth",
+      "kernel": "copy",
+      "dtype": "fp32",
+      "shape": "536870912 elements x4 B",
+      "unit": "GB/s",
+      "median": 1381.4093401457112,
+      "best": 1383.9846775128888,
+      "min": 1376.3549400042004,
+      "n": 10
+    },
+    {
+      "test": "bandwidth",
+      "kernel": "read",
+      "dtype": "fp32",
+      "shape": "536870912 elements x4 B",
+      "unit": "GB/s",
+      "median": 1453.831524739509,
+      "best": 1454.335654525855,
+      "min": 1452.3716258528673,
+      "n": 10
+    },
+    {
+      "test": "bandwidth",
+      "kernel": "write",
+      "dtype": "fp32",
+      "shape": "536870912 elements x4 B",
+      "unit": "GB/s",
+      "median": 1550.2878812030008,
+      "best": 1551.1479781966138,
+      "min": 1547.6565000136757,
+      "n": 10
+    },
+    {
+      "test": "bandwidth",
+      "kernel": "triad",
+      "dtype": "fp32",
+      "shape": "536870912 elements x4 B",
+      "unit": "GB/s",
+      "median": 1369.3674623837453,
+      "best": 1369.7624619633566,
+      "min": 1253.315559454729,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "square 4096 M4096 N4096 K4096",
+      "unit": "TFLOP/s",
+      "median": 153.67873181409925,
+      "best": 190.27179603832215,
+      "min": 147.0395848593307,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "median": 215.09491521368068,
+      "best": 218.03413406544718,
+      "min": 103.19479030490515,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "klein 1024\u00b2 single-block in (seq 4608, 9D) M4608 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 206.81069114318,
+      "best": 221.11043322921387,
+      "min": 183.41557550833141,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TFLOP/s",
+      "median": 213.7863813386725,
+      "best": 220.13064634398486,
+      "min": 184.13019932100934,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "klein 512\u00b2 single-block in (seq 1536, 9D) M1536 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 193.23236886669616,
+      "best": 204.90869321460758,
+      "min": 186.806434266689,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp16",
+      "shape": "square 4096 M4096 N4096 K4096",
+      "unit": "TFLOP/s",
+      "median": 197.3928509616299,
+      "best": 247.6570232251614,
+      "min": 194.98471009580962,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp16",
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "median": 207.49336116175687,
+      "best": 209.02322121580517,
+      "min": 159.0492967482602,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp16",
+      "shape": "klein 1024\u00b2 single-block in (seq 4608, 9D) M4608 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 195.6128816275339,
+      "best": 211.7044719084972,
+      "min": 149.0328640471973,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp16",
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TFLOP/s",
+      "median": 193.7267564944899,
+      "best": 245.26322422700645,
+      "min": 179.34784010505572,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp16",
+      "shape": "klein 512\u00b2 single-block in (seq 1536, 9D) M1536 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 187.4100980204986,
+      "best": 204.62073415574244,
+      "min": 149.8141939978522,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "tf32",
+      "shape": "square 4096 M4096 N4096 K4096",
+      "unit": "TFLOP/s",
+      "median": 97.33151941162114,
+      "best": 121.83889546280871,
+      "min": 94.95417417046626,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "tf32",
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "median": 99.79532794073933,
+      "best": 101.62139778360073,
+      "min": 82.70845848820501,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "tf32",
+      "shape": "klein 1024\u00b2 single-block in (seq 4608, 9D) M4608 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 91.9591783695883,
+      "best": 96.51908846530172,
+      "min": 89.40489905817176,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "tf32",
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TFLOP/s",
+      "median": 94.70858353611374,
+      "best": 106.34278529647881,
+      "min": 90.66587417120333,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "tf32",
+      "shape": "klein 512\u00b2 single-block in (seq 1536, 9D) M1536 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 95.16588195242042,
+      "best": 96.4728000582368,
+      "min": 89.3155843766319,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp32",
+      "shape": "square 4096 M4096 N4096 K4096",
+      "unit": "TFLOP/s",
+      "median": 17.362643389709902,
+      "best": 17.429175594703505,
+      "min": 16.328488593589324,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp32",
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "median": 17.758316034476877,
+      "best": 17.883759435183908,
+      "min": 17.622272977860522,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp32",
+      "shape": "klein 1024\u00b2 single-block in (seq 4608, 9D) M4608 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 17.323311410209506,
+      "best": 17.33759335580932,
+      "min": 17.062061475102535,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp32",
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TFLOP/s",
+      "median": 18.09965676929277,
+      "best": 18.171047475559284,
+      "min": 17.859971231905988,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "fp32",
+      "shape": "klein 512\u00b2 single-block in (seq 1536, 9D) M1536 N27648 K3072",
+      "unit": "TFLOP/s",
+      "median": 16.33583927320212,
+      "best": 16.42513618306012,
+      "min": 15.823483605772532,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "int8",
+      "shape": "square 4096 M4096 N4096 K4096",
+      "unit": "TOP/s",
+      "median": 67.39070455096365,
+      "best": 71.06354999425331,
+      "min": 67.08035261828583,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "int8",
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TOP/s",
+      "median": 68.78374896542002,
+      "best": 68.78485204837737,
+      "min": 68.1805803357726,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "int8",
+      "shape": "klein 1024\u00b2 single-block in (seq 4608, 9D) M4608 N27648 K3072",
+      "unit": "TOP/s",
+      "median": 66.99226685577588,
+      "best": 67.80638820400262,
+      "min": 64.16565892839755,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "int8",
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TOP/s",
+      "median": 70.49360107509494,
+      "best": 71.15019400520215,
+      "min": 67.91037295663989,
+      "n": 10
+    },
+    {
+      "test": "gemm",
+      "kernel": "matmul",
+      "dtype": "int8",
+      "shape": "klein 512\u00b2 single-block in (seq 1536, 9D) M1536 N27648 K3072",
+      "unit": "TOP/s",
+      "median": 67.45129479745792,
+      "best": 67.68690140184337,
+      "min": 66.28874040408516,
+      "n": 10
+    },
+    {
+      "test": "sustained",
+      "kernel": "matmul",
+      "dtype": "bf16",
+      "shape": "M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "median": 203.44496308446895,
+      "best": 211.78130612804333,
+      "min": 186.64519900110125,
+      "n": 554
+    }
+  ],
+  "ceilings": {
+    "bw_gbs": {
+      "measured": 1550.2878812030008,
+      "kernel": "write",
+      "datasheet": 1555.0,
+      "ratio": 0.9969696985228301
+    },
+    "bf16_tensor": {
+      "measured": 215.09491521368068,
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "datasheet": 312.0,
+      "ratio": 0.6894067795310278
+    },
+    "fp16_tensor": {
+      "measured": 207.49336116175687,
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "datasheet": 312.0,
+      "ratio": 0.6650428242364003
+    },
+    "tf32_tensor": {
+      "measured": 99.79532794073933,
+      "shape": "square 8192 M8192 N8192 K8192",
+      "unit": "TFLOP/s",
+      "datasheet": 156.0,
+      "ratio": 0.639713640645765
+    },
+    "fp32": {
+      "measured": 18.09965676929277,
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TFLOP/s",
+      "datasheet": 19.5,
+      "ratio": 0.9281875266303985
+    },
+    "int8_tensor_tops": {
+      "measured": 70.49360107509494,
+      "shape": "klein 1024\u00b2 single-block out (seq 4608, 4D) M4608 N3072 K12288",
+      "unit": "TOP/s",
+      "datasheet": 624.0,
+      "ratio": 0.11297051454342139
+    }
+  },
+  "sustained": {
+    "blocks": 554,
+    "first_quarter_median": 205.47035038005293,
+    "last_quarter_median": 202.27221101996497,
+    "drop_pct": 1.5564967666490293
+  },
+  "ceiling_rule": "per test: median over timed blocks; per ceiling: the shape/kernel with the highest median",
+  "bytes_rule": "minimum bytes each kernel must move; decimal GB (1e9) as in the datasheet",
+  "gpu_samples": {
+    "samples": 244,
+    "sm_clock_mhz": {
+      "min": 210.0,
+      "median": 990.0,
+      "max": 1410.0
+    },
+    "mem_clock_mhz": {
+      "min": 1215.0,
+      "max": 1215.0
+    },
+    "power_w_max": 324.78,
+    "temp_c_max": 68.0,
+    "throttle_reasons_seen": [
+      "0x0000000000000000",
+      "0x0000000000000001",
+      "0x0000000000000004"
+    ]
+  }
+}

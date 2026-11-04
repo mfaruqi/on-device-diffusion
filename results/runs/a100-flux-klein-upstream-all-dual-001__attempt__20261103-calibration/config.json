@@ -1,0 +1,148 @@
+{
+  "id": "a100-flux-klein-upstream-all-dual-001",
+  "model_path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "output": "/scratch/gilbreth/mfaruqi/shiftadd-initial/runs/upstream-all-dual-001",
+  "height": 512,
+  "width": 512,
+  "cases": [
+    {
+      "name": "bf16",
+      "artifacts": null
+    },
+    {
+      "name": "radix-p4-all-dual",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-radix-p4-001",
+      "planes": 4,
+      "tensors": [
+        "transformer_blocks.0.attn.add_k_proj.weight",
+        "transformer_blocks.0.attn.add_q_proj.weight",
+        "transformer_blocks.0.attn.add_v_proj.weight",
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight",
+        "transformer_blocks.1.attn.add_k_proj.weight",
+        "transformer_blocks.1.attn.add_q_proj.weight",
+        "transformer_blocks.1.attn.add_v_proj.weight",
+        "transformer_blocks.1.attn.to_k.weight",
+        "transformer_blocks.1.attn.to_q.weight",
+        "transformer_blocks.1.attn.to_v.weight",
+        "transformer_blocks.2.attn.add_k_proj.weight",
+        "transformer_blocks.2.attn.add_q_proj.weight",
+        "transformer_blocks.2.attn.add_v_proj.weight",
+        "transformer_blocks.2.attn.to_k.weight",
+        "transformer_blocks.2.attn.to_q.weight",
+        "transformer_blocks.2.attn.to_v.weight",
+        "transformer_blocks.3.attn.add_k_proj.weight",
+        "transformer_blocks.3.attn.add_q_proj.weight",
+        "transformer_blocks.3.attn.add_v_proj.weight",
+        "transformer_blocks.3.attn.to_k.weight",
+        "transformer_blocks.3.attn.to_q.weight",
+        "transformer_blocks.3.attn.to_v.weight",
+        "transformer_blocks.4.attn.add_k_proj.weight",
+        "transformer_blocks.4.attn.add_q_proj.weight",
+        "transformer_blocks.4.attn.add_v_proj.weight",
+        "transformer_blocks.4.attn.to_k.weight",
+        "transformer_blocks.4.attn.to_q.weight",
+        "transformer_blocks.4.attn.to_v.weight"
+      ]
+    },
+    {
+      "name": "uniform-int4-all-dual",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-uniform-int4-001",
+      "weight_format": "symmetric_uniform",
+      "tensors": [
+        "transformer_blocks.0.attn.add_k_proj.weight",
+        "transformer_blocks.0.attn.add_q_proj.weight",
+        "transformer_blocks.0.attn.add_v_proj.weight",
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight",
+        "transformer_blocks.1.attn.add_k_proj.weight",
+        "transformer_blocks.1.attn.add_q_proj.weight",
+        "transformer_blocks.1.attn.add_v_proj.weight",
+        "transformer_blocks.1.attn.to_k.weight",
+        "transformer_blocks.1.attn.to_q.weight",
+        "transformer_blocks.1.attn.to_v.weight",
+        "transformer_blocks.2.attn.add_k_proj.weight",
+        "transformer_blocks.2.attn.add_q_proj.weight",
+        "transformer_blocks.2.attn.add_v_proj.weight",
+        "transformer_blocks.2.attn.to_k.weight",
+        "transformer_blocks.2.attn.to_q.weight",
+        "transformer_blocks.2.attn.to_v.weight",
+        "transformer_blocks.3.attn.add_k_proj.weight",
+        "transformer_blocks.3.attn.add_q_proj.weight",
+        "transformer_blocks.3.attn.add_v_proj.weight",
+        "transformer_blocks.3.attn.to_k.weight",
+        "transformer_blocks.3.attn.to_q.weight",
+        "transformer_blocks.3.attn.to_v.weight",
+        "transformer_blocks.4.attn.add_k_proj.weight",
+        "transformer_blocks.4.attn.add_q_proj.weight",
+        "transformer_blocks.4.attn.add_v_proj.weight",
+        "transformer_blocks.4.attn.to_k.weight",
+        "transformer_blocks.4.attn.to_q.weight",
+        "transformer_blocks.4.attn.to_v.weight"
+      ]
+    },
+    {
+      "name": "upstream-u8-all-dual",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/upstream-bcq-all-dual-attention-001",
+      "weight_format": "upstream_bcq",
+      "tensors": [
+        "transformer_blocks.0.attn.add_k_proj.weight",
+        "transformer_blocks.0.attn.add_q_proj.weight",
+        "transformer_blocks.0.attn.add_v_proj.weight",
+        "transformer_blocks.0.attn.to_k.weight",
+        "transformer_blocks.0.attn.to_q.weight",
+        "transformer_blocks.0.attn.to_v.weight",
+        "transformer_blocks.1.attn.add_k_proj.weight",
+        "transformer_blocks.1.attn.add_q_proj.weight",
+        "transformer_blocks.1.attn.add_v_proj.weight",
+        "transformer_blocks.1.attn.to_k.weight",
+        "transformer_blocks.1.attn.to_q.weight",
+        "transformer_blocks.1.attn.to_v.weight",
+        "transformer_blocks.2.attn.add_k_proj.weight",
+        "transformer_blocks.2.attn.add_q_proj.weight",
+        "transformer_blocks.2.attn.add_v_proj.weight",
+        "transformer_blocks.2.attn.to_k.weight",
+        "transformer_blocks.2.attn.to_q.weight",
+        "transformer_blocks.2.attn.to_v.weight",
+        "transformer_blocks.3.attn.add_k_proj.weight",
+        "transformer_blocks.3.attn.add_q_proj.weight",
+        "transformer_blocks.3.attn.add_v_proj.weight",
+        "transformer_blocks.3.attn.to_k.weight",
+        "transformer_blocks.3.attn.to_q.weight",
+        "transformer_blocks.3.attn.to_v.weight",
+        "transformer_blocks.4.attn.add_k_proj.weight",
+        "transformer_blocks.4.attn.add_q_proj.weight",
+        "transformer_blocks.4.attn.add_v_proj.weight",
+        "transformer_blocks.4.attn.to_k.weight",
+        "transformer_blocks.4.attn.to_q.weight",
+        "transformer_blocks.4.attn.to_v.weight"
+      ]
+    }
+  ],
+  "decode_chunk_rows": 128,
+  "description": "All 30 dual-stream image/text Q/K/V matrices, matched BF16/radix/INT4/upstream four-prompt image comparison; dense BF16 execution.",
+  "samples": [
+    {
+      "id": "cal01",
+      "prompt": "A red ceramic teapot on a blue table, studio photograph",
+      "seed": 17
+    },
+    {
+      "id": "cal02",
+      "prompt": "A watercolor painting of a lighthouse on a rocky coast at sunset",
+      "seed": 23
+    },
+    {
+      "id": "cal03",
+      "prompt": "Three yellow lemons beside a green glass bottle on a wooden counter",
+      "seed": 31
+    },
+    {
+      "id": "cal04",
+      "prompt": "A small robot holding a white sign that says ECO AI",
+      "seed": 47
+    }
+  ]
+}

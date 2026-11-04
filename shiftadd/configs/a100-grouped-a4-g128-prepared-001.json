@@ -1,0 +1,50 @@
+{
+  "id": "a100-flux-klein-shiftadd-grouped-a4-g128-prepared-001",
+  "model_path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "output": "/scratch/gilbreth/mfaruqi/shiftadd-initial/runs/grouped-a4-g128-001",
+  "seed": 0,
+  "prompt": "A cat holding a sign that says hello world",
+  "height": 512,
+  "width": 512,
+  "cases": [
+    {
+      "name": "bf16",
+      "artifacts": null
+    },
+    {
+      "name": "radix-p4",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-radix-p4-001",
+      "planes": 4,
+      "tensors": null
+    },
+    {
+      "name": "radix-p4-a4",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-radix-p4-001",
+      "planes": 4,
+      "tensors": null,
+      "activation_quantization": {
+        "bits": 4,
+        "modules": [
+          "transformer_blocks.0.attn.to_q"
+        ]
+      }
+    },
+    {
+      "name": "radix-p4-a4-g128",
+      "artifacts": "/scratch/gilbreth/mfaruqi/shiftadd-initial/artifacts/transformer-radix-p4-001",
+      "planes": 4,
+      "tensors": null,
+      "activation_quantization": {
+        "bits": 4,
+        "modules": [
+          "transformer_blocks.0.attn.to_q"
+        ],
+        "group_size": 128
+      }
+    }
+  ],
+  "description": "Prepared, not submitted: paired A4 group-size diagnostic on one query projection; no performance claim.",
+  "optimizations": {
+    "activation_group_size": 128
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "model_path": "/scratch/gilbreth/mfaruqi/huggingface/hub/models--black-forest-labs--FLUX.2-klein-4B/snapshots/e7b7dc27f91deacad38e78976d1f2b499d76a294",
+  "samples": [
+    {
+      "id": "cal01",
+      "prompt": "A red ceramic teapot on a blue table, studio photograph",
+      "seed": 17
+    },
+    {
+      "id": "cal02",
+      "prompt": "A watercolor painting of a lighthouse on a rocky coast at sunset",
+      "seed": 23
+    },
+    {
+      "id": "cal03",
+      "prompt": "Three yellow lemons beside a green glass bottle on a wooden counter",
+      "seed": 31
+    },
+    {
+      "id": "cal04",
+      "prompt": "A small robot holding a white sign that says ECO AI",
+      "seed": 47
+    }
+  ],
+  "id": "a100-flux-klein-shiftadd-activation-capture-002",
+  "output": "/scratch/gilbreth/mfaruqi/shiftadd-initial/runs/activation-capture-all-attention-001",
+  "modules": [
+    "single_transformer_blocks.0.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.1.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.10.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.11.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.12.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.13.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.14.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.15.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.16.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.17.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.18.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.19.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.2.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.3.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.4.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.5.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.6.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.7.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.8.attn.to_qkv_mlp_proj",
+    "single_transformer_blocks.9.attn.to_qkv_mlp_proj",
+    "transformer_blocks.0.attn.add_k_proj",
+    "transformer_blocks.0.attn.add_q_proj",
+    "transformer_blocks.0.attn.add_v_proj",
+    "transformer_blocks.0.attn.to_k",
+    "transformer_blocks.0.attn.to_q",
+    "transformer_blocks.0.attn.to_v",
+    "transformer_blocks.1.attn.add_k_proj",
+    "transformer_blocks.1.attn.add_q_proj",
+    "transformer_blocks.1.attn.add_v_proj",
+    "transformer_blocks.1.attn.to_k",
+    "transformer_blocks.1.attn.to_q",
+    "transformer_blocks.1.attn.to_v",
+    "transformer_blocks.2.attn.add_k_proj",
+    "transformer_blocks.2.attn.add_q_proj",
+    "transformer_blocks.2.attn.add_v_proj",
+    "transformer_blocks.2.attn.to_k",
+    "transformer_blocks.2.attn.to_q",
+    "transformer_blocks.2.attn.to_v",
+    "transformer_blocks.3.attn.add_k_proj",
+    "transformer_blocks.3.attn.add_q_proj",
+    "transformer_blocks.3.attn.add_v_proj",
+    "transformer_blocks.3.attn.to_k",
+    "transformer_blocks.3.attn.to_q",
+    "transformer_blocks.3.attn.to_v",
+    "transformer_blocks.4.attn.add_k_proj",
+    "transformer_blocks.4.attn.add_q_proj",
+    "transformer_blocks.4.attn.add_v_proj",
+    "transformer_blocks.4.attn.to_k",
+    "transformer_blocks.4.attn.to_q",
+    "transformer_blocks.4.attn.to_v"
+  ],
+  "tokens_per_call": 32,
+  "max_calls": 16,
+  "description": "Same BF16 calibration workload as capture-001, expanded to all dual-stream Q/K/V and all single-stream fused QKV/MLP inputs; instrumentation invalidates timing."
+}

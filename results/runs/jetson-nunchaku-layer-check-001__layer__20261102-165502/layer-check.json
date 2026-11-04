@@ -1,0 +1,213 @@
+{
+  "nunchaku": {
+    "nunchaku_file": "/home/mfaruqi/tools/nunchaku-sm87-0c8379d/nunchaku/__init__.py",
+    "extension": "/home/mfaruqi/tools/nunchaku-sm87-0c8379d/nunchaku/_C.cpython-310-aarch64-linux-gnu.so",
+    "version": null
+  },
+  "device": "Orin",
+  "capability": [
+    8,
+    7
+  ],
+  "torch": "2.8.0",
+  "cuda": "12.6",
+  "bundle": "/home/mfaruqi/models/nunchaku-layer-check/layer-bundle.safetensors",
+  "reference": "/home/mfaruqi/models/nunchaku-layer-check/a100-outputs.safetensors",
+  "warmup": 5,
+  "iters": 20,
+  "layers": [
+    {
+      "layer": "transformer_blocks.0.attn.to_qkv",
+      "in_features": 3072,
+      "out_features": 9216,
+      "tokens": 1024,
+      "finite": true,
+      "max_abs_vs_bf16": 0.9921875,
+      "rel_l2_vs_bf16": 0.12156259268522263,
+      "cos_vs_bf16": 0.9926985502243042,
+      "w4a4_ms": {
+        "median": 3.1996480226516724,
+        "min": 2.976223945617676,
+        "max": 3.3854079246520996,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 6.50110387802124,
+        "min": 6.228352069854736,
+        "max": 7.100160121917725,
+        "n": 20
+      },
+      "vs_reference": {
+        "max_abs": 0.0009765625,
+        "rel_l2": 3.5267706266495225e-07
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.attn.to_qkv",
+      "in_features": 3072,
+      "out_features": 9216,
+      "tokens": 4096,
+      "finite": true,
+      "max_abs_vs_bf16": 1.09375,
+      "rel_l2_vs_bf16": 0.12167912721633911,
+      "cos_vs_bf16": 0.9926848411560059,
+      "w4a4_ms": {
+        "median": 12.242479801177979,
+        "min": 11.987648010253906,
+        "max": 12.264415740966797,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 26.703807830810547,
+        "min": 24.93459129333496,
+        "max": 28.5130558013916,
+        "n": 20
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.attn.to_out.0",
+      "in_features": 3072,
+      "out_features": 3072,
+      "tokens": 1024,
+      "finite": true,
+      "max_abs_vs_bf16": 1.109375,
+      "rel_l2_vs_bf16": 0.13996483385562897,
+      "cos_vs_bf16": 0.9903534650802612,
+      "w4a4_ms": {
+        "median": 1.365119993686676,
+        "min": 1.1741759777069092,
+        "max": 1.389855980873108,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 2.1559040546417236,
+        "min": 1.8959360122680664,
+        "max": 2.283423900604248,
+        "n": 20
+      },
+      "vs_reference": {
+        "max_abs": 0.03125,
+        "rel_l2": 4.1301511373603716e-05
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.attn.to_out.0",
+      "in_features": 3072,
+      "out_features": 3072,
+      "tokens": 4096,
+      "finite": true,
+      "max_abs_vs_bf16": 1.283203125,
+      "rel_l2_vs_bf16": 0.1397716999053955,
+      "cos_vs_bf16": 0.9903812408447266,
+      "w4a4_ms": {
+        "median": 4.824592113494873,
+        "min": 4.617055892944336,
+        "max": 4.879295825958252,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 8.396368026733398,
+        "min": 8.04684829711914,
+        "max": 9.587488174438477,
+        "n": 20
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.ff.linear_in",
+      "in_features": 3072,
+      "out_features": 18432,
+      "tokens": 1024,
+      "finite": true,
+      "max_abs_vs_bf16": 1.40625,
+      "rel_l2_vs_bf16": 0.14152036607265472,
+      "cos_vs_bf16": 0.990143358707428,
+      "w4a4_ms": {
+        "median": 5.887887954711914,
+        "min": 5.675519943237305,
+        "max": 6.011648178100586,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 14.368000030517578,
+        "min": 14.106847763061523,
+        "max": 14.838496208190918,
+        "n": 20
+      },
+      "vs_reference": {
+        "max_abs": 0.03125,
+        "rel_l2": 6.797435344196856e-05
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.ff.linear_in",
+      "in_features": 3072,
+      "out_features": 18432,
+      "tokens": 4096,
+      "finite": true,
+      "max_abs_vs_bf16": 1.484375,
+      "rel_l2_vs_bf16": 0.14158515632152557,
+      "cos_vs_bf16": 0.9901348948478699,
+      "w4a4_ms": {
+        "median": 23.58641529083252,
+        "min": 23.578336715698242,
+        "max": 23.760831832885742,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 53.80297660827637,
+        "min": 51.3436164855957,
+        "max": 55.656734466552734,
+        "n": 20
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.ff.linear_out",
+      "in_features": 9216,
+      "out_features": 3072,
+      "tokens": 1024,
+      "finite": true,
+      "max_abs_vs_bf16": 3.375,
+      "rel_l2_vs_bf16": 0.1524958461523056,
+      "cos_vs_bf16": 0.9885804653167725,
+      "w4a4_ms": {
+        "median": 3.451472043991089,
+        "min": 3.210815906524658,
+        "max": 3.4764161109924316,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 9.332095623016357,
+        "min": 9.267104148864746,
+        "max": 9.418111801147461,
+        "n": 20
+      },
+      "vs_reference": {
+        "max_abs": 0.03125,
+        "rel_l2": 3.566376108210534e-05
+      }
+    },
+    {
+      "layer": "transformer_blocks.0.ff.linear_out",
+      "in_features": 9216,
+      "out_features": 3072,
+      "tokens": 4096,
+      "finite": true,
+      "max_abs_vs_bf16": 3.375,
+      "rel_l2_vs_bf16": 0.15241147577762604,
+      "cos_vs_bf16": 0.9885916709899902,
+      "w4a4_ms": {
+        "median": 13.071008205413818,
+        "min": 12.861120223999023,
+        "max": 13.178303718566895,
+        "n": 20
+      },
+      "bf16_ms": {
+        "median": 36.98975944519043,
+        "min": 36.83123016357422,
+        "max": 37.065025329589844,
+        "n": 20
+      }
+    }
+  ],
+  "max_memory_allocated_gib": 1.8546299934387207
+}

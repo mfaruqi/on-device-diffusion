@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 1.4120835941284895,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30864547891542315,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30707299686037004,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "bf16",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3084228588268161,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3644004228990525,
+      "relative_latent_l2": 0.19563718140125275,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.30627908697351813,
+      "relative_latent_l2": 0.30915963649749756,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.30630221078172326,
+      "relative_latent_l2": 0.33652833104133606,
+      "finite": true
+    },
+    {
+      "case": "upstream-p4-all-attention",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.30721488897688687,
+      "relative_latent_l2": 0.47916215658187866,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal01",
+      "generation_to_latent_s": 0.3414144800044596,
+      "relative_latent_l2": 0.2772960960865021,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal02",
+      "generation_to_latent_s": 0.3082260449882597,
+      "relative_latent_l2": 0.38871437311172485,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal03",
+      "generation_to_latent_s": 0.3062082161195576,
+      "relative_latent_l2": 0.4750833213329315,
+      "finite": true
+    },
+    {
+      "case": "upstream-mixed-fused-p3p4",
+      "sample_id": "cal04",
+      "generation_to_latent_s": 0.3063260680064559,
+      "relative_latent_l2": 0.5953848958015442,
+      "finite": true
+    }
+  ],
+  "quality_scope": "small calibration-only prompt set, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

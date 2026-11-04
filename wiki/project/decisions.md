@@ -123,6 +123,15 @@ superseded record moves to Archive with a link to the one that replaced it.
   - **On failure:** fall back to the engine-level planner (or ONNX Runtime for the web target), recorded as a new decision.
 - **Revisit if**: either gate fails, or the user/advisor prefers another stack.
 
+### D-012: Prioritize ShiftAdd experiments and an existing-engine kernel prototype this semester
+- **Date**: 2026-11-04
+- **Decision**: Researcher-directed semester target: complete a bounded FLUX.2 Klein ShiftAdd study and a packed-weight kernel prototype integrated into an existing engine, investigating Nunchaku first ([meeting source](../../raw/meetings/2026-11-04.md)). Backend selection depends on a compatibility audit; no native ShiftAdd support is assumed.
+- **Deliverables**: component memory accounting; calibration-based 2/3/4/5/6-plane allocation; BF16, conventional INT4 and SVDQuant controls; kernel correctness and end-to-end image checks; latency, peak memory and timestamped edge-energy comparisons. Analytical energy estimates remain separate from measurements ([memo](../../raw/meetings/2026-11-04.md)).
+- **Scope**: This supersedes D-010's near-term semester sequencing, not its historical decision or the proposal's hypothesis. Broad TVM/CUDA/Metal/WebGPU pipeline delivery and the full joint planner are deferred from the semester acceptance criteria. Advisor confirmation of the broader thesis amendment remains open. The [weekly plan](milestones.md#semester-completion-plan--2026-11-04) is authoritative for remaining semester work.
+- **RQ mapping**: precision/kernel transfer supplies RQ1 evidence; measured allocation costs can inform RQ2/RQ3, but a mixed-precision sweep alone does not demonstrate joint reuse/precision/residency planning.
+- **Success gate**: reproducible engine-integrated execution with stated quality and measurement boundaries. A speed or energy win is a research outcome to test, not an acceptance assumption. If integration fails, preserve the failure and deliver a bounded prototype with an explicit limitation.
+- **Revisit if**: Nunchaku cannot support the representation or Jetson target, or the kernel feasibility gate fails; choose a documented existing-engine fallback and narrow the claim.
+
 ## Archive
 
 (none yet)

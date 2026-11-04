@@ -1,0 +1,120 @@
+Usage:
+  build-cuda-performance/bin/ed-cli --model <model-or-diffusers-dir> --prompt <text> [options]
+  build-cuda-performance/bin/ed-cli --diffusion-model <path> --vae <path> --clip_l <path> [--clip_g <path>] (--t5xxl <path> | --no-t5) --prompt <text> [options]
+  build-cuda-performance/bin/ed-cli -M vid_gen --diffusion-model <path> --vae <path> [--audio-vae <path>] --llm <path> --prompt <text> [options]
+Options:
+  --video, -M vid_gen       Generate video frames instead of an image
+  --video-format <fmt>      Video format: auto, avi, mp4, mov, mkv, webm. Default: auto
+  -i, --image, --init-img <path>  Input image or MiniMax-H3/LTX-2.3 first frame
+  --end-img <path>          MiniMax-H3/LTX-2.3 last-frame image
+  --diffusion-model <path>  Standalone DiT transformer weights
+  --vae <path>              Standalone VAE weights
+  --audio-vae <path>        Standalone audio VAE weights (MiniMax-H3/LTX-2.3)
+  --embeddings-connectors <path>  LTX-2.3 text connector weights
+  --latent-upscaler <path> LTX-2.3 spatial latent x2 upscaler weights
+  --hires                    Run LTX-2.3 x2 latent upscale and refine pass
+  --hires-upscalers-dir <dir>  Directory used with --hires-upscaler
+  --hires-upscaler <name>   LTX upscaler name/path (stable-diffusion.cpp compatible)
+  --hires-steps <int>        LTX hires refine steps, default: 4
+  --hires-denoising-strength <float>  LTX hires strength in (0,1], default: 0.7
+  --hires-sigmas <csv>       Explicit LTX hires sigma schedule
+  --clip_l <path>           CLIP-L text encoder weights
+  --clip_g <path>           CLIP-G text encoder weights
+  --t5xxl <path>            T5XXL text encoder weights
+  --llm <path>              LLM text encoder weights (MiniMax-H3/Qwen/LTX-2.3)
+  --llm-vision <path>       Optional vision-language encoder weights
+  --negative-prompt <text>  Negative prompt text, default: empty
+  -o, --output <path>       Output image/video path, default: output.png
+  -W, --width <int>         Image width, default: 1024
+  -H, --height <int>        Image height, default: 1024
+  --frames, --video-frames <int>  Video frame count, default: 1
+  --video-duration <seconds>  MiniMax-H3 duration; aligns to >=22 frames satisfying 17k+5
+  --fps <int>               Video fps, default: 16
+  --ref-image <path>        MiniMax-H3 Ref2VA reference image; repeatable
+  --ref-image-size <mode>   Reference image sizing: match or max, default: max
+  --ref-video <path>        MiniMax-H3 Ref2VA reference video frames directory or media file; repeatable
+                            Media files are decoded with ffmpeg; embedded audio is paired automatically
+  --ref-video-audio <path>  WAV soundtrack paired with the corresponding --ref-video
+  --ref-audio <path>        Additional MiniMax-H3 Ref2VA WAV; repeatable; requires an image/video reference
+  --steps <int>             Sampling steps, default: 20
+  -s, --seed <int64>        Seed, default: -1
+  -t, --threads <int>       Thread count, default: 0
+  --guidance <float>        Flux distilled guidance, default: 3.5
+  --cfg-scale <float>       Classifier-free guidance scale, default: 1.0
+  --flow-shift <float>      Flow scheduler shift, default: model default
+  --qwen-image-zero-cond-t Enable Qwen-Image zero conditional timestep
+  --sampler <name>          Sampling method: auto, euler, res_multistep
+  --scheduler <name>        Sigma scheduler: auto, discrete, simple, ltx2
+  --cache <mode>            Cache mode: off, easycache, ucache, dbcache, taylorseer, cache-dit, magcache, dicache, sencache
+  --cache-threshold <float> EasyCache/UCache reuse threshold
+  --cache-start <float>     Cache active window start percent, default: 0.15
+  --cache-end <float>       Cache active window end percent, default: 0.95
+  --cache-error-decay <f>   UCache accumulated error decay, default: 1.0
+  --cache-relative-threshold|--cache-absolute-threshold
+                            UCache threshold scale mode, default: relative
+  --cache-no-reset-error    Keep UCache accumulated error after full compute
+  --cache-fn-blocks <int>   DBCache/CacheDiT front compute blocks, default: 8
+  --cache-bn-blocks <int>   DBCache/CacheDiT back compute blocks, default: 0
+  --cache-residual-threshold <float>
+                            Override method residual threshold; DBCache/CacheDiT default: 0.08
+  --cache-max-accumulated-residual-diff <float>
+                            Disable DBCache after accumulated diff reaches this value, -1 means unlimited
+  --cache-warmup-steps <int>
+                            Cache warmup full-compute steps, default: 8
+  --cache-max-cached-steps <int>
+                            Max cached steps, -1 means unlimited
+  --cache-max-continuous-cached-steps <int>
+                            Max continuous cached steps, -1 means unlimited
+  --cache-taylor-order <int>
+                            TaylorSeer derivative order, default: 1
+  --cache-taylor-skip <int> TaylorSeer skip interval, default: 1
+  --cache-scm-mask <csv>    Steps computation mask, e.g. 1,0,0,1
+  --cache-static-scm        Use static SCM policy for methods that support it
+  --cache-calibrate <path>  Profile a table for the selected cache method (requires a
+                            calibration-capable --cache, e.g. magcache or sencache;
+                            full-computes every step, sencache also runs extra Jacobian
+                            forwards) and write it to <path>
+  --cache-profile <path>    Load a MagCache ratio table / SenCache sensitivity profile
+                            from <path> (sencache requires this or --cache-calibrate)
+  --backend <name>          Backend: auto, cpu, cuda, vulkan, metal, gpu. Default: auto
+  --gpu                     Alias for --backend gpu
+  --devices <csv>           GPU devices for parallel workers, e.g. 0,1,2,3
+  --type <dtype>            Weight type / on-the-fly quantization when loading safetensors:
+                            preserve, f32, f16, bf16, q4_0, q4_1, q5_0, q5_1, q8_0,
+                            q2_k, q3_k, q4_k, q5_k, q6_k. Default: preserve
+                            ('auto' remains accepted as a compatibility alias)
+  --tensor-type-rules <csv> Per-tensor quant overrides (mixed quant), e.g. "attn=q4_0,norm=f16"
+                            Each rule is <name-regex>=<ggml-type-name>, comma-separated
+  --no-t5                   Skip loading T5XXL text encoder (SD3 only; reduces memory, degrades prompt adherence)
+  --vae-tiling <on|off|auto>  VAE tiled decode (reduces VRAM). auto=enable on low-VRAM GPUs (<=25G); default: auto
+  --vae-tile-size <float>   VAE tile relative size, default: 5.0 (~32x32 tile). Larger = finer tiles = less VRAM
+  --offload-to-cpu          Keep model weights on CPU, copy to GPU per-compute (saves VRAM)
+  --dit-offload             Keep DiT weights on CPU, stage to GPU per step (compute on GPU)
+  --text-encoder-offload    Keep text-encoder weights on CPU, stage to GPU per encode (compute on GPU)
+  --minimax-h3-stage-lifecycle  MiniMax-H3: stage Qwen/VAE by phase and release them during DiT
+  --vae-offload             Keep VAE weights on CPU, stage to GPU per decode (compute on GPU)
+  --max-vram <GB>           Set the VRAM planning budget; with --auto-fit on
+                            single-device CUDA, also enforce a guarded allocation ceiling
+  --auto-allocate           Auto per-component placement under a VRAM planning budget
+                            = min(--max-vram, free); keeps components resident
+                            when they fit, offloads (segments) the rest
+                            (external CUDA workspaces can raise the process peak)
+  --auto-fit                Fully automatic: choose TE/DiT quantization (DiT q8_0
+                            down to q4_k) AND placement to fit the VRAM budget.
+                            Implies --auto-allocate; replans TE/DiT precision while
+                            --type still controls VAE precision. With --max-vram,
+                            oversized workloads fail safely. Off by default.
+  --flash-attention         Enable flash attention, default: on
+  --no-flash-attention      Disable flash attention
+  --rng <name>              Accepted for stable-diffusion.cpp CLI compatibility
+  -v, --verbose             Accepted compatibility flag (logging is configured externally)
+  --cfg-parallel-size <n>   Split CFG cond/uncond branches across n GPUs, currently supports 1 or 2
+  --cfg-size <n>            Alias for --cfg-parallel-size
+  --tp-size <n>             Reserved tensor parallel size, default: 1
+  --sp-size <n>             Sequence parallel size, default: 1
+  --profile-graph-cuts      Print graph-cut compute/communication timing summary
+  --profile-graph-cuts-top <n>
+                            Print top n slowest graph-cut segments, default: 8
+  --profile-graph-cuts-all-ranks
+                            Print graph-cut profile from every parallel rank
+  --help              Show this help

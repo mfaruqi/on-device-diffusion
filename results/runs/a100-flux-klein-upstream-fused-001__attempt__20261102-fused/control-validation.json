@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "scope": "artifact and paired numerical validation; not quality admission",
+  "prior_bf16_exact_match": true,
+  "cases": [
+    {
+      "case": "bf16",
+      "replaced_matrices": 0,
+      "relative_latent_l2": 0.0,
+      "latent_sha256": "20bb5bcfb277a12a807d187499dfb1846c3ca19de994a31e2d694b74cbddbfa7"
+    },
+    {
+      "case": "radix-p4-fused",
+      "replaced_matrices": 1,
+      "relative_latent_l2": 0.1231374591588974,
+      "latent_sha256": "6c0b63bdb2c095d530e8eb807dfe5689b4d0227355b877ed8d30e127f02c627b"
+    },
+    {
+      "case": "uniform-int4-fused",
+      "replaced_matrices": 1,
+      "relative_latent_l2": 0.12138751149177551,
+      "latent_sha256": "4dce14b2b0630fdcc1ca6c3e0609fafb43d62686b3ca8bd33504a02b3b1e3609"
+    },
+    {
+      "case": "upstream-u8-fused",
+      "replaced_matrices": 1,
+      "relative_latent_l2": 0.13343402743339539,
+      "latent_sha256": "dd1fe509c7757f96d3b9d7bff9c12bef19b93b3e89500bd17ffa256588b96dc1"
+    }
+  ],
+  "performance_comparison_eligible": false
+}

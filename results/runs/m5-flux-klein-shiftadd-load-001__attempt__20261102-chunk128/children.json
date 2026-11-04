@@ -1,0 +1,86 @@
+[
+  {
+    "process_peak_rss_gib": 0.4047393798828125,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "a139d96d8184d086b1fd107f8a33038510725bbb16b0c75012f7f7886e79dd18",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "runtime_representation": "reconstructed dense parameters",
+      "decode_chunk_rows": 128,
+      "packed_artifact_bytes": 43131406
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 0,
+    "phase": "first"
+  },
+  {
+    "process_peak_rss_gib": 0.4049072265625,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "a139d96d8184d086b1fd107f8a33038510725bbb16b0c75012f7f7886e79dd18",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "runtime_representation": "reconstructed dense parameters",
+      "decode_chunk_rows": 128,
+      "packed_artifact_bytes": 43131406
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 1,
+    "phase": "measured"
+  },
+  {
+    "process_peak_rss_gib": 0.404693603515625,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "a139d96d8184d086b1fd107f8a33038510725bbb16b0c75012f7f7886e79dd18",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "runtime_representation": "reconstructed dense parameters",
+      "decode_chunk_rows": 128,
+      "packed_artifact_bytes": 43131406
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 2,
+    "phase": "measured"
+  },
+  {
+    "process_peak_rss_gib": 0.4047698974609375,
+    "parameter_bytes": 169869312,
+    "parameter_sha256": "a139d96d8184d086b1fd107f8a33038510725bbb16b0c75012f7f7886e79dd18",
+    "shape": [
+      27648,
+      3072
+    ],
+    "audit": {
+      "replaced_tensors": [
+        "single_transformer_blocks.0.attn.to_qkv_mlp_proj.weight"
+      ],
+      "runtime_representation": "reconstructed dense parameters",
+      "decode_chunk_rows": 128,
+      "packed_artifact_bytes": 43131406
+    },
+    "torch": "2.14.1",
+    "platform": "macOS-26.6-arm64-arm-64bit",
+    "index": 3,
+    "phase": "measured"
+  }
+]

@@ -51,6 +51,20 @@ class EdgeSampleTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             self.parse(self.log.replace('t=101.000000','t=109.000000'))
 
+    def test_metal_base_schedule_is_complete_and_continuous(self):
+        self.cfg['backend']='metal'
+        self.cfg['workload'].update(width=512,height=512,steps=50,cfg_scale=4.0)
+        import re
+        log=self.log.replace('CUDA0','MTL0').replace(
+            '1024x1024 latent=64x64 image_seq_len=4096 steps=4 flux2_mu=2.291 guidance=1.00 cfg=1.00 seed=0',
+            'flux txt2img: 512x512 latent=32x32 image_seq_len=1024 steps=50 flux2_mu=1.234 guidance=1.00 cfg=4.00 seed=0')
+        schedule=''.join(f'flux step {i+1}/50 sigma={1-i/50:.6f} next={1-(i+1)/50:.6f}\n' for i in range(50))
+        log=re.sub(r'(?:flux step [^\n]+\n){4}',lambda m:schedule,log)
+        rows,_,_=self.parse(log)
+        self.assertIn('denoise_step_49_ms',rows[0])
+        with self.assertRaises(AssertionError):
+            self.parse(log.replace('flux step 50/50','flux step 49/50',1))
+
     def test_unverified_cache_rejected(self):
         self.cfg['optimizations']['step_cache']={'mode':'dicache'}
         with self.assertRaises(AssertionError):check_config(self.cfg)

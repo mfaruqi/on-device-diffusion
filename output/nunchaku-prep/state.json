@@ -1,0 +1,73 @@
+{
+  "status": "complete_validated",
+  "authorized_scope": "A100 distilled Klein 4B SVDQuant INT4/r32 smoke then matching full protocol; investigate Jetson and M5 feasibility without silent configuration or backend changes",
+  "remote_root": "/scratch/gilbreth/mfaruqi/nunchaku-20261011",
+  "remote_python": "/scratch/gilbreth/mfaruqi/envs/nunchaku-klein-py311-cu128/bin/python",
+  "remote_log": "/scratch/gilbreth/mfaruqi/nunchaku-20261011/preparation.log",
+  "job_id": "11929464",
+  "smoke_config": "configs/a100-nunchaku-flux-klein-int4-r32-smoke.json",
+  "full_config": "configs/a100-nunchaku-flux-klein-int4-r32.json",
+  "updated_utc": "2026-10-11T17:32:40.148594+00:00",
+  "next_action": "Completed runs and failure evidence uploaded and verified. No further Nunchaku submissions; completed future benchmarks have standing W&B upload authorization.",
+  "slurm_state": "COMPLETED",
+  "pending_reason": null,
+  "automatic_continuation": "RUN_FULL_AFTER_SMOKE=1; full protocol in same allocation only after complete matching smoke and image/audit gate",
+  "scheduler_start_estimate_note": "Gilbreth scheduler estimate; subject to change, not guaranteed",
+  "portability": {
+    "jetson": {
+      "status": "blocked_preflight",
+      "evidence": "output/nunchaku-prep/portability/jetson-build-preflight.txt",
+      "build_error": "Unsupported SM 87",
+      "environment": {
+        "torch": "2.8.0",
+        "cuda": "12.6",
+        "python": "3.10.12",
+        "total_memory_bytes": 7990112256
+      },
+      "next_action": "Requires a separately validated SM87 source build plus explicit text-encoder memory policy; existing A100 resident config cannot fit physical RAM. No Jetson model run launched."
+    },
+    "m5": {
+      "status": "blocked_backend",
+      "reason": "Pinned Nunchaku source uses CUDAExtension and CUDA kernels; no reviewed Metal backend. A custom kernel port is separate implementation work, not a device flag."
+    }
+  },
+  "automation_id": "monitor-a100-nunchaku-smoke-and-full-protocol",
+  "attempts": [
+    {
+      "job_id": "11929279",
+      "status": "failed",
+      "run_dir": "a100-nunchaku-flux-klein-001__attempt__20261011-113031",
+      "error": "Unexpected dtype: text_encoder before generation",
+      "repair": "Permit only expected nonpersistent FP32 Qwen3 rotary buffers; audit all tensor names/dtypes before checks",
+      "remote_snapshot": "/scratch/gilbreth/mfaruqi/nunchaku-20261011/snapshots/job-11929279"
+    },
+    {
+      "job_id": "11929464",
+      "status": "complete",
+      "configuration_changed": false,
+      "smoke_run_dir": "a100-nunchaku-flux-klein-001__attempt__20261011-123802",
+      "full_run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123"
+    }
+  ],
+  "smoke_run_dir": "a100-nunchaku-flux-klein-001__attempt__20261011-123802",
+  "full_run_dir": "a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+  "outputs_fetched": true,
+  "validation_complete": true,
+  "bookkeeping_complete": true,
+  "formal_quality_eligible": false,
+  "measured_wall_ms": {
+    "median": 897.8261720039882,
+    "min": 894.0519679454155,
+    "max": 901.7563210218213,
+    "mean": 897.762761201011,
+    "stdev": 2.5366853372951392,
+    "n": 10
+  },
+  "monitor_action": "deleted_after_validated_completion",
+  "wandb": {
+    "status": "uploaded_verified",
+    "full_url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/a100-nunchaku-flux-klein-001__baseline__20261011-124123",
+    "group_url": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/groups/a100-nunchaku-flux-klein-001",
+    "receipt": "output/nunchaku-prep/wandb-verification.json"
+  }
+}

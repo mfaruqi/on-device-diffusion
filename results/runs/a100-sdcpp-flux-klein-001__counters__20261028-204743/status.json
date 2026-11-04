@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "started_utc": "2026-10-29T00:47:43Z",
+  "finished_utc": "2026-10-29T14:15:41Z",
+  "analysis_resumed_utc": "2026-10-29T14:15:41Z",
+  "slurm_jobs": [
+    {
+      "job": "12038728",
+      "node": "gilbreth-g001",
+      "passes": "sequence, counter window"
+    }
+  ],
+  "sequence": {
+    "launches": 11182,
+    "pass_start": 8706,
+    "period": 1081,
+    "window": [
+      8436,
+      1621
+    ]
+  },
+  "window_offset": 0,
+  "bytes_per_pass_gb": 176.85,
+  "history": [],
+  "note": "Values re-derived from the saved CSVs with the final scripts/profile_engine_counters.py (--resume); bytes and pass identical across re-analyses."
+}

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "phase_counts": {
+    "first": 1,
+    "warmup": 0,
+    "measured": 1
+  },
+  "image_diagnostics": [
+    {
+      "file": "images/00-first.png",
+      "stddev": [
+        106.94993128054234,
+        106.00436189413044,
+        104.90276639798414
+      ]
+    },
+    {
+      "file": "images/01-measured.png",
+      "stddev": [
+        106.94993128054234,
+        106.00436189413044,
+        104.90276639798414
+      ]
+    }
+  ],
+  "formal_quality_eligible": false
+}

@@ -1,0 +1,25 @@
+{
+  "status": "verified",
+  "url": "https://forge.coreweave.com/wandb/mfaruqi-purdue-university/on-device-diffusion/runs/7b2d878617bb437c",
+  "state": "finished",
+  "point_count": 979,
+  "panels": [
+    "roofline/a100",
+    "roofline/jetson",
+    "roofline/m5",
+    "roofline/normalized_pct",
+    "roofline_images/a100-stage",
+    "roofline_images/a100-kernel",
+    "roofline_points"
+  ],
+  "artifact": "klein-roofline-analysis:v3",
+  "artifact_data_digest": "RPc6HGDVA+KWWYPzO/9O3Q==",
+  "table_contents_match": true,
+  "artifact_data_match": true,
+  "figure_digests_match": {
+    "a100-stage-roofline.png": "g4urPqndupvUgMcgYzyc3Q==",
+    "a100-stage-roofline.pdf": "Qcrqfboq6cQ5UlrvHjosKA==",
+    "a100-kernel-roofline.png": "W/zhCElyOV6hOyUUtvez8Q==",
+    "a100-kernel-roofline.pdf": "VKjqb8vvAsUfEXPvAir+/g=="
+  }
+}

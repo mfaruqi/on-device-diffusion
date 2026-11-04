@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "prior_weight_only_metrics_reproduced": 32,
+  "exact_bf16_controls": 32,
+  "finite_comparisons": 192,
+  "tolerance": {
+    "rtol": 1e-05,
+    "atol": 1e-08
+  }
+}

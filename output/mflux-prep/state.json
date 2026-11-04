@@ -1,0 +1,101 @@
+{
+  "status": "complete_with_documented_blockers",
+  "scope": "six configurations only; individual smoke gate then 1+3+10 full; upload and append existing charts",
+  "entries": [
+    {
+      "id": "m5-mflux-flux-klein-001",
+      "config": "configs/m5-mflux-flux-klein-bf16-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-bf16-512-smoke.resolved.json",
+      "status": "complete",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-001__attempt__20261012-153912",
+        "results/runs/m5-mflux-flux-klein-001__attempt__20261012-154009",
+        "results/runs/m5-mflux-flux-klein-001__baseline__20261012-154228"
+      ],
+      "smoke_run": "results/runs/m5-mflux-flux-klein-001__attempt__20261012-154009",
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-001-baseline-1791834148.log",
+      "full_run": "results/runs/m5-mflux-flux-klein-001__baseline__20261012-154228"
+    },
+    {
+      "id": "m5-mflux-flux-klein-002",
+      "config": "configs/m5-mflux-flux-klein-q8-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-q8-512-smoke.resolved.json",
+      "status": "complete",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-002__attempt__20261012-155918",
+        "results/runs/m5-mflux-flux-klein-002__baseline__20261012-160000"
+      ],
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-002-baseline-1791835200.log",
+      "smoke_run": "results/runs/m5-mflux-flux-klein-002__attempt__20261012-155918",
+      "full_run": "results/runs/m5-mflux-flux-klein-002__baseline__20261012-160000"
+    },
+    {
+      "id": "m5-mflux-flux-klein-003",
+      "config": "configs/m5-mflux-flux-klein-q4-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-q4-512-smoke.resolved.json",
+      "status": "complete",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-003__attempt__20261012-161526",
+        "results/runs/m5-mflux-flux-klein-003__baseline__20261012-161546"
+      ],
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-003-baseline-1791836146.log",
+      "smoke_run": "results/runs/m5-mflux-flux-klein-003__attempt__20261012-161526",
+      "full_run": "results/runs/m5-mflux-flux-klein-003__baseline__20261012-161546"
+    },
+    {
+      "id": "m5-mflux-flux-klein-base-001",
+      "config": "configs/m5-mflux-flux-klein-base-bf16-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-base-bf16-512-smoke.resolved.json",
+      "status": "failed_gate",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-base-001__attempt__20261012-161808"
+      ],
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-base-001-attempt-1791836288.log",
+      "blocker": "Native SIGSEGV in MLX Metal compiled evaluation; see preserved crash-evidence.json. No bounded runner-only repair identified without changing the declared execution policy."
+    },
+    {
+      "id": "m5-mflux-flux-klein-base-002",
+      "config": "configs/m5-mflux-flux-klein-base-q8-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-base-q8-512-smoke.resolved.json",
+      "status": "complete",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-base-002__attempt__20261012-161817",
+        "results/runs/m5-mflux-flux-klein-base-002__baseline__20261012-162447"
+      ],
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-base-002-baseline-1791836687.log",
+      "smoke_run": "results/runs/m5-mflux-flux-klein-base-002__attempt__20261012-161817",
+      "full_run": "results/runs/m5-mflux-flux-klein-base-002__baseline__20261012-162447"
+    },
+    {
+      "id": "m5-mflux-flux-klein-base-003",
+      "config": "configs/m5-mflux-flux-klein-base-q4-512.resolved.json",
+      "smoke_config": "configs/m5-mflux-flux-klein-base-q4-512-smoke.resolved.json",
+      "status": "complete",
+      "runs": [
+        "results/runs/m5-mflux-flux-klein-base-003__attempt__20261012-171421",
+        "results/runs/m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+      ],
+      "active_log": "output/mflux-prep/m5-mflux-flux-klein-base-003-baseline-1791839974.log",
+      "smoke_run": "results/runs/m5-mflux-flux-klein-base-003__attempt__20261012-171421",
+      "full_run": "results/runs/m5-mflux-flux-klein-base-003__baseline__20261012-171934"
+    }
+  ],
+  "next_action": "None in the authorized six-config scope. Five full results and both failures published; Base BF16 native MLX Metal crash documented; further diagnosis requires a separately labelled policy/environment change if pursued.",
+  "queue_pid": null,
+  "updated_utc": "2026-10-12T22:20:09.940212+00:00",
+  "publishing": {
+    "status": "uploaded_verified",
+    "receipt": "output/stage-breakdown-20261007/mflux-upload-verification.json",
+    "chart_run": "https://wandb.ai/mfaruqi-purdue-university/on-device-diffusion/runs/c6af35f4845e4833",
+    "evidence_receipt": "output/mflux-prep/wandb-evidence-verification.json",
+    "run_records": 12,
+    "completed_fulls": 5,
+    "chart_sources": 49,
+    "chart_panels": 15
+  },
+  "heartbeat": {
+    "id": "monitor-mflux-m5-benchmarks",
+    "status": "deleted",
+    "deleted_utc": "2026-10-12T22:20:32.816223+00:00"
+  }
+}

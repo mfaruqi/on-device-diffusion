@@ -1,0 +1,33 @@
+{
+  "reviewed": [
+    {
+      "run": "m5-mflux-flux-klein-base-005__baseline__20261015-225903",
+      "phase_counts": {
+        "first": 1,
+        "warmup": 3,
+        "measured": 10
+      },
+      "wall_median_s": 111.95905722904718,
+      "clock_gap_s": -0.02791007689666003,
+      "minimum_stage_residual_ms": 3.1625820556655526,
+      "tile_decodes_per_image": 9,
+      "guidance_passes_per_step": 2,
+      "quality_approved": false
+    },
+    {
+      "run": "m5-mflux-flux-klein-base-006__baseline__20261015-232911",
+      "phase_counts": {
+        "first": 1,
+        "warmup": 3,
+        "measured": 10
+      },
+      "wall_median_s": 128.97579241695348,
+      "clock_gap_s": 0.03525518800597638,
+      "minimum_stage_residual_ms": 4.02216543443501,
+      "tile_decodes_per_image": 9,
+      "guidance_passes_per_step": 2,
+      "quality_approved": false
+    }
+  ],
+  "visual_review": "8-bit measured image is nonblank with legible HELLO WORLD sign; 4-bit sign-text error retained. Single prompt diagnostics do not confer quality approval."
+}

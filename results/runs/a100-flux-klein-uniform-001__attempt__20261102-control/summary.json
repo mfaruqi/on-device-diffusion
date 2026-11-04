@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "case": "bf16",
+      "generation_to_latent_s": 0.6352646399755031,
+      "relative_latent_l2": 0.0,
+      "finite": true
+    },
+    {
+      "case": "radix-p4",
+      "generation_to_latent_s": 0.3496025169733912,
+      "relative_latent_l2": 0.7684926390647888,
+      "finite": true
+    },
+    {
+      "case": "uniform-int4",
+      "generation_to_latent_s": 0.36364590807352215,
+      "relative_latent_l2": 0.6253030896186829,
+      "finite": true
+    }
+  ],
+  "quality_scope": "one calibration prompt, diagnostic only",
+  "unavailable_metrics": [
+    "packed_runtime_latency",
+    "packed_runtime_memory",
+    "energy"
+  ]
+}

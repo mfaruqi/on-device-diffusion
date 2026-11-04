@@ -1,0 +1,14 @@
+{
+  "policy": {
+    "text_encoder": "release_after_encode",
+    "transformer": "release_during_encode"
+  },
+  "per_generation": [
+    {
+      "transformer_free_s": 0.8511572320130654,
+      "text_encoder_load_s": 34.7417412410141,
+      "text_encoder_free_s": 0.4843089149799198,
+      "transformer_load_s": 33.149380492046475
+    }
+  ]
+}
